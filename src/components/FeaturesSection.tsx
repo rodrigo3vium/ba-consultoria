@@ -1,36 +1,37 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Bot, TrendingUp, MessageCircle, Zap, Shield, Target } from 'lucide-react';
 
 const features = [
   {
     title: "Automação Inteligente",
     description: "Automatize processos repetitivos e libere sua equipe para tarefas estratégicas.",
-    icon: "🤖",
+    icon: Bot,
   },
   {
     title: "Análise Preditiva",
     description: "Preveja tendências e tome decisões baseadas em dados precisos.",
-    icon: "📊",
+    icon: TrendingUp,
   },
   {
     title: "Chatbots Personalizados",
     description: "Melhore o atendimento ao cliente com assistentes virtuais inteligentes.",
-    icon: "💬",
+    icon: MessageCircle,
   },
   {
     title: "Otimização de Processos",
     description: "Identifique gargalos e otimize operações para máxima eficiência.",
-    icon: "⚡",
+    icon: Zap,
   },
   {
     title: "Integração Segura",
     description: "Integre IA aos seus sistemas existentes com total segurança.",
-    icon: "🔒",
+    icon: Shield,
   },
   {
     title: "Suporte Especializado",
     description: "Conte com nossa equipe de especialistas em todas as etapas.",
-    icon: "🎯",
+    icon: Target,
   },
 ];
 
@@ -48,24 +49,31 @@ const FeaturesSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="bg-card/50 backdrop-blur-sm border-border hover:shadow-card-custom transition-all duration-300 hover:scale-105"
-            >
-              <CardHeader className="text-center">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl font-poppins text-foreground">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-muted-foreground font-inter">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <Card 
+                key={index} 
+                className="bg-card/50 backdrop-blur-sm border-border hover:shadow-card-custom transition-all duration-300 hover:scale-105 group"
+              >
+                <CardHeader className="text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="p-3 bg-gradient-primary rounded-full group-hover:shadow-glow transition-all duration-300">
+                      <IconComponent size={32} className="text-foreground" />
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl font-poppins text-foreground">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-center text-muted-foreground font-inter">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

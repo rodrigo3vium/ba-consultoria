@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Mail, Phone, Linkedin } from 'lucide-react';
 
 const CTASection = () => {
   return (
@@ -29,18 +30,30 @@ const CTASection = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className="text-center">
-              <div className="text-ba-orange text-2xl mb-2">📧</div>
+            <div className="text-center group">
+              <div className="flex justify-center mb-3">
+                <div className="p-3 bg-ba-orange/20 rounded-full group-hover:bg-ba-orange/30 transition-colors">
+                  <Mail size={24} className="text-ba-orange" />
+                </div>
+              </div>
               <h3 className="font-semibold font-poppins mb-1">Email</h3>
               <p className="text-muted-foreground font-inter">contato@baconsultoria.com</p>
             </div>
-            <div className="text-center">
-              <div className="text-ba-orange text-2xl mb-2">📱</div>
+            <div className="text-center group">
+              <div className="flex justify-center mb-3">
+                <div className="p-3 bg-ba-orange/20 rounded-full group-hover:bg-ba-orange/30 transition-colors">
+                  <Phone size={24} className="text-ba-orange" />
+                </div>
+              </div>
               <h3 className="font-semibold font-poppins mb-1">Telefone</h3>
               <p className="text-muted-foreground font-inter">(11) 9999-9999</p>
             </div>
-            <div className="text-center">
-              <div className="text-ba-orange text-2xl mb-2">💼</div>
+            <div className="text-center group">
+              <div className="flex justify-center mb-3">
+                <div className="p-3 bg-ba-orange/20 rounded-full group-hover:bg-ba-orange/30 transition-colors">
+                  <Linkedin size={24} className="text-ba-orange" />
+                </div>
+              </div>
               <h3 className="font-semibold font-poppins mb-1">LinkedIn</h3>
               <p className="text-muted-foreground font-inter">BA Consultoria</p>
             </div>
