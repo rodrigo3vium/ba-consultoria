@@ -55,7 +55,10 @@ export default {
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+					foreground: 'hsl(var(--card-foreground))',
+					premium: 'hsl(var(--card-premium))',
+					'premium-border': 'hsl(var(--card-premium-border))',
+					'premium-hover': 'hsl(var(--card-premium-hover))',
 				},
 				ba: {
 					'blue-light': 'hsl(var(--ba-blue-light))',
@@ -83,6 +86,7 @@ export default {
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
 				'card-custom': 'var(--shadow-card)',
+				'premium': 'var(--shadow-premium)',
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',

@@ -52,19 +52,19 @@ const UseCasesSection = () => {
             return (
               <Card 
                 key={index} 
-                className="bg-card/70 backdrop-blur-sm border-border hover:shadow-glow transition-all duration-500 hover:scale-102 group"
+                className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-500 hover:scale-102 group rounded-2xl"
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="p-2 bg-gradient-primary rounded-lg group-hover:shadow-glow transition-all duration-300">
-                        <IconComponent size={24} className="text-foreground" />
+                      <div className="p-3 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
+                        <IconComponent size={24} className="text-ba-orange" />
                       </div>
                       <CardTitle className="text-2xl font-poppins text-foreground group-hover:text-ba-blue-light transition-colors">
                         {useCase.title}
                       </CardTitle>
                     </div>
-                    <span className="text-sm bg-ba-orange/20 text-ba-orange px-3 py-1 rounded-full font-inter">
+                    <span className="text-sm bg-ba-orange/20 text-ba-orange px-3 py-1 rounded-full font-inter border border-ba-orange/30">
                       {useCase.industry}
                     </span>
                   </div>
