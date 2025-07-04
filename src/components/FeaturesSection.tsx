@@ -54,12 +54,12 @@ const FeaturesSection = () => {
             return (
               <Card 
                 key={index} 
-                className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-300 hover:scale-105 group rounded-2xl"
+                className="bg-card-premium backdrop-blur-xl border border-card-glass-border hover:bg-card-premium-hover hover:shadow-premium hover:border-card-glass-border/50 transition-all duration-500 hover:scale-105 group rounded-3xl overflow-hidden relative"
               >
                 <CardHeader className="text-center pb-4">
                   <div className="flex justify-center mb-6">
-                    <div className="p-4 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
-                      <IconComponent size={28} className="text-ba-orange" />
+                    <div className="p-4 bg-card-glass backdrop-blur-md rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-glass-border group-hover:border-ba-orange/30">
+                      <IconComponent size={28} className="text-ba-orange group-hover:drop-shadow-lg" />
                     </div>
                   </div>
                   <CardTitle className="text-xl font-poppins text-foreground mb-2">

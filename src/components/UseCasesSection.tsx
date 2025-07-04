@@ -52,13 +52,13 @@ const UseCasesSection = () => {
             return (
               <Card 
                 key={index} 
-                className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-500 hover:scale-102 group rounded-2xl"
+                className="bg-card-premium backdrop-blur-xl border border-card-glass-border hover:bg-card-premium-hover hover:shadow-premium hover:border-card-glass-border/50 transition-all duration-500 hover:scale-102 group rounded-3xl overflow-hidden relative"
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="p-3 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
-                        <IconComponent size={24} className="text-ba-orange" />
+                      <div className="p-3 bg-card-glass backdrop-blur-md rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-glass-border group-hover:border-ba-orange/30">
+                        <IconComponent size={24} className="text-ba-orange group-hover:drop-shadow-lg" />
                       </div>
                       <CardTitle className="text-2xl font-poppins text-foreground group-hover:text-ba-blue-light transition-colors">
                         {useCase.title}

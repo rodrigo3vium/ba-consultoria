@@ -56,9 +56,11 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
-					premium: 'hsl(var(--card-premium))',
-					'premium-border': 'hsl(var(--card-premium-border))',
-					'premium-hover': 'hsl(var(--card-premium-hover))',
+					premium: 'hsla(var(--card-premium))',
+					'premium-border': 'hsla(var(--card-premium-border))',
+					'premium-hover': 'hsla(var(--card-premium-hover))',
+					glass: 'hsla(var(--card-glass))',
+					'glass-border': 'hsla(var(--card-glass-border))',
 				},
 				ba: {
 					'blue-light': 'hsl(var(--ba-blue-light))',
