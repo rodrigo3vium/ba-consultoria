@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="flex-shrink-0 flex items-center space-x-3">
+            <Link to="/" className="flex-shrink-0 flex items-center space-x-3 hover:opacity-80 transition-opacity">
               <img 
                 src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png" 
                 alt="BA Consultoria Logo" 
@@ -19,7 +20,7 @@ const Header = () => {
               <h1 className="text-2xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent">
                 BA Consultoria
               </h1>
-            </div>
+            </Link>
           </div>
           
           <nav className="hidden md:block">
