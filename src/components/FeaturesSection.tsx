@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { GraduationCap, Users, Cpu } from 'lucide-react';
 
 const features = [
@@ -56,12 +57,23 @@ const FeaturesSection = () => {
                   <CardDescription className="text-center text-muted-foreground font-inter leading-relaxed mb-6">
                     {feature.description}
                   </CardDescription>
-                  <Button 
-                    variant="outline-glow" 
-                    className="w-full group-hover:border-ba-orange group-hover:text-ba-orange transition-all duration-300"
-                  >
-                    Saber Mais
-                  </Button>
+                  {feature.title === "Consultoria" ? (
+                    <Link to="/consultoria">
+                      <Button 
+                        variant="outline-glow" 
+                        className="w-full group-hover:border-ba-orange group-hover:text-ba-orange transition-all duration-300"
+                      >
+                        Saber Mais
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button 
+                      variant="outline-glow" 
+                      className="w-full group-hover:border-ba-orange group-hover:text-ba-orange transition-all duration-300"
+                    >
+                      Saber Mais
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             );
