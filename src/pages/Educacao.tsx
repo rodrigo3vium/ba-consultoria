@@ -114,12 +114,12 @@ const Educacao = () => {
             {courses.map((course, index) => {
               const IconComponent = course.icon;
               return (
-                  <Card 
+                <Card 
                   key={index} 
-                  className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-300 hover:scale-105 group rounded-2xl relative overflow-hidden"
+                  className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-300 hover:scale-105 group rounded-2xl relative overflow-hidden h-full"
                 >
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4 z-10">
+                  <div className="absolute top-6 right-6 z-10">
                     <Badge 
                       variant={course.status === 'available' ? 'default' : 'outline'}
                       className={`${
@@ -134,13 +134,13 @@ const Educacao = () => {
                     </Badge>
                   </div>
 
-                  <CardHeader className="pb-4 pr-20">
-                    <div className="flex items-start space-x-4 mb-4">
+                  <CardHeader className="pb-4">
+                    <div className="flex items-start space-x-4 mb-6 pr-24">
                       <div className="p-4 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border flex-shrink-0">
                         <IconComponent size={28} className="text-ba-orange" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <CardTitle className="text-lg font-poppins text-foreground mb-2 leading-tight break-words">
+                        <CardTitle className="text-xl font-poppins text-foreground mb-3 leading-tight">
                           {course.title}
                         </CardTitle>
                         <p className="text-sm text-muted-foreground font-inter leading-relaxed">
@@ -149,13 +149,13 @@ const Educacao = () => {
                       </div>
                     </div>
                     
-                    <div className="mb-4">
-                      <span className="text-2xl font-bold text-ba-orange font-poppins">
+                    <div className="mb-6">
+                      <span className="text-3xl font-bold text-ba-orange font-poppins">
                         {course.price}
                       </span>
                     </div>
                     
-                    <CardDescription className="text-muted-foreground font-inter leading-relaxed">
+                    <CardDescription className="text-muted-foreground font-inter leading-relaxed mb-2">
                       {course.description}
                     </CardDescription>
                   </CardHeader>
