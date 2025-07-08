@@ -114,12 +114,12 @@ const Educacao = () => {
             {courses.map((course, index) => {
               const IconComponent = course.icon;
               return (
-                <Card 
+                  <Card 
                   key={index} 
                   className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-300 hover:scale-105 group rounded-2xl relative overflow-hidden"
                 >
                   {/* Status Badge */}
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 z-10">
                     <Badge 
                       variant={course.status === 'available' ? 'default' : 'outline'}
                       className={`${
@@ -134,18 +134,16 @@ const Educacao = () => {
                     </Badge>
                   </div>
 
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-4 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
+                  <CardHeader className="pb-4 pr-20">
+                    <div className="flex items-start space-x-4 mb-4">
+                      <div className="p-4 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border flex-shrink-0">
                         <IconComponent size={28} className="text-ba-orange" />
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <CardTitle className="text-xl font-poppins text-foreground">
-                            {course.title}
-                          </CardTitle>
-                        </div>
-                        <p className="text-sm text-muted-foreground font-inter">
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-lg font-poppins text-foreground mb-2 leading-tight break-words">
+                          {course.title}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground font-inter leading-relaxed">
                           {course.subtitle}
                         </p>
                       </div>
