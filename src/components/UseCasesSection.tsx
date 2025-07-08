@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShoppingCart, Users, Factory, DollarSign } from 'lucide-react';
+import { ShoppingCart, Users, Factory, DollarSign, TrendingUp, Building2 } from 'lucide-react';
 
 const useCases = [
   {
@@ -31,6 +31,20 @@ const useCases = [
     industry: "Financeiro",
     icon: DollarSign,
   },
+  {
+    title: "Agências de Marketing",
+    description: "Automação de relatórios de tráfego, preenchimento de CRM e análise de calls de vendas do time comercial.",
+    benefits: ["📊 Relatórios automáticos", "🎯 CRM sempre atualizado", "📞 Análise de performance de vendas"],
+    industry: "Marketing",
+    icon: TrendingUp,
+  },
+  {
+    title: "Imobiliárias",
+    description: "Pré atendimento e qualificação de leads com IA para otimizar o processo de vendas.",
+    benefits: ["🏠 Pré-atendimento 24/7", "🎯 Qualificação automática", "⚡ Leads mais qualificados"],
+    industry: "Imobiliário",
+    icon: Building2,
+  },
 ];
 
 const UseCasesSection = () => {
@@ -46,7 +60,7 @@ const UseCasesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {useCases.map((useCase, index) => {
             const IconComponent = useCase.icon;
             return (
