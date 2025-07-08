@@ -22,7 +22,7 @@ const Consultoria = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
-              Transforme sua PME com{' '}
+              Transforme sua Empresa com{' '}
               <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Inteligência Artificial
               </span>{' '}
@@ -49,7 +49,7 @@ const Consultoria = () => {
                   Rodrigo Albuquerque
                 </CardTitle>
                 <Badge variant="outline" className="w-fit mx-auto border-ba-orange text-ba-orange">
-                  Especialista em IA para PMEs
+                  Especialista em IA para Empresas
                 </Badge>
               </CardHeader>
               <CardContent>
@@ -67,13 +67,13 @@ const Consultoria = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center">
-              O Problema que Sua PME Enfrenta Hoje
+              O Problema que Sua Empresa Enfrenta Hoje
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
                 <CardContent className="p-6">
                   <p className="text-muted-foreground font-inter leading-relaxed">
-                    A maioria das PMEs brasileiras ainda está presa a processos manuais, planilhas desorganizadas e equipes sobrecarregadas.
+                    A maioria das empresas brasileiras ainda está presa a processos manuais, planilhas desorganizadas e equipes sobrecarregadas.
                   </p>
                 </CardContent>
               </Card>
@@ -241,7 +241,7 @@ const Consultoria = () => {
               Quer descobrir como aplicar IA de forma estratégica na sua empresa?
             </p>
             <p className="text-lg text-muted-foreground mb-8 font-inter leading-relaxed">
-              Agende agora sua call gratuita de 30 minutos e veja se sua PME está pronta para dar o próximo passo.
+              Agende agora sua call gratuita de 30 minutos e veja se sua empresa está pronta para dar o próximo passo.
             </p>
             <Button variant="accent" size="lg" className="text-lg px-8 py-4 font-inter mb-8">
               Quero Agendar Minha Call
@@ -273,7 +273,7 @@ const Consultoria = () => {
                 },
                 {
                   question: "Essa consultoria serve para qualquer tipo de negócio?",
-                  answer: "Funciona melhor para PMEs que já têm operação rodando, equipe com mais de 5 pessoas e desejo real de crescer com eficiência. Se esse é o seu caso, pode funcionar muito bem."
+                  answer: "Funciona melhor para empresas que já têm operação rodando, equipe com mais de 5 pessoas e desejo real de crescer com eficiência. Se esse é o seu caso, pode funcionar muito bem."
                 },
                 {
                   question: "Quanto custa?",
