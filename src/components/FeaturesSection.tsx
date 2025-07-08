@@ -66,6 +66,15 @@ const FeaturesSection = () => {
                         Saber Mais
                       </Button>
                     </Link>
+                  ) : feature.title === "Tecnologia" ? (
+                    <Link to="/tecnologia">
+                      <Button 
+                        variant="outline-glow" 
+                        className="w-full group-hover:border-ba-orange group-hover:text-ba-orange transition-all duration-300"
+                      >
+                        Saber Mais
+                      </Button>
+                    </Link>
                   ) : (
                     <Button 
                       variant="outline-glow" 
