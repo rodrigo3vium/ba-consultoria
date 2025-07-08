@@ -21,10 +21,20 @@ const CTASection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button variant="accent" size="lg" className="text-lg px-8 py-4 font-inter">
+            <Button 
+              variant="accent" 
+              size="lg" 
+              className="text-lg px-8 py-4 font-inter"
+              onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+            >
               Agendar Consultoria Gratuita
             </Button>
-            <Button variant="outline-glow" size="lg" className="text-lg px-8 py-4 font-inter">
+            <Button 
+              variant="outline-glow" 
+              size="lg" 
+              className="text-lg px-8 py-4 font-inter"
+              onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+            >
               Falar com Especialista
             </Button>
           </div>

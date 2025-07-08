@@ -248,7 +248,12 @@ const Tecnologia = () => {
                 Solicitar Orçamento
                 <ArrowRight className="ml-2" size={20} />
               </Button>
-              <Button variant="outline-glow" size="lg" className="text-lg px-8 py-4 font-inter">
+              <Button 
+                variant="outline-glow" 
+                size="lg" 
+                className="text-lg px-8 py-4 font-inter"
+                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+              >
                 Agendar Demonstração
               </Button>
             </div>

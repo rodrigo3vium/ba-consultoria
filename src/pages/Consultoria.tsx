@@ -243,7 +243,12 @@ const Consultoria = () => {
             <p className="text-lg text-muted-foreground mb-8 font-inter leading-relaxed">
               Agende agora sua call gratuita de 30 minutos e veja se sua empresa está pronta para dar o próximo passo.
             </p>
-            <Button variant="accent" size="lg" className="text-lg px-8 py-4 font-inter mb-8">
+            <Button 
+              variant="accent" 
+              size="lg" 
+              className="text-lg px-8 py-4 font-inter mb-8"
+              onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+            >
               Quero Agendar Minha Call
               <ArrowRight className="ml-2" size={20} />
             </Button>
