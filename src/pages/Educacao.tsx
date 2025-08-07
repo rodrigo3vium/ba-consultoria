@@ -27,21 +27,22 @@ const courses = [
   },
   {
     title: "IA para Negócios",
-    subtitle: "Curso de IA aplicada a empresas",
-    price: "Em breve",
-    status: "coming-soon",
-    statusText: "Em breve",
-    description: "Descubra como implementar IA de forma estratégica para impulsionar resultados empresariais.",
+    subtitle: "Programa premium de 12 semanas",
+    price: "Disponível",
+    status: "available",
+    statusText: "Disponível",
+    description: "Programa prático para implementar IA que aumenta lucro e produtividade em ≤ 90 dias.",
     icon: Building2,
     features: [
-      "Estratégias de implementação de IA",
-      "ROI e métricas de sucesso",
-      "Casos de uso empresariais",
-      "Automação de processos",
-      "Análise de dados e insights"
+      "81 horas + mentoria especializada",
+      "2 trilhos: Estratégico + Operacional",
+      "ROI real em 90 dias",
+      "Automações em produção",
+      "Certificação oficial inclusa"
     ],
-    buttonText: "Notify Me",
-    buttonVariant: "outline-glow" as const
+    buttonText: "Ver Programa Completo",
+    buttonVariant: "accent" as const,
+    link: "/ia-para-negocios"
   },
   {
     title: "Treinamentos para Empresas",
@@ -174,6 +175,13 @@ const Educacao = () => {
                       variant={course.buttonVariant}
                       className="w-full group-hover:scale-105 transition-all duration-300"
                       disabled={course.status === 'coming-soon'}
+                      onClick={() => {
+                        if (course.link) {
+                          window.location.href = course.link;
+                        } else if (course.status === 'custom') {
+                          window.open('http://wa.me/5511999718595', '_blank');
+                        }
+                      }}
                     >
                       {course.buttonText}
                       <ArrowRight className="ml-2" size={16} />
