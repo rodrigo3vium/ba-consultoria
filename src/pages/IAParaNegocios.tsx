@@ -22,160 +22,25 @@ import {
   MessageSquare,
   Database,
   Bot,
-  Workflow
+  Workflow,
+  Star,
+  Timer,
+  Gift,
+  Heart,
+  PiggyBank,
+  Lightbulb,
+  Rocket
 } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const strategicModules = [
-  {
-    code: "E1",
-    title: "Alavancas de Valor",
-    hours: 4,
-    focus: "Selecionar até três processos de maior impacto financeiro para IA",
-    icon: Target,
-    deliverables: ["Inventário completo de processos", "Top-3 oportunidades priorizadas"]
-  },
-  {
-    code: "E2", 
-    title: "Projeto-Piloto 90 dias",
-    hours: 5,
-    focus: "Converter cada alavanca em projeto-piloto enxuto",
-    icon: Calendar,
-    deliverables: ["Canvas 90-dias aprovado", "Pitch-deck interno", "Planilha budget/payback"]
-  },
-  {
-    code: "E5",
-    title: "Gestão de Mudança & Adoção",
-    hours: 5,
-    focus: "Fazer a equipe usar e manter a IA nas rotinas",
-    icon: Users,
-    deliverables: ["Road-map de adoção 6 semanas", "Treinamento 4h pronto", "Leaderboard Slack"]
-  },
-  {
-    code: "E6",
-    title: "Painel Executivo & Cadência",
-    hours: 4,
-    focus: "Dashboard vivo e reuniões de 30 min quinzenais",
-    icon: BarChart,
-    deliverables: ["Painel IA-PME v1.0", "Agenda de reunião + template de ata"]
-  },
-  {
-    code: "E7",
-    title: "Road-map 12 Meses (3 Ondas)",
-    hours: 5,
-    focus: "Escalar piloto para eficiência, crescimento e inovação",
-    icon: TrendingUp,
-    deliverables: ["Mapa 12 meses", "Backlog priorizado", "Term sheet Go/No-Go"]
-  },
-  {
-    code: "E8",
-    title: "Formação de Time IA",
-    hours: 5,
-    focus: "Definir papéis, contratação, terceirização e upskilling",
-    icon: Building2,
-    deliverables: ["Mapa de funções", "Job descriptions", "Plano de upskilling"]
-  },
-  {
-    code: "E9",
-    title: "Parcerias & Vendors",
-    hours: 5,
-    focus: "Escolher, negociar e monitorar fornecedores de IA",
-    icon: MessageSquare,
-    deliverables: ["Shortlist top-5 vendors", "RFP enviada", "Minuta de contrato"]
-  }
-];
-
-const operationalModules = [
-  {
-    code: "O1",
-    title: "Fundamentos Essenciais",
-    hours: 6,
-    focus: "Conceitos básicos, sandbox e primeiros prompts",
-    icon: Brain,
-    deliverables: ["Cheat sheet IA", "Sandbox corporativo configurado"]
-  },
-  {
-    code: "O2",
-    title: "Prompt Engineering 80/20",
-    hours: 6,
-    focus: "Criar prompts de alto impacto com RISCIS",
-    icon: Zap,
-    deliverables: ["Prompt playbook (50+)", "Planilha iterativa de score"]
-  },
-  {
-    code: "O3",
-    title: "Automação No-Code",
-    hours: 7,
-    focus: "Workflows Make/Zapier integrando IA a apps e planilhas",
-    icon: Workflow,
-    deliverables: ["Workflow Lead→Proposta em produção", "Blueprint de automação"]
-  },
-  {
-    code: "O4",
-    title: "Casos de Uso Core",
-    hours: 7,
-    focus: "Implementar IA em Marketing/Vendas, Atendimento, Back-office e Operações",
-    icon: Bot,
-    deliverables: ["4 fluxos core rodando", "Backlog ICE 10 próximos casos"]
-  },
-  {
-    code: "O5",
-    title: "Integrações & Dados Leves",
-    hours: 6,
-    focus: "APIs, webhooks, Supabase, qualidade de dado 5×5",
-    icon: Database,
-    deliverables: ["Pipeline Sheet→DB→BI", "Checklist de qualidade"]
-  },
-  {
-    code: "O6",
-    title: "Medição & Iteração",
-    hours: 5,
-    focus: "Ciclo PDCA 15-15-15 e log de experimentos",
-    icon: BarChart,
-    deliverables: ["Dashboard PDCA ativo", "Log de experimentos"]
-  },
-  {
-    code: "O7",
-    title: "Segurança & Compliance dia-a-dia",
-    hours: 5,
-    focus: "Cofre de segredos, anonimização, alertas de gasto",
-    icon: Shield,
-    deliverables: ["Tokens migrados ao vault", "Playbook de incidentes"]
-  },
-  {
-    code: "O8",
-    title: "IA Generativa Criativa",
-    hours: 6,
-    focus: "Produzir criativos (imagem, vídeo, áudio, código) e manter consistência visual",
-    icon: Palette,
-    deliverables: ["Pacote de criativos 1-semana", "Guia de estilo IA"]
-  }
-];
-
-const tools = [
-  { category: "LLMs", items: ["OpenAI GPT-4o", "Google Gemini Pro", "Anthropic Claude"], icon: Brain },
-  { category: "Automação", items: ["Make.com", "Zapier", "Pipedream"], icon: Workflow },
-  { category: "Dados", items: ["Google Sheets", "Supabase", "Looker Studio"], icon: Database },
-  { category: "Criativos", items: ["DALL·E", "Midjourney", "Runway", "ElevenLabs"], icon: Palette }
-];
-
-const timeline = [
-  { week: 1, focus: "Kick-off + Alavancas de Valor + Fundamentos", modules: ["E1", "O1"] },
-  { week: 2, focus: "Prompt Engineering Avançado", modules: ["O2"] },
-  { week: 3, focus: "Projeto-Piloto 90 dias", modules: ["E2"] },
-  { week: 4, focus: "Automação No-Code", modules: ["O3"] },
-  { week: 5, focus: "Casos de Uso Core", modules: ["O4"] },
-  { week: 6, focus: "Dados + Primeiro PDCA", modules: ["O5", "O6"] },
-  { week: 7, focus: "Gestão de Mudança + Retro", modules: ["E5", "O6"] },
-  { week: 8, focus: "Painel Executivo + Segurança", modules: ["E6", "O7"] },
-  { week: 9, focus: "Road-map 12 Meses", modules: ["E7"] },
-  { week: 10, focus: "Time IA + Criativos", modules: ["E8", "O8"] },
-  { week: 11, focus: "Vendors + Revisão KPIs", modules: ["E9"] },
-  { week: 12, focus: "Demo-Day & Planejamento", modules: ["Demo-Day"] }
-];
-
 const IAParaNegocios = () => {
+  const handleWhatsAppContact = () => {
+    const message = encodeURIComponent("Olá! Gostaria de saber mais sobre o programa IA para Negócios.");
+    window.open(`https://wa.me/5511999718595?text=${message}`, '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -190,7 +55,7 @@ const IAParaNegocios = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
             <Badge variant="outline" className="mb-4 border-ba-orange text-ba-orange">
-              Programa Premium • 12 Semanas
+              Programa Premium • 12 Semanas • Turma Limitada
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
               IA para{' '}
@@ -203,21 +68,21 @@ const IAParaNegocios = () => {
             </p>
             <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
             <p className="text-lg text-muted-foreground max-w-4xl mx-auto font-inter leading-relaxed mb-8">
-              Programa prático de 12 semanas para implementar IA que aumenta lucro e produtividade em ≤ 90 dias, 
-              sem depender de equipe técnica extensa.
+              Se torne o líder do seu mercado utilizando soluções de Inteligência Artificial 
+              para aumentar lucro e ganhar produtividade no seu negócio.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-8">
               <div className="flex items-center gap-2">
-                <Clock size={16} className="text-ba-orange" />
-                <span>81 horas + mentoria</span>
+                <Timer size={16} className="text-ba-orange" />
+                <span>Resultados em 90 dias</span>
               </div>
               <div className="flex items-center gap-2">
                 <Users size={16} className="text-ba-orange" />
-                <span>2 trilhos paralelos</span>
+                <span>15 vagas apenas</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award size={16} className="text-ba-orange" />
-                <span>Certificação incluída</span>
+                <span>Garantia dupla</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -225,274 +90,337 @@ const IAParaNegocios = () => {
                 variant="accent" 
                 size="lg" 
                 className="text-lg px-8 py-4 font-inter"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+                onClick={handleWhatsAppContact}
               >
-                Quero me Inscrever
+                Quero liderar meu mercado com IA
                 <ArrowRight className="ml-2" size={20} />
               </Button>
               <Button 
                 variant="outline-glow" 
                 size="lg" 
                 className="text-lg px-8 py-4 font-inter"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+                onClick={handleWhatsAppContact}
               >
-                Falar com Consultor
+                Ver agenda e tirar dúvidas em 15 min
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Para Quem É Section */}
-      <section className="py-20 bg-background">
+      {/* Sobre a Mentoria */}
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Para Quem é Este <span className="bg-gradient-primary bg-clip-text text-transparent">Programa</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-              Desenvolvido especificamente para PMEs que querem implementar IA de forma estratégica
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-inter">
+              A mentoria IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
+              na implementação de soluções de IA na sua empresa. Colhendo resultados concretos, 
+              em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações. 
+              Temos trilhas dedicadas para quem está no Estratégico e no Operacional do negócio.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-3 bg-card-premium-border rounded-full">
-                    <Building2 size={24} className="text-ba-orange" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl font-poppins">Proprietários de PMEs</CardTitle>
-                    <CardDescription>Faturamento anual R$ 1-5 milhões</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {[
-                    "Decisões estratégicas sobre IA",
-                    "ROI e viabilidade de projetos",
-                    "Gestão de mudança organizacional",
-                    "Planejamento de escala (3 ondas)",
-                    "Formação de time interno"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <CheckCircle size={16} className="text-ba-orange mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground font-inter">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
-              <CardHeader>
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-3 bg-card-premium-border rounded-full">
-                    <Users size={24} className="text-ba-orange" />
-                  </div>
-                  <div>
-                    <CardTitle className="text-xl font-poppins">Equipes Operacionais</CardTitle>
-                    <CardDescription>Marketing, Vendas, Atendimento, Financeiro</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {[
-                    "Automação prática de processos",
-                    "Prompt engineering avançado",
-                    "Workflows no-code (Make/Zapier)",
-                    "Implementação de casos de uso",
-                    "Monitoramento e iteração"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start space-x-2">
-                      <CheckCircle size={16} className="text-ba-orange mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground font-inter">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
 
-      {/* Trilhos Section */}
+      {/* Isso é pra você se... */}
       <section className="py-20 bg-card-premium/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Dois <span className="bg-gradient-primary bg-clip-text text-transparent">Trilhos</span> Paralelos
+              Isso é pra você <span className="bg-gradient-primary bg-clip-text text-transparent">se...</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-              Estratégico para proprietários e Operacional para equipes, correndo simultaneamente
-            </p>
           </div>
 
-          {/* Trilho Estratégico */}
-          <div className="mb-16">
-            <div className="flex items-center justify-center mb-8">
-              <Badge variant="default" className="bg-ba-orange text-white px-4 py-2 text-lg">
-                Trilho Estratégico • Proprietários
-              </Badge>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {strategicModules.map((module, index) => {
-                const IconComponent = module.icon;
-                return (
-                  <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover transition-all duration-300">
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="p-3 bg-card-premium-border rounded-full">
-                          <IconComponent size={24} className="text-ba-orange" />
-                        </div>
-                        <Badge variant="outline" className="text-xs">
-                          {module.hours}h
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg font-poppins mb-2">
-                        {module.code}: {module.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm font-inter">
-                        {module.focus}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-foreground">Entregas:</h4>
-                        {module.deliverables.map((deliverable, idx) => (
-                          <div key={idx} className="flex items-start space-x-2">
-                            <CheckCircle size={12} className="text-ba-orange mt-0.5 flex-shrink-0" />
-                            <span className="text-xs text-muted-foreground">{deliverable}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-
-          <Separator className="my-16" />
-
-          {/* Trilho Operacional */}
-          <div>
-            <div className="flex items-center justify-center mb-8">
-              <Badge variant="default" className="bg-ba-blue-light text-white px-4 py-2 text-lg">
-                Trilho Operacional • Equipes
-              </Badge>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {operationalModules.map((module, index) => {
-                const IconComponent = module.icon;
-                return (
-                  <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover transition-all duration-300">
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="p-3 bg-card-premium-border rounded-full">
-                          <IconComponent size={24} className="text-ba-blue-light" />
-                        </div>
-                        <Badge variant="outline" className="text-xs">
-                          {module.hours}h
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg font-poppins mb-2">
-                        {module.code}: {module.title}
-                      </CardTitle>
-                      <CardDescription className="text-sm font-inter">
-                        {module.focus}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <div className="space-y-2">
-                        <h4 className="text-sm font-semibold text-foreground">Entregas:</h4>
-                        {module.deliverables.map((deliverable, idx) => (
-                          <div key={idx} className="flex items-start space-x-2">
-                            <CheckCircle size={12} className="text-ba-blue-light mt-0.5 flex-shrink-0" />
-                            <span className="text-xs text-muted-foreground">{deliverable}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Cronograma das <span className="bg-gradient-primary bg-clip-text text-transparent">12 Semanas</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-              Uma jornada estruturada do planejamento ao Demo-Day
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {timeline.map((week, index) => (
-              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
-                <CardHeader>
-                  <div className="flex items-center space-x-3 mb-2">
-                    <Badge variant="outline" className="bg-ba-orange text-white border-ba-orange">
-                      Semana {week.week}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg font-poppins">{week.focus}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {week.modules.map((moduleCode, idx) => (
-                      <Badge key={idx} variant="outline" className="text-xs">
-                        {moduleCode}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ferramentas Section */}
-      <section className="py-20 bg-card-premium/20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Ferramentas</span> e Tecnologias
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-              Stack completo para implementação de IA nos negócios
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {tools.map((toolCategory, index) => {
-              const IconComponent = toolCategory.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Building2,
+                title: "Você é dono ou sócio de uma PME",
+                description: "que fatura entre R$ 1–5 mi/ano e precisa ganhar eficiência sem inflar a folha de pagamento."
+              },
+              {
+                icon: Clock,
+                title: "Suas tarefas estão consumindo horas",
+                description: "em planilhas, e-mails e follow-ups manuais, mas você ainda não sabe automatizar com segurança."
+              },
+              {
+                icon: DollarSign,
+                title: "Quer ver ROI palpável",
+                description: "em até 90 dias, em vez de projetos de IA caros que nunca saem do papel."
+              },
+              {
+                icon: Rocket,
+                title: "Busca vantagem competitiva real",
+                description: "reduzir custos operacionais, acelerar vendas ou melhorar atendimento antes que o concorrente descubra."
+              },
+              {
+                icon: Users,
+                title: "Não tem equipe técnica dedicada",
+                description: "e precisa de soluções no-code que o próprio time possa tocar."
+              },
+              {
+                icon: Heart,
+                title: "Valoriza acompanhamento de perto",
+                description: "com trilha estratégica para decisões de direção e trilha operacional para execução diária."
+              }
+            ].map((item, index) => {
+              const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover transition-all duration-300">
                   <CardHeader>
-                    <div className="flex justify-center mb-4">
-                      <div className="p-4 bg-card-premium-border rounded-full">
-                        <IconComponent size={28} className="text-ba-orange" />
-                      </div>
+                    <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
+                      <IconComponent size={24} className="text-ba-orange" />
                     </div>
-                    <CardTitle className="text-xl font-poppins">{toolCategory.category}</CardTitle>
+                    <CardTitle className="text-lg font-poppins mb-2">
+                      {item.title}
+                    </CardTitle>
+                    <CardDescription className="font-inter">
+                      {item.description}
+                    </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* A História */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center">
+              A História — <span className="bg-gradient-primary bg-clip-text text-transparent">da Dor ao Desejo</span>
+            </h2>
+            
+            <div className="space-y-6 text-lg text-muted-foreground font-inter leading-relaxed">
+              <p>
+                Imagine chegar ao fim do mês e perceber que <strong>40% do seu tempo (e da sua equipe) foi gasto em tarefas que não geram receita</strong>: 
+                copiar dados, enviar lembretes, montar relatórios, responder perguntas repetidas. Enquanto isso, grandes players usam IA para reduzir custos, 
+                criar campanhas em minutos e atender clientes 24/7 — <strong>roubando mercado num piscar de olhos</strong>.
+              </p>
+              
+              <p>
+                Eu estava exatamente aí. Minha empresa faturava razoavelmente bem, mas cada ponto de crescimento custava mais horas, 
+                mais gente, mais estresse. <strong>O lucro encolhia, a concorrência escalava</strong> e eu sentia que ficaria preso nesse ciclo para sempre.
+              </p>
+              
+              <p>
+                Foi quando decidi testar pequenas automações de IA — mesmo sem saber programar. Em três meses:
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                  <CardContent className="pt-6">
+                    <div className="text-2xl font-bold text-ba-orange mb-2">60%</div>
+                    <div className="text-sm">Cortei o tempo de proposta usando geração automática de PDFs via ChatGPT e Make.</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                  <CardContent className="pt-6">
+                    <div className="text-2xl font-bold text-ba-orange mb-2">27%</div>
+                    <div className="text-sm">Aumentei o ticket médio com um bot de upsell que trabalha enquanto a equipe dorme.</div>
+                  </CardContent>
+                </Card>
+                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                  <CardContent className="pt-6">
+                    <div className="text-2xl font-bold text-ba-orange mb-2">R$ 8 mil/mês</div>
+                    <div className="text-sm">Economizei só com reconciliação financeira automatizada.</div>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              <p>
+                O mais surpreendente? <strong>Ninguém novo foi contratado</strong>. Bastou um roteiro claro, ferramentas no-code e uma cadência de melhoria contínua.
+              </p>
+              
+              <p>
+                Esse roteiro virou o ecossistema <strong>IA para Negócios</strong>: mentoria, trilhas práticas e suporte que colocam 
+                <strong> você no volante da próxima revolução</strong>, sem depender de devs ou orçamentos gigantes. Porque a verdadeira dor não é aprender uma nova tecnologia, 
+                e sim <strong>ficar parado enquanto ela decide quem prospera e quem fecha as portas</strong>.
+              </p>
+              
+              <div className="text-center mt-8">
+                <p className="text-xl font-semibold text-foreground">
+                  Se o seu desejo é liderar o mercado — em vez de persegui-lo —, esta mentoria foi feita para você.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Promessa Poderosa */}
+      <section className="py-20 bg-gradient-to-br from-ba-orange/10 to-ba-blue-light/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
+              Nossa <span className="bg-gradient-primary bg-clip-text text-transparent">Promessa</span>
+            </h2>
+            
+            <Card className="bg-card-premium/90 backdrop-blur-sm border border-card-premium-border p-8">
+              <CardContent className="pt-0">
+                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-foreground">
+                  "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio, 
+                  reduzir até 40% dos custos operacionais e liberar pelo menos 10 horas por semana — 
+                  tudo isso usando ferramentas de IA no-code, sem contratar nenhum desenvolvedor."
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefícios Detalhados */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              O que muda <span className="bg-gradient-primary bg-clip-text text-transparent">na prática</span>
+            </h2>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b border-card-premium-border">
+                    <th className="text-left p-4 font-poppins text-lg">Benefício</th>
+                    <th className="text-left p-4 font-poppins text-lg">Antes</th>
+                    <th className="text-left p-4 font-poppins text-lg">Depois da Mentoria IA para Negócios</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-card-premium-border">
+                  {[
+                    {
+                      benefit: "Produtividade Explosiva",
+                      before: "Equipe presa em tarefas manuais e retrabalho.",
+                      after: "Automação no-code reduz 4h/dia por colaborador — mais tempo para vender e inovar."
+                    },
+                    {
+                      benefit: "Crescimento de Receita",
+                      before: "Campanhas demoradas, leads frios, upsell na sorte.",
+                      after: "IA gera anúncios e upsells personalizados em minutos; aumento projetado de 20–30% no ticket médio."
+                    },
+                    {
+                      benefit: "Custos Operacionais Menores",
+                      before: "Planilhas, copi-cola, erros humanos que drenam caixa.",
+                      after: "Processos de back-office (financeiro, estoque, RH) automatizados; corte de até 40% nos custos ocultos."
+                    },
+                    {
+                      benefit: "Decisão Guiada por Dados",
+                      before: "Relatórios feitos 'quando sobra tempo', visão atrasada do negócio.",
+                      after: "Dashboard vivo com 3-5 KPIs críticos; reuniões de 30 min quinzenais que ajustam rota rápido."
+                    },
+                    {
+                      benefit: "Time Enxuto e Eficiente",
+                      before: "Pressão para contratar devs ou agência cara.",
+                      after: "Ferramentas no-code + trilha operacional: o próprio time executa, sem headcount extra."
+                    },
+                    {
+                      benefit: "Vantagem Competitiva",
+                      before: "Concorrentes começam a usar IA e ganham mercado.",
+                      after: "Você implementa primeiro: atendimento 24/7, resposta instantânea, marketing dinâmico."
+                    }
+                  ].map((item, index) => (
+                    <tr key={index} className="hover:bg-card-premium/20 transition-colors">
+                      <td className="p-4 font-semibold text-foreground">{item.benefit}</td>
+                      <td className="p-4 text-muted-foreground text-sm">{item.before}</td>
+                      <td className="p-4 text-sm font-medium">{item.after}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* O que está incluso */}
+      <section className="py-20 bg-card-premium/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              O que está <span className="bg-gradient-primary bg-clip-text text-transparent">incluso</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+              A oferta completa do ecossistema IA para Negócios
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Rocket,
+                title: "Ecossistema completo de implementação (12 semanas)",
+                items: [
+                  "Trilho Estratégico (dono/sócios): E1, E2, E5, E6, E7, E8, E9",
+                  "Trilho Operacional (equipe): O1 a O8"
+                ]
+              },
+              {
+                icon: Target,
+                title: "Plano 90 dias 'mão na massa'",
+                items: [
+                  "3 processos críticos automatizados",
+                  "1 painel executivo com 3–5 KPIs",
+                  "1 road-map de 12 meses (três ondas)"
+                ]
+              },
+              {
+                icon: Users,
+                title: "Mentorias e suporte",
+                items: [
+                  "Mentoria em grupo semanal (90 min)",
+                  "Plantão de dúvidas quinzenal (60 min)",
+                  "Canal privado (Slack/Discord)"
+                ]
+              },
+              {
+                icon: Brain,
+                title: "Tutores de IA personalizados",
+                items: [
+                  "GPT Tutor Estratégico",
+                  "GPT Tutor Operacional",
+                  "Histórico salvo + sugestões"
+                ]
+              },
+              {
+                icon: Database,
+                title: "Playbooks & templates prontos",
+                items: [
+                  "Biblioteca de 120+ prompts",
+                  "Cenários clonáveis (Make/Zapier)",
+                  "Dashboard Looker Studio"
+                ]
+              },
+              {
+                icon: Award,
+                title: "Garantias e certificação",
+                items: [
+                  "Revisão técnica de 1 workflow",
+                  "Certificado 'Applied AI for SMBs'",
+                  "Selo 'Processo Automatizado'"
+                ]
+              }
+            ].map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
+                  <CardHeader>
+                    <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
+                      <IconComponent size={24} className="text-ba-orange" />
+                    </div>
+                    <CardTitle className="text-lg font-poppins mb-4">
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
                     <ul className="space-y-2">
-                      {toolCategory.items.map((tool, idx) => (
-                        <li key={idx} className="text-sm text-muted-foreground font-inter">
-                          {tool}
+                      {item.items.map((subItem, idx) => (
+                        <li key={idx} className="flex items-start space-x-2">
+                          <CheckCircle size={12} className="text-ba-orange mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-muted-foreground">{subItem}</span>
                         </li>
                       ))}
                     </ul>
@@ -504,121 +432,380 @@ const IAParaNegocios = () => {
         </div>
       </section>
 
-      {/* Resultados Section */}
+      {/* Prova Social */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-                <span className="bg-gradient-primary bg-clip-text text-transparent">Resultados</span> Garantidos
-              </h2>
-              <p className="text-xl text-muted-foreground font-inter">
-                O que você terá ao final das 12 semanas
-              </p>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">Estudos de Caso</span> Reais
+            </h2>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+            {[
+              {
+                title: "Varejo físico – Estoque previsível",
+                problem: "rupturas e sobras frequentes.",
+                solution: "planilha de vendas → previsão simples (AutoML) → alerta de compra no Slack.",
+                result: "−10% desperdício e −8% ruptura em 6 semanas."
+              },
+              {
+                title: "Clínica odontológica – No-show",
+                problem: "faltas em consultas comprometendo a agenda.",
+                solution: "bot WhatsApp com confirmação automática + remarcação assistida por IA.",
+                result: "−35% no-show e fila organizada."
+              },
+              {
+                title: "Construção civil – Orçamentos",
+                problem: "propostas demoradas e pouco padronizadas.",
+                solution: "geração automática de orçamento em PDF (Sheets + GPT + Make).",
+                result: "−60% do tempo de preparo e +18% taxa de aceite."
+              }
+            ].map((caseStudy, index) => (
+              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
+                <CardHeader>
+                  <CardTitle className="text-lg font-poppins mb-4">
+                    {caseStudy.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <div>
+                      <span className="font-semibold text-red-500">Problema:</span>
+                      <span className="text-muted-foreground ml-1">{caseStudy.problem}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-blue-500">Solução:</span>
+                      <span className="text-muted-foreground ml-1">{caseStudy.solution}</span>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-green-500">Resultado:</span>
+                      <span className="text-muted-foreground ml-1">{caseStudy.result}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                quote: "Em dois meses automatizamos proposta e follow-up. Liberamos o equivalente a 10 horas/semana",
+                author: "[Nome, Cargo]"
+              },
+              {
+                quote: "O bot de WhatsApp tirou o peso do atendimento repetitivo. Nossa equipe foca em casos complexos e o NPS subiu",
+                author: "[Nome, Cargo]"
+              },
+              {
+                quote: "Com o dashboard de KPIs, nossas reuniões passaram a levar 30 minutos",
+                author: "[Nome, Sócio]"
+              }
+            ].map((testimonial, index) => (
+              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <CardContent className="pt-6">
+                  <div className="flex justify-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={16} className="text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <blockquote className="text-muted-foreground italic mb-4">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <cite className="text-sm font-semibold text-foreground">
+                    {testimonial.author}
+                  </cite>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Garantia */}
+      <section className="py-20 bg-gradient-to-br from-green-500/10 to-blue-500/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              Garantia — <span className="bg-gradient-primary bg-clip-text text-transparent">Risco Zero</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+              Dupla proteção para você decidir com tranquilidade
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="bg-card-premium/80 backdrop-blur-sm border border-green-500/30">
+              <CardHeader>
+                <div className="p-3 bg-green-500/20 rounded-full w-fit mb-4">
+                  <Shield size={24} className="text-green-500" />
+                </div>
+                <CardTitle className="text-xl font-poppins">
+                  Garantia Incondicional de 7 Dias
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Entre, assista às primeiras aulas (E1 + O1) e teste os templates. Se não fizer sentido para sua realidade, 
+                  <strong> devolvemos 100%</strong> do investimento. Sem perguntas.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card-premium/80 backdrop-blur-sm border border-blue-500/30">
+              <CardHeader>
+                <div className="p-3 bg-blue-500/20 rounded-full w-fit mb-4">
+                  <CheckCircle size={24} className="text-blue-500" />
+                </div>
+                <CardTitle className="text-xl font-poppins">
+                  Garantia de Implementação em 90 Dias
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Se, cumprindo as ações combinadas, você não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos, 
+                  nós <strong>estendemos a mentoria por mais 30 dias sem custo</strong> e ajustamos os fluxos até ficar de pé.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Bônus */}
+      <section className="py-20 bg-card-premium/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">Bônus</span> Exclusivos
+            </h2>
+            <Badge variant="outline" className="border-ba-orange text-ba-orange text-lg px-4 py-2">
+              Valor de referência: R$ 4.900 — Apenas nesta turma
+            </Badge>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "GPT Tutors do Curso",
+                value: "R$ 1.200",
+                description: "Tire dúvidas 24/7, receba feedback em tempo real e exercícios adaptativos.",
+                delivery: "acesso imediato dentro do portal"
+              },
+              {
+                title: "Kit 'Texto → Vídeo'",
+                value: "R$ 900",
+                description: "Roteiro → voz IA → vídeo vertical legendado para posts e anúncios.",
+                delivery: "cenário Make/Zapier clonável + tutorial"
+              },
+              {
+                title: "Biblioteca de 120+ Prompts",
+                value: "R$ 600",
+                description: "Marketing, Vendas, Atendimento, Back-office, Operações — prontos para copiar e usar.",
+                delivery: "Google Doc + atualizações trimestrais"
+              },
+              {
+                title: "Leaderboard de Adoção",
+                value: "R$ 500",
+                description: "Ranking automático de uso/entregas para manter o time engajado.",
+                delivery: "Apps Script + template"
+              },
+              {
+                title: "Minutas RFI/RFP e Contrato",
+                value: "R$ 700",
+                description: "Peças jurídicas enxutas para negociar com vendors sem dor de cabeça.",
+                delivery: ".docx editável"
+              },
+              {
+                title: "Revisão Técnica de 1 Workflow",
+                value: "R$ 1.000",
+                description: "Auditoria do seu fluxo mais crítico: custo, robustez e segurança.",
+                delivery: "sessão de 30 min + checklist assinado"
+              }
+            ].map((bonus, index) => (
+              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border relative">
+                <div className="absolute -top-3 -right-3">
+                  <Badge variant="default" className="bg-ba-orange text-white">
+                    {bonus.value}
+                  </Badge>
+                </div>
+                <CardHeader>
+                  <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
+                    <Gift size={24} className="text-ba-orange" />
+                  </div>
+                  <CardTitle className="text-lg font-poppins">
+                    Bônus #{index + 1} — {bonus.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm mb-3">
+                    {bonus.description}
+                  </p>
+                  <p className="text-xs text-muted-foreground italic">
+                    Entrega: {bonus.delivery}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Escassez/Urgência */}
+      <section className="py-20 bg-gradient-to-br from-red-500/10 to-orange-500/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">Vagas Limitadas</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  icon: Award,
-                  title: "Demo-Day & Certificação",
-                  description: "Apresentação do ROI real alcançado e certificado 'Applied AI for SMBs' (180h totais)"
+                  icon: Users,
+                  title: "Turma limitada a 15 empresas",
+                  description: "Mantemos grupos pequenos para garantir revisão técnica do seu workflow e acompanhamento próximo."
                 },
                 {
-                  icon: Workflow,
-                  title: "Automações em Produção",
-                  description: "Pelo menos 3 fluxos de IA funcionando e gerando valor mensurável"
-                },
-                {
-                  icon: BarChart,
-                  title: "Dashboard Executivo",
-                  description: "Painel vivo com KPIs de IA e reuniões quinzenais estruturadas"
+                  icon: Timer,
+                  title: "Bônus válidos apenas nesta turma",
+                  description: "Os 6 bônus (GPT Tutors, Kit Texto→Vídeo, etc.) não são garantidos nas próximas edições."
                 },
                 {
                   icon: TrendingUp,
-                  title: "Road-map 12 Meses",
-                  description: "Planejamento de 3 ondas de escala com backlog ICE priorizado"
+                  title: "Preço de lançamento",
+                  description: "Valor atual é preço de entrada. Na próxima turma, o investimento sobe devido ao aumento de suporte."
                 },
                 {
-                  icon: Users,
-                  title: "Time Capacitado",
-                  description: "Equipe treinada em IA aplicada com trilhas de desenvolvimento"
-                },
-                {
-                  icon: Shield,
-                  title: "Segurança & Compliance",
-                  description: "Políticas LGPD, cofres de segredos e procedimentos de incidente"
+                  icon: CheckCircle,
+                  title: "Prioridade por ordem de confirmação",
+                  description: "A vaga é assegurada apenas após o pagamento/contrato. Interessados sem confirmação ficam em standby."
                 }
-              ].map((result, index) => (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="p-3 bg-card-premium-border rounded-full flex-shrink-0">
-                        <result.icon size={24} className="text-ba-orange" />
+              ].map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-orange-500/30 text-left">
+                    <CardHeader>
+                      <div className="flex items-center space-x-3">
+                        <div className="p-2 bg-orange-500/20 rounded-full">
+                          <IconComponent size={20} className="text-orange-500" />
+                        </div>
+                        <CardTitle className="text-lg font-poppins">
+                          {item.title}
+                        </CardTitle>
                       </div>
-                      <div>
-                        <h3 className="font-semibold font-poppins mb-2 text-lg text-foreground">
-                          {result.title}
-                        </h3>
-                        <p className="text-muted-foreground font-inter leading-relaxed">
-                          {result.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-muted-foreground text-sm">
+                        {item.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero">
+      {/* FAQs */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-6 border-ba-orange text-ba-orange">
-              Transforme Seu Negócio em 12 Semanas
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
-              Pronto para Implementar IA que Gera <span className="bg-gradient-primary bg-clip-text text-transparent">ROI Real</span>?
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+              Perguntas <span className="bg-gradient-primary bg-clip-text text-transparent">Frequentes</span>
             </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {[
+                {
+                  question: "Preciso saber programar?",
+                  answer: "Não. O método é no-code. Você usará ChatGPT/Assistants, Make/Zapier, Google Sheets, Supabase e Looker com passo a passo."
+                },
+                {
+                  question: "Quanto tempo por semana eu (e a equipe) preciso?",
+                  answer: "Média de 3–5h/semana por pessoa. Proprietário entra nas decisões (E1/E2/E6/E7) e a equipe executa os labs operacionais."
+                },
+                {
+                  question: "Em quanto tempo vejo resultado?",
+                  answer: "Nas primeiras 4–6 semanas já há ganho de horas e redução de retrabalho. O objetivo formal é 3 processos automatizados em 90 dias."
+                },
+                {
+                  question: "Quais ferramentas usamos e quanto custam?",
+                  answer: "ChatGPT Team/Plus, Make/Zapier, Google Workspace, Supabase (camada grátis/baixo custo) e Looker. Orçamento típico: R$ 150–600/mês por empresa, dependendo do volume."
+                },
+                {
+                  question: "E se meus dados forem sensíveis (LGPD)?",
+                  answer: "Aplicamos anonimização no fluxo, cofres de segredos e controles de acesso. Você decide o que entra ou não na IA. Fornecemos checklist LGPD operacional."
+                },
+                {
+                  question: "Como funciona a garantia?",
+                  answer: "7 dias incondicional. E Garantia de Implementação: cumprindo as ações, se não tiver 3 fluxos + painel ativos, estendemos 30 dias sem custo para ajustar e concluir."
+                },
+                {
+                  question: "O que exatamente entregamos em 90 dias?",
+                  answer: "3 fluxos em produção (ex.: lead→proposta, FAQ 24/7, conciliação), 1 painel executivo com 3–5 KPIs, road-map de 12 meses para escalar."
+                },
+                {
+                  question: "Quantas pessoas da empresa podem participar?",
+                  answer: "Recomendado 2–6 participantes (1 decisor + 1–5 operadores). Turma limitada a 15 empresas para manter o suporte próximo."
+                }
+              ].map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left font-poppins">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground font-inter">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-10 right-10 w-40 h-40 bg-ba-orange rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 left-10 w-32 h-32 bg-ba-blue-light rounded-full blur-xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 leading-tight">
+              Você pode continuar com a rotina que drena tempo e margem — ou, nos próximos 90 dias, 
+              <span className="bg-gradient-primary bg-clip-text text-transparent"> liderar seu mercado</span>
+            </h2>
+            
             <p className="text-lg text-muted-foreground mb-8 font-inter leading-relaxed">
-              Saia do programa com automações funcionando, equipe capacitada e road-map de 12 meses para escalar. 
-              Certificação oficial inclusa.
+              A mentoria IA para Negócios foi desenhada para PMEs como a sua: direta, prática e com garantia dupla. 
+              As vagas são limitadas a 15 empresas.
             </p>
+            
+            <div className="text-xl font-semibold mb-8 text-foreground">
+              Se o plano é liderar (não reagir), é agora.
+            </div>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button 
                 variant="accent" 
                 size="lg" 
-                className="text-lg px-8 py-4 font-inter"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+                className="text-xl px-12 py-6 font-inter"
+                onClick={handleWhatsAppContact}
               >
-                Quero me Inscrever Agora
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button 
-                variant="outline-glow" 
-                size="lg" 
-                className="text-lg px-8 py-4 font-inter"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
-              >
-                Falar com Especialista
+                Quero liderar meu mercado com IA
+                <ArrowRight className="ml-2" size={24} />
               </Button>
             </div>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Clock size={16} className="text-ba-orange" />
-                <span>81h aulas + mentoria</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Award size={16} className="text-ba-orange" />
-                <span>Certificação oficial</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <DollarSign size={16} className="text-ba-orange" />
-                <span>ROI em 90 dias</span>
-              </div>
+            
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p><strong>P.S.</strong> Bônus de R$ 4.900 incluídos nesta turma e 7 dias de teste sem risco.</p>
+              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={handleWhatsAppContact} className="underline text-ba-orange hover:text-ba-orange/80">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
             </div>
           </div>
         </div>
