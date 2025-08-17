@@ -34,9 +34,9 @@ const Header = () => {
               <a href="#casos" className="text-foreground hover:text-primary transition-colors font-inter">
                 Casos de Uso
               </a>
-              <a href="#contato" className="text-foreground hover:text-primary transition-colors font-inter">
-                Contato
-              </a>
+              <Link to="/blog" className="text-foreground hover:text-primary transition-colors font-inter">
+                Blog
+              </Link>
             </div>
           </nav>
 
@@ -82,13 +82,13 @@ const Header = () => {
               >
                 Casos de Uso
               </a>
-              <a 
-                href="#contato" 
+              <Link 
+                to="/blog" 
                 className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-inter"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contato
-              </a>
+                Blog
+              </Link>
               <div className="px-3 py-2">
                 <Button variant="hero" className="w-full font-inter">
                   Fale Conosco
