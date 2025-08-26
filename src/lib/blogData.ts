@@ -13,6 +13,135 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: 1,
+    title: "Por que parei de ler livros técnicos por 6 meses — e por que voltei",
+    excerpt: "Testei durante 6 meses se a IA poderia substituir completamente a leitura de livros técnicos. Descobri 4 razões fundamentais que me fizeram voltar aos livros.",
+    author: "Equipe Nexus",
+    date: "2024-01-25",
+    readTime: "8 min",
+    category: "IA e Aprendizado",
+    image: "/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png",
+    content: `Há mais ou menos uns 6 meses eu decidi que pararia de ler todo tipo de livro técnico.
+
+Minha tese estava clara: Não faz sentido ler um livro se eu posso pedir para Inteligência Artificial me passar o mesmo conhecimento em uma fração de tempo.
+
+Passei os últimos 6 meses testando isso.
+
+E agora, depois desse período, eu percebi algumas coisas que me fizeram voltar a leitura.
+
+O objetivo desse texto é te mostrar o meu ponto de vista e te ajudar a aprender de forma mais eficiente.
+
+---
+
+Um dos memes que eu mais gosto da internet é o meme da distribuição normal.
+
+Ele é, na minha visão, uma forma mais sofisticada de falar sobre o a história do banho no rio.
+
+Basicamente, você deve se lembrar de Heráclito, que diz que um homem jamais toma banho duas vezes no mesmo rio, porque quando ele entra na água novamente, ele não é o mesmo homem e nem a água.
+
+Várias e várias vezes na minha vida, eu tinha uma crença, que depois eu percebi que estava errada, mudei e ai, depois de estudar muito, voltei a acreditar no que acreditava anteriormente. Mas, dessa vez, completamente transformado pela jornada.
+
+---
+
+Esse, é um dos exemplo.
+
+Eu lia muito. Parei de ler. Agora, voltei a ler. Mas leio completamente diferente de como lia anteriormente porque fui transformado pela jornada.
+
+---
+
+## Por que a leitura não pode ser substituída (ainda) pela Inteligência Artificial de forma eficiente?
+
+### 1. Percepção de contexto
+
+Nosso cérebro é uma máquina de criação de padrões. Na verdade, grande parte do que entendemos como raciocínio é só reconhecimento e generalizações de padrões.
+
+Isso é tão importante que durante a alfabetização infantil, o contexto de linguagem facilita na introdução de uma alfabetização bi-lingue.
+
+Na prática: Se os pais só falam um idioma em casa, e a criança só fala outro idioma na escola, ela tem muito mais facilidade para aprender os dois idiomas, do que se em casa e na escola, os dois idiomas estão sendo falados e intercalados aleatoriamente.
+
+Com a leitura eu percebi algo parecido.
+
+Como usamos IA para várias coisas e, na maioria dessas coisas, estamos buscando velocidade e eficiência, ao buscar usar a IA para aprendizados mais profundos é como se etivessemos sendo alfabetizados em 2 idiomas ao mesmo tempo.
+
+Nosso cérebro tem dificuldade de interpretar essa mudança de contexto.
+
+Resultado: Tendemos a ter mais dificuldade de entrar em flow ao aprender com a IA do que em uma leitura.
+
+Dificilmente alguém pega um livro e pensa "Agora, vou receber uma dose de dopamina e daqui 5 minutos vou fazer outra coisa".
+
+Quando você pega um livro, você tem um contexto de aprendizado diferente, que gera uma capacidade de aprendizado diferente, mesmo que não seja diretamente ligado ao fato de ser um livro, mas sim, ao fato de que o seu cérebro percebe o aprendizado do livro diferente.
+
+---
+
+### 2. Evolução
+
+Outro dado interessante é que nosso cérebro tende a absorver melhor o conhecimento quando interagimos mais com ele.
+
+Digitar é diferente de escrever.
+
+**Handwriting but not typewriting leads to widespread brain connectivity: a high-density EEG study with implications for the classroom**
+
+Isso, também faz com que todo o aprendizado "digital" seja menos eficiente.
+
+E com a IA não é diferente.
+
+Como o aprendizado da IA é no mundo digital, nosso cérebro retém menos o conhecimento do que folheando, rabiscando e refletindo com um livro físico.
+
+**Don't throw away your printed books: A meta-analysis on the effects of reading media on reading comprehension**
+
+---
+
+### 3. Limitações da própria IA
+
+A Inteligência Artificial generativa é uma faca de dois gumes, a sua grande vantagem também é uma desvantagem para o estudo específico.
+
+Como ela é treinada em uma base de dados muito ampla, ela funciona muito bem para dúvidas gerais.
+
+Mas, quando você começa a entrar em temas muito específicos, se esses temas são pouco difundidos na internet, ela perde a precisão.
+
+E ai, se você não pode confiar 100% na IA, não dá para agir como se ela estivesse reproduzindo com 100% de fidelidade o conteúdo do livro.
+
+Em alguns testes que fiz, ela cometeu pequenos erros, mas ainda assim, erros significativos que alterariam completamente a interpretação dos conceitos caso eu não os conhecesse.
+
+---
+
+### 4. O último e mais importante ponto: A IA não sabe o que é importante para você.
+
+Para onde você "olha" quando está lendo?
+
+Para o raciocínio por trás da tomada de decisão do autor? para o estilo de escrita? para as histórias contadas? para os exemplos técnicos? Para os conceitos e definições?
+
+Tanta coisa pode ser absorvida de um livro que, quando você pede para uma IA te ensinar o conteúdo de determinado livro, ela vai fazer um Share Picking de informação que, provavelmente, não seria o conteúdo que você selecionaria caso alguém te pedisse para resumir aquele livro.
+
+Isso, porque você olha para o livro a partir da sua própria experiência. É assim que funcionamos.
+
+Um outro exemplo que explicita bastante essa distinção de percepção baseada na realidade de cada um:
+
+💡 **Se você estiver qualquer local com 4, 5 pessoas e pedir para todas elas fecharem os olhos, depois, pedir para que elas descrevam o ambiente onde estão, perceberá que cada pessoa terá uma lembrança diferente do ambiente.**
+
+**Porque existe tanta informação no ambiente: As cores, os objetos, os cheiros, as pessoas, a temperatura, as texturas, a disposição dos móveis, os sons….Que cada pessoa captará uma parte da informação da realidade de forma diferente, baseado naquilo que chama a atenção dela.**
+
+---
+
+### Próxima hipótese:
+
+Agora, voltando a leitura, eu pretendo tornar as minhas anotações mais sistematizadas e organizadas. Minha hipótese é: Se eu mostrar para a IA o que eu enxergo quando estou lendo, talvez ela seja capaz de reproduzir a minha percepção da realidade.
+
+---
+
+### Aplicação:
+
+Acredito que a IA ainda seja um ótimo aliado na fixação do conteúdo. Que ter agentes treinados para ajudar no debate de ideias, consultar, contraposição, análises de raciocínio lógico, busca de referências e artigos…Tudo isso pode tornar a experiência mais profunda e dinâmica, mas ainda feita em cima da base, que é o livro físico.
+
+Não é muito diferente de um processo de estudo sério, como o proposto na tese de Leitura Analítica do Mortimer Adler, mas feito com infinita mais velocidade e eficiência com IA.
+
+Os princípios se mantém, mas a forma de aplicação foi completamente transformada.
+
+A construção de agentes para auxiliar na aplicação dos conceitos do livro também é um ponto que traz uma eficiência gigante.
+
+Mas, pelo menos por enquanto, não acredito que a IA possa substituir a leitura técnica para aprendizado.`
+  },
+  {
+    id: 2,
     title: "Porque a Inteligência Artificial vai fazer você ganhar menos dinheiro — e como evitar que isso aconteça",
     excerpt: "Um aluno parou de usar nutricionista porque faz tudo com IA. Isso me fez refletir sobre como a IA está diminuindo a demanda por profissionais do conhecimento e causando achatamento dos preços.",
     author: "Equipe Nexus",
@@ -324,7 +453,7 @@ A segurança em IA é um investimento, não um custo.`
   }
 ];
 
-export const categories = ["Todos", "IA e Mercado", "IA para Negócios", "Automação", "Cases de Sucesso", "Tutorial", "Estratégia", "Segurança"];
+export const categories = ["Todos", "IA e Aprendizado", "IA e Mercado", "IA para Negócios", "Automação", "Cases de Sucesso", "Tutorial", "Estratégia", "Segurança"];
 
 export const getBlogPostById = (id: number): BlogPost | undefined => {
   return blogPosts.find(post => post.id === id);
