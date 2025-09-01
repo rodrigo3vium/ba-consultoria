@@ -420,7 +420,7 @@ const IADoZero = () => {
                 <Button 
                   variant="default" 
                   size="lg" 
-                  className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                  className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
                   onClick={handleWhatsAppContact}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
