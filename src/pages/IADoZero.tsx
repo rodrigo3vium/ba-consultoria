@@ -137,6 +137,15 @@ const IADoZero = () => {
                       <CarouselNext className="right-2" />
                     </Carousel>
                   </div>
+                  
+                  <div className="border-t border-gray-600 pt-4">
+                    <h3 className="text-xl font-bold text-white text-center mb-2">
+                      EMPRESAS DEMITEM FUNCIONÁRIOS E SUBSTITUEM POR IA
+                    </h3>
+                    <p className="text-gray-300 text-center italic">
+                      A revolução já começou nas maiores empresas do mundo
+                    </p>
+                  </div>
                 </Card>
               </div>
             </div>
