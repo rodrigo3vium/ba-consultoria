@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -115,14 +116,26 @@ const IADoZero = () => {
                     BREAKING NEWS
                   </Badge>
                   <div className="bg-white rounded-lg p-6 mb-4">
-                    <div className="text-red-500 font-bold text-2xl mb-2">exame.</div>
-                    <div className="text-sm text-gray-500 mb-2">Home › Carreira</div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
-                      Duolingo já está substituindo trabalhadores por inteligência artificial
-                    </h3>
-                    <p className="text-gray-700 text-sm">
-                      A edtech adotou abertamente a IA como ferramenta de eficiência — e já começou a substituir parte de sua equipe por automação...
-                    </p>
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        <CarouselItem>
+                          <img 
+                            src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png" 
+                            alt="Duolingo substituindo trabalhadores por IA" 
+                            className="w-full h-auto object-contain rounded"
+                          />
+                        </CarouselItem>
+                        <CarouselItem>
+                          <img 
+                            src="/lovable-uploads/5bb241ec-4824-4db5-813c-2e1292f72128.png" 
+                            alt="CEO sobre uso de IA no trabalho" 
+                            className="w-full h-auto object-contain rounded"
+                          />
+                        </CarouselItem>
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
                   </div>
                 </Card>
               </div>
