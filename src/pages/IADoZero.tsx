@@ -51,25 +51,20 @@ const IADoZero = () => {
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
-              Treinei o ChatGPT para me deixar{' '}
+              Inteligência Artificial para quem quer alcançar o{' '}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                mais produtivo
+                1%
               </span>
-              <br />
-              <span className="text-white">(e inteligente)</span>
+              {' '}em todas as áreas da vida.
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-6 font-inter leading-relaxed">
-              Agora você vai fazer o mesmo,{' '}
-              <span className="text-green-400 font-semibold">do zero</span>
-              {' '}e com passo a passo.
-            </p>
-            
-            <p className="text-lg text-gray-400 max-w-4xl mx-auto font-inter leading-relaxed mb-12">
+            <h2 className="text-xl md:text-2xl text-gray-300 mb-6 font-inter leading-relaxed max-w-5xl mx-auto">
               Mesmo que você nunca tenha usado IA, com o{' '}
               <span className="text-blue-400 font-semibold">IA do Zero</span>
-              {' '}você vai aprender como usar o ChatGPT de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade.
-            </p>
+              {' '}você vai aprender como usar o ChatGPT{' '}
+              <span className="text-green-400 font-semibold">(E outras IAs)</span>
+              {' '}de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade.
+            </h2>
             
             <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
               Clique no botão abaixo e comece a dominar a ferramenta que vai mudar sua forma de viver — por apenas{' '}
