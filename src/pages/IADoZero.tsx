@@ -142,15 +142,10 @@ const IADoZero = () => {
                     BREAKING NEWS
                   </Badge>
                   <div className="bg-white rounded-lg p-6 mb-4">
-                    <div className="text-sm text-gray-500 mb-4">
-                      This site quizzes 20 Verbal & 6 Vision AIs every week | Last Updated: 06:03PM EDT on April 17, 2025
-                    </div>
                     <div className="text-center">
-                      <h4 className="text-lg font-bold text-gray-900 mb-4">IQ Test Results</h4>
                       <div className="mb-4">
-                        <img src="/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png" alt="IQ Test Chart" className="w-full h-32 object-cover rounded" />
+                        <img src="/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png" alt="IQ Test Chart" className="w-full h-auto object-contain rounded" />
                       </div>
-                      <div className="text-3xl font-bold text-gray-900">2025</div>
                     </div>
                   </div>
                   <div className="text-center">
