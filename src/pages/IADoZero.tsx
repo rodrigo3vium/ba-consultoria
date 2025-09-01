@@ -194,6 +194,7 @@ const IADoZero = () => {
           
           <div className="max-w-4xl mx-auto space-y-6">
             {[
+              "Para quem quer alcançar o 1% em todas as áreas da vida",
               "Quem quer aprender mais em menos tempo",
               "Quem está se sentindo travado e improdutivo",
               'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'
