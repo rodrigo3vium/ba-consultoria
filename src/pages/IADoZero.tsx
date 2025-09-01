@@ -428,28 +428,30 @@ const IADoZero = () => {
               </div>
 
               {/* Security Badge */}
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-2 text-green-400">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center gap-2 text-green-400 mb-2">
                   <CheckCircle className="w-5 h-5" />
-                  <span className="font-semibold">Compra 100% segura!</span>
-                  <span className="text-gray-400">Receba seu acesso imediatamente após a confirmação do pagamento.</span>
+                  <span className="font-semibold text-lg">Compra 100% segura!</span>
                 </div>
+                <p className="text-gray-400 text-sm sm:text-base max-w-md mx-auto">
+                  Receba seu acesso imediatamente após a confirmação do pagamento.
+                </p>
               </div>
             </Card>
 
             {/* Feature Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
-              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
-                <h4 className="text-xl font-semibold text-blue-400 mb-2">Aulas 100% online</h4>
-                <p className="text-gray-400">Acesse de qualquer lugar</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-16">
+              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
+                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Aulas 100% online</h4>
+                <p className="text-gray-400 text-sm sm:text-base">Acesse de qualquer lugar</p>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
-                <h4 className="text-xl font-semibold text-blue-400 mb-2">Bônus exclusivos</h4>
-                <p className="text-gray-400">Conteúdo extra valioso</p>
+              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
+                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Bônus exclusivos</h4>
+                <p className="text-gray-400 text-sm sm:text-base">Conteúdo extra valioso</p>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
-                <h4 className="text-xl font-semibold text-blue-400 mb-2">Suporte para a plataforma</h4>
-                <p className="text-gray-400">Assistência completa</p>
+              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
+                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Suporte para a plataforma</h4>
+                <p className="text-gray-400 text-sm sm:text-base">Assistência completa</p>
               </Card>
             </div>
           </div>
