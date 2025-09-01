@@ -498,38 +498,6 @@ const IADoZero = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
-              Reação de quem usa nossos{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                prompts
-              </span>
-            </h2>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <Card className="bg-slate-800/50 border-slate-700 p-8">
-              <div className="bg-slate-900 rounded-lg p-6 border border-slate-600">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                </div>
-                <p className="text-gray-300 text-lg leading-relaxed italic mb-6">
-                  "Vou dizer por mim, mudou meu jeito de pensar e trabalhar com IA. Um dos seus prompts tirou meu projeto de aula da gaveta, estou produzindo conteúdo técnico pra minha área de qualidade, muito obrigado, vale muito a pena o curso..."
-                </p>
-                <div className="text-center">
-                  <p className="text-white font-semibold text-xl">Eduardo</p>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Learning Section */}
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
