@@ -7,8 +7,7 @@ import Footer from "@/components/Footer";
 
 const IADoZero = () => {
   const handleWhatsAppContact = () => {
-    const message = encodeURIComponent("Olá! Quero o IA do Zero por R$ 49,90. Como faço para adquirir?");
-    window.open(`https://wa.me/5511999718595?text=${message}`, '_blank');
+    window.open('https://pay.hotmart.com/L94763179U', '_blank');
   };
 
   const benefits = [
