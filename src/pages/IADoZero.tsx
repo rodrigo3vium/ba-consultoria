@@ -548,9 +548,10 @@ const IADoZero = () => {
             <Card className="bg-slate-800/50 border-slate-700 p-8 mb-12">
               {/* Price Section */}
               <div className="text-center mb-8">
-                <div className="relative mb-4">
-                  <span className="text-2xl text-gray-400 line-through">R$ 197,00</span>
-                  <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-red-500 transform -rotate-12"></div>
+                <div className="mb-4">
+                  <span className="text-2xl text-gray-500 line-through relative">
+                    R$ 197,00
+                  </span>
                 </div>
                 <div className="text-6xl font-bold text-blue-400 mb-4">R$ 49,90</div>
                 <p className="text-lg text-gray-300">
