@@ -53,9 +53,9 @@ const IADoZero = () => {
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
               Inteligência Artificial para quem quer alcançar o{' '}
               <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                1%
+                1% em todas as áreas da vida
               </span>
-              {' '}em todas as áreas da vida.
+              .
             </h1>
             
             <h2 className="text-xl md:text-2xl text-gray-300 mb-6 font-inter leading-relaxed max-w-5xl mx-auto">
