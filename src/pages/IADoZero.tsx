@@ -306,6 +306,263 @@ const IADoZero = () => {
         </div>
       </section>
 
+      {/* Why This Matters Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+                  Por que isso importa? E por que{' '}
+                  <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                    agora
+                  </span>
+                  ?
+                </h2>
+                
+                <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                  <p>
+                    Nos próximos 12 meses, o mundo vai se dividir entre quem usa bem a inteligência artificial e quem ficou para trás.
+                  </p>
+                  <p>
+                    Não é exagero. É realidade. As maiores empresas do mundo já anunciaram que não vão mais contratar ninguém que não saiba usar IA.
+                  </p>
+                  <p>
+                    A diferença de produtividade entre quem sabe e quem não sabe usar IA já é brutal.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <Card className="bg-slate-800/50 border-slate-700 p-6">
+                  <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500">
+                    BREAKING NEWS
+                  </Badge>
+                  <div className="bg-white rounded-lg p-6 mb-4">
+                    <div className="text-red-500 font-bold text-2xl mb-2">exame.</div>
+                    <div className="text-sm text-gray-500 mb-2">Home › Carreira</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+                      Duolingo já está substituindo trabalhadores por inteligência artificial
+                    </h3>
+                    <p className="text-gray-700 text-sm">
+                      A edtech adotou abertamente a IA como ferramenta de eficiência — e já começou a substituir parte de sua equipe por automação...
+                    </p>
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PhD in Pocket Section */}
+      <section className="py-20 bg-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <Card className="bg-slate-900/50 border-slate-600 p-6">
+                  <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500">
+                    BREAKING NEWS
+                  </Badge>
+                  <div className="bg-white rounded-lg p-6 mb-4">
+                    <div className="text-sm text-gray-500 mb-4">
+                      This site quizzes 20 Verbal & 6 Vision AIs every week | Last Updated: 06:03PM EDT on April 17, 2025
+                    </div>
+                    <div className="text-center">
+                      <h4 className="text-lg font-bold text-gray-900 mb-4">IQ Test Results</h4>
+                      <div className="mb-4">
+                        <img src="/api/placeholder/400/200" alt="IQ Test Chart" className="w-full h-32 object-cover rounded" />
+                      </div>
+                      <div className="text-3xl font-bold text-gray-900">2025</div>
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      INTELIGÊNCIA ARTIFICIAL SUPERA 99% DA POPULAÇÃO MUNDIAL EM TESTE
+                    </h3>
+                    <p className="text-gray-400 italic">
+                      Estudo comprova superioridade da IA em tarefas cognitivas complexas
+                    </p>
+                  </div>
+                </Card>
+              </div>
+              
+              <div>
+                <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                  <p>
+                    Você está prestes a ter acesso a um "PhD de bolso", um consultor mais inteligente que 99% dos humanos, que pode transformar sua vida pessoal e profissional — se você souber usar do jeito certo.
+                  </p>
+                  <p>
+                    A inteligência artificial já superou a capacidade cognitiva da maioria da população mundial. Agora, a questão não é mais se a IA vai dominar, mas quem vai saber usá-la primeiro.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Target Audience Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              Para quem é o{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                IA do Zero
+              </span>
+            </h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto space-y-6">
+            {[
+              "Quem quer aprender mais em menos tempo",
+              "Quem está se sentindo travado e improdutivo",
+              'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'
+            ].map((item, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-700 p-6">
+                <div className="flex items-center gap-4">
+                  <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
+                  <p className="text-xl text-white font-medium">{item}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={handleWhatsAppContact}
+            >
+              QUERO APRENDER A USAR IA
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Harvard Study Section */}
+      <section className="py-20 bg-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                Harvard
+              </span>
+              {' '}está mudando o jeito de ensinar
+            </h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-slate-900/50 border-slate-600 p-8 mb-8">
+              <div className="bg-white rounded-lg p-6 mb-6">
+                <div className="text-sm text-gray-500 mb-2">Home › Publications › AI Tutoring Outperforms Active Learning</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">AI Tutoring Outperforms Active Learning</h3>
+                <div className="space-y-2 text-sm text-gray-700">
+                  <p><strong>Authors:</strong> Gregory Pudin, Kelly Miller, Anna Kefalas, Timothy Melbourne, Gregorio Ponti</p>
+                  <p><strong>Date:</strong> 05/2024</p>
+                  <p><strong>Publication:</strong> Research Square</p>
+                  <p><strong>Link:</strong> https://doi.org/10.21203/rs.3.rs-4343874/v1</p>
+                </div>
+              </div>
+              
+              <div className="text-center space-y-6">
+                <p className="text-xl text-gray-300 leading-relaxed">
+                  Estudo realizado em Harvard comprovou que aprender utilizando{' '}
+                  <span className="text-blue-400 font-semibold">"Tutores de IA"</span>
+                  {' '}é{' '}
+                  <span className="text-green-400 font-bold">2×</span>
+                  {' '}mais eficiente do que aprender através de técnicas de estudo ativo.
+                </p>
+                <p className="text-xl text-gray-300 leading-relaxed">
+                  Usar tutores de IA acelera o aprendizado em mais de{' '}
+                  <span className="text-blue-400 font-bold">120%</span>.
+                </p>
+              </div>
+            </Card>
+            
+            <div className="text-center">
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={handleWhatsAppContact}
+              >
+                QUERO APRENDER A USAR IA
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              Reação de quem usa nossos{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                prompts
+              </span>
+            </h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-slate-800/50 border-slate-700 p-8">
+              <div className="bg-slate-900 rounded-lg p-6 border border-slate-600">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed italic mb-6">
+                  "Vou dizer por mim, mudou meu jeito de pensar e trabalhar com IA. Um dos seus prompts tirou meu projeto de aula da gaveta, estou produzindo conteúdo técnico pra minha área de qualidade, muito obrigado, vale muito a pena o curso..."
+                </p>
+                <div className="text-center">
+                  <p className="text-white font-semibold text-xl">Eduardo</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Section */}
+      <section className="py-20 bg-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              O que você vai{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                aprender
+              </span>
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+                <CardContent className="p-8">
+                  <div className="flex items-start gap-4">
+                    <CheckCircle className="w-8 h-8 text-blue-400 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3 font-poppins">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-300 leading-relaxed font-inter">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Investment Section */}
       <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -443,40 +700,6 @@ const IADoZero = () => {
                 </div>
               </div>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Learning Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
-              O que você vai{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-                aprender
-              </span>
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-start gap-4">
-                    <CheckCircle className="w-8 h-8 text-blue-400 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="text-xl font-semibold text-blue-400 mb-3 font-poppins">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed font-inter">
-                        {benefit.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
