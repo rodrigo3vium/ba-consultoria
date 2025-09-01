@@ -22,7 +22,7 @@ const courses = [
       "Certificado de conclusão",
       "Acesso vitalício ao conteúdo"
     ],
-    buttonText: "Começar Agora",
+    buttonText: "Ver Mais",
     buttonVariant: "accent" as const
   },
   {
@@ -176,7 +176,9 @@ const Educacao = () => {
                       className="w-full group-hover:scale-105 transition-all duration-300"
                       disabled={course.status === 'coming-soon'}
                       onClick={() => {
-                        if (course.link) {
+                        if (course.title === "IA do Zero") {
+                          window.location.href = "/ia-do-zero";
+                        } else if (course.link) {
                           window.location.href = course.link;
                         } else if (course.status === 'custom') {
                           window.open('http://wa.me/5511999718595', '_blank');
