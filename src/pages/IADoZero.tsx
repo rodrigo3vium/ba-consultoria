@@ -74,7 +74,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={handleWhatsAppContact}
             >
               QUERO O IA DO ZERO
@@ -211,7 +211,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={handleWhatsAppContact}
             >
               QUERO APRENDER A USAR IA
@@ -264,7 +264,7 @@ const IADoZero = () => {
               <Button 
                 variant="default" 
                 size="lg" 
-                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={handleWhatsAppContact}
               >
                 QUERO APRENDER A USAR IA
@@ -434,7 +434,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={handleWhatsAppContact}
             >
               QUERO APRENDER A USAR IA
@@ -487,7 +487,7 @@ const IADoZero = () => {
               <Button 
                 variant="default" 
                 size="lg" 
-                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={handleWhatsAppContact}
               >
                 QUERO APRENDER A USAR IA
@@ -623,7 +623,7 @@ const IADoZero = () => {
                 <Button 
                   variant="default" 
                   size="lg" 
-                  className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={handleWhatsAppContact}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
