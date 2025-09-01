@@ -148,7 +148,7 @@ const IADoZero = () => {
                     <div className="text-center">
                       <h4 className="text-lg font-bold text-gray-900 mb-4">IQ Test Results</h4>
                       <div className="mb-4">
-                        <img src="/api/placeholder/400/200" alt="IQ Test Chart" className="w-full h-32 object-cover rounded" />
+                        <img src="/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png" alt="IQ Test Chart" className="w-full h-32 object-cover rounded" />
                       </div>
                       <div className="text-3xl font-bold text-gray-900">2025</div>
                     </div>
