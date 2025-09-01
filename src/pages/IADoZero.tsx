@@ -306,6 +306,147 @@ const IADoZero = () => {
         </div>
       </section>
 
+      {/* Investment Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              Investimento
+            </h2>
+            <p className="text-xl text-gray-400 mb-12">
+              Quanto custa para ter acesso ao Método IA do Zero?
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-slate-800/50 border-slate-700 p-8 mb-12">
+              {/* Price Section */}
+              <div className="text-center mb-8">
+                <div className="relative mb-4">
+                  <span className="text-2xl text-gray-400 line-through">R$ 197,00</span>
+                  <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-red-500 transform -rotate-12"></div>
+                </div>
+                <div className="text-6xl font-bold text-blue-400 mb-4">R$ 49,90</div>
+                <p className="text-lg text-gray-300">
+                  ou <span className="text-green-400 font-semibold">7x</span> de <span className="text-green-400 font-semibold">R$ 8,16</span>
+                </p>
+              </div>
+
+              {/* What You Get */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-white mb-6 text-center">O que você vai receber</h3>
+                <div className="space-y-4">
+                  {[
+                    "Acesso imediato ao IA do Zero, método para produzir 10x mais usando IA",
+                    "Exemplos práticos, prompts prontos e modelo de aplicação real",
+                    "Um método validado de engenharia de prompts",
+                    "Um guia para transformar IA em assistente pessoal, consultor de negócios ou mentor de produtividade"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-4">
+                      <CheckCircle className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
+                      <p className="text-gray-300 leading-relaxed">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bonus Section */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-green-400 mb-6 text-center">Bônus</h3>
+                <div className="flex items-start gap-4">
+                  <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                  <p className="text-gray-300 leading-relaxed">
+                    Acesso a um grupo VIP no WhatsApp para ficar por dentro das últimas novidades de IA e fazer networking
+                  </p>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="text-center mb-6">
+                <Button 
+                  variant="default" 
+                  size="lg" 
+                  className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold !rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={handleWhatsAppContact}
+                >
+                  COMEÇAR A MINHA MUDANÇA DE VIDA
+                </Button>
+              </div>
+
+              {/* Security Badge */}
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 text-green-400">
+                  <CheckCircle className="w-5 h-5" />
+                  <span className="font-semibold">Compra 100% segura!</span>
+                  <span className="text-gray-400">Receba seu acesso imediatamente após a confirmação do pagamento.</span>
+                </div>
+              </div>
+            </Card>
+
+            {/* Feature Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-16">
+              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
+                <h4 className="text-xl font-semibold text-blue-400 mb-2">Aulas 100% online</h4>
+                <p className="text-gray-400">Acesse de qualquer lugar</p>
+              </Card>
+              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
+                <h4 className="text-xl font-semibold text-blue-400 mb-2">Bônus exclusivos</h4>
+                <p className="text-gray-400">Conteúdo extra valioso</p>
+              </Card>
+              <Card className="bg-slate-800/50 border-slate-700 p-6 text-center">
+                <h4 className="text-xl font-semibold text-blue-400 mb-2">Suporte para a plataforma</h4>
+                <p className="text-gray-400">Assistência completa</p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guarantee Section */}
+      <section className="py-20 bg-slate-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              <span className="text-blue-400">7 dias</span> de garantia incondicional
+            </h2>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-slate-900/50 border-slate-600 p-8">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                  Tente por 7 dias. Se você não estiver completamente satisfeito, nós devolvemos seu dinheiro —{' '}
+                  <span className="text-blue-400 font-semibold">sem nenhum tipo de questionamento</span>.
+                </p>
+                
+                <div className="space-y-3 text-gray-400">
+                  <div className="flex items-center justify-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>Garantia de 7 dias</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>Reembolso total</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span>Sem questionamentos</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Learning Section */}
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
