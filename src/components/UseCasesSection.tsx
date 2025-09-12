@@ -49,12 +49,13 @@ const useCases = [
 
 const UseCasesSection = () => {
   return (
-    <section className="py-20 bg-gradient-hero/20" id="casos">
+    <section className="py-20 bg-card-premium/20" id="casos">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-4">
-            Casos de <span className="bg-gradient-accent bg-clip-text text-transparent">Sucesso</span>
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
+            Casos de <span className="bg-gradient-primary bg-clip-text text-transparent">Sucesso</span>
           </h2>
+          <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
             Veja como diferentes setores estão revolucionando seus negócios com nossa IA
           </p>

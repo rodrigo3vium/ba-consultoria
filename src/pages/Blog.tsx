@@ -8,30 +8,48 @@ import { blogPosts, categories } from "@/lib/blogData";
 
 const Blog = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-accent bg-clip-text text-transparent mb-6">
-            Blog Nexus
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Insights, tutoriais e cases de sucesso sobre IA, automação e transformação digital para empresas que querem liderar o futuro.
-          </p>
+      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-10 w-40 h-40 bg-ba-orange rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 left-10 w-32 h-32 bg-ba-blue-light rounded-full blur-xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-5xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
+              Blog{' '}
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
+                Nexus
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-inter leading-relaxed">
+              Insights, tutoriais e cases de sucesso sobre IA e transformação digital
+            </p>
+            <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto font-inter leading-relaxed">
+              Conteúdo especializado para empresas que querem liderar o futuro com inteligência artificial.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Filtros de Categoria */}
-      <section className="px-4 mb-12">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
               <Badge 
                 key={category}
                 variant={category === "Todos" ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                className={`cursor-pointer transition-colors ${
+                  category === "Todos" 
+                    ? "bg-ba-orange text-white hover:bg-ba-orange/90" 
+                    : "border-ba-orange text-ba-orange hover:bg-ba-orange hover:text-white"
+                }`}
               >
                 {category}
               </Badge>
@@ -41,11 +59,11 @@ const Blog = () => {
       </section>
 
       {/* Grid de Posts */}
-      <section className="px-4 pb-20">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-20 bg-card-premium/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
-              <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur-sm border-border/50">
+              <Card key={post.id} className="group hover:shadow-premium transition-all duration-300 bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:scale-105">
                 <div className="aspect-video overflow-hidden rounded-t-lg">
                   <img 
                     src={post.image} 
@@ -97,26 +115,28 @@ const Blog = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="px-4 pb-20">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Não perca nenhuma novidade</CardTitle>
-              <CardDescription className="text-lg">
-                Receba os melhores insights sobre IA e automação diretamente no seu e-mail.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <input 
-                type="email" 
-                placeholder="Seu melhor e-mail"
-                className="px-4 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm flex-1 max-w-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium whitespace-nowrap">
-                Inscrever-se
-              </button>
-            </CardContent>
-          </Card>
+      <section className="py-20 bg-gradient-hero">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl font-poppins">Não perca nenhuma novidade</CardTitle>
+                <CardDescription className="text-lg font-inter">
+                  Receba os melhores insights sobre IA e automação diretamente no seu e-mail.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <input 
+                  type="email" 
+                  placeholder="Seu melhor e-mail"
+                  className="px-4 py-3 rounded-lg border border-card-premium-border bg-background/50 backdrop-blur-sm flex-1 max-w-sm focus:outline-none focus:ring-2 focus:ring-ba-orange font-inter"
+                />
+                <button className="px-6 py-3 bg-ba-orange text-white rounded-lg hover:bg-ba-orange/90 transition-colors font-medium whitespace-nowrap font-inter">
+                  Inscrever-se
+                </button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 

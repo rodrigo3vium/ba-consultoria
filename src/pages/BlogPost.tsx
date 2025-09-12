@@ -52,7 +52,7 @@ const BlogPost = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
@@ -83,7 +83,7 @@ const BlogPost = () => {
       {/* Article Header */}
       <article className="px-4 pb-20">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50">
+          <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
             {/* Hero Image */}
             <div className="aspect-video overflow-hidden rounded-t-lg">
               <img 
@@ -169,7 +169,7 @@ const BlogPost = () => {
               <h2 className="text-2xl font-bold mb-8 text-foreground">Artigos Relacionados</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost) => (
-                  <Card key={relatedPost.id} className="group hover:shadow-lg transition-all duration-300 bg-card/50 backdrop-blur-sm border-border/50">
+                  <Card key={relatedPost.id} className="group hover:shadow-premium transition-all duration-300 bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:scale-105">
                     <div className="aspect-video overflow-hidden rounded-t-lg">
                       <img 
                         src={relatedPost.image} 
