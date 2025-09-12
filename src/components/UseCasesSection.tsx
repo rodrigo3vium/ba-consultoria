@@ -49,15 +49,21 @@ const useCases = [
 
 const UseCasesSection = () => {
   return (
-    <section className="py-20 bg-card-premium/20" id="casos">
+    <section className="py-20 bg-slate-900" id="casos">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-            Casos de <span className="bg-gradient-primary bg-clip-text text-transparent">Sucesso</span>
+          <span className="inline-block px-4 py-2 rounded-full border border-ba-orange text-ba-orange bg-ba-orange/10 text-sm font-medium mb-4">
+            Casos de Uso
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6 text-white">
+            Como aplicamos{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              IA na prática
+            </span>
           </h2>
-          <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-            Veja como diferentes setores estão revolucionando seus negócios com nossa IA
+          <p className="text-xl text-gray-300 leading-relaxed font-inter max-w-4xl mx-auto">
+            Veja alguns exemplos reais de como nossa consultoria implementa soluções de IA 
+            que geram resultados concretos para nossos clientes.
           </p>
         </div>
 
@@ -67,15 +73,15 @@ const UseCasesSection = () => {
             return (
               <Card 
                 key={index} 
-                className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-500 hover:scale-102 group rounded-2xl"
+                className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:bg-gray-700/80 hover:shadow-2xl transition-all duration-500 hover:scale-102 group rounded-2xl"
               >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-4">
-                      <div className="p-3 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
+                      <div className="p-3 bg-gray-700 rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-gray-600">
                         <IconComponent size={24} className="text-ba-orange" />
                       </div>
-                      <CardTitle className="text-2xl font-poppins text-foreground group-hover:text-ba-blue-light transition-colors">
+                      <CardTitle className="text-2xl font-poppins text-white group-hover:text-blue-400 transition-colors">
                         {useCase.title}
                       </CardTitle>
                     </div>
@@ -83,15 +89,15 @@ const UseCasesSection = () => {
                       {useCase.industry}
                     </span>
                   </div>
-                  <CardDescription className="text-muted-foreground font-inter text-base leading-relaxed">
+                  <CardDescription className="text-gray-300 font-inter text-base leading-relaxed">
                     {useCase.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-foreground font-poppins mb-3">Resultados:</h4>
+                    <h4 className="font-semibold text-white font-poppins mb-3">Resultados:</h4>
                     {useCase.benefits.map((benefit, benefitIndex) => (
-                      <div key={benefitIndex} className="flex items-center text-sm text-muted-foreground font-inter">
+                      <div key={benefitIndex} className="flex items-center text-sm text-gray-300 font-inter">
                         <span className="mr-2">{benefit}</span>
                       </div>
                     ))}
