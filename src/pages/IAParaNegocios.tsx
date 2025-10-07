@@ -42,63 +42,61 @@ const IAParaNegocios = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-900">
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-ba-orange rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-ba-blue-light rounded-full blur-xl"></div>
+          <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-4 border-ba-orange text-ba-orange">
+            <Badge variant="outline" className="mb-4 border-green-500 text-green-400 bg-green-500/10">
               Programa Premium • 12 Semanas • Turma Limitada
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
               IA para{' '}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
                 Negócios
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-6 font-inter leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 mb-6 font-inter leading-relaxed">
               Lucro & Eficiência para PMEs
             </p>
-            <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto font-inter leading-relaxed mb-8">
+            <div className="w-16 h-1 bg-blue-400 mx-auto mb-8"></div>
+            <p className="text-lg text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed mb-8">
               Se torne o líder do seu mercado utilizando soluções de Inteligência Artificial 
               para aumentar lucro e ganhar produtividade no seu negócio.
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground mb-8">
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300 mb-8">
               <div className="flex items-center gap-2">
-                <Timer size={16} className="text-ba-orange" />
+                <Timer size={16} className="text-blue-400" />
                 <span>Resultados em 90 dias</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users size={16} className="text-ba-orange" />
+                <Users size={16} className="text-blue-400" />
                 <span>15 vagas apenas</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award size={16} className="text-ba-orange" />
+                <Award size={16} className="text-blue-400" />
                 <span>Garantia dupla</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                variant="accent" 
                 size="lg" 
-                className="text-lg px-8 py-4 font-inter"
+                className="text-lg px-8 py-4 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
                 onClick={handleWhatsAppContact}
               >
                 Quero liderar meu mercado com IA
                 <ArrowRight className="ml-2" size={20} />
               </Button>
               <Button 
-                variant="outline-glow" 
                 size="lg" 
-                className="text-lg px-8 py-4 font-inter"
+                className="text-lg px-8 py-4 font-inter border border-gray-400 text-gray-300 hover:bg-gray-700 hover:text-white bg-transparent"
                 onClick={handleWhatsAppContact}
               >
                 Ver agenda e tirar dúvidas em 15 min
@@ -109,10 +107,10 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Sobre a Mentoria */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-inter">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-inter">
               A mentoria IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
               na implementação de soluções de IA na sua empresa. Colhendo resultados concretos, 
               em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações. 
@@ -123,11 +121,11 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Isso é pra você se... */}
-      <section className="py-20 bg-card-premium/20">
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Isso é pra você <span className="bg-gradient-primary bg-clip-text text-transparent">se...</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              Isso é pra você <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">se...</span>
             </h2>
           </div>
 
@@ -166,15 +164,15 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover transition-all duration-300">
+                <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
                   <CardHeader>
-                    <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
-                      <IconComponent size={24} className="text-ba-orange" />
+                    <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
+                      <IconComponent size={24} className="text-blue-400" />
                     </div>
-                    <CardTitle className="text-lg font-poppins mb-2">
+                    <CardTitle className="text-lg font-poppins mb-2 text-white">
                       {item.title}
                     </CardTitle>
-                    <CardDescription className="font-inter">
+                    <CardDescription className="font-inter text-gray-300">
                       {item.description}
                     </CardDescription>
                   </CardHeader>
@@ -186,14 +184,14 @@ const IAParaNegocios = () => {
       </section>
 
       {/* A História */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center">
-              A História — <span className="bg-gradient-primary bg-clip-text text-transparent">da Dor ao Desejo</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center text-white">
+              A História — <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">da Dor ao Desejo</span>
             </h2>
             
-            <div className="space-y-6 text-lg text-muted-foreground font-inter leading-relaxed">
+            <div className="space-y-6 text-lg text-gray-300 font-inter leading-relaxed">
               <p>
                 Imagine chegar ao fim do mês e perceber que <strong>40% do seu tempo (e da sua equipe) foi gasto em tarefas que não geram receita</strong>: 
                 copiar dados, enviar lembretes, montar relatórios, responder perguntas repetidas. Enquanto isso, grandes players usam IA para reduzir custos, 
@@ -210,22 +208,22 @@ const IAParaNegocios = () => {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-ba-orange mb-2">60%</div>
-                    <div className="text-sm">Cortei o tempo de proposta usando geração automática de PDFs via ChatGPT e Make.</div>
+                    <div className="text-2xl font-bold text-green-400 mb-2">60%</div>
+                    <div className="text-sm text-gray-300">Cortei o tempo de proposta usando geração automática de PDFs via ChatGPT e Make.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-ba-orange mb-2">27%</div>
-                    <div className="text-sm">Aumentei o ticket médio com um bot de upsell que trabalha enquanto a equipe dorme.</div>
+                    <div className="text-2xl font-bold text-green-400 mb-2">27%</div>
+                    <div className="text-sm text-gray-300">Aumentei o ticket médio com um bot de upsell que trabalha enquanto a equipe dorme.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-ba-orange mb-2">R$ 8 mil/mês</div>
-                    <div className="text-sm">Economizei só com reconciliação financeira automatizada.</div>
+                    <div className="text-2xl font-bold text-green-400 mb-2">R$ 8 mil/mês</div>
+                    <div className="text-sm text-gray-300">Economizei só com reconciliação financeira automatizada.</div>
                   </CardContent>
                 </Card>
               </div>
@@ -241,7 +239,7 @@ const IAParaNegocios = () => {
               </p>
               
               <div className="text-center mt-8">
-                <p className="text-xl font-semibold text-foreground">
+                <p className="text-xl font-semibold text-white">
                   Se o seu desejo é liderar o mercado — em vez de persegui-lo —, esta mentoria foi feita para você.
                 </p>
               </div>
@@ -251,16 +249,16 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Promessa Poderosa */}
-      <section className="py-20 bg-gradient-to-br from-ba-orange/10 to-ba-blue-light/10">
+      <section className="py-20 bg-gradient-to-br from-green-500/10 to-blue-500/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
-              Nossa <span className="bg-gradient-primary bg-clip-text text-transparent">Promessa</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-white">
+              Nossa <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Promessa</span>
             </h2>
             
-            <Card className="bg-card-premium/90 backdrop-blur-sm border border-card-premium-border p-8">
+            <Card className="bg-slate-800/90 backdrop-blur-sm border border-slate-700 p-8">
               <CardContent className="pt-0">
-                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-foreground">
+                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-white">
                   "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio, 
                   reduzir até 40% dos custos operacionais e liberar pelo menos 10 horas por semana — 
                   tudo isso usando ferramentas de IA no-code, sem contratar nenhum desenvolvedor."
@@ -272,11 +270,11 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Benefícios Detalhados */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              O que muda <span className="bg-gradient-primary bg-clip-text text-transparent">na prática</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              O que muda <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">na prática</span>
             </h2>
           </div>
 
@@ -284,13 +282,13 @@ const IAParaNegocios = () => {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-card-premium-border">
-                    <th className="text-left p-4 font-poppins text-lg">Benefício</th>
-                    <th className="text-left p-4 font-poppins text-lg">Antes</th>
-                    <th className="text-left p-4 font-poppins text-lg">Depois da Mentoria IA para Negócios</th>
+                  <tr className="border-b border-slate-700">
+                    <th className="text-left p-4 font-poppins text-lg text-white">Benefício</th>
+                    <th className="text-left p-4 font-poppins text-lg text-white">Antes</th>
+                    <th className="text-left p-4 font-poppins text-lg text-white">Depois da Mentoria IA para Negócios</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-card-premium-border">
+                <tbody className="divide-y divide-slate-700">
                   {[
                     {
                       benefit: "Produtividade Explosiva",
@@ -323,10 +321,10 @@ const IAParaNegocios = () => {
                       after: "Você implementa primeiro: atendimento 24/7, resposta instantânea, marketing dinâmico."
                     }
                   ].map((item, index) => (
-                    <tr key={index} className="hover:bg-card-premium/20 transition-colors">
-                      <td className="p-4 font-semibold text-foreground">{item.benefit}</td>
-                      <td className="p-4 text-muted-foreground text-sm">{item.before}</td>
-                      <td className="p-4 text-sm font-medium">{item.after}</td>
+                    <tr key={index} className="hover:bg-slate-800/20 transition-colors">
+                      <td className="p-4 font-semibold text-white">{item.benefit}</td>
+                      <td className="p-4 text-gray-300 text-sm">{item.before}</td>
+                      <td className="p-4 text-sm font-medium text-gray-300">{item.after}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -337,13 +335,13 @@ const IAParaNegocios = () => {
       </section>
 
       {/* O que está incluso */}
-      <section className="py-20 bg-card-premium/20">
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              O que está <span className="bg-gradient-primary bg-clip-text text-transparent">incluso</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              O que está <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">incluso</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-inter">
               A oferta completa do ecossistema IA para Negócios
             </p>
           </div>
@@ -406,12 +404,12 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
+                <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700">
                   <CardHeader>
-                    <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
-                      <IconComponent size={24} className="text-ba-orange" />
+                    <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
+                      <IconComponent size={24} className="text-blue-400" />
                     </div>
-                    <CardTitle className="text-lg font-poppins mb-4">
+                    <CardTitle className="text-lg font-poppins mb-4 text-white">
                       {item.title}
                     </CardTitle>
                   </CardHeader>
@@ -419,8 +417,8 @@ const IAParaNegocios = () => {
                     <ul className="space-y-2">
                       {item.items.map((subItem, idx) => (
                         <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle size={12} className="text-ba-orange mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">{subItem}</span>
+                          <CheckCircle size={12} className="text-blue-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-gray-300">{subItem}</span>
                         </li>
                       ))}
                     </ul>
@@ -433,11 +431,11 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Prova Social */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Estudos de Caso</span> Reais
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Estudos de Caso</span> Reais
             </h2>
           </div>
 
@@ -462,9 +460,9 @@ const IAParaNegocios = () => {
                 result: "−60% do tempo de preparo e +18% taxa de aceite."
               }
             ].map((caseStudy, index) => (
-              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border">
+              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700">
                 <CardHeader>
-                  <CardTitle className="text-lg font-poppins mb-4">
+                  <CardTitle className="text-lg font-poppins mb-4 text-white">
                     {caseStudy.title}
                   </CardTitle>
                 </CardHeader>
@@ -472,15 +470,15 @@ const IAParaNegocios = () => {
                   <div className="space-y-3">
                     <div>
                       <span className="font-semibold text-red-500">Problema:</span>
-                      <span className="text-muted-foreground ml-1">{caseStudy.problem}</span>
+                      <span className="text-gray-300 ml-1">{caseStudy.problem}</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-blue-500">Solução:</span>
-                      <span className="text-muted-foreground ml-1">{caseStudy.solution}</span>
+                      <span className="font-semibold text-blue-400">Solução:</span>
+                      <span className="text-gray-300 ml-1">{caseStudy.solution}</span>
                     </div>
                     <div>
-                      <span className="font-semibold text-green-500">Resultado:</span>
-                      <span className="text-muted-foreground ml-1">{caseStudy.result}</span>
+                      <span className="font-semibold text-green-400">Resultado:</span>
+                      <span className="text-gray-300 ml-1">{caseStudy.result}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -503,17 +501,17 @@ const IAParaNegocios = () => {
                 author: "[Nome, Sócio]"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                 <CardContent className="pt-6">
                   <div className="flex justify-center mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={16} className="text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <blockquote className="text-muted-foreground italic mb-4">
+                  <blockquote className="text-gray-300 italic mb-4">
                     "{testimonial.quote}"
                   </blockquote>
-                  <cite className="text-sm font-semibold text-foreground">
+                  <cite className="text-sm font-semibold text-white">
                     {testimonial.author}
                   </cite>
                 </CardContent>
@@ -527,43 +525,43 @@ const IAParaNegocios = () => {
       <section className="py-20 bg-gradient-to-br from-green-500/10 to-blue-500/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Garantia — <span className="bg-gradient-primary bg-clip-text text-transparent">Risco Zero</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              Garantia — <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Risco Zero</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-inter">
               Dupla proteção para você decidir com tranquilidade
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-card-premium/80 backdrop-blur-sm border border-green-500/30">
+            <Card className="bg-slate-800/80 backdrop-blur-sm border border-green-500/30">
               <CardHeader>
                 <div className="p-3 bg-green-500/20 rounded-full w-fit mb-4">
-                  <Shield size={24} className="text-green-500" />
+                  <Shield size={24} className="text-green-400" />
                 </div>
-                <CardTitle className="text-xl font-poppins">
+                <CardTitle className="text-xl font-poppins text-white">
                   Garantia Incondicional de 7 Dias
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-gray-300">
                   Entre, assista às primeiras aulas (E1 + O1) e teste os templates. Se não fizer sentido para sua realidade, 
                   <strong> devolvemos 100%</strong> do investimento. Sem perguntas.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-card-premium/80 backdrop-blur-sm border border-blue-500/30">
+            <Card className="bg-slate-800/80 backdrop-blur-sm border border-blue-500/30">
               <CardHeader>
                 <div className="p-3 bg-blue-500/20 rounded-full w-fit mb-4">
-                  <CheckCircle size={24} className="text-blue-500" />
+                  <CheckCircle size={24} className="text-blue-400" />
                 </div>
-                <CardTitle className="text-xl font-poppins">
+                <CardTitle className="text-xl font-poppins text-white">
                   Garantia de Implementação em 90 Dias
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-gray-300">
                   Se, cumprindo as ações combinadas, você não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos, 
                   nós <strong>estendemos a mentoria por mais 30 dias sem custo</strong> e ajustamos os fluxos até ficar de pé.
                 </p>
@@ -574,13 +572,13 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Bônus */}
-      <section className="py-20 bg-card-premium/20">
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Bônus</span> Exclusivos
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Bônus</span> Exclusivos
             </h2>
-            <Badge variant="outline" className="border-ba-orange text-ba-orange text-lg px-4 py-2">
+            <Badge variant="outline" className="border-green-500 text-green-400 bg-green-500/10 text-lg px-4 py-2">
               Valor de referência: R$ 4.900 — Apenas nesta turma
             </Badge>
           </div>
@@ -624,25 +622,25 @@ const IAParaNegocios = () => {
                 delivery: "sessão de 30 min + checklist assinado"
               }
             ].map((bonus, index) => (
-              <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border relative">
+              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 relative">
                 <div className="absolute -top-3 -right-3">
-                  <Badge variant="default" className="bg-ba-orange text-white">
+                  <Badge variant="default" className="bg-green-500 text-white">
                     {bonus.value}
                   </Badge>
                 </div>
                 <CardHeader>
-                  <div className="p-3 bg-card-premium-border rounded-full w-fit mb-4">
-                    <Gift size={24} className="text-ba-orange" />
+                  <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
+                    <Gift size={24} className="text-blue-400" />
                   </div>
-                  <CardTitle className="text-lg font-poppins">
+                  <CardTitle className="text-lg font-poppins text-white">
                     Bônus #{index + 1} — {bonus.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground text-sm mb-3">
+                  <p className="text-gray-300 text-sm mb-3">
                     {bonus.description}
                   </p>
-                  <p className="text-xs text-muted-foreground italic">
+                  <p className="text-xs text-gray-400 italic">
                     Entrega: {bonus.delivery}
                   </p>
                 </CardContent>
@@ -656,8 +654,8 @@ const IAParaNegocios = () => {
       <section className="py-20 bg-gradient-to-br from-red-500/10 to-orange-500/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Vagas Limitadas</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-white">
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Vagas Limitadas</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -685,19 +683,19 @@ const IAParaNegocios = () => {
               ].map((item, index) => {
                 const IconComponent = item.icon;
                 return (
-                  <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-orange-500/30 text-left">
+                  <Card key={index} className="bg-slate-800/80 backdrop-blur-sm border border-orange-500/30 text-left">
                     <CardHeader>
                       <div className="flex items-center space-x-3">
                         <div className="p-2 bg-orange-500/20 rounded-full">
-                          <IconComponent size={20} className="text-orange-500" />
+                          <IconComponent size={20} className="text-orange-400" />
                         </div>
-                        <CardTitle className="text-lg font-poppins">
+                        <CardTitle className="text-lg font-poppins text-white">
                           {item.title}
                         </CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-gray-300 text-sm">
                         {item.description}
                       </p>
                     </CardContent>
@@ -710,11 +708,11 @@ const IAParaNegocios = () => {
       </section>
 
       {/* FAQs */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-slate-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Perguntas <span className="bg-gradient-primary bg-clip-text text-transparent">Frequentes</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+              Perguntas <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Frequentes</span>
             </h2>
           </div>
 
@@ -755,10 +753,10 @@ const IAParaNegocios = () => {
                 }
               ].map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left font-poppins">
+                  <AccordionTrigger className="text-left font-poppins text-white">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-inter">
+                  <AccordionContent className="text-gray-300 font-inter">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -769,33 +767,32 @@ const IAParaNegocios = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-ba-orange rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-ba-blue-light rounded-full blur-xl"></div>
+          <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 leading-tight text-white">
               Você pode continuar com a rotina que drena tempo e margem — ou, nos próximos 90 dias, 
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> liderar seu mercado</span>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent"> liderar seu mercado</span>
             </h2>
             
-            <p className="text-lg text-muted-foreground mb-8 font-inter leading-relaxed">
+            <p className="text-lg text-gray-300 mb-8 font-inter leading-relaxed">
               A mentoria IA para Negócios foi desenhada para PMEs como a sua: direta, prática e com garantia dupla. 
               As vagas são limitadas a 15 empresas.
             </p>
             
-            <div className="text-xl font-semibold mb-8 text-foreground">
+            <div className="text-xl font-semibold mb-8 text-white">
               Se o plano é liderar (não reagir), é agora.
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button 
-                variant="accent" 
                 size="lg" 
-                className="text-xl px-12 py-6 font-inter"
+                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
                 onClick={handleWhatsAppContact}
               >
                 Quero liderar meu mercado com IA
@@ -803,9 +800,9 @@ const IAParaNegocios = () => {
               </Button>
             </div>
             
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-sm text-gray-300">
               <p><strong>P.S.</strong> Bônus de R$ 4.900 incluídos nesta turma e 7 dias de teste sem risco.</p>
-              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={handleWhatsAppContact} className="underline text-ba-orange hover:text-ba-orange/80">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
+              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={handleWhatsAppContact} className="underline text-blue-400 hover:text-blue-300">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
             </div>
           </div>
         </div>
