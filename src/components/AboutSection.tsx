@@ -6,7 +6,7 @@ const AboutSection = () => {
     <section className="py-20 bg-slate-900" id="sobre">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full border border-ba-orange text-ba-orange bg-ba-orange/10 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 rounded-full border border-green-500 text-green-400 bg-green-500/10 text-sm font-medium mb-4">
             Sobre a BA Consultoria
           </span>
           <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6 text-white">
@@ -37,7 +37,7 @@ const AboutSection = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="font-inter bg-ba-orange hover:bg-ba-orange/90 text-white font-semibold rounded-xl"
+              className="font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl"
               onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
             >
               Saiba Mais Sobre Nós
@@ -45,22 +45,22 @@ const AboutSection = () => {
           </div>
           
           <div className="relative">
-            <div className="bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 shadow-2xl">
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 shadow-2xl">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-ba-orange font-poppins mb-2">100+</div>
+                  <div className="text-3xl font-bold text-blue-400 font-poppins mb-2">100+</div>
                   <div className="text-sm text-gray-400 font-inter">Empresas Atendidas</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-ba-orange font-poppins mb-2">300%</div>
+                  <div className="text-3xl font-bold text-blue-400 font-poppins mb-2">300%</div>
                   <div className="text-sm text-gray-400 font-inter">Aumento Médio de Produtividade</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-ba-orange font-poppins mb-2">50M+</div>
+                  <div className="text-3xl font-bold text-blue-400 font-poppins mb-2">50M+</div>
                   <div className="text-sm text-gray-400 font-inter">Processos Automatizados</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-ba-orange font-poppins mb-2">24/7</div>
+                  <div className="text-3xl font-bold text-blue-400 font-poppins mb-2">24/7</div>
                   <div className="text-sm text-gray-400 font-inter">Suporte Técnico</div>
                 </div>
               </div>

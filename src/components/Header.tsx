@@ -7,7 +7,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -25,32 +25,36 @@ const Header = () => {
           
           <nav className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#sobre" className="text-foreground hover:text-primary transition-colors font-inter">
+              <a href="#sobre" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
                 Sobre
               </a>
-              <a href="#solucoes" className="text-foreground hover:text-primary transition-colors font-inter">
+              <a href="#solucoes" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
                 Soluções
               </a>
-              <a href="#casos" className="text-foreground hover:text-primary transition-colors font-inter">
+              <a href="#casos" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
                 Casos de Uso
               </a>
-              <Link to="/blog" className="text-foreground hover:text-primary transition-colors font-inter">
+              <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
                 Blog
               </Link>
             </div>
           </nav>
 
           <div className="hidden md:block">
-            <Button variant="hero" size="lg" className="font-inter">
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
+            >
               Fale Conosco
             </Button>
           </div>
 
-          {/* Mobile menu button */}
+        {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary p-2"
+              className="text-gray-300 hover:text-blue-400 p-2"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -59,38 +63,41 @@ const Header = () => {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-border">
+          <div className="md:hidden border-t border-slate-700">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <a 
                 href="#sobre" 
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-inter"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Sobre
               </a>
               <a 
                 href="#solucoes" 
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-inter"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Soluções
               </a>
               <a 
                 href="#casos" 
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-inter"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Casos de Uso
               </a>
               <Link 
                 to="/blog" 
-                className="block px-3 py-2 text-foreground hover:text-primary transition-colors font-inter"
+                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
               </Link>
               <div className="px-3 py-2">
-                <Button variant="hero" className="w-full font-inter">
+                <Button 
+                  variant="default" 
+                  className="w-full font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
+                >
                   Fale Conosco
                 </Button>
               </div>
