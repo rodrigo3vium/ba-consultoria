@@ -46,61 +46,114 @@ const IAParaNegocios = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
+      <section className="bg-slate-900 relative overflow-hidden">
+        {/* Top Bar */}
+        <div className="bg-gradient-to-r from-green-500 to-green-600 py-3 text-center">
+          <p className="text-white font-semibold text-sm md:text-base font-inter uppercase tracking-wide">
+            Exclusivo para PMEs que faturam entre R$ 1 e 5 milhões por ano
+          </p>
         </div>
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-4 border-green-500 text-green-400 bg-green-500/10">
-              Programa Premium • 12 Semanas • Turma Limitada
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
-              IA para{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
-                Negócios
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-6 font-inter leading-relaxed">
-              Lucro & Eficiência para PMEs
-            </p>
-            <div className="w-16 h-1 bg-blue-400 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-300 max-w-4xl mx-auto font-inter leading-relaxed mb-8">
-              Se torne o líder do seu mercado utilizando soluções de Inteligência Artificial 
-              para aumentar lucro e ganhar produtividade no seu negócio.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300 mb-8">
-              <div className="flex items-center gap-2">
-                <Timer size={16} className="text-blue-400" />
-                <span>Resultados em 90 dias</span>
+
+        {/* Hero Content */}
+        <div className="relative">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 left-20 w-48 h-48 bg-green-500 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Content */}
+              <div className="space-y-8">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight text-white">
+                  Tenha soluções de IA{' '}
+                  <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
+                    sob medida
+                  </span>
+                  {' '}para seu negócio
+                </h1>
+
+                <p className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed">
+                  Implemente Inteligência Artificial de forma prática e estratégica na sua empresa. 
+                  Aumente lucros, ganhe eficiência e lidere seu mercado em 90 dias.
+                </p>
+
+                <Button 
+                  size="lg" 
+                  className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={handleWhatsAppContact}
+                >
+                  Quero mais informações
+                </Button>
+
+                {/* Trust Indicators */}
+                <div className="flex flex-col space-y-3 pt-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex -space-x-2">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-slate-900 flex items-center justify-center">
+                        <Building2 size={20} className="text-white" />
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-500 border-2 border-slate-900 flex items-center justify-center">
+                        <TrendingUp size={20} className="text-white" />
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 border-2 border-slate-900 flex items-center justify-center">
+                        <Award size={20} className="text-white" />
+                      </div>
+                    </div>
+                    <p className="text-gray-300 font-inter">
+                      <span className="text-green-400 font-semibold">+ de 100 empresas</span> já transformaram seus negócios com IA
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Users size={16} className="text-blue-400" />
-                <span>15 vagas apenas</span>
+
+              {/* Right Column - Visual Cards */}
+              <div className="relative h-[400px] lg:h-[500px]">
+                {/* Background gradient glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-green-500/20 rounded-3xl blur-2xl"></div>
+                
+                {/* Floating Cards */}
+                <div className="relative h-full flex items-center justify-center">
+                  {/* Card 1 - Top Right */}
+                  <Card className="absolute top-8 right-4 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float">
+                    <CardContent className="p-6">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-bold text-green-400 font-poppins">+12</span>
+                        <div className="text-left">
+                          <p className="text-sm text-gray-300 font-inter">Anos de</p>
+                          <p className="text-sm text-gray-300 font-inter">mercado</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Card 2 - Middle Left */}
+                  <Card className="absolute top-32 left-0 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
+                    <CardContent className="p-6">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-bold text-blue-400 font-poppins">+100</span>
+                        <div className="text-left">
+                          <p className="text-sm text-gray-300 font-inter">Empresas</p>
+                          <p className="text-sm text-gray-300 font-inter">atendidas</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Card 3 - Bottom Right */}
+                  <Card className="absolute bottom-8 right-8 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
+                    <CardContent className="p-6">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-4xl font-bold text-green-400 font-poppins">+40%</span>
+                        <div className="text-left">
+                          <p className="text-sm text-gray-300 font-inter">Aumento médio</p>
+                          <p className="text-sm text-gray-300 font-inter">de produtividade</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Award size={16} className="text-blue-400" />
-                <span>Garantia dupla</span>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="text-lg px-8 py-4 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
-                onClick={handleWhatsAppContact}
-              >
-                Quero liderar meu mercado com IA
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button 
-                size="lg" 
-                className="text-lg px-8 py-4 font-inter border border-gray-400 text-gray-300 hover:bg-gray-700 hover:text-white bg-transparent"
-                onClick={handleWhatsAppContact}
-              >
-                Ver agenda e tirar dúvidas em 15 min
-              </Button>
             </div>
           </div>
         </div>
