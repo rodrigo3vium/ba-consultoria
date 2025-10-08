@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
@@ -109,6 +110,7 @@ const AdminBlog = () => {
                   <TableHead>Título</TableHead>
                   <TableHead>Autor</TableHead>
                   <TableHead>Categoria</TableHead>
+                  <TableHead>Status</TableHead>
                   <TableHead>Data</TableHead>
                   <TableHead className="text-right">Ações</TableHead>
                 </TableRow>
@@ -119,6 +121,11 @@ const AdminBlog = () => {
                     <TableCell className="font-medium">{post.title}</TableCell>
                     <TableCell>{post.author}</TableCell>
                     <TableCell>{post.category}</TableCell>
+                    <TableCell>
+                      <Badge variant={post.status === 'published' ? 'default' : 'secondary'}>
+                        {post.status === 'published' ? 'Publicado' : 'Rascunho'}
+                      </Badge>
+                    </TableCell>
                     <TableCell>{post.date}</TableCell>
                     <TableCell className="text-right space-x-2">
                       <Button

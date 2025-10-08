@@ -20,12 +20,17 @@ import { Loader2, ArrowLeft } from 'lucide-react';
 
 const postSchema = z.object({
   title: z.string().min(1, 'Título é obrigatório').max(200, 'Título muito longo'),
+  slug: z.string()
+    .min(1, 'Slug é obrigatório')
+    .max(200, 'Slug muito longo')
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Slug deve conter apenas letras minúsculas, números e hífens'),
   author: z.string().min(1, 'Autor é obrigatório').max(100, 'Nome muito longo'),
   category: z.string().min(1, 'Categoria é obrigatória'),
   excerpt: z.string().min(1, 'Resumo é obrigatório').max(500, 'Resumo muito longo'),
   content: z.string().min(1, 'Conteúdo é obrigatório'),
   image: z.string().url('URL inválida').optional().or(z.literal('')),
-  date: z.string()
+  date: z.string(),
+  status: z.enum(['draft', 'published']).default('published')
 });
 
 type PostForm = z.infer<typeof postSchema>;
@@ -51,6 +56,7 @@ const AdminEditor = () => {
     resolver: zodResolver(postSchema),
     defaultValues: {
       title: '',
+      slug: '',
       author: '',
       category: '',
       excerpt: '',
@@ -60,9 +66,26 @@ const AdminEditor = () => {
         day: '2-digit', 
         month: 'long', 
         year: 'numeric' 
-      })
+      }),
+      status: 'published'
     }
   });
+
+  // Auto-generate slug from title
+  const watchTitle = form.watch('title');
+  useEffect(() => {
+    if (watchTitle && !id) {
+      const generatedSlug = watchTitle
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+      form.setValue('slug', generatedSlug);
+    }
+  }, [watchTitle, id]);
 
   useEffect(() => {
     if (id) {
@@ -84,12 +107,14 @@ const AdminEditor = () => {
       if (data) {
         form.reset({
           title: data.title,
+          slug: data.slug || '',
           author: data.author,
           category: data.category,
           excerpt: data.excerpt,
           content: data.content,
           image: data.image || '',
-          date: data.date
+          date: data.date,
+          status: (data.status as 'draft' | 'published') || 'published'
         });
       }
     } catch (error: any) {
@@ -104,17 +129,20 @@ const AdminEditor = () => {
     }
   };
 
-  const onSubmit = async (values: PostForm) => {
+  const onSubmit = async (values: PostForm, isDraft = false) => {
     setIsSaving(true);
     try {
+      const status: 'draft' | 'published' = isDraft ? 'draft' : 'published';
       const postData = {
         title: values.title,
+        slug: values.slug,
         author: values.author,
         category: values.category,
         excerpt: values.excerpt,
         content: values.content,
         image: values.image || null,
-        date: values.date
+        date: values.date,
+        status: status
       };
 
       if (id) {
@@ -127,8 +155,10 @@ const AdminEditor = () => {
         if (error) throw error;
 
         toast({
-          title: "Post atualizado!",
-          description: "As alterações foram salvas com sucesso."
+          title: isDraft ? "Rascunho salvo!" : "Post atualizado!",
+          description: isDraft 
+            ? "Seu rascunho foi salvo com sucesso." 
+            : "As alterações foram salvas com sucesso."
         });
       } else {
         // Create new post
@@ -139,18 +169,29 @@ const AdminEditor = () => {
         if (error) throw error;
 
         toast({
-          title: "Post criado!",
-          description: "O novo post foi publicado com sucesso."
+          title: isDraft ? "Rascunho criado!" : "Post criado!",
+          description: isDraft 
+            ? "Seu rascunho foi salvo com sucesso." 
+            : "O novo post foi publicado com sucesso."
         });
       }
 
-      navigate('/admin');
+      navigate('/admin/blog');
     } catch (error: any) {
-      toast({
-        title: "Erro ao salvar post",
-        description: error.message,
-        variant: "destructive"
-      });
+      // Check for unique constraint violation on slug
+      if (error.message?.includes('duplicate key') || error.code === '23505') {
+        toast({
+          title: "Erro ao salvar post",
+          description: "Este slug já está em uso. Por favor, escolha outro.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erro ao salvar post",
+          description: error.message,
+          variant: "destructive"
+        });
+      }
     } finally {
       setIsSaving(false);
     }
@@ -196,7 +237,7 @@ const AdminEditor = () => {
                 </CardHeader>
                 <CardContent>
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <form className="space-y-6">
                       <FormField
                         control={form.control}
                         name="title"
@@ -206,6 +247,26 @@ const AdminEditor = () => {
                             <FormControl>
                               <Input placeholder="Digite o título do post" {...field} />
                             </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="slug"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Slug (URL amigável) *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="meu-artigo-incrivel" 
+                                {...field}
+                              />
+                            </FormControl>
+                            <p className="text-xs text-muted-foreground">
+                              URL: /blog/{field.value || 'slug-do-artigo'}
+                            </p>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -314,14 +375,44 @@ const AdminEditor = () => {
                         >
                           Cancelar
                         </Button>
-                        <Button type="submit" disabled={isSaving}>
+                        <Button
+                          type="button"
+                          variant="secondary"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            const values = form.getValues();
+                            await onSubmit(values, true);
+                          }}
+                          disabled={isSaving}
+                        >
                           {isSaving ? (
                             <>
                               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                               Salvando...
                             </>
                           ) : (
-                            id ? 'Atualizar Post' : 'Publicar Post'
+                            'Salvar Rascunho'
+                          )}
+                        </Button>
+                        <Button 
+                          type="button" 
+                          disabled={isSaving}
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            const values = form.getValues();
+                            const isValid = await form.trigger();
+                            if (isValid) {
+                              await onSubmit(values, false);
+                            }
+                          }}
+                        >
+                          {isSaving ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Salvando...
+                            </>
+                          ) : (
+                            id ? 'Publicar Post' : 'Publicar'
                           )}
                         </Button>
                       </div>
