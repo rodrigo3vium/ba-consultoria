@@ -59,6 +59,41 @@ export type Database = {
         }
         Relationships: []
       }
+      lead_interactions: {
+        Row: {
+          created_at: string
+          descricao: string
+          id: string
+          lead_id: string
+          tipo: Database["public"]["Enums"]["interaction_type"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          descricao: string
+          id?: string
+          lead_id: string
+          tipo: Database["public"]["Enums"]["interaction_type"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          descricao?: string
+          id?: string
+          lead_id?: string
+          tipo?: Database["public"]["Enums"]["interaction_type"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_interactions_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           created_at: string
@@ -66,8 +101,14 @@ export type Database = {
           faturamento: string | null
           id: string
           nome: string
+          observacoes: string | null
+          origem: string | null
           produto: string
+          responsavel_id: string | null
           situacao_profissional: string | null
+          status: Database["public"]["Enums"]["lead_status"]
+          tags: string[] | null
+          ultima_interacao: string | null
           whatsapp: string
         }
         Insert: {
@@ -76,8 +117,14 @@ export type Database = {
           faturamento?: string | null
           id?: string
           nome: string
+          observacoes?: string | null
+          origem?: string | null
           produto: string
+          responsavel_id?: string | null
           situacao_profissional?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          tags?: string[] | null
+          ultima_interacao?: string | null
           whatsapp: string
         }
         Update: {
@@ -86,8 +133,14 @@ export type Database = {
           faturamento?: string | null
           id?: string
           nome?: string
+          observacoes?: string | null
+          origem?: string | null
           produto?: string
+          responsavel_id?: string | null
           situacao_profissional?: string | null
+          status?: Database["public"]["Enums"]["lead_status"]
+          tags?: string[] | null
+          ultima_interacao?: string | null
           whatsapp?: string
         }
         Relationships: []
@@ -128,6 +181,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      interaction_type: "email" | "whatsapp" | "telefone" | "reuniao" | "nota"
+      lead_status:
+        | "novo"
+        | "contatado"
+        | "qualificado"
+        | "convertido"
+        | "perdido"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -256,6 +316,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      interaction_type: ["email", "whatsapp", "telefone", "reuniao", "nota"],
+      lead_status: [
+        "novo",
+        "contatado",
+        "qualificado",
+        "convertido",
+        "perdido",
+      ],
     },
   },
 } as const
