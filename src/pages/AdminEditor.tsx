@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RichTextEditor } from '@/components/RichTextEditor';
-
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useForm } from 'react-hook-form';
@@ -16,7 +15,9 @@ import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Loader2, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowLeft, CalendarDays, Clock, User } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import ReactMarkdown from 'react-markdown';
 
 const postSchema = z.object({
   title: z.string().min(1, 'Título é obrigatório').max(200, 'Título muito longo'),
@@ -205,6 +206,8 @@ const AdminEditor = () => {
     );
   }
 
+  const formValues = form.watch();
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -226,7 +229,7 @@ const AdminEditor = () => {
             </div>
           </div>
 
-          <div className="max-w-5xl">
+          <div className="grid lg:grid-cols-2 gap-6">
             {/* Editor Form */}
             <div className="overflow-y-auto max-h-[calc(100vh-200px)]">
               <Card>
@@ -418,6 +421,72 @@ const AdminEditor = () => {
                   </Form>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* Preview */}
+            <div className="sticky top-8 max-h-[calc(100vh-200px)]">
+              <div className="h-full overflow-y-auto bg-slate-900 p-6 rounded-lg">
+                <div className="max-w-4xl mx-auto">
+                  <div className="mb-4 text-sm text-slate-400 font-semibold">PREVIEW</div>
+                  
+                  <Card className="bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
+                    {formValues.image && (
+                      <div className="aspect-video overflow-hidden rounded-t-lg">
+                        <img 
+                          src={formValues.image} 
+                          alt={formValues.title || "Preview"}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    )}
+                    
+                    <CardContent className="p-8">
+                      <div className="flex flex-wrap items-center gap-4 mb-6">
+                        <div className="flex gap-2">
+                          {formValues.category && (
+                            <Badge variant="secondary" className="text-sm bg-orange-400/20 text-orange-300 border-orange-400/30">
+                              {formValues.category}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="flex items-center text-sm text-slate-400 gap-4">
+                          <div className="flex items-center gap-2">
+                            <CalendarDays className="w-4 h-4" />
+                            {formValues.date || new Date().toLocaleDateString('pt-BR')}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4" />
+                            5 min
+                          </div>
+                          {formValues.author && (
+                            <div className="flex items-center gap-2">
+                              <User className="w-4 h-4" />
+                              {formValues.author}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <h1 className="text-3xl md:text-4xl font-bold mb-8 leading-tight text-white font-poppins">
+                        {formValues.title || "Título do Post"}
+                      </h1>
+
+                      {formValues.content ? (
+                        <div className="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-slate-200 prose-strong:text-white prose-li:text-slate-200 prose-blockquote:text-slate-300 prose-a:text-blue-400 prose-code:text-pink-400 prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700">
+                          <ReactMarkdown>{formValues.content}</ReactMarkdown>
+                        </div>
+                      ) : (
+                        <div className="text-slate-400 italic">
+                          O conteúdo aparecerá aqui conforme você escreve...
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </div>
           </div>
         </div>
