@@ -6,23 +6,59 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { CalendarDays, Clock, User, ArrowLeft, ArrowRight, Share2 } from "lucide-react";
-import { getBlogPostById, getPreviousPost, getNextPost, getRelatedPosts } from "@/lib/blogData";
+import { CalendarDays, Clock, User, ArrowLeft, ArrowRight, Share2, Loader2 } from "lucide-react";
 import { BlogContent } from "@/components/BlogContent";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
-  const postId = parseInt(id || "0");
-  const post = getBlogPostById(postId);
-  const previousPost = getPreviousPost(postId);
-  const nextPost = getNextPost(postId);
-  const relatedPosts = post ? getRelatedPosts(postId, post.category) : [];
+  const { isAdmin } = useAuth();
+  const { toast } = useToast();
+
+  const { data: post, isLoading } = useQuery({
+    queryKey: ['blog-post', id],
+    queryFn: async () => {
+      if (!id) throw new Error('ID não fornecido');
+      
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('id', parseInt(id))
+        .maybeSingle();
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  const { data: allPosts } = useQuery({
+    queryKey: ['all-blog-posts'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  const currentIndex = allPosts?.findIndex(p => p.id.toString() === id) ?? -1;
+  const previousPost = currentIndex > 0 && allPosts ? allPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex >= 0 && allPosts && currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  
+  const relatedPosts = allPosts
+    ?.filter(p => p.id.toString() !== id && p.category === post?.category)
+    .slice(0, 3) || [];
 
   useEffect(() => {
     if (post) {
       document.title = `${post.title} | Blog Nexus`;
       
-      // Update meta description
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.setAttribute('content', post.excerpt);
@@ -34,6 +70,14 @@ const BlogPost = () => {
       }
     }
   }, [post]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-900">
+        <Loader2 className="h-8 w-8 animate-spin text-blue-400" />
+      </div>
+    );
+  }
 
   if (!post) {
     return <Navigate to="/blog" replace />;
@@ -48,6 +92,10 @@ const BlogPost = () => {
       });
     } else {
       navigator.clipboard.writeText(window.location.href);
+      toast({
+        title: "Link copiado!",
+        description: "O link foi copiado para a área de transferência."
+      });
     }
   };
 
@@ -55,7 +103,6 @@ const BlogPost = () => {
     <div className="min-h-screen bg-slate-900">
       <Header />
       
-      {/* Breadcrumb */}
       <section className="pt-24 pb-8 px-4 bg-slate-900">
         <div className="max-w-4xl mx-auto">
           <Breadcrumb>
@@ -80,33 +127,39 @@ const BlogPost = () => {
         </div>
       </section>
 
-      {/* Article Header */}
       <article className="px-4 pb-20 bg-slate-900">
         <div className="max-w-4xl mx-auto">
           <Card className="bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
-            {/* Hero Image */}
-            <div className="aspect-video overflow-hidden rounded-t-lg">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {post.image && (
+              <div className="aspect-video overflow-hidden rounded-t-lg">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
             
             <CardContent className="p-8">
-              {/* Article Meta */}
               <div className="flex flex-wrap items-center gap-4 mb-6">
-                <Badge variant="secondary" className="text-sm bg-orange-400/20 text-orange-300 border-orange-400/30">
-                  {post.category}
-                </Badge>
+                <div className="flex gap-2">
+                  <Badge variant="secondary" className="text-sm bg-orange-400/20 text-orange-300 border-orange-400/30">
+                    {post.category}
+                  </Badge>
+                  {isAdmin && (
+                    <Badge variant="outline" className="text-sm bg-blue-500/10 text-blue-300 border-blue-500/30">
+                      Admin
+                    </Badge>
+                  )}
+                </div>
                 <div className="flex items-center text-sm text-slate-400 gap-4">
                   <div className="flex items-center gap-2">
                     <CalendarDays className="w-4 h-4" />
-                    {new Date(post.date).toLocaleDateString('pt-BR')}
+                    {post.date}
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4" />
-                    {post.readTime}
+                    5 min
                   </div>
                   <div className="flex items-center gap-2">
                     <User className="w-4 h-4" />
@@ -124,17 +177,14 @@ const BlogPost = () => {
                 </Button>
               </div>
 
-              {/* Article Title */}
               <h1 className="text-3xl md:text-4xl font-bold mb-8 leading-tight text-white font-poppins">
                 {post.title}
               </h1>
 
-              {/* Article Content */}
               {post.content && (
                 <BlogContent content={post.content} className="mb-12 prose-invert" />
               )}
 
-              {/* Article Navigation */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-slate-700">
                 {previousPost ? (
                   <Link to={`/blog/${previousPost.id}`}>
@@ -163,20 +213,21 @@ const BlogPost = () => {
             </CardContent>
           </Card>
 
-          {/* Related Posts */}
           {relatedPosts.length > 0 && (
             <section className="mt-16">
               <h2 className="text-2xl font-bold mb-8 text-white font-poppins">Artigos Relacionados</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {relatedPosts.map((relatedPost) => (
                   <Card key={relatedPost.id} className="group hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:bg-slate-800 hover:scale-105 hover:border-blue-500/30">
-                    <div className="aspect-video overflow-hidden rounded-t-lg">
-                      <img 
-                        src={relatedPost.image} 
-                        alt={relatedPost.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
+                    {relatedPost.image && (
+                      <div className="aspect-video overflow-hidden rounded-t-lg">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                     <CardContent className="p-6">
                       <Badge variant="secondary" className="text-xs mb-3 bg-orange-400/20 text-orange-300 border-orange-400/30">
                         {relatedPost.category}
@@ -200,7 +251,6 @@ const BlogPost = () => {
             </section>
           )}
 
-          {/* Back to Blog */}
           <div className="mt-12 text-center">
             <Link to="/blog">
               <Button variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white">

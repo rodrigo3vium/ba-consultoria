@@ -11,6 +11,9 @@ import IAParaNegocios from "./pages/IAParaNegocios";
 import IADoZero from "./pages/IADoZero";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
+import AdminEditor from "./pages/AdminEditor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,10 @@ const App = () => (
           <Route path="/ia-do-zero" element={<IADoZero />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/editor" element={<AdminEditor />} />
+          <Route path="/admin/editor/:id" element={<AdminEditor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
