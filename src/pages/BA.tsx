@@ -209,7 +209,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={lovableLogo} alt="Lovable" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Lovable</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Lovable</h3>
+                <p className="text-xs text-muted-foreground">Desenvolvimento rápido</p>
               </div>
             </div>
 
@@ -217,7 +218,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={n8nLogo} alt="n8n" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">n8n</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">n8n</h3>
+                <p className="text-xs text-muted-foreground">Automação avançada</p>
               </div>
             </div>
 
@@ -225,7 +227,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={chatgptLogo} alt="ChatGPT" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">ChatGPT</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">ChatGPT</h3>
+                <p className="text-xs text-muted-foreground">IA conversacional</p>
               </div>
             </div>
 
@@ -233,7 +236,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={geminiLogo} alt="Gemini" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Gemini</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Gemini</h3>
+                <p className="text-xs text-muted-foreground">IA multimodal</p>
               </div>
             </div>
 
@@ -241,7 +245,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={claudeLogo} alt="Claude" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Claude</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Claude</h3>
+                <p className="text-xs text-muted-foreground">IA analítica</p>
               </div>
             </div>
 
@@ -249,7 +254,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={grokLogo} alt="Grok" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Grok</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Grok</h3>
+                <p className="text-xs text-muted-foreground">IA em tempo real</p>
               </div>
             </div>
 
@@ -257,7 +263,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={makeLogo} alt="Make" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Make</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Make</h3>
+                <p className="text-xs text-muted-foreground">Integração visual</p>
               </div>
             </div>
 
@@ -265,15 +272,8 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
                 <img src={typebotLogo} alt="Typebot" className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground">Typebot</h3>
-              </div>
-            </div>
-
-            {/* Manychat */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <div className="text-3xl mb-3">💭</div>
-                <h3 className="text-lg font-bold text-foreground">Manychat</h3>
+                <h3 className="text-lg font-bold text-foreground mb-2">Typebot</h3>
+                <p className="text-xs text-muted-foreground">Chatbots inteligentes</p>
               </div>
             </div>
           </div>
