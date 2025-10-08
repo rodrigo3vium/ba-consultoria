@@ -356,7 +356,7 @@ const BA = () => {
                   className="flex-shrink-0 w-[380px] bg-black/90 backdrop-blur-sm border border-ba-blue-light/20 rounded-3xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500"
                 >
                   <div className="mb-4">
-                    <span className="inline-block px-4 py-2 bg-foreground text-background rounded-full text-sm font-medium">
+                    <span className="inline-block px-4 py-2 bg-white/10 text-foreground border border-white/20 rounded-full text-sm font-medium">
                       {useCase.category}
                     </span>
                   </div>
