@@ -63,6 +63,7 @@ export default function LeadFormIANegocios({ open, onOpenChange, onSuccess }: Le
         whatsapp: data.whatsapp.trim(),
         faturamento: data.faturamento,
         produto: 'ia-para-negocios',
+        origem: 'Página IA para Negócios',
       });
 
       if (error) throw error;

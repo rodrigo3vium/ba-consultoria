@@ -43,7 +43,8 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
         email: validatedData.email,
         whatsapp: validatedData.whatsapp,
         situacao_profissional: validatedData.situacao_profissional,
-        produto: 'ia-do-zero'
+        produto: 'ia-do-zero',
+        origem: 'Página IA do Zero'
       });
 
       if (error) throw error;
