@@ -545,7 +545,7 @@ const BA = () => {
             <img 
               src={worldMap} 
               alt="Mapa Mundi - BA Consultoria no Mundo" 
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover scale-110"
             />
           </div>
           <div className="text-center mt-12">
