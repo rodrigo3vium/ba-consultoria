@@ -11,6 +11,7 @@ import n8nLogo from "@/assets/n8n-logo.png";
 import typebotLogo from "@/assets/typebot-logo.png";
 import lovableLogo from "@/assets/lovable-logo.png";
 import makeLogo from "@/assets/make-logo.png";
+import worldMap from "@/assets/world-map.jpeg";
 
 const BA = () => {
   const clientLogos = [
@@ -521,23 +522,12 @@ const BA = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             BA Consultoria no Mundo
           </h2>
-          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-black/90 backdrop-blur-sm p-8">
-            <div className="flex items-center justify-center h-full">
-              <svg viewBox="0 0 1000 500" className="w-full h-full opacity-80">
-                {/* Simplified world map SVG */}
-                <path
-                  d="M150,150 L200,120 L250,130 L280,110 L320,120 L350,100 L380,110 L420,90 L450,100 L480,120 L500,110 L520,130 L550,120 L580,140 L600,130 L620,150 L640,140 L660,160 L680,150 L700,170 L720,160 L740,180 L760,170 L780,190 L800,180 L820,200 L840,190 L850,210 M150,200 L180,220 L200,210 L220,230 L240,220 L260,240 L280,230 L300,250 L320,240 L340,260 L360,250 L380,270 L400,260 L420,280 L440,270 L460,290 L480,280 L500,300 L520,290 L540,310 L560,300 L580,320 L600,310 L620,330 L640,320 L660,340 L680,330 L700,350"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-ba-blue-light"
-                />
-                {/* Location markers */}
-                <circle cx="280" cy="180" r="8" className="fill-ba-orange animate-pulse" />
-                <circle cx="500" cy="200" r="8" className="fill-ba-orange animate-pulse" style={{ animationDelay: '0.5s' }} />
-                <circle cx="720" cy="220" r="8" className="fill-ba-orange animate-pulse" style={{ animationDelay: '1s' }} />
-              </svg>
-            </div>
+          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-black/90 backdrop-blur-sm">
+            <img 
+              src={worldMap} 
+              alt="Mapa Mundi - BA Consultoria no Mundo" 
+              className="w-full h-full object-contain"
+            />
           </div>
           <div className="text-center mt-12">
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
