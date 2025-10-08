@@ -42,7 +42,7 @@ const courses = [
     ],
     buttonText: "Ver Programa Completo",
     buttonVariant: "accent" as const,
-    link: "/ia-para-negocios"
+    link: "/educacao/ia-para-negocios"
   },
   {
     title: "Treinamentos para Empresas",
@@ -177,7 +177,7 @@ const Educacao = () => {
                       disabled={course.status === 'coming-soon'}
                       onClick={() => {
                         if (course.title === "IA do Zero") {
-                          window.location.href = "/ia-do-zero";
+                          window.location.href = "/educacao/ia-do-zero";
                         } else if (course.link) {
                           window.location.href = course.link;
                         } else if (course.status === 'custom') {
