@@ -3,6 +3,11 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Code, GraduationCap, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import chatgptLogo from "@/assets/chatgpt-logo.png";
+import grokLogo from "@/assets/grok-logo.png";
+import geminiLogo from "@/assets/gemini-logo.png";
+import claudeLogo from "@/assets/claude-logo.png";
+import n8nLogo from "@/assets/n8n-logo.png";
 
 const BA = () => {
   const clientLogos = [
@@ -208,7 +213,7 @@ const BA = () => {
             {/* n8n */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">🔗</div>
+                <img src={n8nLogo} alt="n8n" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">n8n</h3>
               </div>
             </div>
@@ -216,7 +221,7 @@ const BA = () => {
             {/* ChatGPT */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">🤖</div>
+                <img src={chatgptLogo} alt="ChatGPT" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">ChatGPT</h3>
               </div>
             </div>
@@ -224,7 +229,7 @@ const BA = () => {
             {/* Gemini */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">✨</div>
+                <img src={geminiLogo} alt="Gemini" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Gemini</h3>
               </div>
             </div>
@@ -232,7 +237,7 @@ const BA = () => {
             {/* Claude */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">🧠</div>
+                <img src={claudeLogo} alt="Claude" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Claude</h3>
               </div>
             </div>
@@ -240,7 +245,7 @@ const BA = () => {
             {/* Grok */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">🚀</div>
+                <img src={grokLogo} alt="Grok" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Grok</h3>
               </div>
             </div>
