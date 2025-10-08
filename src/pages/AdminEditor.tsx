@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RichTextEditor } from '@/components/RichTextEditor';
+import { BlogPostPreview } from '@/components/BlogPostPreview';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useForm } from 'react-hook-form';
@@ -163,166 +164,186 @@ const AdminEditor = () => {
     );
   }
 
+  const formValues = form.watch();
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       
-      <main className="flex-1 container mx-auto py-12 px-4">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="flex items-center gap-4">
-            <Button variant="outline" onClick={() => navigate('/admin')}>
+      <main className="flex-1 px-4 py-8">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="flex items-center gap-4 mb-6">
+            <Button variant="outline" onClick={() => navigate('/admin/blog')}>
               <ArrowLeft className="h-4 w-4 mr-2" />
               Voltar
             </Button>
             <div>
-              <h1 className="text-4xl font-bold text-foreground">
+              <h1 className="text-3xl font-bold text-foreground">
                 {id ? 'Editar Post' : 'Novo Post'}
               </h1>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 {id ? 'Faça as alterações necessárias no post' : 'Crie um novo post para o blog'}
               </p>
             </div>
           </div>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Informações do Post</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <FormField
-                    control={form.control}
-                    name="title"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Título *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Digite o título do post" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="author"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Autor *</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Nome do autor" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="category"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Categoria *</FormLabel>
-                          <Select onValueChange={field.onChange} value={field.value}>
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Editor Form */}
+            <div className="overflow-y-auto max-h-[calc(100vh-200px)]">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Informações do Post</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                      <FormField
+                        control={form.control}
+                        name="title"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Título *</FormLabel>
                             <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Selecione uma categoria" />
-                              </SelectTrigger>
+                              <Input placeholder="Digite o título do post" {...field} />
                             </FormControl>
-                            <SelectContent>
-                              {categories.map((cat) => (
-                                <SelectItem key={cat} value={cat}>
-                                  {cat}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                  <FormField
-                    control={form.control}
-                    name="image"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>URL da Imagem (opcional)</FormLabel>
-                        <FormControl>
-                          <Input 
-                            placeholder="https://exemplo.com/imagem.jpg" 
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="author"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Autor *</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Nome do autor" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
 
-                  <FormField
-                    control={form.control}
-                    name="excerpt"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Resumo *</FormLabel>
-                        <FormControl>
-                          <Textarea 
-                            placeholder="Breve descrição do post (aparece na listagem)" 
-                            className="min-h-[100px]"
-                            {...field} 
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                        <FormField
+                          control={form.control}
+                          name="category"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Categoria *</FormLabel>
+                              <Select onValueChange={field.onChange} value={field.value}>
+                                <FormControl>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Selecione uma categoria" />
+                                  </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                  {categories.map((cat) => (
+                                    <SelectItem key={cat} value={cat}>
+                                      {cat}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                  <FormField
-                    control={form.control}
-                    name="content"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Conteúdo *</FormLabel>
-                        <FormControl>
-                          <RichTextEditor
-                            value={field.value}
-                            onChange={field.onChange}
-                            placeholder="Escreva o conteúdo completo do post aqui..."
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                      <FormField
+                        control={form.control}
+                        name="image"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>URL da Imagem (opcional)</FormLabel>
+                            <FormControl>
+                              <Input 
+                                placeholder="https://exemplo.com/imagem.jpg" 
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                  <div className="flex gap-4 justify-end pt-4">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => navigate('/admin')}
-                      disabled={isSaving}
-                    >
-                      Cancelar
-                    </Button>
-                    <Button type="submit" disabled={isSaving}>
-                      {isSaving ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Salvando...
-                        </>
-                      ) : (
-                        id ? 'Atualizar Post' : 'Publicar Post'
-                      )}
-                    </Button>
-                  </div>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
+                      <FormField
+                        control={form.control}
+                        name="excerpt"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Resumo *</FormLabel>
+                            <FormControl>
+                              <Textarea 
+                                placeholder="Breve descrição do post (aparece na listagem)" 
+                                className="min-h-[100px]"
+                                {...field} 
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="content"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Conteúdo *</FormLabel>
+                            <FormControl>
+                              <RichTextEditor
+                                value={field.value}
+                                onChange={field.onChange}
+                                placeholder="Escreva o conteúdo completo do post aqui..."
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <div className="flex gap-4 justify-end pt-4 border-t">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => navigate('/admin/blog')}
+                          disabled={isSaving}
+                        >
+                          Cancelar
+                        </Button>
+                        <Button type="submit" disabled={isSaving}>
+                          {isSaving ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Salvando...
+                            </>
+                          ) : (
+                            id ? 'Atualizar Post' : 'Publicar Post'
+                          )}
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Preview */}
+            <div className="sticky top-8 max-h-[calc(100vh-200px)]">
+              <BlogPostPreview
+                title={formValues.title}
+                author={formValues.author}
+                category={formValues.category}
+                excerpt={formValues.excerpt}
+                content={formValues.content}
+                image={formValues.image}
+                date={formValues.date}
+              />
+            </div>
+          </div>
         </div>
       </main>
       
