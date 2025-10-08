@@ -27,66 +27,67 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm border-b border-slate-700">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center space-x-3 hover:opacity-80 transition-opacity">
-              <img 
-                src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png" 
-                alt="BA Consultoria Logo" 
-                className="h-10 w-auto"
-              />
-              <h1 className="text-2xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent">
-                BA Consultoria
-              </h1>
-            </Link>
-          </div>
+    <header className="fixed top-6 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-glow">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0 flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <img 
+              src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png" 
+              alt="BA Consultoria Logo" 
+              className="h-8 w-auto"
+            />
+            <h1 className="text-xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent hidden sm:block">
+              BA Consultoria
+            </h1>
+          </Link>
           
-          <nav className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#sobre" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
+          {/* Navigation - Centered pill */}
+          <nav className="hidden lg:block">
+            <div className="flex items-center space-x-1 bg-black/60 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2">
+              <a href="#sobre" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Sobre
               </a>
-              <a href="#solucoes" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
+              <a href="#solucoes" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Soluções
               </a>
-              <a href="#casos" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
+              <a href="#casos" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Casos de Uso
               </a>
-              <Link to="/blog" className="text-gray-300 hover:text-blue-400 transition-colors font-inter">
+              <Link to="/blog" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Blog
               </Link>
             </div>
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center gap-3">
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="relative h-9 w-9 rounded-full">
+                  <Button variant="ghost" size="sm" className="relative h-9 w-9 rounded-full hover:bg-white/10">
                     <Avatar className="h-9 w-9">
-                      <AvatarFallback className="bg-blue-500 text-white">{getUserInitials()}</AvatarFallback>
+                      <AvatarFallback className="bg-gradient-primary text-background">{getUserInitials()}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="bg-slate-800 border-slate-700">
-                  <DropdownMenuLabel className="text-slate-200">Minha Conta</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-slate-700" />
+                <DropdownMenuContent align="end" className="bg-black/90 backdrop-blur-xl border-white/10">
+                  <DropdownMenuLabel className="text-foreground">Minha Conta</DropdownMenuLabel>
+                  <DropdownMenuSeparator className="bg-white/10" />
                   {isAdmin && (
                     <>
-                      <DropdownMenuItem asChild className="text-slate-300 focus:bg-slate-700 focus:text-white cursor-pointer">
+                      <DropdownMenuItem asChild className="text-muted-foreground focus:bg-white/10 focus:text-foreground cursor-pointer">
                         <Link to="/admin">
                           <Shield className="mr-2 h-4 w-4" />
                           Painel Admin
                         </Link>
                       </DropdownMenuItem>
-                      <DropdownMenuSeparator className="bg-slate-700" />
+                      <DropdownMenuSeparator className="bg-white/10" />
                     </>
                   )}
                   <DropdownMenuItem 
                     onClick={handleLogout} 
-                    className="text-slate-300 focus:bg-slate-700 focus:text-white cursor-pointer"
+                    className="text-muted-foreground focus:bg-white/10 focus:text-foreground cursor-pointer"
                   >
                     <LogOut className="mr-2 h-4 w-4" />
                     Sair
@@ -95,7 +96,7 @@ const Header = () => {
               </DropdownMenu>
             ) : (
               <Link to="/auth">
-                <Button variant="outline" size="sm" className="border-slate-600 text-slate-300 hover:bg-slate-700">
+                <Button variant="ghost" size="sm" className="rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground">
                   <User className="mr-2 h-4 w-4" />
                   Entrar
                 </Button>
@@ -103,9 +104,8 @@ const Header = () => {
             )}
             
             <Button 
-              variant="default" 
-              size="lg" 
-              className="font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
+              size="default"
+              className="font-inter bg-gradient-primary hover:opacity-90 text-background rounded-full px-6 shadow-glow transition-all"
             >
               Fale Conosco
             </Button>
@@ -115,7 +115,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-blue-400 p-2"
+              className="text-muted-foreground hover:text-foreground p-2 rounded-full hover:bg-white/10 transition-colors"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -124,32 +124,32 @@ const Header = () => {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t border-slate-700">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="mt-4 md:hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden">
+            <div className="px-4 pt-4 pb-4 space-y-2">
               <a 
                 href="#sobre" 
-                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Sobre
               </a>
               <a 
                 href="#solucoes" 
-                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Soluções
               </a>
               <a 
                 href="#casos" 
-                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Casos de Uso
               </a>
               <Link 
                 to="/blog" 
-                className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Blog
@@ -157,38 +157,35 @@ const Header = () => {
               {user && isAdmin && (
                 <Link 
                   to="/admin" 
-                  className="block px-3 py-2 text-gray-300 hover:text-blue-400 transition-colors font-inter"
+                  className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Painel Admin
                 </Link>
               )}
-              <div className="px-3 py-2">
+              <div className="pt-2 space-y-2">
                 {user ? (
                   <Button 
                     onClick={handleLogout}
                     variant="outline" 
-                    className="w-full font-inter border-slate-600 text-slate-300 hover:bg-slate-700"
+                    className="w-full font-inter border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-full"
                   >
                     <LogOut className="mr-2 h-4 w-4" />
                     Sair
                   </Button>
                 ) : (
-                  <Link to="/auth">
+                  <Link to="/auth" className="block">
                     <Button 
                       variant="outline" 
-                      className="w-full font-inter border-slate-600 text-slate-300 hover:bg-slate-700"
+                      className="w-full font-inter border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-full"
                     >
                       <User className="mr-2 h-4 w-4" />
                       Entrar
                     </Button>
                   </Link>
                 )}
-              </div>
-              <div className="px-3 py-2">
                 <Button 
-                  variant="default" 
-                  className="w-full font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
+                  className="w-full font-inter bg-gradient-primary hover:opacity-90 text-background rounded-full shadow-glow"
                 >
                   Fale Conosco
                 </Button>
