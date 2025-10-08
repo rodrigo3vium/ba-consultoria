@@ -10,7 +10,7 @@ export const useRequireAuth = (requireAdmin: boolean = false) => {
     if (!loading) {
       if (!user) {
         navigate('/auth');
-      } else if (requireAdmin && !isAdmin) {
+      } else if (requireAdmin && isAdmin === false) {
         navigate('/');
       }
     }
