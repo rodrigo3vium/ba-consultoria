@@ -142,6 +142,7 @@ All colors MUST be HSL.
   }
 }
 
+
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -151,6 +152,19 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes scroll-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-scroll-slow {
+  animation: scroll-slow 30s linear infinite;
 }
