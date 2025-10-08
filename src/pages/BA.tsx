@@ -226,7 +226,7 @@ const BA = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             Líderes que Confiaram em Nós
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Diego Barreto */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
