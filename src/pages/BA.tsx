@@ -63,6 +63,78 @@ const BA = () => {
         </div>
       </section>
 
+      {/* About/Who We Are Section */}
+      <section className="py-20 px-4 relative bg-black border-y border-ba-blue-light/10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+                Benites Albuquerque
+              </h2>
+              <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
+                TRANSFORMANDO NEGÓCIOS COM ESTRATÉGIA E INOVAÇÃO
+              </p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Fundador da BA Consultoria • Especialista em Growth e IA para Negócios • Mentor de Empreendedores
+                </p>
+                <p>
+                  Com mais de uma década de experiência, a BA já ajudou centenas de empresas a alcançarem crescimento sustentável através de estratégias personalizadas, implementação de tecnologia e desenvolvimento de equipes de alta performance.
+                </p>
+              </div>
+              
+              {/* Badges/Icons */}
+              <div className="flex gap-8 pt-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
+                    <Code className="w-6 h-6 text-background" />
+                  </div>
+                  <span className="text-xs text-muted-foreground text-center">
+                    Tecnologia<br />Avançada
+                  </span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
+                    <GraduationCap className="w-6 h-6 text-background" />
+                  </div>
+                  <span className="text-xs text-muted-foreground text-center">
+                    Educação<br />Executiva
+                  </span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6 text-background" />
+                  </div>
+                  <span className="text-xs text-muted-foreground text-center">
+                    Consultoria<br />Estratégica
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image Placeholder */}
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center space-y-4 p-8">
+                    <div className="w-24 h-24 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                      <svg className="w-12 h-12 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <p className="text-muted-foreground text-sm">Foto do fundador</p>
+                  </div>
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -z-10 top-8 -right-8 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+              <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-ba-orange/10 rounded-full blur-3xl"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pillars Section */}
       <section className="py-20 px-4 relative bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
         <div className="container mx-auto max-w-6xl">
