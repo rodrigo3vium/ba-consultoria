@@ -30,7 +30,7 @@ const BA = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-ba-dark via-ba-gray-dark to-background">
+    <div className="min-h-screen bg-black">
       {/* Pro-Life Banner */}
       <div className="bg-ba-blue text-white py-3 px-4 text-center font-medium text-sm">
         Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
@@ -39,11 +39,11 @@ const BA = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-primary opacity-10"></div>
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl"></div>
         </div>
         
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -64,7 +64,7 @@ const BA = () => {
       </section>
 
       {/* Pillars Section */}
-      <section className="py-20 px-4 relative">
+      <section className="py-20 px-4 relative bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             Nossos Pilares
@@ -73,7 +73,7 @@ const BA = () => {
             {pillars.map((pillar, index) => (
               <div
                 key={index}
-                className="group relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 hover:shadow-glow transition-all duration-500 hover:-translate-y-2"
+                className="group relative bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500"></div>
@@ -91,7 +91,7 @@ const BA = () => {
       </section>
 
       {/* Clients Section */}
-      <section className="py-20 px-4 bg-ba-gray-dark/30">
+      <section className="py-20 px-4 bg-black border-y border-ba-blue-light/10">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             Nossos Clientes
@@ -116,13 +116,13 @@ const BA = () => {
       </section>
 
       {/* World Map Section */}
-      <section className="py-20 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/5 to-transparent"></div>
+      <section className="py-20 px-4 relative overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             BA Consultoria no Mundo
           </h2>
-          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-border/50 bg-card/30 backdrop-blur-sm p-8">
+          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-black/90 backdrop-blur-sm p-8">
             <div className="flex items-center justify-center h-full">
               <svg viewBox="0 0 1000 500" className="w-full h-full opacity-80">
                 {/* Simplified world map SVG */}
