@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Code, GraduationCap, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const BA = () => {
   const clientLogos = [
@@ -158,7 +159,18 @@ const BA = () => {
                     <pillar.icon className="w-8 h-8 text-background" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-foreground">{pillar.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{pillar.description}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-6">{pillar.description}</p>
+                  <Link 
+                    to={`/${pillar.title.toLowerCase()}`}
+                    className="inline-block"
+                  >
+                    <Button 
+                      variant="outline"
+                      className="border-ba-blue-light/40 text-foreground hover:bg-ba-blue-light/10 rounded-full"
+                    >
+                      Saiba Mais
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}
