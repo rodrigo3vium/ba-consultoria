@@ -8,6 +8,9 @@ import grokLogo from "@/assets/grok-logo.png";
 import geminiLogo from "@/assets/gemini-logo.png";
 import claudeLogo from "@/assets/claude-logo.png";
 import n8nLogo from "@/assets/n8n-logo.png";
+import typebotLogo from "@/assets/typebot-logo.png";
+import lovableLogo from "@/assets/lovable-logo.png";
+import makeLogo from "@/assets/make-logo.png";
 
 const BA = () => {
   const clientLogos = [
@@ -205,7 +208,7 @@ const BA = () => {
             {/* Lovable */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">💜</div>
+                <img src={lovableLogo} alt="Lovable" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Lovable</h3>
               </div>
             </div>
@@ -253,7 +256,7 @@ const BA = () => {
             {/* Make */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">⚙️</div>
+                <img src={makeLogo} alt="Make" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Make</h3>
               </div>
             </div>
@@ -261,7 +264,7 @@ const BA = () => {
             {/* Typebot */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <div className="text-3xl mb-3">💬</div>
+                <img src={typebotLogo} alt="Typebot" className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground">Typebot</h3>
               </div>
             </div>
