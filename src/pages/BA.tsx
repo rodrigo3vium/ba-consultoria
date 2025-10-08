@@ -12,13 +12,29 @@ import typebotLogo from "@/assets/typebot-logo.png";
 import lovableLogo from "@/assets/lovable-logo.png";
 import makeLogo from "@/assets/make-logo.png";
 import worldMap from "@/assets/world-map.jpeg";
+import hurbana from "@/assets/clients/hurbana.png";
+import client2 from "@/assets/clients/client-2.png";
+import vocical from "@/assets/clients/vocical.png";
+import client4 from "@/assets/clients/client-4.png";
+import pincelos from "@/assets/clients/pincelos.png";
+import ftx from "@/assets/clients/ftx.png";
+import mjr from "@/assets/clients/mjr.png";
+import cfBuffet from "@/assets/clients/cf-buffet.png";
+import dionello from "@/assets/clients/dionello.png";
+import client10 from "@/assets/clients/client-10.png";
 
 const BA = () => {
   const clientLogos = [
-    '/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png',
-    '/lovable-uploads/5bb241ec-4824-4db5-813c-2e1292f72128.png',
-    '/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png',
-    '/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png',
+    hurbana,
+    client2,
+    vocical,
+    client4,
+    pincelos,
+    ftx,
+    mjr,
+    cfBuffet,
+    dionello,
+    client10,
   ];
 
   const pillars = [
@@ -407,13 +423,16 @@ const BA = () => {
               {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300"
+                  className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300 relative"
                 >
-                  <img
-                    src={logo}
-                    alt={`Cliente ${index + 1}`}
-                    className="h-16 md:h-24 w-auto object-contain opacity-70 hover:opacity-100"
-                  />
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-black/40 rounded-lg"></div>
+                    <img
+                      src={logo}
+                      alt={`Cliente ${index + 1}`}
+                      className="h-16 md:h-24 w-auto object-contain opacity-70 hover:opacity-100 relative z-10"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
