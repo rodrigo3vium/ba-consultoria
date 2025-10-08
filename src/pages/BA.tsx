@@ -32,7 +32,7 @@ const BA = () => {
   return (
     <div className="min-h-screen bg-black">
       {/* Pro-Life Banner */}
-      <div className="bg-ba-blue text-white py-3 px-4 text-center font-medium text-sm">
+      <div className="bg-ba-blue-medium text-white py-3 px-4 text-center font-medium text-sm">
         Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
       </div>
 
