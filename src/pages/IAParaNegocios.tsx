@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -34,9 +34,16 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import LeadFormIANegocios from '@/components/LeadFormIANegocios';
 
 const IAParaNegocios = () => {
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+
   const handleWhatsAppContact = () => {
+    setIsLeadFormOpen(true);
+  };
+
+  const handleLeadSuccess = () => {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre o programa IA para Negócios.");
     window.open(`https://wa.me/5511999718595?text=${message}`, '_blank');
   };
@@ -862,6 +869,12 @@ const IAParaNegocios = () => {
       </section>
 
       <Footer />
+      
+      <LeadFormIANegocios 
+        open={isLeadFormOpen} 
+        onOpenChange={setIsLeadFormOpen}
+        onSuccess={handleLeadSuccess}
+      />
     </div>
   );
 };

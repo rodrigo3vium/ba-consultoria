@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -5,9 +6,16 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LeadFormIADoZero from "@/components/LeadFormIADoZero";
 
 const IADoZero = () => {
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+
   const handleWhatsAppContact = () => {
+    setIsLeadFormOpen(true);
+  };
+
+  const handleLeadSuccess = () => {
     window.open('https://pay.hotmart.com/L94763179U', '_blank');
   };
 
@@ -504,6 +512,12 @@ const IADoZero = () => {
       </section>
 
       <Footer />
+      
+      <LeadFormIADoZero 
+        open={isLeadFormOpen} 
+        onOpenChange={setIsLeadFormOpen}
+        onSuccess={handleLeadSuccess}
+      />
     </div>
   );
 };
