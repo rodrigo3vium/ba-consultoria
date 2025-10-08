@@ -166,6 +166,91 @@ const BA = () => {
         </div>
       </section>
 
+      {/* Technologies Section */}
+      <section className="py-20 px-4 relative bg-black border-y border-ba-blue-light/10">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
+            Tecnologias
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
+            Utilizamos as mais avançadas ferramentas e plataformas para entregar soluções de ponta
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {/* Lovable */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">💜</div>
+                <h3 className="text-lg font-bold text-foreground">Lovable</h3>
+              </div>
+            </div>
+
+            {/* n8n */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">🔗</div>
+                <h3 className="text-lg font-bold text-foreground">n8n</h3>
+              </div>
+            </div>
+
+            {/* ChatGPT */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">🤖</div>
+                <h3 className="text-lg font-bold text-foreground">ChatGPT</h3>
+              </div>
+            </div>
+
+            {/* Gemini */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">✨</div>
+                <h3 className="text-lg font-bold text-foreground">Gemini</h3>
+              </div>
+            </div>
+
+            {/* Claude */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">🧠</div>
+                <h3 className="text-lg font-bold text-foreground">Claude</h3>
+              </div>
+            </div>
+
+            {/* Grok */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">🚀</div>
+                <h3 className="text-lg font-bold text-foreground">Grok</h3>
+              </div>
+            </div>
+
+            {/* Make */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">⚙️</div>
+                <h3 className="text-lg font-bold text-foreground">Make</h3>
+              </div>
+            </div>
+
+            {/* Typebot */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">💬</div>
+                <h3 className="text-lg font-bold text-foreground">Typebot</h3>
+              </div>
+            </div>
+
+            {/* Manychat */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
+              <div className="text-center">
+                <div className="text-3xl mb-3">💭</div>
+                <h3 className="text-lg font-bold text-foreground">Manychat</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Clients Section */}
       <section className="py-20 px-4 bg-black border-y border-ba-blue-light/10">
         <div className="container mx-auto max-w-6xl">
