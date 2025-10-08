@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, Clock, User, Share2 } from "lucide-react";
-import { BlogContent } from "@/components/BlogContent";
+import { cn } from "@/lib/utils";
 
 interface BlogPostPreviewProps {
   title: string;
@@ -83,7 +83,16 @@ export const BlogPostPreview = ({
             </h1>
 
             {content ? (
-              <BlogContent content={content} className="mb-12 prose-invert" />
+              <div 
+                className={cn(
+                  "prose prose-lg max-w-none prose-invert",
+                  "prose-headings:text-white prose-p:text-slate-200 prose-strong:text-white",
+                  "prose-li:text-slate-200 prose-blockquote:text-slate-300",
+                  "prose-a:text-blue-400 prose-code:text-pink-400",
+                  "prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700"
+                )}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
             ) : (
               <div className="text-slate-400 italic">
                 O conteúdo aparecerá aqui conforme você escreve...
