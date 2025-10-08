@@ -391,6 +391,100 @@ const BA = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 px-4 bg-black border-t border-ba-blue-light/10">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
+            Perguntas Frequentes
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            Tire suas dúvidas sobre nossos serviços e soluções
+          </p>
+          
+          <div className="space-y-4">
+            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Como a IA pode ajudar meu negócio?
+                  </h3>
+                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-muted-foreground">
+                  <p>A IA pode automatizar processos repetitivos, analisar grandes volumes de dados para insights estratégicos, melhorar o atendimento ao cliente e otimizar operações. Implementamos soluções personalizadas que se adaptam às necessidades específicas do seu negócio.</p>
+                </div>
+              </details>
+            </div>
+
+            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Quanto tempo leva para implementar uma solução?
+                  </h3>
+                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-muted-foreground">
+                  <p>O tempo de implementação varia conforme a complexidade do projeto. Soluções simples podem estar operacionais em 2-4 semanas, enquanto projetos mais robustos podem levar de 2 a 3 meses. Trabalhamos com metodologias ágeis para entregar valor rapidamente.</p>
+                </div>
+              </details>
+            </div>
+
+            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Vocês oferecem suporte após a implementação?
+                  </h3>
+                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-muted-foreground">
+                  <p>Sim! Oferecemos suporte contínuo com diferentes planos de manutenção. Isso inclui monitoramento, atualizações, treinamento de equipe e suporte técnico dedicado para garantir que sua solução continue performando no máximo.</p>
+                </div>
+              </details>
+            </div>
+
+            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Qual o investimento necessário?
+                  </h3>
+                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-muted-foreground">
+                  <p>O investimento varia conforme o escopo e complexidade do projeto. Oferecemos consultoria gratuita para entender suas necessidades e apresentar uma proposta personalizada com melhor custo-benefício. Entre em contato para um orçamento sem compromisso.</p>
+                </div>
+              </details>
+            </div>
+
+            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Preciso ter conhecimento técnico para usar as soluções?
+                  </h3>
+                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-muted-foreground">
+                  <p>Não! Desenvolvemos soluções com interfaces intuitivas e oferecemos treinamento completo para sua equipe. Nosso objetivo é tornar a tecnologia acessível e fácil de usar, independentemente do nível de conhecimento técnico.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* World Map Section */}
       <section className="py-20 px-4 relative overflow-hidden bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
