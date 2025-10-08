@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { CalendarDays, Clock, User, ArrowLeft, ArrowRight, Share2, Loader2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -183,7 +184,7 @@ const BlogPost = () => {
 
               {post.content && (
                 <div className="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-slate-200 prose-strong:text-white prose-li:text-slate-200 prose-blockquote:text-slate-300 prose-a:text-blue-400 prose-code:text-pink-400 prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700 mb-12">
-                  <ReactMarkdown>{post.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
                 </div>
               )}
 

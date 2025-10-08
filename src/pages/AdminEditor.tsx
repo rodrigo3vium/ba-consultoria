@@ -18,6 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2, ArrowLeft, CalendarDays, Clock, User } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const postSchema = z.object({
   title: z.string().min(1, 'Título é obrigatório').max(200, 'Título muito longo'),
@@ -476,7 +477,7 @@ const AdminEditor = () => {
 
                       {formValues.content ? (
                         <div className="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-slate-200 prose-strong:text-white prose-li:text-slate-200 prose-blockquote:text-slate-300 prose-a:text-blue-400 prose-code:text-pink-400 prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700">
-                          <ReactMarkdown>{formValues.content}</ReactMarkdown>
+                          <ReactMarkdown remarkPlugins={[remarkGfm]}>{formValues.content}</ReactMarkdown>
                         </div>
                       ) : (
                         <div className="text-slate-400 italic">
