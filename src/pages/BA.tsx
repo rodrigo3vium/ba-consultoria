@@ -251,6 +251,121 @@ const BA = () => {
         </div>
       </section>
 
+      {/* Use Cases Carousel Section */}
+      <section className="py-20 px-4 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
+            Cases de Uso
+          </h2>
+          <p className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
+            Soluções comprovadas que transformam negócios
+          </p>
+          
+          <div className="relative">
+            <div className="flex animate-scroll-slow gap-6">
+              {[
+                {
+                  title: "Prospecção de obras orientada por IA",
+                  category: "Captação de leads",
+                  description: "Selecionamos, entre 20.000 obras em bases oficiais, as 100 com maior probabilidade de contrato para sua construtora.",
+                  metric: "+2x obras qualificadas"
+                },
+                {
+                  title: "Automação de Notas Fiscais",
+                  category: "Operacional",
+                  description: "A automação de processamento de Notas Fiscais integrado com o seu ERP poupa horas de trabalho manual e permite foco em tarefas que agregam valor.",
+                  metric: "+30% eficiência"
+                },
+                {
+                  title: "Atendimento Inteligente 24/7",
+                  category: "Customer Success",
+                  description: "Sistema de chatbot com IA que resolve dúvidas, agenda reuniões e qualifica leads automaticamente, mesmo fora do horário comercial.",
+                  metric: "+40% conversão"
+                },
+                {
+                  title: "Análise Preditiva de Vendas",
+                  category: "Vendas",
+                  description: "Machine learning para prever tendências de vendas, identificar oportunidades e otimizar estratégias comerciais com base em dados históricos.",
+                  metric: "+25% receita"
+                },
+                {
+                  title: "Gestão de Campanhas com IA",
+                  category: "Marketing",
+                  description: "Otimização automática de campanhas publicitárias usando IA para maximizar ROI e alcançar o público certo no momento ideal.",
+                  metric: "-35% custo por lead"
+                },
+                {
+                  title: "Onboarding Automatizado",
+                  category: "RH",
+                  description: "Processo completo de integração de novos colaboradores automatizado, desde documentação até treinamentos personalizados por IA.",
+                  metric: "50% mais rápido"
+                }
+              ].concat([
+                {
+                  title: "Prospecção de obras orientada por IA",
+                  category: "Captação de leads",
+                  description: "Selecionamos, entre 20.000 obras em bases oficiais, as 100 com maior probabilidade de contrato para sua construtora.",
+                  metric: "+2x obras qualificadas"
+                },
+                {
+                  title: "Automação de Notas Fiscais",
+                  category: "Operacional",
+                  description: "A automação de processamento de Notas Fiscais integrado com o seu ERP poupa horas de trabalho manual e permite foco em tarefas que agregam valor.",
+                  metric: "+30% eficiência"
+                },
+                {
+                  title: "Atendimento Inteligente 24/7",
+                  category: "Customer Success",
+                  description: "Sistema de chatbot com IA que resolve dúvidas, agenda reuniões e qualifica leads automaticamente, mesmo fora do horário comercial.",
+                  metric: "+40% conversão"
+                },
+                {
+                  title: "Análise Preditiva de Vendas",
+                  category: "Vendas",
+                  description: "Machine learning para prever tendências de vendas, identificar oportunidades e otimizar estratégias comerciais com base em dados históricos.",
+                  metric: "+25% receita"
+                },
+                {
+                  title: "Gestão de Campanhas com IA",
+                  category: "Marketing",
+                  description: "Otimização automática de campanhas publicitárias usando IA para maximizar ROI e alcançar o público certo no momento ideal.",
+                  metric: "-35% custo por lead"
+                },
+                {
+                  title: "Onboarding Automatizado",
+                  category: "RH",
+                  description: "Processo completo de integração de novos colaboradores automatizado, desde documentação até treinamentos personalizados por IA.",
+                  metric: "50% mais rápido"
+                }
+              ]).map((useCase, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[380px] bg-black/90 backdrop-blur-sm border border-ba-blue-light/20 rounded-3xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500"
+                >
+                  <div className="mb-4">
+                    <span className="inline-block px-4 py-2 bg-foreground text-background rounded-full text-sm font-medium">
+                      {useCase.category}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-foreground min-h-[64px]">
+                    {useCase.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6 min-h-[96px]">
+                    {useCase.description}
+                  </p>
+                  <div className="pt-4 border-t border-ba-blue-light/20">
+                    <p className="text-ba-orange font-bold text-lg">
+                      {useCase.metric}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Clients Section */}
       <section className="py-20 px-4 bg-black border-y border-ba-blue-light/10">
         <div className="container mx-auto max-w-6xl">
@@ -389,6 +504,20 @@ const BA = () => {
           animation: scroll 30s linear infinite;
         }
         .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+        @keyframes scroll-slow {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-scroll-slow {
+          animation: scroll-slow 60s linear infinite;
+        }
+        .animate-scroll-slow:hover {
           animation-play-state: paused;
         }
       `}</style>
