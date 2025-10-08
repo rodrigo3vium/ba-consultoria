@@ -148,6 +148,71 @@ const BA = () => {
         </div>
       </section>
 
+      {/* Leaders Section */}
+      <section className="py-20 px-4 relative bg-black border-t border-ba-blue-light/10">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
+            Líderes que Confiaram em Nós
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Diego Barreto */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">Diego Barreto</h3>
+                <p className="text-ba-orange font-semibold text-sm mb-2">CEO - iFood</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Com vasta experiência em estratégia e finanças, Diego lidera a expansão e inovação no iFood, impulsionando o crescimento da empresa no setor de tecnologia e delivery. Autor do best-seller "Nova Economia," ele se destaca por sua visão disruptiva e abordagem orientada a dados para transformar o mercado brasileiro de delivery.
+                </p>
+              </div>
+            </div>
+
+            {/* Pedro Somma */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">Pedro Somma</h3>
+                <p className="text-ba-orange font-semibold text-sm mb-2">Ex-COO - 99 Taxi</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Com uma trajetória de destaque na área de mobilidade urbana, Pedro foi COO da 99 Taxi, onde desempenhou um papel fundamental na expansão e operação da empresa. Sua experiência em gestão e inovação contribuiu para consolidar a 99 como uma das principais plataformas de transporte no Brasil, impulsionando a transformação do setor de mobilidade no país.
+                </p>
+              </div>
+            </div>
+
+            {/* Luis Vabo Jr. */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">Luis Vabo Jr.</h3>
+                <p className="text-ba-orange font-semibold text-sm mb-2">Ex-diretor - Stone</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Empreendedor serial e investidor com ampla experiência em venture capital, Luis Vabo Jr. foi diretor e sócio da Stone. Nos últimos anos, tem se destacado pela sua atuação voltada a Softskills, além de ser OPM por Harvard e Autor do livro "Falar em público é para você!".
+                </p>
+              </div>
+            </div>
+
+            {/* João Olivério */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">João Olivério</h3>
+                <p className="text-ba-orange font-semibold text-sm mb-2">CEO - Sales As A System | Country Manager - Apollo.io</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Especialista em vendas e tecnologia, João Olivério é CEO da Sales As A System, onde criou uma metodologia inovadora para líderes de vendas, e Country Manager da Apollo.io, plataforma de inteligência de leads. Com passagens pela Zendesk, onde liderou operações globais desde 2013, e como mentor no G4 Sales, ele se destaca por sua visão estratégica, apoiando startups e empreendedores a alcançarem excelência no mercado.
+                </p>
+              </div>
+            </div>
+
+            {/* José Diogo Costódio Rodrigues */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
+              <div className="mb-4">
+                <h3 className="text-xl font-bold text-foreground mb-1">José Diogo Costódio Rodrigues</h3>
+                <p className="text-ba-orange font-semibold text-sm mb-2">CMO Latam & Canada - Tinder</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Com ampla experiência em Branding Marketing, José Costódio passou por algumas das mais Icônicas empresas do mundo, tendo sido Brand Manager na Nike e Redbull. Atualmente, é diretor geral de marketing do Tinder na América Latina e Canadá.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
 
       <style>{`
