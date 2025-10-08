@@ -1,194 +1,166 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { supabase } from '@/integrations/supabase/client';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import { Loader2 } from 'lucide-react';
+import { z } from 'zod';
 
-const formSchema = z.object({
-  nome: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres').max(100),
-  email: z.string().email('Email inválido').max(255),
-  whatsapp: z.string().min(10, 'WhatsApp inválido').max(20),
-  situacao_profissional: z.string().min(1, 'Selecione uma opção'),
+const leadSchema = z.object({
+  nome: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100),
+  email: z.string().trim().email({ message: "Email inválido" }).max(255),
+  whatsapp: z.string().trim().min(10, { message: "WhatsApp é obrigatório" }).max(20),
+  situacao_profissional: z.string().min(1, { message: "Selecione sua situação profissional" })
 });
-
-type FormData = z.infer<typeof formSchema>;
 
 interface LeadFormIADoZeroProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSuccess: () => void;
 }
 
-export default function LeadFormIADoZero({ open, onOpenChange, onSuccess }: LeadFormIADoZeroProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) => {
   const { toast } = useToast();
-
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      nome: '',
-      email: '',
-      whatsapp: '',
-      situacao_profissional: '',
-    },
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    whatsapp: '',
+    situacao_profissional: ''
   });
 
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
     try {
+      const validatedData = leadSchema.parse(formData);
+      setLoading(true);
+
       const { error } = await supabase.from('leads').insert({
-        nome: data.nome.trim(),
-        email: data.email.trim(),
-        whatsapp: data.whatsapp.trim(),
-        situacao_profissional: data.situacao_profissional,
-        produto: 'ia-do-zero',
+        nome: validatedData.nome,
+        email: validatedData.email,
+        whatsapp: validatedData.whatsapp,
+        situacao_profissional: validatedData.situacao_profissional,
+        produto: 'ia-do-zero'
       });
 
       if (error) throw error;
 
       toast({
-        title: 'Cadastro realizado!',
-        description: 'Obrigado pelo seu interesse. Redirecionando para o pagamento...',
+        title: "Sucesso!",
+        description: "Seus dados foram registrados. Redirecionando para pagamento...",
       });
 
-      form.reset();
       onOpenChange(false);
-      onSuccess();
+      
+      // Redirecionar para página de pagamento
+      window.open('https://pay.hotmart.com/L94763179U', '_blank');
+      
+      // Limpar formulário
+      setFormData({ nome: '', email: '', whatsapp: '', situacao_profissional: '' });
     } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
-      toast({
-        title: 'Erro ao enviar',
-        description: 'Tente novamente mais tarde.',
-        variant: 'destructive',
-      });
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Erro de validação",
+          description: error.errors[0].message,
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erro",
+          description: "Não foi possível enviar seus dados. Tente novamente.",
+          variant: "destructive"
+        });
+      }
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] bg-slate-800 border-slate-700">
+      <DialogContent className="sm:max-w-md bg-slate-800 border-slate-700">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-white">Estamos quase lá!</DialogTitle>
+          <DialogTitle className="text-white">Comece sua jornada com IA</DialogTitle>
           <DialogDescription className="text-gray-300">
-            Preencha os dados abaixo para continuar para o pagamento
+            Preencha seus dados para continuar para o pagamento
           </DialogDescription>
         </DialogHeader>
-
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-            <FormField
-              control={form.control}
-              name="nome"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Nome completo</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Seu nome" {...field} className="bg-slate-900 border-slate-600 text-white" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+        
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="nome" className="text-white">Nome completo</Label>
+            <Input
+              id="nome"
+              value={formData.nome}
+              onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
+              className="bg-slate-900 border-slate-600 text-white"
+              required
             />
+          </div>
 
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Email</FormLabel>
-                  <FormControl>
-                    <Input type="email" placeholder="seu@email.com" {...field} className="bg-slate-900 border-slate-600 text-white" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+          <div className="space-y-2">
+            <Label htmlFor="email" className="text-white">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+              className="bg-slate-900 border-slate-600 text-white"
+              required
             />
+          </div>
 
-            <FormField
-              control={form.control}
-              name="whatsapp"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">WhatsApp</FormLabel>
-                  <FormControl>
-                    <Input placeholder="(11) 99999-9999" {...field} className="bg-slate-900 border-slate-600 text-white" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+          <div className="space-y-2">
+            <Label htmlFor="whatsapp" className="text-white">WhatsApp</Label>
+            <Input
+              id="whatsapp"
+              value={formData.whatsapp}
+              onChange={(e) => setFormData(prev => ({ ...prev, whatsapp: e.target.value }))}
+              placeholder="(11) 99999-9999"
+              className="bg-slate-900 border-slate-600 text-white"
+              required
             />
+          </div>
 
-            <FormField
-              control={form.control}
-              name="situacao_profissional"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-white">Situação profissional</FormLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <FormControl>
-                      <SelectTrigger className="bg-slate-900 border-slate-600 text-white">
-                        <SelectValue placeholder="Selecione uma opção" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent className="bg-slate-900 border-slate-600">
-                      <SelectItem value="desempregado" className="text-white">Desempregado</SelectItem>
-                      <SelectItem value="servidor-publico" className="text-white">Servidor público</SelectItem>
-                      <SelectItem value="estudante" className="text-white">Estudante</SelectItem>
-                      <SelectItem value="autonomo" className="text-white">Autônomo</SelectItem>
-                      <SelectItem value="clt" className="text-white">CLT</SelectItem>
-                      <SelectItem value="empresario" className="text-white">Empresário</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold"
+          <div className="space-y-2">
+            <Label htmlFor="situacao" className="text-white">Situação profissional</Label>
+            <Select 
+              value={formData.situacao_profissional}
+              onValueChange={(value) => setFormData(prev => ({ ...prev, situacao_profissional: value }))}
             >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Enviando...
-                </>
-              ) : (
-                'Continuar para o pagamento'
-              )}
-            </Button>
-          </form>
-        </Form>
+              <SelectTrigger className="bg-slate-900 border-slate-600 text-white">
+                <SelectValue placeholder="Selecione sua situação" />
+              </SelectTrigger>
+              <SelectContent className="bg-slate-900 border-slate-600">
+                <SelectItem value="Desempregado">Desempregado</SelectItem>
+                <SelectItem value="Servidor público">Servidor público</SelectItem>
+                <SelectItem value="Estudante">Estudante</SelectItem>
+                <SelectItem value="Autônomo">Autônomo</SelectItem>
+                <SelectItem value="CLT">CLT</SelectItem>
+                <SelectItem value="Empresário">Empresário</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <Button 
+            type="submit" 
+            className="w-full bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Enviando...
+              </>
+            ) : (
+              'Enviar e ir para pagamento'
+            )}
+          </Button>
+        </form>
       </DialogContent>
     </Dialog>
   );
-}
+};

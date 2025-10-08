@@ -6,17 +6,13 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import LeadFormIADoZero from "@/components/LeadFormIADoZero";
+import { LeadFormIADoZero } from "@/components/LeadFormIADoZero";
 
 const IADoZero = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
   const handleWhatsAppContact = () => {
     setIsLeadFormOpen(true);
-  };
-
-  const handleLeadSuccess = () => {
-    window.open('https://pay.hotmart.com/L94763179U', '_blank');
   };
 
   const benefits = [
@@ -516,7 +512,6 @@ const IADoZero = () => {
       <LeadFormIADoZero 
         open={isLeadFormOpen} 
         onOpenChange={setIsLeadFormOpen}
-        onSuccess={handleLeadSuccess}
       />
     </div>
   );
