@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RichTextEditor } from '@/components/RichTextEditor';
-import { BlogPostPreview } from '@/components/BlogPostPreview';
+
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useForm } from 'react-hook-form';
@@ -205,8 +205,6 @@ const AdminEditor = () => {
     );
   }
 
-  const formValues = form.watch();
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -228,7 +226,7 @@ const AdminEditor = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="max-w-5xl">
             {/* Editor Form */}
             <div className="overflow-y-auto max-h-[calc(100vh-200px)]">
               <Card>
@@ -420,19 +418,6 @@ const AdminEditor = () => {
                   </Form>
                 </CardContent>
               </Card>
-            </div>
-
-            {/* Preview */}
-            <div className="sticky top-8 max-h-[calc(100vh-200px)]">
-              <BlogPostPreview
-                title={formValues.title}
-                author={formValues.author}
-                category={formValues.category}
-                excerpt={formValues.excerpt}
-                content={formValues.content}
-                image={formValues.image}
-                date={formValues.date}
-              />
             </div>
           </div>
         </div>
