@@ -204,7 +204,7 @@ const BA = () => {
           <p className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
             Utilizamos as mais avançadas ferramentas e plataformas para entregar soluções de ponta
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {/* Lovable */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
