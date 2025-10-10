@@ -1,1 +1,10 @@
 project_id = "vmmosextmuuibhuyeqkq"
+
+[functions.track-event]
+verify_jwt = false
+
+[functions.identify-lead]
+verify_jwt = false
+
+[functions.session-heartbeat]
+verify_jwt = false

@@ -59,6 +59,129 @@ export type Database = {
         }
         Relationships: []
       }
+      events: {
+        Row: {
+          anonymous_id: string
+          created_at: string
+          event_name: string
+          id: string
+          idempotency_key: string
+          lead_id: string | null
+          page_url: string | null
+          properties: Json | null
+          referrer: string | null
+          score_points: number | null
+          session_id: string
+        }
+        Insert: {
+          anonymous_id: string
+          created_at?: string
+          event_name: string
+          id?: string
+          idempotency_key: string
+          lead_id?: string | null
+          page_url?: string | null
+          properties?: Json | null
+          referrer?: string | null
+          score_points?: number | null
+          session_id: string
+        }
+        Update: {
+          anonymous_id?: string
+          created_at?: string
+          event_name?: string
+          id?: string
+          idempotency_key?: string
+          lead_id?: string | null
+          page_url?: string | null
+          properties?: Json | null
+          referrer?: string | null
+          score_points?: number | null
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lead_aliases: {
+        Row: {
+          anonymous_id: string
+          created_at: string | null
+          id: string
+          lead_id: string
+        }
+        Insert: {
+          anonymous_id: string
+          created_at?: string | null
+          id?: string
+          lead_id: string
+        }
+        Update: {
+          anonymous_id?: string
+          created_at?: string | null
+          id?: string
+          lead_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_aliases_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lead_consents: {
+        Row: {
+          analytics_consent: boolean
+          anonymous_id: string | null
+          created_at: string | null
+          id: string
+          ip_address: unknown | null
+          lead_id: string | null
+          marketing_consent: boolean
+          policy_version: string
+          user_agent: string | null
+        }
+        Insert: {
+          analytics_consent?: boolean
+          anonymous_id?: string | null
+          created_at?: string | null
+          id?: string
+          ip_address?: unknown | null
+          lead_id?: string | null
+          marketing_consent?: boolean
+          policy_version: string
+          user_agent?: string | null
+        }
+        Update: {
+          analytics_consent?: boolean
+          anonymous_id?: string | null
+          created_at?: string | null
+          id?: string
+          ip_address?: unknown | null
+          lead_id?: string | null
+          marketing_consent?: boolean
+          policy_version?: string
+          user_agent?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_consents_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lead_interactions: {
         Row: {
           created_at: string
@@ -99,12 +222,21 @@ export type Database = {
           created_at: string
           email: string
           faturamento: string | null
+          first_touch_campaign: string | null
+          first_touch_medium: string | null
+          first_touch_source: string | null
           id: string
+          last_active_at: string | null
+          last_touch_campaign: string | null
+          last_touch_medium: string | null
+          last_touch_source: string | null
           nome: string
           observacoes: string | null
           origem: string | null
           produto: string
           responsavel_id: string | null
+          score: number | null
+          score_updated_at: string | null
           situacao_profissional: string | null
           status: Database["public"]["Enums"]["lead_status"]
           tags: string[] | null
@@ -115,12 +247,21 @@ export type Database = {
           created_at?: string
           email: string
           faturamento?: string | null
+          first_touch_campaign?: string | null
+          first_touch_medium?: string | null
+          first_touch_source?: string | null
           id?: string
+          last_active_at?: string | null
+          last_touch_campaign?: string | null
+          last_touch_medium?: string | null
+          last_touch_source?: string | null
           nome: string
           observacoes?: string | null
           origem?: string | null
           produto: string
           responsavel_id?: string | null
+          score?: number | null
+          score_updated_at?: string | null
           situacao_profissional?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           tags?: string[] | null
@@ -131,12 +272,21 @@ export type Database = {
           created_at?: string
           email?: string
           faturamento?: string | null
+          first_touch_campaign?: string | null
+          first_touch_medium?: string | null
+          first_touch_source?: string | null
           id?: string
+          last_active_at?: string | null
+          last_touch_campaign?: string | null
+          last_touch_medium?: string | null
+          last_touch_source?: string | null
           nome?: string
           observacoes?: string | null
           origem?: string | null
           produto?: string
           responsavel_id?: string | null
+          score?: number | null
+          score_updated_at?: string | null
           situacao_profissional?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           tags?: string[] | null
@@ -144,6 +294,98 @@ export type Database = {
           whatsapp?: string
         }
         Relationships: []
+      }
+      scoring_rules: {
+        Row: {
+          active: boolean | null
+          created_at: string | null
+          daily_cap: number | null
+          description: string | null
+          event_name: string
+          id: string
+          points: number
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string | null
+          daily_cap?: number | null
+          description?: string | null
+          event_name: string
+          id?: string
+          points: number
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string | null
+          daily_cap?: number | null
+          description?: string | null
+          event_name?: string
+          id?: string
+          points?: number
+        }
+        Relationships: []
+      }
+      sessions: {
+        Row: {
+          anonymous_id: string
+          created_at: string | null
+          device: string | null
+          duration_sec: number | null
+          events_count: number | null
+          first_event_at: string
+          id: string
+          landing_page: string | null
+          last_event_at: string
+          lead_id: string | null
+          pageviews: number | null
+          referrer: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          anonymous_id: string
+          created_at?: string | null
+          device?: string | null
+          duration_sec?: number | null
+          events_count?: number | null
+          first_event_at: string
+          id: string
+          landing_page?: string | null
+          last_event_at: string
+          lead_id?: string | null
+          pageviews?: number | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          anonymous_id?: string
+          created_at?: string | null
+          device?: string | null
+          duration_sec?: number | null
+          events_count?: number | null
+          first_event_at?: string
+          id?: string
+          landing_page?: string | null
+          last_event_at?: string
+          lead_id?: string | null
+          pageviews?: number | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sessions_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
@@ -171,12 +413,35 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      count_events_today: {
+        Args: {
+          p_anonymous_id: string
+          p_event_name: string
+          p_lead_id: string
+        }
+        Returns: number
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      upsert_session: {
+        Args: {
+          p_anonymous_id: string
+          p_device: string
+          p_event_time: string
+          p_landing_page: string
+          p_lead_id: string
+          p_referrer: string
+          p_session_id: string
+          p_utm_campaign: string
+          p_utm_medium: string
+          p_utm_source: string
+        }
+        Returns: undefined
       }
     }
     Enums: {
