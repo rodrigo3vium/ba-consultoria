@@ -9,12 +9,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Search, Mail, Eye, Download } from "lucide-react";
+import { ArrowLeft, Search, Mail, Eye, Download, GitBranch } from "lucide-react";
 import { format } from "date-fns";
 import CRMMetrics from "@/components/crm/CRMMetrics";
 import LeadDetailsModal from "@/components/crm/LeadDetailsModal";
 import EmailModal from "@/components/crm/EmailModal";
+import MoveFunnelModal from "@/components/crm/MoveFunnelModal";
 import { useToast } from "@/hooks/use-toast";
+
+interface FunnelPosition {
+  funnel_id: string;
+  stage_id: string;
+  funnel_name: string;
+  stage_name: string;
+}
 
 interface Lead {
   id: string;
@@ -29,6 +37,7 @@ interface Lead {
   tags?: string[];
   created_at: string;
   ultima_interacao?: string;
+  funnel_position?: FunnelPosition;
 }
 
 const AdminCRM = () => {
@@ -44,6 +53,7 @@ const AdminCRM = () => {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [emailOpen, setEmailOpen] = useState(false);
+  const [moveFunnelOpen, setMoveFunnelOpen] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
 
   // Metrics
@@ -54,22 +64,61 @@ const AdminCRM = () => {
 
   const loadLeads = async () => {
     setLoadingData(true);
-    const { data, error } = await supabase
+    
+    // Carregar leads
+    const { data: leadsData, error: leadsError } = await supabase
       .from("leads")
       .select("*")
       .order("created_at", { ascending: false });
 
-    if (error) {
+    if (leadsError) {
       toast({
         title: "Erro",
         description: "Não foi possível carregar os leads.",
         variant: "destructive",
       });
-    } else if (data) {
-      setLeads(data);
-      setFilteredLeads(data);
-      calculateMetrics(data);
+      setLoadingData(false);
+      return;
     }
+
+    if (!leadsData) {
+      setLoadingData(false);
+      return;
+    }
+
+    // Carregar posições de funil para cada lead
+    const leadsWithFunnels = await Promise.all(
+      leadsData.map(async (lead) => {
+        const { data: position } = await supabase
+          .from("lead_funnel_positions")
+          .select(`
+            funnel_id,
+            stage_id,
+            funnels!inner(nome),
+            funnel_stages!inner(nome)
+          `)
+          .eq("lead_id", lead.id)
+          .maybeSingle();
+
+        if (position) {
+          return {
+            ...lead,
+            funnel_position: {
+              funnel_id: position.funnel_id,
+              stage_id: position.stage_id,
+              funnel_name: (position.funnels as any).nome,
+              stage_name: (position.funnel_stages as any).nome,
+            },
+          };
+        }
+
+        return lead;
+      })
+    );
+
+    setLeads(leadsWithFunnels);
+    setFilteredLeads(leadsWithFunnels);
+    calculateMetrics(leadsWithFunnels);
     setLoadingData(false);
   };
 
@@ -241,6 +290,7 @@ const AdminCRM = () => {
                   <TableHead>Email</TableHead>
                   <TableHead>WhatsApp</TableHead>
                   <TableHead>Produto</TableHead>
+                  <TableHead>Funil / Etapa</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Data</TableHead>
                   <TableHead className="text-right">Ações</TableHead>
@@ -249,13 +299,13 @@ const AdminCRM = () => {
               <TableBody>
                 {loadingData ? (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8">
+                    <TableCell colSpan={8} className="text-center py-8">
                       Carregando...
                     </TableCell>
                   </TableRow>
                 ) : filteredLeads.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                    <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
                       Nenhum lead encontrado.
                     </TableCell>
                   </TableRow>
@@ -268,6 +318,16 @@ const AdminCRM = () => {
                       <TableCell>
                         <Badge variant="outline">{lead.produto}</Badge>
                       </TableCell>
+                      <TableCell>
+                        {lead.funnel_position ? (
+                          <div className="text-sm">
+                            <div className="font-medium">{lead.funnel_position.funnel_name}</div>
+                            <div className="text-muted-foreground">{lead.funnel_position.stage_name}</div>
+                          </div>
+                        ) : (
+                          <Badge variant="secondary">Sem funil</Badge>
+                        )}
+                      </TableCell>
                       <TableCell>{getStatusBadge(lead.status)}</TableCell>
                       <TableCell>{format(new Date(lead.created_at), "dd/MM/yyyy")}</TableCell>
                       <TableCell className="text-right">
@@ -277,8 +337,20 @@ const AdminCRM = () => {
                             variant="ghost"
                             onClick={() => {
                               setSelectedLead(lead);
+                              setMoveFunnelOpen(true);
+                            }}
+                            title="Mover para funil"
+                          >
+                            <GitBranch className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => {
+                              setSelectedLead(lead);
                               setDetailsOpen(true);
                             }}
+                            title="Ver detalhes"
                           >
                             <Eye className="h-4 w-4" />
                           </Button>
@@ -289,6 +361,7 @@ const AdminCRM = () => {
                               setSelectedLead(lead);
                               setEmailOpen(true);
                             }}
+                            title="Enviar email"
                           >
                             <Mail className="h-4 w-4" />
                           </Button>
@@ -317,6 +390,14 @@ const AdminCRM = () => {
         leadEmail={selectedLead?.email || ""}
         open={emailOpen}
         onOpenChange={setEmailOpen}
+        onSuccess={loadLeads}
+      />
+
+      <MoveFunnelModal
+        leadId={selectedLead?.id || null}
+        leadName={selectedLead?.nome || ""}
+        open={moveFunnelOpen}
+        onOpenChange={setMoveFunnelOpen}
         onSuccess={loadLeads}
       />
     </div>

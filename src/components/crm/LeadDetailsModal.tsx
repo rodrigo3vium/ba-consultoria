@@ -33,6 +33,18 @@ interface Interaction {
   created_at: string;
 }
 
+interface FunnelHistory {
+  id: string;
+  funnel_id: string;
+  stage_from_id: string | null;
+  stage_to_id: string | null;
+  created_at: string;
+  observacao: string | null;
+  funnel_name: string;
+  stage_from_name: string | null;
+  stage_to_name: string | null;
+}
+
 interface LeadDetailsModalProps {
   lead: Lead | null;
   open: boolean;
@@ -46,6 +58,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   const [newInteraction, setNewInteraction] = useState("");
   const [interactionType, setInteractionType] = useState<"email" | "whatsapp" | "telefone" | "reuniao" | "nota">("nota");
   const [interactions, setInteractions] = useState<Interaction[]>([]);
+  const [funnelHistory, setFunnelHistory] = useState<FunnelHistory[]>([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -60,6 +73,41 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
 
     if (!error && data) {
       setInteractions(data);
+    }
+  };
+
+  const loadFunnelHistory = async () => {
+    if (!lead) return;
+
+    const { data, error } = await supabase
+      .from("funnel_history")
+      .select(`
+        id,
+        funnel_id,
+        stage_from_id,
+        stage_to_id,
+        created_at,
+        observacao,
+        funnels!inner(nome),
+        stage_from:funnel_stages!funnel_history_stage_from_id_fkey(nome),
+        stage_to:funnel_stages!funnel_history_stage_to_id_fkey(nome)
+      `)
+      .eq("lead_id", lead.id)
+      .order("created_at", { ascending: false });
+
+    if (!error && data) {
+      const formattedHistory = data.map((item: any) => ({
+        id: item.id,
+        funnel_id: item.funnel_id,
+        stage_from_id: item.stage_from_id,
+        stage_to_id: item.stage_to_id,
+        created_at: item.created_at,
+        observacao: item.observacao,
+        funnel_name: item.funnels.nome,
+        stage_from_name: item.stage_from?.nome || null,
+        stage_to_name: item.stage_to?.nome || null,
+      }));
+      setFunnelHistory(formattedHistory);
     }
   };
 
@@ -146,6 +194,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
         setStatus(lead.status as "novo" | "contatado" | "qualificado" | "convertido" | "perdido");
         setObservacoes(lead.observacoes || "");
         loadInteractions();
+        loadFunnelHistory();
       }
     }}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -251,8 +300,8 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
             </div>
 
             <div>
-              <h3 className="font-semibold mb-3">Histórico</h3>
-              <div className="space-y-2 max-h-[400px] overflow-y-auto">
+              <h3 className="font-semibold mb-3">Histórico de Interações</h3>
+              <div className="space-y-2 max-h-[200px] overflow-y-auto">
                 {interactions.length === 0 ? (
                   <p className="text-sm text-muted-foreground">Nenhuma interação registrada.</p>
                 ) : (
@@ -265,6 +314,40 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
                         </span>
                       </div>
                       <p className="text-sm mt-2">{interaction.descricao}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-3">Histórico de Funil</h3>
+              <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                {funnelHistory.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">Nenhuma movimentação registrada.</p>
+                ) : (
+                  funnelHistory.map((history) => (
+                    <div key={history.id} className="border rounded-lg p-3">
+                      <div className="flex justify-between items-start mb-1">
+                        <Badge variant="outline">{history.funnel_name}</Badge>
+                        <span className="text-xs text-muted-foreground">
+                          {format(new Date(history.created_at), "dd/MM/yyyy HH:mm")}
+                        </span>
+                      </div>
+                      <p className="text-sm mt-1">
+                        {history.stage_from_name ? (
+                          <>
+                            <span className="text-muted-foreground">{history.stage_from_name}</span>
+                            {" → "}
+                            <span className="font-medium">{history.stage_to_name}</span>
+                          </>
+                        ) : (
+                          <span className="font-medium">Adicionado em: {history.stage_to_name}</span>
+                        )}
+                      </p>
+                      {history.observacao && (
+                        <p className="text-xs text-muted-foreground mt-1">{history.observacao}</p>
+                      )}
                     </div>
                   ))
                 )}
