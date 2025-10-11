@@ -109,6 +109,148 @@ export type Database = {
           },
         ]
       }
+      funnel_history: {
+        Row: {
+          created_at: string
+          funnel_id: string
+          id: string
+          lead_id: string
+          observacao: string | null
+          stage_from_id: string | null
+          stage_to_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          funnel_id: string
+          id?: string
+          lead_id: string
+          observacao?: string | null
+          stage_from_id?: string | null
+          stage_to_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          funnel_id?: string
+          id?: string
+          lead_id?: string
+          observacao?: string | null
+          stage_from_id?: string | null
+          stage_to_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "funnel_history_funnel_id_fkey"
+            columns: ["funnel_id"]
+            isOneToOne: false
+            referencedRelation: "funnels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "funnel_history_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "funnel_history_stage_from_id_fkey"
+            columns: ["stage_from_id"]
+            isOneToOne: false
+            referencedRelation: "funnel_stages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "funnel_history_stage_to_id_fkey"
+            columns: ["stage_to_id"]
+            isOneToOne: false
+            referencedRelation: "funnel_stages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      funnel_stages: {
+        Row: {
+          ativo: boolean
+          cor: string
+          created_at: string
+          descricao: string | null
+          funnel_id: string
+          id: string
+          nome: string
+          ordem: number
+          probabilidade: number
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          cor?: string
+          created_at?: string
+          descricao?: string | null
+          funnel_id: string
+          id?: string
+          nome: string
+          ordem?: number
+          probabilidade?: number
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          cor?: string
+          created_at?: string
+          descricao?: string | null
+          funnel_id?: string
+          id?: string
+          nome?: string
+          ordem?: number
+          probabilidade?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "funnel_stages_funnel_id_fkey"
+            columns: ["funnel_id"]
+            isOneToOne: false
+            referencedRelation: "funnels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      funnels: {
+        Row: {
+          ativo: boolean
+          cor: string
+          created_at: string
+          descricao: string | null
+          id: string
+          nome: string
+          ordem: number
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          cor?: string
+          created_at?: string
+          descricao?: string | null
+          id?: string
+          nome: string
+          ordem?: number
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          cor?: string
+          created_at?: string
+          descricao?: string | null
+          id?: string
+          nome?: string
+          ordem?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       lead_aliases: {
         Row: {
           anonymous_id: string
@@ -178,6 +320,58 @@ export type Database = {
             columns: ["lead_id"]
             isOneToOne: false
             referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lead_funnel_positions: {
+        Row: {
+          created_at: string
+          entrada_etapa_at: string
+          funnel_id: string
+          id: string
+          lead_id: string
+          stage_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          entrada_etapa_at?: string
+          funnel_id: string
+          id?: string
+          lead_id: string
+          stage_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          entrada_etapa_at?: string
+          funnel_id?: string
+          id?: string
+          lead_id?: string
+          stage_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_funnel_positions_funnel_id_fkey"
+            columns: ["funnel_id"]
+            isOneToOne: false
+            referencedRelation: "funnels"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lead_funnel_positions_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lead_funnel_positions_stage_id_fkey"
+            columns: ["stage_id"]
+            isOneToOne: false
+            referencedRelation: "funnel_stages"
             referencedColumns: ["id"]
           },
         ]

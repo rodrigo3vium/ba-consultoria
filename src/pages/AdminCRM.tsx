@@ -164,14 +164,22 @@ const AdminCRM = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <Button 
-          variant="ghost" 
-          onClick={() => navigate("/admin")}
-          className="mb-6"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar ao Dashboard
-        </Button>
+        <div className="flex items-center justify-between mb-6">
+          <Button 
+            variant="ghost" 
+            onClick={() => navigate("/admin")}
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Voltar ao Dashboard
+          </Button>
+          
+          <Button
+            onClick={() => navigate("/admin/crm/kanban")}
+            variant="outline"
+          >
+            Ver Kanban
+          </Button>
+        </div>
 
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">CRM</h1>

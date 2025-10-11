@@ -16,6 +16,8 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import AdminBlog from "./pages/AdminBlog";
 import AdminCRM from "./pages/AdminCRM";
+import AdminFunnels from "./pages/AdminFunnels";
+import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
 import NotFound from "./pages/NotFound";
 
@@ -41,6 +43,8 @@ const App = () => (
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/admin/crm" element={<AdminCRM />} />
+          <Route path="/admin/funnels" element={<AdminFunnels />} />
+          <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

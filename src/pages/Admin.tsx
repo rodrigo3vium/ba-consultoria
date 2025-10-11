@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { FileText, Users, Loader2 } from 'lucide-react';
+import { FileText, Users, Loader2, Filter } from 'lucide-react';
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -32,6 +32,13 @@ const Admin = () => {
       icon: Users,
       action: () => navigate("/admin/crm"),
       buttonText: "Acessar CRM"
+    },
+    {
+      title: "Funis de Vendas",
+      description: "Gerencie funis e etapas do processo comercial",
+      icon: Filter,
+      action: () => navigate("/admin/funnels"),
+      buttonText: "Gerenciar Funis"
     }
   ];
 
@@ -45,7 +52,7 @@ const Admin = () => {
           <p className="text-muted-foreground">Escolha uma área para gerenciar</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {dashboardItems.map((item) => (
             <Card 
               key={item.title}
