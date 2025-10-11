@@ -161,9 +161,9 @@ const AdminCRM = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-8">
+      <main className="flex-1 container mx-auto px-4 pt-8 pb-32">
         <div className="flex items-center justify-between mb-6">
           <Button 
             variant="ghost" 
