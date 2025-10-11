@@ -64,6 +64,9 @@ All colors MUST be HSL.
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Header safe zone */
+    --header-safe-top: 120px;
+
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -127,8 +130,13 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-padding-top: var(--header-safe-top);
+  }
+
   body {
     @apply bg-background text-foreground;
+    padding-top: var(--header-safe-top);
   }
 }
 
