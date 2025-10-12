@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Calendar, User } from "lucide-react";
+import { Mail, Phone, Calendar, User, RefreshCw, Copy } from "lucide-react";
 import { format } from "date-fns";
 
 interface Lead {
@@ -52,10 +52,12 @@ interface HotmartSale {
   data_confirmacao: string | null;
   status: string | null;
   origem_checkout: string | null;
-  preco_produto: number | null;
-  preco_oferta: number | null;
+  preco_produto: string | number | null;
+  preco_oferta: string | number | null;
   tipo_pagamento: string | null;
   numero_parcela: number | null;
+  moeda: string | null;
+  documento: string | null;
   created_at: string;
 }
 
@@ -65,6 +67,23 @@ interface LeadDetailsModalProps {
   onOpenChange: (open: boolean) => void;
   onUpdate: () => void;
 }
+
+// Helper function to format currency
+const formatCurrency = (value: string | number | null, currency: string = 'BRL'): string => {
+  if (value === null || value === undefined) return 'N/A';
+  const numValue = typeof value === 'string' ? parseFloat(value) : value;
+  if (isNaN(numValue)) return 'N/A';
+  return numValue.toLocaleString('pt-BR', { style: 'currency', currency });
+};
+
+// Helper function to humanize origem_checkout
+const humanizeOrigem = (origem: string | null): string => {
+  if (!origem) return 'N/A';
+  return origem
+    .split('|')
+    .filter(part => part && part.toLowerCase() !== 'null')
+    .join(' • ') || 'N/A';
+};
 
 const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsModalProps) => {
   const [status, setStatus] = useState<"novo" | "contatado" | "qualificado" | "convertido" | "perdido">("novo");
@@ -77,6 +96,14 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   const [loading, setLoading] = useState(false);
   const [loadingSales, setLoadingSales] = useState(false);
   const { toast } = useToast();
+  
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: "Copiado!",
+      description: "Documento copiado para a área de transferência.",
+    });
+  };
 
   const loadInteractions = async () => {
     if (!lead) return;
@@ -426,59 +453,99 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
 
             {/* Vendas Hotmart */}
             <div>
-              <h3 className="font-semibold mb-3">Histórico de Compras</h3>
-              <div className="space-y-2 max-h-[200px] overflow-y-auto">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold">Histórico de Compras</h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={loadHotmartSales}
+                  disabled={loadingSales}
+                  className="h-8 w-8 p-0"
+                >
+                  <RefreshCw className={`h-4 w-4 ${loadingSales ? 'animate-spin' : ''}`} />
+                </Button>
+              </div>
+              <div className="space-y-3 max-h-[300px] overflow-y-auto">
                 {loadingSales ? (
                   <p className="text-sm text-muted-foreground">Carregando histórico de compras...</p>
                 ) : hotmartSales.length === 0 ? (
                   <p className="text-sm text-muted-foreground">Nenhuma compra Hotmart registrada.</p>
                 ) : (
                   hotmartSales.map((sale) => (
-                    <div key={sale.id} className="border rounded-lg p-3 space-y-2">
-                      <div className="flex justify-between items-start">
+                    <div key={sale.id} className="border rounded-lg p-3 space-y-2 bg-muted/20">
+                      {/* Linha 1: Produto + Status */}
+                      <div className="flex justify-between items-start gap-2">
                         <Badge variant="default">{sale.produto}</Badge>
                         {sale.status && (
-                          <Badge variant="outline" className="text-xs">
+                          <Badge 
+                            variant={sale.status.toLowerCase() === 'approved' ? 'default' : 'outline'}
+                            className="text-xs"
+                          >
                             {sale.status}
                           </Badge>
                         )}
                       </div>
                       
-                      {sale.data_venda && (
-                        <p className="text-sm">
-                          <strong>Data da Venda:</strong>{" "}
-                          {format(new Date(sale.data_venda), "dd/MM/yyyy HH:mm")}
+                      {/* Linha 2: Valor pago + Parcelas + Tipo */}
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <p className="text-sm font-semibold">
+                          {formatCurrency(sale.preco_oferta, sale.moeda || 'BRL')}
+                        </p>
+                        {sale.numero_parcela && sale.numero_parcela > 1 && (
+                          <Badge variant="secondary" className="text-xs">
+                            {sale.numero_parcela}x
+                          </Badge>
+                        )}
+                        {sale.tipo_pagamento && (
+                          <Badge variant="outline" className="text-xs">
+                            {sale.tipo_pagamento}
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      {/* Linha 3: Valor do produto (preço cheio) */}
+                      {sale.preco_produto && (
+                        <p className="text-xs text-muted-foreground">
+                          Valor do produto: {formatCurrency(sale.preco_produto, sale.moeda || 'BRL')}
                         </p>
                       )}
                       
-                      {sale.data_confirmacao && (
-                        <p className="text-sm">
-                          <strong>Confirmação:</strong>{" "}
-                          {format(new Date(sale.data_confirmacao), "dd/MM/yyyy HH:mm")}
-                        </p>
-                      )}
+                      {/* Linha 4: Datas */}
+                      <div className="space-y-1">
+                        {sale.data_venda && (
+                          <p className="text-xs text-muted-foreground">
+                            <strong>Venda:</strong> {format(new Date(sale.data_venda), "dd/MM/yyyy HH:mm")}
+                          </p>
+                        )}
+                        {sale.data_confirmacao && (
+                          <p className="text-xs text-muted-foreground">
+                            <strong>Confirmação:</strong> {format(new Date(sale.data_confirmacao), "dd/MM/yyyy HH:mm")}
+                          </p>
+                        )}
+                      </div>
                       
+                      {/* Linha 5: Origem (humanizada) */}
                       {sale.origem_checkout && (
-                        <p className="text-xs text-muted-foreground">
-                          <strong>Origem:</strong> {sale.origem_checkout}
+                        <p className="text-xs">
+                          <strong>Origem:</strong> <span className="text-primary">{humanizeOrigem(sale.origem_checkout)}</span>
                         </p>
                       )}
                       
-                      {sale.preco_oferta && (
-                        <p className="text-sm">
-                          <strong>Valor:</strong> R$ {sale.preco_oferta.toFixed(2)}
-                          {sale.numero_parcela && sale.numero_parcela > 1 && (
-                            <span className="text-muted-foreground text-xs ml-1">
-                              ({sale.numero_parcela}x)
-                            </span>
-                          )}
-                        </p>
-                      )}
-                      
-                      {sale.tipo_pagamento && (
-                        <p className="text-xs text-muted-foreground">
-                          <strong>Pagamento:</strong> {sale.tipo_pagamento}
-                        </p>
+                      {/* Linha 6: Documento com botão copiar */}
+                      {sale.documento && (
+                        <div className="flex items-center justify-between gap-2 pt-1 border-t">
+                          <p className="text-xs text-muted-foreground truncate flex-1">
+                            <strong>Doc:</strong> {sale.documento}
+                          </p>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => copyToClipboard(sale.documento || '')}
+                            className="h-6 w-6 p-0 shrink-0"
+                          >
+                            <Copy className="h-3 w-3" />
+                          </Button>
+                        </div>
                       )}
                     </div>
                   ))
