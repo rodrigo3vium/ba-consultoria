@@ -109,7 +109,7 @@ export default function AdminImportDirect() {
                     <li>📊 <strong>~552</strong> vendas totais</li>
                     <li>👥 <strong>~275</strong> leads únicos esperados</li>
                     <li>📦 Produtos: IA do Zero + Super Agentes</li>
-                    <li>🔄 Status: todos como "cliente" (pagos)</li>
+                    <li>🔄 Status: todos como "convertido" (pagos e finalizados)</li>
                     <li>🎯 Adicionados automaticamente ao funil padrão</li>
                   </ul>
                 </div>

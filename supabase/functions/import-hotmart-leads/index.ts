@@ -151,7 +151,7 @@ Deno.serve(async (req) => {
               first_touch_source,
               first_touch_medium,
               first_touch_campaign,
-              status: 'cliente',
+              status: 'convertido',
             })
             .select('id')
             .single()
