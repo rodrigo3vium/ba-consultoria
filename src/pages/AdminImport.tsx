@@ -39,41 +39,78 @@ export default function AdminImport() {
     return `${year}-${month}-${day}T${timePart}Z`;
   };
 
+  const sanitizeField = (field: string | null | undefined): string => {
+    if (!field) return '';
+    return field
+      .replace(/\0/g, '')           // Remove null bytes
+      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove caracteres de controle
+      .replace(/\uFEFF/g, '')       // Remove BOM
+      .replace(/\\/g, '')           // Remove backslashes
+      .trim();
+  };
+
   const parseCSV = (text: string): any[] => {
-    const lines = text.split('\n').filter(line => line.trim());
-    const headers = lines[0].split('|').map(h => h.trim());
+    // Sanitizar o texto completo primeiro
+    const cleanText = text
+      .replace(/\0/g, '')
+      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '')
+      .replace(/\uFEFF/g, '');
+    
+    const lines = cleanText.split('\n').filter(line => line.trim());
+    
+    // Detectar separador (; ou |)
+    const separator = lines[0].includes(';') ? ';' : '|';
+    const headers = lines[0].split(separator).map(h => sanitizeField(h));
     
     const sales = [];
     
     for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split('|').map(v => v.trim());
-      
-      if (values.length < headers.length) continue;
-      
-      const nome = values[12];
-      const email = values[14]?.replace(/\\/g, '');
-      const ddd = values[15];
-      const telefone = values[16];
-      const whatsapp = ddd && telefone ? `${ddd}${telefone}` : '';
-      
-      if (!email || !nome) continue;
-      
-      sales.push({
-        nome,
-        email,
-        whatsapp,
-        produto: values[0],
-        moeda: values[1],
-        preco_produto: parseFloat(values[2]) || 0,
-        preco_oferta: parseFloat(values[4]) || 0,
-        numero_parcela: parseInt(values[8]) || 1,
-        data_venda: parseDateBR(values[9]),
-        data_confirmacao: parseDateBR(values[10]),
-        status: values[11],
-        documento: values[13],
-        origem_checkout: values[25],
-        tipo_pagamento: values[26],
-      });
+      try {
+        const values = lines[i].split(separator).map(v => sanitizeField(v));
+        
+        if (values.length < 15) continue; // Precisa ter pelo menos nome, email, etc
+        
+        const nome = sanitizeField(values[12]);
+        const email = sanitizeField(values[14])?.toLowerCase();
+        const ddd = sanitizeField(values[15]);
+        const telefone = sanitizeField(values[16]);
+        const whatsapp = ddd && telefone ? `${ddd}${telefone}`.replace(/\D/g, '') : '';
+        
+        // Validação básica
+        if (!email || !nome || email.length < 3 || nome.length < 2) {
+          continue;
+        }
+        
+        if (!email.includes('@')) {
+          continue;
+        }
+        
+        // Parsear números com vírgula decimal
+        const parsePrice = (str: string) => {
+          if (!str) return 0;
+          return parseFloat(str.replace(',', '.')) || 0;
+        };
+        
+        sales.push({
+          nome,
+          email,
+          whatsapp,
+          produto: sanitizeField(values[0]),
+          moeda: sanitizeField(values[1]),
+          preco_produto: parsePrice(values[2]),
+          preco_oferta: parsePrice(values[4]),
+          numero_parcela: parseInt(values[8]) || 1,
+          data_venda: parseDateBR(values[9]),
+          data_confirmacao: parseDateBR(values[10]),
+          status: sanitizeField(values[11]),
+          documento: sanitizeField(values[13]),
+          origem_checkout: sanitizeField(values[25]),
+          tipo_pagamento: sanitizeField(values[26]),
+        });
+      } catch (error) {
+        console.warn(`Erro ao processar linha ${i}:`, error);
+        continue;
+      }
     }
     
     return sales;
