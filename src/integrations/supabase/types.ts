@@ -251,6 +251,65 @@ export type Database = {
         }
         Relationships: []
       }
+      hotmart_sales: {
+        Row: {
+          created_at: string
+          data_confirmacao: string | null
+          data_venda: string | null
+          documento: string | null
+          id: string
+          lead_id: string | null
+          moeda: string | null
+          numero_parcela: number | null
+          origem_checkout: string | null
+          preco_oferta: number | null
+          preco_produto: number | null
+          produto: string
+          status: string | null
+          tipo_pagamento: string | null
+        }
+        Insert: {
+          created_at?: string
+          data_confirmacao?: string | null
+          data_venda?: string | null
+          documento?: string | null
+          id?: string
+          lead_id?: string | null
+          moeda?: string | null
+          numero_parcela?: number | null
+          origem_checkout?: string | null
+          preco_oferta?: number | null
+          preco_produto?: number | null
+          produto: string
+          status?: string | null
+          tipo_pagamento?: string | null
+        }
+        Update: {
+          created_at?: string
+          data_confirmacao?: string | null
+          data_venda?: string | null
+          documento?: string | null
+          id?: string
+          lead_id?: string | null
+          moeda?: string | null
+          numero_parcela?: number | null
+          origem_checkout?: string | null
+          preco_oferta?: number | null
+          preco_produto?: number | null
+          produto?: string
+          status?: string | null
+          tipo_pagamento?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hotmart_sales_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lead_aliases: {
         Row: {
           anonymous_id: string

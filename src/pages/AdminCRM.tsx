@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Search, Mail, Eye, Download, GitBranch } from "lucide-react";
+import { ArrowLeft, Search, Mail, Eye, Download, GitBranch, Upload } from "lucide-react";
 import { format } from "date-fns";
 import CRMMetrics from "@/components/crm/CRMMetrics";
 import LeadDetailsModal from "@/components/crm/LeadDetailsModal";
@@ -279,6 +279,10 @@ const AdminCRM = () => {
             <Button onClick={exportToCSV} variant="outline">
               <Download className="mr-2 h-4 w-4" />
               Exportar CSV
+            </Button>
+            <Button onClick={() => navigate("/admin/crm/import")} variant="default">
+              <Upload className="mr-2 h-4 w-4" />
+              Importar
             </Button>
           </div>
 

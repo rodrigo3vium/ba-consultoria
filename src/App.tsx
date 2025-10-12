@@ -16,6 +16,7 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import AdminBlog from "./pages/AdminBlog";
 import AdminCRM from "./pages/AdminCRM";
+import AdminImport from "./pages/AdminImport";
 import AdminFunnels from "./pages/AdminFunnels";
 import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/admin/crm" element={<AdminCRM />} />
+          <Route path="/admin/crm/import" element={<AdminImport />} />
           <Route path="/admin/funnels" element={<AdminFunnels />} />
           <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />
