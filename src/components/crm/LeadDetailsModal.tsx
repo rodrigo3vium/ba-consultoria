@@ -75,6 +75,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   const [funnelHistory, setFunnelHistory] = useState<FunnelHistory[]>([]);
   const [hotmartSales, setHotmartSales] = useState<HotmartSale[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadingSales, setLoadingSales] = useState(false);
   const { toast } = useToast();
 
   const loadInteractions = async () => {
@@ -127,16 +128,55 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   };
 
   const loadHotmartSales = async () => {
-    if (!lead) return;
+    if (!lead) {
+      console.log("❌ loadHotmartSales: lead is null");
+      return;
+    }
 
-    const { data, error } = await supabase
-      .from("hotmart_sales")
-      .select("*")
-      .eq("lead_id", lead.id)
-      .order("data_venda", { ascending: false });
+    console.log("🔄 loadHotmartSales: Buscando vendas para lead", lead.id, lead.nome);
+    setLoadingSales(true);
 
-    if (!error && data) {
-      setHotmartSales(data);
+    try {
+      const { data, error } = await supabase
+        .from("hotmart_sales")
+        .select("*")
+        .eq("lead_id", lead.id)
+        .order("data_venda", { ascending: false });
+
+      console.log("📊 loadHotmartSales resultado:", { 
+        leadId: lead.id, 
+        leadNome: lead.nome,
+        data, 
+        error, 
+        count: data?.length 
+      });
+
+      if (error) {
+        console.error("❌ Erro ao carregar vendas Hotmart:", error);
+        toast({
+          title: "Erro ao carregar vendas",
+          description: `Não foi possível carregar o histórico de compras: ${error.message}`,
+          variant: "destructive",
+        });
+        setHotmartSales([]);
+      } else if (data) {
+        console.log("✅ Vendas carregadas com sucesso:", data.length, "vendas encontradas");
+        console.log("📦 Dados das vendas:", data);
+        setHotmartSales(data);
+      } else {
+        console.log("⚠️ Nenhuma venda encontrada para este lead");
+        setHotmartSales([]);
+      }
+    } catch (err) {
+      console.error("❌ Exceção ao carregar vendas:", err);
+      toast({
+        title: "Erro inesperado",
+        description: "Ocorreu um erro ao carregar as vendas.",
+        variant: "destructive",
+      });
+      setHotmartSales([]);
+    } finally {
+      setLoadingSales(false);
     }
   };
 
@@ -385,11 +425,15 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
             </div>
 
             {/* Vendas Hotmart */}
-            {hotmartSales.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-3">Histórico de Compras</h3>
-                <div className="space-y-2 max-h-[200px] overflow-y-auto">
-                  {hotmartSales.map((sale) => (
+            <div>
+              <h3 className="font-semibold mb-3">Histórico de Compras</h3>
+              <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                {loadingSales ? (
+                  <p className="text-sm text-muted-foreground">Carregando histórico de compras...</p>
+                ) : hotmartSales.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">Nenhuma compra Hotmart registrada.</p>
+                ) : (
+                  hotmartSales.map((sale) => (
                     <div key={sale.id} className="border rounded-lg p-3 space-y-2">
                       <div className="flex justify-between items-start">
                         <Badge variant="default">{sale.produto}</Badge>
@@ -437,10 +481,10 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
                         </p>
                       )}
                     </div>
-                  ))}
-                </div>
+                  ))
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </DialogContent>
