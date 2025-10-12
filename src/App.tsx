@@ -18,6 +18,7 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminCRM from "./pages/AdminCRM";
 import AdminImport from "./pages/AdminImport";
 import AdminImportDirect from "./pages/AdminImportDirect";
+import AdminImportMapping from "./pages/AdminImportMapping";
 import AdminFunnels from "./pages/AdminFunnels";
 import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
@@ -46,7 +47,8 @@ const App = () => (
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/admin/crm" element={<AdminCRM />} />
           <Route path="/admin/crm/import" element={<AdminImport />} />
-          <Route path="/admin/crm/import-direct" element={<AdminImportDirect />} />
+          <Route path="/admin/import-direct" element={<AdminImportDirect />} />
+          <Route path="/admin/import-mapping" element={<AdminImportMapping />} />
           <Route path="/admin/funnels" element={<AdminFunnels />} />
           <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,9 +6,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Calendar, User, RefreshCw, Copy } from "lucide-react";
+import { Mail, Phone, Calendar, User, RefreshCw, Copy, MapPin, Briefcase, TrendingUp, Activity, Target, Sparkles, BarChart3 } from "lucide-react";
 import { format } from "date-fns";
 
 interface Lead {
@@ -24,6 +26,25 @@ interface Lead {
   tags?: string[];
   created_at: string;
   ultima_interacao?: string;
+}
+
+interface LeadProfile {
+  id: string;
+  lead_id: string;
+  idade?: number;
+  cidade_estado?: string;
+  situacao_profissional?: string;
+  experiencia_ia?: string;
+  canal_aquisicao?: string;
+  area_aplicacao?: string;
+  maior_dificuldade?: string;
+  objetivo_principal?: string;
+  desejo_realizar?: string;
+  expectativas?: string;
+  nivel_organizacao?: number;
+  nivel_produtividade?: number;
+  created_at: string;
+  updated_at: string;
 }
 
 interface Interaction {
@@ -93,8 +114,10 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   const [interactions, setInteractions] = useState<Interaction[]>([]);
   const [funnelHistory, setFunnelHistory] = useState<FunnelHistory[]>([]);
   const [hotmartSales, setHotmartSales] = useState<HotmartSale[]>([]);
+  const [leadProfile, setLeadProfile] = useState<LeadProfile | null>(null);
   const [loading, setLoading] = useState(false);
   const [loadingSales, setLoadingSales] = useState(false);
+  const [loadingProfile, setLoadingProfile] = useState(false);
   const { toast } = useToast();
   
   const copyToClipboard = (text: string) => {
@@ -103,6 +126,74 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
       title: "Copiado!",
       description: "Documento copiado para a área de transferência.",
     });
+  };
+
+  const getExperienceBadge = (exp: string | undefined) => {
+    if (!exp) return null;
+    
+    const variants: Record<string, { color: string; label: string }> = {
+      "Nunca usei": { color: "bg-red-500", label: "Iniciante" },
+      "Já usei algumas vezes por curiosidade": { color: "bg-yellow-500", label: "Curioso" },
+      "Uso ocasionalmente no trabalho ou estudos": { color: "bg-blue-500", label: "Ocasional" },
+      "Uso com frequência e estou me aprofundando nelas": { color: "bg-green-500", label: "Avançado" }
+    };
+    
+    const badge = variants[exp] || { color: "bg-gray-500", label: exp };
+    return (
+      <Badge className={`${badge.color} text-white border-0`}>
+        {badge.label}
+      </Badge>
+    );
+  };
+
+  const calculateICPScore = (): number => {
+    if (!leadProfile) return 0;
+    
+    let score = 0;
+    
+    // Experiência com IA (0-30 pts)
+    if (leadProfile.experiencia_ia === "Uso com frequência e estou me aprofundando nelas") score += 30;
+    else if (leadProfile.experiencia_ia === "Uso ocasionalmente no trabalho ou estudos") score += 20;
+    else if (leadProfile.experiencia_ia === "Já usei algumas vezes por curiosidade") score += 10;
+    
+    // Nível de produtividade (0-25 pts)
+    if (leadProfile.nivel_produtividade) score += (leadProfile.nivel_produtividade / 10) * 25;
+    
+    // Nível de organização (0-20 pts)
+    if (leadProfile.nivel_organizacao) score += (leadProfile.nivel_organizacao / 10) * 20;
+    
+    // Objetivo principal (0-25 pts)
+    const objetivoLower = leadProfile.objetivo_principal?.toLowerCase() || "";
+    if (objetivoLower.includes("dinheiro") || objetivoLower.includes("ganhar")) score += 25;
+    else if (objetivoLower.includes("produtiv") || objetivoLower.includes("tempo")) score += 15;
+    else if (objetivoLower) score += 10;
+    
+    return Math.round(score);
+  };
+
+  const getICPRecommendation = (): string => {
+    if (!leadProfile) return "";
+    
+    const objetivoLower = leadProfile.objetivo_principal?.toLowerCase() || "";
+    const dificuldadeLower = leadProfile.maior_dificuldade?.toLowerCase() || "";
+    
+    if (objetivoLower.includes("dinheiro") || objetivoLower.includes("ganhar")) {
+      return "💰 Destacar ROI financeiro e casos de sucesso";
+    }
+    if (objetivoLower.includes("tempo") || objetivoLower.includes("produtiv")) {
+      return "⏱️ Enfatizar ganhos de tempo e eficiência";
+    }
+    if (dificuldadeLower.includes("prompt") || dificuldadeLower.includes("comando")) {
+      return "📝 Focar em templates práticos de prompts";
+    }
+    if (dificuldadeLower.includes("não sei") || dificuldadeLower.includes("conhecimento")) {
+      return "🎓 Enfatizar didática e suporte passo a passo";
+    }
+    if (leadProfile.area_aplicacao) {
+      return `🎯 Mostrar casos de uso em ${leadProfile.area_aplicacao}`;
+    }
+    
+    return "✨ Abordagem consultiva e personalizada";
   };
 
   const loadInteractions = async () => {
@@ -155,55 +246,61 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   };
 
   const loadHotmartSales = async () => {
-    if (!lead) {
-      console.log("❌ loadHotmartSales: lead is null");
-      return;
-    }
-
-    console.log("🔄 loadHotmartSales: Buscando vendas para lead", lead.id, lead.nome);
+    if (!lead) return;
+    
+    console.log('🔄 Carregando vendas Hotmart para lead:', lead.id);
     setLoadingSales(true);
 
     try {
       const { data, error } = await supabase
-        .from("hotmart_sales")
-        .select("*")
-        .eq("lead_id", lead.id)
-        .order("data_venda", { ascending: false });
-
-      console.log("📊 loadHotmartSales resultado:", { 
-        leadId: lead.id, 
-        leadNome: lead.nome,
-        data, 
-        error, 
-        count: data?.length 
-      });
+        .from('hotmart_sales')
+        .select('*')
+        .eq('lead_id', lead.id)
+        .order('data_venda', { ascending: false });
 
       if (error) {
-        console.error("❌ Erro ao carregar vendas Hotmart:", error);
+        console.error('❌ Erro ao carregar vendas Hotmart:', error);
         toast({
           title: "Erro ao carregar vendas",
-          description: `Não foi possível carregar o histórico de compras: ${error.message}`,
-          variant: "destructive",
+          description: error.message,
+          variant: "destructive"
         });
-        setHotmartSales([]);
-      } else if (data) {
-        console.log("✅ Vendas carregadas com sucesso:", data.length, "vendas encontradas");
-        console.log("📦 Dados das vendas:", data);
-        setHotmartSales(data);
-      } else {
-        console.log("⚠️ Nenhuma venda encontrada para este lead");
-        setHotmartSales([]);
+        return;
       }
+
+      console.log('✅ Vendas Hotmart carregadas:', data?.length || 0, 'vendas');
+      setHotmartSales(data || []);
     } catch (err) {
-      console.error("❌ Exceção ao carregar vendas:", err);
-      toast({
-        title: "Erro inesperado",
-        description: "Ocorreu um erro ao carregar as vendas.",
-        variant: "destructive",
-      });
-      setHotmartSales([]);
+      console.error('❌ Erro inesperado ao carregar vendas:', err);
     } finally {
       setLoadingSales(false);
+    }
+  };
+
+  const loadLeadProfile = async () => {
+    if (!lead?.id) return;
+    
+    console.log('🔄 Carregando perfil do lead:', lead.id);
+    setLoadingProfile(true);
+
+    try {
+      const { data, error } = await supabase
+        .from('lead_profiles')
+        .select('*')
+        .eq('lead_id', lead.id)
+        .maybeSingle();
+
+      if (error) {
+        console.error('❌ Erro ao carregar perfil:', error);
+        return;
+      }
+
+      console.log('✅ Perfil carregado:', data ? 'sim' : 'não');
+      setLeadProfile(data);
+    } catch (err) {
+      console.error('❌ Erro inesperado ao carregar perfil:', err);
+    } finally {
+      setLoadingProfile(false);
     }
   };
 
@@ -264,7 +361,6 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
         variant: "destructive",
       });
     } else {
-      // Update last interaction
       await supabase
         .from("leads")
         .update({ ultima_interacao: new Date().toISOString() })
@@ -281,25 +377,155 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
     setLoading(false);
   };
 
+  useEffect(() => {
+    if (lead && open) {
+      setStatus(lead.status as "novo" | "contatado" | "qualificado" | "convertido" | "perdido");
+      setObservacoes(lead.observacoes || "");
+      loadInteractions();
+      loadFunnelHistory();
+      loadHotmartSales();
+      loadLeadProfile();
+    }
+  }, [lead, open]);
+
   if (!lead) return null;
 
   return (
-    <Dialog open={open} onOpenChange={(isOpen) => {
-      onOpenChange(isOpen);
-      if (isOpen && lead) {
-        setStatus(lead.status as "novo" | "contatado" | "qualificado" | "convertido" | "perdido");
-        setObservacoes(lead.observacoes || "");
-        loadInteractions();
-        loadFunnelHistory();
-        loadHotmartSales();
-      }
-    }}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl">Detalhes do Lead</DialogTitle>
         </DialogHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Cards de Perfil GTM - Sempre no topo se houver dados */}
+        {leadProfile && !loadingProfile && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 p-4 bg-muted/30 rounded-lg border">
+            {/* Card 1: Perfil & Maturidade */}
+            <Card className="shadow-md">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <User className="h-4 w-4 text-primary" />
+                  Perfil & Maturidade
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm">
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-3 w-3 text-muted-foreground" />
+                  <span className="text-muted-foreground">
+                    {leadProfile.idade ? `${leadProfile.idade} anos` : "Idade não informada"} • {leadProfile.cidade_estado || "Localização não informada"}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Briefcase className="h-3 w-3 text-muted-foreground" />
+                  <span className="font-medium">{leadProfile.situacao_profissional || "Não informado"}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="h-3 w-3 text-muted-foreground" />
+                  <span className="text-muted-foreground">Experiência IA:</span>
+                  {getExperienceBadge(leadProfile.experiencia_ia)}
+                </div>
+                {leadProfile.canal_aquisicao && (
+                  <div className="flex items-center gap-2">
+                    <span className="text-muted-foreground">Canal:</span>
+                    <Badge variant="outline">{leadProfile.canal_aquisicao}</Badge>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Card 2: Perfil Comportamental */}
+            <Card className="shadow-md">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <Activity className="h-4 w-4 text-primary" />
+                  Perfil Comportamental
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                {leadProfile.nivel_organizacao !== null && leadProfile.nivel_organizacao !== undefined && (
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">Organização</span>
+                      <span className="font-medium">{leadProfile.nivel_organizacao}/10</span>
+                    </div>
+                    <Progress value={leadProfile.nivel_organizacao * 10} className="h-2" />
+                  </div>
+                )}
+                {leadProfile.nivel_produtividade !== null && leadProfile.nivel_produtividade !== undefined && (
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-muted-foreground">Produtividade</span>
+                      <span className="font-medium">{leadProfile.nivel_produtividade}/10</span>
+                    </div>
+                    <Progress value={leadProfile.nivel_produtividade * 10} className="h-2" />
+                  </div>
+                )}
+                {leadProfile.area_aplicacao && (
+                  <div className="pt-1">
+                    <span className="text-muted-foreground">Área de aplicação:</span>
+                    <Badge variant="secondary" className="ml-2">{leadProfile.area_aplicacao}</Badge>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Card 3: Motivação & Objetivo */}
+            {(leadProfile.objetivo_principal || leadProfile.maior_dificuldade) && (
+              <Card className="shadow-md">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                    <Target className="h-4 w-4 text-primary" />
+                    Motivação & Objetivo
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  {leadProfile.objetivo_principal && (
+                    <div className="p-2 bg-primary/5 rounded border-l-2 border-primary">
+                      <p className="text-xs text-muted-foreground mb-1">Se dominasse IA:</p>
+                      <p className="font-medium">{leadProfile.objetivo_principal}</p>
+                    </div>
+                  )}
+                  {leadProfile.maior_dificuldade && (
+                    <div>
+                      <span className="text-muted-foreground">Dificuldade:</span>
+                      <p className="text-xs mt-1">{leadProfile.maior_dificuldade}</p>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Card 4: Insights Go-to-Market */}
+            <Card className="shadow-md bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 text-primary" />
+                  Insights Go-to-Market
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm">
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-muted-foreground">Score ICP</span>
+                    <span className="font-bold text-primary">{calculateICPScore()}/100</span>
+                  </div>
+                  <Progress value={calculateICPScore()} className="h-2" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="h-3 w-3 text-muted-foreground" />
+                  <span className={calculateICPScore() >= 60 ? "text-green-600 font-medium" : "text-yellow-600"}>
+                    {calculateICPScore() >= 60 ? "🔥 Lead quente" : "❄️ Lead frio"}
+                  </span>
+                </div>
+                <div className="p-2 bg-background rounded text-xs">
+                  <p className="font-medium">{getICPRecommendation()}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           {/* Informações do Lead */}
           <div className="space-y-4">
             <div>

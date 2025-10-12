@@ -470,6 +470,71 @@ export type Database = {
           },
         ]
       }
+      lead_profiles: {
+        Row: {
+          area_aplicacao: string | null
+          canal_aquisicao: string | null
+          cidade_estado: string | null
+          created_at: string
+          desejo_realizar: string | null
+          expectativas: string | null
+          experiencia_ia: string | null
+          id: string
+          idade: number | null
+          lead_id: string
+          maior_dificuldade: string | null
+          nivel_organizacao: number | null
+          nivel_produtividade: number | null
+          objetivo_principal: string | null
+          situacao_profissional: string | null
+          updated_at: string
+        }
+        Insert: {
+          area_aplicacao?: string | null
+          canal_aquisicao?: string | null
+          cidade_estado?: string | null
+          created_at?: string
+          desejo_realizar?: string | null
+          expectativas?: string | null
+          experiencia_ia?: string | null
+          id?: string
+          idade?: number | null
+          lead_id: string
+          maior_dificuldade?: string | null
+          nivel_organizacao?: number | null
+          nivel_produtividade?: number | null
+          objetivo_principal?: string | null
+          situacao_profissional?: string | null
+          updated_at?: string
+        }
+        Update: {
+          area_aplicacao?: string | null
+          canal_aquisicao?: string | null
+          cidade_estado?: string | null
+          created_at?: string
+          desejo_realizar?: string | null
+          expectativas?: string | null
+          experiencia_ia?: string | null
+          id?: string
+          idade?: number | null
+          lead_id?: string
+          maior_dificuldade?: string | null
+          nivel_organizacao?: number | null
+          nivel_produtividade?: number | null
+          objetivo_principal?: string | null
+          situacao_profissional?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_profiles_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: true
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           created_at: string
