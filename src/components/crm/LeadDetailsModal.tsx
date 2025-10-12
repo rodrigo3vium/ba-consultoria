@@ -45,6 +45,20 @@ interface FunnelHistory {
   stage_to_name: string | null;
 }
 
+interface HotmartSale {
+  id: string;
+  produto: string;
+  data_venda: string | null;
+  data_confirmacao: string | null;
+  status: string | null;
+  origem_checkout: string | null;
+  preco_produto: number | null;
+  preco_oferta: number | null;
+  tipo_pagamento: string | null;
+  numero_parcela: number | null;
+  created_at: string;
+}
+
 interface LeadDetailsModalProps {
   lead: Lead | null;
   open: boolean;
@@ -59,6 +73,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
   const [interactionType, setInteractionType] = useState<"email" | "whatsapp" | "telefone" | "reuniao" | "nota">("nota");
   const [interactions, setInteractions] = useState<Interaction[]>([]);
   const [funnelHistory, setFunnelHistory] = useState<FunnelHistory[]>([]);
+  const [hotmartSales, setHotmartSales] = useState<HotmartSale[]>([]);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -108,6 +123,20 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
         stage_to_name: item.stage_to?.nome || null,
       }));
       setFunnelHistory(formattedHistory);
+    }
+  };
+
+  const loadHotmartSales = async () => {
+    if (!lead) return;
+
+    const { data, error } = await supabase
+      .from("hotmart_sales")
+      .select("*")
+      .eq("lead_id", lead.id)
+      .order("data_venda", { ascending: false });
+
+    if (!error && data) {
+      setHotmartSales(data);
     }
   };
 
@@ -195,6 +224,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
         setObservacoes(lead.observacoes || "");
         loadInteractions();
         loadFunnelHistory();
+        loadHotmartSales();
       }
     }}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -353,6 +383,64 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
                 )}
               </div>
             </div>
+
+            {/* Vendas Hotmart */}
+            {hotmartSales.length > 0 && (
+              <div>
+                <h3 className="font-semibold mb-3">Histórico de Compras</h3>
+                <div className="space-y-2 max-h-[200px] overflow-y-auto">
+                  {hotmartSales.map((sale) => (
+                    <div key={sale.id} className="border rounded-lg p-3 space-y-2">
+                      <div className="flex justify-between items-start">
+                        <Badge variant="default">{sale.produto}</Badge>
+                        {sale.status && (
+                          <Badge variant="outline" className="text-xs">
+                            {sale.status}
+                          </Badge>
+                        )}
+                      </div>
+                      
+                      {sale.data_venda && (
+                        <p className="text-sm">
+                          <strong>Data da Venda:</strong>{" "}
+                          {format(new Date(sale.data_venda), "dd/MM/yyyy HH:mm")}
+                        </p>
+                      )}
+                      
+                      {sale.data_confirmacao && (
+                        <p className="text-sm">
+                          <strong>Confirmação:</strong>{" "}
+                          {format(new Date(sale.data_confirmacao), "dd/MM/yyyy HH:mm")}
+                        </p>
+                      )}
+                      
+                      {sale.origem_checkout && (
+                        <p className="text-xs text-muted-foreground">
+                          <strong>Origem:</strong> {sale.origem_checkout}
+                        </p>
+                      )}
+                      
+                      {sale.preco_oferta && (
+                        <p className="text-sm">
+                          <strong>Valor:</strong> R$ {sale.preco_oferta.toFixed(2)}
+                          {sale.numero_parcela && sale.numero_parcela > 1 && (
+                            <span className="text-muted-foreground text-xs ml-1">
+                              ({sale.numero_parcela}x)
+                            </span>
+                          )}
+                        </p>
+                      )}
+                      
+                      {sale.tipo_pagamento && (
+                        <p className="text-xs text-muted-foreground">
+                          <strong>Pagamento:</strong> {sale.tipo_pagamento}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>
