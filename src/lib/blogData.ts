@@ -453,7 +453,7 @@ A segurança em IA é um investimento, não um custo.`
   }
 ];
 
-export const categories = ["Todos", "IA e Aprendizado", "IA e Mercado", "IA para Negócios", "Automação", "Cases de Sucesso", "Tutorial", "Estratégia", "Segurança"];
+export const categories = ["Todos", "O mapa do Sucesso", "IA e Aprendizado", "IA e Mercado", "IA para Negócios", "Automação", "Cases de Sucesso", "Tutorial", "Estratégia", "Segurança"];
 
 export const getBlogPostById = (id: number): BlogPost | undefined => {
   return blogPosts.find(post => post.id === id);
