@@ -71,6 +71,32 @@ const AdminBlog = () => {
     },
   });
 
+  const deleteOldPostsMutation = useMutation({
+    mutationFn: async () => {
+      // Deleta todos os posts exceto IDs 1 e 2
+      const { error } = await supabase
+        .from('blog_posts')
+        .delete()
+        .not('id', 'in', '(1,2)');
+
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-blog-posts'] });
+      toast({
+        title: "Posts antigos deletados com sucesso",
+        description: "Mantidos apenas os 2 últimos artigos",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Erro ao deletar posts",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
   if (loading || isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -97,9 +123,35 @@ const AdminBlog = () => {
             <h1 className="text-4xl font-bold mb-2">Gerenciar Blog</h1>
             <p className="text-muted-foreground">Gerencie os posts do blog</p>
           </div>
-          <Button onClick={() => navigate("/admin/editor")}>
-            Novo Post
-          </Button>
+          <div className="flex gap-2">
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="destructive">
+                  Limpar Posts Antigos
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Deletar posts antigos</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Isso irá deletar TODOS os posts, exceto os 2 artigos mais recentes (IDs 1 e 2). Esta ação não pode ser desfeita.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => deleteOldPostsMutation.mutate()}
+                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  >
+                    Confirmar Exclusão
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+            <Button onClick={() => navigate("/admin/editor")}>
+              Novo Post
+            </Button>
+          </div>
         </div>
 
         {posts && posts.length > 0 ? (
