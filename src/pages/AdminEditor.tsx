@@ -38,6 +38,7 @@ const postSchema = z.object({
 type PostForm = z.infer<typeof postSchema>;
 
 const categories = [
+  'O mapa do Sucesso',
   'Inteligência Artificial',
   'Machine Learning',
   'Tecnologia',
@@ -239,7 +240,21 @@ const AdminEditor = () => {
                 </CardHeader>
                 <CardContent>
                   <Form {...form}>
-                    <form className="space-y-6">
+                    <form
+                      className="space-y-6"
+                      onSubmit={form.handleSubmit(
+                        async (values) => {
+                          await onSubmit(values, false);
+                        },
+                        () => {
+                          toast({
+                            title: "Preencha os campos obrigatórios",
+                            description: "Verifique título, slug, autor, categoria, resumo e conteúdo.",
+                            variant: "destructive",
+                          });
+                        }
+                      )}
+                    >
                       <FormField
                         control={form.control}
                         name="title"
@@ -397,16 +412,8 @@ const AdminEditor = () => {
                           )}
                         </Button>
                         <Button 
-                          type="button" 
+                          type="submit" 
                           disabled={isSaving}
-                          onClick={async (e) => {
-                            e.preventDefault();
-                            const values = form.getValues();
-                            const isValid = await form.trigger();
-                            if (isValid) {
-                              await onSubmit(values, false);
-                            }
-                          }}
                         >
                           {isSaving ? (
                             <>
