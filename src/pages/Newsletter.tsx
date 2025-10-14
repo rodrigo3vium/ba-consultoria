@@ -95,23 +95,23 @@ const Newsletter = () => {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "Tendências de IA",
-      description: "Fique por dentro das últimas inovações em Inteligência Artificial"
+      title: "Negócios",
+      description: "Cases práticos de aplicações de IA"
     },
     {
       icon: Lightbulb,
-      title: "Dicas Práticas",
-      description: "Aprenda como aplicar IA no seu dia a dia e nos seus negócios"
+      title: "Novidades",
+      description: "Atualizações sobre as últimas inovações e lançamentos em Inteligência Artificial"
     },
     {
       icon: Mail,
-      title: "Casos de Sucesso",
-      description: "Conheça histórias reais de transformação digital"
+      title: "Ferramentas",
+      description: "Uma curadoria das melhores ferramentas de IA do mercado"
     },
     {
       icon: Calendar,
-      title: "Eventos Exclusivos",
-      description: "Acesso antecipado a workshops e webinars sobre IA"
+      title: "Vida",
+      description: "Dicas para viver uma vida melhor, afinal, nem só de IA viverá o homem"
     }
   ];
 
