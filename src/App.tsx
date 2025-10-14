@@ -22,6 +22,7 @@ import AdminImportMapping from "./pages/AdminImportMapping";
 import AdminFunnels from "./pages/AdminFunnels";
 import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
+import Newsletter from "./pages/Newsletter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
+          <Route path="/newsletter" element={<Newsletter />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
