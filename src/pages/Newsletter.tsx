@@ -126,12 +126,13 @@ const Newsletter = () => {
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-tight">
-              Receba Insights Semanais sobre IA e Negócios
+          <div className="max-w-5xl mx-auto text-center space-y-6 px-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-[1.1] sm:leading-tight">
+              Receba Insights Semanais sobre IA{" "}
+              <span className="inline-block">e Negócios</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Toda segunda-feira às 8h, você recebe no seu email as melhores estratégias, 
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Toda segunda-feira às 8h, você recebe no seu email as melhores estratégias,
               tendências e casos práticos de Inteligência Artificial aplicada a negócios.
             </p>
           </div>
