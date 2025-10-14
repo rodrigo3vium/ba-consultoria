@@ -121,6 +121,9 @@ const Newsletter = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Gradient overlay for smooth transition from header */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ba-blue-light/20 via-ba-blue-light/10 to-transparent" />
+        
         {/* Background decorations */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl" />
