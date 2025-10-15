@@ -8,6 +8,7 @@ import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
+import { tracker } from '@/lib/tracking';
 
 const leadSchema = z.object({
   nome: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100),
@@ -48,6 +49,19 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
       });
 
       if (error) throw error;
+
+      // Identificar o lead no sistema de tracking
+      await tracker.identify(
+        validatedData.email,
+        validatedData.whatsapp,
+        validatedData.nome
+      );
+
+      // Trackear conversão
+      await tracker.track('form_submitted', {
+        form_type: 'ia-do-zero',
+        product: 'ia-do-zero'
+      });
 
       toast({
         title: "Sucesso!",

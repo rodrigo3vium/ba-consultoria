@@ -24,6 +24,7 @@ import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import { tracker } from '@/lib/tracking';
 
 const formSchema = z.object({
   nome: z.string().min(2, 'Nome deve ter no mínimo 2 caracteres').max(100),
@@ -67,6 +68,20 @@ export default function LeadFormIANegocios({ open, onOpenChange, onSuccess }: Le
       });
 
       if (error) throw error;
+
+      // Identificar o lead no sistema de tracking
+      await tracker.identify(
+        data.email.trim(),
+        data.whatsapp.trim(),
+        data.nome.trim()
+      );
+
+      // Trackear conversão
+      await tracker.track('form_submitted', {
+        form_type: 'ia-para-negocios',
+        product: 'ia-para-negocios',
+        faturamento: data.faturamento
+      });
 
       toast({
         title: 'Cadastro realizado!',

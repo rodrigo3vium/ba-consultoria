@@ -35,11 +35,17 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LeadFormIANegocios from '@/components/LeadFormIANegocios';
+import { tracker } from '@/lib/tracking';
 
 const IAParaNegocios = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
-  const handleWhatsAppContact = () => {
+  const handleWhatsAppContact = (ctaLocation: string) => {
+    tracker.track('cta_click', {
+      cta_type: 'whatsapp',
+      cta_location: ctaLocation,
+      product: 'ia-para-negocios'
+    });
     window.open('https://wa.me/5511999718595', '_blank');
   };
 
@@ -88,7 +94,7 @@ const IAParaNegocios = () => {
                 <Button 
                   size="lg" 
                   className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={handleWhatsAppContact}
+                  onClick={() => handleWhatsAppContact('hero_top')}
                 >
                   Quero mais informações
                 </Button>
@@ -744,7 +750,7 @@ const IAParaNegocios = () => {
                   <Button 
                     size="lg" 
                     className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 w-full"
-                    onClick={handleWhatsAppContact}
+                    onClick={() => handleWhatsAppContact('pricing_section')}
                   >
                     Garantir minha vaga
                     <ArrowRight className="ml-2" size={20} />
@@ -842,7 +848,7 @@ const IAParaNegocios = () => {
               <Button 
                 size="lg" 
                 className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
-                onClick={handleWhatsAppContact}
+                onClick={() => handleWhatsAppContact('final_cta')}
               >
                 Quero liderar meu mercado com IA
                 <ArrowRight className="ml-2" size={24} />
@@ -851,7 +857,7 @@ const IAParaNegocios = () => {
             
             <div className="space-y-2 text-sm text-gray-300">
               <p><strong>P.S.</strong> Bônus de R$ 2.800 incluídos nesta turma e 7 dias de teste sem risco.</p>
-              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={handleWhatsAppContact} className="underline text-blue-400 hover:text-blue-300">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
+              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={() => handleWhatsAppContact('schedule_link')} className="underline text-blue-400 hover:text-blue-300">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
             </div>
           </div>
         </div>

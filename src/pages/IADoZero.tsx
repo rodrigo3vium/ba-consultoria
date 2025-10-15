@@ -7,11 +7,17 @@ import { CheckCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LeadFormIADoZero } from "@/components/LeadFormIADoZero";
+import { tracker } from '@/lib/tracking';
 
 const IADoZero = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
-  const handleWhatsAppContact = () => {
+  const handleWhatsAppContact = (ctaLocation: string) => {
+    tracker.track('cta_click', {
+      cta_type: 'form_open',
+      cta_location: ctaLocation,
+      product: 'ia-do-zero'
+    });
     setIsLeadFormOpen(true);
   };
 
@@ -79,7 +85,7 @@ const IADoZero = () => {
               variant="default" 
               size="lg" 
               className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-              onClick={handleWhatsAppContact}
+              onClick={() => handleWhatsAppContact('hero')}
             >
               QUERO O IA DO ZERO
             </Button>
@@ -233,7 +239,7 @@ const IADoZero = () => {
               variant="default" 
               size="lg" 
               className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-              onClick={handleWhatsAppContact}
+              onClick={() => handleWhatsAppContact('target_audience')}
             >
               QUERO APRENDER A USAR IA
             </Button>
@@ -286,7 +292,7 @@ const IADoZero = () => {
                 variant="default" 
                 size="lg" 
                 className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                onClick={handleWhatsAppContact}
+                onClick={() => handleWhatsAppContact('harvard_section')}
               >
                 QUERO APRENDER A USAR IA
               </Button>
@@ -425,7 +431,7 @@ const IADoZero = () => {
                   variant="default" 
                   size="lg" 
                   className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
-                  onClick={handleWhatsAppContact}
+                  onClick={() => handleWhatsAppContact('pricing_section')}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
                 </Button>
