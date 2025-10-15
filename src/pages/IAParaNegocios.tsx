@@ -40,7 +40,7 @@ const IAParaNegocios = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
   const handleWhatsAppContact = () => {
-    setIsLeadFormOpen(true);
+    window.open('https://wa.me/5511999718595', '_blank');
   };
 
   const handleLeadSuccess = () => {
@@ -736,6 +736,19 @@ const IAParaNegocios = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                <Separator className="bg-slate-700" />
+
+                <div className="text-center">
+                  <Button 
+                    size="lg" 
+                    className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 w-full"
+                    onClick={handleWhatsAppContact}
+                  >
+                    Garantir minha vaga
+                    <ArrowRight className="ml-2" size={20} />
+                  </Button>
                 </div>
               </CardContent>
             </Card>
