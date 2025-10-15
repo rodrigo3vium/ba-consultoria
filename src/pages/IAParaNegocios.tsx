@@ -73,16 +73,16 @@ const IAParaNegocios = () => {
               {/* Left Column - Content */}
               <div className="space-y-8">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight text-white">
-                  Tenha soluções de IA{' '}
+                  Se torne o líder do seu mercado{' '}
                   <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
-                    sob medida
+                    utilizando soluções de Inteligência Artificial
                   </span>
-                  {' '}para seu negócio
+                  {' '}para aumentar lucro e ganhar produtividade no seu negócio.
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed">
-                  Implemente Inteligência Artificial de forma prática e estratégica na sua empresa. 
-                  Aumente lucros, ganhe eficiência e lidere seu mercado em 90 dias.
+                  O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
+                  na implementação de soluções de IA na sua empresa.
                 </p>
 
                 <Button 
@@ -171,7 +171,7 @@ const IAParaNegocios = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-inter">
-              A mentoria IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
+              O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
               na implementação de soluções de IA na sua empresa. Colhendo resultados concretos, 
               em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações. 
               Temos trilhas dedicadas para quem está no Estratégico e no Operacional do negócio.
@@ -193,28 +193,28 @@ const IAParaNegocios = () => {
             {[
               {
                 icon: Building2,
-                title: "Você é dono ou sócio de uma PME",
-                description: "que fatura entre R$ 1–5 mi/ano e precisa ganhar eficiência sem inflar a folha de pagamento."
+                title: "Você é dono ou sócio de uma Empresa que fatura entre R$ 1–5 mi/ano",
+                description: "e precisa ganhar eficiência sem inflar a folha de pagamento."
               },
               {
                 icon: Clock,
-                title: "Suas tarefas estão consumindo horas",
-                description: "em planilhas, e-mails e follow-ups manuais, mas você ainda não sabe automatizar com segurança."
+                title: "Suas tarefas (ou da equipe) estão consumindo horas em planilhas, e-mails e follow-ups manuais",
+                description: "mas você ainda não sabe automatizar com segurança."
               },
               {
                 icon: DollarSign,
-                title: "Quer ver ROI palpável",
-                description: "em até 90 dias, em vez de projetos de IA caros que nunca saem do papel."
+                title: "Quer ver ROI palpável em até 90 dias",
+                description: "em vez de conteúdo que nunca sai do papel."
               },
               {
                 icon: Rocket,
                 title: "Busca vantagem competitiva real",
-                description: "reduzir custos operacionais, acelerar vendas ou melhorar atendimento antes que o concorrente descubra."
+                description: "reduzir custos operacionais, acelerar vendas ou melhorar atendimento antes que o concorrente o faça."
               },
               {
                 icon: Users,
                 title: "Não tem equipe técnica dedicada",
-                description: "e precisa de soluções no-code que o próprio time possa tocar."
+                description: "(ou não pretende contratar desenvolvedores agora) e precisa de soluções no-code que o próprio time possa tocar."
               },
               {
                 icon: Heart,
@@ -264,26 +264,25 @@ const IAParaNegocios = () => {
               </p>
               
               <p>
-                Foi quando decidi testar pequenas automações de IA — mesmo sem saber programar. Em três meses:
+                Foi quando decidi testar pequenas automações de IA — mesmo sem saber programar.
               </p>
+              
+              <p className="font-semibold text-white">Em três meses:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
                 <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-green-400 mb-2">60%</div>
-                    <div className="text-sm text-gray-300">Cortei o tempo de proposta usando geração automática de PDFs via ChatGPT e Make.</div>
+                    <div className="text-sm text-gray-300"><strong className="text-green-400">Cortei 60% do tempo de proposta</strong> usando geração automática de PDFs via ChatGPT e Make.</div>
                   </CardContent>
                 </Card>
                 <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-green-400 mb-2">27%</div>
-                    <div className="text-sm text-gray-300">Aumentei o ticket médio com um bot de upsell que trabalha enquanto a equipe dorme.</div>
+                    <div className="text-sm text-gray-300"><strong className="text-green-400">Aumentei em 27% o ticket médio</strong> com um bot de upsell que trabalha enquanto a equipe dorme.</div>
                   </CardContent>
                 </Card>
                 <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
                   <CardContent className="pt-6">
-                    <div className="text-2xl font-bold text-green-400 mb-2">R$ 8 mil/mês</div>
-                    <div className="text-sm text-gray-300">Economizei só com reconciliação financeira automatizada.</div>
+                    <div className="text-sm text-gray-300"><strong className="text-green-400">Economizei R$ 8 mil/mês</strong> só com reconciliação financeira automatizada.</div>
                   </CardContent>
                 </Card>
               </div>
@@ -313,7 +312,7 @@ const IAParaNegocios = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-white">
-              Nossa <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Promessa</span>
+              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Promessa Poderosa</span>
             </h2>
             
             <Card className="bg-slate-800/90 backdrop-blur-sm border border-slate-700 p-8">
@@ -412,53 +411,60 @@ const IAParaNegocios = () => {
                 icon: Rocket,
                 title: "Ecossistema completo de implementação (12 semanas)",
                 items: [
-                  "Trilho Estratégico (dono/sócios): E1, E2, E5, E6, E7, E8, E9",
-                  "Trilho Operacional (equipe): O1 a O8"
+                  "Trilho Estratégico (dono/sócios): E1, E2, E5, E6, E7, E8, E9 — decisões, KPIs, road-map e time.",
+                  "Trilho Operacional (equipe): O1 a O8 — prompts, automações no-code, dados leves, segurança e criativos."
                 ]
               },
               {
                 icon: Target,
                 title: "Plano 90 dias 'mão na massa'",
                 items: [
-                  "3 processos críticos automatizados",
-                  "1 painel executivo com 3–5 KPIs",
-                  "1 road-map de 12 meses (três ondas)"
+                  "3 processos críticos automatizados (definidos no E1 e implantados no O3/O4).",
+                  "1 painel executivo com 3–5 KPIs ligados ao caixa.",
+                  "1 road-map de 12 meses (três ondas) para escalar o que funcionou."
                 ]
               },
               {
-                icon: Users,
-                title: "Mentorias e suporte",
+                icon: MessageSquare,
+                title: "Canal privado",
                 items: [
-                  "Mentoria em grupo semanal (90 min)",
-                  "Plantão de dúvidas quinzenal (60 min)",
-                  "Canal privado (Slack/Discord)"
+                  "Resposta em até 24h úteis."
                 ]
               },
               {
                 icon: Brain,
                 title: "Tutores de IA personalizados",
                 items: [
-                  "GPT Tutor Estratégico",
-                  "GPT Tutor Operacional",
-                  "Histórico salvo + sugestões"
+                  "Implemente todas as aulas com um Tutor personalizado.",
+                  "GPT Tutor Estratégico (decisões, KPIs, canvas).",
+                  "GPT Tutor Operacional (prompts, integrações, troubleshooting)."
                 ]
               },
               {
                 icon: Database,
                 title: "Playbooks & templates prontos",
                 items: [
-                  "Biblioteca de 120+ prompts",
-                  "Cenários clonáveis (Make/Zapier)",
-                  "Dashboard Looker Studio"
+                  "Biblioteca de 120+ prompts por área (marketing, vendas, atendimento, back-office).",
+                  "Cenários clonáveis (n8n): É só copiar, colar e rodar.",
+                  "Planilhas: Templates prontos para poupar tempo."
+                ]
+              },
+              {
+                icon: Lightbulb,
+                title: "Treinamentos e materiais",
+                items: [
+                  "Aulas ao vivo gravadas + acesso às gravações por 12 meses.",
+                  "Guias passo a passo (PDF) por módulo e listas de checagem.",
+                  "Estudos de caso por nicho (varejo, serviços de saúde, construção, agência de marketing)."
                 ]
               },
               {
                 icon: Award,
                 title: "Garantias e certificação",
                 items: [
-                  "Revisão técnica de 1 workflow",
-                  "Certificado 'Applied AI for SMBs'",
-                  "Selo 'Processo Automatizado'"
+                  "Revisão técnica de 1 workflow por empresa (assinado pelo instrutor).",
+                  "Certificado 'Applied AI for SMBs' mediante entrega do piloto e participação mínima.",
+                  "Selo 'Processo Automatizado' para os 3 fluxos concluídos."
                 ]
               }
             ].map((item, index) => {
@@ -502,10 +508,10 @@ const IAParaNegocios = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
             {[
               {
-                title: "Varejo físico – Estoque previsível",
-                problem: "rupturas e sobras frequentes.",
-                solution: "planilha de vendas → previsão simples (AutoML) → alerta de compra no Slack.",
-                result: "−10% desperdício e −8% ruptura em 6 semanas."
+                title: "Agência de Marketing – Relatórios automatizados",
+                problem: "Gastar tempo gerando relatórios periódicos para clientes",
+                solution: "Gerenciador → Planilhas → Mensagem automática pro cliente + Dashboard",
+                result: "+2h/semana liberadas"
               },
               {
                 title: "Clínica odontológica – No-show",
@@ -622,8 +628,8 @@ const IAParaNegocios = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-300">
-                  Se, cumprindo as ações combinadas, você não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos, 
-                  nós <strong>estendemos a mentoria por mais 30 dias sem custo</strong> e ajustamos os fluxos até ficar de pé.
+                  Se, cumprindo as ações combinadas, você <strong>não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos</strong>, 
+                  nós devolvemos 100% do seu dinheiro, sem questionamentos.
                 </p>
               </CardContent>
             </Card>
@@ -692,6 +698,50 @@ const IAParaNegocios = () => {
         </div>
       </section>
 
+      {/* Preço e Ancoragem */}
+      <section className="py-20 bg-gradient-to-br from-blue-500/10 to-green-500/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
+                <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Investimento</span>
+              </h2>
+            </div>
+
+            <Card className="bg-slate-800/90 backdrop-blur-sm border border-blue-500/30 p-8">
+              <CardContent className="space-y-6">
+                <div className="text-center">
+                  <div className="text-5xl font-bold text-white mb-4">
+                    R$ 3.000
+                  </div>
+                  <p className="text-xl text-gray-300 mb-6">à vista ou 12× de R$ 300</p>
+                </div>
+
+                <Separator className="bg-slate-700" />
+
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-white text-center">Inclui:</h3>
+                  <ul className="space-y-3">
+                    {[
+                      "Mentoria 12 semanas (trilho Estratégico + Operacional)",
+                      "Tutores GPT personalizados (Estratégico e Operacional)",
+                      "Biblioteca de 120+ prompts por área",
+                      "Cenários de n8n clonáveis",
+                      "Revisão técnica de 1 workflow",
+                      "Comunidade e gravações por 12 meses"
+                    ].map((item, index) => (
+                      <li key={index} className="flex items-start space-x-3">
+                        <CheckCircle size={20} className="text-green-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* FAQs */}
       <section className="py-20 bg-slate-900">
