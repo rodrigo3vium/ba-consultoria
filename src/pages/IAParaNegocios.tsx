@@ -639,7 +639,7 @@ const IAParaNegocios = () => {
               <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Bônus</span> Exclusivos
             </h2>
             <Badge variant="outline" className="border-green-500 text-green-400 bg-green-500/10 text-lg px-4 py-2">
-              Valor de referência: R$ 4.900 — Apenas nesta turma
+              Valor de referência: R$ 2.800 — Apenas nesta turma
             </Badge>
           </div>
 
@@ -652,28 +652,10 @@ const IAParaNegocios = () => {
                 delivery: "acesso imediato dentro do portal"
               },
               {
-                title: "Kit 'Texto → Vídeo'",
-                value: "R$ 900",
-                description: "Roteiro → voz IA → vídeo vertical legendado para posts e anúncios.",
-                delivery: "cenário Make/Zapier clonável + tutorial"
-              },
-              {
                 title: "Biblioteca de 120+ Prompts",
                 value: "R$ 600",
                 description: "Marketing, Vendas, Atendimento, Back-office, Operações — prontos para copiar e usar.",
                 delivery: "Google Doc + atualizações trimestrais"
-              },
-              {
-                title: "Leaderboard de Adoção",
-                value: "R$ 500",
-                description: "Ranking automático de uso/entregas para manter o time engajado.",
-                delivery: "Apps Script + template"
-              },
-              {
-                title: "Minutas RFI/RFP e Contrato",
-                value: "R$ 700",
-                description: "Peças jurídicas enxutas para negociar com vendors sem dor de cabeça.",
-                delivery: ".docx editável"
               },
               {
                 title: "Revisão Técnica de 1 Workflow",
@@ -710,62 +692,6 @@ const IAParaNegocios = () => {
         </div>
       </section>
 
-      {/* Escassez/Urgência */}
-      <section className="py-20 bg-gradient-to-br from-red-500/10 to-orange-500/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-white">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Por que agir agora</span>
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Users,
-                  title: "Turma limitada a 15 empresas",
-                  description: "Mantemos grupos pequenos para garantir revisão técnica do seu workflow e acompanhamento próximo."
-                },
-                {
-                  icon: Timer,
-                  title: "Bônus válidos apenas nesta turma",
-                  description: "Os 6 bônus (GPT Tutors, Kit Texto→Vídeo, etc.) não são garantidos nas próximas edições."
-                },
-                {
-                  icon: TrendingUp,
-                  title: "Preço de lançamento",
-                  description: "Valor atual é preço de entrada. Na próxima turma, o investimento sobe devido ao aumento de suporte."
-                },
-                {
-                  icon: CheckCircle,
-                  title: "Prioridade por ordem de confirmação",
-                  description: "A vaga é assegurada apenas após o pagamento/contrato. Interessados sem confirmação ficam em standby."
-                }
-              ].map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <Card key={index} className="bg-slate-800/80 backdrop-blur-sm border border-orange-500/30 text-left">
-                    <CardHeader>
-                      <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-orange-500/20 rounded-full">
-                          <IconComponent size={20} className="text-orange-400" />
-                        </div>
-                        <CardTitle className="text-lg font-poppins text-white">
-                          {item.title}
-                        </CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-0">
-                      <p className="text-gray-300 text-sm">
-                        {item.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQs */}
       <section className="py-20 bg-slate-900">
@@ -861,7 +787,7 @@ const IAParaNegocios = () => {
             </div>
             
             <div className="space-y-2 text-sm text-gray-300">
-              <p><strong>P.S.</strong> Bônus de R$ 4.900 incluídos nesta turma e 7 dias de teste sem risco.</p>
+              <p><strong>P.S.</strong> Bônus de R$ 2.800 incluídos nesta turma e 7 dias de teste sem risco.</p>
               <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={handleWhatsAppContact} className="underline text-blue-400 hover:text-blue-300">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
             </div>
           </div>
