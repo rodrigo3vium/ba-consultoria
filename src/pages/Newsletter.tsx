@@ -37,39 +37,55 @@ const Newsletter = () => {
   const onSubmit = async (values: NewsletterForm) => {
     try {
       setIsSubmitting(true);
+      console.log('📧 Iniciando cadastro newsletter:', values.email);
 
       // 1. Identificar lead via tracker
+      console.log('🔍 Identificando lead...');
       await tracker.identify(values.email, values.whatsapp || "", values.name);
+      console.log('✅ Lead identificado');
 
-      // 2. Atualizar tags e produto do lead
-      // Primeiro buscar o lead atual para pegar as tags existentes
-      const { data: leadData } = await supabase
+      // 2. Buscar lead existente (sem erro se não existir)
+      console.log('💾 Verificando lead existente...');
+      const { data: existingLead } = await supabase
         .from('leads')
-        .select('tags')
+        .select('tags, produto')
         .eq('email', values.email)
-        .single();
+        .maybeSingle();
 
-      const currentTags = leadData?.tags || [];
+      const currentTags = existingLead?.tags || [];
       const updatedTags = currentTags.includes('newsletter') 
         ? currentTags 
         : [...currentTags, 'newsletter'];
 
-      const { error: updateError } = await supabase
-        .from('leads')
-        .update({ 
-          tags: updatedTags,
-          produto: 'Newsletter'
-        })
-        .eq('email', values.email);
+      // Se já existe, preserva produto original. Se é novo, define 'Newsletter'
+      const produto = existingLead?.produto || 'Newsletter';
 
-      if (updateError) {
-        console.error('Erro ao atualizar tags:', updateError);
+      console.log('💾 Salvando lead no banco...');
+      const { error: upsertError } = await supabase
+        .from('leads')
+        .upsert({ 
+          email: values.email,
+          nome: values.name,
+          whatsapp: values.whatsapp || '',
+          tags: updatedTags,
+          produto: produto,
+          origem: 'Newsletter Page'
+        }, {
+          onConflict: 'email'
+        });
+
+      if (upsertError) {
+        throw new Error(`Falha ao salvar lead: ${upsertError.message}`);
       }
+      console.log('✅ Lead salvo');
 
       // 3. Registrar evento de signup
+      console.log('📊 Rastreando evento...');
       await tracker.track('newsletter_signup', {
-        source: 'newsletter_page'
+        source: 'newsletter_page',
+        existing_lead: !!existingLead
       });
+      console.log('✅ Evento rastreado');
 
       // 4. Mostrar sucesso
       toast({
@@ -81,10 +97,10 @@ const Newsletter = () => {
       form.reset();
       
     } catch (error) {
-      console.error('Erro ao processar inscrição:', error);
+      console.error('❌ Erro detalhado:', error);
       toast({
         title: "Erro ao processar inscrição",
-        description: "Tente novamente em alguns instantes.",
+        description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
         variant: "destructive",
       });
     } finally {
