@@ -57,8 +57,8 @@ const Newsletter = () => {
         ? currentTags 
         : [...currentTags, 'newsletter'];
 
-      // Se já existe, preserva produto original. Se é novo, define 'Newsletter'
-      const produto = existingLead?.produto || 'Newsletter';
+      // Se já existe, preserva produto original. Se é novo, usa valor padrão válido
+      const produto = existingLead?.produto || 'ia-para-negocios';
 
       console.log('💾 Salvando lead no banco...');
       const { error: upsertError } = await supabase

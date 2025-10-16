@@ -34,14 +34,14 @@ serve(async (req) => {
       .maybeSingle();
 
     if (!lead) {
-      // Criar novo lead
+      // Criar novo lead com valor padrão que respeita a constraint
       const { data: newLead, error: createError } = await supabase
         .from('leads')
         .insert({
           nome: name,
           email,
           whatsapp: phone,
-          produto: 'Website',
+          produto: 'ia-para-negocios', // Valor padrão válido
           origem: 'organic',
           status: 'novo'
         })
