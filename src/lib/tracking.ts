@@ -56,6 +56,10 @@ class LeadTracker {
     return id;
   }
 
+  public getAnonymousId(): string {
+    return this.anonymousId;
+  }
+
   private getOrCreateSessionId(): string {
     const stored = sessionStorage.getItem('_session_id');
     const storedTime = sessionStorage.getItem('_session_start');

@@ -39,65 +39,74 @@ const Newsletter = () => {
       setIsSubmitting(true);
       console.log('📧 Iniciando cadastro newsletter:', values.email);
 
-      // 1. Identificar lead via tracker
+      // 1. Identificar lead via tracker (mantém tracking)
       console.log('🔍 Identificando lead...');
       await tracker.identify(values.email, values.whatsapp || "", values.name);
-      console.log('✅ Lead identificado');
+      
+      // Obter anonymous_id do tracker
+      const anonymousId = tracker.getAnonymousId();
+      console.log('✅ Lead identificado, anonymous_id:', anonymousId);
 
-      // 2. Buscar lead existente (sem erro se não existir)
-      console.log('💾 Verificando lead existente...');
-      const { data: existingLead } = await supabase
-        .from('leads')
-        .select('tags, produto')
-        .eq('email', values.email)
-        .maybeSingle();
-
-      const currentTags = existingLead?.tags || [];
-      const updatedTags = currentTags.includes('newsletter') 
-        ? currentTags 
-        : [...currentTags, 'newsletter'];
-
-      // Se já existe, preserva produto original. Se é novo, usa valor padrão válido
-      const produto = existingLead?.produto || 'ia-para-negocios';
-
-      console.log('💾 Salvando lead no banco...');
-      const { error: upsertError } = await supabase
-        .from('leads')
+      // 2. Salvar na tabela newsletter_subscribers
+      console.log('💾 Salvando na tabela newsletter...');
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      const { data: subscriber, error: upsertError } = await supabase
+        .from('newsletter_subscribers')
         .upsert({ 
           email: values.email,
           nome: values.name,
-          whatsapp: values.whatsapp || '',
-          tags: updatedTags,
-          produto: produto,
-          origem: 'Newsletter Page'
+          whatsapp: values.whatsapp || null,
+          anonymous_id: anonymousId,
+          subscription_source: 'newsletter_page',
+          utm_source: urlParams.get('utm_source'),
+          utm_medium: urlParams.get('utm_medium'),
+          utm_campaign: urlParams.get('utm_campaign'),
+          referrer: document.referrer || null,
+          status: 'active'
         }, {
-          onConflict: 'email'
-        });
+          onConflict: 'email',
+          ignoreDuplicates: false
+        })
+        .select('id, email, subscribed_at')
+        .single();
 
       if (upsertError) {
-        throw new Error(`Falha ao salvar lead: ${upsertError.message}`);
+        console.error('❌ Erro ao salvar inscrição:', upsertError);
+        
+        // Tratamento especial para email já cadastrado
+        if (upsertError.code === '23505') {
+          toast({
+            title: "Você já está inscrito! ✅",
+            description: "Verifique sua caixa de entrada toda segunda às 8h.",
+          });
+          form.reset();
+          return;
+        }
+        
+        throw new Error(`Falha ao salvar inscrição: ${upsertError.message}`);
       }
-      console.log('✅ Lead salvo');
+      console.log('✅ Inscrição salva:', subscriber);
 
-      // 3. Registrar evento de signup
+      // 3. Registrar evento (mantém analytics)
       console.log('📊 Rastreando evento...');
       await tracker.track('newsletter_signup', {
         source: 'newsletter_page',
-        existing_lead: !!existingLead
+        subscriber_id: subscriber.id
       });
       console.log('✅ Evento rastreado');
 
-      // 4. Mostrar sucesso
+      // 4. Sucesso
       toast({
         title: "Inscrição confirmada! 🎉",
         description: "Você receberá nossa newsletter toda segunda-feira às 8h.",
       });
 
-      // Limpar formulário
       form.reset();
       
     } catch (error) {
       console.error('❌ Erro detalhado:', error);
+      
       toast({
         title: "Erro ao processar inscrição",
         description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",

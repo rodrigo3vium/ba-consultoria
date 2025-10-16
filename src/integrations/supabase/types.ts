@@ -613,6 +613,83 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          anonymous_id: string | null
+          created_at: string
+          email: string
+          emails_opened: number | null
+          emails_sent: number | null
+          id: string
+          last_email_opened_at: string | null
+          lead_id: string | null
+          nome: string
+          preferences: Json | null
+          referrer: string | null
+          status: string
+          subscribed_at: string
+          subscription_source: string
+          unsubscribed_at: string | null
+          updated_at: string
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          anonymous_id?: string | null
+          created_at?: string
+          email: string
+          emails_opened?: number | null
+          emails_sent?: number | null
+          id?: string
+          last_email_opened_at?: string | null
+          lead_id?: string | null
+          nome: string
+          preferences?: Json | null
+          referrer?: string | null
+          status?: string
+          subscribed_at?: string
+          subscription_source?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          anonymous_id?: string | null
+          created_at?: string
+          email?: string
+          emails_opened?: number | null
+          emails_sent?: number | null
+          id?: string
+          last_email_opened_at?: string | null
+          lead_id?: string | null
+          nome?: string
+          preferences?: Json | null
+          referrer?: string | null
+          status?: string
+          subscribed_at?: string
+          subscription_source?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_lead"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       scoring_rules: {
         Row: {
           active: boolean | null
