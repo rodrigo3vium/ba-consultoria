@@ -1,0 +1,85 @@
+<!-- 
+  Template HTML para Newsletter - Seção de Rating
+  
+  INSTRUÇÕES DE USO:
+  1. Copie este código e cole no final do seu email da newsletter via Resend
+  2. Substitua as seguintes variáveis antes de enviar:
+     - {{SUBSCRIBER_ID}} = ID do assinante (newsletter_subscribers.id)
+     - {{EDITION}} = Identificador da edição (ex: "2025-W42", "outubro-semana3")
+     - {{ANONYMOUS_ID}} = Anonymous ID do assinante (se disponível, senão pode omitir &aid=...)
+     - {{CAMPAIGN}} = Nome da campanha (ex: "newsletter-2025-10-20")
+  
+  3. A URL base já está configurada para produção:
+     https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating
+-->
+
+<table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 40px; padding: 20px; background: #f9fafb; border-radius: 8px;">
+  <tr>
+    <td align="center">
+      <p style="font-size: 16px; color: #374151; margin-bottom: 16px; font-weight: 600;">
+        📊 Como você avaliaria esta newsletter?
+      </p>
+      
+      <!-- Botões de Rating -->
+      <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+        <tr>
+          <!-- Rating 1 -->
+          <td style="padding: 0 4px;">
+            <a href="https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid={{SUBSCRIBER_ID}}&r=1&e={{EDITION}}&aid={{ANONYMOUS_ID}}&utm_campaign={{CAMPAIGN}}" 
+               style="display: inline-block; width: 48px; height: 48px; background: #fee2e2; border-radius: 8px; text-align: center; line-height: 48px; font-size: 24px; text-decoration: none;">
+              😞
+            </a>
+          </td>
+          
+          <!-- Rating 2 -->
+          <td style="padding: 0 4px;">
+            <a href="https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid={{SUBSCRIBER_ID}}&r=2&e={{EDITION}}&aid={{ANONYMOUS_ID}}&utm_campaign={{CAMPAIGN}}" 
+               style="display: inline-block; width: 48px; height: 48px; background: #fef3c7; border-radius: 8px; text-align: center; line-height: 48px; font-size: 24px; text-decoration: none;">
+              😐
+            </a>
+          </td>
+          
+          <!-- Rating 3 -->
+          <td style="padding: 0 4px;">
+            <a href="https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid={{SUBSCRIBER_ID}}&r=3&e={{EDITION}}&aid={{ANONYMOUS_ID}}&utm_campaign={{CAMPAIGN}}" 
+               style="display: inline-block; width: 48px; height: 48px; background: #dbeafe; border-radius: 8px; text-align: center; line-height: 48px; font-size: 24px; text-decoration: none;">
+              🙂
+            </a>
+          </td>
+          
+          <!-- Rating 4 -->
+          <td style="padding: 0 4px;">
+            <a href="https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid={{SUBSCRIBER_ID}}&r=4&e={{EDITION}}&aid={{ANONYMOUS_ID}}&utm_campaign={{CAMPAIGN}}" 
+               style="display: inline-block; width: 48px; height: 48px; background: #d1fae5; border-radius: 8px; text-align: center; line-height: 48px; font-size: 24px; text-decoration: none;">
+              😊
+            </a>
+          </td>
+          
+          <!-- Rating 5 -->
+          <td style="padding: 0 4px;">
+            <a href="https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid={{SUBSCRIBER_ID}}&r=5&e={{EDITION}}&aid={{ANONYMOUS_ID}}&utm_campaign={{CAMPAIGN}}" 
+               style="display: inline-block; width: 48px; height: 48px; background: #dcfce7; border-radius: 8px; text-align: center; line-height: 48px; font-size: 24px; text-decoration: none;">
+              🤩
+            </a>
+          </td>
+        </tr>
+      </table>
+      
+      <p style="font-size: 12px; color: #9ca3af; margin-top: 12px;">
+        Seu feedback nos ajuda a melhorar!
+      </p>
+    </td>
+  </tr>
+</table>
+
+<!-- 
+  EXEMPLO DE SUBSTITUIÇÃO:
+  
+  Se você tem um subscriber com:
+  - ID: "550e8400-e29b-41d4-a716-446655440000"
+  - Edição: "2025-W43"
+  - Campaign: "newsletter-outubro-2025"
+  
+  O link ficaria:
+  https://vmmosextmuuibhuyeqkq.supabase.co/functions/v1/track-newsletter-rating?sid=550e8400-e29b-41d4-a716-446655440000&r=5&e=2025-W43&utm_campaign=newsletter-outubro-2025
+-->

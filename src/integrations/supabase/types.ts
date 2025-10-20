@@ -613,6 +613,56 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_ratings: {
+        Row: {
+          anonymous_id: string | null
+          id: string
+          ip_address: unknown | null
+          newsletter_edition: string
+          rated_at: string
+          rating: number
+          subscriber_id: string
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+        }
+        Insert: {
+          anonymous_id?: string | null
+          id?: string
+          ip_address?: unknown | null
+          newsletter_edition: string
+          rated_at?: string
+          rating: number
+          subscriber_id: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Update: {
+          anonymous_id?: string | null
+          id?: string
+          ip_address?: unknown | null
+          newsletter_edition?: string
+          rated_at?: string
+          rating?: number
+          subscriber_id?: string
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "newsletter_ratings_subscriber_id_fkey"
+            columns: ["subscriber_id"]
+            isOneToOne: false
+            referencedRelation: "newsletter_subscribers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       newsletter_subscribers: {
         Row: {
           anonymous_id: string | null
@@ -805,7 +855,21 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      vw_newsletter_performance: {
+        Row: {
+          avg_rating: number | null
+          first_rating_at: string | null
+          last_rating_at: string | null
+          newsletter_edition: string | null
+          rating_1_count: number | null
+          rating_2_count: number | null
+          rating_3_count: number | null
+          rating_4_count: number | null
+          rating_5_count: number | null
+          total_ratings: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       count_events_today: {
