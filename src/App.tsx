@@ -23,6 +23,7 @@ import AdminFunnels from "./pages/AdminFunnels";
 import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
 import Newsletter from "./pages/Newsletter";
+import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/admin/editor" element={<AdminEditor />} />
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
           <Route path="/newsletter" element={<Newsletter />} />
+          <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
