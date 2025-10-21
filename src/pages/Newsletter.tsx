@@ -47,9 +47,33 @@ const Newsletter = () => {
       const anonymousId = tracker.getAnonymousId();
       console.log('✅ Lead identificado, anonymous_id:', anonymousId);
 
-      // 2. Salvar na tabela newsletter_subscribers
-      console.log('💾 Salvando na tabela newsletter...');
+      // 2. Salvar lead na tabela leads (upsert)
+      console.log('💾 Salvando lead...');
       const urlParams = new URLSearchParams(window.location.search);
+      
+      const { data: lead, error: leadError } = await supabase
+        .from('leads')
+        .upsert({
+          email: values.email,
+          nome: values.name,
+          whatsapp: values.whatsapp || null,
+          produto: 'newsletter',
+          origem: 'Newsletter'
+        }, {
+          onConflict: 'email',
+          ignoreDuplicates: false
+        })
+        .select('id')
+        .single();
+
+      if (leadError) {
+        console.error('❌ Erro ao salvar lead:', leadError);
+        throw new Error(`Falha ao salvar lead: ${leadError.message}`);
+      }
+      console.log('✅ Lead salvo com sucesso, ID:', lead.id);
+
+      // 3. Salvar na tabela newsletter_subscribers
+      console.log('💾 Salvando na tabela newsletter...');
       
       const { error: upsertError } = await supabase
         .from('newsletter_subscribers')
@@ -57,6 +81,7 @@ const Newsletter = () => {
           email: values.email,
           nome: values.name,
           whatsapp: values.whatsapp || null,
+          lead_id: lead.id,
           anonymous_id: anonymousId,
           subscription_source: 'newsletter_page',
           utm_source: urlParams.get('utm_source'),
@@ -86,7 +111,7 @@ const Newsletter = () => {
       }
       console.log('✅ Inscrição salva com sucesso');
 
-      // 3. Registrar evento (mantém analytics)
+      // 4. Registrar evento (mantém analytics)
       console.log('📊 Rastreando evento...');
       await tracker.track('newsletter_signup', {
         source: 'newsletter_page',
@@ -94,7 +119,7 @@ const Newsletter = () => {
       });
       console.log('✅ Evento rastreado');
 
-      // 4. Sucesso
+      // 5. Sucesso
       toast({
         title: "Inscrição confirmada! 🎉",
         description: "Você receberá nossa newsletter toda segunda-feira às 8h.",

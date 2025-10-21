@@ -58,14 +58,17 @@ export default function LeadFormIANegocios({ open, onOpenChange, onSuccess }: Le
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from('leads').insert({
-        nome: data.nome.trim(),
+      const { data: lead, error } = await supabase.from('leads').upsert({
         email: data.email.trim(),
+        nome: data.nome.trim(),
         whatsapp: data.whatsapp.trim(),
         faturamento: data.faturamento,
         produto: 'ia-para-negocios',
         origem: 'Página IA para Negócios',
-      });
+      }, {
+        onConflict: 'email',
+        ignoreDuplicates: false
+      }).select('id').single();
 
       if (error) throw error;
 

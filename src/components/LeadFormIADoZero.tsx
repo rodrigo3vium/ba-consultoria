@@ -39,14 +39,17 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
       const validatedData = leadSchema.parse(formData);
       setLoading(true);
 
-      const { error } = await supabase.from('leads').insert({
-        nome: validatedData.nome,
+      const { data: lead, error } = await supabase.from('leads').upsert({
         email: validatedData.email,
+        nome: validatedData.nome,
         whatsapp: validatedData.whatsapp,
         situacao_profissional: validatedData.situacao_profissional,
         produto: 'ia-do-zero',
         origem: 'Página IA do Zero'
-      });
+      }, {
+        onConflict: 'email',
+        ignoreDuplicates: false
+      }).select('id').single();
 
       if (error) throw error;
 
