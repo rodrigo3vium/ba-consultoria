@@ -551,7 +551,7 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
                 )}
                 <p className="flex items-center gap-2">
                   <Calendar className="h-3 w-3" />
-                  <strong>Cadastro:</strong> {format(new Date(lead.created_at), "dd/MM/yyyy")}
+                  <strong>Cadastro:</strong> {format(new Date(lead.created_at), "dd/MM/yyyy HH:mm")}
                 </p>
                 {lead.ultima_interacao && (
                   <p className="flex items-center gap-2">
