@@ -442,7 +442,7 @@ export type Database = {
           id: string
           lead_id: string
           tipo: Database["public"]["Enums"]["interaction_type"]
-          user_id: string
+          user_id: string | null
         }
         Insert: {
           created_at?: string
@@ -450,7 +450,7 @@ export type Database = {
           id?: string
           lead_id: string
           tipo: Database["public"]["Enums"]["interaction_type"]
-          user_id: string
+          user_id?: string | null
         }
         Update: {
           created_at?: string
@@ -458,7 +458,7 @@ export type Database = {
           id?: string
           lead_id?: string
           tipo?: Database["public"]["Enums"]["interaction_type"]
-          user_id?: string
+          user_id?: string | null
         }
         Relationships: [
           {

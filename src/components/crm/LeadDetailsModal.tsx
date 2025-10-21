@@ -52,6 +52,7 @@ interface Interaction {
   tipo: string;
   descricao: string;
   created_at: string;
+  user_id: string | null;
 }
 
 interface FunnelHistory {
@@ -631,7 +632,12 @@ const LeadDetailsModal = ({ lead, open, onOpenChange, onUpdate }: LeadDetailsMod
                   interactions.map((interaction) => (
                     <div key={interaction.id} className="border rounded-lg p-3">
                       <div className="flex justify-between items-start mb-1">
-                        <Badge variant="outline">{interaction.tipo}</Badge>
+                        <div className="flex items-center gap-2">
+                          <Badge variant="outline">{interaction.tipo}</Badge>
+                          {!interaction.user_id && (
+                            <Badge variant="secondary" className="text-xs">Sistema Automático</Badge>
+                          )}
+                        </div>
                         <span className="text-xs text-muted-foreground">
                           {format(new Date(interaction.created_at), "dd/MM/yyyy HH:mm")}
                         </span>
