@@ -51,7 +51,7 @@ const Newsletter = () => {
       console.log('💾 Salvando na tabela newsletter...');
       const urlParams = new URLSearchParams(window.location.search);
       
-      const { data: subscriber, error: upsertError } = await supabase
+      const { error: upsertError } = await supabase
         .from('newsletter_subscribers')
         .upsert({ 
           email: values.email,
@@ -66,10 +66,8 @@ const Newsletter = () => {
           status: 'active'
         }, {
           onConflict: 'email',
-          ignoreDuplicates: false
-        })
-        .select('id, email, subscribed_at')
-        .single();
+          ignoreDuplicates: true
+        });
 
       if (upsertError) {
         console.error('❌ Erro ao salvar inscrição:', upsertError);
@@ -86,13 +84,13 @@ const Newsletter = () => {
         
         throw new Error(`Falha ao salvar inscrição: ${upsertError.message}`);
       }
-      console.log('✅ Inscrição salva:', subscriber);
+      console.log('✅ Inscrição salva com sucesso');
 
       // 3. Registrar evento (mantém analytics)
       console.log('📊 Rastreando evento...');
       await tracker.track('newsletter_signup', {
         source: 'newsletter_page',
-        subscriber_id: subscriber.id
+        email: values.email
       });
       console.log('✅ Evento rastreado');
 
