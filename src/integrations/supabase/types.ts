@@ -345,7 +345,7 @@ export type Database = {
           anonymous_id: string | null
           created_at: string | null
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           lead_id: string | null
           marketing_consent: boolean
           policy_version: string
@@ -356,7 +356,7 @@ export type Database = {
           anonymous_id?: string | null
           created_at?: string | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           lead_id?: string | null
           marketing_consent?: boolean
           policy_version: string
@@ -367,7 +367,7 @@ export type Database = {
           anonymous_id?: string | null
           created_at?: string | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           lead_id?: string | null
           marketing_consent?: boolean
           policy_version?: string
@@ -538,7 +538,7 @@ export type Database = {
       leads: {
         Row: {
           created_at: string
-          email: string
+          email: string | null
           faturamento: string | null
           first_touch_campaign: string | null
           first_touch_medium: string | null
@@ -563,7 +563,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string
-          email: string
+          email?: string | null
           faturamento?: string | null
           first_touch_campaign?: string | null
           first_touch_medium?: string | null
@@ -588,7 +588,7 @@ export type Database = {
         }
         Update: {
           created_at?: string
-          email?: string
+          email?: string | null
           faturamento?: string | null
           first_touch_campaign?: string | null
           first_touch_medium?: string | null
@@ -617,7 +617,7 @@ export type Database = {
         Row: {
           anonymous_id: string | null
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           newsletter_edition: string
           rated_at: string
           rating: number
@@ -630,7 +630,7 @@ export type Database = {
         Insert: {
           anonymous_id?: string | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           newsletter_edition: string
           rated_at?: string
           rating: number
@@ -643,7 +643,7 @@ export type Database = {
         Update: {
           anonymous_id?: string | null
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           newsletter_edition?: string
           rated_at?: string
           rating?: number

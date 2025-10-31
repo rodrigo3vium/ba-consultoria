@@ -35,7 +35,7 @@ export default function AddLeadKanbanModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.nome || !formData.email || !formData.whatsapp || !formData.produto) {
+    if (!formData.nome || !formData.whatsapp || !formData.produto) {
       toast.error("Preencha todos os campos obrigatórios");
       return;
     }
@@ -48,7 +48,7 @@ export default function AddLeadKanbanModal({
         .from("leads")
         .insert({
           nome: formData.nome,
-          email: formData.email,
+          email: formData.email || '',
           whatsapp: formData.whatsapp,
           produto: formData.produto,
           origem: "kanban",
@@ -122,7 +122,7 @@ export default function AddLeadKanbanModal({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
