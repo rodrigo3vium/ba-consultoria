@@ -152,10 +152,11 @@ export default function AddLeadKanbanModal({
                   <SelectValue placeholder="Selecione o produto" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="IA do Zero">IA do Zero</SelectItem>
-                  <SelectItem value="IA para Negócios">IA para Negócios</SelectItem>
-                  <SelectItem value="Consultoria">Consultoria</SelectItem>
-                  <SelectItem value="Newsletter">Newsletter</SelectItem>
+                  <SelectItem value="ia-do-zero">IA do Zero</SelectItem>
+                  <SelectItem value="ia-para-negocios">IA para Negócios</SelectItem>
+                  <SelectItem value="consultoria">Consultoria</SelectItem>
+                  <SelectItem value="newsletter">Newsletter</SelectItem>
+                  <SelectItem value="super-agentes">Super Agentes</SelectItem>
                 </SelectContent>
               </Select>
             </div>
