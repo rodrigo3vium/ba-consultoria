@@ -38,7 +38,7 @@ const IADoZero = () => {
     <div className="min-h-screen">
       
       {/* Hero Section */}
-      <section className="pt-10 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="pt-4 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
           <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
