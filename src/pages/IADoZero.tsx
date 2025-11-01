@@ -53,7 +53,7 @@ const IADoZero = () => {
               🔒 Oferta de Black Friday com 74% 💸 de desconto.
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
+            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">
               Treinei o ChatGPT para me deixar <span className="text-green-400">mais produtivo</span> (e inteligente). Agora você vai fazer o mesmo, do zero e com <span className="text-green-400">passo a passo</span>.
             </h1>
             
