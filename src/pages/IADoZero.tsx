@@ -66,7 +66,8 @@ const IADoZero = () => {
               <span className="text-blue-400 font-semibold">IA do Zero</span>
               {' '}você vai aprender como usar o ChatGPT{' '}
               <span className="text-green-400 font-semibold">(E outras IAs)</span>
-              {' '}de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade.
+              {' '}de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade por apenas{' '}
+              <span className="text-green-400 font-bold">R$49,90</span>.
             </h2>
             
             <Button 
