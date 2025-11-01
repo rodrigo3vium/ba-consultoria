@@ -32,7 +32,6 @@ import {
   Rocket
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LeadFormIANegocios from '@/components/LeadFormIANegocios';
 import { tracker } from '@/lib/tracking';
@@ -56,7 +55,6 @@ const IAParaNegocios = () => {
 
   return (
     <div className="min-h-screen bg-slate-900">
-      <Header />
       
       {/* Hero Section */}
       <section className="bg-slate-900 relative overflow-hidden">

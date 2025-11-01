@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle } from "lucide-react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { LeadFormIADoZero } from "@/components/LeadFormIADoZero";
 import { tracker } from '@/lib/tracking';
@@ -42,7 +41,6 @@ const IADoZero = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
