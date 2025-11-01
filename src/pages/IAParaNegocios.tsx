@@ -32,7 +32,6 @@ import {
   Rocket
 } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import Footer from '@/components/Footer';
 import LeadFormIANegocios from '@/components/LeadFormIANegocios';
 import { tracker } from '@/lib/tracking';
 
@@ -861,7 +860,6 @@ const IAParaNegocios = () => {
         </div>
       </section>
 
-      <Footer />
       
       <LeadFormIANegocios 
         open={isLeadFormOpen} 

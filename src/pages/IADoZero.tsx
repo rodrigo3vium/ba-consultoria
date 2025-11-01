@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle } from "lucide-react";
-import Footer from "@/components/Footer";
 import { LeadFormIADoZero } from "@/components/LeadFormIADoZero";
 import { tracker } from '@/lib/tracking';
 
@@ -511,7 +510,6 @@ const IADoZero = () => {
         </div>
       </section>
 
-      <Footer />
       
       <LeadFormIADoZero 
         open={isLeadFormOpen} 
