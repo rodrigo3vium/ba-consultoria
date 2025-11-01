@@ -54,7 +54,7 @@ const IADoZero = () => {
               variant="outline" 
               className="mb-8 border-green-500 text-green-400 bg-green-500/10 px-6 py-2 text-lg font-semibold rounded-full"
             >
-              Só R$ 49,90
+              🔒 Oferta de Black Friday com 74% 💸 de desconto.
             </Badge>
             
             <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight text-white">
