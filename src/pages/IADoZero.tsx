@@ -69,11 +69,6 @@ const IADoZero = () => {
               {' '}de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade.
             </h2>
             
-            <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
-              Clique no botão abaixo e comece a dominar a ferramenta que vai mudar sua forma de viver — por apenas{' '}
-              <span className="text-green-400 font-bold">R$ 49</span>.
-            </p>
-            
             <Button 
               variant="default" 
               size="lg" 
