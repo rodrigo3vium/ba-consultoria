@@ -82,6 +82,10 @@ const IADoZero = () => {
             >
               QUERO O IA DO ZERO
             </Button>
+            
+            <p className="text-sm text-gray-400 mt-4">
+              Acesso imediato e vitalício • Aprovado por mais de 400 clientes • Suporte via WhatsApp
+            </p>
           </div>
         </div>
       </section>
