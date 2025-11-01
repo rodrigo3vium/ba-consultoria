@@ -1,22 +1,18 @@
-import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle } from "lucide-react";
-import { LeadFormIADoZero } from "@/components/LeadFormIADoZero";
 import { tracker } from '@/lib/tracking';
 
 const IADoZero = () => {
-  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
-
-  const handleWhatsAppContact = (ctaLocation: string) => {
+  const handleCheckout = (ctaLocation: string) => {
     tracker.track('cta_click', {
-      cta_type: 'form_open',
+      cta_type: 'hotmart_checkout',
       cta_location: ctaLocation,
       product: 'ia-do-zero'
     });
-    setIsLeadFormOpen(true);
+    window.location.href = 'https://pay.hotmart.com/L94763179U?';
   };
 
   const benefits = [
@@ -74,7 +70,7 @@ const IADoZero = () => {
               variant="default" 
               size="lg" 
               className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-              onClick={() => handleWhatsAppContact('hero')}
+              onClick={() => handleCheckout('hero')}
             >
               Quero o IA do Zero com 74% de desconto
             </Button>
@@ -232,7 +228,7 @@ const IADoZero = () => {
               variant="default" 
               size="lg" 
               className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-              onClick={() => handleWhatsAppContact('target_audience')}
+              onClick={() => handleCheckout('target_audience')}
             >
               QUERO APRENDER A USAR IA
             </Button>
@@ -285,7 +281,7 @@ const IADoZero = () => {
                 variant="default" 
                 size="lg" 
                 className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-                onClick={() => handleWhatsAppContact('harvard_section')}
+                onClick={() => handleCheckout('harvard_section')}
               >
                 QUERO APRENDER A USAR IA
               </Button>
@@ -424,7 +420,7 @@ const IADoZero = () => {
                   variant="default" 
                   size="lg" 
                   className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
-                  onClick={() => handleWhatsAppContact('pricing_section')}
+                  onClick={() => handleCheckout('pricing_section')}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
                 </Button>
@@ -507,10 +503,6 @@ const IADoZero = () => {
       </section>
 
       
-      <LeadFormIADoZero 
-        open={isLeadFormOpen} 
-        onOpenChange={setIsLeadFormOpen}
-      />
     </div>
   );
 };
