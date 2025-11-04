@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle } from "lucide-react";
 import { tracker } from '@/lib/tracking';
+import { buildHotmartCheckoutUrl } from '@/lib/hotmartUtils';
 
 const IADoZero = () => {
   const handleCheckout = (ctaLocation: string) => {
@@ -12,7 +13,12 @@ const IADoZero = () => {
       cta_location: ctaLocation,
       product: 'ia-do-zero'
     });
-    window.location.href = 'https://pay.hotmart.com/L94763179U?';
+    
+    const checkoutUrl = buildHotmartCheckoutUrl({
+      baseUrl: 'https://pay.hotmart.com/L94763179U'
+    });
+    
+    window.location.href = checkoutUrl;
   };
 
   const benefits = [

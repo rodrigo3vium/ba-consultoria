@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
 import { tracker } from '@/lib/tracking';
+import { buildHotmartCheckoutUrl } from '@/lib/hotmartUtils';
 
 const leadSchema = z.object({
   nome: z.string().trim().min(1, { message: "Nome é obrigatório" }).max(100),
@@ -73,8 +74,14 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
 
       onOpenChange(false);
       
+      // Construir URL de checkout com UTMs e email do lead
+      const checkoutUrl = buildHotmartCheckoutUrl({
+        baseUrl: 'https://pay.hotmart.com/L94763179U',
+        email: validatedData.email
+      });
+      
       // Redirecionar para página de pagamento
-      window.open('https://pay.hotmart.com/L94763179U', '_blank');
+      window.open(checkoutUrl, '_blank');
       
       // Limpar formulário
       setFormData({ nome: '', email: '', whatsapp: '', situacao_profissional: '' });
