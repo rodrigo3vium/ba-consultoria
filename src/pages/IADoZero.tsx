@@ -75,7 +75,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-lg md:text-2xl px-8 md:px-16 py-5 md:py-8 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-16 py-4 sm:py-5 md:py-8 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
               onClick={() => handleCheckout('hero')}
             >
               Quero o IA do Zero com 74% de desconto
@@ -233,7 +233,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-base md:text-xl px-6 md:px-12 py-4 md:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
               onClick={() => handleCheckout('target_audience')}
             >
               Quero aprender a usar IA
@@ -286,7 +286,7 @@ const IADoZero = () => {
               <Button 
                 variant="default" 
                 size="lg" 
-                className="text-base md:text-xl px-6 md:px-12 py-4 md:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                 onClick={() => handleCheckout('harvard_section')}
               >
                 Quero aprender a usar IA
@@ -425,7 +425,7 @@ const IADoZero = () => {
                 <Button 
                   variant="default" 
                   size="lg" 
-                  className="text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
+                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
                   onClick={() => handleCheckout('pricing_section')}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
