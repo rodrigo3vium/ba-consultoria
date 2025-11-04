@@ -15,7 +15,7 @@ const IADoZero = () => {
     });
     
     const checkoutUrl = buildHotmartCheckoutUrl({
-      baseUrl: 'https://pay.hotmart.com/L94763179U'
+      baseUrl: 'https://pay.hotmart.com/L94763179U?checkoutMode=10'
     });
     
     window.location.href = checkoutUrl;
