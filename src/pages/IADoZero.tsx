@@ -200,7 +200,7 @@ const IADoZero = () => {
       </section>
 
       {/* Banco de Prompts Section */}
-      <section className="py-20 bg-gray-100">
+      <section className="py-12 bg-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-5xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-gray-900">
