@@ -227,7 +227,7 @@ const IADoZero = () => {
                 src={bancoPromptsMobileImage} 
                 alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
                 className="h-auto transform"
-                style={{ width: '500%', maxWidth: 'none', transform: 'translateX(6rem)' }}
+                style={{ width: '300%', maxWidth: 'none', transform: 'translateX(4rem)' }}
               />
             </div>
           </div>
