@@ -5,7 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { CheckCircle } from "lucide-react";
 import { tracker } from '@/lib/tracking';
 import { buildHotmartCheckoutUrl } from '@/lib/hotmartUtils';
-import bancoPromptsImage from "@/assets/banco-prompts.png";
+import bancoPromptsImage from "@/assets/banco-prompts-laptop.png";
 
 const IADoZero = () => {
   const handleCheckout = (ctaLocation: string) => {
