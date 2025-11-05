@@ -64,7 +64,7 @@ const IADoZero = () => {
             </h1>
             
             <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
-              No IA do Zero você vai aprender como usar Inteligência Artificial de forma prática, estratégica e eficiente para aprender ser mais produtivo, aprender mais rápido e acelerar projetos para atingir seus objetivos por apenas{' '}
+              No <span className="text-blue-400 font-semibold">IA do Zero</span> você vai aprender como usar <span className="text-blue-400 font-semibold">Inteligência Artificial</span> de forma prática, estratégica e eficiente para aprender ser mais produtivo, aprender mais rápido e acelerar projetos para atingir seus objetivos por apenas{' '}
               <span className="text-green-400 font-bold">R$49,90</span>.
             </h2>
             
