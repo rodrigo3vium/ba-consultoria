@@ -45,7 +45,8 @@ const IADoZero = () => {
               🔒 Oferta de Black Friday com 74% 💸 de desconto.
             </Badge>
             
-            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">Domine o ChatGPT (E outras IAs) + Acesso a todos os meus prompts.<span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
+            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">Domine o ChatGPT(E outras IAs) (E outras IAs) + Acesso a todos os meus  prompts.
+            <span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
             </h1>
             
             <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">Mesmo que você nunca tenha usado, com o IA do Zero você vai aprender como usar a Inteligência Artificial de forma prática, estratégica e eficiente para aprender mais rápido, ser mais produtivo e acelerar projetos para atingir seus objetivos por apenas R$49,90.{' '}
