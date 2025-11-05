@@ -222,7 +222,7 @@ const IADoZero = () => {
               className="hidden md:block w-full h-auto"
             />
             {/* Mobile Image */}
-            <div className="block md:hidden overflow-hidden">
+            <div className="block md:hidden overflow-hidden -mr-4">
               <img 
                 src={bancoPromptsMobileImage} 
                 alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
