@@ -446,11 +446,19 @@ const IADoZero = () => {
               {/* Bonus Section */}
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-green-400 mb-6 text-center">Bônus</h3>
-                <div className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
-                  <p className="text-gray-300 leading-relaxed">
-                    Acesso a um grupo VIP no WhatsApp para ficar por dentro das últimas novidades de IA e fazer networking
-                  </p>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                    <p className="text-gray-300 leading-relaxed">
+                      Acesso ao meu banco secreto de prompts com mais de 50 prompts validados prontos para uso
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                    <p className="text-gray-300 leading-relaxed">
+                      Acesso a um grupo VIP no WhatsApp para ficar por dentro das últimas novidades de IA e fazer networking
+                    </p>
+                  </div>
                 </div>
               </div>
 
