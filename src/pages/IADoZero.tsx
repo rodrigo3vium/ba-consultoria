@@ -202,14 +202,14 @@ const IADoZero = () => {
       {/* Banco de Prompts Section */}
       <section className="py-12 bg-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-5xl mx-auto mb-12">
+          <div className="text-center max-w-5xl mx-auto mb-6">
             <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-gray-900">
               Tenha acesso ao meu{' '}
               <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                 Banco de Prompts Secreto
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-gray-700 mb-12 font-inter leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 mb-4 font-inter leading-relaxed">
               Tenha acesso a mais de 50 prompts validados. Prontos para copiar e colar. São os meus prompts que uso no dia a dia.
             </p>
           </div>
