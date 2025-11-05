@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { CheckCircle } from "lucide-react";
 import { tracker } from '@/lib/tracking';
 import { buildHotmartCheckoutUrl } from '@/lib/hotmartUtils';
+
 const IADoZero = () => {
   const handleCheckout = (ctaLocation: string) => {
     tracker.track('cta_click', {
@@ -12,25 +13,35 @@ const IADoZero = () => {
       cta_location: ctaLocation,
       product: 'ia-do-zero'
     });
+    
     const checkoutUrl = buildHotmartCheckoutUrl({
       baseUrl: 'https://pay.hotmart.com/L94763179U?checkoutMode=10'
     });
+    
     window.location.href = checkoutUrl;
   };
-  const benefits = [{
-    title: "10x mais eficiente",
-    description: "Como escrever melhor, pensar mais rápido e aprender qualquer coisa com ajuda personalizada da IA"
-  }, {
-    title: "Multiplicador de conhecimento",
-    description: "Como usar IA para multiplicar sua produtividade (mesmo que você não saiba nada de tecnologia)"
-  }, {
-    title: "Engenharia de Prompt",
-    description: "Como usar prompts prontos e engenharia de comandos para obter resultados profissionais da IA"
-  }, {
-    title: "As melhores IAs do mercado",
-    description: "Descubra qual a melhor IA para cada tarefa do seu dia a dia"
-  }];
-  return <div className="min-h-screen">
+
+  const benefits = [
+    {
+      title: "10x mais eficiente",
+      description: "Como escrever melhor, pensar mais rápido e aprender qualquer coisa com ajuda personalizada da IA"
+    },
+    {
+      title: "Multiplicador de conhecimento",
+      description: "Como usar IA para multiplicar sua produtividade (mesmo que você não saiba nada de tecnologia)"
+    },
+    {
+      title: "Engenharia de Prompt",
+      description: "Como usar prompts prontos e engenharia de comandos para obter resultados profissionais da IA"
+    },
+    {
+      title: "As melhores IAs do mercado",
+      description: "Descubra qual a melhor IA para cada tarefa do seu dia a dia"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
       
       {/* Hero Section */}
       <section className="pt-4 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
@@ -41,15 +52,19 @@ const IADoZero = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-8 border-green-500 text-green-400 bg-green-500/10 px-6 py-2 text-lg font-semibold rounded-full">
+            <Badge 
+              variant="outline" 
+              className="mb-8 border-green-500 text-green-400 bg-green-500/10 px-6 py-2 text-lg font-semibold rounded-full"
+            >
               🔒 Oferta de Black Friday com 74% 💸 de desconto.
             </Badge>
             
-            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">Domine o ChatGPT(E outras IAs) (E outras IAs) + Acesso a todos os meus  prompts.
-            <span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
+            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">
+              Aprenda a dominar o ChatGPT <span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
             </h1>
             
-            <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">Mesmo que você nunca tenha usado, com o IA do Zero você vai aprender como usar a Inteligência Artificial de forma prática, estratégica e eficiente para aprender mais rápido, ser mais produtivo e acelerar projetos para atingir seus objetivos por apenas R$49,90.{' '}
+            <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
+              Mesmo que você nunca tenha usado IA, com o{' '}
               <span className="text-blue-400 font-semibold">IA do Zero</span>
               {' '}você vai aprender como usar o ChatGPT{' '}
               <span className="text-green-400 font-semibold">(E outras IAs)</span>
@@ -57,7 +72,12 @@ const IADoZero = () => {
               <span className="text-green-400 font-bold">R$49,90</span>.
             </h2>
             
-            <Button variant="default" size="lg" className="text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-16 py-4 sm:py-5 md:py-8 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto" onClick={() => handleCheckout('hero')}>
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-16 py-4 sm:py-5 md:py-8 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              onClick={() => handleCheckout('hero')}
+            >
               Quero o IA do Zero com 74% de desconto
             </Button>
             
@@ -104,10 +124,18 @@ const IADoZero = () => {
                     <Carousel className="w-full">
                       <CarouselContent>
                         <CarouselItem>
-                          <img src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png" alt="Duolingo substituindo trabalhadores por IA" className="w-full h-auto object-contain rounded" />
+                          <img 
+                            src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png" 
+                            alt="Duolingo substituindo trabalhadores por IA" 
+                            className="w-full h-auto object-contain rounded"
+                          />
                         </CarouselItem>
                         <CarouselItem>
-                          <img src="/lovable-uploads/5bb241ec-4824-4db5-813c-2e1292f72128.png" alt="CEO sobre uso de IA no trabalho" className="w-full h-auto object-contain rounded" />
+                          <img 
+                            src="/lovable-uploads/5bb241ec-4824-4db5-813c-2e1292f72128.png" 
+                            alt="CEO sobre uso de IA no trabalho" 
+                            className="w-full h-auto object-contain rounded"
+                          />
                         </CarouselItem>
                       </CarouselContent>
                       <CarouselPrevious className="left-2" />
@@ -186,16 +214,28 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto space-y-6">
-            {["Para quem quer alcançar o 1% em todas as áreas da vida", "Quem quer aprender mais em menos tempo", "Quem está se sentindo travado e improdutivo", 'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'].map((item, index) => <Card key={index} className="bg-slate-800/50 border-slate-700 p-6">
+            {[
+              "Para quem quer alcançar o 1% em todas as áreas da vida",
+              "Quem quer aprender mais em menos tempo",
+              "Quem está se sentindo travado e improdutivo",
+              'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'
+            ].map((item, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-700 p-6">
                 <div className="flex items-center gap-4">
                   <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
                   <p className="text-xl text-white font-medium">{item}</p>
                 </div>
-              </Card>)}
+              </Card>
+            ))}
           </div>
           
           <div className="text-center mt-12">
-            <Button variant="default" size="lg" className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto" onClick={() => handleCheckout('target_audience')}>
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              onClick={() => handleCheckout('target_audience')}
+            >
               Quero aprender a usar IA
             </Button>
           </div>
@@ -243,7 +283,12 @@ const IADoZero = () => {
             </Card>
             
             <div className="text-center">
-              <Button variant="default" size="lg" className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto" onClick={() => handleCheckout('harvard_section')}>
+              <Button 
+                variant="default" 
+                size="lg" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                onClick={() => handleCheckout('harvard_section')}
+              >
                 Quero aprender a usar IA
               </Button>
             </div>
@@ -298,7 +343,8 @@ const IADoZero = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
                     <CheckCircle className="w-8 h-8 text-blue-400 mt-1 flex-shrink-0" />
@@ -312,7 +358,8 @@ const IADoZero = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -348,10 +395,17 @@ const IADoZero = () => {
               <div className="mb-8">
                 <h3 className="text-2xl font-bold text-white mb-6 text-center">O que você vai receber</h3>
                 <div className="space-y-4">
-                  {["Acesso imediato ao IA do Zero, método para produzir 10x mais usando IA", "Exemplos práticos, prompts prontos e modelo de aplicação real", "Um método validado de engenharia de prompts", "Um guia para transformar IA em assistente pessoal, consultor de negócios ou mentor de produtividade"].map((item, index) => <div key={index} className="flex items-start gap-4">
+                  {[
+                    "Acesso imediato ao IA do Zero, método para produzir 10x mais usando IA",
+                    "Exemplos práticos, prompts prontos e modelo de aplicação real",
+                    "Um método validado de engenharia de prompts",
+                    "Um guia para transformar IA em assistente pessoal, consultor de negócios ou mentor de produtividade"
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-start gap-4">
                       <CheckCircle className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
                       <p className="text-gray-300 leading-relaxed">{item}</p>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -368,7 +422,12 @@ const IADoZero = () => {
 
               {/* CTA Button */}
               <div className="text-center mb-6">
-                <Button variant="default" size="lg" className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto" onClick={() => handleCheckout('pricing_section')}>
+                <Button 
+                  variant="default" 
+                  size="lg" 
+                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
+                  onClick={() => handleCheckout('pricing_section')}
+                >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
                 </Button>
               </div>
@@ -450,6 +509,8 @@ const IADoZero = () => {
       </section>
 
       
-    </div>;
+    </div>
+  );
 };
+
 export default IADoZero;
