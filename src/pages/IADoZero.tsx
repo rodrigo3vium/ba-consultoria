@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { CheckCircle } from "lucide-react";
 import { tracker } from '@/lib/tracking';
 import { buildHotmartCheckoutUrl } from '@/lib/hotmartUtils';
+import bancoPromptsImage from "@/assets/banco-prompts.png";
 
 const IADoZero = () => {
   const handleCheckout = (ctaLocation: string) => {
@@ -197,8 +198,37 @@ const IADoZero = () => {
         </div>
       </section>
 
-      {/* Target Audience Section */}
+      {/* Banco de Prompts Section */}
       <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-5xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+              Tenha acesso ao meu{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                Banco de Prompts Secreto
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 font-inter leading-relaxed">
+              Tenha acesso a mais de 50 prompts validados. Prontos para copiar e colar. São os meus prompts que uso no dia a dia.
+            </p>
+          </div>
+          
+          <div className="max-w-5xl mx-auto">
+            <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+              <CardContent className="p-0">
+                <img 
+                  src={bancoPromptsImage} 
+                  alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
+                  className="w-full h-auto"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Target Audience Section */}
+      <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
