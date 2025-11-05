@@ -60,7 +60,7 @@ const IADoZero = () => {
             </Badge>
             
             <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">
-              Treinei o ChatGPT para me deixar <span className="text-green-400">mais produtivo</span> (e inteligente). Agora você vai fazer o mesmo, do zero e com <span className="text-green-400">passo a passo</span>.
+              Aprenda a dominar o ChatGPT <span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
             </h1>
             
             <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
