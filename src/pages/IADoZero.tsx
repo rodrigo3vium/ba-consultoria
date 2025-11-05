@@ -222,12 +222,12 @@ const IADoZero = () => {
               className="hidden md:block w-full h-auto"
             />
             {/* Mobile Image */}
-            <div className="block md:hidden overflow-hidden">
+            <div className="block md:hidden overflow-hidden bg-gradient-to-b from-gray-900 to-black">
               <img 
                 src={bancoPromptsMobileImage} 
                 alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
                 className="h-auto transform"
-                style={{ width: '150%', maxWidth: 'none', transform: 'translateX(1.5rem)' }}
+                style={{ width: '150%', maxWidth: 'none', transform: 'translateX(0.5rem)' }}
               />
             </div>
           </div>
