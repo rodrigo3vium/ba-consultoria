@@ -60,15 +60,11 @@ const IADoZero = () => {
             </Badge>
             
             <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">
-              Aprenda a dominar o ChatGPT <span className="text-green-400">(E outras IAs)</span> + Acesso a todos os meus prompts.
+              Domine o ChatGPT <span className="text-green-400">(E outras IAs)</span> + Acesso a <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">todos os meus prompts</span>.
             </h1>
             
             <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
-              Mesmo que você nunca tenha usado IA, com o{' '}
-              <span className="text-blue-400 font-semibold">IA do Zero</span>
-              {' '}você vai aprender como usar o ChatGPT{' '}
-              <span className="text-green-400 font-semibold">(E outras IAs)</span>
-              {' '}de forma prática, estratégica e eficiente para aprender mais rápido, acelerar projetos e atingir seus objetivos com mais velocidade por apenas{' '}
+              No IA do Zero você vai aprender como usar Inteligência Artificial de forma prática, estratégica e eficiente para aprender ser mais produtivo, aprender mais rápido e acelerar projetos para atingir seus objetivos por apenas{' '}
               <span className="text-green-400 font-bold">R$49,90</span>.
             </h2>
             
