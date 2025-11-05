@@ -215,22 +215,18 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-5xl mx-auto">
-            <Card className="bg-white border-gray-300 overflow-hidden shadow-xl">
-              <CardContent className="p-0">
-                {/* Desktop Image */}
-                <img 
-                  src={bancoPromptsImage} 
-                  alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
-                  className="hidden md:block w-full h-auto"
-                />
-                {/* Mobile Image */}
-                <img 
-                  src={bancoPromptsMobileImage} 
-                  alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
-                  className="block md:hidden w-full h-auto"
-                />
-              </CardContent>
-            </Card>
+            {/* Desktop Image */}
+            <img 
+              src={bancoPromptsImage} 
+              alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
+              className="hidden md:block w-full h-auto"
+            />
+            {/* Mobile Image */}
+            <img 
+              src={bancoPromptsMobileImage} 
+              alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
+              className="block md:hidden w-full h-auto"
+            />
           </div>
         </div>
       </section>
