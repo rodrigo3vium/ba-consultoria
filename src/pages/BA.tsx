@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Code, GraduationCap, TrendingUp } from 'lucide-react';
+import { Code, GraduationCap, TrendingUp, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import chatgptLogo from "@/assets/chatgpt-logo.png";
 import grokLogo from "@/assets/grok-logo.png";
@@ -52,6 +52,11 @@ const BA = () => {
       icon: TrendingUp,
       title: 'Consultoria',
       description: 'Estratégias personalizadas para crescimento empresarial'
+    },
+    {
+      icon: Briefcase,
+      title: 'Serviços',
+      description: 'Serviços especializados em vendas e performance comercial'
     }
   ];
 
@@ -95,7 +100,7 @@ const BA = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             Nossos Fundadores
           </h2>
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* Rodrigo Albuquerque */}
             <div className="space-y-6">
               <div className="relative">
@@ -170,6 +175,45 @@ const BA = () => {
                 </p>
               </div>
             </div>
+
+            {/* Jonathan Barros */}
+            <div className="space-y-6">
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-4 p-8">
+                      <div className="w-24 h-24 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-12 h-12 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-sm">Foto do fundador</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -z-10 top-8 left-1/2 -translate-x-1/2 w-72 h-72 bg-ba-orange/10 rounded-full blur-3xl"></div>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+                Jonathan Barros
+              </h3>
+              <p className="text-xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
+                CO-FUNDADOR
+              </p>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Jonathan Barros é entusiasta por vendas, relacionamento humano e performance pessoal e profissional.
+                </p>
+                <p>
+                  Tem como missão, ensinar, treinar e transformar times comerciais, gerando os resultados e a transformação que os clientes buscam.
+                </p>
+                <p>
+                  Já liderou times de vendas e foi responsável por gerar mais de R$30 milhões em faturamento nos últimos anos. Hoje, compila em sua experiência o aprendizado de mais de 18 anos no mercado B2B, criando conexões sólidas e soluções estratégicas para empresas de diferentes segmentos.
+                </p>
+                <p>
+                  Tem como hobbies a corrida, leitura, futebol e Muay Thai — práticas que refletem disciplina, resiliência e busca constante por superação.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -180,7 +224,7 @@ const BA = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
             Nossos Pilares
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pillars.map((pillar, index) => (
               <div
                 key={index}
