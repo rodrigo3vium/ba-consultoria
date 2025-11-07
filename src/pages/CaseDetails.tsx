@@ -46,12 +46,23 @@ const CaseDetails = () => {
     if (!id) return;
 
     setLoading(true);
-    const { data, error } = await supabase
+    
+    // Verificar se é UUID (formato: 8-4-4-4-12 caracteres hexadecimais)
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+    
+    let query = supabase
       .from('cases')
       .select('*')
-      .or(`id.eq.${id},slug.eq.${id}`)
-      .eq('status', 'publicado')
-      .single();
+      .eq('status', 'publicado');
+    
+    // Buscar por ID se for UUID, caso contrário buscar por slug
+    if (isUUID) {
+      query = query.eq('id', id);
+    } else {
+      query = query.eq('slug', id);
+    }
+    
+    const { data, error } = await query.maybeSingle();
 
     if (error) {
       console.error('Error fetching case:', error);
