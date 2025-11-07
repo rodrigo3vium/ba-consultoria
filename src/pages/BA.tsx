@@ -22,6 +22,7 @@ import mjr from "@/assets/clients/mjr.png";
 import cfBuffet from "@/assets/clients/cf-buffet.png";
 import dionello from "@/assets/clients/dionello.png";
 import client10 from "@/assets/clients/client-10.png";
+import vaboPhoto from "@/assets/mentors/vabo.jpg";
 
 const BA = () => {
   const clientLogos = [
@@ -656,17 +657,12 @@ const BA = () => {
             {/* Luis Vabo Jr. */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center space-y-2 p-4">
-                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground text-xs">Foto</p>
-                    </div>
-                  </div>
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
+                  <img 
+                    src={vaboPhoto} 
+                    alt="Luis Vabo Jr." 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Luis Vabo Jr.</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">Ex-diretor - Stone</p>
