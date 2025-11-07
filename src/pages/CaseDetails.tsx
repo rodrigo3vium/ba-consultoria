@@ -208,6 +208,35 @@ const CaseDetails = () => {
               </div>
             )}
 
+            {/* Galeria de Criativos Puma */}
+            {caseData.slug === 'puma-tactical-newsletter' && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Exemplos da Newsletter</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <img 
+                    src="/lovable-uploads/puma-creative-1.png" 
+                    alt="Newsletter Puma - Benefícios do Tiro Esportivo"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/puma-creative-2.png" 
+                    alt="Newsletter Puma - Legítima Defesa"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/puma-creative-3.png" 
+                    alt="Newsletter Puma - Aniversário"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/puma-creative-4.png" 
+                    alt="Newsletter Puma - Arsenal de Defesa"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Resultados */}
             <div>
               <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Resultados Alcançados</h2>
