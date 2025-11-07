@@ -24,6 +24,9 @@ import dionello from "@/assets/clients/dionello.png";
 import client10 from "@/assets/clients/client-10.png";
 import vaboPhoto from "@/assets/mentors/vabo.jpg";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
 
 const BA = () => {
   const clientLogos = [
@@ -612,17 +615,12 @@ const BA = () => {
             {/* Diego Barreto */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center space-y-2 p-4">
-                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground text-xs">Foto</p>
-                    </div>
-                  </div>
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
+                  <img 
+                    src={diegoBarretoPhoto} 
+                    alt="Diego Barreto" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Diego Barreto</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">CEO - iFood</p>
@@ -635,17 +633,12 @@ const BA = () => {
             {/* Pedro Somma */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center space-y-2 p-4">
-                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground text-xs">Foto</p>
-                    </div>
-                  </div>
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
+                  <img 
+                    src={pedroSommaPhoto} 
+                    alt="Pedro Somma" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Pedro Somma</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">Ex-COO - 99 Taxi</p>
@@ -676,17 +669,12 @@ const BA = () => {
             {/* João Olivério */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center space-y-2 p-4">
-                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground text-xs">Foto</p>
-                    </div>
-                  </div>
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
+                  <img 
+                    src={joaoOliverioPhoto} 
+                    alt="João Olivério" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">João Olivério</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">CEO - Sales As A System | Country Manager - Apollo.io</p>
