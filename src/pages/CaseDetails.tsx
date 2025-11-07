@@ -136,12 +136,12 @@ const CaseDetails = () => {
               </span>
             </h1>
 
-            <div className="flex items-center gap-4">
+            <div className="mt-8">
               {caseData.cliente_logo_url ? (
                 <img 
                   src={caseData.cliente_logo_url} 
                   alt={caseData.cliente_nome}
-                  className="h-16 object-contain"
+                  className="w-full max-h-96 object-cover rounded-2xl border border-white/10"
                 />
               ) : (
                 <p className="text-xl text-muted-foreground">{caseData.cliente_nome}</p>

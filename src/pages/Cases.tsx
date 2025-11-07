@@ -177,7 +177,7 @@ const Cases = () => {
                             <img 
                               src={caseItem.cliente_logo_url} 
                               alt={caseItem.cliente_nome}
-                              className="h-12 object-contain"
+                              className="h-32 w-full object-cover rounded-xl mb-4"
                             />
                           ) : (
                             <h3 className="font-bold text-lg">{caseItem.cliente_nome}</h3>
