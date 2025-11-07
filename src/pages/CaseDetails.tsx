@@ -155,6 +155,22 @@ const CaseDetails = () => {
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="bg-black/90 backdrop-blur-sm border border-ba-blue-light/20 rounded-3xl p-8 md:p-12 space-y-12">
+            {/* Resultados */}
+            <div>
+              <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Resultados Alcançados</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {caseData.resultados.map((resultado, index) => (
+                  <div key={index} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                    <p className="text-3xl font-bold text-ba-orange mb-2">
+                      {resultado.valor}
+                    </p>
+                    <p className="text-sm font-semibold mb-1">{resultado.metrica}</p>
+                    <p className="text-xs text-muted-foreground">{resultado.descricao}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Desafio */}
             <div>
               <h2 className="text-2xl font-bold mb-4 text-ba-blue-light">O Desafio</h2>
@@ -260,22 +276,6 @@ const CaseDetails = () => {
                 </div>
               </div>
             )}
-
-            {/* Resultados */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Resultados Alcançados</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {caseData.resultados.map((resultado, index) => (
-                  <div key={index} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                    <p className="text-3xl font-bold text-ba-orange mb-2">
-                      {resultado.valor}
-                    </p>
-                    <p className="text-sm font-semibold mb-1">{resultado.metrica}</p>
-                    <p className="text-xs text-muted-foreground">{resultado.descricao}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Depoimento */}
             {caseData.depoimento && (
