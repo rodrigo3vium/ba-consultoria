@@ -277,6 +277,42 @@ const CaseDetails = () => {
               </div>
             )}
 
+            {/* Galeria de Aplicações Instituto MJR */}
+            {caseData.slug === 'instituto-mjr-branding' && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Aplicações da Identidade Visual</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <img 
+                    src="/lovable-uploads/mjr-creative-1.png" 
+                    alt="Instituto MJR - Posts Instagram sobre saúde"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/mjr-creative-2.png" 
+                    alt="Instituto MJR - Exemplos de aplicação em posts educativos"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/mjr-creative-3.png" 
+                    alt="Instituto MJR - Papelaria institucional"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/mjr-creative-4.png" 
+                    alt="Instituto MJR - Aplicação em canecas"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                </div>
+                <div className="mt-4">
+                  <img 
+                    src="/lovable-uploads/mjr-creative-5.png" 
+                    alt="Instituto MJR - Aplicação em caneta"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Depoimento */}
             {caseData.depoimento && (
               <div className="border-t border-white/10 pt-12">
