@@ -295,6 +295,14 @@ const CaseDetails = () => {
                 <img 
                   src="/lovable-uploads/mjr-grid.png" 
                   alt="Instituto MJR - Grid de construção da logo"
+                  className="rounded-xl w-full h-auto border border-white/10 mb-6"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Remodelamos a logo mantendo a semelhança de forma tradicional e elegante.
+                </p>
+                <img 
+                  src="/lovable-uploads/mjr-symbol.png" 
+                  alt="Instituto MJR - Símbolo final com as letras M, J e R"
                   className="rounded-xl w-full h-auto border border-white/10"
                 />
               </div>
