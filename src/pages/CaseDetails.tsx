@@ -31,6 +31,7 @@ interface CaseDetails {
   depoimento_autor_cargo: string | null;
   tecnologias_usadas: string[];
   timeline: string | null;
+  slug: string | null;
 }
 
 const CaseDetails = () => {
@@ -191,6 +192,30 @@ const CaseDetails = () => {
                 </div>
               )}
             </div>
+
+            {/* Galeria de Criativos */}
+            {caseData.slug === 'ftx-imoveis-lancamento-alto-padrao' && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Criativos da Campanha</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <img 
+                    src="/lovable-uploads/ftx-creative-1.png" 
+                    alt="Criativo FTX - Riviera Home Club"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/ftx-creative-2.png" 
+                    alt="Criativo FTX - Localização Privilegiada"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/ftx-creative-3.png" 
+                    alt="Criativo FTX - Novas Experiências"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                </div>
+              </div>
+            )}
 
             {/* Resultados */}
             <div>
