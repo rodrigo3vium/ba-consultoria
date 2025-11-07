@@ -604,12 +604,24 @@ const BA = () => {
       <section className="py-20 px-4 relative bg-black border-t border-ba-blue-light/10">
         <div className="container mx-auto max-w-7xl">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Líderes que Confiaram em Nós
+            Nossos Mentores e Professores
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Diego Barreto */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-2 p-4">
+                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-xs">Foto</p>
+                    </div>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Diego Barreto</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">CEO - iFood</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -621,6 +633,18 @@ const BA = () => {
             {/* Pedro Somma */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-2 p-4">
+                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-xs">Foto</p>
+                    </div>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Pedro Somma</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">Ex-COO - 99 Taxi</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -632,6 +656,18 @@ const BA = () => {
             {/* Luis Vabo Jr. */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-2 p-4">
+                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-xs">Foto</p>
+                    </div>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">Luis Vabo Jr.</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">Ex-diretor - Stone</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -643,6 +679,18 @@ const BA = () => {
             {/* João Olivério */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-2 p-4">
+                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-xs">Foto</p>
+                    </div>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">João Olivério</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">CEO - Sales As A System | Country Manager - Apollo.io</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -654,6 +702,18 @@ const BA = () => {
             {/* José Diogo Costódio Rodrigues */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
+                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center space-y-2 p-4">
+                      <div className="w-16 h-16 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-muted-foreground text-xs">Foto</p>
+                    </div>
+                  </div>
+                </div>
                 <h3 className="text-xl font-bold text-foreground mb-1">José Diogo Costódio Rodrigues</h3>
                 <p className="text-ba-orange font-semibold text-sm mb-2">CMO Latam & Canada - Tinder</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
