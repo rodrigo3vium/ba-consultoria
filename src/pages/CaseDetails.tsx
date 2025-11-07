@@ -317,6 +317,17 @@ const CaseDetails = () => {
                 <img 
                   src="/lovable-uploads/mjr-colors.png" 
                   alt="Instituto MJR - Paleta de cores baseada no outono profundo"
+                  className="rounded-xl w-full h-auto border border-white/10 mb-6"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  A tipografia expressa a personalidade do conteúdo e do expert, e pensando nisso foi escolhida uma fonte que contém características amigáveis sem perder a sofisticação e o tom moderno.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  A escolha por uma fonte sem serifa e reta, também balizada pela diferenciação do nicho. Já que a maior parte dos perfis concorrentes utilizam de fontes serifadas.
+                </p>
+                <img 
+                  src="/lovable-uploads/mjr-typography.png" 
+                  alt="Instituto MJR - Tipografia Montserrat"
                   className="rounded-xl w-full h-auto border border-white/10"
                 />
               </div>
