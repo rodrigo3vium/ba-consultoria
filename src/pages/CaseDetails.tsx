@@ -151,15 +151,6 @@ const CaseDetails = () => {
         </div>
       </section>
 
-      {/* Métrica Principal */}
-      <section className="py-12 px-4 border-y border-white/10 bg-gradient-to-b from-ba-blue-dark/20 to-transparent">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-5xl md:text-7xl font-bold text-ba-orange">
-            {caseData.metrica_principal}
-          </p>
-        </div>
-      </section>
-
       {/* Contexto */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
