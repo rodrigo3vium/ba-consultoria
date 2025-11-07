@@ -287,6 +287,14 @@ const CaseDetails = () => {
                 <img 
                   src="/lovable-uploads/mjr-sketch.png" 
                   alt="Instituto MJR - Rascunhos do processo criativo da logo"
+                  className="rounded-xl w-full h-auto border border-white/10 mb-6"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Com as ideias aparecendo, definimos o modelo ideal e passamos para o computador para finalização.
+                </p>
+                <img 
+                  src="/lovable-uploads/mjr-grid.png" 
+                  alt="Instituto MJR - Grid de construção da logo"
                   className="rounded-xl w-full h-auto border border-white/10"
                 />
               </div>
