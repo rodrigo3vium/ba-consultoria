@@ -13,6 +13,7 @@ import Tecnologia from "./pages/Tecnologia";
 import Educacao from "./pages/Educacao";
 import IAParaNegocios from "./pages/IAParaNegocios";
 import IADoZero from "./pages/IADoZero";
+import GoogleMeuNegocio from "./pages/GoogleMeuNegocio";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/educacao/ia-para-negocios" element={<IAParaNegocios />} />
           <Route path="/educacao/ia-do-zero" element={<IADoZero />} />
+          <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/auth" element={<Auth />} />
