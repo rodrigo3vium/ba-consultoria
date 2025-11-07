@@ -237,6 +237,30 @@ const CaseDetails = () => {
               </div>
             )}
 
+            {/* Galeria de Criativos Quintal do Betione */}
+            {caseData.slug === 'quintal-betione-instagram' && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Posts do Instagram</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <img 
+                    src="/lovable-uploads/quintal-creative-1.png" 
+                    alt="Post Instagram - Seu cantinho para relaxar em Bodoquena"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/quintal-creative-2.png" 
+                    alt="Post Instagram - Comemore seu evento conosco"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                  <img 
+                    src="/lovable-uploads/quintal-creative-3.png" 
+                    alt="Post Instagram - Você em contato com a natureza"
+                    className="rounded-xl w-full h-auto border border-white/10"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Resultados */}
             <div>
               <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Resultados Alcançados</h2>
