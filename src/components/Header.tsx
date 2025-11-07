@@ -45,14 +45,14 @@ const Header = () => {
           {/* Navigation - Centered pill */}
           <nav className="hidden lg:block">
             <div className="flex items-center space-x-1 bg-black/60 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2">
-              <a href="#sobre" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Sobre
-              </a>
+              <Link to="/ba" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
+                BA
+              </Link>
+              <Link to="/cases" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
+                Cases
+              </Link>
               <a href="#solucoes" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Soluções
-              </a>
-              <a href="#casos" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Casos de Uso
               </a>
               <Link to="/blog" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Blog
@@ -126,26 +126,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="mt-4 md:hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden">
             <div className="px-4 pt-4 pb-4 space-y-2">
-              <a 
-                href="#sobre" 
+              <Link 
+                to="/ba" 
                 className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Sobre
-              </a>
+                BA
+              </Link>
+              <Link 
+                to="/cases" 
+                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Cases
+              </Link>
               <a 
                 href="#solucoes" 
                 className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Soluções
-              </a>
-              <a 
-                href="#casos" 
-                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Casos de Uso
               </a>
               <Link 
                 to="/blog" 

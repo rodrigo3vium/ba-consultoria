@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePageViewTracking } from "@/hooks/usePageViewTracking";
 import Index from "./pages/Index";
 import BA from "./pages/BA";
+import Cases from "./pages/Cases";
+import CaseDetails from "./pages/CaseDetails";
 import Consultoria from "./pages/Consultoria";
 import Tecnologia from "./pages/Tecnologia";
 import Educacao from "./pages/Educacao";
@@ -23,6 +25,7 @@ import AdminImportMapping from "./pages/AdminImportMapping";
 import AdminFunnels from "./pages/AdminFunnels";
 import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
+import AdminCases from "./pages/AdminCases";
 import Newsletter from "./pages/Newsletter";
 import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
@@ -44,6 +47,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ba" element={<BA />} />
+          <Route path="/cases" element={<Cases />} />
+          <Route path="/cases/:id" element={<CaseDetails />} />
           <Route path="/consultoria" element={<Consultoria />} />
           <Route path="/tecnologia" element={<Tecnologia />} />
           <Route path="/educacao" element={<Educacao />} />
@@ -62,6 +67,7 @@ const App = () => (
           <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
+          <Route path="/admin/cases" element={<AdminCases />} />
           <Route path="/newsletter" element={<Newsletter />} />
           <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

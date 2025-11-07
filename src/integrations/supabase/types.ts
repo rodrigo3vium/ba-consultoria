@@ -59,6 +59,81 @@ export type Database = {
         }
         Relationships: []
       }
+      cases: {
+        Row: {
+          categoria: string
+          cliente_logo_url: string | null
+          cliente_nome: string
+          created_at: string
+          depoimento: string | null
+          depoimento_autor: string | null
+          depoimento_autor_cargo: string | null
+          depoimento_autor_foto: string | null
+          desafio: string
+          descricao_curta: string
+          id: string
+          metrica_principal: string
+          ordem: number
+          resultados: Json | null
+          setor: string | null
+          slug: string | null
+          solucao: string
+          status: string
+          tecnologias_usadas: string[] | null
+          timeline: string | null
+          titulo: string
+          updated_at: string
+        }
+        Insert: {
+          categoria: string
+          cliente_logo_url?: string | null
+          cliente_nome: string
+          created_at?: string
+          depoimento?: string | null
+          depoimento_autor?: string | null
+          depoimento_autor_cargo?: string | null
+          depoimento_autor_foto?: string | null
+          desafio: string
+          descricao_curta: string
+          id?: string
+          metrica_principal: string
+          ordem?: number
+          resultados?: Json | null
+          setor?: string | null
+          slug?: string | null
+          solucao: string
+          status?: string
+          tecnologias_usadas?: string[] | null
+          timeline?: string | null
+          titulo: string
+          updated_at?: string
+        }
+        Update: {
+          categoria?: string
+          cliente_logo_url?: string | null
+          cliente_nome?: string
+          created_at?: string
+          depoimento?: string | null
+          depoimento_autor?: string | null
+          depoimento_autor_cargo?: string | null
+          depoimento_autor_foto?: string | null
+          desafio?: string
+          descricao_curta?: string
+          id?: string
+          metrica_principal?: string
+          ordem?: number
+          resultados?: Json | null
+          setor?: string | null
+          slug?: string | null
+          solucao?: string
+          status?: string
+          tecnologias_usadas?: string[] | null
+          timeline?: string | null
+          titulo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           anonymous_id: string
