@@ -303,6 +303,20 @@ const CaseDetails = () => {
                 <img 
                   src="/lovable-uploads/mjr-symbol.png" 
                   alt="Instituto MJR - Símbolo final com as letras M, J e R"
+                  className="rounded-xl w-full h-auto border border-white/10 mb-6"
+                />
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  As cores foram escolhidas com base paleta outono profundo.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  A ideia é trazer os tons de azul como a cor principal e trabalhar com as outras cores como complementares.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  A função desta paleta é auxiliar e transmitir confiança, lealdade, segurança e respeito.
+                </p>
+                <img 
+                  src="/lovable-uploads/mjr-colors.png" 
+                  alt="Instituto MJR - Paleta de cores baseada no outono profundo"
                   className="rounded-xl w-full h-auto border border-white/10"
                 />
               </div>
