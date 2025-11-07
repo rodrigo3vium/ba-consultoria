@@ -277,6 +277,21 @@ const CaseDetails = () => {
               </div>
             )}
 
+            {/* Processo Criativo Instituto MJR */}
+            {caseData.slug === 'instituto-mjr-branding' && (
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Processo Criativo</h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  O primeiro passo foi fazer o processo criativo e rascunhos à mão.
+                </p>
+                <img 
+                  src="/lovable-uploads/mjr-sketch.png" 
+                  alt="Instituto MJR - Rascunhos do processo criativo da logo"
+                  className="rounded-xl w-full h-auto border border-white/10"
+                />
+              </div>
+            )}
+
             {/* Galeria de Aplicações Instituto MJR */}
             {caseData.slug === 'instituto-mjr-branding' && (
               <div>
