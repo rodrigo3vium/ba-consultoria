@@ -705,6 +705,83 @@ const BA = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-20 px-4 relative bg-black border-t border-ba-blue-light/10">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-light/5 via-transparent to-ba-blue-light/5"></div>
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
+            Números que Falam por Si
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Países Atendidos */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +7
+                </div>
+                <p className="text-foreground font-semibold">Países Atendidos</p>
+              </div>
+            </div>
+
+            {/* Vendas Geradas */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +R$130M
+                </div>
+                <p className="text-foreground font-semibold">Em Vendas Geradas</p>
+              </div>
+            </div>
+
+            {/* Leads Gerados */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +10K
+                </div>
+                <p className="text-foreground font-semibold">Leads Gerados</p>
+              </div>
+            </div>
+
+            {/* Pessoas Alcançadas */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +50M
+                </div>
+                <p className="text-foreground font-semibold">Pessoas Alcançadas Organicamente</p>
+              </div>
+            </div>
+
+            {/* Clientes Atendidos */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +700
+                </div>
+                <p className="text-foreground font-semibold">Clientes Atendidos</p>
+              </div>
+            </div>
+
+            {/* Anos no Mercado */}
+            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
+              <div className="mb-4">
+                <div className="text-ba-orange mb-2">↘</div>
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
+                  +6
+                </div>
+                <p className="text-foreground font-semibold">Anos no Mercado</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
 
       <style>{`
