@@ -55,40 +55,46 @@ const solutions = [
 
 const Tecnologia = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
+      {/* Pro-Life Banner */}
+      <div className="bg-ba-blue-medium text-white py-3 px-4 text-center font-medium text-sm relative z-50">
+        Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
+      </div>
+
       <Header />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-ba-orange rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-ba-blue-light rounded-full blur-xl"></div>
+      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-5xl mx-auto">
-            <Badge variant="outline" className="mb-4 border-ba-orange text-ba-orange">
-              Soluções Tecnológicas
-            </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold font-poppins mb-6 leading-tight">
-              Transforme seu Negócio com{' '}
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
-                Tecnologia de Ponta
-              </span>
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center space-y-6 animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-relaxed pb-2">
+              Transforme seu Negócio com Tecnologia de Ponta
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-inter leading-relaxed">
+            <h2 className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
               Soluções personalizadas de IA para impulsionar sua empresa
-            </p>
-            <div className="w-16 h-1 bg-ba-orange mx-auto mb-8"></div>
-            <p className="text-lg text-muted-foreground max-w-4xl mx-auto font-inter leading-relaxed">
-              Desenvolvemos soluções tecnológicas sob medida para sua empresa, combinando inteligência artificial, automação e análise de dados para gerar resultados concretos.
-            </p>
+            </h2>
+            <div className="pt-8">
+              <Button 
+                size="lg" 
+                variant="hero" 
+                className="text-lg px-10 py-6"
+                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+              >
+                Falar com um especialista
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Solutions Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black border-y border-ba-blue-light/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
@@ -105,7 +111,7 @@ const Tecnologia = () => {
               return (
                 <Card 
                   key={index} 
-                  className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border hover:bg-card-premium-hover hover:shadow-premium transition-all duration-300 hover:scale-105 group rounded-2xl"
+                  className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2"
                 >
                   <CardHeader className="pb-4">
                     <div className="flex items-center space-x-4 mb-4">
@@ -147,7 +153,7 @@ const Tecnologia = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-card-premium/20">
+      <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-12 text-center">
@@ -168,7 +174,7 @@ const Tecnologia = () => {
                   description: "Acompanhamento e otimização constante para garantir máximo desempenho."
                 }
               ].map((benefit, index) => (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
                   <CardContent className="p-6">
                     <h3 className="font-semibold font-poppins mb-3 text-lg text-foreground">
                       {benefit.title}
@@ -185,7 +191,7 @@ const Tecnologia = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-black border-y border-ba-blue-light/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-12 text-center">
@@ -214,7 +220,7 @@ const Tecnologia = () => {
                   description: "Colocamos tudo em funcionamento e treinamos sua equipe"
                 }
               ].map((process, index) => (
-                <Card key={index} className="bg-card-premium/80 backdrop-blur-sm border border-card-premium-border text-center">
+                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
                   <CardContent className="p-6">
                     <div className="text-3xl font-bold text-ba-orange mb-4 font-poppins">
                       {process.step}
@@ -234,7 +240,7 @@ const Tecnologia = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero">
+      <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
