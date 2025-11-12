@@ -34,11 +34,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-ba-black border-t border-border">
+    <footer className="relative bg-black border-t border-ba-blue-light/10">
       {/* Newsletter CTA */}
-      <div className="border-b border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="relative border-b border-ba-blue-light/10">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-ba-blue-light/5 rounded-full blur-3xl"></div>
             <h3 className="text-3xl md:text-4xl font-bold font-poppins mb-4 bg-gradient-primary bg-clip-text text-transparent">
               Fique por dentro das novidades
             </h3>
@@ -51,13 +53,13 @@ const Footer = () => {
                 placeholder="Seu melhor email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-black/40 border-white/10 text-foreground placeholder:text-muted-foreground rounded-full px-6"
+                className="flex-1 bg-black/80 backdrop-blur-sm border-ba-blue-light/10 text-foreground placeholder:text-muted-foreground hover:border-ba-blue-light/40 focus:border-ba-blue-light/60 transition-colors rounded-full px-6"
                 disabled={isLoading}
               />
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-gradient-primary hover:opacity-90 text-background rounded-full px-8 font-semibold shadow-glow transition-all"
+                className="bg-gradient-primary hover:opacity-90 text-background rounded-full px-8 font-semibold shadow-glow transition-all hover:shadow-glow-intense"
               >
                 {isLoading ? 'Inscrevendo...' : 'Inscrever'}
               </Button>
@@ -67,10 +69,12 @@ const Footer = () => {
       </div>
 
       {/* Footer Content */}
-      <div className="py-12">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative py-12">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
+              <div className="absolute -z-10 -top-8 -left-8 w-64 h-64 bg-ba-blue-light/5 rounded-full blur-3xl"></div>
               <h3 className="text-2xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent mb-4">
                 BA Consultoria
               </h3>
@@ -79,13 +83,13 @@ const Footer = () => {
                 focando em produtividade e resultados reais.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors font-inter">
                   LinkedIn
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors font-inter">
                   WhatsApp
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-ba-blue-light transition-colors font-inter">
                   Email
                 </a>
               </div>
@@ -112,7 +116,7 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="border-t border-border mt-8 pt-8 text-center">
+          <div className="border-t border-ba-blue-light/10 mt-8 pt-8 text-center">
             <p className="text-muted-foreground font-inter">
               © 2024 BA Consultoria. Todos os direitos reservados.
             </p>
