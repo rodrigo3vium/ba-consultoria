@@ -53,44 +53,43 @@ const IAParaNegocios = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900">
+    <div className="min-h-screen bg-black">
       
       {/* Hero Section */}
-      <section className="bg-slate-900 relative overflow-hidden">
+      <section className="relative overflow-hidden bg-black">
         {/* Top Bar */}
-        <div className="bg-gradient-to-r from-green-500 to-green-600 py-3 text-center">
-          <p className="text-white font-semibold text-sm md:text-base font-inter uppercase tracking-wide">
+        <div className="bg-gradient-primary py-3 text-center relative z-10">
+          <p className="text-background font-semibold text-sm md:text-base font-inter uppercase tracking-wide">
             Exclusivo para PMEs que faturam entre R$ 1 e 5 milhões por ano
           </p>
         </div>
 
         {/* Hero Content */}
         <div className="relative">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 right-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-20 w-48 h-48 bg-green-500 rounded-full blur-3xl"></div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+          <div className="absolute top-20 right-20 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 bg-ba-orange/10 rounded-full blur-3xl"></div>
 
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Content */}
               <div className="space-y-8">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight text-white">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
                   Se torne o líder do seu mercado{' '}
-                  <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-primary bg-clip-text text-transparent">
                     utilizando soluções de Inteligência Artificial
                   </span>
                   {' '}para aumentar lucro e ganhar produtividade no seu negócio.
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground font-inter leading-relaxed">
                   O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
                   na implementação de soluções de IA na sua empresa.
                 </p>
 
                 <Button 
                   size="lg" 
-                  className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-lg px-10 py-6 font-inter bg-gradient-primary hover:opacity-90 text-background font-semibold uppercase tracking-wide shadow-glow hover:shadow-glow-intense transition-all duration-300 rounded-full"
                   onClick={() => handleWhatsAppContact('hero_top')}
                 >
                   Quero mais informações
@@ -100,18 +99,18 @@ const IAParaNegocios = () => {
                 <div className="flex flex-col space-y-3 pt-4">
                   <div className="flex items-center gap-3">
                     <div className="flex -space-x-2">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 border-2 border-slate-900 flex items-center justify-center">
-                        <Building2 size={20} className="text-white" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-primary border-2 border-black flex items-center justify-center">
+                        <Building2 size={20} className="text-background" />
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-500 border-2 border-slate-900 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ba-blue-dark to-ba-blue-light border-2 border-black flex items-center justify-center">
                         <TrendingUp size={20} className="text-white" />
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 border-2 border-slate-900 flex items-center justify-center">
-                        <Award size={20} className="text-white" />
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ba-orange to-ba-orange/80 border-2 border-black flex items-center justify-center">
+                        <Award size={20} className="text-background" />
                       </div>
                     </div>
-                    <p className="text-gray-300 font-inter">
-                      <span className="text-green-400 font-semibold">+ de 100 empresas</span> já transformaram seus negócios com IA
+                    <p className="text-muted-foreground font-inter">
+                      <span className="text-ba-blue-light font-semibold">+ de 100 empresas</span> já transformaram seus negócios com IA
                     </p>
                   </div>
                 </div>
@@ -120,44 +119,44 @@ const IAParaNegocios = () => {
               {/* Right Column - Visual Cards */}
               <div className="relative h-[400px] lg:h-[500px]">
                 {/* Background gradient glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-transparent to-green-500/20 rounded-3xl blur-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-ba-blue-light/10 via-transparent to-ba-orange/10 rounded-3xl blur-2xl"></div>
                 
                 {/* Floating Cards */}
                 <div className="relative h-full flex items-center justify-center">
                   {/* Card 1 - Top Right */}
-                  <Card className="absolute top-8 right-4 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float">
+                  <Card className="absolute top-8 right-4 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float">
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-green-400 font-poppins">+12</span>
+                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+12</span>
                         <div className="text-left">
-                          <p className="text-sm text-gray-300 font-inter">Anos de</p>
-                          <p className="text-sm text-gray-300 font-inter">mercado</p>
+                          <p className="text-sm text-muted-foreground font-inter">Anos de</p>
+                          <p className="text-sm text-muted-foreground font-inter">mercado</p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* Card 2 - Middle Left */}
-                  <Card className="absolute top-32 left-0 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
+                  <Card className="absolute top-32 left-0 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-blue-400 font-poppins">+100</span>
+                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+100</span>
                         <div className="text-left">
-                          <p className="text-sm text-gray-300 font-inter">Empresas</p>
-                          <p className="text-sm text-gray-300 font-inter">atendidas</p>
+                          <p className="text-sm text-muted-foreground font-inter">Empresas</p>
+                          <p className="text-sm text-muted-foreground font-inter">atendidas</p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
 
                   {/* Card 3 - Bottom Right */}
-                  <Card className="absolute bottom-8 right-8 bg-slate-800/90 border-slate-700 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
+                  <Card className="absolute bottom-8 right-8 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-green-400 font-poppins">+40%</span>
+                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+40%</span>
                         <div className="text-left">
-                          <p className="text-sm text-gray-300 font-inter">Aumento médio</p>
-                          <p className="text-sm text-gray-300 font-inter">de produtividade</p>
+                          <p className="text-sm text-muted-foreground font-inter">Aumento médio</p>
+                          <p className="text-sm text-muted-foreground font-inter">de produtividade</p>
                         </div>
                       </div>
                     </CardContent>
@@ -170,10 +169,11 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Sobre a Mentoria */}
-      <section className="py-16 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-inter">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-inter">
               O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
               na implementação de soluções de IA na sua empresa. Colhendo resultados concretos, 
               em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações. 
@@ -184,11 +184,12 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Isso é pra você se... */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              Isso é pra você <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">se...</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              Isso é pra você <span className="bg-gradient-primary bg-clip-text text-transparent">se...</span>
             </h2>
           </div>
 
@@ -227,15 +228,15 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 hover:bg-black/90 hover:border-ba-blue-light/40 transition-all duration-300">
                   <CardHeader>
-                    <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
-                      <IconComponent size={24} className="text-blue-400" />
+                    <div className="p-3 bg-gradient-primary rounded-full w-fit mb-4">
+                      <IconComponent size={24} className="text-background" />
                     </div>
-                    <CardTitle className="text-lg font-poppins mb-2 text-white">
+                    <CardTitle className="text-lg font-poppins mb-2 text-foreground">
                       {item.title}
                     </CardTitle>
-                    <CardDescription className="font-inter text-gray-300">
+                    <CardDescription className="font-inter text-muted-foreground">
                       {item.description}
                     </CardDescription>
                   </CardHeader>
@@ -247,14 +248,15 @@ const IAParaNegocios = () => {
       </section>
 
       {/* A História */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center text-white">
-              A História — <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">da Dor ao Desejo</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              A História — <span className="bg-gradient-primary bg-clip-text text-transparent">da Dor ao Desejo</span>
             </h2>
             
-            <div className="space-y-6 text-lg text-gray-300 font-inter leading-relaxed">
+            <div className="space-y-6 text-lg text-muted-foreground font-inter leading-relaxed">
               <p>
                 Imagine chegar ao fim do mês e perceber que <strong>40% do seu tempo (e da sua equipe) foi gasto em tarefas que não geram receita</strong>: 
                 copiar dados, enviar lembretes, montar relatórios, responder perguntas repetidas. Enquanto isso, grandes players usam IA para reduzir custos, 
@@ -270,22 +272,22 @@ const IAParaNegocios = () => {
                 Foi quando decidi testar pequenas automações de IA — mesmo sem saber programar.
               </p>
               
-              <p className="font-semibold text-white">Em três meses:</p>
+              <p className="font-semibold text-foreground">Em três meses:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
                   <CardContent className="pt-6">
-                    <div className="text-sm text-gray-300"><strong className="text-green-400">Cortei 60% do tempo de proposta</strong> usando geração automática de PDFs via ChatGPT e Make.</div>
+                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Cortei 60% do tempo de proposta</strong> usando geração automática de PDFs via ChatGPT e Make.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
                   <CardContent className="pt-6">
-                    <div className="text-sm text-gray-300"><strong className="text-green-400">Aumentei em 27% o ticket médio</strong> com um bot de upsell que trabalha enquanto a equipe dorme.</div>
+                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Aumentei em 27% o ticket médio</strong> com um bot de upsell que trabalha enquanto a equipe dorme.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
                   <CardContent className="pt-6">
-                    <div className="text-sm text-gray-300"><strong className="text-green-400">Economizei R$ 8 mil/mês</strong> só com reconciliação financeira automatizada.</div>
+                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Economizei R$ 8 mil/mês</strong> só com reconciliação financeira automatizada.</div>
                   </CardContent>
                 </Card>
               </div>
@@ -301,7 +303,7 @@ const IAParaNegocios = () => {
               </p>
               
               <div className="text-center mt-8">
-                <p className="text-xl font-semibold text-white">
+                <p className="text-xl font-semibold text-foreground">
                   Se o seu desejo é liderar o mercado — em vez de persegui-lo —, esta mentoria foi feita para você.
                 </p>
               </div>
@@ -311,16 +313,17 @@ const IAParaNegocios = () => {
       </section>
 
       {/* Promessa Poderosa */}
-      <section className="py-20 bg-gradient-to-br from-green-500/10 to-blue-500/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative bg-black">
+        <div className="absolute inset-0 bg-gradient-to-br from-ba-blue-light/10 to-ba-orange/10"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-white">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Promessa Poderosa</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">Promessa Poderosa</span>
             </h2>
             
-            <Card className="bg-slate-800/90 backdrop-blur-sm border border-slate-700 p-8">
+            <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 p-8 hover:border-ba-blue-light/40 transition-all">
               <CardContent className="pt-0">
-                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-white">
+                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-foreground">
                   "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio, 
                   reduzir até 40% dos custos operacionais e liberar pelo menos 10 horas por semana — 
                   tudo isso usando ferramentas de IA no-code, sem contratar nenhum desenvolvedor."

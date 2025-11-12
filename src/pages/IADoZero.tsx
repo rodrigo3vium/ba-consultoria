@@ -43,43 +43,42 @@ const IADoZero = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-black">
       
       {/* Hero Section */}
-      <section className="pt-4 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
-        </div>
+      <section className="pt-4 pb-20 relative overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-48 h-48 bg-ba-orange/10 rounded-full blur-3xl"></div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-5xl mx-auto">
             <Badge 
               variant="outline" 
-              className="mb-8 border-green-500 text-green-400 bg-green-500/10 px-6 py-2 text-lg font-semibold rounded-full"
+              className="mb-8 border-ba-blue-light text-ba-blue-light bg-ba-blue-light/10 px-6 py-2 text-lg font-semibold rounded-full"
             >
               🔒 Oferta de Black Friday com 74% 💸 de desconto.
             </Badge>
             
-            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight text-white">
-              Domine o ChatGPT <span className="text-green-400">(E outras IAs)</span> + Acesso a <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">todos os meus prompts</span>.
+            <h1 className="text-3xl md:text-5xl font-bold font-poppins mb-6 leading-tight bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              Domine o ChatGPT <span className="bg-gradient-primary bg-clip-text text-transparent">(E outras IAs)</span> + Acesso a <span className="bg-gradient-primary bg-clip-text text-transparent">todos os meus prompts</span>.
             </h1>
             
-            <h2 className="text-lg md:text-2xl text-gray-300 mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
-              No <span className="text-blue-400 font-semibold">IA do Zero</span> você vai aprender como usar <span className="text-blue-400 font-semibold">Inteligência Artificial</span> de forma prática, estratégica e eficiente para aprender ser mais produtivo, aprender mais rápido e acelerar projetos para atingir seus objetivos por apenas{' '}
-              <span className="text-green-400 font-bold">R$49,90</span>.
+            <h2 className="text-lg md:text-2xl text-muted-foreground mb-6 font-inter leading-snug md:leading-relaxed max-w-5xl mx-auto">
+              No <span className="text-ba-blue-light font-semibold">IA do Zero</span> você vai aprender como usar <span className="text-ba-blue-light font-semibold">Inteligência Artificial</span> de forma prática, estratégica e eficiente para aprender ser mais produtivo, aprender mais rápido e acelerar projetos para atingir seus objetivos por apenas{' '}
+              <span className="text-ba-blue-light font-bold">R$49,90</span>.
             </h2>
             
             <Button 
               variant="default" 
               size="lg" 
-              className="text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-16 py-4 sm:py-5 md:py-8 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-16 py-4 sm:py-5 md:py-8 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-primary hover:opacity-90 text-background font-semibold rounded-full shadow-glow hover:shadow-glow-intense transition-all duration-300 w-full sm:w-auto"
               onClick={() => handleCheckout('hero')}
             >
               Quero o IA do Zero com 74% de desconto
             </Button>
             
-            <p className="text-sm text-gray-400 mt-4">
+            <p className="text-sm text-muted-foreground mt-4">
               Acesso imediato e vitalício • Aprovado por mais de 400 clientes • Suporte via WhatsApp
             </p>
           </div>
@@ -87,20 +86,21 @@ const IADoZero = () => {
       </section>
 
       {/* Why This Matters Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+                <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
                   Por que isso importa? E por que{' '}
-                  <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+                  <span className="bg-gradient-primary bg-clip-text text-transparent">
                     agora
                   </span>
                   ?
                 </h2>
                 
-                <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                   <p>
                     Nos próximos 12 meses, o mundo vai se dividir entre quem usa bem a inteligência artificial e quem ficou para trás.
                   </p>
@@ -114,8 +114,8 @@ const IADoZero = () => {
               </div>
               
               <div className="relative">
-                <Card className="bg-slate-800/50 border-slate-700 p-6">
-                  <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500">
+                <Card className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                  <Badge className="mb-4 bg-ba-blue-light/20 text-ba-blue-light border-ba-blue-light">
                     BREAKING NEWS
                   </Badge>
                   <div className="bg-white rounded-lg p-6 mb-4">
@@ -141,11 +141,11 @@ const IADoZero = () => {
                     </Carousel>
                   </div>
                   
-                  <div className="border-t border-gray-600 pt-4">
-                    <h3 className="text-xl font-bold text-white text-center mb-2">
+                  <div className="border-t border-ba-blue-light/10 pt-4">
+                    <h3 className="text-xl font-bold text-foreground text-center mb-2">
                       EMPRESAS DEMITEM FUNCIONÁRIOS E SUBSTITUEM POR IA
                     </h3>
-                    <p className="text-gray-300 text-center italic">
+                    <p className="text-muted-foreground text-center italic">
                       A revolução já começou nas maiores empresas do mundo
                     </p>
                   </div>
