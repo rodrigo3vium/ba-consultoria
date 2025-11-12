@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -30,7 +29,6 @@ const GoogleMeuNegocio = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-card via-card-premium to-card">
@@ -44,11 +42,11 @@ const GoogleMeuNegocio = () => {
               </div>
               
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                Coloque sua empresa no topo do Google Maps
+                Coloque sua empresa no topo do Google sem gastar R$1
               </h1>
               
               <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-                Otimizamos seu Google Meu Negócio para transformar buscas em ligações, rotas e clientes — todos os dias.
+                Otimizamos seu Google Meu Negócio para transformar ele em uma máquina de geração de clientes qualificados todos os dias.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
