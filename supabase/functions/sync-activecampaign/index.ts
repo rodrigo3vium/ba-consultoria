@@ -32,8 +32,14 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const apiKey = Deno.env.get('ACTIVECAMPAIGN_API_KEY');
-    const accountUrl = Deno.env.get('ACTIVECAMPAIGN_ACCOUNT_URL');
+    let accountUrl = Deno.env.get('ACTIVECAMPAIGN_ACCOUNT_URL');
     const listId = Deno.env.get('ACTIVECAMPAIGN_LIST_ID');
+
+    // Normalize accountUrl - remove protocol if provided (accepts https:// or http://)
+    if (accountUrl) {
+      accountUrl = accountUrl.replace(/^https?:\/\//, '');
+      console.log('Using ActiveCampaign account URL:', accountUrl);
+    }
 
     if (!apiKey || !accountUrl || !listId) {
       console.error('Missing ActiveCampaign configuration');
