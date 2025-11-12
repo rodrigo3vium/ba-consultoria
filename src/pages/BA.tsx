@@ -246,6 +246,7 @@ const BA = () => {
                   <Link 
                     to={pillar.link}
                     className="inline-block"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                   >
                     <Button 
                       variant="outline"
