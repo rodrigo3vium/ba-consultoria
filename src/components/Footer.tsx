@@ -41,9 +41,9 @@ const Footer = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-ba-blue-light/5 rounded-full blur-3xl"></div>
-            <h3 className="text-3xl md:text-4xl font-bold font-poppins mb-4 bg-gradient-primary bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-4 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
               Fique por dentro das novidades
-            </h3>
+            </h2>
             <p className="text-muted-foreground font-inter mb-8">
               Receba insights exclusivos sobre IA, automação e estratégias para transformar seu negócio
             </p>
@@ -75,7 +75,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="absolute -z-10 -top-8 -left-8 w-64 h-64 bg-ba-blue-light/5 rounded-full blur-3xl"></div>
-              <h3 className="text-2xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent mb-4">
+              <h3 className="text-3xl md:text-4xl font-bold font-poppins bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent mb-4">
                 BA Consultoria
               </h3>
               <p className="text-muted-foreground font-inter mb-4 max-w-md">
