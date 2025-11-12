@@ -29,6 +29,7 @@ import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
 import jonathanBarrosPhoto from "@/assets/founders/jonathan-barros.jpg";
 import rodrigoAlbuquerquePhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
+import francielliBenitesPhoto from "@/assets/founders/francielli-benites.jpg";
 
 const BA = () => {
   const clientLogos = [
@@ -149,17 +150,12 @@ const BA = () => {
             {/* Francielli Benites */}
             <div className="space-y-6">
               <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-gradient-to-br from-ba-blue-dark/50 to-black/50 backdrop-blur-sm">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center space-y-4 p-8">
-                      <div className="w-24 h-24 mx-auto rounded-full bg-gradient-primary/20 flex items-center justify-center">
-                        <svg className="w-12 h-12 text-ba-blue-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-muted-foreground text-sm">Foto da fundadora</p>
-                    </div>
-                  </div>
+                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
+                  <img 
+                    src={francielliBenitesPhoto} 
+                    alt="Francielli Benites" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-ba-orange/10 rounded-full blur-3xl"></div>
               </div>
