@@ -84,7 +84,7 @@ const BA = () => {
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-relaxed pb-2">
               Atraia mais clientes para o seu negócio
             </h1>
             <h2 className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
