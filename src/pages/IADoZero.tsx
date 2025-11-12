@@ -157,13 +157,14 @@ const IADoZero = () => {
       </section>
 
       {/* PhD in Pocket Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
-                <Card className="bg-slate-900/50 border-slate-600 p-6">
-                  <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500">
+                <Card className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                  <Badge className="mb-4 bg-ba-blue-light/20 text-ba-blue-light border-ba-blue-light">
                     BREAKING NEWS
                   </Badge>
                   <div className="bg-white rounded-lg p-6 mb-4">
@@ -174,10 +175,10 @@ const IADoZero = () => {
                     </div>
                   </div>
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-white mb-2">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">
                       INTELIGÊNCIA ARTIFICIAL SUPERA 99% DA POPULAÇÃO MUNDIAL EM TESTE
                     </h3>
-                    <p className="text-gray-400 italic">
+                    <p className="text-muted-foreground italic">
                       Estudo comprova superioridade da IA em tarefas cognitivas complexas
                     </p>
                   </div>
@@ -185,7 +186,7 @@ const IADoZero = () => {
               </div>
               
               <div>
-                <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                   <p>
                     Você está prestes a ter acesso a um "PhD de bolso", um consultor mais inteligente que 99% dos humanos, que pode transformar sua vida pessoal e profissional — se você souber usar do jeito certo.
                   </p>
@@ -200,12 +201,12 @@ const IADoZero = () => {
       </section>
 
       {/* Banco de Prompts Section */}
-      <section className="py-12 bg-gray-100">
+      <section className="py-12 bg-white relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-5xl mx-auto mb-6">
             <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-gray-900">
               Tenha acesso ao meu{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-ba-blue-dark to-ba-blue-light bg-clip-text text-transparent">
                 Banco de Prompts Secreto
               </span>
             </h2>
@@ -235,12 +236,13 @@ const IADoZero = () => {
       </section>
 
       {/* Target Audience Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
               Para quem é o{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
                 IA do Zero
               </span>
             </h2>
@@ -253,10 +255,10 @@ const IADoZero = () => {
               "Quem está se sentindo travado e improdutivo",
               'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'
             ].map((item, index) => (
-              <Card key={index} className="bg-slate-800/50 border-slate-700 p-6">
+              <Card key={index} className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
                 <div className="flex items-center gap-4">
-                  <CheckCircle className="w-8 h-8 text-green-400 flex-shrink-0" />
-                  <p className="text-xl text-white font-medium">{item}</p>
+                  <CheckCircle className="w-8 h-8 text-ba-blue-light flex-shrink-0" />
+                  <p className="text-xl text-foreground font-medium">{item}</p>
                 </div>
               </Card>
             ))}
@@ -266,7 +268,7 @@ const IADoZero = () => {
             <Button 
               variant="default" 
               size="lg" 
-              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-primary hover:opacity-90 text-background font-semibold rounded-full shadow-glow hover:shadow-glow-intense transition-all duration-300 w-full sm:w-auto"
               onClick={() => handleCheckout('target_audience')}
             >
               Quero aprender a usar IA
@@ -276,11 +278,12 @@ const IADoZero = () => {
       </section>
 
       {/* Harvard Study Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
                 Harvard
               </span>
               {' '}está mudando o jeito de ensinar
@@ -288,7 +291,7 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-slate-900/50 border-slate-600 p-8 mb-8">
+            <Card className="bg-black/80 border-ba-blue-light/10 p-8 mb-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
               <div className="bg-white rounded-lg p-6 mb-6">
                 <div className="text-sm text-gray-500 mb-2">Home › Publications › AI Tutoring Outperforms Active Learning</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">AI Tutoring Outperforms Active Learning</h3>
@@ -301,16 +304,16 @@ const IADoZero = () => {
               </div>
               
               <div className="text-center space-y-6">
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed">
                   Estudo realizado em Harvard comprovou que aprender utilizando{' '}
-                  <span className="text-blue-400 font-semibold">"Tutores de IA"</span>
+                  <span className="text-ba-blue-light font-semibold">"Tutores de IA"</span>
                   {' '}é{' '}
-                  <span className="text-green-400 font-bold">2×</span>
+                  <span className="text-ba-blue-light font-bold">2×</span>
                   {' '}mais eficiente do que aprender através de técnicas de estudo ativo.
                 </p>
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-muted-foreground leading-relaxed">
                   Usar tutores de IA acelera o aprendizado em mais de{' '}
-                  <span className="text-blue-400 font-bold">120%</span>.
+                  <span className="text-ba-blue-light font-bold">120%</span>.
                 </p>
               </div>
             </Card>
@@ -319,7 +322,7 @@ const IADoZero = () => {
               <Button 
                 variant="default" 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-primary hover:opacity-90 text-background font-semibold rounded-full shadow-glow hover:shadow-glow-intense transition-all duration-300 w-full sm:w-auto"
                 onClick={() => handleCheckout('harvard_section')}
               >
                 Quero aprender a usar IA
@@ -330,30 +333,31 @@ const IADoZero = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
               Reação de quem usa nossos{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
                 prompts
               </span>
             </h2>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-slate-800/50 border-slate-700 p-8">
-              <div className="bg-slate-900 rounded-lg p-6 border border-slate-600">
+            <Card className="bg-black/80 border-ba-blue-light/10 p-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+              <div className="bg-black/60 rounded-lg p-6 border border-ba-blue-light/20">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
-                <p className="text-gray-300 text-lg leading-relaxed italic mb-6">
+                <p className="text-muted-foreground text-lg leading-relaxed italic mb-6">
                   "Vou dizer por mim, mudou meu jeito de pensar e trabalhar com IA. Um dos seus prompts tirou meu projeto de aula da gaveta, estou produzindo conteúdo técnico pra minha área de qualidade, muito obrigado, vale muito a pena o curso..."
                 </p>
                 <div className="text-center">
-                  <p className="text-white font-semibold text-xl">Eduardo</p>
+                  <p className="text-foreground font-semibold text-xl">Eduardo</p>
                 </div>
               </div>
             </Card>
@@ -364,12 +368,13 @@ const IADoZero = () => {
 
 
       {/* Learning Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
               O que você vai{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-primary bg-clip-text text-transparent">
                 aprender
               </span>
             </h2>
@@ -377,15 +382,15 @@ const IADoZero = () => {
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-300">
+              <Card key={index} className="bg-black/80 border-ba-blue-light/10 hover:border-ba-blue-light/40 transition-all duration-300 backdrop-blur-sm">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="w-8 h-8 text-blue-400 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-8 h-8 text-ba-blue-light mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-semibold text-blue-400 mb-3 font-poppins">
+                      <h3 className="text-xl font-semibold text-ba-blue-light mb-3 font-poppins">
                         {benefit.title}
                       </h3>
-                      <p className="text-gray-300 leading-relaxed font-inter">
+                      <p className="text-muted-foreground leading-relaxed font-inter">
                         {benefit.description}
                       </p>
                     </div>
@@ -398,35 +403,36 @@ const IADoZero = () => {
       </section>
 
       {/* Investment Section */}
-      <section className="py-20 bg-slate-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
               Investimento
             </h2>
-            <p className="text-xl text-gray-400 mb-12">
+            <p className="text-xl text-muted-foreground mb-12">
               Quanto custa para ter acesso ao Método IA do Zero?
             </p>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-slate-800/50 border-slate-700 p-8 mb-12">
+            <Card className="bg-black/80 border-ba-blue-light/10 p-8 mb-12 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
               {/* Price Section */}
               <div className="text-center mb-8">
                 <div className="mb-4">
-                  <span className="text-2xl text-gray-500 line-through relative">
+                  <span className="text-2xl text-muted-foreground line-through relative">
                     R$ 197,00
                   </span>
                 </div>
-                <div className="text-6xl font-bold text-blue-400 mb-4">R$ 49,90</div>
-                <p className="text-lg text-gray-300">
-                  ou <span className="text-green-400 font-semibold">7x</span> de <span className="text-green-400 font-semibold">R$ 8,16</span>
+                <div className="text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">R$ 49,90</div>
+                <p className="text-lg text-muted-foreground">
+                  ou <span className="text-ba-blue-light font-semibold">7x</span> de <span className="text-ba-blue-light font-semibold">R$ 8,16</span>
                 </p>
               </div>
 
               {/* What You Get */}
               <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white mb-6 text-center">O que você vai receber</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-6 text-center">O que você vai receber</h3>
                 <div className="space-y-4">
                   {[
                     "Acesso imediato ao IA do Zero, método para produzir 10x mais usando IA",
@@ -435,8 +441,8 @@ const IADoZero = () => {
                     "Um guia para transformar IA em assistente pessoal, consultor de negócios ou mentor de produtividade"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <CheckCircle className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
-                      <p className="text-gray-300 leading-relaxed">{item}</p>
+                      <CheckCircle className="w-6 h-6 text-ba-blue-light mt-1 flex-shrink-0" />
+                      <p className="text-muted-foreground leading-relaxed">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -444,17 +450,17 @@ const IADoZero = () => {
 
               {/* Bonus Section */}
               <div className="mb-8">
-                <h3 className="text-2xl font-bold text-green-400 mb-6 text-center">Bônus</h3>
+                <h3 className="text-2xl font-bold text-ba-blue-light mb-6 text-center">Bônus</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed">
+                    <CheckCircle className="w-6 h-6 text-ba-blue-light mt-1 flex-shrink-0" />
+                    <p className="text-muted-foreground leading-relaxed">
                       Acesso ao meu banco secreto de prompts com mais de 50 prompts validados prontos para uso
                     </p>
                   </div>
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed">
+                    <CheckCircle className="w-6 h-6 text-ba-blue-light mt-1 flex-shrink-0" />
+                    <p className="text-muted-foreground leading-relaxed">
                       Acesso a um grupo VIP no WhatsApp para ficar por dentro das últimas novidades de IA e fazer networking
                     </p>
                   </div>
@@ -466,7 +472,7 @@ const IADoZero = () => {
                 <Button 
                   variant="default" 
                   size="lg" 
-                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full max-w-md mx-auto"
+                  className="text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 font-inter whitespace-normal md:whitespace-nowrap break-words text-center leading-tight bg-gradient-primary hover:opacity-90 text-background font-semibold rounded-full shadow-glow hover:shadow-glow-intense transition-all duration-300 w-full max-w-md mx-auto"
                   onClick={() => handleCheckout('pricing_section')}
                 >
                   COMEÇAR A MINHA MUDANÇA DE VIDA
@@ -475,11 +481,11 @@ const IADoZero = () => {
 
               {/* Security Badge */}
               <div className="text-center space-y-4">
-                <div className="flex items-center justify-center gap-2 text-green-400 mb-2">
+                <div className="flex items-center justify-center gap-2 text-ba-blue-light mb-2">
                   <CheckCircle className="w-5 h-5" />
                   <span className="font-semibold text-lg">Compra 100% segura!</span>
                 </div>
-                <p className="text-gray-400 text-sm sm:text-base max-w-md mx-auto">
+                <p className="text-muted-foreground text-sm sm:text-base max-w-md mx-auto">
                   Receba seu acesso imediatamente após a confirmação do pagamento.
                 </p>
               </div>
@@ -487,17 +493,17 @@ const IADoZero = () => {
 
             {/* Feature Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-16">
-              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
-                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Aulas 100% online</h4>
-                <p className="text-gray-400 text-sm sm:text-base">Acesse de qualquer lugar</p>
+              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Aulas 100% online</h4>
+                <p className="text-muted-foreground text-sm sm:text-base">Acesse de qualquer lugar</p>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
-                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Bônus exclusivos</h4>
-                <p className="text-gray-400 text-sm sm:text-base">Conteúdo extra valioso</p>
+              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Bônus exclusivos</h4>
+                <p className="text-muted-foreground text-sm sm:text-base">Conteúdo extra valioso</p>
               </Card>
-              <Card className="bg-slate-800/50 border-slate-700 p-4 sm:p-6 text-center">
-                <h4 className="text-lg sm:text-xl font-semibold text-blue-400 mb-2">Suporte para a plataforma</h4>
-                <p className="text-gray-400 text-sm sm:text-base">Assistência completa</p>
+              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Suporte para a plataforma</h4>
+                <p className="text-muted-foreground text-sm sm:text-base">Assistência completa</p>
               </Card>
             </div>
           </div>
@@ -505,41 +511,42 @@ const IADoZero = () => {
       </section>
 
       {/* Guarantee Section */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 text-white">
-              <span className="text-blue-400">7 dias</span> de garantia incondicional
+            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+              <span className="text-ba-blue-light">7 dias</span> de garantia incondicional
             </h2>
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-slate-900/50 border-slate-600 p-8">
+            <Card className="bg-black/80 border-ba-blue-light/10 p-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
               <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-20 h-20 bg-ba-blue-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
                 </div>
                 
-                <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                   Tente por 7 dias. Se você não estiver completamente satisfeito, nós devolvemos seu dinheiro —{' '}
-                  <span className="text-blue-400 font-semibold">sem nenhum tipo de questionamento</span>.
+                  <span className="text-ba-blue-light font-semibold">sem nenhum tipo de questionamento</span>.
                 </p>
                 
-                <div className="space-y-3 text-gray-400">
+                <div className="space-y-3 text-muted-foreground">
                   <div className="flex items-center justify-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <CheckCircle className="w-5 h-5 text-ba-blue-light" />
                     <span>Garantia de 7 dias</span>
                   </div>
                   <div className="flex items-center justify-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <CheckCircle className="w-5 h-5 text-ba-blue-light" />
                     <span>Reembolso total</span>
                   </div>
                   <div className="flex items-center justify-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <CheckCircle className="w-5 h-5 text-ba-blue-light" />
                     <span>Sem questionamentos</span>
                   </div>
                 </div>
