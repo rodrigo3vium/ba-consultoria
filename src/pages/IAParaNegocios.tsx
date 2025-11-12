@@ -124,7 +124,7 @@ const IAParaNegocios = () => {
                 {/* Floating Cards */}
                 <div className="relative h-full flex items-center justify-center">
                   {/* Card 1 - Top Right */}
-                  <Card className="absolute top-8 right-4 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float">
+                  <Card className="absolute top-8 right-4 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float">
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+12</span>
@@ -137,7 +137,7 @@ const IAParaNegocios = () => {
                   </Card>
 
                   {/* Card 2 - Middle Left */}
-                  <Card className="absolute top-32 left-0 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
+                  <Card className="absolute top-32 left-0 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+100</span>
@@ -150,7 +150,7 @@ const IAParaNegocios = () => {
                   </Card>
 
                   {/* Card 3 - Bottom Right */}
-                  <Card className="absolute bottom-8 right-8 bg-black/80 border-ba-blue-light/10 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/40 transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
+                  <Card className="absolute bottom-8 right-8 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
                     <CardContent className="p-6">
                       <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+40%</span>
@@ -228,7 +228,7 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 hover:bg-black/90 hover:border-ba-blue-light/40 transition-all duration-300">
+                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 hover:bg-black/90 hover:border-ba-blue-light/60 transition-all duration-300 shadow-glow">
                   <CardHeader>
                     <div className="p-3 bg-gradient-primary rounded-full w-fit mb-4">
                       <IconComponent size={24} className="text-background" />
@@ -275,17 +275,17 @@ const IAParaNegocios = () => {
               <p className="font-semibold text-foreground">Em três meses:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
                   <CardContent className="pt-6">
                     <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Cortei 60% do tempo de proposta</strong> usando geração automática de PDFs via ChatGPT e Make.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
                   <CardContent className="pt-6">
                     <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Aumentei em 27% o ticket médio</strong> com um bot de upsell que trabalha enquanto a equipe dorme.</div>
                   </CardContent>
                 </Card>
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 text-center hover:border-ba-blue-light/40 transition-all">
+                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
                   <CardContent className="pt-6">
                     <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Economizei R$ 8 mil/mês</strong> só com reconciliação financeira automatizada.</div>
                   </CardContent>
@@ -321,7 +321,7 @@ const IAParaNegocios = () => {
               <span className="bg-gradient-primary bg-clip-text text-transparent">Promessa Poderosa</span>
             </h2>
             
-            <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/10 p-8 hover:border-ba-blue-light/40 transition-all">
+            <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 p-8 hover:border-ba-blue-light/60 transition-all shadow-glow">
               <CardContent className="pt-0">
                 <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-foreground">
                   "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio, 

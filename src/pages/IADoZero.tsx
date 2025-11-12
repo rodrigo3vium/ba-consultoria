@@ -114,7 +114,7 @@ const IADoZero = () => {
               </div>
               
               <div className="relative">
-                <Card className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                <Card className="bg-black/80 border-ba-blue-light/20 p-6 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                   <Badge className="mb-4 bg-ba-blue-light/20 text-ba-blue-light border-ba-blue-light">
                     BREAKING NEWS
                   </Badge>
@@ -163,7 +163,7 @@ const IADoZero = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
-                <Card className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+                <Card className="bg-black/80 border-ba-blue-light/20 p-6 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                   <Badge className="mb-4 bg-ba-blue-light/20 text-ba-blue-light border-ba-blue-light">
                     BREAKING NEWS
                   </Badge>
@@ -255,7 +255,7 @@ const IADoZero = () => {
               "Quem está se sentindo travado e improdutivo",
               'Quem já percebeu que a IA não é mais "opção" — é sobrevivência'
             ].map((item, index) => (
-              <Card key={index} className="bg-black/80 border-ba-blue-light/10 p-6 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+              <Card key={index} className="bg-black/80 border-ba-blue-light/20 p-6 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                 <div className="flex items-center gap-4">
                   <CheckCircle className="w-8 h-8 text-ba-blue-light flex-shrink-0" />
                   <p className="text-xl text-foreground font-medium">{item}</p>
@@ -291,7 +291,7 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-black/80 border-ba-blue-light/10 p-8 mb-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+            <Card className="bg-black/80 border-ba-blue-light/20 p-8 mb-8 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
               <div className="bg-white rounded-lg p-6 mb-6">
                 <div className="text-sm text-gray-500 mb-2">Home › Publications › AI Tutoring Outperforms Active Learning</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">AI Tutoring Outperforms Active Learning</h3>
@@ -346,7 +346,7 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-black/80 border-ba-blue-light/10 p-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+            <Card className="bg-black/80 border-ba-blue-light/20 p-8 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
               <div className="bg-black/60 rounded-lg p-6 border border-ba-blue-light/20">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -382,7 +382,7 @@ const IADoZero = () => {
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="bg-black/80 border-ba-blue-light/10 hover:border-ba-blue-light/40 transition-all duration-300 backdrop-blur-sm">
+              <Card key={index} className="bg-black/80 border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all duration-300 backdrop-blur-sm shadow-glow">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
                     <CheckCircle className="w-8 h-8 text-ba-blue-light mt-1 flex-shrink-0" />
@@ -416,7 +416,7 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-black/80 border-ba-blue-light/10 p-8 mb-12 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+            <Card className="bg-black/80 border-ba-blue-light/20 p-8 mb-12 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
               {/* Price Section */}
               <div className="text-center mb-8">
                 <div className="mb-4">
@@ -493,15 +493,15 @@ const IADoZero = () => {
 
             {/* Feature Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-16">
-              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+              <Card className="bg-black/80 border-ba-blue-light/20 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                 <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Aulas 100% online</h4>
                 <p className="text-muted-foreground text-sm sm:text-base">Acesse de qualquer lugar</p>
               </Card>
-              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+              <Card className="bg-black/80 border-ba-blue-light/20 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                 <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Bônus exclusivos</h4>
                 <p className="text-muted-foreground text-sm sm:text-base">Conteúdo extra valioso</p>
               </Card>
-              <Card className="bg-black/80 border-ba-blue-light/10 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+              <Card className="bg-black/80 border-ba-blue-light/20 p-4 sm:p-6 text-center backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
                 <h4 className="text-lg sm:text-xl font-semibold text-ba-blue-light mb-2">Suporte para a plataforma</h4>
                 <p className="text-muted-foreground text-sm sm:text-base">Assistência completa</p>
               </Card>
@@ -521,7 +521,7 @@ const IADoZero = () => {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-black/80 border-ba-blue-light/10 p-8 backdrop-blur-sm hover:border-ba-blue-light/40 transition-all">
+            <Card className="bg-black/80 border-ba-blue-light/20 p-8 backdrop-blur-sm hover:border-ba-blue-light/60 transition-all shadow-glow">
               <div className="text-center mb-8">
                 <div className="w-20 h-20 bg-ba-blue-light/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center">
