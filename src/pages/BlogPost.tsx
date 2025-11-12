@@ -183,7 +183,29 @@ const BlogPost = () => {
               </h1>
 
               {post.content && (
-                <div className="prose prose-lg max-w-none prose-invert prose-headings:text-white prose-p:text-slate-200 prose-strong:text-white prose-li:text-slate-200 prose-blockquote:text-slate-300 prose-a:text-blue-400 prose-code:text-pink-400 prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700 mb-12">
+                <div className="prose prose-lg max-w-none prose-invert 
+                  prose-headings:font-poppins prose-headings:font-bold prose-headings:text-white
+                  prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-12 prose-h1:leading-tight
+                  md:prose-h1:text-5xl
+                  prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-10 prose-h2:leading-snug
+                  md:prose-h2:text-4xl
+                  prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-8 prose-h3:leading-snug
+                  md:prose-h3:text-3xl
+                  prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
+                  prose-h5:text-lg prose-h5:mb-3 prose-h5:mt-5
+                  prose-h6:text-base prose-h6:mb-2 prose-h6:mt-4
+                  prose-p:text-lg prose-p:text-slate-200 prose-p:mb-6 prose-p:leading-relaxed
+                  prose-strong:text-white prose-strong:font-semibold
+                  prose-ul:mb-6 prose-ul:mt-4
+                  prose-ol:mb-6 prose-ol:mt-4
+                  prose-li:text-slate-200 prose-li:mb-3 prose-li:leading-relaxed
+                  prose-blockquote:text-slate-300 prose-blockquote:border-l-orange-400 prose-blockquote:bg-slate-800/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:italic
+                  prose-a:text-blue-400 prose-a:no-underline prose-a:font-medium hover:prose-a:text-blue-300 hover:prose-a:underline
+                  prose-code:text-pink-400 prose-code:bg-slate-800/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+                  prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700 prose-pre:p-4 prose-pre:my-8 prose-pre:rounded-lg
+                  prose-img:rounded-lg prose-img:my-8 prose-img:shadow-xl
+                  prose-hr:border-slate-700 prose-hr:my-12
+                  mb-12">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
                 </div>
               )}
