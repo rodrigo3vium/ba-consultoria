@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -22,15 +23,31 @@ const Footer = () => {
 
     setIsLoading(true);
     
-    // Simular envio (substituir por integração real futuramente)
-    setTimeout(() => {
+    try {
+      const { error } = await supabase.functions.invoke('sync-activecampaign', {
+        body: {
+          email,
+          source: 'Footer Newsletter',
+        },
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Inscrição realizada!",
         description: "Você receberá nossas novidades em breve.",
       });
       setEmail('');
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      toast({
+        title: "Erro na inscrição",
+        description: "Não foi possível completar sua inscrição. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (

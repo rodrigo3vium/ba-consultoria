@@ -111,7 +111,30 @@ const Newsletter = () => {
       }
       console.log('✅ Inscrição salva com sucesso');
 
-      // 4. Registrar evento (mantém analytics)
+      // 4. Sincronizar com ActiveCampaign
+      console.log('🔄 Sincronizando com ActiveCampaign...');
+      try {
+        const { error: acError } = await supabase.functions.invoke('sync-activecampaign', {
+          body: {
+            email: values.email,
+            name: values.name,
+            whatsapp: values.whatsapp,
+            source: 'Newsletter Page',
+          },
+        });
+
+        if (acError) {
+          console.error('⚠️ Erro ao sincronizar com ActiveCampaign:', acError);
+          // Não falha o processo todo se AC sync falhar
+        } else {
+          console.log('✅ Sincronizado com ActiveCampaign');
+        }
+      } catch (acSyncError) {
+        console.error('⚠️ Erro ao sincronizar com ActiveCampaign:', acSyncError);
+        // Continua mesmo se ActiveCampaign falhar
+      }
+
+      // 5. Registrar evento (mantém analytics)
       console.log('📊 Rastreando evento...');
       await tracker.track('newsletter_signup', {
         source: 'newsletter_page',
@@ -119,7 +142,7 @@ const Newsletter = () => {
       });
       console.log('✅ Evento rastreado');
 
-      // 5. Sucesso
+      // 6. Sucesso
       toast({
         title: "Inscrição confirmada! 🎉",
         description: "Você receberá nossa newsletter toda segunda-feira às 8h.",
