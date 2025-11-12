@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { tracker } from '@/lib/tracking';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -24,14 +25,77 @@ const Footer = () => {
     setIsLoading(true);
     
     try {
-      const { error } = await supabase.functions.invoke('sync-activecampaign', {
+      // 1. Identificar o lead no tracker
+      await tracker.identify(email, '', '');
+      const anonymousId = tracker.getAnonymousId();
+
+      // 2. Buscar ou criar lead
+      const { data: existingLead } = await supabase
+        .from('leads')
+        .select('id')
+        .eq('email', email)
+        .maybeSingle();
+
+      let leadId = existingLead?.id;
+
+      if (!existingLead) {
+        const { data: newLead, error: leadError } = await supabase
+          .from('leads')
+          .insert({
+            email,
+            nome: email.split('@')[0],
+            whatsapp: '',
+            produto: 'newsletter',
+            origem: 'footer',
+          })
+          .select('id')
+          .single();
+
+        if (leadError) throw leadError;
+        leadId = newLead.id;
+      }
+
+      // 3. Salvar inscrição na newsletter
+      const utmParams = new URLSearchParams(window.location.search);
+      
+      const { error: subscriberError } = await supabase
+        .from('newsletter_subscribers')
+        .insert({
+          email,
+          nome: email.split('@')[0],
+          lead_id: leadId,
+          anonymous_id: anonymousId,
+          subscription_source: 'footer',
+          utm_source: utmParams.get('utm_source') || null,
+          utm_medium: utmParams.get('utm_medium') || null,
+          utm_campaign: utmParams.get('utm_campaign') || null,
+          referrer: document.referrer || null,
+          status: 'active',
+        });
+
+      if (subscriberError && subscriberError.code !== '23505') {
+        throw subscriberError;
+      }
+
+      // 4. Registrar evento de tracking
+      await tracker.track('newsletter_signup_footer', {
+        email,
+        source: 'footer',
+        page: window.location.pathname,
+      });
+
+      // 5. Sincronizar com ActiveCampaign
+      const { error: acError } = await supabase.functions.invoke('sync-activecampaign', {
         body: {
           email,
           source: 'Footer Newsletter',
         },
       });
 
-      if (error) throw error;
+      if (acError) {
+        console.error('ActiveCampaign sync error:', acError);
+        // Não falha a inscrição se ActiveCampaign der erro
+      }
 
       toast({
         title: "Inscrição realizada!",
