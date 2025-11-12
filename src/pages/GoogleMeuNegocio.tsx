@@ -31,7 +31,7 @@ const GoogleMeuNegocio = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-card via-card-premium to-card pt-8">
+        <section className="relative min-h-[600px] flex items-center justify-center overflow-visible bg-gradient-to-br from-card via-card-premium to-card pt-20 pb-20">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--ba-blue-dark)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--ba-blue-dark)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
           
           <div className="container mx-auto px-4 py-20 relative z-10">
