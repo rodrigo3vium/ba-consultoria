@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,8 +9,48 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { CalendarDays, Clock, User, ArrowLeft, ArrowRight, Share2, Loader2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import remarkBreaks from 'remark-breaks';
 import { useQuery } from "@tanstack/react-query";
+
+const preprocessMarkdown = (md: string) => {
+  const lines = md.split("\n");
+  const out: string[] = [];
+  let inCode = false;
+
+  const isList = (s: string) => /^(\*|-|\d+\.)\s+/.test(s);
+  const isHeading = (s: string) => /^#{1,6}\s+/.test(s);
+  const isQuote = (s: string) => /^>\s?/.test(s);
+  const isFence = (s: string) => /^```/.test(s);
+
+  for (let i = 0; i < lines.length; i++) {
+    const curr = lines[i];
+    const currTrim = curr.trim();
+
+    if (isFence(currTrim)) {
+      inCode = !inCode;
+      out.push(curr);
+      continue;
+    }
+
+    out.push(curr);
+
+    if (inCode) continue;
+
+    const next = i < lines.length - 1 ? lines[i + 1] : "";
+    const nextTrim = next.trim();
+
+    const currEmpty = currTrim === "";
+    const nextEmpty = nextTrim === "";
+
+    const currSpecial = isList(currTrim) || isHeading(currTrim) || isQuote(currTrim);
+    const nextSpecial = isList(nextTrim) || isHeading(nextTrim) || isQuote(nextTrim);
+
+    if (!currEmpty && !nextEmpty && !currSpecial && !nextSpecial) {
+      out.push("");
+    }
+  }
+
+  return out.join("\n");
+};
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
@@ -56,6 +96,11 @@ const BlogPost = () => {
   const relatedPosts = allPosts
     ?.filter(p => p.id.toString() !== id && p.category === post?.category)
     .slice(0, 3) || [];
+
+  const processedContent = useMemo(
+    () => (post?.content ? preprocessMarkdown(post.content) : ""),
+    [post?.content]
+  );
 
   useEffect(() => {
     if (post) {
@@ -206,9 +251,8 @@ const BlogPost = () => {
                   prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700 prose-pre:p-4 prose-pre:my-8 prose-pre:rounded-lg
                   prose-img:rounded-lg prose-img:my-8 prose-img:shadow-xl
                   prose-hr:border-slate-700 prose-hr:my-12
-                  [&_br]:block [&_br]:my-4
                   mb-12">
-                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{post.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{processedContent}</ReactMarkdown>
                 </div>
               )}
 
