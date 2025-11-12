@@ -102,28 +102,12 @@ const GoogleMeuNegocio = () => {
 
               <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
                 <h3 className="text-2xl font-bold mb-6 text-center">
-                  Os erros mais comuns que te deixam invisível:
+                  95% dos negócios estão com o cadastro do Google feito incorretamente
                 </h3>
                 
-                <div className="grid md:grid-cols-2 gap-6">
-                  {[
-                    "Categoria errada e dados inconsistentes (nome/endereço/telefone)",
-                    "Poucas avaliações ou respostas frias",
-                    "Fotos ruins/desatualizadas e perfil sem posts",
-                    "Horários, serviços e links confusos",
-                    "Duplicidade de fichas e penalidades silenciosas"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-1" />
-                      <p className="text-muted-foreground">{item}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 p-6 bg-destructive/10 border border-destructive/20 rounded-lg">
-                  <p className="text-lg font-semibold text-center">
-                    Se o cliente te encontra, mas o perfil não convence, ele liga para o concorrente.
-                  </p>
+                {/* TODO: Adicionar imagem aqui */}
+                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                  <p className="text-muted-foreground">Imagem a ser adicionada</p>
                 </div>
               </div>
             </div>
