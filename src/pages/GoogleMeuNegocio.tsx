@@ -111,26 +111,26 @@ const GoogleMeuNegocio = () => {
                   <p className="text-muted-foreground">Imagem a ser adicionada</p>
                 </div>
 
-                <div className="mt-8 bg-black/80 backdrop-blur-sm border border-destructive/20 rounded-xl p-8 shadow-lg">
-                  <h4 className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-destructive to-orange-500 bg-clip-text text-transparent">
+                <div className="mt-8 bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-xl p-8">
+                  <h4 className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
                     O resultado?
                   </h4>
                   <div className="grid gap-4 max-w-2xl mx-auto">
-                    <div className="flex items-center gap-4 p-4 bg-destructive/5 border border-destructive/20 rounded-lg hover:border-destructive/40 transition-all duration-300 animate-fade-in">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-                        <X className="w-6 h-6 text-destructive" />
+                    <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-lg hover:border-ba-blue-light/60 hover:shadow-glow transition-all duration-300 animate-fade-in">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-ba-blue-dark/20 flex items-center justify-center">
+                        <X className="w-6 h-6 text-ba-orange" />
                       </div>
                       <span className="text-lg md:text-xl font-medium">Menos pesquisas</span>
                     </div>
-                    <div className="flex items-center gap-4 p-4 bg-destructive/5 border border-destructive/20 rounded-lg hover:border-destructive/40 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-                        <X className="w-6 h-6 text-destructive" />
+                    <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-lg hover:border-ba-blue-light/60 hover:shadow-glow transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-ba-blue-dark/20 flex items-center justify-center">
+                        <X className="w-6 h-6 text-ba-orange" />
                       </div>
                       <span className="text-lg md:text-xl font-medium">Menos visibilidade</span>
                     </div>
-                    <div className="flex items-center gap-4 p-4 bg-destructive/5 border border-destructive/20 rounded-lg hover:border-destructive/40 transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
-                        <X className="w-6 h-6 text-destructive" />
+                    <div className="flex items-center gap-4 p-4 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-lg hover:border-ba-blue-light/60 hover:shadow-glow transition-all duration-300 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-ba-blue-dark/20 flex items-center justify-center">
+                        <X className="w-6 h-6 text-ba-orange" />
                       </div>
                       <span className="text-lg md:text-xl font-medium">Menos clientes</span>
                     </div>
