@@ -18,6 +18,50 @@ export default {
 			}
 		},
 		extend: {
+			typography: {
+				DEFAULT: {
+					css: {
+						'p': {
+							marginTop: '1rem',
+							marginBottom: '2rem',
+							lineHeight: '1.75',
+							fontSize: '1.125rem',
+						},
+						'h1': {
+							marginTop: '0',
+							marginBottom: '1.5rem',
+						},
+						'h2': {
+							marginTop: '2.5rem',
+							marginBottom: '1.5rem',
+						},
+						'h3': {
+							marginTop: '2rem',
+							marginBottom: '1rem',
+						},
+						'ul, ol': {
+							marginTop: '1.5rem',
+							marginBottom: '1.5rem',
+						},
+						'li': {
+							marginTop: '0.5rem',
+							marginBottom: '0.5rem',
+						},
+						'blockquote': {
+							marginTop: '2rem',
+							marginBottom: '2rem',
+						},
+						'pre': {
+							marginTop: '2rem',
+							marginBottom: '2rem',
+						},
+						'hr': {
+							marginTop: '3rem',
+							marginBottom: '3rem',
+						},
+					},
+				},
+			},
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
 				'poppins': ['Poppins', 'sans-serif'],
