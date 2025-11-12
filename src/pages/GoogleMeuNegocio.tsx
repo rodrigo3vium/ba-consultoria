@@ -18,6 +18,7 @@ import {
   Target,
   BarChart,
   Shield,
+  X,
   Zap,
   Users,
   Award
@@ -106,8 +107,28 @@ const GoogleMeuNegocio = () => {
                 </h3>
                 
                 {/* TODO: Adicionar imagem aqui */}
-                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center mb-8">
                   <p className="text-muted-foreground">Imagem a ser adicionada</p>
+                </div>
+
+                <div className="text-center">
+                  <h4 className="text-xl font-semibold mb-6 text-foreground">
+                    O resultado?
+                  </h4>
+                  <ul className="space-y-3 max-w-md mx-auto">
+                    <li className="flex items-center gap-3 text-lg">
+                      <X className="w-5 h-5 text-destructive flex-shrink-0" />
+                      <span>Menos pesquisas</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-lg">
+                      <X className="w-5 h-5 text-destructive flex-shrink-0" />
+                      <span>Menos visibilidade</span>
+                    </li>
+                    <li className="flex items-center gap-3 text-lg">
+                      <X className="w-5 h-5 text-destructive flex-shrink-0" />
+                      <span>Menos clientes</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
