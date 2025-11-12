@@ -9,6 +9,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { CalendarDays, Clock, User, ArrowLeft, ArrowRight, Share2, Loader2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -194,7 +195,7 @@ const BlogPost = () => {
                   prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
                   prose-h5:text-lg prose-h5:mb-3 prose-h5:mt-5
                   prose-h6:text-base prose-h6:mb-2 prose-h6:mt-4
-                  prose-p:text-lg prose-p:text-slate-200 prose-p:mb-6 prose-p:leading-relaxed
+                  prose-p:text-lg prose-p:text-slate-200 prose-p:mb-8 prose-p:leading-relaxed prose-p:mt-4
                   prose-strong:text-white prose-strong:font-semibold
                   prose-ul:mb-6 prose-ul:mt-4
                   prose-ol:mb-6 prose-ol:mt-4
@@ -205,8 +206,9 @@ const BlogPost = () => {
                   prose-pre:bg-slate-950/50 prose-pre:border prose-pre:border-slate-700 prose-pre:p-4 prose-pre:my-8 prose-pre:rounded-lg
                   prose-img:rounded-lg prose-img:my-8 prose-img:shadow-xl
                   prose-hr:border-slate-700 prose-hr:my-12
+                  [&_br]:block [&_br]:my-4
                   mb-12">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{post.content}</ReactMarkdown>
                 </div>
               )}
 
