@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePageViewTracking } from "@/hooks/usePageViewTracking";
-import Index from "./pages/Index";
 import BA from "./pages/BA";
 import Cases from "./pages/Cases";
 import CaseDetails from "./pages/CaseDetails";
@@ -47,8 +46,7 @@ const App = () => (
       <BrowserRouter>
         <PageViewTracker />
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/ba" element={<BA />} />
+          <Route path="/" element={<BA />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:id" element={<CaseDetails />} />
           <Route path="/consultoria" element={<Consultoria />} />
