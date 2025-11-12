@@ -46,22 +46,26 @@ const BA = () => {
     {
       icon: Code,
       title: 'Tecnologia',
-      description: 'Soluções tecnológicas inovadoras para impulsionar seu negócio'
+      description: 'Soluções tecnológicas inovadoras para impulsionar seu negócio',
+      link: '/tecnologia'
     },
     {
       icon: GraduationCap,
       title: 'Educação',
-      description: 'Capacitação e desenvolvimento de equipes de alta performance'
+      description: 'Capacitação e desenvolvimento de equipes de alta performance',
+      link: '/educacao'
     },
     {
       icon: TrendingUp,
       title: 'Consultoria',
-      description: 'Estratégias personalizadas para crescimento empresarial'
+      description: 'Estratégias personalizadas para crescimento empresarial',
+      link: '/consultoria'
     },
     {
       icon: Briefcase,
       title: 'Serviços',
-      description: 'Serviços especializados em vendas e performance comercial'
+      description: 'Serviços especializados em vendas e performance comercial',
+      link: '/consultoria'
     }
   ];
 
@@ -244,7 +248,7 @@ const BA = () => {
                   <h3 className="text-2xl font-bold mb-4 text-foreground">{pillar.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6">{pillar.description}</p>
                   <Link 
-                    to={`/${pillar.title.toLowerCase()}`}
+                    to={pillar.link}
                     className="inline-block"
                   >
                     <Button 
