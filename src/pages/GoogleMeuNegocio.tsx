@@ -96,7 +96,7 @@ const GoogleMeuNegocio = () => {
               <div className="text-center mb-12">
                 <AlertCircle className="w-12 h-12 text-destructive mx-auto mb-4" />
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Hoje, quando alguém procura "{'"'}[seu serviço] perto de mim{'"'}", você aparece ou some?
+                  Hoje, quando alguém procura "{'"'}[seu serviço] perto de mim{'"'}", quem aparece? Você ou seu concorrente?
                 </h2>
               </div>
 
