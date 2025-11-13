@@ -7,6 +7,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { 
   MapPin, 
   Star, 
@@ -241,142 +248,141 @@ const GoogleMeuNegocio = () => {
                 Resultados de clientes
               </h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                {/* Card Senzano Imobiliária */}
-                <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
-                      <img 
-                        src="/lovable-uploads/senzano-logo.jpeg" 
-                        alt="Senzano Imobiliária" 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold">Senzano Imobiliária</h3>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-primary" />
-                        <p className="text-sm text-muted-foreground">Campo Grande - MS</p>
+              <Carousel className="max-w-6xl mx-auto">
+                <CarouselContent>
+                  {/* Card Senzano Imobiliária */}
+                  <CarouselItem>
+                    <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
+                          <img 
+                            src="/lovable-uploads/senzano-logo.jpeg" 
+                            alt="Senzano Imobiliária" 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold">Senzano Imobiliária</h3>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-primary" />
+                            <p className="text-sm text-muted-foreground">Campo Grande - MS</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <Phone className="w-10 h-10 text-primary" />
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          171%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground">O número de ligações</p>
-                    </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <Phone className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              171%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">O número de ligações</p>
+                        </div>
 
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <Search className="w-10 h-10 text-primary" />
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          138%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground">O número de pesquisas</p>
-                    </div>
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <Search className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              138%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">O número de pesquisas</p>
+                        </div>
 
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <MapPin className="w-10 h-10 text-primary" />
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <MapPin className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              188%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">O número de rotas</p>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          188%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground">O número de rotas</p>
-                    </div>
-                  </div>
-                </Card>
+                    </Card>
+                  </CarouselItem>
 
-                {/* Card Luana Guastini */}
-                <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20 bg-white">
-                      <img 
-                        src="/lovable-uploads/luana-guastini-logo.png" 
-                        alt="Luana Guastini - Medicina Integrativa" 
-                        className="w-full h-full object-contain p-1"
-                      />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold">Luana Guastini</h3>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-primary" />
-                        <p className="text-sm text-muted-foreground">Santos - SP</p>
+                  {/* Card Luana Guastini */}
+                  <CarouselItem>
+                    <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
+                          <img 
+                            src="/lovable-uploads/luana-guastini-logo.png" 
+                            alt="Luana Guastini" 
+                            className="w-full h-full object-contain bg-white p-2"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold">Luana Guastini</h3>
+                          <div className="flex items-center gap-2">
+                            <MapPin className="w-4 h-4 text-primary" />
+                            <p className="text-sm text-muted-foreground">Santos - SP</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  <p className="text-muted-foreground mb-8 leading-relaxed">
-                    A Dra. Luana estava cadastrada no GMN em uma categoria que não beneficiava ela. Apenas com um ajuste estratégico, conseguimos subir mais de 30 posições no ranking e gerar um movimento com clientes muito mais qualificados.
-                  </p>
+                      <p className="text-muted-foreground mb-6">
+                        A Dra. Luana estava cadastrada no GMN em uma categoria que não beneficiava ela. Apenas com um ajuste estratégico, conseguimos subir mais de 30 posições no ranking e gerar um movimento com clientes muito mais qualificados.
+                      </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <MousePointerClick className="w-10 h-10 text-primary" />
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          148%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground text-sm">Interações em 60 dias</p>
-                    </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <MousePointerClick className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              148%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">Interações em 60 dias</p>
+                        </div>
 
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <Phone className="w-10 h-10 text-primary" />
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          400%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground text-sm">Chamadas em 120 dias</p>
-                    </div>
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <Phone className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              400%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">Chamadas em 120 dias</p>
+                        </div>
 
-                    <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <ExternalLink className="w-10 h-10 text-primary" />
+                        <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                            <ExternalLink className="w-10 h-10 text-primary" />
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-6 h-6 text-accent" />
+                            <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                              57%
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">Cliques no site</p>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <TrendingUp className="w-6 h-6 text-accent" />
-                        <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                          57%
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground text-sm">Cliques no site</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              <div className="text-center">
-                <Button 
-                  size="lg"
-                  onClick={() => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank')}
-                >
-                  Quero aparecer no topo do Maps
-                </Button>
-              </div>
+                    </Card>
+                  </CarouselItem>
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex" />
+                <CarouselNext className="hidden md:flex" />
+              </Carousel>
             </div>
           </div>
         </section>
