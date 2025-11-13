@@ -110,9 +110,12 @@ const GoogleMeuNegocio = () => {
                   95% dos negócios estão com o cadastro do Google feito incorretamente
                 </h3>
                 
-                {/* TODO: Adicionar imagem aqui */}
-                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center mb-8">
-                  <p className="text-muted-foreground">Imagem a ser adicionada</p>
+                <div className="w-full rounded-lg mb-8 overflow-hidden border border-ba-blue-light/20">
+                  <img 
+                    src="/lovable-uploads/google-meu-negocio-comparison.png" 
+                    alt="Comparação entre perfil Google Meu Negócio mal configurado e bem configurado" 
+                    className="w-full h-auto"
+                  />
                 </div>
 
                 <div className="mt-8 bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-xl p-8">
