@@ -35,7 +35,7 @@ import {
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const GoogleMeuNegocio = () => {
-  const whatsappNumber = "5548996036565";
+  const whatsappNumber = "5511979794086";
   const whatsappMessage = encodeURIComponent("Olá! Quero fazer o diagnóstico gratuito do meu Google Meu Negócio.");
   
   const luanaEngagementData = [
