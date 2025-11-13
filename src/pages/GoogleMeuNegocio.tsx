@@ -32,10 +32,17 @@ import {
   MousePointerClick,
   ExternalLink
 } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const GoogleMeuNegocio = () => {
   const whatsappNumber = "5548996036565";
   const whatsappMessage = encodeURIComponent("Olá! Quero fazer o diagnóstico gratuito do meu Google Meu Negócio.");
+  
+  const luanaEngagementData = [
+    { dia: 0, engajamentos: 31 },
+    { dia: 30, engajamentos: 67 },
+    { dia: 60, engajamentos: 77 }
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -336,6 +343,43 @@ const GoogleMeuNegocio = () => {
                       <p className="text-muted-foreground mb-6">
                         A Dra. Luana estava cadastrada no GMN em uma categoria que não beneficiava ela. Apenas com um ajuste estratégico, conseguimos subir mais de 30 posições no ranking e gerar um movimento com clientes muito mais qualificados.
                       </p>
+
+                      {/* Gráfico de Evolução */}
+                      <div className="mb-6 p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl">
+                        <h4 className="text-lg font-semibold mb-4 text-center">Evolução de Engajamentos</h4>
+                        <ResponsiveContainer width="100%" height={200}>
+                          <LineChart data={luanaEngagementData}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--ba-blue-light) / 0.1)" />
+                            <XAxis 
+                              dataKey="dia" 
+                              stroke="hsl(var(--muted-foreground))"
+                              tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                              label={{ value: 'Dias', position: 'insideBottom', offset: -5, fill: 'hsl(var(--muted-foreground))' }}
+                            />
+                            <YAxis 
+                              stroke="hsl(var(--muted-foreground))"
+                              tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                              label={{ value: 'Engajamentos', angle: -90, position: 'insideLeft', fill: 'hsl(var(--muted-foreground))' }}
+                            />
+                            <Tooltip 
+                              contentStyle={{ 
+                                backgroundColor: 'hsl(var(--background))', 
+                                border: '1px solid hsl(var(--ba-blue-light) / 0.2)',
+                                borderRadius: '8px'
+                              }}
+                              labelStyle={{ color: 'hsl(var(--foreground))' }}
+                            />
+                            <Line 
+                              type="monotone" 
+                              dataKey="engajamentos" 
+                              stroke="hsl(var(--primary))" 
+                              strokeWidth={3}
+                              dot={{ fill: 'hsl(var(--primary))', r: 5 }}
+                              activeDot={{ r: 7 }}
+                            />
+                          </LineChart>
+                        </ResponsiveContainer>
+                      </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
