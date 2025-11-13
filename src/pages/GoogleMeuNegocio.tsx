@@ -32,8 +32,12 @@ const GoogleMeuNegocio = () => {
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-card via-card-premium to-card pt-8">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--ba-blue-dark)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--ba-blue-dark)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
+        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-black pt-8">
+          <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl"></div>
+          </div>
           
           <div className="container mx-auto px-4 py-20 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
@@ -91,7 +95,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Problema Section */}
-        <section className="py-20 bg-card-premium">
+        <section className="py-20 bg-black border-y border-ba-blue-light/10">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
@@ -101,7 +105,7 @@ const GoogleMeuNegocio = () => {
                 </h2>
               </div>
 
-              <div className="bg-card rounded-2xl p-8 border border-border shadow-lg">
+              <div className="bg-black/80 backdrop-blur-sm rounded-2xl p-8 border border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
                 <h3 className="text-2xl font-bold mb-6 text-center">
                   95% dos negócios estão com o cadastro do Google feito incorretamente
                 </h3>
@@ -142,7 +146,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Solução Section */}
-        <section className="py-20 bg-gradient-to-br from-card to-card-premium">
+        <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
@@ -162,7 +166,7 @@ const GoogleMeuNegocio = () => {
                   { icon: MapPin, title: "Posicionamento melhor no mapa (sem promessas milagrosas)", color: "text-secondary" },
                   { icon: Star, title: "Reputação que fecha venda antes do primeiro contato", color: "text-accent" }
                 ].map((benefit, index) => (
-                  <Card key={index} className="p-6 bg-card border-border hover:shadow-xl transition-all hover:scale-102">
+                  <Card key={index} className="p-6 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow hover:border-ba-blue-light/60 transition-all duration-500 hover:-translate-y-2">
                     <benefit.icon className={`w-10 h-10 ${benefit.color} mb-4`} />
                     <h3 className="text-lg font-semibold">{benefit.title}</h3>
                   </Card>
@@ -182,7 +186,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Como Funciona Section */}
-        <section className="py-20 bg-card-premium">
+        <section className="py-20 bg-black border-y border-ba-blue-light/10">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -210,7 +214,7 @@ const GoogleMeuNegocio = () => {
                     icon: BarChart
                   }
                 ].map((step, index) => (
-                  <Card key={index} className="p-8 bg-card border-border relative overflow-hidden hover:shadow-xl transition-all">
+                  <Card key={index} className="p-8 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 relative overflow-hidden hover:shadow-glow hover:border-ba-blue-light/60 transition-all duration-500 hover:-translate-y-2">
                     <div className="absolute top-4 right-4 text-6xl font-bold text-primary/10">
                       {step.step}
                     </div>
@@ -225,7 +229,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Resultados Section */}
-        <section className="py-20 bg-card-premium">
+        <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -250,7 +254,7 @@ const GoogleMeuNegocio = () => {
                     result: "Reputação elevou conversões com +47 novas avaliações em 90 dias"
                   }
                 ].map((caso, index) => (
-                  <Card key={index} className="p-6 bg-card border-border hover:shadow-xl transition-all">
+                  <Card key={index} className="p-6 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow hover:border-ba-blue-light/60 transition-all duration-500 hover:-translate-y-2">
                     <div className="flex items-center gap-2 mb-3">
                       <MapPin className="w-5 h-5 text-primary" />
                       <span className="text-sm text-muted-foreground">{caso.location}</span>
@@ -274,7 +278,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Para Quem É Section */}
-        <section className="py-20 bg-gradient-to-br from-card to-card-premium">
+        <section className="py-20 bg-black border-y border-ba-blue-light/10">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -299,7 +303,7 @@ const GoogleMeuNegocio = () => {
                     description: "Quem entende que reputação é um ativo valioso e precisa de manutenção profissional"
                   }
                 ].map((item, index) => (
-                  <Card key={index} className="p-8 bg-card border-border text-center hover:shadow-xl transition-all">
+                  <Card key={index} className="p-8 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 text-center hover:shadow-glow hover:border-ba-blue-light/60 transition-all duration-500 hover:-translate-y-2">
                     <item.icon className="w-12 h-12 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                     <p className="text-muted-foreground">{item.description}</p>
@@ -311,7 +315,7 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gradient-to-br from-card to-card-premium">
+        <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -319,7 +323,7 @@ const GoogleMeuNegocio = () => {
               </h2>
 
               <Accordion type="single" collapsible className="space-y-4">
-                <AccordionItem value="item-1" className="bg-card border border-border rounded-lg px-6">
+                <AccordionItem value="item-1" className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all">
                   <AccordionTrigger className="text-left hover:no-underline">
                     Quanto tempo leva para ver resultado?
                   </AccordionTrigger>
@@ -328,7 +332,7 @@ const GoogleMeuNegocio = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-2" className="bg-card border border-border rounded-lg px-6">
+                <AccordionItem value="item-2" className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all">
                   <AccordionTrigger className="text-left hover:no-underline">
                     Preciso ter site?
                   </AccordionTrigger>
@@ -337,7 +341,7 @@ const GoogleMeuNegocio = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-3" className="bg-card border border-border rounded-lg px-6">
+                <AccordionItem value="item-3" className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all">
                   <AccordionTrigger className="text-left hover:no-underline">
                     Vocês respondem avaliações negativas?
                   </AccordionTrigger>
@@ -346,7 +350,7 @@ const GoogleMeuNegocio = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-4" className="bg-card border border-border rounded-lg px-6">
+                <AccordionItem value="item-4" className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all">
                   <AccordionTrigger className="text-left hover:no-underline">
                     Vocês garantem topo do ranking?
                   </AccordionTrigger>
@@ -355,7 +359,7 @@ const GoogleMeuNegocio = () => {
                   </AccordionContent>
                 </AccordionItem>
 
-                <AccordionItem value="item-5" className="bg-card border border-border rounded-lg px-6">
+                <AccordionItem value="item-5" className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all">
                   <AccordionTrigger className="text-left hover:no-underline">
                     Trabalham com anúncios?
                   </AccordionTrigger>
@@ -369,9 +373,10 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* CTA Final Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-card to-accent/10">
+        <section className="py-20 bg-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center relative z-10">
               <h2 className="text-3xl md:text-5xl font-bold mb-6">
                 Pronto para dominar o Google Maps?
               </h2>
