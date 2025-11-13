@@ -239,34 +239,56 @@ const GoogleMeuNegocio = () => {
                 Resultados de clientes
               </h2>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-10">
-                {[
-                  {
-                    title: "Clínica Odontológica",
-                    location: "Florianópolis",
-                    result: "Aumento consistente nas ações do perfil (ligações/rotas) após 60 dias"
-                  },
-                  {
-                    title: "Restaurante Local",
-                    location: "Centro",
-                    result: "Duplicidade removida e ficha recuperada; retomada de tráfego em 30 dias"
-                  },
-                  {
-                    title: "Academia",
-                    location: "Região Sul",
-                    result: "Reputação elevou conversões com +47 novas avaliações em 90 dias"
-                  }
-                ].map((caso, index) => (
-                  <Card key={index} className="p-6 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow hover:border-ba-blue-light/60 transition-all duration-500 hover:-translate-y-2">
-                    <div className="flex items-center gap-2 mb-3">
-                      <MapPin className="w-5 h-5 text-primary" />
-                      <span className="text-sm text-muted-foreground">{caso.location}</span>
+              <Card className="p-8 md:p-12 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500 mb-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <MapPin className="w-6 h-6 text-primary" />
+                  <div>
+                    <h3 className="text-2xl font-bold">Senzano Imobiliária</h3>
+                    <p className="text-sm text-muted-foreground">Florianópolis - SC</p>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <Phone className="w-10 h-10 text-primary" />
                     </div>
-                    <h3 className="text-lg font-bold mb-3">{caso.title}</h3>
-                    <p className="text-muted-foreground">{caso.result}</p>
-                  </Card>
-                ))}
-              </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="w-6 h-6 text-accent" />
+                      <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                        171%
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground">O número de ligações</p>
+                  </div>
+
+                  <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <Search className="w-10 h-10 text-primary" />
+                    </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="w-6 h-6 text-accent" />
+                      <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                        138%
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground">O número de pesquisas</p>
+                  </div>
+
+                  <div className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-ba-blue-dark/5 to-transparent border border-ba-blue-light/20 rounded-xl hover:border-ba-blue-light/60 transition-all duration-300">
+                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <MapPin className="w-10 h-10 text-primary" />
+                    </div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <TrendingUp className="w-6 h-6 text-accent" />
+                      <span className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+                        188%
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground">O número de rotas</p>
+                  </div>
+                </div>
+              </Card>
 
               <div className="text-center">
                 <Button 
