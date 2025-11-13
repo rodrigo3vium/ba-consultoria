@@ -240,11 +240,17 @@ const GoogleMeuNegocio = () => {
               </h2>
 
               <Card className="p-8 md:p-12 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500 mb-10">
-                <div className="flex items-center gap-3 mb-8">
-                  <MapPin className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center border border-ba-blue-light/20">
+                    {/* Logo da Senzano será adicionada aqui */}
+                    <span className="text-xs text-muted-foreground">Logo</span>
+                  </div>
                   <div>
                     <h3 className="text-2xl font-bold">Senzano Imobiliária</h3>
-                    <p className="text-sm text-muted-foreground">Florianópolis - SC</p>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-primary" />
+                      <p className="text-sm text-muted-foreground">Campo Grande - MS</p>
+                    </div>
                   </div>
                 </div>
 
