@@ -241,9 +241,12 @@ const GoogleMeuNegocio = () => {
 
               <Card className="p-8 md:p-12 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500 mb-10">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center border border-ba-blue-light/20">
-                    {/* Logo da Senzano será adicionada aqui */}
-                    <span className="text-xs text-muted-foreground">Logo</span>
+                  <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
+                    <img 
+                      src="/lovable-uploads/senzano-logo.jpeg" 
+                      alt="Senzano Imobiliária" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold">Senzano Imobiliária</h3>
