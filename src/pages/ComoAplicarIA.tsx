@@ -71,7 +71,7 @@ Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas d
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <div className="text-center">
-                <div className="text-sm text-white/60">Preço de entrada</div>
+                <div className="text-sm text-white/60">de R$167 por</div>
                 <div className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
                   R$49
                 </div>
@@ -85,11 +85,11 @@ Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas d
               </div>
               <div className="flex items-center gap-2">
                 <FileText className="w-4 h-4 text-ba-blue-light" />
-                <span>Materiais práticos</span>
+                <span>Material complementar</span>
               </div>
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-ba-blue-light" />
-                <span>Nível iniciante</span>
+                <span>+300 alunos satisfeitos</span>
               </div>
             </div>
 
