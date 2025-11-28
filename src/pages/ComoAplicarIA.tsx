@@ -141,21 +141,19 @@ Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas d
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
               <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Profissionais e empreendedores que querem <strong className="text-white">usar IA no dia a dia</strong> para trabalhar melhor e crescer.
+                <p className="text-white/80">Empreendedores que querem usar IA no dia a dia para trabalhar melhor e crescer.<strong className="text-white">usar IA no dia a dia</strong> para trabalhar melhor e crescer.
                 </p>
               </CardContent>
             </Card>
             <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
               <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Quem se sente <strong className="text-white">sobrecarregado de informação</strong> e precisa de uma direção simples e concreta.
+                <p className="text-white/80">Quem se sente perdido com tanta informação e precisa de uma direção simples e prática.<strong className="text-white">sobrecarregado de informação</strong> e precisa de uma direção simples e concreta.
                 </p>
               </CardContent>
             </Card>
             <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
               <CardContent className="pt-6">
-                <p className="text-white/80">Donos de empresas que querem aumentar produtividade, leads e vendas sem complicação técnica.<strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
+                <p className="text-white/80">Donos de empresas que querem aumentar produtividade, leads e vendas sem complicação técnica. Aumentar produtividade, leads e vendas sem complicação técnica.<strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
                 </p>
               </CardContent>
             </Card>
