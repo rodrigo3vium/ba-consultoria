@@ -1,278 +1,351 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, Zap, Target, TrendingUp, Shield } from "lucide-react";
+import { CheckCircle2, Clock, BookOpen, FileText, TrendingUp, Sparkles } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const ComoAplicarIA = () => {
   const handleCTA = () => {
-    window.open("https://wa.me/5511999999999", "_blank");
+    const whatsappNumber = "5511979794086";
+    const message = encodeURIComponent("Olá! Quero me inscrever no curso 'Como aplicar IA no seu negócio' por R$49");
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
 
-  const setores = [
+  const aulas = [
     {
-      nome: "Marketing",
-      exemplos: "ideação e variação de criativos, páginas e anúncios mais rápidos, nutrição e follow-ups que não dependem do dono."
+      numero: 1,
+      titulo: "História da IA: o ponto de inflexão",
+      duracao: "40–60 min",
+      descricao: "Entenda, sem jargão, por que agora é diferente e como isso impacta seu trabalho.",
+      topicos: [
+        "A linha do tempo da IA e o momento 'virada de chave'",
+        "3 mitos que te travam (e o que é verdade)",
+        "Framework Pessoa → Processo → Plataforma para colocar IA no seu fluxo de trabalho",
+        "Mini-ganho: Pack de 7 Prompts Universais (email, roteiro, SOP, análise de planilha, checklist, follow-up…)"
+      ]
     },
     {
-      nome: "Vendas",
-      exemplos: "qualificação e priorização de leads, roteiros de contato, propostas assistidas, CRM sempre atualizado."
+      numero: 2,
+      titulo: "Como a IA vai mudar o mundo (e o seu)",
+      duracao: "45–60 min",
+      descricao: "Dos conceitos ao impacto real nas áreas do negócio.",
+      topicos: [
+        "Onde a IA tira atrito (Marketing, Vendas, Operações, Atendimento)",
+        "Janelas de arbitragem nos próximos 6–12 meses (onde poucos estão olhando)",
+        "3 níveis de adoção: Ferramenta → Processo → Sistema (o que fazer em cada etapa)",
+        "Exercício guiado: Matriz Impacto × Facilidade para escolher sua primeira iniciativa"
+      ]
     },
     {
-      nome: "Atendimento/CS",
-      exemplos: "respostas baseadas na sua base de conhecimento, redução de tempo de resolução, NPS automatizado."
-    },
-    {
-      nome: "Operações/Financeiro",
-      exemplos: "reconciliação e conferência de dados, resumos de DRE gerencial, relatórios prontos para decisão."
-    },
-    {
-      nome: "Produto/Serviço",
-      exemplos: "análise de feedback de clientes, melhorias de onboarding, documentação clara para a equipe."
-    },
-    {
-      nome: "TI",
-      exemplos: "documentação de processos, assistentes internos para dúvidas recorrentes, padronização de tarefas repetitivas."
-    },
-    {
-      nome: "Recrutamento",
-      exemplos: "triagem de currículos, roteiros de entrevistas, alinhamento candidato-vaga mais rápido."
-    },
-    {
-      nome: "Jurídico",
-      exemplos: "leitura e sumarização de contratos, checklist de prazos e pendências."
-    },
-    {
-      nome: "Treinamento",
-      exemplos: "trilhas de treinamento sob demanda, materiais e avaliações consistentes."
+      numero: 3,
+      titulo: "Oportunidades de IA no seu negócio (Plano 30 dias)",
+      duracao: "60–75 min",
+      descricao: "Mão na massa: um plano simples e objetivo para começar.",
+      topicos: [
+        "7 Playbooks prontos (WhatsApp assistido por IA, Conteúdo 10x, Prospecção, CS, Backoffice, Dados simples, GTM lite)",
+        "Plano 30 dias: o que executar por semana para obter seu primeiro resultado",
+        "ROI na prática: como medir ganho em horas, leads ou vendas"
+      ]
     }
+  ];
+
+  const entregaveis = [
+    "Pack 7 Prompts Universais (PDF)",
+    "Matriz Impacto × Facilidade (planilha)",
+    "Plano de 30 dias (PDF de execução)",
+    "Planilha simples de ROI (modelos para leads/horas/vendas)",
+    "Checklist de eventos mínimos (tracking básico para saber o que funcionou)"
   ];
 
   const beneficios = [
-    {
-      icon: <Target className="h-6 w-6 text-primary" />,
-      titulo: "Masterclass Prática",
-      descricao: "Aula direta: fundamentos práticos, priorização por receita e como evitar armadilhas comuns."
-    },
-    {
-      icon: <Zap className="h-6 w-6 text-primary" />,
-      titulo: "Base de Conhecimento",
-      descricao: "30+ exemplos por setor com complexidade, tempo, recursos e framework passo a passo."
-    },
-    {
-      icon: <TrendingUp className="h-6 w-6 text-primary" />,
-      titulo: "Agente de Entrevista",
-      descricao: "GPT customizado que te faz as perguntas certas e aponta onde a IA paga mais rápido no seu contexto."
-    }
-  ];
-
-  const diferenciais = [
-    "Benchmarks da economia real: nada de 'case de startup de venture'. Exemplos testados em PMEs brasileiras.",
-    "Foco em resultado, não em ferramenta: você recebe frameworks replicáveis com a stack que já usa.",
-    "Decisão guiada: o Agente de Entrevista aponta onde começar para destravar receita e tempo."
-  ];
-
-  const passos = [
-    "Assista à Masterclass e entenda o mapa (receita primeiro).",
-    "Escolha 1–3 exemplos na base (filtre por impacto/tempo/complexidade).",
-    "Implemente com o framework e o Checklist.",
-    "Dúvidas? Fale no WhatsApp (até 24h).",
-    "Repita e vá construindo a sua esteira de ganhos."
-  ];
-
-  const objecoes = [
-    {
-      pergunta: "Não tenho tempo.",
-      resposta: "Justamente por isso: você seleciona o exemplo de maior impacto/menor esforço e executa com o Checklist."
-    },
-    {
-      pergunta: "Minha equipe não é técnica.",
-      resposta: "Não precisa ser. O material é no-code/low-code e focado em processo. Ferramenta é acessório; resultado vem do fluxo."
-    },
-    {
-      pergunta: "Vai sair caro em ferramentas.",
-      resposta: "O foco é em frameworks. Você pode implementar com o que já tem (ou equivalente gratuito)."
-    },
-    {
-      pergunta: "Não vou conseguir implementar.",
-      resposta: "Passo a passo, entregáveis claros e suporte por WhatsApp. Comece pequeno e compõe."
-    },
-    {
-      pergunta: "IA é hype.",
-      resposta: "Hype é falar de IA sem P&L. Aqui você prioriza casos que pagam a conta (receita e eficiência) e mede."
-    }
+    "Clareza sobre o que é e o que não é IA (sem hype)",
+    "Primeiro resultado prático (em produtividade, leads ou qualidade de entrega)",
+    "Um plano de 30 dias para seguir com segurança",
+    "Base de decisão para investir com critério no próximo passo"
   ];
 
   const faq = [
     {
-      pergunta: "Preciso trocar minha stack?",
-      resposta: "Não. Os frameworks funcionam com ferramentas equivalentes. Ajuste ao que você já usa."
+      pergunta: "Preciso saber programar?",
+      resposta: "Não. Tudo é feito com linguagem natural e ferramentas acessíveis."
     },
     {
-      pergunta: "Serve para qualquer segmento de PME?",
-      resposta: "O conteúdo é organizado por setor de negócio e prioriza marketing e vendas primeiro (receita)."
+      pergunta: "Quanto tempo preciso?",
+      resposta: "As três aulas somam ~3 horas. Os exercícios são curtos (10–20 minutos) e já geram ganho."
     },
     {
-      pergunta: "Tem suporte 1:1 ou implementação feita por vocês?",
-      resposta: "Não. Suporte é assíncrono via WhatsApp. A ideia é te dar autonomia."
+      pergunta: "Quando começo?",
+      resposta: "Logo após a compra, com acesso imediato às aulas e materiais."
     },
     {
-      pergunta: "Quando recebo acesso?",
-      resposta: "Imediato: Masterclass, Base no Notion e Agente de Entrevista (link do GPT)."
+      pergunta: "Tem certificado?",
+      resposta: "Disponibilizamos certificado de conclusão ao finalizar as aulas."
     },
     {
-      pergunta: "Posso pedir reembolso?",
-      resposta: "Sim, até 7 dias, sem justificativa."
+      pergunta: "Vou ver ferramentas específicas?",
+      resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas."
+    },
+    {
+      pergunta: "E se eu quiser seguir além do básico?",
+      resposta: "Ao final da Aula 3, você poderá entrar no IA para Negócios (opcional), com templates, automações e acompanhamento para acelerar a implementação."
+    },
+    {
+      pergunta: "Como peço suporte?",
+      resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios."
+    },
+    {
+      pergunta: "Tem turma ou é gravado?",
+      resposta: "As aulas são on-demand para você assistir quando quiser. Atualizações pontuais são adicionadas conforme necessário."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black">
+      <Header />
+      
       {/* Hero Section */}
-      <section className="relative py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-            Playbook prático para aplicar IA na sua empresa
-          </h1>
-          <p className="text-xl md:text-2xl mb-4 text-muted-foreground">
-            Mais de 30 exemplos divididos por setor — sem hype, só o que dá resultado.
-          </p>
-          <p className="text-lg mb-8 text-foreground max-w-3xl mx-auto">
-            Saia do FOMO: descubra o que fazer, onde começar e como implementar IA na sua PME (R$2–10MM/ano). 
-            Sem depender de time técnico, sem trocar a sua operação por teoria.
-          </p>
+      <section className="relative py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="text-center space-y-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-tight">
+              IA sem enrolação: clareza em 3 aulas e um plano de 30 dias
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+              Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas diretas, você entende como a IA funciona, por que ela está mudando tudo e quais oportunidades existem no seu negócio — com ganhos práticos que você aplica <span className="italic">já</span>.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+              <div className="text-center">
+                <div className="text-sm text-white/60">Preço de entrada</div>
+                <div className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
+                  R$49
+                </div>
+              </div>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <Button size="lg" onClick={handleCTA} className="text-lg px-8">
-              Começar agora por R$49
+            <div className="flex flex-wrap justify-center gap-4 text-sm text-white/70 pt-4">
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-ba-blue-light" />
+                <span>3 aulas on-demand</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FileText className="w-4 h-4 text-ba-blue-light" />
+                <span>Materiais práticos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-ba-blue-light" />
+                <span>Nível iniciante</span>
+              </div>
+            </div>
+
+            <Button 
+              onClick={handleCTA}
+              size="lg"
+              className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto"
+            >
+              Quero entrar por R$49
             </Button>
           </div>
-
-          <div className="space-y-2 text-sm">
-            <p className="text-muted-foreground">
-              <span className="line-through">De R$197</span> por <span className="text-primary font-bold text-lg">R$49</span> até 30/11/2025
-            </p>
-            <p className="text-muted-foreground">
-              Acesso 1 ano • Garantia de 7 dias • Pix ou Cartão (7× R$8,16)
-            </p>
-            <a 
-              href="https://wa.me/5511999999999" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline inline-block mt-4"
-            >
-              Tirar dúvidas no WhatsApp (resposta em até 24h)
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* O que você vai receber */}
-      <section className="py-16 px-4 bg-background">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            O que você vai receber
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {beneficios.map((item, index) => (
-              <Card key={index} className="border-border hover:border-primary/50 transition-colors">
-                <CardHeader>
-                  <div className="mb-4">{item.icon}</div>
-                  <CardTitle className="text-xl">{item.titulo}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{item.descricao}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <p className="text-lg font-semibold text-foreground">
-              <Shield className="inline h-5 w-5 mr-2 text-primary" />
-              Bônus: Checklist de Implementação (do mapeamento até o go-live, item a item)
-            </p>
-          </div>
+      {/* Por que este curso existe */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+            <CardHeader>
+              <CardTitle className="text-3xl bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+                Por que este curso existe
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-white/80 text-lg">
+              <p>
+                A maioria fala de IA de forma vaga. Eu te entrego <strong className="text-white">clareza aplicável</strong>: o que fazer amanhã às 9h, sem jargão. Você sai com <strong className="text-white">prompts, checklists e um plano de 30 dias</strong> para começar com segurança e velocidade.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                  <span>Sem bla-bla-bla: foco em tarefas e resultados.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                  <span>Sem depender de programar: usamos linguagem natural.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                  <span>Sem perder meses: <strong className="text-white">ganho prático em 48h</strong>.</span>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Setores cobertos */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-foreground">
-            Setores cobertos (com exemplos práticos)
+      {/* Para quem é */}
+      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            Para quem é
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Tudo organizado por impacto esperado, complexidade e tempo — para você escolher o que dá ROI primeiro.
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+              <CardContent className="pt-6">
+                <p className="text-white/80">
+                  Profissionais e empreendedores que querem <strong className="text-white">usar IA no dia a dia</strong> para trabalhar melhor e crescer.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+              <CardContent className="pt-6">
+                <p className="text-white/80">
+                  Quem se sente <strong className="text-white">sobrecarregado de informação</strong> e precisa de uma direção simples e concreta.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+              <CardContent className="pt-6">
+                <p className="text-white/80">
+                  Donos(as) de pequenos negócios que querem <strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          <p className="text-center text-white/60 italic mt-8">
+            Não é para quem procura milagres ou está confortável em deixar a concorrência sair na frente.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {setores.map((setor, index) => (
-              <Card key={index} className="border-border">
+        </div>
+      </section>
+
+      {/* Currículo */}
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            O que você vai aprender
+          </h2>
+          <div className="space-y-6">
+            {aulas.map((aula) => (
+              <Card key={aula.numero} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
                 <CardHeader>
-                  <CardTitle className="text-lg text-primary">{setor.nome}</CardTitle>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-xl font-bold">
+                      {aula.numero}
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-2xl text-white mb-2">
+                        {aula.titulo}
+                      </CardTitle>
+                      <div className="flex items-center gap-2 text-ba-blue-light/80">
+                        <Clock className="w-4 h-4" />
+                        <span className="text-sm">{aula.duracao}</span>
+                      </div>
+                    </div>
+                  </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{setor.exemplos}</p>
+                <CardContent className="space-y-4">
+                  <p className="text-white/70 italic border-l-4 border-ba-blue-light/40 pl-4">
+                    {aula.descricao}
+                  </p>
+                  <ul className="space-y-2">
+                    {aula.topicos.map((topico, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-white/80">
+                        <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-0.5" />
+                        <span>{topico}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+          <div className="mt-8 text-center">
+            <Button 
+              onClick={handleCTA}
+              size="lg"
+              className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto"
+            >
+              Quero entrar por R$49
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Por que é diferente */}
-      <section className="py-16 px-4 bg-background">
-        <div className="container max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            Por que é diferente
+      {/* Entregáveis */}
+      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            O que você recebe
           </h2>
-          <div className="space-y-4">
-            {diferenciais.map((item, index) => (
-              <div key={index} className="flex gap-4 items-start">
-                <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                <p className="text-lg text-foreground">{item}</p>
-              </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {entregaveis.map((item, idx) => (
+              <Card key={idx} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+                <CardContent className="pt-6">
+                  <div className="flex items-center gap-3">
+                    <FileText className="w-5 h-5 text-ba-blue-light flex-shrink-0" />
+                    <span className="text-white/90">{item}</span>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Como funciona */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            Como funciona (simples)
+      <section className="py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            Como funciona
           </h2>
-          <div className="space-y-6">
-            {passos.map((passo, index) => (
-              <div key={index} className="flex gap-4 items-start">
-                <div className="bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 font-bold">
-                  {index + 1}
-                </div>
-                <p className="text-lg text-foreground pt-1">{passo}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button size="lg" onClick={handleCTA} className="text-lg px-8">
-              Começar agora por R$49
-            </Button>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+              <CardContent className="pt-6">
+                <ul className="space-y-3 text-white/80">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                    <span><strong className="text-white">Acesso imediato</strong> após a compra</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                    <span>Assista <strong className="text-white">no seu ritmo</strong> do celular ou computador</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+              <CardContent className="pt-6">
+                <ul className="space-y-3 text-white/80">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                    <span>Materiais para <strong className="text-white">baixar e aplicar</strong> no mesmo dia</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                    <span>Suporte básico por email para dúvidas de acesso e materiais</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Objeções */}
-      <section className="py-16 px-4 bg-background">
-        <div className="container max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            Objeções (e respostas francas)
+      {/* Benefícios */}
+      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            O que você vai conseguir ao final
           </h2>
-          <div className="space-y-6">
-            {objecoes.map((item, index) => (
-              <Card key={index} className="border-border">
-                <CardHeader>
-                  <CardTitle className="text-lg text-foreground">"{item.pergunta}"</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{item.resposta}</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {beneficios.map((item, idx) => (
+              <Card key={idx} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <TrendingUp className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-1" />
+                    <span className="text-white/90">{item}</span>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -280,55 +353,49 @@ const ComoAplicarIA = () => {
         </div>
       </section>
 
-      {/* Preço, acesso e garantia */}
-      <section className="py-16 px-4 bg-gradient-to-br from-primary/10 via-background to-accent/10">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground">
-            Preço, acesso e garantia
-          </h2>
-          <div className="bg-card border border-border rounded-lg p-8 mb-8">
-            <p className="text-5xl font-bold text-primary mb-4">R$49</p>
-            <p className="text-muted-foreground mb-6">
-              <span className="line-through">De R$197</span> até 30/11/2025
-            </p>
-            <ul className="space-y-3 text-left max-w-md mx-auto mb-8">
-              <li className="flex gap-2">
-                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">Acesso por 1 ano + atualizações inclusas</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">Suporte por WhatsApp (resposta em até 24h)</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">Garantia incondicional de 7 dias</span>
-              </li>
-              <li className="flex gap-2">
-                <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">Pix ou Cartão (7× R$8,16)</span>
-              </li>
-            </ul>
-            <Button size="lg" onClick={handleCTA} className="text-lg px-8">
-              Garantir meu acesso por R$49
-            </Button>
-          </div>
+      {/* Preço e Garantia */}
+      <section className="py-16 px-4">
+        <div className="max-w-2xl mx-auto">
+          <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 shadow-glow-intense">
+            <CardContent className="pt-8 text-center space-y-6">
+              <div>
+                <div className="text-sm text-white/60 mb-2">Preço de entrada</div>
+                <div className="text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
+                  R$49
+                </div>
+              </div>
+              <div className="text-white/80 text-lg">
+                <strong className="text-white">Garantia incondicional de 7 dias</strong> — se não sentir valor, é só pedir reembolso.
+              </div>
+              <Button 
+                onClick={handleCTA}
+                size="lg"
+                className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto w-full"
+              >
+                Quero entrar por R$49
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 px-4 bg-background">
-        <div className="container max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            FAQ rápido
+      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
+            Perguntas frequentes
           </h2>
-          <Accordion type="single" collapsible className="w-full">
-            {faq.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left text-foreground">
+          <Accordion type="single" collapsible className="space-y-4">
+            {faq.map((item, idx) => (
+              <AccordionItem 
+                key={idx} 
+                value={`item-${idx}`}
+                className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-lg px-6 hover:border-ba-blue-light/60 transition-all"
+              >
+                <AccordionTrigger className="text-white hover:text-ba-blue-light text-left">
                   {item.pergunta}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
+                <AccordionContent className="text-white/80">
                   {item.resposta}
                 </AccordionContent>
               </AccordionItem>
@@ -338,22 +405,28 @@ const ComoAplicarIA = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-muted/30">
-        <div className="container max-w-4xl mx-auto text-center">
-          <p className="text-xl mb-6 text-foreground font-semibold">
-            Assinado: Rodrigo Albuquerque
+      <section className="py-20 px-4">
+        <div className="max-w-3xl mx-auto text-center space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
+            Chamada final
+          </h2>
+          <p className="text-xl text-white/80">
+            Comece simples. Em <strong className="text-white">3 aulas</strong> você ganha clareza, aplica no seu contexto e sai com um <strong className="text-white">plano de 30 dias</strong>. Se fizer sentido avançar, o próximo passo estará a um clique.
           </p>
-          <p className="text-lg mb-8 text-muted-foreground">
-            Playbook direto, sem firula. Execute o que paga a conta primeiro.
-          </p>
-          <Button size="lg" onClick={handleCTA} className="text-lg px-8 mb-4">
-            Começar agora por R$49
+          <Button 
+            onClick={handleCTA}
+            size="lg"
+            className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto"
+          >
+            Quero entrar por R$49
           </Button>
-          <p className="text-sm text-muted-foreground">
-            <span className="line-through">De R$197</span> por R$49 até 30/11/2025 • Acesso 1 ano • Garantia de 7 dias • Pix ou Cartão (7× R$8,16)
+          <p className="text-sm text-white/60">
+            Ou role a página para rever o conteúdo do curso.
           </p>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
