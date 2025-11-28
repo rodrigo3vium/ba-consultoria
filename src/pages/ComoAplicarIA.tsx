@@ -155,8 +155,7 @@ Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas d
             </Card>
             <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
               <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Donos(as) de pequenos negócios que querem <strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
+                <p className="text-white/80">Donos de empresas que querem aumentar produtividade, leads e vendas sem complicação técnica.<strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
                 </p>
               </CardContent>
             </Card>
