@@ -51,9 +51,9 @@ const Header = () => {
               <Link to="/cases" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Cases
               </Link>
-              <a href="#solucoes" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Soluções
-              </a>
+              <Link to="/servicos" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
+                Serviços
+              </Link>
               <Link to="/blog" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
                 Blog
               </Link>
@@ -140,13 +140,13 @@ const Header = () => {
               >
                 Cases
               </Link>
-              <a 
-                href="#solucoes" 
+              <Link 
+                to="/servicos" 
                 className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Soluções
-              </a>
+                Serviços
+              </Link>
               <Link 
                 to="/blog" 
                 className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
