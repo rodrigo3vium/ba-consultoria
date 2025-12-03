@@ -8,6 +8,7 @@ import BA from "./pages/BA";
 import Cases from "./pages/Cases";
 import CaseDetails from "./pages/CaseDetails";
 import Consultoria from "./pages/Consultoria";
+import Servicos from "./pages/Servicos";
 import Tecnologia from "./pages/Tecnologia";
 import Educacao from "./pages/Educacao";
 import IAParaNegocios from "./pages/IAParaNegocios";
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:id" element={<CaseDetails />} />
           <Route path="/consultoria" element={<Consultoria />} />
+          <Route path="/servicos" element={<Servicos />} />
           <Route path="/tecnologia" element={<Tecnologia />} />
           <Route path="/educacao" element={<Educacao />} />
           <Route path="/educacao/ia-para-negocios" element={<IAParaNegocios />} />
