@@ -66,9 +66,6 @@ const ComoAplicarIA = () => {
   }, {
     pergunta: "Vou ver ferramentas específicas?",
     resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas."
-  }, {
-    pergunta: "Como peço suporte?",
-    resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios."
   }];
   const depoimentos = [{
     text: "Rodrigo, passando para te agradecer pelas orientações sobre o Lovable aquele dia. Foi a melhor escolha que fiz!",
