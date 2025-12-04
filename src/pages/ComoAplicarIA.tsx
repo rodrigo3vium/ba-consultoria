@@ -11,6 +11,7 @@ import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target,
 import diarioComercioImg from "@/assets/news/diario-comercio.png";
 import businessInsiderImg from "@/assets/news/business-insider.png";
 import forbesImg from "@/assets/news/forbes.png";
+import workdayImg from "@/assets/news/workday.png";
 const ComoAplicarIA = () => {
   // Set body background to black and remove header padding for this page
   useEffect(() => {
@@ -202,6 +203,9 @@ const ComoAplicarIA = () => {
               }, {
                 src: forbesImg,
                 alt: "Forbes - Adoção de IA será divisor de águas"
+              }, {
+                src: workdayImg,
+                alt: "Workday - Relatório Global de IA para Executivos"
               }].map((news, idx) => <CarouselItem key={idx} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/2">
                     <div className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300">
                       <img src={news.src} alt={news.alt} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
