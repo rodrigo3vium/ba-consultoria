@@ -75,7 +75,7 @@ const ComoAplicarIA = () => {
             squareSize={4}
             gridGap={6}
             color="#FFFFFF"
-            maxOpacity={0.3}
+            maxOpacity={0.15}
             flickerChance={0.1}
           />
         </div>
