@@ -6,11 +6,13 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 
 const ComoAplicarIA = () => {
-  // Set body background to black for this page
+  // Set body background to black and remove header padding for this page
   useEffect(() => {
     document.body.style.backgroundColor = '#000000';
+    document.body.style.paddingTop = '0';
     return () => {
       document.body.style.backgroundColor = '';
+      document.body.style.paddingTop = '';
     };
   }, []);
 
