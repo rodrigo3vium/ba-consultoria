@@ -71,11 +71,8 @@ const ComoAplicarIA = () => {
     resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios."
   }];
   const depoimentos = [{
-    text: "Parecia complicado, hoje uso IA todo dia para roteiros e emails — economizo horas.",
-    author: "Aluno verificado"
-  }, {
-    text: "A matriz simples me ajudou a escolher por onde começar, já vi impacto em 2 semanas.",
-    author: "Aluno verificado"
+    text: "Rodrigo, passando para te agradecer pelas orientações sobre o Lovable aquele dia. Foi a melhor escolha que fiz!",
+    author: "Rafaela Brito"
   }];
   return <div className="min-h-screen bg-black overflow-hidden">
 
