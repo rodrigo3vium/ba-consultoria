@@ -411,10 +411,6 @@ const ComoAplicarIA = () => {
                     <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Button>
-
-                <p className="text-white/40 text-xs md:text-sm">
-                  Se não sentir valor, é só pedir reembolso. Sem perguntas.
-                </p>
               </CardContent>
             </Card>
           </div>
