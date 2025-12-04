@@ -235,7 +235,7 @@ const ComoAplicarIA = () => {
             description: "Que querem usar IA no dia a dia para trabalhar melhor e crescer."
           }, {
             icon: Users,
-            title: "Profissionais Perdidos",
+            title: "Empresários Sobrecarregados",
             description: "Quem se sente perdido com tanta informação e precisa de uma direção simples e prática."
           }, {
             icon: Zap,
