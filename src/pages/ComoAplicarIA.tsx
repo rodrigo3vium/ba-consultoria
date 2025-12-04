@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle2, BookOpen, FileText, Sparkles, Quote } from "lucide-react";
+import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -47,186 +47,259 @@ const ComoAplicarIA = () => {
   ];
 
   const entregaveis = [
-    "Bônus: IA é Bolha ou não?",
-    "Plano de execução em 30 dias personalizado para a sua realidade",
-    "3 aulas sobre como aplicar IA no seu negócio"
+    { icon: Gift, title: "Bônus: IA é Bolha ou não?", description: "Análise profunda sobre o futuro da tecnologia" },
+    { icon: Target, title: "Plano de 30 dias personalizado", description: "Execução adaptada para a sua realidade" },
+    { icon: Play, title: "3 aulas completas", description: "Todo o conhecimento para aplicar IA" }
   ];
 
   const faq = [
-    {
-      pergunta: "Preciso saber programar?",
-      resposta: "Não. Tudo é feito com linguagem natural e ferramentas acessíveis."
-    },
-    {
-      pergunta: "Quanto tempo preciso?",
-      resposta: "As três aulas somam ~3 horas."
-    },
-    {
-      pergunta: "Quando começo?",
-      resposta: "Logo após a compra, com acesso imediato às aulas e materiais."
-    },
-    {
-      pergunta: "Vou ver ferramentas específicas?",
-      resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas."
-    },
-    {
-      pergunta: "Como peço suporte?",
-      resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios."
-    }
+    { pergunta: "Preciso saber programar?", resposta: "Não. Tudo é feito com linguagem natural e ferramentas acessíveis." },
+    { pergunta: "Quanto tempo preciso?", resposta: "As três aulas somam ~3 horas." },
+    { pergunta: "Quando começo?", resposta: "Logo após a compra, com acesso imediato às aulas e materiais." },
+    { pergunta: "Vou ver ferramentas específicas?", resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas." },
+    { pergunta: "Como peço suporte?", resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios." }
   ];
 
   const depoimentos = [
-    "Parecia complicado, hoje uso IA todo dia para roteiros e emails — economizo horas.",
-    "A matriz simples me ajudou a escolher por onde começar, já vi impacto em 2 semanas."
+    { text: "Parecia complicado, hoje uso IA todo dia para roteiros e emails — economizo horas.", author: "Aluno verificado" },
+    { text: "A matriz simples me ajudou a escolher por onde começar, já vi impacto em 2 semanas.", author: "Aluno verificado" }
   ];
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black overflow-hidden">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent" />
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-tight">
-              Como aplicar Inteligência Artificial no seu Negócio
+      {/* Hero Section - Full Impact */}
+      <section className="relative min-h-[90vh] flex items-center justify-center px-4 py-20">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          {/* Grid Pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.5) 1px, transparent 1px), 
+                             linear-gradient(90deg, rgba(59, 130, 246, 0.5) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
+          }} />
+          
+          {/* Radial Gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.15)_0%,_transparent_70%)]" />
+          
+          {/* Floating Orbs */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-ba-orange/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="text-center space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ba-blue-light/10 border border-ba-blue-light/20 backdrop-blur-sm animate-fade-in">
+              <Sparkles className="w-4 h-4 text-ba-blue-light" />
+              <span className="text-sm text-ba-blue-light font-medium">+300 empresários já transformaram seus negócios</span>
+            </div>
+
+            {/* Main Title */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <span className="text-white">Como aplicar</span>
+              <br />
+              <span className="bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange bg-clip-text text-transparent">
+                Inteligência Artificial
+              </span>
+              <br />
+              <span className="text-white">no seu Negócio</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-              Se você está perdido com o barulho sobre IA, aqui vai o mapa. Em três aulas diretas ao ponto, você entende como a IA funciona, por que ela está mudando tudo e quais oportunidades práticas existem para aplicar IA no seu negócio.
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Se você está perdido com o barulho sobre IA, aqui vai o mapa. 
+              <span className="text-white font-medium"> Em três aulas diretas ao ponto</span>, você entende como a IA funciona, por que ela está mudando tudo e quais oportunidades práticas existem.
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-white/70 pt-4">
-              <div className="flex items-center gap-2">
+
+            {/* Features Pills */}
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
                 <BookOpen className="w-4 h-4 text-ba-blue-light" />
-                <span>3 aulas práticas + material complementar</span>
+                <span className="text-sm text-white/80">3 aulas práticas</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-ba-blue-light" />
-                <span>+300 empresários satisfeitos</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <FileText className="w-4 h-4 text-ba-blue-light" />
+                <span className="text-sm text-white/80">Material complementar</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <Shield className="w-4 h-4 text-ba-blue-light" />
+                <span className="text-sm text-white/80">Garantia de 7 dias</span>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-              <div className="text-center">
-                <div className="text-sm text-white/60 line-through">De R$167 por</div>
-                <div className="text-5xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
+            {/* Pricing Block */}
+            <div className="flex flex-col items-center gap-4 pt-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-baseline gap-3">
+                <span className="text-lg text-white/40 line-through">R$167</span>
+                <span className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
                   R$49
-                </div>
+                </span>
               </div>
+              
+              <Button 
+                onClick={handleCTA} 
+                size="lg" 
+                className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-lg px-10 py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Quero entrar por R$49
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Button>
             </div>
+          </div>
+        </div>
 
-            <Button onClick={handleCTA} size="lg" className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto">
-              Quero entrar por R$49
-            </Button>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2">
+            <div className="w-1 h-2 bg-white/40 rounded-full" />
           </div>
         </div>
       </section>
 
-      {/* Por que isso importa agora */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-            <CardHeader>
-              <CardTitle className="text-3xl bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-                Por que isso importa agora?
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-white/80 text-lg">
-              <p>
-                As pesquisas mostram, a IA será a maior revolução da história da humanidade. E aqueles que dominarem essa tecnologia primeiro, terão uma <strong className="text-white">vantagem competitiva</strong> em relação aos concorrentes.
+      {/* Why it matters - Statement Section */}
+      <section className="relative py-24 px-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-dark/5 to-transparent" />
+        
+        <div className="max-w-4xl mx-auto relative">
+          <div className="relative">
+            {/* Decorative Quote */}
+            <div className="absolute -top-8 -left-4 md:-left-16 text-[120px] font-serif text-ba-blue-light/10 select-none">"</div>
+            
+            <div className="relative z-10 space-y-6 pl-4 md:pl-8 border-l-2 border-ba-blue-light/30">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                Por que isso importa <span className="text-ba-blue-light">agora</span>?
+              </h2>
+              <p className="text-xl md:text-2xl text-white/70 leading-relaxed">
+                As pesquisas mostram que a IA será a <span className="text-white font-medium">maior revolução da história da humanidade</span>. 
+                E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva 
+                <span className="text-ba-orange font-medium"> impossível de alcançar</span> pelos concorrentes.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Para quem é */}
-      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-            Para quem é
-          </h2>
+      {/* For Whom Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">Público-alvo</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Para quem é este curso
+            </h2>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-              <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Empreendedores que querem <strong className="text-white">usar IA no dia a dia</strong> para trabalhar melhor e crescer.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-              <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Quem se sente perdido <strong className="text-white">com tanta informação</strong> e precisa de uma direção simples e prática.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-              <CardContent className="pt-6">
-                <p className="text-white/80">
-                  Donos de empresas que querem <strong className="text-white">aumentar produtividade, leads e vendas</strong> sem complicação técnica.
-                </p>
-              </CardContent>
-            </Card>
+            {[
+              { icon: Lightbulb, title: "Empreendedores", description: "Que querem usar IA no dia a dia para trabalhar melhor e crescer." },
+              { icon: Users, title: "Profissionais Perdidos", description: "Quem se sente perdido com tanta informação e precisa de uma direção simples e prática." },
+              { icon: Zap, title: "Donos de Empresas", description: "Que querem aumentar produtividade, leads e vendas sem complicação técnica." }
+            ].map((item, idx) => (
+              <div 
+                key={idx}
+                className="group relative"
+              >
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-ba-blue-light/20 to-ba-orange/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <Card className="relative h-full bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden">
+                  <CardContent className="p-8 space-y-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-ba-blue-light/20 to-ba-blue-light/5 flex items-center justify-center border border-ba-blue-light/20">
+                      <item.icon className="w-7 h-7 text-ba-blue-light" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                    <p className="text-white/60 leading-relaxed">{item.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Currículo */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-            O que você vai aprender
-          </h2>
+      {/* Curriculum Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-dark/5 to-transparent" />
+        
+        <div className="max-w-4xl mx-auto relative">
+          <div className="text-center mb-16">
+            <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">Currículo</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              O que você vai aprender
+            </h2>
+          </div>
+
           <div className="space-y-6">
-            {aulas.map((aula) => (
-              <Card key={aula.numero} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-xl font-bold">
-                      {aula.numero}
+            {aulas.map((aula, idx) => (
+              <div 
+                key={aula.numero}
+                className="group"
+              >
+                <Card className="relative bg-gradient-to-r from-white/[0.06] to-transparent backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden">
+                  {/* Progress Line */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-ba-blue-light to-ba-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row md:items-start gap-6">
+                      {/* Number Badge */}
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-ba-blue-light to-blue-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-ba-blue-light/20">
+                          {aula.numero}
+                        </div>
+                      </div>
+                      
+                      <div className="flex-1 space-y-4">
+                        <div>
+                          <h3 className="text-2xl font-bold text-white mb-2">
+                            Aula {aula.numero} — {aula.titulo}
+                          </h3>
+                          <p className="text-white/60 italic">{aula.descricao}</p>
+                        </div>
+                        
+                        <ul className="space-y-3">
+                          {aula.topicos.map((topico, topIdx) => (
+                            <li key={topIdx} className="flex items-start gap-3">
+                              <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-0.5" />
+                              <span className="text-white/80">{topico}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-2xl text-white mb-2">
-                        Aula {aula.numero} — {aula.titulo}
-                      </CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-white/70 italic border-l-4 border-ba-blue-light/40 pl-4">
-                    {aula.descricao}
-                  </p>
-                  <ul className="space-y-2">
-                    {aula.topicos.map((topico, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-white/80">
-                        <CheckCircle2 className="w-5 h-5 text-ba-blue-light flex-shrink-0 mt-0.5" />
-                        <span>{topico}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Entregáveis */}
-      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-            O que você recebe
-          </h2>
-          <div className="grid md:grid-cols-3 gap-4">
+      {/* Deliverables Section */}
+      <section className="py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">Entregáveis</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              O que você recebe
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {entregaveis.map((item, idx) => (
-              <Card key={idx} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-                <CardContent className="pt-6">
-                  <div className="flex items-center gap-3">
-                    <FileText className="w-5 h-5 text-ba-blue-light flex-shrink-0" />
-                    <span className="text-white/90">{item}</span>
+              <Card 
+                key={idx}
+                className="group relative bg-gradient-to-b from-white/[0.06] to-transparent backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden"
+              >
+                <CardContent className="p-8 text-center space-y-4">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-ba-orange/20 to-ba-orange/5 flex items-center justify-center border border-ba-orange/20 group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="w-8 h-8 text-ba-orange" />
                   </div>
+                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="text-white/50 text-sm">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -234,69 +307,128 @@ const ComoAplicarIA = () => {
         </div>
       </section>
 
-      {/* Depoimentos */}
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-            Depoimentos
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {depoimentos.map((depoimento, idx) => (
-              <Card key={idx} className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:border-ba-blue-light/60 transition-all shadow-glow">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-3">
-                    <Quote className="w-6 h-6 text-ba-blue-light flex-shrink-0" />
-                    <p className="text-white/80 italic">"{depoimento}"</p>
+      {/* Testimonials Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-dark/5 to-transparent" />
+        
+        <div className="max-w-5xl mx-auto relative">
+          <div className="text-center mb-16">
+            <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">Depoimentos</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              O que dizem os alunos
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {depoimentos.map((dep, idx) => (
+              <Card 
+                key={idx}
+                className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border-white/10 rounded-2xl overflow-hidden"
+              >
+                <CardContent className="p-8">
+                  <Quote className="w-10 h-10 text-ba-blue-light/30 mb-4" />
+                  <p className="text-xl text-white/80 italic leading-relaxed mb-6">
+                    "{dep.text}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ba-blue-light to-ba-orange flex items-center justify-center text-white font-bold">
+                      {dep.author.charAt(0)}
+                    </div>
+                    <span className="text-white/60 text-sm">{dep.author}</span>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          <p className="text-center text-white/50 text-sm mt-6 italic">
+          
+          <p className="text-center text-white/30 text-sm mt-8 italic">
             (Insira aqui prints e depoimentos dos seus alunos/clientes.)
           </p>
         </div>
       </section>
 
-      {/* Preço e Garantia */}
-      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
-        <div className="max-w-2xl mx-auto">
-          <Card className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 shadow-glow-intense">
-            <CardContent className="pt-8 text-center space-y-6">
-              <div>
-                <div className="text-sm text-white/60 mb-2">Preço de entrada</div>
-                <div className="text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
-                  R$49
+      {/* Pricing Section - Hero Style */}
+      <section className="py-24 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="relative">
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-ba-blue-light/20 via-transparent to-ba-orange/20 rounded-3xl blur-3xl" />
+            
+            <Card className="relative bg-gradient-to-b from-white/[0.1] to-white/[0.02] backdrop-blur-xl border-white/20 rounded-3xl overflow-hidden">
+              {/* Decorative Top Bar */}
+              <div className="h-1.5 bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange" />
+              
+              <CardContent className="p-10 md:p-14 text-center space-y-8">
+                <div>
+                  <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">Oferta especial</span>
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    Comece sua jornada na IA
+                  </h2>
                 </div>
-              </div>
-              <div className="text-white/80 text-lg">
-                <strong className="text-white">Garantia incondicional de 7 dias</strong> — se não sentir valor, é só pedir reembolso.
-              </div>
-              <Button onClick={handleCTA} size="lg" className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto w-full">
-                Quero entrar por R$49
-              </Button>
-            </CardContent>
-          </Card>
+
+                <div className="space-y-2">
+                  <div className="text-white/40 line-through text-lg">De R$167</div>
+                  <div className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange bg-clip-text text-transparent">
+                    R$49
+                  </div>
+                  <p className="text-white/50 text-sm">Pagamento único · Acesso imediato</p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-white/60 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-green-400" />
+                    <span>Garantia de 7 dias</span>
+                  </div>
+                  <div className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-ba-blue-light" />
+                    <span>Acesso vitalício</span>
+                  </div>
+                </div>
+
+                <Button 
+                  onClick={handleCTA} 
+                  size="lg" 
+                  className="w-full sm:w-auto group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-xl px-12 py-8 h-auto rounded-xl shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_70px_rgba(59,130,246,0.6)] transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center gap-3">
+                    Quero entrar agora
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+
+                <p className="text-white/40 text-sm">
+                  Se não sentir valor, é só pedir reembolso. Sem perguntas.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-ba-blue-light to-white bg-clip-text text-transparent">
-            Perguntas frequentes
-          </h2>
+      {/* FAQ Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-dark/5 to-transparent" />
+        
+        <div className="max-w-3xl mx-auto relative">
+          <div className="text-center mb-16">
+            <span className="inline-block text-ba-blue-light text-sm font-semibold tracking-wider uppercase mb-4">FAQ</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Perguntas frequentes
+            </h2>
+          </div>
+
           <Accordion type="single" collapsible className="space-y-4">
             {faq.map((item, idx) => (
               <AccordionItem 
                 key={idx} 
                 value={`item-${idx}`}
-                className="bg-black/80 backdrop-blur-sm border-ba-blue-light/20 rounded-lg px-6"
+                className="bg-gradient-to-r from-white/[0.06] to-transparent backdrop-blur-sm border border-white/10 rounded-xl px-6 data-[state=open]:border-ba-blue-light/30 transition-all duration-300"
               >
-                <AccordionTrigger className="text-white text-left hover:no-underline">
+                <AccordionTrigger className="text-white text-left hover:no-underline py-6 text-lg">
                   {item.pergunta}
                 </AccordionTrigger>
-                <AccordionContent className="text-white/80">
+                <AccordionContent className="text-white/70 pb-6 text-base leading-relaxed">
                   {item.resposta}
                 </AccordionContent>
               </AccordionItem>
@@ -305,16 +437,34 @@ const ComoAplicarIA = () => {
         </div>
       </section>
 
-      {/* Chamada Final */}
-      <section className="py-16 px-4 bg-gradient-to-b from-ba-blue-dark/5 to-transparent">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          <p className="text-xl text-white/80">
-            Comece simples. Em <strong className="text-white">3 aulas</strong> você ganha clareza, aplica no seu contexto e sai com um <strong className="text-white">plano de 30 dias</strong>. Se fizer sentido avançar, o próximo passo estará a um clique.
+      {/* Final CTA Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.1)_0%,_transparent_60%)]" />
+        </div>
+        
+        <div className="max-w-3xl mx-auto text-center relative space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Comece <span className="text-ba-blue-light">simples</span>.
+          </h2>
+          
+          <p className="text-xl text-white/70 leading-relaxed">
+            Em <span className="text-white font-medium">3 aulas</span> você ganha clareza, aplica no seu contexto e sai com um <span className="text-white font-medium">plano de 30 dias</span>. 
+            Se fizer sentido avançar, o próximo passo estará a um clique.
           </p>
-          <Button onClick={handleCTA} size="lg" className="bg-gradient-primary shadow-glow hover:shadow-glow-intense text-lg px-8 py-6 h-auto">
-            Quero entrar por R$49
+
+          <Button 
+            onClick={handleCTA} 
+            size="lg" 
+            className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-lg px-10 py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Quero entrar por R$49
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </span>
           </Button>
-          <p className="text-white/50 text-sm">
+
+          <p className="text-white/40 text-sm">
             Ou role a página para rever o conteúdo do curso.
           </p>
         </div>
