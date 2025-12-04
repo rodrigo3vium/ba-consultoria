@@ -76,6 +76,12 @@ const ComoAplicarIA = () => {
   }, {
     text: "Primeiro, professor, achei sensacional. Eu nunca vi tanta entrega assim. Eu quero fazer uma elogio a você, Rodrigo. não te conheço pessoalmente, mas deve ser uma pessoa super do bem. Eu já entrei em outros grupos de mentoria, nunca vi tanta entrega dessa forma.",
     author: "Aluno"
+  }, {
+    text: "Rodrigo é um excelente empresário! Ele vai além e possui uma visão muito afiada para negócios. Está sempre disponível e atende realmente muito bem - quantitativamente e qualitativamente. Recomendo muito",
+    author: "Marcelo"
+  }, {
+    text: "Sem palavras. Foi um dos melhores investimentos que fiz pra minha empresa. Vale cada centavo!",
+    author: "Wesley"
   }];
   return <div className="min-h-screen bg-black overflow-hidden">
 
