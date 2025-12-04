@@ -11,7 +11,6 @@ import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target,
 import diarioComercioImg from "@/assets/news/diario-comercio.png";
 import businessInsiderImg from "@/assets/news/business-insider.png";
 import forbesImg from "@/assets/news/forbes.png";
-
 const ComoAplicarIA = () => {
   // Set body background to black and remove header padding for this page
   useEffect(() => {
@@ -22,80 +21,69 @@ const ComoAplicarIA = () => {
       document.body.style.paddingTop = '';
     };
   }, []);
-
   const handleCTA = () => {
     window.open('https://pay.hotmart.com/O103263125L', '_blank');
   };
-
-  const aulas = [
-    {
-      numero: 1,
-      titulo: "Introdução à Inteligência Artificial",
-      descricao: "O que você realmente precisa saber sobre Inteligência Artificial",
-      topicos: [
-        "A maior revolução da história da humanidade",
-        "Por que isso importa e como tirar vantagem do momento atual",
-        "Para onde vamos nos próximos anos"
-      ]
-    },
-    {
-      numero: 2,
-      titulo: "Ferramentas e Tecnologias atuais",
-      descricao: "Entendendo as ferramentas atuais e como aplicá-las",
-      topicos: [
-        "Como realmente funcionam os LLMs?",
-        "Quais as melhores ferramentas para usar em cada caso?",
-        "O que são e onde usar agentes de IA?"
-      ]
-    },
-    {
-      numero: 3,
-      titulo: "Como aplicar IA no seu Negócio",
-      descricao: "Saia da aula com um plano de execução pronto para aplicar.",
-      topicos: [
-        "Exemplos práticos de aplicações e cases",
-        "Matriz de identificação de oportunidades",
-        "Como medir o ROI da IA",
-        "Como construir aplicações com IA para aumento de lucro e eficiência"
-      ]
-    }
-  ];
-
-  const entregaveis = [
-    { icon: Gift, title: "Bônus: IA é Bolha ou não?", description: "Análise profunda sobre o futuro da tecnologia" },
-    { icon: Target, title: "Plano de 30 dias personalizado", description: "Execução adaptada para a sua realidade" },
-    { icon: Play, title: "3 aulas completas", description: "Todo o conhecimento para aplicar IA" }
-  ];
-
-  const faq = [
-    { pergunta: "Preciso saber programar?", resposta: "Não. Tudo é feito com linguagem natural e ferramentas acessíveis." },
-    { pergunta: "Quanto tempo preciso?", resposta: "As três aulas somam ~3 horas." },
-    { pergunta: "Quando começo?", resposta: "Logo após a compra, com acesso imediato às aulas e materiais." },
-    { pergunta: "Vou ver ferramentas específicas?", resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas." },
-    { pergunta: "Como peço suporte?", resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios." }
-  ];
-
-  const depoimentos = [
-    { text: "Parecia complicado, hoje uso IA todo dia para roteiros e emails — economizo horas.", author: "Aluno verificado" },
-    { text: "A matriz simples me ajudou a escolher por onde começar, já vi impacto em 2 semanas.", author: "Aluno verificado" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-black overflow-hidden">
+  const aulas = [{
+    numero: 1,
+    titulo: "Introdução à Inteligência Artificial",
+    descricao: "O que você realmente precisa saber sobre Inteligência Artificial",
+    topicos: ["A maior revolução da história da humanidade", "Por que isso importa e como tirar vantagem do momento atual", "Para onde vamos nos próximos anos"]
+  }, {
+    numero: 2,
+    titulo: "Ferramentas e Tecnologias atuais",
+    descricao: "Entendendo as ferramentas atuais e como aplicá-las",
+    topicos: ["Como realmente funcionam os LLMs?", "Quais as melhores ferramentas para usar em cada caso?", "O que são e onde usar agentes de IA?"]
+  }, {
+    numero: 3,
+    titulo: "Como aplicar IA no seu Negócio",
+    descricao: "Saia da aula com um plano de execução pronto para aplicar.",
+    topicos: ["Exemplos práticos de aplicações e cases", "Matriz de identificação de oportunidades", "Como medir o ROI da IA", "Como construir aplicações com IA para aumento de lucro e eficiência"]
+  }];
+  const entregaveis = [{
+    icon: Gift,
+    title: "Bônus: IA é Bolha ou não?",
+    description: "Análise profunda sobre o futuro da tecnologia"
+  }, {
+    icon: Target,
+    title: "Plano de 30 dias personalizado",
+    description: "Execução adaptada para a sua realidade"
+  }, {
+    icon: Play,
+    title: "3 aulas completas",
+    description: "Todo o conhecimento para aplicar IA"
+  }];
+  const faq = [{
+    pergunta: "Preciso saber programar?",
+    resposta: "Não. Tudo é feito com linguagem natural e ferramentas acessíveis."
+  }, {
+    pergunta: "Quanto tempo preciso?",
+    resposta: "As três aulas somam ~3 horas."
+  }, {
+    pergunta: "Quando começo?",
+    resposta: "Logo após a compra, com acesso imediato às aulas e materiais."
+  }, {
+    pergunta: "Vou ver ferramentas específicas?",
+    resposta: "O foco é prático e agnóstico — você entende o porquê e o como. Onde for útil, mostro exemplos e alternativas."
+  }, {
+    pergunta: "Como peço suporte?",
+    resposta: "Dúvidas de acesso e materiais: suporte por email. Dúvidas de conteúdo avançado: indicamos seguir para o IA para Negócios."
+  }];
+  const depoimentos = [{
+    text: "Parecia complicado, hoje uso IA todo dia para roteiros e emails — economizo horas.",
+    author: "Aluno verificado"
+  }, {
+    text: "A matriz simples me ajudou a escolher por onde começar, já vi impacto em 2 semanas.",
+    author: "Aluno verificado"
+  }];
+  return <div className="min-h-screen bg-black overflow-hidden">
 
       {/* Hero Section - Full Impact */}
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center px-4 py-16 md:py-20">
         {/* Animated Background */}
         <div className="absolute inset-0">
           {/* Flickering Grid */}
-          <FlickeringGrid
-            className="z-0 absolute inset-0 size-full"
-            squareSize={4}
-            gridGap={6}
-            color="#FFFFFF"
-            maxOpacity={0.15}
-            flickerChance={0.1}
-          />
+          <FlickeringGrid className="z-0 absolute inset-0 size-full" squareSize={4} gridGap={6} color="#FFFFFF" maxOpacity={0.15} flickerChance={0.1} />
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
@@ -107,7 +95,9 @@ const ComoAplicarIA = () => {
             </div>
 
             {/* Main Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] animate-fade-in" style={{
+            animationDelay: '0.1s'
+          }}>
               <span className="text-white">Como aplicar</span>
               <br />
               <span className="bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange bg-clip-text text-transparent">
@@ -118,13 +108,17 @@ const ComoAplicarIA = () => {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed animate-fade-in px-2" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed animate-fade-in px-2" style={{
+            animationDelay: '0.2s'
+          }}>
               Se você está perdido com o barulho sobre IA, aqui vai o mapa. 
               <span className="text-white font-medium"> Em três aulas diretas ao ponto</span>, você entende como a IA funciona, por que ela está mudando tudo e quais oportunidades práticas existem.
             </p>
 
             {/* Features Pills */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 animate-fade-in px-4" style={{ animationDelay: '0.3s' }}>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4 animate-fade-in px-4" style={{
+            animationDelay: '0.3s'
+          }}>
               <div className="flex items-center justify-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
                 <BookOpen className="w-4 h-4 text-ba-blue-light" />
                 <span className="text-xs md:text-sm text-white/80">3 aulas práticas</span>
@@ -140,7 +134,9 @@ const ComoAplicarIA = () => {
             </div>
 
             {/* Pricing Block */}
-            <div className="flex flex-col items-center gap-3 md:gap-4 pt-2 md:pt-4 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col items-center gap-3 md:gap-4 pt-2 md:pt-4 animate-fade-in" style={{
+            animationDelay: '0.4s'
+          }}>
               <div className="flex items-baseline gap-2 md:gap-3">
                 <span className="text-base md:text-lg text-white/40 line-through">R$167</span>
                 <span className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
@@ -148,11 +144,7 @@ const ComoAplicarIA = () => {
                 </span>
               </div>
               
-              <Button 
-                onClick={handleCTA} 
-                size="lg" 
-                className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-6 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto"
-              >
+              <Button onClick={handleCTA} size="lg" className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-6 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Quero entrar por R$49
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -183,8 +175,7 @@ const ComoAplicarIA = () => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                 Por que isso importa <span className="text-ba-blue-light">agora</span>?
               </h2>
-              <p className="text-base sm:text-lg md:text-2xl text-white/70 leading-relaxed">
-                As pesquisas mostram que a IA será a <span className="text-white font-medium">maior revolução da história da humanidade</span>. 
+              <p className="text-base sm:text-lg md:text-2xl text-white/70 leading-relaxed">As pesquisas e notícias mostram que a IA será a maior revolução da história da humanidade. E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva impossível de alcançar pelos concorrentes.<span className="text-white font-medium">maior revolução da história da humanidade</span>. 
                 E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva 
                 <span className="text-ba-orange font-medium"> impossível de alcançar</span> pelos concorrentes.
               </p>
@@ -194,35 +185,28 @@ const ComoAplicarIA = () => {
           {/* News Carousel */}
           <div className="mt-12 md:mt-16">
             <p className="text-center text-white/40 text-sm mb-6 md:mb-8 uppercase tracking-wider">O que a mídia está dizendo</p>
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[
-                Autoplay({
-                  delay: 2000,
-                  stopOnInteraction: false,
-                }),
-              ]}
-              className="w-full max-w-4xl mx-auto"
-            >
+            <Carousel opts={{
+            align: "start",
+            loop: true
+          }} plugins={[Autoplay({
+            delay: 2000,
+            stopOnInteraction: false
+          })]} className="w-full max-w-4xl mx-auto">
               <CarouselContent className="-ml-2 md:-ml-4">
-                {[
-                  { src: diarioComercioImg, alt: "Diário do Comércio - IA no varejo mineiro" },
-                  { src: businessInsiderImg, alt: "Business Insider - Meta avalia funcionários por habilidade com IA" },
-                  { src: forbesImg, alt: "Forbes - Adoção de IA será divisor de águas" }
-                ].map((news, idx) => (
-                  <CarouselItem key={idx} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/2">
+                {[{
+                src: diarioComercioImg,
+                alt: "Diário do Comércio - IA no varejo mineiro"
+              }, {
+                src: businessInsiderImg,
+                alt: "Business Insider - Meta avalia funcionários por habilidade com IA"
+              }, {
+                src: forbesImg,
+                alt: "Forbes - Adoção de IA será divisor de águas"
+              }].map((news, idx) => <CarouselItem key={idx} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/2">
                     <div className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300">
-                      <img 
-                        src={news.src} 
-                        alt={news.alt}
-                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      <img src={news.src} alt={news.alt} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                  </CarouselItem>
-                ))}
+                  </CarouselItem>)}
               </CarouselContent>
               <CarouselPrevious className="hidden md:flex -left-12 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
               <CarouselNext className="hidden md:flex -right-12 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
@@ -242,15 +226,19 @@ const ComoAplicarIA = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {[
-              { icon: Lightbulb, title: "Empreendedores", description: "Que querem usar IA no dia a dia para trabalhar melhor e crescer." },
-              { icon: Users, title: "Profissionais Perdidos", description: "Quem se sente perdido com tanta informação e precisa de uma direção simples e prática." },
-              { icon: Zap, title: "Donos de Empresas", description: "Que querem aumentar produtividade, leads e vendas sem complicação técnica." }
-            ].map((item, idx) => (
-              <div 
-                key={idx}
-                className="group relative"
-              >
+            {[{
+            icon: Lightbulb,
+            title: "Empreendedores",
+            description: "Que querem usar IA no dia a dia para trabalhar melhor e crescer."
+          }, {
+            icon: Users,
+            title: "Profissionais Perdidos",
+            description: "Quem se sente perdido com tanta informação e precisa de uma direção simples e prática."
+          }, {
+            icon: Zap,
+            title: "Donos de Empresas",
+            description: "Que querem aumentar produtividade, leads e vendas sem complicação técnica."
+          }].map((item, idx) => <div key={idx} className="group relative">
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-ba-blue-light/20 to-ba-orange/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
@@ -263,8 +251,7 @@ const ComoAplicarIA = () => {
                     <p className="text-white/60 leading-relaxed text-sm md:text-base">{item.description}</p>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -282,11 +269,7 @@ const ComoAplicarIA = () => {
           </div>
 
           <div className="space-y-4 md:space-y-6">
-            {aulas.map((aula, idx) => (
-              <div 
-                key={aula.numero}
-                className="group"
-              >
+            {aulas.map((aula, idx) => <div key={aula.numero} className="group">
                 <Card className="relative bg-gradient-to-r from-white/[0.06] to-transparent backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden">
                   {/* Progress Line */}
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-ba-blue-light to-ba-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -309,19 +292,16 @@ const ComoAplicarIA = () => {
                         </div>
                         
                         <ul className="space-y-2 md:space-y-3">
-                          {aula.topicos.map((topico, topIdx) => (
-                            <li key={topIdx} className="flex items-start gap-2 md:gap-3">
+                          {aula.topicos.map((topico, topIdx) => <li key={topIdx} className="flex items-start gap-2 md:gap-3">
                               <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-ba-blue-light flex-shrink-0 mt-0.5" />
                               <span className="text-white/80 text-sm md:text-base">{topico}</span>
-                            </li>
-                          ))}
+                            </li>)}
                         </ul>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -337,11 +317,7 @@ const ComoAplicarIA = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {entregaveis.map((item, idx) => (
-              <Card 
-                key={idx}
-                className="group relative bg-gradient-to-b from-white/[0.06] to-transparent backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden"
-              >
+            {entregaveis.map((item, idx) => <Card key={idx} className="group relative bg-gradient-to-b from-white/[0.06] to-transparent backdrop-blur-sm border-white/10 hover:border-ba-blue-light/30 transition-all duration-300 rounded-2xl overflow-hidden">
                 <CardContent className="p-6 md:p-8 text-center space-y-3 md:space-y-4">
                   <div className="w-14 h-14 md:w-16 md:h-16 mx-auto rounded-xl md:rounded-2xl bg-gradient-to-br from-ba-orange/20 to-ba-orange/5 flex items-center justify-center border border-ba-orange/20 group-hover:scale-110 transition-transform duration-300">
                     <item.icon className="w-7 h-7 md:w-8 md:h-8 text-ba-orange" />
@@ -349,8 +325,7 @@ const ComoAplicarIA = () => {
                   <h3 className="text-base md:text-lg font-semibold text-white">{item.title}</h3>
                   <p className="text-white/50 text-sm">{item.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -368,11 +343,7 @@ const ComoAplicarIA = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            {depoimentos.map((dep, idx) => (
-              <Card 
-                key={idx}
-                className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border-white/10 rounded-2xl overflow-hidden"
-              >
+            {depoimentos.map((dep, idx) => <Card key={idx} className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border-white/10 rounded-2xl overflow-hidden">
                 <CardContent className="p-5 md:p-8">
                   <Quote className="w-8 h-8 md:w-10 md:h-10 text-ba-blue-light/30 mb-3 md:mb-4" />
                   <p className="text-base md:text-xl text-white/80 italic leading-relaxed mb-4 md:mb-6">
@@ -385,8 +356,7 @@ const ComoAplicarIA = () => {
                     <span className="text-white/60 text-sm">{dep.author}</span>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
           
           <p className="text-center text-white/30 text-xs md:text-sm mt-6 md:mt-8 italic">
@@ -436,11 +406,7 @@ const ComoAplicarIA = () => {
                   </div>
                 </div>
 
-                <Button 
-                  onClick={handleCTA} 
-                  size="lg" 
-                  className="w-full sm:w-auto group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 h-auto rounded-xl shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_70px_rgba(59,130,246,0.6)] transition-all duration-300"
-                >
+                <Button onClick={handleCTA} size="lg" className="w-full sm:w-auto group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 h-auto rounded-xl shadow-[0_0_50px_rgba(59,130,246,0.4)] hover:shadow-[0_0_70px_rgba(59,130,246,0.6)] transition-all duration-300">
                   <span className="relative z-10 flex items-center justify-center gap-2 md:gap-3">
                     Quero entrar agora
                     <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
@@ -469,20 +435,14 @@ const ComoAplicarIA = () => {
           </div>
 
           <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
-            {faq.map((item, idx) => (
-              <AccordionItem 
-                key={idx} 
-                value={`item-${idx}`}
-                className="bg-gradient-to-r from-white/[0.06] to-transparent backdrop-blur-sm border border-white/10 rounded-xl px-4 md:px-6 data-[state=open]:border-ba-blue-light/30 transition-all duration-300"
-              >
+            {faq.map((item, idx) => <AccordionItem key={idx} value={`item-${idx}`} className="bg-gradient-to-r from-white/[0.06] to-transparent backdrop-blur-sm border border-white/10 rounded-xl px-4 md:px-6 data-[state=open]:border-ba-blue-light/30 transition-all duration-300">
                 <AccordionTrigger className="text-white text-left hover:no-underline py-4 md:py-6 text-sm md:text-lg">
                   {item.pergunta}
                 </AccordionTrigger>
                 <AccordionContent className="text-white/70 pb-4 md:pb-6 text-sm md:text-base leading-relaxed">
                   {item.resposta}
                 </AccordionContent>
-              </AccordionItem>
-            ))}
+              </AccordionItem>)}
           </Accordion>
         </div>
       </section>
@@ -503,11 +463,7 @@ const ComoAplicarIA = () => {
             Se fizer sentido avançar, o próximo passo estará a um clique.
           </p>
 
-          <Button 
-            onClick={handleCTA} 
-            size="lg" 
-            className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-8 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto"
-          >
+          <Button onClick={handleCTA} size="lg" className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-8 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto">
             <span className="relative z-10 flex items-center justify-center gap-2">
               Quero entrar por R$49
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -519,8 +475,6 @@ const ComoAplicarIA = () => {
           </p>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default ComoAplicarIA;
