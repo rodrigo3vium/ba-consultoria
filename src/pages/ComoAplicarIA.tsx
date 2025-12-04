@@ -176,7 +176,7 @@ const ComoAplicarIA = () => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                 Por que isso importa <span className="text-ba-blue-light">agora</span>?
               </h2>
-              <p className="text-base sm:text-lg md:text-2xl text-white/70 leading-relaxed">As pesquisas e notícias mostram que a IA será a maior revolução da história da humanidade. E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva impossível de alcançar pelos concorrentes.<span className="text-white font-medium">maior revolução da história da humanidade</span>. 
+              <p className="text-base sm:text-lg md:text-2xl text-white/70 leading-relaxed">As pesquisas e notícias mostram que a IA será a maior revolução da história da humanidade. E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva impossível de alcançar pelos concorrentes.<span className="text-white font-medium">maior revolução da história da humanidade</span>. 
                 E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva 
                 <span className="text-ba-orange font-medium"> impossível de alcançar</span> pelos concorrentes.
               </p>
