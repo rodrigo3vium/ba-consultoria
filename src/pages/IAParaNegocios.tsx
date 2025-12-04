@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -37,6 +37,16 @@ import { tracker } from '@/lib/tracking';
 
 const IAParaNegocios = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+
+  // Set body background to black and remove header padding for this page
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000000';
+    document.body.style.paddingTop = '0';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.paddingTop = '';
+    };
+  }, []);
 
   const handleWhatsAppContact = (ctaLocation: string) => {
     tracker.track('cta_click', {
