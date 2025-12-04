@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const ComoAplicarIA = () => {
   const handleCTA = () => {
@@ -65,8 +63,7 @@ const ComoAplicarIA = () => {
 
   return (
     <div className="min-h-screen bg-black overflow-hidden">
-      <Header />
-      
+
       {/* Hero Section - Full Impact */}
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center px-4 py-16 md:py-20">
         {/* Animated Background */}
@@ -467,8 +464,6 @@ const ComoAplicarIA = () => {
           </p>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
