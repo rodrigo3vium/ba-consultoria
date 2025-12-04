@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -5,6 +6,14 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 
 const ComoAplicarIA = () => {
+  // Set body background to black for this page
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000000';
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
+  }, []);
+
   const handleCTA = () => {
     window.open('https://pay.hotmart.com/O103263125L', '_blank');
   };
