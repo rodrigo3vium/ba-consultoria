@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 
 const ComoAplicarIA = () => {
@@ -68,19 +69,18 @@ const ComoAplicarIA = () => {
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center justify-center px-4 py-16 md:py-20">
         {/* Animated Background */}
         <div className="absolute inset-0">
-          {/* Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.5) 1px, transparent 1px), 
-                             linear-gradient(90deg, rgba(59, 130, 246, 0.5) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }} />
+          {/* Flickering Grid */}
+          <FlickeringGrid
+            className="z-0 absolute inset-0 size-full"
+            squareSize={4}
+            gridGap={6}
+            color="#3B82F6"
+            maxOpacity={0.4}
+            flickerChance={0.1}
+          />
           
-          {/* Radial Gradient */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.15)_0%,_transparent_70%)]" />
-          
-          {/* Floating Orbs - Hidden on mobile for performance */}
-          <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-[120px] animate-pulse" />
-          <div className="hidden md:block absolute bottom-1/4 right-1/4 w-80 h-80 bg-ba-orange/10 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+          {/* Radial Gradient Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.1)_0%,_transparent_60%)]" />
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
