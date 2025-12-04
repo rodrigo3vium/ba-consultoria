@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 
 // News images
@@ -189,27 +190,36 @@ const ComoAplicarIA = () => {
             </div>
           </div>
 
-          {/* News Gallery */}
+          {/* News Carousel */}
           <div className="mt-12 md:mt-16">
             <p className="text-center text-white/40 text-sm mb-6 md:mb-8 uppercase tracking-wider">O que a mídia está dizendo</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-              {[
-                { src: diarioComercioImg, alt: "Diário do Comércio - IA no varejo mineiro" },
-                { src: businessInsiderImg, alt: "Business Insider - Meta avalia funcionários por habilidade com IA" },
-                { src: forbesImg, alt: "Forbes - Adoção de IA será divisor de águas" }
-              ].map((news, idx) => (
-                <div 
-                  key={idx}
-                  className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300"
-                >
-                  <img 
-                    src={news.src} 
-                    alt={news.alt}
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ))}
-            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-4xl mx-auto"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {[
+                  { src: diarioComercioImg, alt: "Diário do Comércio - IA no varejo mineiro" },
+                  { src: businessInsiderImg, alt: "Business Insider - Meta avalia funcionários por habilidade com IA" },
+                  { src: forbesImg, alt: "Forbes - Adoção de IA será divisor de águas" }
+                ].map((news, idx) => (
+                  <CarouselItem key={idx} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/2">
+                    <div className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300">
+                      <img 
+                        src={news.src} 
+                        alt={news.alt}
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-12 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
+              <CarouselNext className="hidden md:flex -right-12 bg-white/10 border-white/20 hover:bg-white/20 text-white" />
+            </Carousel>
           </div>
         </div>
       </section>
