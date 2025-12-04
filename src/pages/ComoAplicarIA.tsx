@@ -370,7 +370,9 @@ const ComoAplicarIA = () => {
                 </div>
 
                 <div className="space-y-1 md:space-y-2">
-                  <div className="text-white/40 line-through text-base md:text-lg">De R$167</div>
+                  <div className="text-white/40 text-base md:text-lg">
+                    <span className="line-through">De R$167</span> por
+                  </div>
                   <div className="text-5xl sm:text-6xl md:text-8xl font-bold bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange bg-clip-text text-transparent">
                     R$49
                   </div>
