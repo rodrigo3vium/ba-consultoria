@@ -72,7 +72,7 @@ const ComoAplicarIA = () => {
     author: "Rafaela Brito"
   }, {
     text: "Primeiro, professor, achei sensacional. Eu nunca vi tanta entrega assim. Eu quero fazer uma elogio a você, Rodrigo. não te conheço pessoalmente, mas deve ser uma pessoa super do bem. Eu já entrei em outros grupos de mentoria, nunca vi tanta entrega dessa forma.",
-    author: "Aluno"
+    author: "Leandro"
   }, {
     text: "Rodrigo é um excelente empresário! Ele vai além e possui uma visão muito afiada para negócios. Está sempre disponível e atende realmente muito bem - quantitativamente e qualitativamente. Recomendo muito",
     author: "Marcelo"
@@ -415,15 +415,10 @@ const ComoAplicarIA = () => {
                   <p className="text-white/50 text-xs md:text-sm">Pagamento único · Acesso imediato</p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 text-white/60 text-xs md:text-sm">
+                <div className="flex items-center justify-center text-white/60 text-xs md:text-sm">
                   <div className="flex items-center gap-2">
                     <Shield className="w-4 h-4 text-green-400" />
                     <span>Garantia de 7 dias</span>
-                  </div>
-                  <div className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-ba-blue-light" />
-                    <span>Acesso vitalício</span>
                   </div>
                 </div>
 
