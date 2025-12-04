@@ -5,6 +5,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { CheckCircle2, BookOpen, FileText, Sparkles, Quote, Play, Users, Target, Lightbulb, Zap, ArrowRight, Shield, Clock, Gift } from "lucide-react";
 
+// News images
+import diarioComercioImg from "@/assets/news/diario-comercio.png";
+import businessInsiderImg from "@/assets/news/business-insider.png";
+import forbesImg from "@/assets/news/forbes.png";
+
 const ComoAplicarIA = () => {
   // Set body background to black and remove header padding for this page
   useEffect(() => {
@@ -181,6 +186,29 @@ const ComoAplicarIA = () => {
                 E aqueles que dominarem essa tecnologia primeiro, terão uma vantagem competitiva 
                 <span className="text-ba-orange font-medium"> impossível de alcançar</span> pelos concorrentes.
               </p>
+            </div>
+          </div>
+
+          {/* News Gallery */}
+          <div className="mt-12 md:mt-16">
+            <p className="text-center text-white/40 text-sm mb-6 md:mb-8 uppercase tracking-wider">O que a mídia está dizendo</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              {[
+                { src: diarioComercioImg, alt: "Diário do Comércio - IA no varejo mineiro" },
+                { src: businessInsiderImg, alt: "Business Insider - Meta avalia funcionários por habilidade com IA" },
+                { src: forbesImg, alt: "Forbes - Adoção de IA será divisor de águas" }
+              ].map((news, idx) => (
+                <div 
+                  key={idx}
+                  className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300"
+                >
+                  <img 
+                    src={news.src} 
+                    alt={news.alt}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
