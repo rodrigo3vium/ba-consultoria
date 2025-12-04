@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +10,15 @@ import bancoPromptsImage from "@/assets/banco-prompts-laptop.png";
 import bancoPromptsMobileImage from "@/assets/banco-prompts-mobile.png";
 
 const IADoZero = () => {
+  // Set body background to black and remove header padding for this page
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000000';
+    document.body.style.paddingTop = '0';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.paddingTop = '';
+    };
+  }, []);
   const handleCheckout = (ctaLocation: string) => {
     tracker.track('cta_click', {
       cta_type: 'hotmart_checkout',
