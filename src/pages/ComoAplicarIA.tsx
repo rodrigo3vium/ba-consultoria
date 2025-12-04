@@ -361,10 +361,6 @@ const ComoAplicarIA = () => {
                 </CardContent>
               </Card>)}
           </div>
-          
-          <p className="text-center text-white/30 text-xs md:text-sm mt-6 md:mt-8 italic">
-            (Insira aqui prints e depoimentos dos seus alunos/clientes.)
-          </p>
         </div>
       </section>
 
