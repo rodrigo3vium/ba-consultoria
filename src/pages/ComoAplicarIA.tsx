@@ -7,9 +7,7 @@ import Footer from "@/components/Footer";
 
 const ComoAplicarIA = () => {
   const handleCTA = () => {
-    const whatsappNumber = "5511979794086";
-    const message = encodeURIComponent("Olá! Quero me inscrever no curso 'Como aplicar IA no seu negócio' por R$49");
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+    window.open('https://pay.hotmart.com/O103263125L', '_blank');
   };
 
   const aulas = [
