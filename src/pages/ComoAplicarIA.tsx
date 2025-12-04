@@ -74,13 +74,10 @@ const ComoAplicarIA = () => {
             className="z-0 absolute inset-0 size-full"
             squareSize={4}
             gridGap={6}
-            color="#3B82F6"
-            maxOpacity={0.4}
+            color="#FFFFFF"
+            maxOpacity={0.3}
             flickerChance={0.1}
           />
-          
-          {/* Radial Gradient Overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.1)_0%,_transparent_60%)]" />
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
