@@ -144,13 +144,13 @@ const ComoAplicarIA = () => {
               <div className="flex items-baseline gap-2 md:gap-3">
                 <span className="text-base md:text-lg text-white/40 line-through">R$167</span>
                 <span className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
-                  R$49
+                  R$67
                 </span>
               </div>
               
               <Button onClick={handleCTA} size="lg" className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-6 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto">
                 <span className="relative z-10 flex items-center justify-center gap-2">
-                  Quero entrar por R$49
+                  Quero entrar por R$67
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </Button>
@@ -410,7 +410,7 @@ const ComoAplicarIA = () => {
                     <span className="line-through">De R$167</span> por
                   </div>
                   <div className="text-5xl sm:text-6xl md:text-8xl font-bold bg-gradient-to-r from-ba-blue-light via-blue-400 to-ba-orange bg-clip-text text-transparent">
-                    R$49
+                    R$67
                   </div>
                   <p className="text-white/50 text-xs md:text-sm">Pagamento único · Acesso imediato</p>
                 </div>
@@ -482,7 +482,7 @@ const ComoAplicarIA = () => {
 
           <Button onClick={handleCTA} size="lg" className="group relative bg-gradient-to-r from-ba-blue-light to-blue-600 hover:from-ba-blue-light hover:to-blue-500 text-white text-base md:text-lg px-8 md:px-10 py-5 md:py-7 h-auto rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.3)] hover:shadow-[0_0_60px_rgba(59,130,246,0.5)] transition-all duration-300 w-full sm:w-auto">
             <span className="relative z-10 flex items-center justify-center gap-2">
-              Quero entrar por R$49
+              Quero entrar por R$67
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Button>
