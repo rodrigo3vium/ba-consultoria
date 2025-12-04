@@ -73,6 +73,9 @@ const ComoAplicarIA = () => {
   const depoimentos = [{
     text: "Rodrigo, passando para te agradecer pelas orientações sobre o Lovable aquele dia. Foi a melhor escolha que fiz!",
     author: "Rafaela Brito"
+  }, {
+    text: "Primeiro, professor, achei sensacional. Eu nunca vi tanta entrega assim. Eu quero fazer uma elogio a você, Rodrigo. não te conheço pessoalmente, mas deve ser uma pessoa super do bem. Eu já entrei em outros grupos de mentoria, nunca vi tanta entrega dessa forma.",
+    author: "Aluno"
   }];
   return <div className="min-h-screen bg-black overflow-hidden">
 
