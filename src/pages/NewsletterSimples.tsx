@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -113,9 +111,7 @@ const NewsletterSimples = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Header />
-
+    <div className="min-h-screen bg-black text-white flex items-center justify-center">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         {/* Background decorations */}
@@ -210,8 +206,6 @@ const NewsletterSimples = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
