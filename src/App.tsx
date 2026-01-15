@@ -29,6 +29,7 @@ import AdminKanban from "./pages/AdminKanban";
 import AdminEditor from "./pages/AdminEditor";
 import AdminCases from "./pages/AdminCases";
 import Newsletter from "./pages/Newsletter";
+import NewsletterSimples from "./pages/NewsletterSimples";
 import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
 
@@ -73,6 +74,7 @@ const App = () => (
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
           <Route path="/admin/cases" element={<AdminCases />} />
           <Route path="/newsletter-ia" element={<Newsletter />} />
+          <Route path="/newsletter" element={<NewsletterSimples />} />
           <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
