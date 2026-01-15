@@ -113,96 +113,103 @@ const NewsletterSimples = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-ba-gray">
+    <div className="min-h-screen bg-black text-white">
       <Header />
 
-      <main className="flex-grow flex items-center justify-center px-4 py-16 md:py-24">
-        <div className="w-full max-w-lg">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-            <CardContent className="p-8 md:p-10">
-              {/* Icon */}
-              <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-ba-blue to-ba-orange flex items-center justify-center">
-                  <Mail className="w-8 h-8 text-white" />
-                </div>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl mx-auto">
+            {/* Icon */}
+            <div className="flex justify-center mb-8">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-ba-blue to-ba-orange flex items-center justify-center">
+                <Mail className="w-10 h-10 text-white" />
               </div>
+            </div>
 
-              {/* Title */}
-              <h1 className="text-2xl md:text-3xl font-bold text-white text-center mb-3">
-                Newsletter BA
-              </h1>
+            {/* Title */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-tight pb-2">
+              Newsletter BA
+            </h1>
 
-              {/* Description */}
-              <p className="text-white/70 text-center mb-8">
-                Receba insights semanais sobre IA, automação e estratégias para crescer seu negócio.
-              </p>
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground text-center mb-12 max-w-xl mx-auto">
+              Receba insights semanais sobre IA, automação e estratégias para crescer seu negócio.
+            </p>
 
-              {/* Form */}
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <FormField
-                    control={form.control}
-                    name="nome"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            placeholder="Seu nome"
-                            className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+            {/* Form Card */}
+            <Card className="border-ba-blue-light/20 bg-black/40 backdrop-blur">
+              <CardContent className="p-8 md:p-10">
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+                    <FormField
+                      control={form.control}
+                      name="nome"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input
+                              placeholder="Seu nome"
+                              className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground h-14 text-base"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="Seu melhor e-mail"
-                            className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="Seu melhor e-mail"
+                              className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground h-14 text-base"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full h-12 bg-gradient-to-r from-ba-blue to-ba-orange hover:opacity-90 text-white font-semibold text-base"
-                  >
-                    {isSubmitting ? (
-                      "Cadastrando..."
-                    ) : (
-                      <>
-                        Quero receber
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </Form>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full h-14 bg-gradient-to-r from-ba-blue to-ba-orange hover:opacity-90 text-white font-semibold text-lg"
+                    >
+                      {isSubmitting ? (
+                        "Cadastrando..."
+                      ) : (
+                        <>
+                          Quero receber
+                          <ArrowRight className="ml-2 w-5 h-5" />
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </Form>
 
-              {/* Benefits */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <div className="flex items-center justify-center gap-2 text-white/60 text-sm">
-                  <Sparkles className="w-4 h-4 text-ba-orange" />
-                  <span>100% gratuito • Cancele quando quiser</span>
+                {/* Benefits */}
+                <div className="mt-8 pt-6 border-t border-border">
+                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm">
+                    <Sparkles className="w-4 h-4 text-ba-orange" />
+                    <span>100% gratuito • Cancele quando quiser</span>
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </main>
+      </section>
 
       <Footer />
     </div>
