@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -21,6 +21,16 @@ type NewsletterForm = z.infer<typeof newsletterSchema>;
 const NewsletterSimples = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+
+  // Remove body padding and set black background for standalone page
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000000';
+    document.body.style.paddingTop = '0';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.paddingTop = '';
+    };
+  }, []);
 
   const form = useForm<NewsletterForm>({
     resolver: zodResolver(newsletterSchema),

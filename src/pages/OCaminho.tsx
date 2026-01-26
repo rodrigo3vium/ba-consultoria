@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -34,6 +34,16 @@ type FormData = z.infer<typeof formSchema>;
 const OCaminho = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Remove body padding and set black background for standalone page
+  useEffect(() => {
+    document.body.style.backgroundColor = '#000000';
+    document.body.style.paddingTop = '0';
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.body.style.paddingTop = '';
+    };
+  }, []);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
