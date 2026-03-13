@@ -33,6 +33,7 @@ import Newsletter from "./pages/Newsletter";
 import NewsletterSimples from "./pages/NewsletterSimples";
 import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
+import Home2 from "./pages/Home2";
 
 const queryClient = new QueryClient();
 
