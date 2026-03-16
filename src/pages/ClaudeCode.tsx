@@ -150,11 +150,13 @@ const ClaudeCode = () => {
 
           {/* Title */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15]"
             style={{ fontFamily: "'Playfair Display', serif", color: "#f0e6d0" }}
           >
-            Automatize sua vida com{" "}
-            <span style={{ fontStyle: "italic", color: "#c9a227" }}>Claude</span>
+            Masterclass: Ganhe mais, trabalhe menos.{" "}
+            <span style={{ fontStyle: "italic", color: "#c9a227" }}>
+              Automatizando sua vida com Claude Code.
+            </span>
           </h1>
 
           {/* Subtitle */}
@@ -167,8 +169,8 @@ const ClaudeCode = () => {
               lineHeight: 1.85,
             }}
           >
-            Saia da teoria e aprenda, na prática, como usar Claude de verdade para ganhar
-            produtividade, construir automações e criar aplicações úteis no dia a dia.
+            Aprenda como pessoas comuns estão usando IA para cortar custos, automatizar
+            tarefas operacionais e ganhar mais dinheiro. Sem precisar de equipe e sem saber programar.
           </p>
 
           {/* CTA */}
