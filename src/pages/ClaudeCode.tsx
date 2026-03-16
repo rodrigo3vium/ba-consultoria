@@ -153,7 +153,7 @@ const ClaudeCode = () => {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15]"
             style={{ fontFamily: "'Playfair Display', serif", color: "#f0e6d0" }}
           >
-            Masterclass: Ganhe mais, trabalhe menos.{" "}
+            Ganhe mais, trabalhe menos.{" "}
             <span style={{ fontStyle: "italic", color: "#c9a227" }}>
               Automatizando sua vida com Claude Code.
             </span>
