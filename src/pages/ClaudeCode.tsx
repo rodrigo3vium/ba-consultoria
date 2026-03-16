@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 import { tracker } from "@/lib/tracking";
 import { Calendar, Clock, Video, MessageCircle, Zap, DollarSign, Brain, Rocket, ArrowRight } from "lucide-react";
+import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
 
 const HOTMART_BASE_URL = "https://pay.hotmart.com/T104822269G";
 
@@ -342,6 +343,14 @@ const ClaudeCode = () => {
           </div>
         </div>
       </section>
+
+      {/* Ornamental divider */}
+      <div className="text-center py-4" style={{ color: "rgba(201, 162, 39, 0.3)" }}>
+        ✦
+      </div>
+
+      {/* O Mundo Já Mudou */}
+      <ApocalypseSection onCTA={handleCTA} />
 
       {/* Ornamental divider */}
       <div className="text-center py-4" style={{ color: "rgba(201, 162, 39, 0.3)" }}>
