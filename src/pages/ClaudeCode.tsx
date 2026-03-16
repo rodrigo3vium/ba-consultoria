@@ -396,7 +396,7 @@ const ClaudeCode = () => {
                     className="text-xl font-bold"
                     style={{ fontFamily: "'Playfair Display', serif", color: "#f0e6d0" }}
                   >
-                    25 de março de 2025
+                    25 de março de 2026
                   </p>
                   <p
                     className="text-sm"
