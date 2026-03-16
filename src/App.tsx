@@ -16,6 +16,7 @@ import IADoZero from "./pages/IADoZero";
 import GoogleMeuNegocio from "./pages/GoogleMeuNegocio";
 import ComoAplicarIA from "./pages/ComoAplicarIA";
 import OCaminho from "./pages/OCaminho";
+import ClaudeCode from "./pages/ClaudeCode";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
