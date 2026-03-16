@@ -62,6 +62,7 @@ const App = () => (
           <Route path="/educacao/ia-do-zero" element={<IADoZero />} />
           <Route path="/educacao/como-aplicar-ia" element={<ComoAplicarIA />} />
           <Route path="/educacao/o-caminho" element={<OCaminho />} />
+          <Route path="/educacao/claude-code" element={<ClaudeCode />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
