@@ -8,6 +8,8 @@ const SECTION_BG = "#0e1a0f";
 const SECTION_BG_ALT = "#162318";
 const GOLD_DIM = "rgba(201, 162, 39, 0.7)";
 
+// ── Data ──
+
 const tickerItems = [
   { company: "CHGG", change: "▼ 99% desde 2021" },
   { company: "DUOL", change: "▼ 82% desde mai/2025" },
@@ -18,95 +20,207 @@ const tickerItems = [
   { company: "SaaS", change: "▼ $1 TRI em valor" },
 ];
 
-interface CasualtyCard {
+interface CasualtyData {
   company: string;
+  ticker: string;
+  logoInitials: string;
+  logoColor: string;
   badge: string;
   stat: string;
   statLabel: string;
   detail: string;
   source: string;
-  chartPath: string;
-  chartGradientId: string;
+  hasChart: boolean;
+  chartPath?: string;
+  chartGradientId?: string;
 }
 
-const casualties: CasualtyCard[] = [
+const casualties: CasualtyData[] = [
   {
     company: "Chegg",
-    badge: "EXTINTA",
+    ticker: "NYSE: CHGG",
+    logoInitials: "C",
+    logoColor: "#F37321",
+    badge: "Extinta",
     stat: "−99%",
-    statLabel: "Queda no valor de mercado",
-    detail: "De US$ 14,5 bilhões para US$ 191 milhões. Demitiu 45% dos funcionários. Alunos trocaram a plataforma pelo ChatGPT — de graça e instantâneo.",
-    source: "Fonte: CNBC, Fortune, Sherwood News",
+    statLabel: "Valor de mercado",
+    detail: "De US$ 14,5 bi para US$ 191 mi. Demitiu 45% dos funcionários. Alunos trocaram a plataforma pelo ChatGPT.",
+    source: "CNBC · Fortune · Sherwood News",
+    hasChart: true,
     chartPath: "M0,10 C20,8 40,12 80,6 120,15 160,5 200,20 240,35 260,40 280,44",
     chartGradientId: "chegg",
   },
   {
     company: "Duolingo",
-    badge: "EM QUEDA",
+    ticker: "NASDAQ: DUOL",
+    logoInitials: "D",
+    logoColor: "#58CC02",
+    badge: "Em queda",
     stat: "−82%",
-    statLabel: "Queda desde a máxima",
-    detail: "Ação despencou de US$ 544 para ~US$ 100. A OpenAI demonstrou que o GPT-5 cria apps de idiomas em minutos. Investidores entraram em pânico.",
-    source: "Fonte: Fast Company, Intellectia, Nasdaq",
+    statLabel: "Desde a máxima",
+    detail: "Ação de US$ 544 para ~US$ 100. GPT-5 cria apps de idiomas em minutos. Investidores em pânico.",
+    source: "Fast Company · Nasdaq · Intellectia",
+    hasChart: true,
     chartPath: "M0,8 C30,6 60,10 100,7 140,18 180,30 220,38 260,42 280,44",
     chartGradientId: "duolingo",
   },
   {
     company: "Stack Overflow",
-    badge: "IRRELEVANTE",
+    ticker: "Prosus (adquiriu por $1.8 bi)",
+    logoInitials: "SO",
+    logoColor: "#F48024",
+    badge: "Irrelevante",
     stat: "−78%",
-    statLabel: "Queda no volume de perguntas",
-    detail: "De 200.000 perguntas/mês para menos de 4.000. Demitiu 28% da equipe. Devs migraram para o ChatGPT e GitHub Copilot.",
-    source: "Fonte: VentureBeat, TechCrunch, DevClass",
+    statLabel: "Volume de perguntas",
+    detail: "De 200.000 perguntas/mês para menos de 4.000. Demitiu 28% da equipe. Devs migraram pro ChatGPT.",
+    source: "VentureBeat · TechCrunch · DevClass",
+    hasChart: true,
     chartPath: "M0,8 C40,10 80,7 120,14 160,22 200,32 240,40 270,44 280,44",
     chartGradientId: "stackoverflow",
   },
   {
     company: "UiPath",
-    badge: "AMEAÇADA",
+    ticker: "NYSE: PATH",
+    logoInitials: "U",
+    logoColor: "#FA4616",
+    badge: "Ameaçada",
     stat: "−50%",
     statLabel: "Queda em 2024",
-    detail: "IA generativa ameaça substituir a automação robótica (RPA) da UiPath. Crescimento desacelerou de 24% para 9%. CEO trocado às pressas.",
-    source: "Fonte: Nasdaq, Motley Fool",
+    detail: "IA generativa ameaça substituir toda a automação robótica (RPA). Crescimento de 24% caiu para 9%. CEO trocado às pressas.",
+    source: "Nasdaq · Motley Fool",
+    hasChart: true,
     chartPath: "M0,12 C30,10 70,14 110,12 150,20 190,28 230,36 260,42 280,44",
     chartGradientId: "uipath",
   },
   {
     company: "Adobe · Salesforce · ServiceNow",
-    badge: "SELL-OFF",
+    ticker: "ADBE · CRM · NOW",
+    logoInitials: "S",
+    logoColor: "linear-gradient(135deg, #E8344E, #6F42C1)",
+    badge: "Sell-off",
     stat: "−25%",
-    statLabel: "Queda média em 2026",
-    detail: 'A imprensa já batizou: "SaaSmageddon". US$ 1 trilhão evaporou do setor de software. Investidores temem que IA torne SaaS obsoleto.',
-    source: "Fonte: Motley Fool, InvestorPlace, Fortune",
+    statLabel: "Queda média 2026",
+    detail: 'A imprensa batizou: "SaaSmageddon". US$ 1 trilhão evaporou do setor de software. Investidores temem obsolescência.',
+    source: "Motley Fool · InvestorPlace · Fortune",
+    hasChart: true,
     chartPath: "M0,10 C40,8 80,12 130,10 170,18 210,24 250,34 270,40 280,44",
     chartGradientId: "saas",
   },
   {
     company: "O outro lado",
-    badge: "DADO MIT",
+    ticker: "MIT NANDA Report · 2025",
+    logoInitials: "MIT",
+    logoColor: "#A31F34",
+    badge: "Dado MIT",
     stat: "95%",
-    statLabel: "Empresas com retorno ZERO em IA",
-    detail: "Relatório do MIT (2025) revelou: 95% dos pilotos de IA generativa nas empresas falharam. Quem não sabe implementar está queimando dinheiro. Quem sabe, está dominando.",
-    source: "Fonte: MIT NANDA Report, Fortune, Axios",
-    chartPath: "M0,40 C30,38 70,42 110,36 150,30 190,20 230,12 260,8 280,6",
-    chartGradientId: "mit",
+    statLabel: "Retorno zero em IA",
+    detail: "Relatório do MIT (2025): 95% dos pilotos de IA generativa falharam. Quem não sabe implementar está queimando dinheiro. Quem sabe, está dominando.",
+    source: "MIT NANDA · Fortune · Axios",
+    hasChart: false,
   },
 ];
 
-const headlines = [
-  { source: "CNBC", text: "Chegg demite 45% da equipe, culpa", highlight: "'novas realidades da IA'" },
-  { source: "Fortune", text: "Dinheiro burro entra enquanto traders perdem $1 trilhão ao perceber que", highlight: "IA vai engolir empresas de tecnologia primeiro" },
-  { source: "Gizmodo", text: "Chegg está à beira da falência após", highlight: "ChatGPT derrubar ações em 99%" },
-  { source: "InvestorPlace", text: "SaaSmageddon chegou — e", highlight: "nem todo software vai sobreviver" },
-  { source: "VentureBeat", text: "Stack Overflow confirma demissões:", highlight: "28% da equipe cortada" },
-  { source: "Fast Company", text: "Ações da Duolingo em queda livre, continuando", highlight: "colapso dramático" },
+interface NewsClipData {
+  source: string;
+  sourceInitials: string;
+  sourceColor: string;
+  url: string;
+  date: string;
+  headline: string;
+  highlightText: string;
+  excerpt: string;
+}
+
+const newsClippings: NewsClipData[] = [
+  {
+    source: "CNBC",
+    sourceInitials: "C",
+    sourceColor: "#005594",
+    url: "cnbc.com/2025/10/27/chegg-slashes-45-workforce",
+    date: "27 Out 2025",
+    headline: 'Chegg demite 45% da equipe, culpa ',
+    highlightText: '"novas realidades da IA"',
+    excerpt: "A empresa de educação online foi atingida pela ascensão de ferramentas de IA generativa como o ChatGPT da OpenAI, cada vez mais populares entre estudantes.",
+  },
+  {
+    source: "Fortune",
+    sourceInitials: "F",
+    sourceColor: "#E31937",
+    url: "fortune.com/2026/02/05/stocks-dumb-money-ai-tech",
+    date: "05 Fev 2026",
+    headline: "Traders perdem $1 trilhão ao perceber que ",
+    highlightText: "IA vai engolir empresas de tech primeiro",
+    excerpt: "Cerca de US$ 1 trilhão foi eliminado do market cap de empresas de software ontem, segundo a Bloomberg.",
+  },
+  {
+    source: "Gizmodo",
+    sourceInitials: "G",
+    sourceColor: "#1A1A2E",
+    url: "gizmodo.com/chegg-chatgpt-stock-down-99",
+    date: "25 Fev 2025",
+    headline: "Chegg está à beira da falência após ",
+    highlightText: "ChatGPT derrubar ações em 99%",
+    excerpt: "A ação está em queda de 99% desde os picos de 2021, eliminando US$ 14,5 bilhões em valor.",
+  },
+  {
+    source: "InvestorPlace",
+    sourceInitials: "I",
+    sourceColor: "#0A7B3E",
+    url: "investorplace.com/2026/02/saasmageddon-is-here",
+    date: "10 Fev 2026",
+    headline: "SaaSmageddon chegou — e ",
+    highlightText: "nem todo software vai sobreviver",
+    excerpt: "Como grupo, ações SaaS caíram mais de 20% desde o final de 2025 — um dos drawdowns mais rápidos fora da crise de 2008.",
+  },
+  {
+    source: "VentureBeat",
+    sourceInitials: "V",
+    sourceColor: "#CC0000",
+    url: "venturebeat.com/stack-overflow-layoffs-28-percent",
+    date: "22 Dez 2025",
+    headline: "Stack Overflow confirma demissões: ",
+    highlightText: "28% da equipe cortada",
+    excerpt: "Com soluções concorrentes já em uso massivo, a era da IA generativa não tem sido fácil para o Stack Overflow.",
+  },
+  {
+    source: "Fast Company",
+    sourceInitials: "FC",
+    sourceColor: "#000000",
+    url: "fastcompany.com/duolingo-stock-dramatic-collapse",
+    date: "02 Mar 2026",
+    headline: "Ações da Duolingo em queda livre, continuando ",
+    highlightText: "colapso dramático",
+    excerpt: "Investidores estão abandonando a Duolingo após projeções decepcionantes para 2026. Ação perdeu 82% do valor.",
+  },
 ];
+
+// ── Sub-components ──
 
 interface ApocalypseSectionProps {
   onCTA: (location: string) => void;
 }
 
+const LogoIcon = ({ initials, color }: { initials: string; color: string }) => {
+  const isGradient = color.startsWith("linear");
+  return (
+    <div
+      className="flex items-center justify-center flex-shrink-0 text-white font-extrabold"
+      style={{
+        width: 36,
+        height: 36,
+        borderRadius: 8,
+        background: color,
+        fontSize: initials.length > 2 ? "0.65rem" : "0.85rem",
+        border: color === "#000000" || color === "#1A1A2E" ? "1px solid rgba(255,255,255,0.15)" : undefined,
+      }}
+    >
+      {initials}
+    </div>
+  );
+};
+
 const MiniChart = ({ path, gradientId }: { path: string; gradientId: string }) => (
-  <div className="h-12 mb-4 relative">
+  <div className="flex-1 h-[52px] relative">
     <svg viewBox="0 0 280 48" className="w-full h-full" preserveAspectRatio="none">
       <defs>
         <linearGradient id={`grad-${gradientId}`} x1="0%" y1="0%" x2="0%" y2="100%">
@@ -123,7 +237,7 @@ const MiniChart = ({ path, gradientId }: { path: string; gradientId: string }) =
 const TickerTrack = () => (
   <div className="flex gap-12" style={{ animation: "ticker-scroll 40s linear infinite" }}>
     {[...tickerItems, ...tickerItems].map((item, i) => (
-      <span key={i} className="flex items-center gap-2 whitespace-nowrap font-mono text-xs" style={{ color: MUTED }}>
+      <span key={i} className="flex items-center gap-2.5 whitespace-nowrap font-mono text-[0.78rem] font-medium" style={{ color: MUTED }}>
         <span style={{ color: PARCHMENT, fontWeight: 600 }}>{item.company}</span>
         <span style={{ color: GOLD, fontWeight: 600 }}>{item.change}</span>
       </span>
@@ -131,10 +245,160 @@ const TickerTrack = () => (
   </div>
 );
 
+const CasualtyCard = ({ c }: { c: CasualtyData }) => (
+  <div
+    className="relative overflow-hidden p-6 md:p-7 border transition-all duration-300 group"
+    style={{
+      backgroundColor: CARD_BG,
+      borderColor: "rgba(201,162,39,0.12)",
+      borderRadius: 12,
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.borderColor = "rgba(201,162,39,0.3)";
+      e.currentTarget.style.transform = "translateY(-3px)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.borderColor = "rgba(201,162,39,0.12)";
+      e.currentTarget.style.transform = "translateY(0)";
+    }}
+  >
+    {/* Top gold line on hover */}
+    <div
+      className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)` }}
+    />
+
+    {/* Logo row */}
+    <div className="flex justify-between items-center mb-5">
+      <div className="flex items-center gap-2.5">
+        <LogoIcon initials={c.logoInitials} color={c.logoColor} />
+        <div className="flex flex-col">
+          <span className="text-[1.1rem] font-bold leading-tight" style={{ fontFamily: "'DM Sans', sans-serif", color: PARCHMENT }}>
+            {c.company}
+          </span>
+          <span className="font-mono text-[0.6rem] mt-px" style={{ color: MUTED, letterSpacing: "0.08em" }}>
+            {c.ticker}
+          </span>
+        </div>
+      </div>
+      <span
+        className="font-mono text-[0.6rem] font-semibold px-2.5 py-1 uppercase whitespace-nowrap"
+        style={{
+          backgroundColor: "rgba(201,162,39,0.12)",
+          color: GOLD,
+          borderRadius: 4,
+          letterSpacing: "0.05em",
+        }}
+      >
+        {c.badge}
+      </span>
+    </div>
+
+    {/* Stat + chart row */}
+    <div className={`flex ${c.hasChart ? "items-end gap-4" : ""} mb-4 flex-col sm:flex-row`}>
+      <div className="flex-shrink-0">
+        <div
+          className="text-[2.6rem] font-black leading-none"
+          style={{ fontFamily: "'Playfair Display', serif", color: GOLD, letterSpacing: "-0.02em" }}
+        >
+          {c.stat}
+        </div>
+        <div className="font-mono text-[0.58rem] uppercase mt-1" style={{ color: MUTED, letterSpacing: "0.12em" }}>
+          {c.statLabel}
+        </div>
+      </div>
+      {c.hasChart && c.chartPath && c.chartGradientId && (
+        <MiniChart path={c.chartPath} gradientId={c.chartGradientId} />
+      )}
+    </div>
+
+    {/* Detail */}
+    <p className="text-[0.85rem] leading-relaxed mb-3.5" style={{ color: MUTED, fontWeight: 300 }}>
+      {c.detail}
+    </p>
+
+    {/* Source */}
+    <p className="font-mono text-[0.55rem] uppercase" style={{ color: GOLD_DIM, letterSpacing: "0.1em", opacity: 0.6 }}>
+      {c.source}
+    </p>
+  </div>
+);
+
+const NewsClip = ({ n }: { n: NewsClipData }) => (
+  <div
+    className="overflow-hidden border transition-all duration-300"
+    style={{
+      backgroundColor: SECTION_BG_ALT,
+      borderColor: "rgba(255,255,255,0.06)",
+      borderRadius: 10,
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+      e.currentTarget.style.transform = "translateY(-2px)";
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+      e.currentTarget.style.transform = "translateY(0)";
+    }}
+  >
+    {/* Browser bar */}
+    <div className="flex items-center gap-2 px-3.5 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+      <div className="flex gap-1">
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+      </div>
+      <span className="font-mono text-[0.55rem] truncate" style={{ color: "rgba(255,255,255,0.3)" }}>
+        {n.url}
+      </span>
+    </div>
+
+    {/* Content */}
+    <div className="p-4 md:p-[18px]">
+      {/* Source row */}
+      <div className="flex items-center gap-2 mb-2.5">
+        <div
+          className="flex items-center justify-center flex-shrink-0 text-white font-extrabold"
+          style={{
+            width: 20,
+            height: 20,
+            borderRadius: 4,
+            background: n.sourceColor,
+            fontSize: "0.55rem",
+            border: n.sourceColor === "#000000" || n.sourceColor === "#1A1A2E" ? "1px solid rgba(255,255,255,0.15)" : undefined,
+          }}
+        >
+          {n.sourceInitials}
+        </div>
+        <span className="text-[0.7rem] font-bold uppercase" style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }}>
+          {n.source}
+        </span>
+        <span className="font-mono text-[0.55rem] ml-auto" style={{ color: "rgba(255,255,255,0.2)" }}>
+          {n.date}
+        </span>
+      </div>
+
+      {/* Headline */}
+      <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}>
+        {n.headline}<span style={{ color: GOLD, fontWeight: 700 }}>{n.highlightText}</span>
+      </p>
+
+      {/* Excerpt */}
+      <p
+        className="text-[0.75rem] leading-[1.5] font-light line-clamp-2"
+        style={{ color: "rgba(255,255,255,0.35)" }}
+      >
+        {n.excerpt}
+      </p>
+    </div>
+  </div>
+);
+
+// ── Main Section ──
+
 export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
   return (
     <>
-      {/* Ticker + keyframes */}
       <style>{`
         @keyframes ticker-scroll {
           0% { transform: translateX(0); }
@@ -142,52 +406,36 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
         }
       `}</style>
 
-      <section className="relative px-6 overflow-hidden" style={{ backgroundColor: SECTION_BG, paddingTop: "100px", paddingBottom: "100px" }}>
-        {/* Subtle radial glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,162,39,0.06) 0%, transparent 60%)",
-          }}
-        />
+      <section className="relative px-6 overflow-hidden" style={{ backgroundColor: SECTION_BG, paddingTop: 100, paddingBottom: 120 }}>
+        {/* Radial glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,162,39,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,162,39,0.03) 0%, transparent 50%)",
+        }} />
+        {/* Grid overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-50" style={{
+          backgroundImage: "linear-gradient(rgba(201,162,39,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,39,0.03) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }} />
 
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-[1100px] mx-auto relative z-10">
           {/* Eyebrow + Title */}
-          <div className="mb-6 flex items-center gap-3">
+          <div className="mb-4 flex items-center gap-2.5">
             <span className="inline-block w-8 h-px" style={{ backgroundColor: GOLD }} />
-            <span
-              className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.25em]"
-              style={{ color: GOLD }}
-            >
+            <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.25em]" style={{ color: GOLD }}>
               Enquanto você espera
             </span>
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{
-                backgroundColor: GOLD,
-                boxShadow: `0 0 8px ${GOLD}`,
-                animation: "pulse 2s ease-in-out infinite",
-              }}
-            />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD, boxShadow: `0 0 8px ${GOLD}`, animation: "pulse 2s ease-in-out infinite" }} />
           </div>
 
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] mb-5 max-w-[700px]"
+            className="text-[clamp(2.2rem,5vw,3.6rem)] font-black leading-[1.1] mb-5 max-w-[700px]"
             style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}
           >
             O mercado já está{" "}
             <em style={{ fontStyle: "italic", color: GOLD }}>sentindo o impacto</em>
           </h2>
 
-          <p
-            className="text-base max-w-[600px] mb-16"
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              color: MUTED,
-              lineHeight: 1.7,
-              fontWeight: 300,
-            }}
-          >
+          <p className="text-[1.05rem] max-w-[620px] mb-16" style={{ color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
             Empresas bilionárias estão derretendo em tempo real. Não é teoria — são números.{" "}
             <strong style={{ color: PARCHMENT, fontWeight: 600 }}>
               Quem não se adapta à inteligência artificial está sendo engolido por quem já se adaptou.
@@ -198,125 +446,31 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
         {/* Ticker */}
         <div
           className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mb-14"
-          style={{
-            borderTop: `1px solid rgba(201,162,39,0.15)`,
-            borderBottom: `1px solid rgba(201,162,39,0.15)`,
-            padding: "14px 0",
-            backgroundColor: "rgba(201,162,39,0.02)",
-          }}
+          style={{ borderTop: "1px solid rgba(201,162,39,0.15)", borderBottom: "1px solid rgba(201,162,39,0.15)", padding: "14px 0", backgroundColor: "rgba(201,162,39,0.02)" }}
         >
           <TickerTrack />
         </div>
 
-        {/* Casualty Cards */}
-        <div className="max-w-5xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+        <div className="max-w-[1100px] mx-auto relative z-10">
+          {/* Casualty Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-[72px]">
             {casualties.map((c, i) => (
-              <div
-                key={i}
-                className="p-7 border transition-all duration-300"
-                style={{
-                  backgroundColor: CARD_BG,
-                  borderColor: "rgba(201,162,39,0.12)",
-                  borderRadius: "4px",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(201,162,39,0.4)";
-                  e.currentTarget.style.transform = "translateY(-3px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(201,162,39,0.12)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                }}
-              >
-                {/* Header */}
-                <div className="flex justify-between items-start mb-4">
-                  <span className="text-lg font-bold" style={{ fontFamily: "'DM Sans', sans-serif", color: PARCHMENT }}>
-                    {c.company}
-                  </span>
-                  <span
-                    className="font-mono text-[0.7rem] font-semibold px-2.5 py-1"
-                    style={{
-                      backgroundColor: "rgba(201,162,39,0.12)",
-                      color: GOLD,
-                      borderRadius: "4px",
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    {c.badge}
-                  </span>
-                </div>
-
-                {/* Stat */}
-                <div
-                  className="text-4xl font-black leading-none mb-1"
-                  style={{ fontFamily: "'Playfair Display', serif", color: GOLD, letterSpacing: "-0.02em" }}
-                >
-                  {c.stat}
-                </div>
-                <div
-                  className="font-mono text-[0.65rem] uppercase mb-5"
-                  style={{ color: MUTED, letterSpacing: "0.15em" }}
-                >
-                  {c.statLabel}
-                </div>
-
-                {/* Mini chart */}
-                <MiniChart path={c.chartPath} gradientId={c.chartGradientId} />
-
-                {/* Detail */}
-                <p className="text-sm leading-relaxed mb-3" style={{ color: MUTED, fontWeight: 300 }}>
-                  {c.detail}
-                </p>
-
-                {/* Source */}
-                <p
-                  className="font-mono text-[0.6rem] uppercase"
-                  style={{ color: GOLD_DIM, letterSpacing: "0.1em", opacity: 0.7 }}
-                >
-                  {c.source}
-                </p>
-              </div>
+              <CasualtyCard key={i} c={c} />
             ))}
           </div>
 
-          {/* Headlines */}
-          <div className="mb-16">
-            <p
-              className="font-mono text-[0.65rem] font-semibold uppercase mb-5"
-              style={{ color: GOLD_DIM, letterSpacing: "0.2em" }}
-            >
-              Manchetes reais
-            </p>
+          {/* News Section */}
+          <div className="mb-[72px]">
+            <div className="flex items-center gap-2.5 mb-6">
+              <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD_DIM }}>
+                Manchetes reais
+              </span>
+              <span className="flex-1 h-px" style={{ background: "rgba(201,162,39,0.1)" }} />
+            </div>
 
-            <div className="flex flex-col">
-              {headlines.map((h, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-4 transition-all duration-200"
-                  style={{ borderBottom: "1px solid rgba(201,162,39,0.08)" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(201,162,39,0.02)";
-                    e.currentTarget.style.paddingLeft = "8px";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.paddingLeft = "0";
-                  }}
-                >
-                  <span
-                    className="font-mono text-[0.6rem] uppercase flex-shrink-0 sm:min-w-[90px]"
-                    style={{ color: GOLD_DIM, letterSpacing: "0.08em" }}
-                  >
-                    {h.source}
-                  </span>
-                  <span
-                    className="text-base"
-                    style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT, fontStyle: "italic", lineHeight: 1.4 }}
-                  >
-                    "{h.text} <span style={{ color: GOLD, fontWeight: 700, fontStyle: "normal" }}>{h.highlight}</span>"
-                  </span>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {newsClippings.map((n, i) => (
+                <NewsClip key={i} n={n} />
               ))}
             </div>
           </div>
@@ -326,18 +480,14 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
             className="text-center p-12 border relative overflow-hidden"
             style={{
               borderColor: "rgba(201,162,39,0.15)",
-              borderRadius: "4px",
+              borderRadius: 16,
               background: `linear-gradient(135deg, rgba(201,162,39,0.03) 0%, rgba(14,26,15,0.95) 100%)`,
             }}
           >
-            {/* Top gold line */}
-            <div
-              className="absolute top-0 left-[20%] right-[20%] h-px"
-              style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)` }}
-            />
+            <div className="absolute top-[-1px] left-[20%] right-[20%] h-px" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)` }} />
 
             <h3
-              className="text-2xl md:text-3xl font-bold mb-3 leading-snug"
+              className="text-[clamp(1.4rem,3vw,2rem)] font-bold mb-3 leading-snug"
               style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}
             >
               A pergunta não é se a IA vai mudar tudo.
@@ -345,35 +495,29 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
               A pergunta é: <em style={{ color: GOLD, fontStyle: "italic" }}>você vai estar pronto?</em>
             </h3>
 
-            <p
-              className="text-base mb-8 max-w-md mx-auto"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: MUTED,
-                fontWeight: 300,
-              }}
-            >
-              Na masterclass, eu vou te mostrar como usar IA na prática —{" "}
-              do jeito que quem está ganhando já usa.
+            <p className="text-[0.95rem] mb-8 max-w-[500px] mx-auto" style={{ color: MUTED, fontWeight: 300 }}>
+              Na masterclass, eu vou te mostrar como usar IA na prática — do jeito que quem está ganhando já usa.
             </p>
 
             <button
               onClick={() => onCTA("apocalypse")}
-              className="inline-flex items-center gap-3 text-sm uppercase tracking-[3px] border px-8 py-4 transition-all duration-500"
+              className="inline-flex items-center gap-2 text-[0.95rem] font-semibold px-9 py-3.5 transition-all duration-300"
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 600,
-                color: GOLD,
-                borderColor: "rgba(201,162,39,0.4)",
-                borderRadius: "2px",
+                fontFamily: "'DM Sans', sans-serif",
+                color: SECTION_BG,
+                backgroundColor: GOLD,
+                borderRadius: 8,
+                letterSpacing: "0.02em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = GOLD;
-                e.currentTarget.style.color = SECTION_BG;
+                e.currentTarget.style.backgroundColor = "#E0B866";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,162,39,0.25)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.color = GOLD;
+                e.currentTarget.style.backgroundColor = GOLD;
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               Garantir minha vaga
