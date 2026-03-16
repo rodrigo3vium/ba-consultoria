@@ -349,6 +349,14 @@ const ClaudeCode = () => {
         ✦
       </div>
 
+      {/* O Mundo Já Mudou */}
+      <ApocalypseSection onCTA={handleCTA} />
+
+      {/* Ornamental divider */}
+      <div className="text-center py-4" style={{ color: "rgba(201, 162, 39, 0.3)" }}>
+        ✦
+      </div>
+
       {/* Detalhes do evento */}
       <section className="px-6" style={{ backgroundColor: "#162318", paddingTop: "100px", paddingBottom: "100px" }}>
         <div className="max-w-3xl mx-auto">
