@@ -35,6 +35,7 @@ import NewsletterSimples from "./pages/NewsletterSimples";
 import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
 import Home2 from "./pages/Home2";
+import Proposta from "./pages/Proposta";
 
 const queryClient = new QueryClient();
 
