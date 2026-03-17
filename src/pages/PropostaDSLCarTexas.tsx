@@ -145,7 +145,7 @@ const PropostaDSLCarTexas = () => {
               }}
             >
               <img
-                src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png"
+                src={rodrigoPhoto}
                 alt="Rodrigo Albuquerque"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
