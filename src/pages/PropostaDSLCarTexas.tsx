@@ -161,9 +161,9 @@ const PropostaDSLCarTexas = () => {
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="dsl-stats-grid">
                 {[
-                  { num: "R$80M", label: "em vendas lideradas" },
+                  { num: "+R$130M", label: "gerados em vendas" },
                   { num: "100+", label: "consultorias realizadas" },
-                  { num: "R$500K", label: "investidos em mentoria" },
+                  { num: "+7", label: "países atendidos" },
                   { num: "+54", label: "avaliações 5 estrelas" },
                 ].map((s) => (
                   <div key={s.num} style={{ padding: "16px", background: "#1a1a1a", border: "1px solid rgba(200,149,108,0.15)", borderRadius: "12px" }}>
