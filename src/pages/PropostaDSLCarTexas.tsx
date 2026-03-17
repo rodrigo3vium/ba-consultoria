@@ -118,7 +118,7 @@ const PropostaDSLCarTexas = () => {
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#c8956c" }} />
-              Freedom Agency
+              BA Consultoria
             </span>
           </div>
         </div>
