@@ -48,7 +48,7 @@ const PropostaDSLCarTexas = () => {
         >
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", opacity: 0.4 }} />
 
-          <img src={dslLogo} alt="DSL Car Texas" style={{ width: "120px", height: "120px", objectFit: "contain", borderRadius: "16px", marginBottom: "32px", animation: "dsl-fadeDown 0.8s ease both" }} />
+          <img src={dslLogo} alt="DSL Car Texas" style={{ width: "120px", height: "120px", objectFit: "cover", borderRadius: "50%", marginBottom: "32px", animation: "dsl-fadeDown 0.8s ease both" }} />
 
           <div
             style={{
