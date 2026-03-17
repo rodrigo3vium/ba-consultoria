@@ -156,7 +156,7 @@ const PropostaDSLCarTexas = () => {
 
             <div>
               <p style={{ color: "#9a9590", fontSize: "16px", fontWeight: 300, marginBottom: "16px" }}>
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na Freedom Agency o aprendizado extraído de mais de 100 empresas que receberam consultoria.
+                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
               </p>
               <p style={{ color: "#9a9590", fontSize: "16px", fontWeight: 300, marginBottom: "24px" }}>
                 A Freedom Agency une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
