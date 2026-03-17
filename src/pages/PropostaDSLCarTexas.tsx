@@ -423,7 +423,7 @@ const PropostaDSLCarTexas = () => {
             Guilherme, teu negócio já passou da fase da ideia. Tu já construiu oferta, autoridade, confiança e demanda. O que está faltando agora não é mais validação — é estrutura para a operação acompanhar o nível do que você já construiu.
           </p>
           <a
-            href="https://wa.me/5551999999999"
+            href="https://wa.me/5511999718595"
             target="_blank"
             rel="noopener noreferrer"
             style={{
