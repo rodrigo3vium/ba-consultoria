@@ -118,7 +118,7 @@ const PropostaDSLCarTexas = () => {
             </span>
             <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#c8956c" }} />
-              Freedom Agency
+              BA Consultoria
             </span>
           </div>
         </div>
@@ -151,15 +151,15 @@ const PropostaDSLCarTexas = () => {
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "48px", fontWeight: 700, background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 RA
               </span>
-              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>Freedom Agency</span>
+              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>BA Consultoria</span>
             </div>
 
             <div>
               <p style={{ color: "#9a9590", fontSize: "16px", fontWeight: 300, marginBottom: "16px" }}>
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na Freedom Agency o aprendizado extraído de mais de 100 empresas que receberam consultoria.
+                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
               </p>
               <p style={{ color: "#9a9590", fontSize: "16px", fontWeight: 300, marginBottom: "24px" }}>
-                A Freedom Agency une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
+                A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
               </p>
 
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="dsl-stats-grid">
