@@ -139,19 +139,15 @@ const PropostaDSLCarTexas = () => {
                 width: "100%",
                 aspectRatio: "1",
                 borderRadius: "20px",
-                background: "linear-gradient(135deg, #1a1510 0%, #2a221a 100%)",
+                overflow: "hidden",
                 border: "1px solid rgba(200,149,108,0.15)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "12px",
               }}
             >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "48px", fontWeight: 700, background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                RA
-              </span>
-              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>BA Consultoria</span>
+              <img
+                src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png"
+                alt="Rodrigo Albuquerque"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </div>
 
             <div>
