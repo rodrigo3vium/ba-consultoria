@@ -151,7 +151,7 @@ const PropostaDSLCarTexas = () => {
               <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "48px", fontWeight: 700, background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 RA
               </span>
-              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>Freedom Agency</span>
+              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>BA Consultoria</span>
             </div>
 
             <div>
