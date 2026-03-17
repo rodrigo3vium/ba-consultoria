@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
+import dslLogo from "@/assets/dsl-car-texas-logo.jpg";
 
 const PropostaDSLCarTexas = () => {
   useEffect(() => {
