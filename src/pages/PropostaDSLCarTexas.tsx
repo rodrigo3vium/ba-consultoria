@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 import dslLogo from "@/assets/dsl-car-texas-logo.jpg";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
+import vaboPhoto from "@/assets/mentors/vabo.jpg";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
 const PropostaDSLCarTexas = () => {
   useEffect(() => {
@@ -407,6 +412,51 @@ const PropostaDSLCarTexas = () => {
           </div>
         </div>
 
+        {/* MENTORES */}
+        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
+          <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: "#c8956c", marginBottom: "16px", textAlign: "center" }}>Referências</p>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 600, marginBottom: "16px", lineHeight: 1.25, textAlign: "center" }}>
+            Nossos Mentores e Professores
+          </h2>
+          <p style={{ color: "#9a9590", fontSize: "16px", maxWidth: "700px", fontWeight: 300, textAlign: "center", margin: "0 auto 48px" }}>
+            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "20px" }} className="dsl-mentors-grid">
+            {[
+              { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
+              { name: "Pedro Somma", role: "Ex-COO - 99 Taxi", photo: pedroSommaPhoto, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
+              { name: "Luis Vabo Jr.", role: "Ex-diretor - Stone", photo: vaboPhoto, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
+              { name: "João Olivério", role: "CEO - Sales As A System", photo: joaoOliverioPhoto, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
+              { name: "José Diogo C. Rodrigues", role: "CMO Latam - Tinder", photo: joseDiogoPhoto, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
+            ].map((m) => (
+              <div
+                key={m.name}
+                style={{
+                  background: "#1a1a1a",
+                  border: "1px solid rgba(200,149,108,0.15)",
+                  borderRadius: "16px",
+                  padding: "20px",
+                  textAlign: "center",
+                  transition: "border-color 0.3s, transform 0.3s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(200,149,108,0.35)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(200,149,108,0.15)"; e.currentTarget.style.transform = "translateY(0)"; }}
+              >
+                <div style={{ width: "80px", height: "80px", borderRadius: "50%", overflow: "hidden", margin: "0 auto 12px", border: "1px solid rgba(200,149,108,0.2)" }}>
+                  <img src={m.photo} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(30%)" }} />
+                </div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "15px", fontWeight: 600, color: "#f0ebe3", marginBottom: "4px" }}>{m.name}</h3>
+                <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8956c", marginBottom: "8px" }}>{m.role}</p>
+                <p style={{ fontSize: "12px", color: "#6b6560", fontWeight: 300, lineHeight: 1.5 }}>{m.bio}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* DIVIDER */}
+        <div style={{ width: "60px", height: "1px", background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", margin: "0 auto" }} />
+
         {/* CTA */}
         <div
           style={{
@@ -465,6 +515,7 @@ const PropostaDSLCarTexas = () => {
           .dsl-diag-grid { grid-template-columns: 1fr !important; }
           .dsl-pricing-grid { grid-template-columns: 1fr !important; }
           .dsl-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .dsl-mentors-grid { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </>
