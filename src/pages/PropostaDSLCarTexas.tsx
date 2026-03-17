@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const PropostaDSLCarTexas = () => {
   useEffect(() => {
@@ -139,19 +140,15 @@ const PropostaDSLCarTexas = () => {
                 width: "100%",
                 aspectRatio: "1",
                 borderRadius: "20px",
-                background: "linear-gradient(135deg, #1a1510 0%, #2a221a 100%)",
+                overflow: "hidden",
                 border: "1px solid rgba(200,149,108,0.15)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "12px",
               }}
             >
-              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "48px", fontWeight: 700, background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                RA
-              </span>
-              <span style={{ fontSize: "11px", letterSpacing: "3px", textTransform: "uppercase", color: "#6b6560" }}>BA Consultoria</span>
+              <img
+                src={rodrigoPhoto}
+                alt="Rodrigo Albuquerque"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </div>
 
             <div>
@@ -165,9 +162,9 @@ const PropostaDSLCarTexas = () => {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="dsl-stats-grid">
                 {[
                   { num: "R$80M", label: "em vendas lideradas" },
-                  { num: "100+", label: "empresas consultadas" },
+                  { num: "100+", label: "consultorias realizadas" },
                   { num: "R$500K", label: "investidos em mentoria" },
-                  { num: "5x", label: "ROAS médio de clientes" },
+                  { num: "+54", label: "avaliações 5 estrelas" },
                 ].map((s) => (
                   <div key={s.num} style={{ padding: "16px", background: "#1a1a1a", border: "1px solid rgba(200,149,108,0.15)", borderRadius: "12px" }}>
                     <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "24px", fontWeight: 700, color: "#c8956c" }}>{s.num}</div>
