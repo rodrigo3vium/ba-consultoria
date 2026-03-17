@@ -392,11 +392,8 @@ const PropostaDSLCarTexas = () => {
                   <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "10px", padding: 0 }}>
                     {[
                       "Tudo da Opção 1 incluso",
-                      "Implementação de agente com IA no processo",
-                      "Automação inteligente de etapas operacionais",
-                      "Apoio na triagem e organização dos leads",
-                      "Operação preparada para escala",
-                      "Manutenção mensal do agente: funcionamento, ajustes e evolução",
+                      "Implementação de agente com IA para atendimento no WhatsApp",
+                      "Manutenção mensal do agente: segurança, ajustes e evolução, com zero custo variável para você",
                     ].map((item) => (
                       <li key={item} style={{ fontSize: "13px", color: "#9a9590", fontWeight: 300, paddingLeft: "22px", position: "relative", lineHeight: 1.5 }}>
                         <span style={{ position: "absolute", left: 0, top: "2px", color: "#c8956c", fontSize: "9px" }}>✦</span>
