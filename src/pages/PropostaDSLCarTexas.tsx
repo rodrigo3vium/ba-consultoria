@@ -515,6 +515,7 @@ const PropostaDSLCarTexas = () => {
           .dsl-diag-grid { grid-template-columns: 1fr !important; }
           .dsl-pricing-grid { grid-template-columns: 1fr !important; }
           .dsl-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .dsl-mentors-grid { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </>
