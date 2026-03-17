@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 import dslLogo from "@/assets/dsl-car-texas-logo.jpg";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
+import vaboPhoto from "@/assets/mentors/vabo.jpg";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
 const PropostaDSLCarTexas = () => {
   useEffect(() => {
