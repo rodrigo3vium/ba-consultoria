@@ -35,6 +35,7 @@ import NewsletterSimples from "./pages/NewsletterSimples";
 import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
 import Home2 from "./pages/Home2";
+import Proposta from "./pages/Proposta";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ const App = () => (
           <Route path="/newsletter" element={<NewsletterSimples />} />
           <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />
           <Route path="/home-2" element={<Home2 />} />
+          <Route path="/proposta" element={<Proposta />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
