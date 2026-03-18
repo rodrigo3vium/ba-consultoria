@@ -88,6 +88,7 @@ const App = () => (
           <Route path="/proposta/dsl-car-texas" element={<PropostaDSLCarTexas />} />
           <Route path="/proposta" element={<Proposta />} />
           <Route path="/proposta-duda/bambil" element={<PropostaDudaBambil />} />
+          <Route path="/monique" element={<PropostaMonique />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
