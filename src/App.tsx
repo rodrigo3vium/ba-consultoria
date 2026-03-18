@@ -37,6 +37,7 @@ import NotFound from "./pages/NotFound";
 import Home2 from "./pages/Home2";
 import Proposta from "./pages/Proposta";
 import PropostaDSLCarTexas from "./pages/PropostaDSLCarTexas";
+import PropostaDudaBambil from "./pages/PropostaDudaBambil";
 
 const queryClient = new QueryClient();
 
