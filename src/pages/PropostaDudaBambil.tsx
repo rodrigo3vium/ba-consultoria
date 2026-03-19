@@ -744,30 +744,6 @@ const PropostaDudaBambil = () => {
               </div>
             </div>
 
-            <div className="pdb-pricing-cards" style={{ marginTop: 24 }}>
-              <div className="pdb-price-card">
-                <div className="pdb-price-card-label">O que não está incluso</div>
-                <ul>
-                  <li>Produção ou gravação de conteúdo pela nossa equipe</li>
-                  <li>Edição de vídeos</li>
-                  <li>Atendimento comercial via WhatsApp</li>
-                  <li>Operação de social media</li>
-                  <li>Gestão de tráfego pago frio como foco principal</li>
-                  <li>Criação técnica de landing pages e automações (orçamento à parte se necessário)</li>
-                </ul>
-              </div>
-              <div className="pdb-price-card">
-                <div className="pdb-price-card-label">Seu compromisso</div>
-                <ul>
-                  <li>Gravação recorrente de conteúdos</li>
-                  <li>Execução da rotina de publicação</li>
-                  <li>Alinhamento com a equipe de captação/edição</li>
-                  <li>Retorno sobre métricas, percepções e vendas</li>
-                  <li>Participação nas reuniões estratégicas</li>
-                  <li>Implementação dos direcionamentos combinados</li>
-                </ul>
-              </div>
-            </div>
 
             <p className="pdb-section-text" style={{ marginTop: 32, fontStyle: "italic", fontSize: 14 }}>
               A estratégia reduz risco, mas o resultado depende da constância. Esse projeto funciona melhor quando existe consistência de execução.
