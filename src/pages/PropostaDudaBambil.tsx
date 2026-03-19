@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
+import rodrigoAlbuquerque from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const PropostaDudaBambil = () => {
   useEffect(() => {
