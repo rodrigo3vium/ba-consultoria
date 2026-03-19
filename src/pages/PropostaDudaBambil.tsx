@@ -845,7 +845,7 @@ const PropostaDudaBambil = () => {
           <p className="pdb-section-text" style={{ margin: "0 auto" }}>
             Se fizer sentido seguir, o próximo passo é validar o formato, alinhar a rotina de acompanhamento, organizar os ativos atuais e iniciar o diagnóstico do funil e da operação de conteúdo.
           </p>
-          <a href="https://wa.me/5551999999999" className="pdb-cta-btn" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/5511999718595" className="pdb-cta-btn" target="_blank" rel="noopener noreferrer">
             Falar com Rodrigo →
           </a>
         </div>
