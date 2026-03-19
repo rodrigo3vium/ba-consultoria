@@ -580,8 +580,7 @@ const PropostaDudaBambil = () => {
           <h2 className="pdb-section-title">Quem está por trás desta proposta</h2>
           <div className="pdb-who-grid">
             <div className="pdb-who-avatar">
-              <span className="pdb-initials">RA</span>
-              <span className="pdb-brand">Freedom Agency</span>
+              <img src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
             </div>
             <div>
               <p className="pdb-section-text" style={{ marginBottom: 16 }}>
