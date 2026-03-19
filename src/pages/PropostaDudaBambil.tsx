@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 import rodrigoAlbuquerque from "@/assets/founders/rodrigo-albuquerque.jpg";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
+import vaboPhoto from "@/assets/mentors/vabo.jpg";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
 const PropostaDudaBambil = () => {
   useEffect(() => {
@@ -548,9 +553,62 @@ const PropostaDudaBambil = () => {
           margin-top: 4px;
         }
 
+        /* MENTORS */
+        .pdb-mentors-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 20px;
+        }
+        .pdb-mentor-card {
+          background: var(--bg-card);
+          border: 1px solid var(--pdb-border);
+          border-radius: 4px;
+          padding: 20px;
+          text-align: center;
+          transition: border-color 0.3s, transform 0.3s;
+        }
+        .pdb-mentor-card:hover {
+          border-color: var(--pdb-gold-40);
+          transform: translateY(-2px);
+        }
+        .pdb-mentor-photo {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 0 auto 12px;
+          border: 1px solid var(--pdb-border);
+        }
+        .pdb-mentor-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(30%);
+        }
+        .pdb-mentor-name {
+          font-family: 'Playfair Display', serif;
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+        }
+        .pdb-mentor-role {
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--pdb-gold);
+          margin-bottom: 8px;
+        }
+        .pdb-mentor-bio {
+          font-size: 12px;
+          color: var(--text-muted);
+          font-weight: 300;
+          line-height: 1.5;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
           .pdb-diagnostic-grid, .pdb-pricing-cards, .pdb-who-grid { grid-template-columns: 1fr; }
+          .pdb-mentors-grid { grid-template-columns: repeat(2, 1fr); }
           .pdb-timeline-bar { flex-direction: column; }
           .pdb-tl-phase { border-right: none; border-bottom: 1px solid var(--pdb-border); }
           .pdb-tl-phase:last-child { border-bottom: none; }
@@ -609,6 +667,35 @@ const PropostaDudaBambil = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <div className="pdb-divider" />
+
+        {/* MENTORES */}
+        <section className="pdb-section">
+          <div className="pdb-section-label" style={{ textAlign: "center" }}>Referências</div>
+          <h2 className="pdb-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
+          <p className="pdb-section-text" style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 48px" }}>
+            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
+          </p>
+          <div className="pdb-mentors-grid">
+            {[
+              { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
+              { name: "Pedro Somma", role: "Ex-COO - 99 Taxi", photo: pedroSommaPhoto, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
+              { name: "Luis Vabo Jr.", role: "Ex-diretor - Stone", photo: vaboPhoto, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
+              { name: "João Olivério", role: "CEO - Sales As A System", photo: joaoOliverioPhoto, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
+              { name: "José Diogo C. Rodrigues", role: "CMO Latam - Tinder", photo: joseDiogoPhoto, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
+            ].map((m) => (
+              <div key={m.name} className="pdb-mentor-card">
+                <div className="pdb-mentor-photo">
+                  <img src={m.photo} alt={m.name} />
+                </div>
+                <h3 className="pdb-mentor-name">{m.name}</h3>
+                <p className="pdb-mentor-role">{m.role}</p>
+                <p className="pdb-mentor-bio">{m.bio}</p>
+              </div>
+            ))}
           </div>
         </section>
 
