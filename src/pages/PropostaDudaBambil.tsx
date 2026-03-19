@@ -585,27 +585,27 @@ const PropostaDudaBambil = () => {
             </div>
             <div>
               <p className="pdb-section-text" style={{ marginBottom: 16 }}>
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na Freedom Agency o aprendizado extraído de mais de 100 empresas que receberam consultoria.
+                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
               </p>
               <p className="pdb-section-text">
-                A Freedom Agency não é uma agência de marketing tradicional. É uma operação de revenue que une consultoria estratégica, execução de marketing e inteligência comercial — tudo focado em gerar retorno financeiro real.
+                A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
               </p>
               <div className="pdb-who-stats">
                 <div className="pdb-who-stat">
-                  <div className="pdb-num">R$80M</div>
-                  <div className="pdb-label">em vendas lideradas</div>
+                  <div className="pdb-num">+R$130M</div>
+                  <div className="pdb-label">gerados em vendas</div>
                 </div>
                 <div className="pdb-who-stat">
                   <div className="pdb-num">100+</div>
-                  <div className="pdb-label">empresas consultadas</div>
+                  <div className="pdb-label">consultorias realizadas</div>
                 </div>
                 <div className="pdb-who-stat">
-                  <div className="pdb-num">R$500K</div>
-                  <div className="pdb-label">investidos em mentoria</div>
+                  <div className="pdb-num">+7</div>
+                  <div className="pdb-label">países atendidos</div>
                 </div>
                 <div className="pdb-who-stat">
-                  <div className="pdb-num">5x</div>
-                  <div className="pdb-label">ROAS médio de clientes</div>
+                  <div className="pdb-num">+54</div>
+                  <div className="pdb-label">avaliações 5 estrelas</div>
                 </div>
               </div>
             </div>
