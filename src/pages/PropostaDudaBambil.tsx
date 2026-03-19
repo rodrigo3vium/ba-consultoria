@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const PropostaDudaBambil = () => {
   useEffect(() => {
@@ -504,21 +505,13 @@ const PropostaDudaBambil = () => {
           border-radius: 20px;
           background: linear-gradient(135deg, #1a1510 0%, #2a221a 100%);
           border: 1px solid var(--pdb-border);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          gap: 12px;
+          overflow: hidden;
         }
 
-        .pdb-who-avatar .pdb-initials {
-          font-family: 'Playfair Display', serif;
-          font-size: 48px;
-          font-weight: 700;
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        .pdb-who-avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .pdb-who-avatar .pdb-brand {
@@ -588,8 +581,7 @@ const PropostaDudaBambil = () => {
           <h2 className="pdb-section-title">Quem está por trás desta proposta</h2>
           <div className="pdb-who-grid">
             <div className="pdb-who-avatar">
-              <span className="pdb-initials">RA</span>
-              <span className="pdb-brand">Freedom Agency</span>
+              <img src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
             </div>
             <div>
               <p className="pdb-section-text" style={{ marginBottom: 16 }}>
