@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 import rodrigoAlbuquerque from "@/assets/founders/rodrigo-albuquerque.jpg";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
+import vaboPhoto from "@/assets/mentors/vabo.jpg";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
 const PropostaDudaBambil = () => {
   useEffect(() => {
