@@ -39,6 +39,7 @@ import Proposta from "./pages/Proposta";
 import PropostaDSLCarTexas from "./pages/PropostaDSLCarTexas";
 import PropostaDudaBambil from "./pages/PropostaDudaBambil";
 import PropostaMonique from "./pages/PropostaMonique";
+import PropostaPadrao from "./pages/PropostaPadrao";
 
 const queryClient = new QueryClient();
 
