@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
+import rodrigoAlbuquerque from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const PropostaDudaBambil = () => {
   useEffect(() => {
@@ -581,7 +581,7 @@ const PropostaDudaBambil = () => {
           <h2 className="pdb-section-title">Quem está por trás desta proposta</h2>
           <div className="pdb-who-grid">
             <div className="pdb-who-avatar">
-              <img src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+              <img src={rodrigoAlbuquerque} alt="Rodrigo Albuquerque" />
             </div>
             <div>
               <p className="pdb-section-text" style={{ marginBottom: 16 }}>
