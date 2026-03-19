@@ -553,9 +553,62 @@ const PropostaDudaBambil = () => {
           margin-top: 4px;
         }
 
+        /* MENTORS */
+        .pdb-mentors-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 20px;
+        }
+        .pdb-mentor-card {
+          background: var(--bg-card);
+          border: 1px solid var(--pdb-border);
+          border-radius: 4px;
+          padding: 20px;
+          text-align: center;
+          transition: border-color 0.3s, transform 0.3s;
+        }
+        .pdb-mentor-card:hover {
+          border-color: var(--pdb-gold-40);
+          transform: translateY(-2px);
+        }
+        .pdb-mentor-photo {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 0 auto 12px;
+          border: 1px solid var(--pdb-border);
+        }
+        .pdb-mentor-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(30%);
+        }
+        .pdb-mentor-name {
+          font-family: 'Playfair Display', serif;
+          font-size: 15px;
+          font-weight: 600;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+        }
+        .pdb-mentor-role {
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--pdb-gold);
+          margin-bottom: 8px;
+        }
+        .pdb-mentor-bio {
+          font-size: 12px;
+          color: var(--text-muted);
+          font-weight: 300;
+          line-height: 1.5;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
           .pdb-diagnostic-grid, .pdb-pricing-cards, .pdb-who-grid { grid-template-columns: 1fr; }
+          .pdb-mentors-grid { grid-template-columns: repeat(2, 1fr); }
           .pdb-timeline-bar { flex-direction: column; }
           .pdb-tl-phase { border-right: none; border-bottom: 1px solid var(--pdb-border); }
           .pdb-tl-phase:last-child { border-bottom: none; }
