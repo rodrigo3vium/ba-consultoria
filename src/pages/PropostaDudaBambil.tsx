@@ -619,6 +619,35 @@ const PropostaDudaBambil = () => {
 
         <div className="pdb-divider" />
 
+        {/* MENTORES */}
+        <section className="pdb-section">
+          <div className="pdb-section-label" style={{ textAlign: "center" }}>Referências</div>
+          <h2 className="pdb-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
+          <p className="pdb-section-text" style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 48px" }}>
+            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
+          </p>
+          <div className="pdb-mentors-grid">
+            {[
+              { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
+              { name: "Pedro Somma", role: "Ex-COO - 99 Taxi", photo: pedroSommaPhoto, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
+              { name: "Luis Vabo Jr.", role: "Ex-diretor - Stone", photo: vaboPhoto, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
+              { name: "João Olivério", role: "CEO - Sales As A System", photo: joaoOliverioPhoto, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
+              { name: "José Diogo C. Rodrigues", role: "CMO Latam - Tinder", photo: joseDiogoPhoto, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
+            ].map((m) => (
+              <div key={m.name} className="pdb-mentor-card">
+                <div className="pdb-mentor-photo">
+                  <img src={m.photo} alt={m.name} />
+                </div>
+                <h3 className="pdb-mentor-name">{m.name}</h3>
+                <p className="pdb-mentor-role">{m.role}</p>
+                <p className="pdb-mentor-bio">{m.bio}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="pdb-divider" />
+
         {/* DIAGNÓSTICO */}
         <div className="pdb-diagnostic">
           <div className="pdb-diagnostic-inner">
