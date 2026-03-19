@@ -395,8 +395,8 @@ const PropostaMonique = () => {
               </h3>
 
               {[
-                { label: "Gestão estratégica mensal", value: "R$ [preencher]", isNote: false },
-                { label: "Verba de mídia recomendada", value: "R$ [preencher]/mês", isNote: false },
+                { label: "Gestão estratégica mensal", value: "R$ 1.500", isNote: false },
+                { label: "Verba de mídia recomendada", value: "R$ 1.000/mês", isNote: false },
                 { label: "Prazo inicial recomendado", value: "3 meses", isNote: false },
                 { label: "Nota sobre verba de mídia", value: "Paga diretamente para a plataforma. Não está inclusa no valor da gestão.", isNote: true },
               ].map((row) => (
