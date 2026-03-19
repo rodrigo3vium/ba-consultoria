@@ -851,7 +851,7 @@ const PropostaDudaBambil = () => {
         </div>
 
         <div className="pdb-footer">
-          Freedom Agency © 2026 — Proposta válida por 7 dias
+          BA Consultoria © 2026 — Proposta válida por 7 dias
         </div>
       </div>
     </>
