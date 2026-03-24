@@ -415,21 +415,20 @@ const PropostaClinicaSupreme = () => {
               <div style={{ background: darkCard, border: `1px solid rgba(198,168,78,0.4)`, padding: "48px 36px", position: "relative", overflow: "hidden", transition: "border-color 0.4s" }}>
                 <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "200px", height: "200px", background: `radial-gradient(circle, ${goldGlow}, transparent 70%)`, pointerEvents: "none" }} />
                 <div style={{ fontSize: "10px", textTransform: "uppercase", letterSpacing: "3px", color: textMuted, marginBottom: "8px" }}>Opção 2 · Recomendada</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria Aplicada + Hands-on</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria + Implementação</div>
                 <p style={{ fontSize: "0.82rem", color: textSecondary, marginBottom: "24px", lineHeight: 1.5 }}>
-                  Ideal para acelerar a execução e reduzir o peso interno. Eu construo junto, não só oriento.
+                  Tudo da Opção 1 — mais eu botando a mão na massa. Construo os protótipos, automações e integrações junto com vocês.
                 </p>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: gold, marginBottom: "4px" }}>R$ 8.000</div>
                 <div style={{ fontSize: "0.8rem", color: textMuted, marginBottom: "28px" }}>por mês · ciclo mínimo de 90 dias</div>
                 <ul style={{ listStyle: "none", padding: 0 }}>
                   {[
-                    "Tudo da Opção 1, com maior participação prática",
-                    "Estruturação direta dos protótipos prioritários",
-                    "Construção de automações, prompts e integrações",
-                    "Revisão hands-on dos fluxos operacionais",
-                    "Apoio mais próximo na implementação técnica",
-                    "Disponibilidade ampliada para destravar gargalos",
-                    "Propriedade total de tudo que for construído",
+                    "Tudo da Opção 1",
+                    "Construção direta dos protótipos e MVPs",
+                    "Desenvolvimento de automações e integrações (WhatsApp, CRM, IA)",
+                    "Implementação de prompts, fluxos e lógicas operacionais",
+                    "2 reuniões por semana (estratégia + trabalho técnico)",
+                    "Disponibilidade ampliada para destravar gargalos em tempo real",
                   ].map((item) => (
                     <li key={item} style={{ fontSize: "0.82rem", color: textSecondary, padding: "6px 0", paddingLeft: "18px", position: "relative", lineHeight: 1.5 }}>
                       <span style={{ position: "absolute", left: 0, color: gold, fontWeight: 700, fontSize: "0.8rem" }}>✓</span>
