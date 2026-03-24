@@ -40,6 +40,7 @@ import PropostaDSLCarTexas from "./pages/PropostaDSLCarTexas";
 import PropostaDudaBambil from "./pages/PropostaDudaBambil";
 import PropostaMonique from "./pages/PropostaMonique";
 import PropostaPadrao from "./pages/PropostaPadrao";
+import PropostaClinicaSupreme from "./pages/PropostaClinicaSupreme";
 
 const queryClient = new QueryClient();
 
