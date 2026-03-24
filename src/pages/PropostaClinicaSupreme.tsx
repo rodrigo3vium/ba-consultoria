@@ -440,7 +440,10 @@ const PropostaClinicaSupreme = () => {
             </div>
 
             <p style={{ textAlign: "center", marginTop: "32px", fontSize: "0.85rem", color: textSecondary, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
-              Ciclo inicial de 90 dias — tempo necessário para entender a operação com profundidade, organizar a base de contexto, validar os primeiros protótipos e construir uma estrutura utilizável pela equipe. Menos do que isso tende a virar diagnóstico sem transformação real.
+              Ciclo inicial de 90 dias — tempo necessário para entender a operação, organizar o contexto, validar o MVP e construir uma estrutura utilizável pela equipe. Menos do que isso tende a virar diagnóstico sem transformação real.
+            </p>
+            <p style={{ textAlign: "center", marginTop: "12px", fontSize: "0.85rem", color: textSecondary, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
+              Em ambas as opções, tudo que for construído é propriedade da Supreme. Sem lock-in, sem dependência permanente.
             </p>
           </div>
         </div>
