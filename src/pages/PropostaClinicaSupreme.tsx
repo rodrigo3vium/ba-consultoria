@@ -388,21 +388,20 @@ const PropostaClinicaSupreme = () => {
               {/* Option 1 */}
               <div style={{ background: darkCard, border: `1px solid ${darkBorder}`, padding: "48px 36px", position: "relative", overflow: "hidden", transition: "border-color 0.4s" }}>
                 <div style={{ fontSize: "10px", textTransform: "uppercase", letterSpacing: "3px", color: textMuted, marginBottom: "8px" }}>Opção 1</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria Aplicada + Co-construção</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria + Direcionamento</div>
                 <p style={{ fontSize: "0.82rem", color: textSecondary, marginBottom: "24px", lineHeight: 1.5 }}>
-                  Ideal se a equipe interna vai participar ativamente da construção e implementação.
+                  Eu diagnostico, priorizo e direciono. A equipe da Supreme executa com meu acompanhamento.
                 </p>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: gold, marginBottom: "4px" }}>R$ 5.000</div>
                 <div style={{ fontSize: "0.8rem", color: textMuted, marginBottom: "28px" }}>por mês · ciclo mínimo de 90 dias</div>
                 <ul style={{ listStyle: "none", padding: 0 }}>
                   {[
                     "1 reunião estratégica por semana",
-                    "Diagnóstico e priorização contínua",
-                    "Apoio estratégico e técnico na construção",
-                    "Revisão de lógica, processos, prompts e arquitetura",
-                    "Acompanhamento da implementação",
+                    "Diagnóstico da operação e priorização de casos de uso",
+                    "Engenharia de contexto (documentação extensiva)",
+                    "Direcionamento técnico: o que construir, como e em que ordem",
+                    "Revisão do que a equipe construiu + correção de rota",
                     "Suporte assíncrono entre encontros",
-                    "Propriedade total de tudo que for construído",
                   ].map((item) => (
                     <li key={item} style={{ fontSize: "0.82rem", color: textSecondary, padding: "6px 0", paddingLeft: "18px", position: "relative", lineHeight: 1.5 }}>
                       <span style={{ position: "absolute", left: 0, color: gold, fontWeight: 700, fontSize: "0.8rem" }}>✓</span>
