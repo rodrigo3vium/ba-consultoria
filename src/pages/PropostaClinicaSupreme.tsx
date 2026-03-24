@@ -314,7 +314,7 @@ const PropostaClinicaSupreme = () => {
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: gold, marginBottom: "16px" }}>Plano de Implementação</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 600, marginBottom: "20px", lineHeight: 1.25 }}>
-              Quatro fases, resultado incremental
+              Três fases, resultado incremental
             </h2>
             <p style={{ color: textSecondary, fontSize: "0.95rem", maxWidth: "640px" }}>
               Cada fase entrega valor imediato enquanto constrói a base para a próxima. Sem esperar 5 meses por um protótipo — resultados desde a primeira semana.
