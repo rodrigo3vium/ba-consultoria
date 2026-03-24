@@ -317,7 +317,7 @@ const PropostaClinicaSupreme = () => {
               Três fases, resultado incremental
             </h2>
             <p style={{ color: textSecondary, fontSize: "0.95rem", maxWidth: "640px" }}>
-              Cada fase entrega valor imediato enquanto constrói a base para a próxima. Sem esperar 5 meses por um protótipo — resultados desde a primeira semana.
+              Cada fase entrega valor imediato enquanto constrói a base para a próxima. Sem esperar 5 meses por um protótipo — resultados desde as primeiras semanas.
             </p>
 
             {phases.map((phase) => (
