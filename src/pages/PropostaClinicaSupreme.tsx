@@ -58,59 +58,39 @@ const PropostaClinicaSupreme = () => {
 
   const phases = [
     {
-      tag: "Fase 1 — Diagnóstico e Arquitetura",
-      title: "Mapeamento da operação e engenharia de contexto",
-      desc: "Antes de automatizar qualquer coisa, precisamos que a IA entenda profundamente o universo da Supreme. Vamos construir a documentação extensiva da clínica — o que se chama de \"engenharia de contexto\" — e mapear cada gargalo, oportunidade e prioridade.",
+      tag: "Fase 1 — Diagnóstico + Engenharia de Contexto",
+      title: "Entender a operação antes de construir qualquer coisa",
+      desc: "Antes de automatizar, precisamos que a IA entenda profundamente o universo da Supreme. Vamos mapear a operação real, documentar o contexto da clínica e definir as prioridades de implementação.",
       items: [
         "Mapeamento das especialidades, linhas de receita e lógica de atendimento",
-        "Documentação de cada médico: perfil, produtos, preços, tecnologias complementares",
+        "Documentação extensiva: médicos, protocolos, tecnologias, preços e regras de encaminhamento",
         "Mapeamento do fluxo completo do paciente (da captação ao pós-protocolo)",
-        "Regras de encaminhamento interno entre especialidades",
-        "Hipóteses de segmentação e critérios de priorização de oportunidades",
-        "Documentação operacional estruturada para uso de IA",
+        "Priorização dos primeiros casos de uso por impacto × facilidade",
       ],
       note: "Essa etapa é decisiva. Sem isso, qualquer automação futura vira improviso.",
     },
     {
-      tag: "Fase 2 — Protótipos Operacionais",
-      title: "CRM customizado + primeiros casos de uso com impacto imediato",
-      desc: "Desenvolvimento dos primeiros casos de uso com maior impacto, priorizados por uma lógica simples: o que gera mais receita com menos complexidade de implementação.",
+      tag: "Fase 2 — MVP no Ar",
+      title: "Primeiro protótipo funcional rodando na operação",
+      desc: "Com o diagnóstico feito, colocamos no ar o primeiro protótipo funcional — simples, customizado para a Supreme e focado no caso de uso que gera mais impacto imediato na receita.",
       items: [
-        "Implementação de CRM simplificado e aderente ao fluxo real da clínica",
-        "Resgate de pacientes parados (identificação automática + sugestão de ação)",
-        "Organização automática de informações vindas do WhatsApp",
-        "Consolidação de histórico útil do paciente",
-        "Estratégia de migração da base de ~30k pacientes com limpeza e segmentação",
-        "Setup de traqueamento (UTMs em todos os links + rastreio de origem)",
+        "Protótipo funcional do caso de uso prioritário (definido na Fase 1)",
+        "Validação com a equipe no dia a dia real da clínica",
+        "Ajustes rápidos baseados em feedback da operação",
       ],
-      note: "Priorização por impacto × facilidade — os 3 primeiros casos de uso definidos no kickoff.",
+      note: "O objetivo é ter algo útil rodando — não perfeito, mas funcional e gerando resultado.",
     },
     {
-      tag: "Fase 3 — Automação e Personalização",
-      title: "Gerente de vendas IA + arquitetura de receita",
-      desc: "Aqui a operação ganha escala. Automatizamos o trabalho mecânico do comercial e começamos a construir a personalização individual — o \"sonho dourado\" onde cada paciente recebe comunicação baseada no que disse na consulta, no que consumiu e no que faz sentido para o momento dela.",
+      tag: "Fase 3 — Substituição da Stack Atual",
+      title: "Migração e consolidação da nova estrutura operacional",
+      desc: "Com o MVP validado, avançamos para substituir gradualmente as ferramentas atuais que não atendem a operação — migrando dados, consolidando processos e expandindo as automações para novos casos de uso.",
       items: [
-        "\"Gerente de Vendas IA\" que monitora pacientes sem contato e notifica a equipe",
-        "Follow-ups automatizados via WhatsApp com contexto individual",
-        "Gatilhos inteligentes de cross-sell (dermato → nutrologia, nutrologia → vascular, etc.)",
-        "Implementação de transcrição de consultas com IA (extração de insights e oportunidades)",
-        "Follow-up individual com contexto da consulta médica",
-        "Informação contextual para closers no processo de fechamento",
+        "Migração da base de dados e consolidação do histórico de pacientes",
+        "Transição gradual das ferramentas atuais para a nova estrutura",
+        "Expansão para novos casos de uso priorizados (resgate, cross-sell, follow-up, etc.)",
+        "Rotina contínua de evolução e ajuste — enquanto a parceria existir, a estrutura evolui",
       ],
-      note: "Evolução contínua — a personalização melhora com cada nova interação capturada.",
-    },
-    {
-      tag: "Fase 4 — Melhoria Contínua",
-      title: "Rotina de evolução, ajuste e novos casos de uso",
-      desc: "Tecnologia sem acompanhamento vira sistema abandonado. Esta fase garante que tudo que foi construído funcione no mundo real — e continue evoluindo.",
-      items: [
-        "Revisão semanal do que foi construído e gargalos identificados",
-        "Ajuste de prompts, lógicas, processos e fluxos",
-        "Priorização de novos casos de uso conforme surgem demandas",
-        "Dashboard de performance comercial por médico e por especialidade",
-        "Expansão progressiva da arquitetura de receita (WhatsApp, Instagram, multi-canal)",
-      ],
-      note: "Permanente — enquanto a parceria existir, a estrutura evolui.",
+      note: "A substituição é gradual e segura — nada é desligado até a nova estrutura estar validada.",
     },
   ];
 
@@ -334,10 +314,10 @@ const PropostaClinicaSupreme = () => {
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <p style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "3px", textTransform: "uppercase", color: gold, marginBottom: "16px" }}>Plano de Implementação</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 600, marginBottom: "20px", lineHeight: 1.25 }}>
-              Quatro fases, resultado incremental
+              Três fases, resultado incremental
             </h2>
             <p style={{ color: textSecondary, fontSize: "0.95rem", maxWidth: "640px" }}>
-              Cada fase entrega valor imediato enquanto constrói a base para a próxima. Sem esperar 5 meses por um protótipo — resultados desde a primeira semana.
+              Cada fase entrega valor imediato enquanto constrói a base para a próxima. Sem esperar 5 meses por um protótipo — resultados desde as primeiras semanas.
             </p>
 
             {phases.map((phase) => (
@@ -408,21 +388,20 @@ const PropostaClinicaSupreme = () => {
               {/* Option 1 */}
               <div style={{ background: darkCard, border: `1px solid ${darkBorder}`, padding: "48px 36px", position: "relative", overflow: "hidden", transition: "border-color 0.4s" }}>
                 <div style={{ fontSize: "10px", textTransform: "uppercase", letterSpacing: "3px", color: textMuted, marginBottom: "8px" }}>Opção 1</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria Aplicada + Co-construção</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria + Direcionamento</div>
                 <p style={{ fontSize: "0.82rem", color: textSecondary, marginBottom: "24px", lineHeight: 1.5 }}>
-                  Ideal se a equipe interna vai participar ativamente da construção e implementação.
+                  Eu diagnostico, priorizo e direciono. A equipe da Supreme executa com meu acompanhamento.
                 </p>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: gold, marginBottom: "4px" }}>R$ 5.000</div>
                 <div style={{ fontSize: "0.8rem", color: textMuted, marginBottom: "28px" }}>por mês · ciclo mínimo de 90 dias</div>
                 <ul style={{ listStyle: "none", padding: 0 }}>
                   {[
                     "1 reunião estratégica por semana",
-                    "Diagnóstico e priorização contínua",
-                    "Apoio estratégico e técnico na construção",
-                    "Revisão de lógica, processos, prompts e arquitetura",
-                    "Acompanhamento da implementação",
+                    "Diagnóstico da operação e priorização de casos de uso",
+                    "Engenharia de contexto (documentação extensiva)",
+                    "Direcionamento técnico: o que construir, como e em que ordem",
+                    "Revisão do que a equipe construiu + correção de rota",
                     "Suporte assíncrono entre encontros",
-                    "Propriedade total de tudo que for construído",
                   ].map((item) => (
                     <li key={item} style={{ fontSize: "0.82rem", color: textSecondary, padding: "6px 0", paddingLeft: "18px", position: "relative", lineHeight: 1.5 }}>
                       <span style={{ position: "absolute", left: 0, color: gold, fontWeight: 700, fontSize: "0.8rem" }}>✓</span>
@@ -436,21 +415,20 @@ const PropostaClinicaSupreme = () => {
               <div style={{ background: darkCard, border: `1px solid rgba(198,168,78,0.4)`, padding: "48px 36px", position: "relative", overflow: "hidden", transition: "border-color 0.4s" }}>
                 <div style={{ position: "absolute", top: "-80px", right: "-80px", width: "200px", height: "200px", background: `radial-gradient(circle, ${goldGlow}, transparent 70%)`, pointerEvents: "none" }} />
                 <div style={{ fontSize: "10px", textTransform: "uppercase", letterSpacing: "3px", color: textMuted, marginBottom: "8px" }}>Opção 2 · Recomendada</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria Aplicada + Hands-on</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", marginBottom: "6px", color: textPrimary }}>Consultoria + Implementação</div>
                 <p style={{ fontSize: "0.82rem", color: textSecondary, marginBottom: "24px", lineHeight: 1.5 }}>
-                  Ideal para acelerar a execução e reduzir o peso interno. Eu construo junto, não só oriento.
+                  Tudo da Opção 1 — mais eu botando a mão na massa. Construo os protótipos, automações e integrações junto com vocês.
                 </p>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", fontWeight: 700, color: gold, marginBottom: "4px" }}>R$ 8.000</div>
                 <div style={{ fontSize: "0.8rem", color: textMuted, marginBottom: "28px" }}>por mês · ciclo mínimo de 90 dias</div>
                 <ul style={{ listStyle: "none", padding: 0 }}>
                   {[
-                    "Tudo da Opção 1, com maior participação prática",
-                    "Estruturação direta dos protótipos prioritários",
-                    "Construção de automações, prompts e integrações",
-                    "Revisão hands-on dos fluxos operacionais",
-                    "Apoio mais próximo na implementação técnica",
-                    "Disponibilidade ampliada para destravar gargalos",
-                    "Propriedade total de tudo que for construído",
+                    "Tudo da Opção 1",
+                    "Construção direta dos protótipos e MVPs",
+                    "Desenvolvimento de automações e integrações (WhatsApp, CRM, IA)",
+                    "Implementação de prompts, fluxos e lógicas operacionais",
+                    "2 reuniões por semana (estratégia + trabalho técnico)",
+                    "Disponibilidade ampliada para destravar gargalos em tempo real",
                   ].map((item) => (
                     <li key={item} style={{ fontSize: "0.82rem", color: textSecondary, padding: "6px 0", paddingLeft: "18px", position: "relative", lineHeight: 1.5 }}>
                       <span style={{ position: "absolute", left: 0, color: gold, fontWeight: 700, fontSize: "0.8rem" }}>✓</span>
@@ -462,7 +440,10 @@ const PropostaClinicaSupreme = () => {
             </div>
 
             <p style={{ textAlign: "center", marginTop: "32px", fontSize: "0.85rem", color: textSecondary, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
-              Ciclo inicial de 90 dias — tempo necessário para entender a operação com profundidade, organizar a base de contexto, validar os primeiros protótipos e construir uma estrutura utilizável pela equipe. Menos do que isso tende a virar diagnóstico sem transformação real.
+              Ciclo inicial de 90 dias — tempo necessário para entender a operação, organizar o contexto, validar o MVP e construir uma estrutura utilizável pela equipe. Menos do que isso tende a virar diagnóstico sem transformação real.
+            </p>
+            <p style={{ textAlign: "center", marginTop: "12px", fontSize: "0.85rem", color: textSecondary, maxWidth: "600px", marginLeft: "auto", marginRight: "auto" }}>
+              Em ambas as opções, tudo que for construído é propriedade da Supreme. Sem lock-in, sem dependência permanente.
             </p>
           </div>
         </div>
@@ -511,11 +492,10 @@ const PropostaClinicaSupreme = () => {
           <div style={{ maxWidth: "600px", margin: "40px auto 0" }}>
             {[
               "Aprovação da proposta e escolha da opção de investimento",
-              "Reunião de kickoff para mapear a operação atual",
-              "Priorização dos 3 primeiros casos de uso com maior impacto",
-              "Construção da base de contexto (engenharia de contexto)",
-              "Implementação dos primeiros protótipos operacionais",
-              "Rotina semanal de evolução e novos casos de uso",
+              "Reunião de kickoff — mapeamento da operação atual",
+              "Engenharia de contexto e priorização dos casos de uso",
+              "MVP no ar — primeiro protótipo funcional rodando",
+              "Migração e substituição gradual da stack atual",
             ].map((step, i) => (
               <div key={i} style={{ display: "flex", gap: "20px", alignItems: "flex-start", padding: "20px 0", borderBottom: `1px solid ${darkBorder}` }}>
                 <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontWeight: 700, color: gold, minWidth: "36px", lineHeight: 1, paddingTop: "2px" }}>
