@@ -492,11 +492,10 @@ const PropostaClinicaSupreme = () => {
           <div style={{ maxWidth: "600px", margin: "40px auto 0" }}>
             {[
               "Aprovação da proposta e escolha da opção de investimento",
-              "Reunião de kickoff para mapear a operação atual",
-              "Priorização dos 3 primeiros casos de uso com maior impacto",
-              "Construção da base de contexto (engenharia de contexto)",
-              "Implementação dos primeiros protótipos operacionais",
-              "Rotina semanal de evolução e novos casos de uso",
+              "Reunião de kickoff — mapeamento da operação atual",
+              "Engenharia de contexto e priorização dos casos de uso",
+              "MVP no ar — primeiro protótipo funcional rodando",
+              "Migração e substituição gradual da stack atual",
             ].map((step, i) => (
               <div key={i} style={{ display: "flex", gap: "20px", alignItems: "flex-start", padding: "20px 0", borderBottom: `1px solid ${darkBorder}` }}>
                 <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.4rem", fontWeight: 700, color: gold, minWidth: "36px", lineHeight: 1, paddingTop: "2px" }}>
