@@ -1,0 +1,69 @@
+<!--
+  MÉTODO STARK — Arc Reactor Logo v2
+  Hexágonos regulares (simetria 6-fold, todos os lados iguais)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    @keyframes arc-pulse { 0%, 100% { opacity: 0.4 } 50% { opacity: 0.85 } }
+    @keyframes arc-spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+    .pulse { animation: arc-pulse 3s ease-in-out infinite; }
+    .spin { animation: arc-spin 12s linear infinite; transform-origin: 100px 100px; }
+    @media (prefers-reduced-motion: reduce) {
+      .pulse, .spin { animation: none; }
+    }
+  </style>
+
+  <!-- Anéis externos -->
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#38BDF8" stroke-width="0.8" opacity="0.15"/>
+  <circle cx="100" cy="100" r="72" fill="none" stroke="#38BDF8" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- Anel rotativo -->
+  <g class="spin">
+    <circle cx="100" cy="100" r="58" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="12 18" opacity="0.35"/>
+  </g>
+
+  <!-- Anel interno sólido -->
+  <circle cx="100" cy="100" r="42" fill="none" stroke="#38BDF8" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Hexágono externo regular (raio 38, vértice no topo) -->
+  <path d="M100 62 L132.91 81 L132.91 119 L100 138 L67.09 119 L67.09 81 Z"
+        fill="rgba(56,189,248,0.03)" stroke="#38BDF8" stroke-width="1" opacity="0.6"/>
+
+  <!-- Hexágono interno regular (raio 26, vértice no topo) -->
+  <path d="M100 74 L122.52 87 L122.52 113 L100 126 L77.48 113 L77.48 87 Z"
+        fill="rgba(56,189,248,0.05)" stroke="#38BDF8" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Linhas de conexão entre hexágonos (6 segmentos) -->
+  <line x1="100" y1="62" x2="100" y2="74" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="132.91" y1="81" x2="122.52" y2="87" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="132.91" y1="119" x2="122.52" y2="113" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="100" y1="138" x2="100" y2="126" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="67.09" y1="119" x2="77.48" y2="113" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="67.09" y1="81" x2="77.48" y2="87" stroke="#38BDF8" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Core glow -->
+  <circle class="pulse" cx="100" cy="100" r="16" fill="rgba(56,189,248,0.12)" stroke="#38BDF8" stroke-width="1.5"/>
+
+  <!-- Core -->
+  <circle cx="100" cy="100" r="6" fill="#38BDF8" opacity="0.9"/>
+
+  <!-- Conexões externas -->
+  <line x1="100" y1="12" x2="100" y2="28" stroke="#38BDF8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="100" y1="172" x2="100" y2="188" stroke="#38BDF8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="12" y1="100" x2="28" y2="100" stroke="#38BDF8" stroke-width="0.5" opacity="0.25"/>
+  <line x1="172" y1="100" x2="188" y2="100" stroke="#38BDF8" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Nós vermelhos -->
+  <circle cx="100" cy="8" r="4" fill="#DC2626" opacity="0.7"/>
+  <circle cx="192" cy="100" r="4" fill="#DC2626" opacity="0.5"/>
+  <circle cx="100" cy="192" r="4" fill="#DC2626" opacity="0.5"/>
+  <circle cx="8" cy="100" r="4" fill="#DC2626" opacity="0.5"/>
+
+  <!-- Nós nos vértices do hexágono externo -->
+  <circle cx="100" cy="62" r="2" fill="#F0F6FF" opacity="0.5"/>
+  <circle cx="132.91" cy="81" r="2" fill="#F0F6FF" opacity="0.4"/>
+  <circle cx="132.91" cy="119" r="2" fill="#F0F6FF" opacity="0.4"/>
+  <circle cx="100" cy="138" r="2" fill="#F0F6FF" opacity="0.4"/>
+  <circle cx="67.09" cy="119" r="2" fill="#F0F6FF" opacity="0.4"/>
+  <circle cx="67.09" cy="81" r="2" fill="#F0F6FF" opacity="0.4"/>
+</svg>
