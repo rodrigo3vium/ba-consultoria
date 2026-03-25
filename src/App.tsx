@@ -90,8 +90,8 @@ const App = () => (
           <Route path="/home-2" element={<Home2 />} />
           <Route path="/proposta/dsl-car-texas" element={<PropostaDSLCarTexas />} />
           <Route path="/proposta" element={<Proposta />} />
-          <Route path="/proposta-duda-bambil" element={<PropostaDudaBambil />} />
-          <Route path="/monique" element={<PropostaMonique />} />
+          <Route path="/propostas/duda-bambil" element={<PropostaDudaBambil />} />
+          <Route path="/propostas/monique" element={<PropostaMonique />} />
               <Route path="/proposta-padrao" element={<PropostaPadrao />} />
               <Route path="/propostas/clinica-supreme" element={<PropostaClinicaSupreme />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
