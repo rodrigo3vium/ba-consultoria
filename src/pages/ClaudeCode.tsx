@@ -3,6 +3,7 @@ import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 import { tracker } from "@/lib/tracking";
 import { Calendar, Clock, Video, MessageCircle, Zap, DollarSign, Brain, Rocket, ArrowRight } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
+import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
 const HOTMART_BASE_URL = "https://pay.hotmart.com/T104822269G";
 
