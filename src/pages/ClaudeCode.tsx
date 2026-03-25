@@ -170,6 +170,11 @@ const ClaudeCode = () => {
         />
 
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+          {/* Arc Reactor Logo */}
+          <div className="flex justify-center">
+            <img src={metodoStarkLogo} alt="Método Stark" className="w-24 h-24 md:w-32 md:h-32" />
+          </div>
+
           {/* Badge */}
           <div className="inline-flex items-center gap-3">
             <span
