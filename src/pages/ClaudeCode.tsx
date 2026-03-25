@@ -116,12 +116,15 @@ const ClaudeCode = () => {
         }}
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span
-            className="text-lg tracking-[3px] font-bold uppercase"
-            style={{ fontFamily: FONT_DISPLAY, color: ARC }}
-          >
-            MÉTODO STARK
-          </span>
+          <div className="flex items-center gap-3">
+            <img src={metodoStarkLogo} alt="Método Stark" className="w-8 h-8" />
+            <span
+              className="text-lg tracking-[3px] font-bold uppercase"
+              style={{ fontFamily: FONT_DISPLAY, color: ARC }}
+            >
+              MÉTODO STARK
+            </span>
+          </div>
           <button
             onClick={() => handleCTA("nav")}
             className="text-sm uppercase tracking-[3px] px-5 py-2 transition-all duration-300 font-semibold"
