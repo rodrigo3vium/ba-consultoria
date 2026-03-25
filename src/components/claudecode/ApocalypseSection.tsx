@@ -1,12 +1,20 @@
 import { ArrowRight } from "lucide-react";
 
-const GOLD = "#c9a227";
-const PARCHMENT = "#f0e6d0";
-const MUTED = "#6b7d5a";
-const CARD_BG = "#1c2e1e";
-const SECTION_BG = "#0e1a0f";
-const SECTION_BG_ALT = "#162318";
-const GOLD_DIM = "rgba(201, 162, 39, 0.7)";
+// Método Stark palette
+const ARC = "#38BDF8";
+const IVORY = "#F0F6FF";
+const DIM = "#5A7089";
+const TEXT_COLOR = "#C8D6E5";
+const CARD_BG = "#0C1220";
+const SECTION_BG = "#060A12";
+const SECTION_BG_ALT = "#111A2E";
+const ARC_DIM = "rgba(56,189,248,0.7)";
+const STARK_GOLD = "#F59E0B";
+const VOID = "#060A12";
+
+const FONT_DISPLAY = "'Chakra Petch', sans-serif";
+const FONT_MONO = "'IBM Plex Mono', monospace";
+const FONT_BODY = "'Exo 2', sans-serif";
 
 // ── Data ──
 
@@ -201,7 +209,6 @@ interface ApocalypseSectionProps {
 }
 
 const LogoIcon = ({ initials, color }: { initials: string; color: string }) => {
-  const isGradient = color.startsWith("linear");
   return (
     <div
       className="flex items-center justify-center flex-shrink-0 text-white font-extrabold"
@@ -224,12 +231,12 @@ const MiniChart = ({ path, gradientId }: { path: string; gradientId: string }) =
     <svg viewBox="0 0 280 48" className="w-full h-full" preserveAspectRatio="none">
       <defs>
         <linearGradient id={`grad-${gradientId}`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor={GOLD} stopOpacity="0.3" />
-          <stop offset="100%" stopColor={GOLD} stopOpacity="0" />
+          <stop offset="0%" stopColor={ARC} stopOpacity="0.3" />
+          <stop offset="100%" stopColor={ARC} stopOpacity="0" />
         </linearGradient>
       </defs>
       <path d={`${path} L280,48 L0,48 Z`} fill={`url(#grad-${gradientId})`} />
-      <path d={path} fill="none" stroke={GOLD} strokeWidth="2" opacity="0.7" />
+      <path d={path} fill="none" stroke={ARC} strokeWidth="2" opacity="0.7" />
     </svg>
   </div>
 );
@@ -237,9 +244,9 @@ const MiniChart = ({ path, gradientId }: { path: string; gradientId: string }) =
 const TickerTrack = () => (
   <div className="flex gap-12" style={{ animation: "ticker-scroll 40s linear infinite" }}>
     {[...tickerItems, ...tickerItems].map((item, i) => (
-      <span key={i} className="flex items-center gap-2.5 whitespace-nowrap font-mono text-[0.78rem] font-medium" style={{ color: MUTED }}>
-        <span style={{ color: PARCHMENT, fontWeight: 600 }}>{item.company}</span>
-        <span style={{ color: GOLD, fontWeight: 600 }}>{item.change}</span>
+      <span key={i} className="flex items-center gap-2.5 whitespace-nowrap font-medium" style={{ fontFamily: FONT_MONO, fontSize: "0.78rem", color: DIM }}>
+        <span style={{ color: IVORY, fontWeight: 600 }}>{item.company}</span>
+        <span style={{ color: ARC, fontWeight: 600 }}>{item.change}</span>
       </span>
     ))}
   </div>
@@ -247,25 +254,25 @@ const TickerTrack = () => (
 
 const CasualtyCard = ({ c }: { c: CasualtyData }) => (
   <div
-    className="relative overflow-hidden p-6 md:p-7 border transition-all duration-300 group"
+    className="relative overflow-hidden p-6 md:p-7 transition-all duration-300 group"
     style={{
       backgroundColor: CARD_BG,
-      borderColor: "rgba(201,162,39,0.12)",
-      borderRadius: 12,
+      border: `0.5px solid rgba(56,189,248,0.08)`,
+      borderRadius: 14,
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.borderColor = "rgba(201,162,39,0.3)";
+      e.currentTarget.style.borderColor = "rgba(56,189,248,0.18)";
       e.currentTarget.style.transform = "translateY(-3px)";
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.borderColor = "rgba(201,162,39,0.12)";
+      e.currentTarget.style.borderColor = "rgba(56,189,248,0.08)";
       e.currentTarget.style.transform = "translateY(0)";
     }}
   >
-    {/* Top gold line on hover */}
+    {/* Top arc line on hover */}
     <div
-      className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)` }}
+      className="absolute top-0 left-0 right-0 h-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{ background: `linear-gradient(90deg, transparent, ${ARC}50, transparent)` }}
     />
 
     {/* Logo row */}
@@ -273,19 +280,20 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
       <div className="flex items-center gap-2.5">
         <LogoIcon initials={c.logoInitials} color={c.logoColor} />
         <div className="flex flex-col">
-          <span className="text-[1.1rem] font-bold leading-tight" style={{ fontFamily: "'DM Sans', sans-serif", color: PARCHMENT }}>
+          <span className="text-[1.1rem] font-bold leading-tight uppercase" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
             {c.company}
           </span>
-          <span className="font-mono text-[0.6rem] mt-px" style={{ color: MUTED, letterSpacing: "0.08em" }}>
+          <span className="text-[0.6rem] mt-px" style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "0.08em" }}>
             {c.ticker}
           </span>
         </div>
       </div>
       <span
-        className="font-mono text-[0.6rem] font-semibold px-2.5 py-1 uppercase whitespace-nowrap"
+        className="text-[0.6rem] font-semibold px-2.5 py-1 uppercase whitespace-nowrap"
         style={{
-          backgroundColor: "rgba(201,162,39,0.12)",
-          color: GOLD,
+          fontFamily: FONT_MONO,
+          backgroundColor: "rgba(56,189,248,0.06)",
+          color: ARC,
           borderRadius: 4,
           letterSpacing: "0.05em",
         }}
@@ -299,11 +307,11 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
       <div className="flex-shrink-0">
         <div
           className="text-[2.6rem] font-black leading-none"
-          style={{ fontFamily: "'Playfair Display', serif", color: GOLD, letterSpacing: "-0.02em" }}
+          style={{ fontFamily: FONT_DISPLAY, color: STARK_GOLD, letterSpacing: "-0.02em" }}
         >
           {c.stat}
         </div>
-        <div className="font-mono text-[0.58rem] uppercase mt-1" style={{ color: MUTED, letterSpacing: "0.12em" }}>
+        <div className="text-[0.58rem] uppercase mt-1" style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "0.12em" }}>
           {c.statLabel}
         </div>
       </div>
@@ -313,12 +321,12 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
     </div>
 
     {/* Detail */}
-    <p className="text-[0.85rem] leading-relaxed mb-3.5" style={{ color: MUTED, fontWeight: 300 }}>
+    <p className="text-[0.85rem] leading-relaxed mb-3.5" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
       {c.detail}
     </p>
 
     {/* Source */}
-    <p className="font-mono text-[0.55rem] uppercase" style={{ color: GOLD_DIM, letterSpacing: "0.1em", opacity: 0.6 }}>
+    <p className="text-[0.55rem] uppercase" style={{ fontFamily: FONT_MONO, color: ARC_DIM, letterSpacing: "0.1em", opacity: 0.6 }}>
       {c.source}
     </p>
   </div>
@@ -326,29 +334,29 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
 
 const NewsClip = ({ n }: { n: NewsClipData }) => (
   <div
-    className="overflow-hidden border transition-all duration-300"
+    className="overflow-hidden transition-all duration-300"
     style={{
       backgroundColor: SECTION_BG_ALT,
-      borderColor: "rgba(255,255,255,0.06)",
-      borderRadius: 10,
+      border: "0.5px solid rgba(56,189,248,0.06)",
+      borderRadius: 14,
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+      e.currentTarget.style.borderColor = "rgba(56,189,248,0.15)";
       e.currentTarget.style.transform = "translateY(-2px)";
     }}
     onMouseLeave={(e) => {
-      e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+      e.currentTarget.style.borderColor = "rgba(56,189,248,0.06)";
       e.currentTarget.style.transform = "translateY(0)";
     }}
   >
     {/* Browser bar */}
-    <div className="flex items-center gap-2 px-3.5 py-2" style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+    <div className="flex items-center gap-2 px-3.5 py-2" style={{ background: "rgba(56,189,248,0.02)", borderBottom: "0.5px solid rgba(56,189,248,0.04)" }}>
       <div className="flex gap-1">
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.12)" }} />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#DC2626" }} />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#F59E0B" }} />
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#34D399" }} />
       </div>
-      <span className="font-mono text-[0.55rem] truncate" style={{ color: "rgba(255,255,255,0.3)" }}>
+      <span className="text-[0.55rem] truncate" style={{ fontFamily: FONT_MONO, color: "rgba(56,189,248,0.3)" }}>
         {n.url}
       </span>
     </div>
@@ -370,23 +378,23 @@ const NewsClip = ({ n }: { n: NewsClipData }) => (
         >
           {n.sourceInitials}
         </div>
-        <span className="text-[0.7rem] font-bold uppercase" style={{ color: "rgba(255,255,255,0.5)", letterSpacing: "0.06em" }}>
+        <span className="text-[0.7rem] font-bold uppercase" style={{ fontFamily: FONT_MONO, color: "rgba(240,246,255,0.5)", letterSpacing: "0.06em" }}>
           {n.source}
         </span>
-        <span className="font-mono text-[0.55rem] ml-auto" style={{ color: "rgba(255,255,255,0.2)" }}>
+        <span className="text-[0.55rem] ml-auto" style={{ fontFamily: FONT_MONO, color: "rgba(240,246,255,0.2)" }}>
           {n.date}
         </span>
       </div>
 
       {/* Headline */}
-      <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}>
-        {n.headline}<span style={{ color: GOLD, fontWeight: 700 }}>{n.highlightText}</span>
+      <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: FONT_DISPLAY, color: IVORY, fontWeight: 600 }}>
+        {n.headline}<span style={{ color: ARC, fontWeight: 700 }}>{n.highlightText}</span>
       </p>
 
       {/* Excerpt */}
       <p
-        className="text-[0.75rem] leading-[1.5] font-light line-clamp-2"
-        style={{ color: "rgba(255,255,255,0.35)" }}
+        className="text-[0.75rem] leading-[1.5] line-clamp-2"
+        style={{ fontFamily: FONT_BODY, color: "rgba(200,214,229,0.35)", fontWeight: 300 }}
       >
         {n.excerpt}
       </p>
@@ -409,35 +417,35 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
       <section className="relative px-6 overflow-hidden" style={{ backgroundColor: SECTION_BG, paddingTop: 100, paddingBottom: 120 }}>
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,162,39,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,162,39,0.03) 0%, transparent 50%)",
+          background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(56,189,248,0.04) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(56,189,248,0.02) 0%, transparent 50%)",
         }} />
         {/* Grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-50" style={{
-          backgroundImage: "linear-gradient(rgba(201,162,39,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,162,39,0.03) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(56,189,248,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.02) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }} />
 
         <div className="max-w-[1100px] mx-auto relative z-10">
           {/* Eyebrow + Title */}
           <div className="mb-4 flex items-center gap-2.5">
-            <span className="inline-block w-8 h-px" style={{ backgroundColor: GOLD }} />
-            <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-[0.25em]" style={{ color: GOLD }}>
+            <span className="inline-block w-8 h-px" style={{ backgroundColor: ARC }} />
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.25em]" style={{ fontFamily: FONT_MONO, color: ARC }}>
               Enquanto você espera
             </span>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD, boxShadow: `0 0 8px ${GOLD}`, animation: "pulse 2s ease-in-out infinite" }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: ARC, boxShadow: `0 0 8px ${ARC}`, animation: "pulse 2s ease-in-out infinite" }} />
           </div>
 
           <h2
-            className="text-[clamp(2.2rem,5vw,3.6rem)] font-black leading-[1.1] mb-5 max-w-[700px]"
-            style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}
+            className="text-[clamp(2.2rem,5vw,3.6rem)] font-black leading-[1.1] mb-5 max-w-[700px] uppercase"
+            style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
           >
             O mercado já está{" "}
-            <em style={{ fontStyle: "italic", color: GOLD }}>sentindo o impacto</em>
+            <em style={{ fontStyle: "italic", color: ARC }}>sentindo o impacto</em>
           </h2>
 
-          <p className="text-[1.05rem] max-w-[620px] mb-16" style={{ color: MUTED, lineHeight: 1.7, fontWeight: 300 }}>
+          <p className="text-[1.05rem] max-w-[620px] mb-16" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.7, fontWeight: 300 }}>
             Empresas bilionárias estão derretendo em tempo real. Não é teoria — são números.{" "}
-            <strong style={{ color: PARCHMENT, fontWeight: 600 }}>
+            <strong style={{ color: IVORY, fontWeight: 600 }}>
               Quem não se adapta à inteligência artificial está sendo engolido por quem já se adaptou.
             </strong>
           </p>
@@ -446,7 +454,7 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
         {/* Ticker */}
         <div
           className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mb-14"
-          style={{ borderTop: "1px solid rgba(201,162,39,0.15)", borderBottom: "1px solid rgba(201,162,39,0.15)", padding: "14px 0", backgroundColor: "rgba(201,162,39,0.02)" }}
+          style={{ borderTop: `0.5px solid rgba(56,189,248,0.12)`, borderBottom: `0.5px solid rgba(56,189,248,0.12)`, padding: "14px 0", backgroundColor: "rgba(56,189,248,0.02)" }}
         >
           <TickerTrack />
         </div>
@@ -462,10 +470,10 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
           {/* News Section */}
           <div className="mb-[72px]">
             <div className="flex items-center gap-2.5 mb-6">
-              <span className="font-mono text-[0.65rem] font-semibold uppercase tracking-[0.2em]" style={{ color: GOLD_DIM }}>
+              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em]" style={{ fontFamily: FONT_MONO, color: ARC_DIM }}>
                 Manchetes reais
               </span>
-              <span className="flex-1 h-px" style={{ background: "rgba(201,162,39,0.1)" }} />
+              <span className="flex-1 h-px" style={{ background: "rgba(56,189,248,0.1)" }} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -477,45 +485,45 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
 
           {/* CTA */}
           <div
-            className="text-center p-12 border relative overflow-hidden"
+            className="text-center p-12 relative overflow-hidden"
             style={{
-              borderColor: "rgba(201,162,39,0.15)",
-              borderRadius: 16,
-              background: `linear-gradient(135deg, rgba(201,162,39,0.03) 0%, rgba(14,26,15,0.95) 100%)`,
+              border: `0.5px solid rgba(56,189,248,0.12)`,
+              borderRadius: 14,
+              background: `linear-gradient(135deg, rgba(56,189,248,0.03) 0%, rgba(6,10,18,0.95) 100%)`,
             }}
           >
-            <div className="absolute top-[-1px] left-[20%] right-[20%] h-px" style={{ background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)` }} />
+            <div className="absolute top-[-1px] left-[20%] right-[20%] h-px" style={{ background: `linear-gradient(90deg, transparent, ${ARC}50, transparent)` }} />
 
             <h3
-              className="text-[clamp(1.4rem,3vw,2rem)] font-bold mb-3 leading-snug"
-              style={{ fontFamily: "'Playfair Display', serif", color: PARCHMENT }}
+              className="text-[clamp(1.4rem,3vw,2rem)] font-bold mb-3 leading-snug uppercase"
+              style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
             >
               A pergunta não é se a IA vai mudar tudo.
               <br />
-              A pergunta é: <em style={{ color: GOLD, fontStyle: "italic" }}>você vai estar pronto?</em>
+              A pergunta é: <span style={{ color: ARC }}>você vai estar pronto?</span>
             </h3>
 
-            <p className="text-[0.95rem] mb-8 max-w-[500px] mx-auto" style={{ color: MUTED, fontWeight: 300 }}>
+            <p className="text-[0.95rem] mb-8 max-w-[500px] mx-auto" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
               Na masterclass, eu vou te mostrar como usar IA na prática — do jeito que quem está ganhando já usa.
             </p>
 
             <button
               onClick={() => onCTA("apocalypse")}
-              className="inline-flex items-center gap-2 text-[0.95rem] font-semibold px-9 py-3.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 text-[0.95rem] font-semibold px-9 py-3.5 transition-all duration-300 uppercase"
               style={{
-                fontFamily: "'DM Sans', sans-serif",
-                color: SECTION_BG,
-                backgroundColor: GOLD,
-                borderRadius: 8,
-                letterSpacing: "0.02em",
+                fontFamily: FONT_MONO,
+                color: VOID,
+                backgroundColor: ARC,
+                borderRadius: 6,
+                letterSpacing: "0.08em",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#E0B866";
+                e.currentTarget.style.backgroundColor = "#7DD3FC";
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,162,39,0.25)";
+                e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.3)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = GOLD;
+                e.currentTarget.style.backgroundColor = ARC;
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
