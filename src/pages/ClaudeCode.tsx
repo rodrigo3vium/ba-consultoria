@@ -604,12 +604,15 @@ const ClaudeCode = () => {
         }}
       >
         <div className="max-w-5xl mx-auto text-center space-y-4">
-          <span
-            className="text-base tracking-[3px] font-bold uppercase"
-            style={{ fontFamily: FONT_DISPLAY, color: ARC }}
-          >
-            MÉTODO STARK
-          </span>
+          <div className="flex items-center justify-center gap-3">
+            <img src={metodoStarkLogo} alt="Método Stark" className="w-10 h-10" />
+            <span
+              className="text-base tracking-[3px] font-bold uppercase"
+              style={{ fontFamily: FONT_DISPLAY, color: ARC }}
+            >
+              MÉTODO STARK
+            </span>
+          </div>
           <p
             className="text-sm"
             style={{
