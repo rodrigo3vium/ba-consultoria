@@ -6,6 +6,8 @@ import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 import servicenowLogo from "@/assets/servicenow-logo.png";
 import headlineChegg from "@/assets/headline-chegg.png";
 import cnbcLogo from "@/assets/cnbc-logo.jpg";
+import headlineG1 from "@/assets/headline-g1.png";
+import g1Logo from "@/assets/g1-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -168,13 +170,15 @@ const newsClippings: NewsClipData[] = [
     excerpt: "A empresa de educação online foi atingida pela ascensão de ferramentas de IA generativa como o ChatGPT da OpenAI, cada vez mais populares entre estudantes.",
   },
   {
-    source: "Fortune",
-    sourceInitials: "F",
-    sourceColor: "#E31937",
-    url: "fortune.com/2026/02/05/stocks-dumb-money-ai-tech",
+    source: "G1 - Globo",
+    sourceInitials: "G1",
+    sourceColor: "#CC0000",
+    sourceLogo: g1Logo,
+    url: "g1.globo.com/economia/noticia/2026/02/05",
     date: "05 Fev 2026",
-    headline: "Traders perdem $1 trilhão ao perceber que ",
-    highlightText: "IA vai engolir empresas de tech primeiro",
+    headline: "Empresas de tecnologia perdem US$ 1 trilhão em valor de mercado com ",
+    highlightText: "'ameaça' de IA chinesa",
+    headlineImage: headlineG1,
     excerpt: "Cerca de US$ 1 trilhão foi eliminado do market cap de empresas de software ontem, segundo a Bloomberg.",
   },
   {
