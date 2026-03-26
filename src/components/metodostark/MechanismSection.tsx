@@ -18,7 +18,7 @@ const beliefs = [
   {
     num: "01",
     title: "IA não é ferramenta. É time.",
-    text: "Quem usa IA como assistente vai ter resultados de assistente. Quem arquiteta IA como time vai ter resultados de time. A distinção é fundamental — e muda tudo sobre como você aprende, implementa e escala.",
+    text: "Quem usa IA como assistente vai ter resultados de assistente. Quem arquiteta IA como time vai ter resultados de time. A distinção é fundamental e define como você aprende, implementa e escala.",
   },
   {
     num: "02",
