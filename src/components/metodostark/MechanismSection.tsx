@@ -50,7 +50,7 @@ const alphaItems = [
   {
     num: "001",
     title: "Módulos do Zero ao Sistema Completo",
-    text: "Cada módulo ensina um componente do sistema de IA para o seu negócio. Cada módulo termina com um entregável concreto. Você não avança sem aplicar — e aplicando, você já está operando.",
+    text: "Cada módulo ensina um componente do sistema de IA para o seu negócio. Cada módulo termina com um entregável concreto. Você não avança sem aplicar. E aplicando, você já está operando.",
   },
   {
     num: "002",
