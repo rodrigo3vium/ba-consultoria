@@ -148,6 +148,7 @@ interface NewsClipData {
   date: string;
   headline: string;
   highlightText: string;
+  headlineImage?: string;
   excerpt: string;
 }
 
