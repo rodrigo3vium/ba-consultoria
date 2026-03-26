@@ -10,6 +10,8 @@ import headlineG1 from "@/assets/headline-g1.png";
 import g1Logo from "@/assets/g1-logo.png";
 import headlineGizmodo from "@/assets/headline-gizmodo.png";
 import gizmodoLogo from "@/assets/gizmodo-logo.png";
+import headlineInvestorplace from "@/assets/headline-investorplace.png";
+import investorplaceLogo from "@/assets/investorplace-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
