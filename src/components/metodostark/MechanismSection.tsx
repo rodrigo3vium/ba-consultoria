@@ -42,7 +42,7 @@ const beliefs = [
   {
     num: "06",
     title: "Comunidade acelera aprendizado.",
-    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios — isso vale mais do que qualquer aula gravada. O Método Stark é uma comunidade de praticantes, não um grupo de estudantes.",
+    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios. Isso vale mais do que qualquer aula gravada. O Método Stark é uma comunidade de praticantes, não um grupo de estudantes.",
   },
 ];
 
