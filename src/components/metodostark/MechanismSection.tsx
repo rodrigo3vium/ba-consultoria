@@ -18,7 +18,7 @@ const beliefs = [
   {
     num: "01",
     title: "IA não é ferramenta. É time.",
-    text: "Quem usa IA como assistente vai ter resultados de assistente. Quem arquiteta IA como time vai ter resultados de time. A distinção é fundamental — e muda tudo sobre como você aprende, implementa e escala.",
+    text: "Quem usa IA como assistente vai ter resultados de assistente. Quem arquiteta IA como time vai ter resultados de time. A distinção é fundamental e define como você aprende, implementa e escala.",
   },
   {
     num: "02",
@@ -28,7 +28,7 @@ const beliefs = [
   {
     num: "03",
     title: "Sem código. Mas com arquitetura.",
-    text: "Você não precisa programar para construir sistemas de IA. Precisa pensar como arquiteto — entender entradas, saídas, fluxos e objetivos. Isso é ensinável para qualquer pessoa que opera um negócio.",
+    text: "Você não precisa programar para construir sistemas de IA. Precisa pensar como arquiteto: entender entradas, saídas, fluxos e objetivos. Isso é ensinável para qualquer pessoa que opera um negócio.",
   },
   {
     num: "04",
@@ -38,12 +38,12 @@ const beliefs = [
   {
     num: "05",
     title: "O mercado não vai te esperar.",
-    text: "Uma minoria silenciosa já está operando com sistemas de IA rodando 24h. Eles não estão esperando o mercado adotar — eles estão criando a vantagem enquanto a maioria debate se vale a pena.",
+    text: "Uma minoria silenciosa já está operando com sistemas de IA rodando 24h. Eles não estão esperando o mercado adotar, eles estão criando a vantagem enquanto a maioria debate se vale a pena.",
   },
   {
     num: "06",
     title: "Comunidade acelera aprendizado.",
-    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios — isso vale mais do que qualquer aula gravada. O Método Stark é uma comunidade de praticantes, não um grupo de estudantes.",
+    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios. Isso vale mais do que qualquer aula gravada. O Método Stark é uma comunidade de praticantes, não um grupo de estudantes.",
   },
 ];
 
@@ -51,12 +51,12 @@ const alphaItems = [
   {
     num: "001",
     title: "Módulos do Zero ao Sistema Completo",
-    text: "Cada módulo ensina um componente do sistema de IA para o seu negócio. Cada módulo termina com um entregável concreto. Você não avança sem aplicar — e aplicando, você já está operando.",
+    text: "Cada módulo ensina um componente do sistema de IA para o seu negócio. Cada módulo termina com um entregável concreto. Você não avança sem aplicar. E aplicando, você já está operando.",
   },
   {
     num: "002",
     title: "Comunidade de Praticantes",
-    text: "Usuários ativos trocando sistemas reais, prompts que funcionam e resultados verificáveis. Não é grupo de Telegram. É um ambiente onde a prática é o standard — não a exceção.",
+    text: "Usuários ativos trocando sistemas reais, prompts que funcionam e resultados verificáveis. Não é grupo de Telegram. É um ambiente onde a prática é o standard, não a exceção.",
   },
   {
     num: "003",
@@ -66,7 +66,7 @@ const alphaItems = [
   {
     num: "004",
     title: "Biblioteca de Prompts por Função",
-    text: "Prompts organizados por função de negócio: vendas, atendimento, gestão, conteúdo, análise. Não uma lista de curiosidades — um acervo de sistemas que você instala e opera.",
+    text: "Prompts organizados por função de negócio: vendas, atendimento, gestão, conteúdo, análise. Não uma lista de curiosidades, mas um acervo de sistemas que você instala e opera.",
   },
   {
     num: "005",
@@ -76,7 +76,7 @@ const alphaItems = [
   {
     num: "006",
     title: "Atualizações Contínuas",
-    text: "O campo de IA muda toda semana. O Método Stark evolui com ele. Novas ferramentas, novos módulos, novos sistemas — inclusos sem custo adicional.",
+    text: "O campo de IA muda toda semana. O Método Stark evolui com ele. Novas ferramentas, novos módulos, novos sistemas, inclusos sem custo adicional.",
   },
 ];
 
@@ -110,13 +110,19 @@ const MechanismSection = () => {
             >
               Não é um curso.
               <br />
-              <span style={{ color: ARC }}>É uma crença.</span>
+              <span style={{ color: ARC }}>É um Ecossistema.</span>
             </h3>
             <p
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-              Por trás do Método Stark existe um conjunto de convicções sobre como o trabalho vai funcionar daqui para frente — e sobre o que separa os profissionais que vão liderar essa transição dos que vão ser engolidos por ela.
+              No Método Stark existe uma arquitetura de sistemas que separa os profissionais que entenderam como o trabalho vai funcionar daqui pra frente.
+            </p>
+            <p
+              className="text-base md:text-lg leading-relaxed"
+              style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
+            >
+              Por trás do Método Stark existe um conjunto de convicções sobre como o trabalho vai funcionar daqui para frente e sobre o que separa os profissionais que vão liderar essa transição dos que vão ser engolidos por ela.
             </p>
           </div>
 
@@ -162,8 +168,25 @@ const MechanismSection = () => {
             ))}
           </div>
 
+          {/* From builder to builder */}
+          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "20px" }}>
+            <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${STARK_GOLD}40, transparent)` }} />
+            <p
+              className="text-sm uppercase tracking-[4px]"
+              style={{ fontFamily: FONT_MONO, color: STARK_GOLD }}
+            >
+              From builder to builder
+            </p>
+            <p
+              className="text-base md:text-lg"
+              style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
+            >
+              O Método Stark é pensado para quem quer ganhar dinheiro. Tudo é pensado para gerar o maior retorno possível, e com velocidade. Sem teoria desnecessária, sem firula motivacional.
+            </p>
+          </div>
+
           {/* Closing statement */}
-          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "40px" }}>
+          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "20px" }}>
             <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${ARC}40, transparent)` }} />
             <h3
               className="text-2xl md:text-3xl font-bold"
@@ -181,7 +204,7 @@ const MechanismSection = () => {
               className="text-base md:text-lg"
               style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.7, fontWeight: 300 }}
             >
-              Essa mentalidade muda tudo.
+              Essa mentalidade muda o jogo.
             </p>
           </div>
         </div>
@@ -216,7 +239,7 @@ const MechanismSection = () => {
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-              O Método Stark não é um curso avulso sobre IA. É um sistema integrado de educação, prática e comunidade — construído para que você saia com sistemas funcionando no seu negócio, não com slides para revisar nas férias.
+             O Método Stark não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
             </p>
           </div>
 

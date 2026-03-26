@@ -329,10 +329,16 @@ const MetodoStark = () => {
               </div>
 
               <p
+                className="text-lg font-semibold mb-2"
+                style={{ fontFamily: FONT_DISPLAY, color: TEXT_COLOR }}
+              >
+                Usa IA como um Google melhorado. Tem a sensação de que não usa IA no seu máximo potencial.
+              </p>
+              <p
                 className="text-base leading-relaxed"
                 style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8 }}
               >
-                Usa IA como um Google melhorado. Abre o chat, faz uma pergunta, lê a resposta, fecha. Repete amanhã. Talvez reescreva um e-mail. Talvez peça uma legenda. Sente que "está usando IA" mas não consegue nomear o que mudou no seu negócio.
+                Abre o chat, faz uma pergunta, lê a resposta, fecha. Repete amanhã. Talvez reescreva um e-mail. Talvez peça uma legenda. Sente que "está usando IA" mas não consegue nomear o que mudou no seu negócio.
               </p>
             </div>
 
@@ -368,10 +374,16 @@ const MetodoStark = () => {
               </div>
 
               <p
+                className="text-lg font-semibold mb-2"
+                style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
+              >
+                Dominou a construção de sistemas de IA, com agentes trabalhando 24h por dia para ele e seus clientes.
+              </p>
+              <p
                 className="text-base leading-relaxed"
                 style={{ fontFamily: FONT_BODY, color: IVORY, lineHeight: 1.8 }}
               >
-                Arquiteta sistemas. Tem agentes treinados para funções específicas. Processa o que antes levava horas em minutos. Tem uma operação que funciona enquanto dorme. Não usa IA — <strong style={{ color: ARC }}>comanda um time</strong>.
+                Consegue fazer mais, mais rápido e ganhando mais dinheiro. Não "usa" IA, <strong style={{ color: ARC }}>comanda um time de agentes</strong>.
               </p>
             </div>
           </div>
@@ -394,10 +406,10 @@ const MetodoStark = () => {
                 não é inteligência.
               </p>
               <p
-                className="text-3xl md:text-4xl font-bold uppercase"
+                className="text-3xl md:text-4xl font-bold"
                 style={{ fontFamily: FONT_DISPLAY, color: ARC }}
               >
-                É arquitetura.
+                É quem consegue arquitetar as melhores soluções.
               </p>
             </div>
 
@@ -410,7 +422,7 @@ const MetodoStark = () => {
                 fontWeight: 300,
               }}
             >
-              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O gap que está se abrindo entre os dois grupos não é tecnológico — é mental. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong style={{ color: IVORY }}>construir sistemas</strong>.
+              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O que diferencia os dois grupos é conhecimento. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong style={{ color: IVORY }}>construir sistemas</strong>.
             </p>
           </div>
         </div>

@@ -16,19 +16,14 @@ const FONT_MONO = "'IBM Plex Mono', monospace";
 const FONT_BODY = "'Exo 2', sans-serif";
 
 const forYouItems = [
-  "Já tentou ganhar dinheiro no digital e não teve consistência",
-  "Está cansado de depender de algoritmo, tráfego e seguidores",
-  "Sente que está \"usando IA\", mas não está ganhando dinheiro com isso",
-  "Quer uma forma mais direta, simples e previsível de gerar receita",
-  "Prefere resolver problemas reais do que disputar atenção na internet",
+  "Para aqueles que cansaram de cursos sobre IA que não ensinam a prática.",
+  "Profissionais que querem aprender a construir sistemas de IA.",
+  "Não quer nem o blablá raso, nem o conteúdo técnico. Quer aplicação na medida certa para gerar dinheiro.",
+  "Sente que não está explorando o máximo potencial da IA.",
 ];
 
 const notForYouItems = [
-  "Quer ganhar dinheiro rápido sem aprender nada",
-  "Procura mais um curso de \"prompt\" ou ferramenta",
-  "Prefere consumir conteúdo ao invés de executar",
-  "Está confortável dependendo de algoritmo e sorte",
-  "Não quer lidar com clientes ou resolver problemas reais",
+  "Quer se tornar programador e entender o detalhe do detalhe técnico",
 ];
 
 const deliverables = [
@@ -54,7 +49,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               05 — Para quem é
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-              Para quem decidiu sair do <span style={{ color: ARC }}>jogo antigo</span>
+              Para quem decidiu aproveitar a <span style={{ color: ARC }}>segunda onda da IA</span>
             </h2>
           </div>
 
@@ -63,7 +58,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               O Método STARK <strong style={{ color: IVORY }}>não foi feito para curiosos</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
-              Foi feito para quem já percebeu que o modelo atual não funciona como prometeram.
+              Foi feito para quem já percebeu que o modelo antigo está condenado.
             </p>
           </div>
 
@@ -91,7 +86,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Você não precisa:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {["saber programar", "ter audiência", "ter experiência com IA"].map((item, i) => (
+              {["saber programar", "ter experiência com IA"].map((item, i) => (
                 <span
                   key={i}
                   className="px-5 py-2.5"
@@ -113,7 +108,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
                 Você só precisa de uma coisa:
               </p>
               <p className="text-xl md:text-2xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
-                Estar disposto a pensar como arquiteto — não como usuário.
+                Estar disposto a aprender a pensar como arquiteto ao invés de como usuário.
               </p>
             </div>
           </div>
@@ -160,36 +155,38 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
           </div>
 
           <div className="text-center space-y-6 pt-4">
-            <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-              Se você está procurando:
+            <p className="text-sm uppercase tracking-[4px]" style={{ fontFamily: FONT_MONO, color: DIM }}>
+              Você não precisa:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {["atalhos", "hacks", "dinheiro fácil"].map((item, i) => (
+              {["saber programar", "ter experiência com IA"].map((item, i) => (
                 <span
                   key={i}
                   className="px-5 py-2.5"
                   style={{
                     fontFamily: FONT_MONO,
-                    color: "#DC2626",
+                    color: TEXT_COLOR,
                     fontSize: "0.85rem",
-                    backgroundColor: "rgba(220,38,38,0.06)",
+                    backgroundColor: HUD_DARK,
                     borderRadius: "8px",
-                    border: "0.5px solid rgba(220,38,38,0.15)",
+                    border: `0.5px solid ${BORDER_NORMAL}`,
                   }}
                 >
                   {item}
                 </span>
               ))}
             </div>
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM }}>
-              👉 esse não é o lugar.
-            </p>
+            <div className="space-y-2 pt-4">
+              <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, fontWeight: 300 }}>
+                Você só precisa de uma coisa:
+              </p>
+              <p className="text-xl md:text-2xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
+                Estar disposto a aprender a pensar como arquiteto ao invés de como usuário.
+              </p>
+            </div>
             <div className="space-y-2 pt-4">
               <p className="text-xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
                 Aqui você aprende a construir.
-              </p>
-              <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-                E isso exige responsabilidade.
               </p>
             </div>
           </div>
@@ -215,7 +212,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Isso não é um curso.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              É um sistema pensado para que <strong style={{ color: IVORY }}>ganhar dinheiro construindo sistemas de IA</strong>.
+              É um sistema pensado para que você saia com <strong style={{ color: IVORY }}>algo funcionando</strong>.
             </p>
           </div>
 
@@ -254,7 +251,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
               Aprenda como construir uma oferta para vender consultorias de criação de sistemas de{" "}
-              <strong style={{ color: STARK_GOLD }}>R$20 a R$30 mil reais</strong>.
+              <strong style={{ color: STARK_GOLD }}>R$5 a R$30 mil reais</strong>.
             </p>
           </div>
         </div>
@@ -287,7 +284,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Se você fechar <strong style={{ color: TEXT_COLOR }}>1 projeto de R$5.000</strong> ou <strong style={{ color: TEXT_COLOR }}>1 projeto de R$10.000</strong>
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: ARC }}>
-              👉 isso já muda completamente o jogo.
+              👉 isso já muda completamente o seu jogo.
             </p>
           </div>
 
@@ -390,7 +387,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Ou pode:
             </p>
             <p className="text-2xl md:text-3xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
-              aprender um modelo que já está funcionando agora.
+              aprender um modelo revolucionário que já está funcionando agora.
             </p>
           </div>
 
@@ -415,7 +412,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Quero aprender o Método STARK e criar meu primeiro sistema com IA
+            Quero aprender o Método STARK e começar a criar meus sistemas de IA
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>

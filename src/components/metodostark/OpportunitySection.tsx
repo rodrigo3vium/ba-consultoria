@@ -92,7 +92,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
           </h2>
 
           <p style={{ fontFamily: FONT_BODY, fontSize: "1.05rem", color: TEXT_COLOR, lineHeight: 1.7, maxWidth: 640, fontWeight: 300 }}>
-            Enquanto empresas bilionárias derretem, pessoas comuns estão construindo negócios milionários — sozinhas, sem equipe, sem investidor. A diferença? <strong style={{ color: IVORY, fontWeight: 600 }}>Saber usar IA como alavanca.</strong>
+            Enquanto empresas bilionárias derretem, pessoas comuns estão construindo negócios milionários. Sozinhas, sem equipe, sem investidor. <strong style={{ color: IVORY, fontWeight: 600 }}>Apenas comandando um time de agentes de IA.</strong>
           </p>
         </div>
 
@@ -177,7 +177,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             <em style={{ color: STARK_GOLD, fontStyle: "italic" }}>Elas só começaram antes.</em>
           </h3>
           <p className="max-w-lg mx-auto mb-8" style={{ fontFamily: FONT_BODY, fontSize: "0.95rem", color: TEXT_COLOR, fontWeight: 300, lineHeight: 1.6 }}>
-            Você vai ver na prática como eu uso IA para construir, automatizar e economizar — e como você pode fazer o mesmo a partir de hoje.
+            Se você também não quer ficar para trás, clique aqui para fazer parte do Método Stark.
           </p>
           <button
             onClick={() => onCTA("opportunity")}
@@ -186,7 +186,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             onMouseEnter={(e) => { e.currentTarget.style.background = ARC_BRIGHT; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.2)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = ARC; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
           >
-            Garantir minha vaga
+            Fazer parte do Método Stark
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
