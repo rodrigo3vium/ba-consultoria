@@ -4,6 +4,7 @@ import { ArrowRight, Users, Cpu, Brain, Layers } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
 import OpportunitySection from "@/components/metodostark/OpportunitySection";
 import MechanismSection from "@/components/metodostark/MechanismSection";
+import ClosingSection from "@/components/metodostark/ClosingSection";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
 const VOID = "#060A12";
@@ -338,73 +339,8 @@ const MetodoStark = () => {
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
-      {/* CTA Final */}
-      <section
-        className="relative px-6"
-        style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: VOID }}
-      >
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(56,189,248,0.04) 0%, transparent 70%)",
-        }} />
-
-        <div className="max-w-3xl mx-auto text-center space-y-8 relative z-10">
-          <p
-            className="text-lg italic"
-            style={{
-              fontFamily: FONT_BODY,
-              color: DIM,
-              fontWeight: 300,
-            }}
-          >
-            "Quem aprende a construir sistemas, não compete — domina."
-          </p>
-
-          <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase"
-            style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
-          >
-            Aprenda o{" "}
-            <span style={{ color: ARC }}>Método STARK</span>
-          </h2>
-
-          <p
-            className="text-lg max-w-xl mx-auto"
-            style={{
-              fontFamily: FONT_BODY,
-              color: DIM,
-              lineHeight: 1.7,
-              fontWeight: 300,
-            }}
-          >
-            Transforme IA em sistemas reais que geram receita. Sem programar, sem depender de audiência.
-          </p>
-
-          <button
-            onClick={() => handleCTA("final")}
-            className="inline-flex items-center gap-3 uppercase tracking-[2px] px-10 py-5 transition-all duration-300 font-semibold"
-            style={{
-              fontFamily: FONT_MONO,
-              color: VOID,
-              backgroundColor: ARC,
-              borderRadius: "6px",
-              fontSize: "0.9rem",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = ARC_BRIGHT;
-              e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.3)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = ARC;
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            Quero saber mais
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </section>
+      {/* Sections 05-07 + Pricing + Final CTA */}
+      <ClosingSection onCTA={handleCTA} />
 
       {/* Footer */}
       <footer
