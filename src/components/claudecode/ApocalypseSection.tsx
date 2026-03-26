@@ -84,6 +84,7 @@ const casualties: CasualtyData[] = [
     ticker: "Prosus (adquiriu por $1.8 bi)",
     logoInitials: "SO",
     logoColor: "#F48024",
+    logoImage: stackoverflowLogo,
     badge: "Irrelevante",
     stat: "−78%",
     statLabel: "Volume de perguntas",
