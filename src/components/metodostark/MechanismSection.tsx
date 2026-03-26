@@ -65,7 +65,7 @@ const alphaItems = [
   {
     num: "004",
     title: "Biblioteca de Prompts por Função",
-    text: "Prompts organizados por função de negócio: vendas, atendimento, gestão, conteúdo, análise. Não uma lista de curiosidades — um acervo de sistemas que você instala e opera.",
+    text: "Prompts organizados por função de negócio: vendas, atendimento, gestão, conteúdo, análise. Não uma lista de curiosidades, mas um acervo de sistemas que você instala e opera.",
   },
   {
     num: "005",
