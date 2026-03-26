@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
 import { ArrowRight, Users, Cpu, Brain, Layers } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
+import MechanismSection from "@/components/metodostark/MechanismSection";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
 const VOID = "#060A12";
