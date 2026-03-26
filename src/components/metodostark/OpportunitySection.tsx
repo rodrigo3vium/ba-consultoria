@@ -177,7 +177,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             <em style={{ color: STARK_GOLD, fontStyle: "italic" }}>Elas só começaram antes.</em>
           </h3>
           <p className="max-w-lg mx-auto mb-8" style={{ fontFamily: FONT_BODY, fontSize: "0.95rem", color: TEXT_COLOR, fontWeight: 300, lineHeight: 1.6 }}>
-            Na masterclass, você vai ver na prática como eu uso IA para construir, automatizar e economizar — e como você pode fazer o mesmo a partir de hoje.
+            Você vai ver na prática como eu uso IA para construir, automatizar e economizar — e como você pode fazer o mesmo a partir de hoje.
           </p>
           <button
             onClick={() => onCTA("opportunity")}
