@@ -393,10 +393,10 @@ const ReactorSection = () => {
                     />
                     {/* Radial line from core */}
                     <line
-                      x1={cx + innerR * Math.cos(((i * 60 - 90) * Math.PI) / 180)}
-                      y1={cy + innerR * Math.sin(((i * 60 - 90) * Math.PI) / 180)}
-                      x2={cx + outerR * Math.cos(((i * 60 - 90) * Math.PI) / 180)}
-                      y2={cy + outerR * Math.sin(((i * 60 - 90) * Math.PI) / 180)}
+                      x1={cx + innerR * Math.cos(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
+                      y1={cy + innerR * Math.sin(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
+                      x2={cx + outerR * Math.cos(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
+                      y2={cy + outerR * Math.sin(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
                       stroke={isActive ? ARC : "rgba(79,195,247,0.12)"}
                       strokeWidth={isActive ? 1 : 0.8}
                       opacity={isActive ? 0.8 : 1}
