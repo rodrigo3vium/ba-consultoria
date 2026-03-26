@@ -65,10 +65,10 @@ const MetodoStark = () => {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
-  // Video scrubbing — only when video is ready
+  // Video scrubbing — only when video is ready and seekable
   useEffect(() => {
     const video = videoRef.current;
-    if (!videoReady || !video || !video.duration) return;
+    if (!videoReady || !video || !video.duration || video.readyState < 2) return;
 
     const acceleratedProgress = Math.min(scrollProgress * 1.67, 1);
     const targetTime = acceleratedProgress * video.duration;
