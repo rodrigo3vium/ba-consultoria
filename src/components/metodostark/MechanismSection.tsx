@@ -75,7 +75,7 @@ const alphaItems = [
   {
     num: "006",
     title: "Atualizações Contínuas",
-    text: "O campo de IA muda toda semana. O Método Stark evolui com ele. Novas ferramentas, novos módulos, novos sistemas — inclusos sem custo adicional.",
+    text: "O campo de IA muda toda semana. O Método Stark evolui com ele. Novas ferramentas, novos módulos, novos sistemas, inclusos sem custo adicional.",
   },
 ];
 
