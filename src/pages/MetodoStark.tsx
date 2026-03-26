@@ -198,7 +198,7 @@ const MetodoStark = () => {
               fontWeight: 300,
             }}
           >
-            Usando o Método STARK de Vibe Coding para transformar IA em soluções que empresas já pagam caro para implementar — sem depender de audiência, tráfego ou "hacks" de marketing digital
+            Usando a Revolução de Vibe Coding para transformar IA em soluções que empresas já pagam caro para implementar — sem depender de audiência, tráfego ou "hacks" de marketing digital
           </p>
 
           <div className="pt-4">
