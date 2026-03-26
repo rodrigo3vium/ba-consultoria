@@ -69,7 +69,7 @@ const alphaItems = [
   {
     num: "003",
     title: "Chatbot IA Treinado no Método",
-    text: "Um assistente especializado disponível 24 horas, treinado no método do Método Stark. Você não precisa esperar pela próxima aula para tirar uma dúvida ou validar uma arquitetura.",
+    text: "Um assistente especializado disponível 24 horas, treinado no método da Revolução. Você não precisa esperar pela próxima aula para tirar uma dúvida ou validar uma arquitetura.",
   },
   {
     num: "004",
