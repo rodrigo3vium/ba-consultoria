@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
 import { ArrowRight, Users, Cpu, Brain, Layers } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
+import OpportunitySection from "@/components/metodostark/OpportunitySection";
 import MechanismSection from "@/components/metodostark/MechanismSection";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
@@ -321,6 +322,12 @@ const MetodoStark = () => {
 
       {/* O Mundo Já Mudou */}
       <ApocalypseSection onCTA={handleCTA} />
+
+      {/* Gradient separator */}
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+
+      {/* O Outro Lado da Moeda */}
+      <OpportunitySection onCTA={handleCTA} />
 
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
