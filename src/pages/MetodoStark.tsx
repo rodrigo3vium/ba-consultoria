@@ -326,6 +326,12 @@ const MetodoStark = () => {
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
+      {/* O Outro Lado da Moeda */}
+      <OpportunitySection onCTA={handleCTA} />
+
+      {/* Gradient separator */}
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+
       {/* O Mecanismo + Método Stark */}
       <MechanismSection />
 
