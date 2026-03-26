@@ -350,7 +350,7 @@ const ComoAplicarIA = () => {
             plugins={[
               Autoplay({
                 delay: 5000,
-              }),
+              }) as any,
             ]}
             className="w-full"
           >
