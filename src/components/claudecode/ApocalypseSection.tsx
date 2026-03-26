@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import cheggLogo from "@/assets/chegg-logo.png";
+import duolingoLogo from "@/assets/duolingo-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -66,6 +67,7 @@ const casualties: CasualtyData[] = [
     ticker: "NASDAQ: DUOL",
     logoInitials: "D",
     logoColor: "#58CC02",
+    logoImage: duolingoLogo,
     badge: "Em queda",
     stat: "−82%",
     statLabel: "Desde a máxima",
