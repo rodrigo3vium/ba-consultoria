@@ -6,6 +6,8 @@ import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 import servicenowLogo from "@/assets/servicenow-logo.png";
 import headlineChegg from "@/assets/headline-chegg.png";
 import cnbcLogo from "@/assets/cnbc-logo.jpg";
+import headlineG1 from "@/assets/headline-g1.png";
+import g1Logo from "@/assets/g1-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
