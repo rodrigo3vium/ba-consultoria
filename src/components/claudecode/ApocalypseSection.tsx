@@ -229,10 +229,12 @@ const newsClippings: NewsClipData[] = [
     source: "Fast Company",
     sourceInitials: "FC",
     sourceColor: "#000000",
+    sourceLogo: fastcompanyLogo,
     url: "fastcompany.com/duolingo-stock-dramatic-collapse",
     date: "02 Mar 2026",
     headline: "Ações da Duolingo em queda livre, continuando ",
     highlightText: "colapso dramático",
+    headlineImage: headlineFastcompany,
     excerpt: "Investidores estão abandonando a Duolingo após projeções decepcionantes para 2026. Ação perdeu 82% do valor.",
   },
 ];
