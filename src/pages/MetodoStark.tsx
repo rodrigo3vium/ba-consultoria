@@ -88,7 +88,7 @@ const MetodoStark = () => {
       cta_location: location,
       page: "/educacao/metodo-stark",
     });
-    window.open("https://wa.me/5511999718595?text=Quero%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Stark", "_blank");
+    window.open("https://pay.hotmart.com/N105097109P", "_blank");
   };
 
   return (
