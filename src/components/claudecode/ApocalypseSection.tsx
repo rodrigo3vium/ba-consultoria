@@ -12,6 +12,8 @@ import headlineGizmodo from "@/assets/headline-gizmodo.png";
 import gizmodoLogo from "@/assets/gizmodo-logo.png";
 import headlineInvestorplace from "@/assets/headline-investorplace.png";
 import investorplaceLogo from "@/assets/investorplace-logo.png";
+import headlineVenturebeat from "@/assets/headline-venturebeat.png";
+import venturebeatLogo from "@/assets/venturebeat-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -213,10 +215,12 @@ const newsClippings: NewsClipData[] = [
     source: "VentureBeat",
     sourceInitials: "V",
     sourceColor: "#CC0000",
+    sourceLogo: venturebeatLogo,
     url: "venturebeat.com/stack-overflow-layoffs-28-percent",
     date: "22 Dez 2025",
     headline: "Stack Overflow confirma demissões: ",
     highlightText: "28% da equipe cortada",
+    headlineImage: headlineVenturebeat,
     excerpt: "Com soluções concorrentes já em uso massivo, a era da IA generativa não tem sido fácil para o Stack Overflow.",
   },
   {
