@@ -43,9 +43,10 @@ const deliverables = [
 
 interface ClosingSectionProps {
   onCTA: (location: string) => void;
+  afterDeliverables?: React.ReactNode;
 }
 
-const ClosingSection = ({ onCTA }: ClosingSectionProps) => {
+const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
   return (
     <>
       {/* SEÇÃO 05 — PARA QUEM É */}
@@ -239,6 +240,8 @@ const ClosingSection = ({ onCTA }: ClosingSectionProps) => {
           </div>
         </div>
       </section>
+
+      {afterDeliverables}
 
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
