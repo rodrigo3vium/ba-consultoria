@@ -373,16 +373,6 @@ const ReactorSection = () => {
                     className="cursor-pointer"
                     onClick={() => handleSegmentClick(i)}
                   >
-                    {/* Energy line */}
-                    <line
-                      x1={energyInner.x} y1={energyInner.y}
-                      x2={energyOuter.x} y2={energyOuter.y}
-                      stroke={ARC}
-                      strokeWidth="1.5"
-                      opacity={isActive ? 1 : 0}
-                      filter="url(#reactorGlow)"
-                      style={{ transition: "all 0.6s" }}
-                    />
                     {/* Segment fill */}
                     <path
                       d={path}

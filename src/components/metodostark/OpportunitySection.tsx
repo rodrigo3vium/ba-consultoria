@@ -47,19 +47,18 @@ const heroStories = [
 ];
 
 const smallStories = [
-  { emoji: "⏱️", stat: "$100K/ano", label: "Com 60 dias de prazo", detail: "Jaleel e Hussein largaram os empregos com 60 dias pra ganhar dinheiro. Construíram o QuickTables na Lovable. Hoje faturam +US$ 100K/ano.", source: "Lovable Blog" },
+  { emoji: "⏱️", stat: "$10K/mês", label: "Com 60 dias de prazo", detail: "Jaleel e Hussein largaram os empregos com 60 dias pra ganhar dinheiro. Construíram o QuickTables na Lovable. Hoje faturam +US$ 100K/ano.", source: "Lovable Blog" },
   { emoji: "🇧🇷", stat: "R$3M", label: "Em 48 horas", detail: "Q Group, edtech brasileira, construiu uma versão premium da plataforma em 1 mês usando IA. Gerou R$ 3 milhões de receita em 48h.", source: "Lovable Blog" },
   { emoji: "🏥", stat: "$1M ARR", label: "Em 5 meses", detail: "Allan construiu o ShiftNex, plataforma de staffing para saúde. Atingiu US$ 1 milhão de receita recorrente em 5 meses, com 5.000+ usuários.", source: "Lovable Blog" },
   { emoji: "🧪", stat: "$8.8M/ano", label: "100+ ferramentas de IA", detail: "Nick Dobos, autodidata, construiu +100 ferramentas de IA em um site só. Fatura ~US$ 733K/mês. Uma pessoa.", source: "CrazyBurst" },
   { emoji: "🎨", stat: "$500M/ano", label: "Zero investimento externo", detail: "Midjourney fatura US$ 500M/ano com ~40 funcionários. Nunca levantou um centavo de investidor. Receita por funcionário: +US$ 5M.", source: "Sacra · Contrary Research" },
-  { emoji: "👗", stat: "$800K ARR", label: "Em 9 meses", detail: "Henrik e Peter construíram o Lumoo, plataforma de moda com IA e prova virtual, usando Lovable. Hoje atendem +15 marcas de moda nos Nórdicos.", source: "Lovable Blog" },
+  { emoji: "👗", stat: "R$80k/mês", label: "Em 9 meses", detail: "Henrik e Peter construíram o Lumoo, plataforma de moda com IA e prova virtual, usando Lovable. Hoje atendem +15 marcas de moda nos Nórdicos.", source: "Lovable Blog" },
 ];
 
 const dataStrip = [
   { value: "36%", label: "das novas empresas são fundadas por solopreneurs" },
   { value: "44%", label: "dos SaaS lucrativos são de fundadores solo" },
   { value: "95%", label: "de redução em custo vs. equipe tradicional" },
-  { value: "2026", label: "ano da 1ª empresa bilionária de 1 pessoa — Dario Amodei, CEO Anthropic" },
 ];
 
 const OpportunitySection = ({ onCTA }: Props) => {
@@ -87,7 +86,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
           </div>
 
           <h2 style={{ fontFamily: FONT_DISPLAY, fontSize: "clamp(2.2rem, 5vw, 3.6rem)", fontWeight: 700, lineHeight: 1.1, color: IVORY, marginBottom: 20, maxWidth: 750 }}>
-            Mas pra quem sabe usar,{" "}
+            Para quem sabe usar,{" "}
             <span style={{ fontStyle: "italic", color: ARC }}>as oportunidades são infinitas</span>
           </h2>
 
@@ -151,7 +150,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
         </div>
 
         {/* Data Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden" style={{ background: "rgba(56,189,248,0.06)", border: `1px solid rgba(56,189,248,0.1)`, borderRadius: 12 }}>
+        <div className="grid grid-cols-3 gap-px overflow-hidden" style={{ background: "rgba(56,189,248,0.06)", border: `1px solid rgba(56,189,248,0.1)`, borderRadius: 12 }}>
           {dataStrip.map((d, i) => (
             <div key={i} className="text-center" style={{ backgroundColor: VOID, padding: "24px 20px" }}>
               <div style={{ fontFamily: FONT_DISPLAY, fontSize: "1.8rem", fontWeight: 700, color: ARC, lineHeight: 1, marginBottom: 6 }}>{d.value}</div>

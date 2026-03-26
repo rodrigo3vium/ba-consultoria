@@ -154,42 +154,6 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
             ))}
           </div>
 
-          <div className="text-center space-y-6 pt-4">
-            <p className="text-sm uppercase tracking-[4px]" style={{ fontFamily: FONT_MONO, color: DIM }}>
-              Você não precisa:
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {["saber programar", "ter experiência com IA"].map((item, i) => (
-                <span
-                  key={i}
-                  className="px-5 py-2.5"
-                  style={{
-                    fontFamily: FONT_MONO,
-                    color: TEXT_COLOR,
-                    fontSize: "0.85rem",
-                    backgroundColor: HUD_DARK,
-                    borderRadius: "8px",
-                    border: `0.5px solid ${BORDER_NORMAL}`,
-                  }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-            <div className="space-y-2 pt-4">
-              <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, fontWeight: 300 }}>
-                Você só precisa de uma coisa:
-              </p>
-              <p className="text-xl md:text-2xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
-                Estar disposto a aprender a pensar como arquiteto ao invés de como usuário.
-              </p>
-            </div>
-            <div className="space-y-2 pt-4">
-              <p className="text-xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-                Aqui você aprende a construir.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -205,15 +169,6 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
               Um ecossistema completo para transformar <span style={{ color: ARC }}>IA em receita</span>
             </h2>
-          </div>
-
-          <div className="text-center space-y-4 max-w-2xl mx-auto">
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              Isso não é um curso.
-            </p>
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              É um sistema pensado para que você saia com <strong style={{ color: IVORY }}>algo funcionando</strong>.
-            </p>
           </div>
 
           <div className="space-y-4">
@@ -264,21 +219,6 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
       {/* PRICING */}
       <section className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: VOID }}>
         <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center space-y-6 max-w-3xl mx-auto">
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              Durante anos, o único jeito de ganhar dinheiro no digital foi: construir audiência, investir em tráfego, escalar volume.
-            </p>
-            <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
-              E isso custa: <strong style={{ color: TEXT_COLOR }}>tempo, dinheiro e energia</strong>.
-            </p>
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              Aqui, você está aprendendo um modelo diferente. Um modelo onde:
-            </p>
-            <p className="text-2xl md:text-3xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: STARK_GOLD }}>
-              1 único contrato pode pagar todo o investimento.
-            </p>
-          </div>
-
           <div className="text-center space-y-4">
             <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
               Se você fechar <strong style={{ color: TEXT_COLOR }}>1 projeto de R$5.000</strong> ou <strong style={{ color: TEXT_COLOR }}>1 projeto de R$10.000</strong>
@@ -311,24 +251,6 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               <p className="text-sm mt-2" style={{ fontFamily: FONT_MONO, color: DIM }}>
                 à vista ou <span style={{ color: STARK_GOLD }}>12x de R$199,70</span>
               </p>
-            </div>
-
-            <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${STARK_GOLD}30, transparent)` }} />
-
-            <div className="space-y-3 text-left">
-              <p className="text-xs uppercase tracking-[3px]" style={{ fontFamily: FONT_MONO, color: DIM }}>
-                Menos que:
-              </p>
-              {[
-                "1 mês de tráfego mal otimizado",
-                "1 curso genérico de marketing",
-                "1 erro tentando sozinho",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span style={{ color: STARK_GOLD, fontSize: "0.7rem" }}>▸</span>
-                  <span className="text-sm" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>{item}</span>
-                </div>
-              ))}
             </div>
 
             <button

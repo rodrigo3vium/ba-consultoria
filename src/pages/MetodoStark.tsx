@@ -173,7 +173,7 @@ const MetodoStark = () => {
               className="text-xs uppercase tracking-[5px]"
               style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "3px" }}
             >
-              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;A Revolução de Vibe Coding&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
+              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;A Revolução&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
             </span>
           </div>
 
@@ -181,25 +181,12 @@ const MetodoStark = () => {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2]"
             style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
           >
-            Pare de usar IA como um Google melhorado e aprenda a criar{" "}
+            Pare de usar IA como um Google melhorado e aprenda a criar sistemas que trabalham 24h por dia enquanto{" "}
             <span style={{ color: ARC }}>
-              sistemas que trabalham 24h por dia
-            </span>{" "}
-            enquanto você fecha contratos de até R$30 mil, mesmo sem saber programar
+              você fecha contratos de até R$30 mil
+            </span>
+            , mesmo sem saber programar
           </h1>
-
-          <p
-            className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
-            style={{
-              fontFamily: FONT_BODY,
-              color: TEXT_COLOR,
-              fontSize: "clamp(15px, 2vw, 18px)",
-              lineHeight: 1.7,
-              fontWeight: 300,
-            }}
-          >
-            Usando a Revolução de Vibe Coding para transformar IA em soluções que empresas já pagam caro para implementar — sem depender de audiência, tráfego ou "hacks" de marketing digital
-          </p>
 
           <div className="pt-4">
             <button
@@ -284,17 +271,11 @@ const MetodoStark = () => {
         <div className="max-w-5xl mx-auto space-y-16" style={{ position: "relative", zIndex: 2 }}>
           {/* Section header */}
           <div className="text-center space-y-4">
-            <span
-              className="text-xs uppercase tracking-[5px]"
-              style={{ fontFamily: FONT_MONO, color: DIM }}
-            >
-              🧠 Seção 01
-            </span>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
             >
-              O mundo <span style={{ color: ARC }}>se dividiu</span>
+              O mundo <span style={{ color: ARC }}>se dividiu em 2</span>
             </h2>
           </div>
 
@@ -338,7 +319,7 @@ const MetodoStark = () => {
                 className="text-base leading-relaxed"
                 style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8 }}
               >
-                Abre o chat, faz uma pergunta, lê a resposta, fecha. Repete amanhã. Talvez reescreva um e-mail. Talvez peça uma legenda. Sente que "está usando IA" mas não consegue nomear o que mudou no seu negócio.
+                Abre o ChatGPT, digita uma pergunta, copia a resposta, fecha a aba. No dia seguinte, faz a mesma coisa. Assiste a vídeos sobre IA, testa ferramentas, mas nunca transforma nada disso em algo que funciona sozinho. A IA entra na rotina como ferramenta, mas nunca produzindo resultado real.
               </p>
             </div>
 
