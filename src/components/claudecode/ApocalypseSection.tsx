@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import cheggLogo from "@/assets/chegg-logo.png";
 import duolingoLogo from "@/assets/duolingo-logo.png";
+import uipathLogo from "@/assets/uipath-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -96,6 +97,7 @@ const casualties: CasualtyData[] = [
     ticker: "NYSE: PATH",
     logoInitials: "U",
     logoColor: "#FA4616",
+    logoImage: uipathLogo,
     badge: "Ameaçada",
     stat: "−50%",
     statLabel: "Queda em 2024",
