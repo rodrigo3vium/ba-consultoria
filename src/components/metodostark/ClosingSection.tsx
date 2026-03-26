@@ -23,11 +23,7 @@ const forYouItems = [
 ];
 
 const notForYouItems = [
-  "Quer ganhar dinheiro rápido sem aprender nada",
-  "Procura mais um curso de \"prompt\" ou ferramenta",
-  "Prefere consumir conteúdo ao invés de executar",
-  "Está confortável dependendo de algoritmo e sorte",
-  "Não quer lidar com clientes ou resolver problemas reais",
+  "Quer se tornar programador e entender o detalhe do detalhe técnico",
 ];
 
 const deliverables = [
