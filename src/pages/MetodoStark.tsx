@@ -65,10 +65,10 @@ const MetodoStark = () => {
     return () => cancelAnimationFrame(rafId);
   }, []);
 
-  // Video scrubbing — only when video is ready
+  // Video scrubbing — only when video is ready and seekable
   useEffect(() => {
     const video = videoRef.current;
-    if (!videoReady || !video || !video.duration) return;
+    if (!videoReady || !video || !video.duration || video.readyState < 2) return;
 
     const acceleratedProgress = Math.min(scrollProgress * 1.67, 1);
     const targetTime = acceleratedProgress * video.duration;
@@ -233,7 +233,16 @@ const MetodoStark = () => {
           playsInline
           preload="auto"
           aria-hidden="true"
-          onLoadedMetadata={() => setVideoReady(true)}
+          onCanPlay={() => {
+            if (videoRef.current && videoRef.current.readyState >= 2) {
+              setVideoReady(true);
+            }
+          }}
+          onLoadedData={() => {
+            if (videoRef.current && videoRef.current.readyState >= 2) {
+              setVideoReady(true);
+            }
+          }}
           style={{
             position: "absolute",
             top: 0,
@@ -245,6 +254,69 @@ const MetodoStark = () => {
             pointerEvents: "none",
           }}
         />
+
+        {/* CSS fallback splitting effect — works even if video scrubbing fails */}
+        {!videoReady && (() => {
+          const splitProgress = Math.min(Math.max(scrollProgress * 1.67, 0), 1);
+          const splitAmount = splitProgress * 50; // max 50% offset
+          return (
+            <>
+              {/* Left half */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "50%",
+                  height: "100%",
+                  background: `linear-gradient(135deg, ${SURFACE} 0%, ${VOID} 100%)`,
+                  transform: `translateX(-${splitAmount}%)`,
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  borderRight: splitProgress > 0.05 ? `1px solid ${ARC}15` : "none",
+                  boxShadow: splitProgress > 0.05 ? `inset -20px 0 40px rgba(56,189,248,0.03)` : "none",
+                  transition: "none",
+                }}
+              />
+              {/* Right half */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: "50%",
+                  height: "100%",
+                  background: `linear-gradient(225deg, ${SURFACE} 0%, ${VOID} 100%)`,
+                  transform: `translateX(${splitAmount}%)`,
+                  zIndex: 0,
+                  pointerEvents: "none",
+                  borderLeft: splitProgress > 0.05 ? `1px solid ${ARC}15` : "none",
+                  boxShadow: splitProgress > 0.05 ? `inset 20px 0 40px rgba(56,189,248,0.03)` : "none",
+                  transition: "none",
+                }}
+              />
+              {/* Center glow when splitting */}
+              {splitProgress > 0.05 && (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: `${Math.max(splitProgress * 8, 1)}px`,
+                    height: "100%",
+                    background: `linear-gradient(180deg, transparent, ${ARC}15, ${ARC}08, transparent)`,
+                    zIndex: 0,
+                    pointerEvents: "none",
+                  }}
+                />
+              )}
+            </>
+          );
+        })()}
 
         {/* Dark overlay for text legibility */}
         <div
