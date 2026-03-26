@@ -34,6 +34,7 @@ interface CasualtyData {
   ticker: string;
   logoInitials: string;
   logoColor: string;
+  logoImage?: string;
   badge: string;
   stat: string;
   statLabel: string;
