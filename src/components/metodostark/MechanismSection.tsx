@@ -38,8 +38,7 @@ const beliefs = [
   {
     num: "05",
     title: "O mercado não vai te esperar.",
-    text: "Uma minoria silenciosa já está operando com sistemas de IA rodando 24h. Eles não estão esperando o mercado adotar — eles estão criando a vantagem enquanto a maioria debate se vale a pena.",
-  },
+    text: "Uma minoria silenciosa já está operando com sistemas de IA rodando 24h. Eles não estão esperando o mercado adotar, eles estão criando a vantagem enquanto a maioria debate se vale a pena.",
   {
     num: "06",
     title: "Comunidade acelera aprendizado.",
