@@ -8,6 +8,8 @@ import headlineChegg from "@/assets/headline-chegg.png";
 import cnbcLogo from "@/assets/cnbc-logo.jpg";
 import headlineG1 from "@/assets/headline-g1.png";
 import g1Logo from "@/assets/g1-logo.png";
+import headlineGizmodo from "@/assets/headline-gizmodo.png";
+import gizmodoLogo from "@/assets/gizmodo-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -185,10 +187,12 @@ const newsClippings: NewsClipData[] = [
     source: "Gizmodo",
     sourceInitials: "G",
     sourceColor: "#1A1A2E",
+    sourceLogo: gizmodoLogo,
     url: "gizmodo.com/chegg-chatgpt-stock-down-99",
     date: "25 Fev 2025",
     headline: "Chegg está à beira da falência após ",
     highlightText: "ChatGPT derrubar ações em 99%",
+    headlineImage: headlineGizmodo,
     excerpt: "A ação está em queda de 99% desde os picos de 2021, eliminando US$ 14,5 bilhões em valor.",
   },
   {
