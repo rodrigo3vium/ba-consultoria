@@ -32,11 +32,8 @@ const notForYouItems = [
 ];
 
 const deliverables = [
-  { title: "Método STARK completo", sub: "Do zero até a criação de sistemas vendáveis" },
-  { title: "Estrutura de Vibe Coding", sub: "O modelo que transforma IA em soluções que empresas pagam" },
-  { title: "Modelos de sistemas prontos", sub: "Para adaptar e usar em projetos reais" },
-  { title: "Framework de oferta", sub: "Para transformar soluções em projetos de alto valor" },
-  { title: "Processo de vendas simples", sub: "Sem precisar virar vendedor profissional" },
+  { title: "Método STARK completo", sub: "Do zero até a criação de sistemas" },
+  { title: "Sistemas prontos", sub: "Para adaptar e usar em projetos reais. Control C + V para você aplicar no seu negócio e no dos seus clientes." },
   { title: "Comunidade de praticantes", sub: "Pessoas construindo, testando e compartilhando resultados" },
   { title: "Atualizações constantes", sub: "Novas estratégias, sistemas e aplicações conforme o mercado evolui" },
 ];
@@ -209,13 +206,16 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               07 — O que você recebe
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-              Um sistema completo para transformar <span style={{ color: ARC }}>IA em receita</span>
+              Um ecossistema completo para transformar <span style={{ color: ARC }}>IA em receita</span>
             </h2>
           </div>
 
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <div className="text-center space-y-4 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              Isso não é um curso. <strong style={{ color: IVORY }}>É um sistema</strong> pensado para que você saia com algo funcionando.
+              Isso não é um curso.
+            </p>
+            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
+              É um sistema pensado para que <strong style={{ color: IVORY }}>ganhar dinheiro construindo sistemas de IA</strong>.
             </p>
           </div>
 
@@ -237,6 +237,25 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Bônus */}
+          <div
+            className="p-8 md:p-10 space-y-4"
+            style={{
+              backgroundColor: HUD_DARK,
+              borderRadius: "14px",
+              border: `0.5px solid ${STARK_GOLD}30`,
+              boxShadow: `0 0 40px rgba(245,158,11,0.04)`,
+            }}
+          >
+            <p className="text-sm uppercase tracking-[4px] font-semibold" style={{ fontFamily: FONT_MONO, color: STARK_GOLD }}>
+              Bônus
+            </p>
+            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
+              Aprenda como construir uma oferta para vender consultorias de criação de sistemas de{" "}
+              <strong style={{ color: STARK_GOLD }}>R$20 a R$30 mil reais</strong>.
+            </p>
           </div>
         </div>
       </section>
