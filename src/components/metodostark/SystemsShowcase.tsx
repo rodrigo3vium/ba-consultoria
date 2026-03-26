@@ -37,11 +37,11 @@ const systems = [
     stat: "Manual → Automático",
   },
   {
-    title: "Viral Video Finder",
-    description: "Sistema que encontra vídeos virais em qualquer nicho para facilitar a produção de conteúdo. Filtra por plataforma, palavras-chave e métricas de engajamento.",
-    image: viralVideoFinderImg,
-    tags: ["Conteúdo", "TikTok", "Pesquisa"],
-    stat: "Horas → Minutos",
+    title: "Análise de Calls de Vendas",
+    description: "Sistema que analisa automaticamente calls de fechamento, gerando relatórios com score de performance por fase, taxa de conversão e pontos de melhoria.",
+    image: analiseCallsImg,
+    tags: ["Vendas", "Análise", "IA"],
+    stat: "5 calls → 1 relatório",
   },
 ];
 
