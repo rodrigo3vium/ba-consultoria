@@ -5,6 +5,7 @@ import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
 import OpportunitySection from "@/components/metodostark/OpportunitySection";
 import MechanismSection from "@/components/metodostark/MechanismSection";
 import ClosingSection from "@/components/metodostark/ClosingSection";
+import SystemsShowcase from "@/components/metodostark/SystemsShowcase";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
 const VOID = "#060A12";
@@ -329,6 +330,12 @@ const MetodoStark = () => {
 
       {/* O Outro Lado da Moeda */}
       <OpportunitySection onCTA={handleCTA} />
+
+      {/* Gradient separator */}
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+
+      {/* Sistemas Reais */}
+      <SystemsShowcase onCTA={handleCTA} />
 
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
