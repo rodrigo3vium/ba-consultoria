@@ -159,6 +159,7 @@ const newsClippings: NewsClipData[] = [
     source: "CNBC",
     sourceInitials: "C",
     sourceColor: "#005594",
+    sourceLogo: cnbcLogo,
     url: "cnbc.com/2025/10/27/chegg-slashes-45-workforce",
     date: "27 Out 2025",
     headline: 'Chegg demite 45% da equipe, culpa ',
