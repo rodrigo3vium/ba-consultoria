@@ -238,6 +238,25 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               </div>
             ))}
           </div>
+
+          {/* Bônus */}
+          <div
+            className="p-8 md:p-10 space-y-4"
+            style={{
+              backgroundColor: HUD_DARK,
+              borderRadius: "14px",
+              border: `0.5px solid ${STARK_GOLD}30`,
+              boxShadow: `0 0 40px rgba(245,158,11,0.04)`,
+            }}
+          >
+            <p className="text-sm uppercase tracking-[4px] font-semibold" style={{ fontFamily: FONT_MONO, color: STARK_GOLD }}>
+              Bônus
+            </p>
+            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
+              Aprenda como construir uma oferta para vender consultorias de criação de sistemas de{" "}
+              <strong style={{ color: STARK_GOLD }}>R$20 a R$30 mil reais</strong>.
+            </p>
+          </div>
         </div>
       </section>
 
