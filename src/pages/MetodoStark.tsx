@@ -374,10 +374,16 @@ const MetodoStark = () => {
               </div>
 
               <p
+                className="text-lg font-semibold mb-2"
+                style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
+              >
+                Dominou a construção de sistemas de IA, com agentes trabalhando 24h por dia para ele e seus clientes.
+              </p>
+              <p
                 className="text-base leading-relaxed"
                 style={{ fontFamily: FONT_BODY, color: IVORY, lineHeight: 1.8 }}
               >
-                Arquiteta sistemas. Tem agentes treinados para funções específicas. Processa o que antes levava horas em minutos. Tem uma operação que funciona enquanto dorme. Não usa IA — <strong style={{ color: ARC }}>comanda um time</strong>.
+                Consegue fazer mais, mais rápido e ganhando mais dinheiro. Não "usa" IA, <strong style={{ color: ARC }}>comanda um time de agentes</strong>.
               </p>
             </div>
           </div>
