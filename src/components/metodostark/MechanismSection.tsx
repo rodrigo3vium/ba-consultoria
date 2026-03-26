@@ -4,6 +4,7 @@ const VOID = "#060A12";
 const SURFACE = "#0C1220";
 const HUD_DARK = "#111A2E";
 const ARC = "#38BDF8";
+const ARC_BRIGHT = "#7DD3FC";
 const STARK_GOLD = "#F59E0B";
 const IVORY = "#F0F6FF";
 const TEXT_COLOR = "#C8D6E5";
@@ -246,13 +247,13 @@ const ReactorSection = () => {
             className="text-xs uppercase tracking-[5px] mb-3"
             style={{ fontFamily: FONT_MONO, color: ARC, opacity: 0.6 }}
           >
-            // SISTEMA DE PRINCÍPIOS
+            03 — O Mecanismo
           </p>
           <h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
             style={{ fontFamily: FONT_DISPLAY, color: "#fff", lineHeight: 1.15 }}
           >
-            O que move o Método{" "}
+            A{" "}
             <span
               style={{
                 background: `linear-gradient(135deg, ${ARC}, #B3E5FC)`,
@@ -261,9 +262,21 @@ const ReactorSection = () => {
                 backgroundClip: "text",
               }}
             >
-              Stark
+              Revolução
             </span>
           </h2>
+          <p
+            className="text-xl md:text-2xl font-semibold mb-3"
+            style={{ fontFamily: FONT_DISPLAY, color: ARC_BRIGHT }}
+          >
+            Não é um curso. É um Ecossistema.
+          </p>
+          <p
+            className="text-base md:text-lg max-w-3xl mx-auto leading-relaxed"
+            style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
+          >
+            A Revolução une conceitos de IA e Negócios, para fornecer tudo o que você precisa para ganhar dinheiro desde o primeiro dia — arquitetura de sistemas que separa os profissionais que entenderam como o trabalho vai funcionar daqui pra frente.
+          </p>
         </div>
 
         {/* Reactor + Content */}
