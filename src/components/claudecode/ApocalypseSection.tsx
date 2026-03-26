@@ -386,19 +386,28 @@ const NewsClip = ({ n }: { n: NewsClipData }) => (
     <div className="p-4 md:p-[18px]">
       {/* Source row */}
       <div className="flex items-center gap-2 mb-2.5">
-        <div
-          className="flex items-center justify-center flex-shrink-0 text-white font-extrabold"
-          style={{
-            width: 20,
-            height: 20,
-            borderRadius: 4,
-            background: n.sourceColor,
-            fontSize: "0.55rem",
-            border: n.sourceColor === "#000000" || n.sourceColor === "#1A1A2E" ? "1px solid rgba(255,255,255,0.15)" : undefined,
-          }}
-        >
-          {n.sourceInitials}
-        </div>
+        {n.sourceLogo ? (
+          <img
+            src={n.sourceLogo}
+            alt={n.source}
+            className="flex-shrink-0"
+            style={{ width: 20, height: 20, borderRadius: 4, objectFit: "cover" }}
+          />
+        ) : (
+          <div
+            className="flex items-center justify-center flex-shrink-0 text-white font-extrabold"
+            style={{
+              width: 20,
+              height: 20,
+              borderRadius: 4,
+              background: n.sourceColor,
+              fontSize: "0.55rem",
+              border: n.sourceColor === "#000000" || n.sourceColor === "#1A1A2E" ? "1px solid rgba(255,255,255,0.15)" : undefined,
+            }}
+          >
+            {n.sourceInitials}
+          </div>
+        )}
         <span className="text-[0.7rem] font-bold uppercase" style={{ fontFamily: FONT_MONO, color: "rgba(240,246,255,0.5)", letterSpacing: "0.06em" }}>
           {n.source}
         </span>
