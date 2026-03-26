@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import cheggLogo from "@/assets/chegg-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
