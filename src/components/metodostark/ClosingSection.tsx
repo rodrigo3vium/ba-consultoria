@@ -284,7 +284,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Se você fechar <strong style={{ color: TEXT_COLOR }}>1 projeto de R$5.000</strong> ou <strong style={{ color: TEXT_COLOR }}>1 projeto de R$10.000</strong>
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: ARC }}>
-              👉 isso já muda completamente o jogo.
+              👉 isso já muda completamente o seu jogo.
             </p>
           </div>
 
