@@ -406,10 +406,10 @@ const MetodoStark = () => {
                 não é inteligência.
               </p>
               <p
-                className="text-3xl md:text-4xl font-bold uppercase"
+                className="text-3xl md:text-4xl font-bold"
                 style={{ fontFamily: FONT_DISPLAY, color: ARC }}
               >
-                É arquitetura.
+                É quem consegue arquitetar as melhores soluções.
               </p>
             </div>
 
