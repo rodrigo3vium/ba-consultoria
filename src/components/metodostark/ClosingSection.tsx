@@ -131,7 +131,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
 
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              O Método STARK <strong style={{ color: IVORY }}>não é para todo mundo</strong>.
+              A Revolução <strong style={{ color: IVORY }}>não é para todo mundo</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
               E isso é intencional.
