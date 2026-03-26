@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { tracker } from "@/lib/tracking";
 import { ArrowRight, Users, Cpu, Brain, Layers } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
@@ -27,6 +27,11 @@ const FONT_MONO = "'IBM Plex Mono', monospace";
 const FONT_BODY = "'Exo 2', sans-serif";
 
 const MetodoStark = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
     document.body.style.backgroundColor = VOID;
     document.body.style.paddingTop = "0";
@@ -39,6 +44,43 @@ const MetodoStark = () => {
   useEffect(() => {
     tracker.page("Método Stark");
   }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return;
+
+    let rafId: number;
+    let currentTime = 0;
+
+    const tick = () => {
+      if (!video.duration || !sectionRef.current) {
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollDistance = rect.height + windowHeight;
+      const scrolled = windowHeight - rect.top;
+      const progress = Math.min(Math.max(scrolled / totalScrollDistance, 0), 1);
+
+      setScrollProgress(progress);
+
+      // Accelerate progress so the video completes while still in-section
+      const acceleratedProgress = Math.min(progress * 1.67, 1);
+      const targetTime = acceleratedProgress * video.duration;
+      // Lerp for smooth interpolation (higher = snappier)
+      currentTime += (targetTime - currentTime) * 0.3;
+      video.currentTime = currentTime;
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(rafId);
+  }, [videoReady]);
 
   const handleCTA = (location: string) => {
     tracker.track("cta_click", {
@@ -192,8 +234,54 @@ const MetodoStark = () => {
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
       {/* SEÇÃO 1 — O MUNDO SE DIVIDIU */}
-      <section className="px-6" style={{ paddingTop: "100px", paddingBottom: "100px", backgroundColor: SURFACE }}>
-        <div className="max-w-5xl mx-auto space-y-16">
+      <section
+        ref={sectionRef}
+        className="px-6"
+        style={{
+          paddingTop: "100px",
+          paddingBottom: "100px",
+          backgroundColor: SURFACE,
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Video background */}
+        <video
+          ref={videoRef}
+          src="/videos/mundo_dividindo.mp4"
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          onLoadedMetadata={() => setVideoReady(true)}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Dark overlay for text legibility */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "linear-gradient(180deg, rgba(12,18,32,0.75) 0%, rgba(12,18,32,0.60) 40%, rgba(12,18,32,0.75) 100%)",
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        />
+
+        <div className="max-w-5xl mx-auto space-y-16" style={{ position: "relative", zIndex: 2 }}>
           {/* Section header */}
           <div className="text-center space-y-4">
             <span
@@ -214,11 +302,14 @@ const MetodoStark = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Grupo A */}
             <div
-              className="p-8 md:p-10 space-y-6 transition-all duration-300"
+              className="p-8 md:p-10 space-y-6 transition-colors duration-300"
               style={{
                 backgroundColor: HUD_DARK,
                 border: `0.5px solid ${BORDER_NORMAL}`,
                 borderRadius: "14px",
+                opacity: Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1),
+                transform: `translateX(${(1 - Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1)) * -60}px)`,
+                transition: "border-color 0.3s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = BORDER_HOVER;
@@ -247,12 +338,15 @@ const MetodoStark = () => {
 
             {/* Grupo B */}
             <div
-              className="p-8 md:p-10 space-y-6 transition-all duration-300"
+              className="p-8 md:p-10 space-y-6 transition-colors duration-300"
               style={{
                 backgroundColor: HUD_DARK,
                 border: `0.5px solid ${ARC}25`,
                 borderRadius: "14px",
                 boxShadow: `0 0 40px rgba(56,189,248,0.04)`,
+                opacity: Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1),
+                transform: `translateX(${(1 - Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1)) * 60}px)`,
+                transition: "border-color 0.3s, box-shadow 0.3s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = `${ARC}40`;
