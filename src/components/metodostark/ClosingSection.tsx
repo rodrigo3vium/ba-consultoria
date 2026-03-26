@@ -155,36 +155,38 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
           </div>
 
           <div className="text-center space-y-6 pt-4">
-            <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-              Se você está procurando:
+            <p className="text-sm uppercase tracking-[4px]" style={{ fontFamily: FONT_MONO, color: DIM }}>
+              Você não precisa:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {["atalhos", "hacks", "dinheiro fácil"].map((item, i) => (
+              {["saber programar", "ter experiência com IA"].map((item, i) => (
                 <span
                   key={i}
                   className="px-5 py-2.5"
                   style={{
                     fontFamily: FONT_MONO,
-                    color: "#DC2626",
+                    color: TEXT_COLOR,
                     fontSize: "0.85rem",
-                    backgroundColor: "rgba(220,38,38,0.06)",
+                    backgroundColor: HUD_DARK,
                     borderRadius: "8px",
-                    border: "0.5px solid rgba(220,38,38,0.15)",
+                    border: `0.5px solid ${BORDER_NORMAL}`,
                   }}
                 >
                   {item}
                 </span>
               ))}
             </div>
-            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM }}>
-              👉 esse não é o lugar.
-            </p>
+            <div className="space-y-2 pt-4">
+              <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, fontWeight: 300 }}>
+                Você só precisa de uma coisa:
+              </p>
+              <p className="text-xl md:text-2xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
+                Estar disposto a aprender a pensar como arquiteto ao invés de como usuário.
+              </p>
+            </div>
             <div className="space-y-2 pt-4">
               <p className="text-xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
                 Aqui você aprende a construir.
-              </p>
-              <p className="text-base" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-                E isso exige responsabilidade.
               </p>
             </div>
           </div>
