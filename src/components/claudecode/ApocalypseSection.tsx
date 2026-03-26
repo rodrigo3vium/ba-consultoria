@@ -51,6 +51,7 @@ const casualties: CasualtyData[] = [
     ticker: "NYSE: CHGG",
     logoInitials: "C",
     logoColor: "#F37321",
+    logoImage: cheggLogo,
     badge: "Extinta",
     stat: "−99%",
     statLabel: "Valor de mercado",
