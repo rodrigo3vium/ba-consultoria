@@ -4,6 +4,7 @@ import { ArrowRight, Users, Cpu, Brain, Layers } from "lucide-react";
 import ApocalypseSection from "@/components/claudecode/ApocalypseSection";
 import OpportunitySection from "@/components/metodostark/OpportunitySection";
 import MechanismSection from "@/components/metodostark/MechanismSection";
+import ClosingSection from "@/components/metodostark/ClosingSection";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
 const VOID = "#060A12";
