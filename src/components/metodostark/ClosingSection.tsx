@@ -352,7 +352,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Quero o Método STARK
+              Quero a Revolução
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
