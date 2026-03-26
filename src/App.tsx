@@ -70,6 +70,7 @@ const App = () => (
           <Route path="/educacao/como-aplicar-ia" element={<ComoAplicarIA />} />
           <Route path="/educacao/o-caminho" element={<OCaminho />} />
           <Route path="/educacao/claude-code" element={<ClaudeCode />} />
+          <Route path="/educacao/a-revolucao" element={<MetodoStark />} />
           <Route path="/educacao/metodo-stark" element={<MetodoStark />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
           <Route path="/blog" element={<Blog />} />
