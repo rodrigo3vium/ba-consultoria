@@ -145,6 +145,7 @@ interface NewsClipData {
   source: string;
   sourceInitials: string;
   sourceColor: string;
+  sourceLogo?: string;
   url: string;
   date: string;
   headline: string;
