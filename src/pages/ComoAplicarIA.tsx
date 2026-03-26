@@ -188,7 +188,7 @@ const ComoAplicarIA = () => {
           }} plugins={[Autoplay({
             delay: 2000,
             stopOnInteraction: false
-          })]} className="w-full max-w-4xl mx-auto">
+          }) as any]} className="w-full max-w-4xl mx-auto">
               <CarouselContent className="-ml-2 md:-ml-4">
                 {[{
                 src: diarioComercioImg,
@@ -350,7 +350,7 @@ const ComoAplicarIA = () => {
             plugins={[
               Autoplay({
                 delay: 5000,
-              }),
+              }) as any,
             ]}
             className="w-full"
           >
