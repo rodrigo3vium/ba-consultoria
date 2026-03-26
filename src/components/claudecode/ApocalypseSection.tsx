@@ -3,6 +3,7 @@ import cheggLogo from "@/assets/chegg-logo.png";
 import duolingoLogo from "@/assets/duolingo-logo.png";
 import uipathLogo from "@/assets/uipath-logo.png";
 import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
+import servicenowLogo from "@/assets/servicenow-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -114,6 +115,7 @@ const casualties: CasualtyData[] = [
     ticker: "ADBE · CRM · NOW",
     logoInitials: "S",
     logoColor: "linear-gradient(135deg, #E8344E, #6F42C1)",
+    logoImage: servicenowLogo,
     badge: "Sell-off",
     stat: "−25%",
     statLabel: "Queda média 2026",
