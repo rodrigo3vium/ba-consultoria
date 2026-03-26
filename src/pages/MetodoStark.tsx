@@ -86,7 +86,7 @@ const MetodoStark = () => {
     tracker.track("cta_click", {
       product: "metodo-stark",
       cta_location: location,
-      page: "/educacao/metodo-stark",
+      page: "/educacao/a-revolucao",
     });
     window.open("https://pay.hotmart.com/N105097109P", "_blank");
   };
