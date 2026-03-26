@@ -51,7 +51,7 @@ const beliefs = [
     num: "06",
     icon: "🤝",
     title: "Comunidade acelera aprendizado.",
-    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios. Isso vale mais do que qualquer aula gravada. O Método Stark é uma comunidade de praticantes, não um grupo de estudantes.",
+    text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios. Isso vale mais do que qualquer aula gravada. A Revolução é uma comunidade de praticantes, não um grupo de estudantes.",
   },
 ];
 
@@ -69,7 +69,7 @@ const alphaItems = [
   {
     num: "003",
     title: "Chatbot IA Treinado no Método",
-    text: "Um assistente especializado disponível 24 horas, treinado no método do Método Stark. Você não precisa esperar pela próxima aula para tirar uma dúvida ou validar uma arquitetura.",
+    text: "Um assistente especializado disponível 24 horas, treinado no método da Revolução. Você não precisa esperar pela próxima aula para tirar uma dúvida ou validar uma arquitetura.",
   },
   {
     num: "004",
@@ -84,7 +84,7 @@ const alphaItems = [
   {
     num: "006",
     title: "Atualizações Contínuas",
-    text: "O campo de IA muda toda semana. O Método Stark evolui com ele. Novas ferramentas, novos módulos, novos sistemas, inclusos sem custo adicional.",
+    text: "O campo de IA muda toda semana. A Revolução evolui com ele. Novas ferramentas, novos módulos, novos sistemas, inclusos sem custo adicional.",
   },
 ];
 
@@ -493,7 +493,7 @@ const ReactorSection = () => {
               className="text-xs uppercase tracking-[5px]"
               style={{ fontFamily: FONT_MONO, color: DIM }}
             >
-              04 — O Que É o Método Stark
+              04 — O Que É a Revolução
             </span>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold"
@@ -510,7 +510,7 @@ const ReactorSection = () => {
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-             O Método Stark não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
+             A Revolução não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
             </p>
           </div>
 

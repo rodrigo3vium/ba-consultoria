@@ -118,7 +118,7 @@ const MetodoStark = () => {
               className="text-lg tracking-[3px] font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: ARC }}
             >
-              MÉTODO STARK
+              A REVOLUÇÃO
             </span>
           </div>
           <button
@@ -173,7 +173,7 @@ const MetodoStark = () => {
               className="text-xs uppercase tracking-[5px]"
               style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "3px" }}
             >
-              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;Método STARK de Vibe Coding&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
+              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;A Revolução de Vibe Coding&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
             </span>
           </div>
 
@@ -198,7 +198,7 @@ const MetodoStark = () => {
               fontWeight: 300,
             }}
           >
-            Usando o Método STARK de Vibe Coding para transformar IA em soluções que empresas já pagam caro para implementar — sem depender de audiência, tráfego ou "hacks" de marketing digital
+            Usando a Revolução de Vibe Coding para transformar IA em soluções que empresas já pagam caro para implementar — sem depender de audiência, tráfego ou "hacks" de marketing digital
           </p>
 
           <div className="pt-4">
@@ -470,7 +470,7 @@ const MetodoStark = () => {
               className="text-base tracking-[3px] font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: ARC }}
             >
-              MÉTODO STARK
+              A REVOLUÇÃO
             </span>
           </div>
           <p

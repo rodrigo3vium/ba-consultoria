@@ -27,7 +27,7 @@ const notForYouItems = [
 ];
 
 const deliverables = [
-  { title: "Método STARK completo", sub: "Do zero até a criação de sistemas" },
+  { title: "A Revolução completa", sub: "Do zero até a criação de sistemas" },
   { title: "Sistemas prontos", sub: "Para adaptar e usar em projetos reais. Control C + V para você aplicar no seu negócio e no dos seus clientes." },
   { title: "Comunidade de praticantes", sub: "Pessoas construindo, testando e compartilhando resultados" },
   { title: "Atualizações constantes", sub: "Novas estratégias, sistemas e aplicações conforme o mercado evolui" },
@@ -55,7 +55,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
 
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              O Método STARK <strong style={{ color: IVORY }}>não foi feito para curiosos</strong>.
+              A Revolução <strong style={{ color: IVORY }}>não foi feita para curiosos</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
               Foi feito para quem já percebeu que o modelo antigo está condenado.
@@ -131,7 +131,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
 
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              O Método STARK <strong style={{ color: IVORY }}>não é para todo mundo</strong>.
+              A Revolução <strong style={{ color: IVORY }}>não é para todo mundo</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
               E isso é intencional.
@@ -302,7 +302,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Investimento
             </p>
             <p className="text-base" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, fontWeight: 300 }}>
-              Acesso completo ao Método STARK
+              Acesso completo à Revolução
             </p>
             <div>
               <p className="text-4xl md:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
@@ -352,7 +352,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Quero o Método STARK
+              Quero a Revolução
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -412,7 +412,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Quero aprender o Método STARK e começar a criar meus sistemas de IA
+            Quero fazer parte da Revolução e começar a criar meus sistemas de IA
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
