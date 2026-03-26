@@ -4,6 +4,7 @@ const VOID = "#060A12";
 const SURFACE = "#0C1220";
 const HUD_DARK = "#111A2E";
 const ARC = "#38BDF8";
+const ARC_BRIGHT = "#7DD3FC";
 const STARK_GOLD = "#F59E0B";
 const IVORY = "#F0F6FF";
 const TEXT_COLOR = "#C8D6E5";
