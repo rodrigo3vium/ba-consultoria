@@ -238,7 +238,7 @@ const MechanismSection = () => {
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-              O Método Stark não é um curso avulso sobre IA. É um sistema integrado de educação, prática e comunidade — construído para que você saia com sistemas funcionando no seu negócio, não com slides para revisar nas férias.
+             O Método Stark não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
             </p>
           </div>
 
