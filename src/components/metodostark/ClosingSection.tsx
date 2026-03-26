@@ -108,7 +108,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
                 Você só precisa de uma coisa:
               </p>
               <p className="text-xl md:text-2xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
-                Estar disposto a pensar como arquiteto — não como usuário.
+                Estar disposto a aprender a pensar como arquiteto ao invés de como usuário.
               </p>
             </div>
           </div>
