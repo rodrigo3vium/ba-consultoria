@@ -97,6 +97,7 @@ const casualties: CasualtyData[] = [
     ticker: "NYSE: PATH",
     logoInitials: "U",
     logoColor: "#FA4616",
+    logoImage: uipathLogo,
     badge: "Ameaçada",
     stat: "−50%",
     statLabel: "Queda em 2024",
