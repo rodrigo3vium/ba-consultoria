@@ -20,39 +20,45 @@ const FONT_BODY = "'Exo 2', sans-serif";
 const beliefs = [
   {
     num: "01",
-    icon: "⚡",
+    icon: "",
     title: "IA não é ferramenta. É time.",
     text: "Quem usa IA como assistente vai ter resultados de assistente. Quem arquiteta IA como time vai ter resultados de time. A distinção é fundamental e define como você aprende, implementa e escala.",
   },
   {
     num: "02",
-    icon: "🎯",
+    icon: "",
     title: "Entregáveis primeiro. Teoria depois.",
     text: "Cada módulo termina com algo que você aplica no seu negócio antes de avançar. Não existe \"terminar o curso e depois implementar.\" A implementação é o curso.",
   },
   {
     num: "03",
-    icon: "🏗️",
+    icon: "",
     title: "Sem código. Mas com arquitetura.",
     text: "Você não precisa programar para construir sistemas de IA. Precisa pensar como arquiteto: entender entradas, saídas, fluxos e objetivos. Isso é ensinável para qualquer pessoa que opera um negócio.",
   },
   {
     num: "04",
-    icon: "🚀",
+    icon: "",
     title: "Velocidade vence perfeição.",
     text: "Um sistema imperfeito rodando hoje vale mais do que um sistema perfeito que nunca saiu do papel. Você vai construir, testar, ajustar. A iteração é parte do método, não um sinal de que algo deu errado.",
   },
   {
     num: "05",
-    icon: "⏳",
+    icon: "",
     title: "O mercado não vai te esperar.",
     text: "Uma minoria silenciosa já está operando com sistemas de IA rodando 24h. Eles não estão esperando o mercado adotar, eles estão criando a vantagem enquanto a maioria debate se vale a pena.",
   },
   {
     num: "06",
-    icon: "🤝",
+    icon: "",
     title: "Comunidade acelera aprendizado.",
     text: "Sistemas, prompts e resultados reais compartilhados entre pessoas que operam negócios. Isso vale mais do que qualquer aula gravada. A Revolução é uma comunidade de praticantes, não um grupo de estudantes.",
+  },
+  {
+    num: "07",
+    icon: "",
+    title: "From builder to builder.",
+    text: "A Revolução foi pensada para quem quer ganhar dinheiro. Tudo é pensado para gerar o maior retorno possível, e com velocidade. Sem teoria desnecessária, sem firula motivacional.",
   },
 ];
 
@@ -89,14 +95,17 @@ const alphaItems = [
   },
 ];
 
-const SEGMENT_ICONS = ["⚡", "🎯", "🏗", "🚀", "⏳", "🤝"];
-const SEGMENT_LABELS = ["TIME", "PRÁTICA", "ARQUIT.", "VELOC.", "MERCADO", "COMUN."];
+const SEGMENT_ICONS = ["01", "02", "03", "04", "05", "06", "07"];
+const SEGMENT_LABELS = ["TIME", "PRÁTICA", "ARQUIT.", "VELOC.", "MERCADO", "COMUN.", "BUILDER"];
 
-// Generate segment paths for a hexagonal layout
+const SEG_COUNT = 7;
+const SEG_ANGLE = 360 / SEG_COUNT;
+
+// Generate segment paths
 function segmentPath(index: number, innerR: number, outerR: number, cx: number, cy: number): string {
-  const startAngle = (index * 60 - 90) * (Math.PI / 180);
-  const endAngle = ((index + 1) * 60 - 90) * (Math.PI / 180);
-  const gap = 0.02; // small gap between segments
+  const startAngle = (index * SEG_ANGLE - 90) * (Math.PI / 180);
+  const endAngle = ((index + 1) * SEG_ANGLE - 90) * (Math.PI / 180);
+  const gap = 0.02;
 
   const x1 = cx + innerR * Math.cos(startAngle + gap);
   const y1 = cy + innerR * Math.sin(startAngle + gap);
@@ -111,7 +120,7 @@ function segmentPath(index: number, innerR: number, outerR: number, cx: number, 
 }
 
 function segmentMidpoint(index: number, r: number, cx: number, cy: number) {
-  const midAngle = ((index * 60 + 30) - 90) * (Math.PI / 180);
+  const midAngle = ((index * SEG_ANGLE + SEG_ANGLE / 2) - 90) * (Math.PI / 180);
   return { x: cx + r * Math.cos(midAngle), y: cy + r * Math.sin(midAngle) };
 }
 
