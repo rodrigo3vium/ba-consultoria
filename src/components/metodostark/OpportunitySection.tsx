@@ -177,7 +177,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             <em style={{ color: STARK_GOLD, fontStyle: "italic" }}>Elas só começaram antes.</em>
           </h3>
           <p className="max-w-lg mx-auto mb-8" style={{ fontFamily: FONT_BODY, fontSize: "0.95rem", color: TEXT_COLOR, fontWeight: 300, lineHeight: 1.6 }}>
-            Se você também não quer ficar para trás, clique aqui para fazer parte do Método Stark.
+            Se você também não quer ficar para trás, clique aqui para fazer parte da Revolução.
           </p>
           <button
             onClick={() => onCTA("opportunity")}
