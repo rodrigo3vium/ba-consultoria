@@ -16,11 +16,10 @@ const FONT_MONO = "'IBM Plex Mono', monospace";
 const FONT_BODY = "'Exo 2', sans-serif";
 
 const forYouItems = [
-  "Já tentou ganhar dinheiro no digital e não teve consistência",
-  "Está cansado de depender de algoritmo, tráfego e seguidores",
-  "Sente que está \"usando IA\", mas não está ganhando dinheiro com isso",
-  "Quer uma forma mais direta, simples e previsível de gerar receita",
-  "Prefere resolver problemas reais do que disputar atenção na internet",
+  "Para aqueles que cansaram de cursos sobre IA que não ensinam a prática.",
+  "Profissionais que querem aprender a construir sistemas de IA.",
+  "Não quer nem o blablá raso, nem o conteúdo técnico. Quer aplicação na medida certa para gerar dinheiro.",
+  "Sente que não está explorando o máximo potencial da IA.",
 ];
 
 const notForYouItems = [
