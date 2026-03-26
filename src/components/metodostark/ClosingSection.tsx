@@ -287,10 +287,10 @@ const ClosingSection = ({ onCTA }: ClosingSectionProps) => {
             </p>
             <div>
               <p className="text-4xl md:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-                R$497
+                R$1.997
               </p>
               <p className="text-sm mt-2" style={{ fontFamily: FONT_MONO, color: DIM }}>
-                à vista ou <span style={{ color: STARK_GOLD }}>12x de R$49,70</span>
+                à vista ou <span style={{ color: STARK_GOLD }}>12x de R$199,70</span>
               </p>
             </div>
 
