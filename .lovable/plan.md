@@ -1,57 +1,58 @@
 
-## Plan: tornar o “mundo partindo” 100% independente do vídeo
+## Plano: atacar a causa mais provável no domínio customizado
 
-### Diagnóstico
-O problema mais provável agora não é o scroll nem o carregamento do arquivo. O ponto frágil está aqui:
+### O que isso indica
+Como funciona no preview, no localhost e no domínio publicado padrão, mas falha só em `benitesalbuquerque.com.br`, o problema muito provavelmente **não está na rota nem no React**. O suspeito mais forte é a **entrega do vídeo no domínio customizado**, especialmente para **seek/scrubbing por `currentTime`**.
 
-- o fallback visual só aparece quando `videoReady === false`
-- em produção, o vídeo pode ficar “ready” o suficiente para disparar `onCanPlay`, mas ainda falhar no scrub por `currentTime`
-- resultado: os cards entram, mas o efeito principal nunca aparece porque:
-  - o vídeo não responde bem ao seek
-  - o fallback também não entra
+### Causa mais provável
+Esse efeito depende de o navegador conseguir “pular” para frames diferentes do MP4 conforme o scroll. Para isso, a entrega do vídeo precisa suportar bem:
+- `Accept-Ranges: bytes`
+- respostas `206 Partial Content` durante seek
+- buffering rápido o suficiente para mudanças contínuas de `currentTime`
 
-### Solução
-Transformar o efeito de “mundo se dividindo” em uma animação visual própria da seção, controlada apenas por `scrollProgress`, sem depender do scrub do MP4.
+Um `200 OK` sozinho não garante que isso esteja funcionando corretamente. Em domínio customizado, proxy/CDN/cache pode:
+- servir o arquivo sem range request adequado
+- segurar cache antigo do vídeo
+- alterar comportamento de streaming/seek
+- responder de forma diferente do domínio padrão da plataforma
 
-### O que vou alterar
+### Outro ponto importante
+Hoje a seção 1 ainda depende de **scrubbing de vídeo** para o efeito “mundo partindo”. Se o vídeo carrega mas o seek falha/intermitente, os cards entram, mas o “partindo ao meio” não acontece visualmente.
 
-**Arquivo:** `src/pages/MetodoStark.tsx`
+### Plano de implementação
+1. **Instrumentar o vídeo para diagnóstico real**
+   - adicionar handlers de `onError`, `onCanPlay`, `onLoadedData`, `onSeeked`, `onStalled`
+   - registrar `readyState`, `networkState`, `currentTime`, `duration`
+   - isso confirma se o problema é de seek/buffer no domínio customizado
 
-1. **Remover a dependência do efeito principal em `videoReady`**
-   - o vídeo passa a ser apenas pano de fundo/decorativo
-   - o split visual deixa de depender do estado de prontidão do vídeo
+2. **Endurecer a lógica de prontidão**
+   - não marcar o vídeo como pronto só em `loadedmetadata`
+   - só liberar scrub quando houver dados suficientes (`readyState >= 2` ou `canplay`)
+   - evitar atualizar `currentTime` cedo demais
 
-2. **Renderizar a camada de divisão sempre**
-   - manter duas metades animadas por `scrollProgress`
-   - abrir as metades horizontalmente com `transform`
-   - manter o brilho/fenda central entre elas
+3. **Adicionar fallback visual independente do MP4**
+   - manter o vídeo quando funcionar
+   - mas implementar o “mundo se dividindo” também com uma camada CSS/SVG baseada em `scrollProgress`
+   - assim, mesmo que o seek do vídeo falhe no domínio customizado, o efeito visual continua
 
-3. **Colocar a camada de split acima do vídeo**
-   - ordem visual:
-     - vídeo no fundo
-     - camada de divisão por cima
-     - overlay escuro
-     - textos/cards no topo
+4. **Se necessário, substituir o efeito principal**
+   - opção mais robusta: abandonar scrub do MP4 e fazer o efeito com:
+     - duas metades da arte/imagem
+     - `clip-path`, `transform`, `opacity`, blur leve
+     - animação 100% controlada por scroll
+   - isso elimina dependência de streaming, codec e proxy
 
-4. **Simplificar ou remover o scrub do vídeo**
-   - se necessário, parar de usar `video.currentTime` como motor do efeito
-   - deixar o vídeo estático ou apenas ambientando, para não quebrar em produção
+### Arquivo principal
+- `src/pages/MetodoStark.tsx`
 
-5. **Ajustar o visual para ficar forte o suficiente**
-   - garantir que a abertura fique visível no published
-   - aumentar contraste/abertura se hoje estiver sutil demais
+### Detalhes técnicos
+A hipótese mais forte é: **o vídeo abre, mas o navegador no domínio customizado não consegue fazer seek progressivo de forma confiável**.  
+Isso explica perfeitamente o sintoma:
+- cards animam = `scrollProgress` está funcionando
+- vídeo existe e retorna 200 = arquivo está acessível
+- efeito visual do “mundo dividindo” não acontece = o problema está na atualização do frame, não no scroll
 
 ### Resultado esperado
-A animação da seção 1 vai funcionar da mesma forma em:
-- preview
-- localhost
-- `ba-consultoria.lovable.app`
-- `benitesalbuquerque.com.br`
-
-porque o efeito deixará de depender do comportamento de streaming/seek do navegador em produção.
-
-### Observação técnica
-O bug atual faz sentido com o código existente: o fallback está preso a `!videoReady`, mas em produção o vídeo pode estar “pronto” sem scrubbing confiável. Então o próximo passo correto é promover o fallback para efeito principal da seção.
-
-### Arquivo a editar
-- `src/pages/MetodoStark.tsx`
+Depois dessa correção, a seção 1 ficará resiliente:
+- no melhor caso, o MP4 continua scrubbando normalmente
+- no pior caso, o fallback CSS mantém o efeito de “mundo se dividindo” igual para preview, localhost e domínio customizado
