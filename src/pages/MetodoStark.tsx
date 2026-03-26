@@ -45,42 +45,35 @@ const MetodoStark = () => {
     tracker.page("Método Stark");
   }, []);
 
+  // Scroll tracking — always runs, independent of video
   useEffect(() => {
-    const section = sectionRef.current;
-    const video = videoRef.current;
-    if (!section || !video) return;
-
     let rafId: number;
-    let currentTime = 0;
 
     const tick = () => {
-      if (!video.duration || !sectionRef.current) {
-        rafId = requestAnimationFrame(tick);
-        return;
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const totalScrollDistance = rect.height + windowHeight;
+        const scrolled = windowHeight - rect.top;
+        const progress = Math.min(Math.max(scrolled / totalScrollDistance, 0), 1);
+        setScrollProgress(progress);
       }
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalScrollDistance = rect.height + windowHeight;
-      const scrolled = windowHeight - rect.top;
-      const progress = Math.min(Math.max(scrolled / totalScrollDistance, 0), 1);
-
-      setScrollProgress(progress);
-
-      // Accelerate progress so the video completes while still in-section
-      const acceleratedProgress = Math.min(progress * 1.67, 1);
-      const targetTime = acceleratedProgress * video.duration;
-      // Lerp for smooth interpolation (higher = snappier)
-      currentTime += (targetTime - currentTime) * 0.3;
-      video.currentTime = currentTime;
-
       rafId = requestAnimationFrame(tick);
     };
 
     rafId = requestAnimationFrame(tick);
-
     return () => cancelAnimationFrame(rafId);
-  }, [videoReady]);
+  }, []);
+
+  // Video scrubbing — only when video is ready
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!videoReady || !video || !video.duration) return;
+
+    const acceleratedProgress = Math.min(scrollProgress * 1.67, 1);
+    const targetTime = acceleratedProgress * video.duration;
+    video.currentTime = targetTime;
+  }, [videoReady, scrollProgress]);
 
   const handleCTA = (location: string) => {
     tracker.track("cta_click", {
