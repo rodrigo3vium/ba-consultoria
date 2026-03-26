@@ -14,6 +14,8 @@ import headlineInvestorplace from "@/assets/headline-investorplace.png";
 import investorplaceLogo from "@/assets/investorplace-logo.png";
 import headlineVenturebeat from "@/assets/headline-venturebeat.png";
 import venturebeatLogo from "@/assets/venturebeat-logo.png";
+import headlineFastcompany from "@/assets/headline-fastcompany.png";
+import fastcompanyLogo from "@/assets/fastcompany-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -227,10 +229,12 @@ const newsClippings: NewsClipData[] = [
     source: "Fast Company",
     sourceInitials: "FC",
     sourceColor: "#000000",
+    sourceLogo: fastcompanyLogo,
     url: "fastcompany.com/duolingo-stock-dramatic-collapse",
     date: "02 Mar 2026",
     headline: "Ações da Duolingo em queda livre, continuando ",
     highlightText: "colapso dramático",
+    headlineImage: headlineFastcompany,
     excerpt: "Investidores estão abandonando a Duolingo após projeções decepcionantes para 2026. Ação perdeu 82% do valor.",
   },
 ];
