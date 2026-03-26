@@ -118,7 +118,7 @@ const MetodoStark = () => {
               className="text-lg tracking-[3px] font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: ARC }}
             >
-              MÉTODO STARK
+              A REVOLUÇÃO
             </span>
           </div>
           <button
