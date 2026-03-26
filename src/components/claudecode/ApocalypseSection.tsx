@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import cheggLogo from "@/assets/chegg-logo.png";
 import duolingoLogo from "@/assets/duolingo-logo.png";
 import uipathLogo from "@/assets/uipath-logo.png";
+import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -83,6 +84,7 @@ const casualties: CasualtyData[] = [
     ticker: "Prosus (adquiriu por $1.8 bi)",
     logoInitials: "SO",
     logoColor: "#F48024",
+    logoImage: stackoverflowLogo,
     badge: "Irrelevante",
     stat: "−78%",
     statLabel: "Volume de perguntas",
