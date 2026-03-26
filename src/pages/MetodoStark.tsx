@@ -331,7 +331,7 @@ const MetodoStark = () => {
           }}
         />
 
-        <div className="max-w-5xl mx-auto space-y-16" style={{ position: "relative", zIndex: 2 }}>
+        <div className="max-w-5xl mx-auto space-y-16" style={{ position: "relative", zIndex: 3 }}>
           {/* Section header */}
           <div className="text-center space-y-4">
             <h2
