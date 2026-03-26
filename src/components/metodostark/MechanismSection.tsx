@@ -55,7 +55,7 @@ const alphaItems = [
   {
     num: "002",
     title: "Comunidade de Praticantes",
-    text: "Usuários ativos trocando sistemas reais, prompts que funcionam e resultados verificáveis. Não é grupo de Telegram. É um ambiente onde a prática é o standard — não a exceção.",
+    text: "Usuários ativos trocando sistemas reais, prompts que funcionam e resultados verificáveis. Não é grupo de Telegram. É um ambiente onde a prática é o standard, não a exceção.",
   },
   {
     num: "003",
