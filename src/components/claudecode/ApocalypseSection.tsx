@@ -557,7 +557,7 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
             </h3>
 
             <p className="text-[0.95rem] mb-8 max-w-[500px] mx-auto" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-              Na masterclass, eu vou te mostrar como usar IA na prática — do jeito que quem está ganhando já usa.
+              Eu vou te mostrar como usar IA na prática — do jeito que quem está ganhando já usa.
             </p>
 
             <button
