@@ -67,6 +67,7 @@ const casualties: CasualtyData[] = [
     ticker: "NASDAQ: DUOL",
     logoInitials: "D",
     logoColor: "#58CC02",
+    logoImage: duolingoLogo,
     badge: "Em queda",
     stat: "−82%",
     statLabel: "Desde a máxima",
