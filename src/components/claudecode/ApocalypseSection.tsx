@@ -161,6 +161,7 @@ const newsClippings: NewsClipData[] = [
     date: "27 Out 2025",
     headline: 'Chegg demite 45% da equipe, culpa ',
     highlightText: '"novas realidades da IA"',
+    headlineImage: headlineChegg,
     excerpt: "A empresa de educação online foi atingida pela ascensão de ferramentas de IA generativa como o ChatGPT da OpenAI, cada vez mais populares entre estudantes.",
   },
   {
