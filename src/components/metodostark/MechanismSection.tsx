@@ -391,17 +391,6 @@ const ReactorSection = () => {
                       strokeWidth={isActive ? 1.2 : 0.8}
                       style={{ transition: "all 0.5s" }}
                     />
-                    {/* Radial line from core */}
-                    <line
-                      x1={cx + innerR * Math.cos(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
-                      y1={cy + innerR * Math.sin(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
-                      x2={cx + outerR * Math.cos(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
-                      y2={cy + outerR * Math.sin(((i * SEG_ANGLE - 90) * Math.PI) / 180)}
-                      stroke={isActive ? ARC : "rgba(79,195,247,0.12)"}
-                      strokeWidth={isActive ? 1 : 0.8}
-                      opacity={isActive ? 0.8 : 1}
-                      style={{ transition: "all 0.5s" }}
-                    />
                     {/* Icon */}
                     <text
                       x={iconPos.x}
