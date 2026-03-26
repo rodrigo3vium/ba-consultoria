@@ -86,7 +86,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Você não precisa:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              {["saber programar", "ter audiência", "ter experiência com IA"].map((item, i) => (
+              {["saber programar", "ter experiência com IA"].map((item, i) => (
                 <span
                   key={i}
                   className="px-5 py-2.5"
