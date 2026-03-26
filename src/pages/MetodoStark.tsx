@@ -422,7 +422,7 @@ const MetodoStark = () => {
                 fontWeight: 300,
               }}
             >
-              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O gap que está se abrindo entre os dois grupos não é tecnológico — é mental. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong style={{ color: IVORY }}>construir sistemas</strong>.
+              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O que diferencia os dois grupos é conhecimento. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong style={{ color: IVORY }}>construir sistemas</strong>.
             </p>
           </div>
         </div>

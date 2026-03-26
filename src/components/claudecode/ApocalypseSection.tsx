@@ -548,16 +548,15 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
             <div className="absolute top-[-1px] left-[20%] right-[20%] h-px" style={{ background: `linear-gradient(90deg, transparent, ${ARC}50, transparent)` }} />
 
             <h3
-              className="text-[clamp(1.4rem,3vw,2rem)] font-bold mb-3 leading-snug uppercase"
+              className="text-[clamp(1.4rem,3vw,2rem)] font-bold mb-3 leading-snug"
               style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
             >
-              A pergunta não é se a IA vai mudar tudo.
-              <br />
-              A pergunta é: <span style={{ color: ARC }}>você vai estar pronto?</span>
+              Mas não está ruim para todo mundo. O dinheiro não pode simplesmente evaporar.{" "}
+              <span style={{ color: ARC }}>Ele está mudando de mãos.</span>
             </h3>
 
             <p className="text-[0.95rem] mb-8 max-w-[500px] mx-auto" style={{ fontFamily: FONT_BODY, color: DIM, fontWeight: 300 }}>
-              Eu vou te mostrar como usar IA na prática — do jeito que quem está ganhando já usa.
+              E para onde esse dinheiro está indo? Para quem aprendeu a jogar o jogo da IA como arquiteto.
             </p>
 
             <button

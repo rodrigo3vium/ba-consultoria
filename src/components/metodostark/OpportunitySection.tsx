@@ -177,7 +177,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             <em style={{ color: STARK_GOLD, fontStyle: "italic" }}>Elas só começaram antes.</em>
           </h3>
           <p className="max-w-lg mx-auto mb-8" style={{ fontFamily: FONT_BODY, fontSize: "0.95rem", color: TEXT_COLOR, fontWeight: 300, lineHeight: 1.6 }}>
-            Você vai ver na prática como eu uso IA para construir, automatizar e economizar — e como você pode fazer o mesmo a partir de hoje.
+            Se você também não quer ficar para trás, clique aqui para fazer parte do Método Stark.
           </p>
           <button
             onClick={() => onCTA("opportunity")}
@@ -186,7 +186,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             onMouseEnter={(e) => { e.currentTarget.style.background = ARC_BRIGHT; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.2)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = ARC; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
           >
-            Garantir minha vaga
+            Fazer parte do Método Stark
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
