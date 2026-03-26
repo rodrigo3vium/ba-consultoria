@@ -210,7 +210,7 @@ const MetodoStark = () => {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Quero saber mais
+              Quero fazer parte dA Revolução
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
