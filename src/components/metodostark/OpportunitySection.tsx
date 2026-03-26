@@ -186,7 +186,7 @@ const OpportunitySection = ({ onCTA }: Props) => {
             onMouseEnter={(e) => { e.currentTarget.style.background = ARC_BRIGHT; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.2)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = ARC; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
           >
-            Fazer parte do Método Stark
+            Fazer parte da Revolução
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

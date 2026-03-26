@@ -159,7 +159,7 @@ const SystemsShowcase = ({ onCTA }: Props) => {
         </h2>
 
         <p style={{ fontFamily: FONT_BODY, fontSize: "1rem", color: TEXT_COLOR, lineHeight: 1.7, maxWidth: 580, fontWeight: 300 }}>
-          Cada sistema abaixo foi construído usando as técnicas ensinadas no Método STARK. Sem programação tradicional. Sem equipe.
+          Cada sistema abaixo foi construído usando as técnicas ensinadas na Revolução. Sem programação tradicional. Sem equipe.
         </p>
       </div>
 

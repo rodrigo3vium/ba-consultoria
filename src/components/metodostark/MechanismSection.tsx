@@ -510,7 +510,7 @@ const ReactorSection = () => {
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-             O Método Stark não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
+             A Revolução não é um curso sobre IA. É um ecossistema que integra: educação, prática, templates e comunidade. Construído para que você possa ter Agentes de IA trabalhando para você desde o primeiro módulo.
             </p>
           </div>
 
