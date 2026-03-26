@@ -115,6 +115,7 @@ const casualties: CasualtyData[] = [
     ticker: "ADBE · CRM · NOW",
     logoInitials: "S",
     logoColor: "linear-gradient(135deg, #E8344E, #6F42C1)",
+    logoImage: servicenowLogo,
     badge: "Sell-off",
     stat: "−25%",
     statLabel: "Queda média 2026",
