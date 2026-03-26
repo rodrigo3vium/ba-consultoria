@@ -215,10 +215,12 @@ const newsClippings: NewsClipData[] = [
     source: "VentureBeat",
     sourceInitials: "V",
     sourceColor: "#CC0000",
+    sourceLogo: venturebeatLogo,
     url: "venturebeat.com/stack-overflow-layoffs-28-percent",
     date: "22 Dez 2025",
     headline: "Stack Overflow confirma demissões: ",
     highlightText: "28% da equipe cortada",
+    headlineImage: headlineVenturebeat,
     excerpt: "Com soluções concorrentes já em uso massivo, a era da IA generativa não tem sido fácil para o Stack Overflow.",
   },
   {
