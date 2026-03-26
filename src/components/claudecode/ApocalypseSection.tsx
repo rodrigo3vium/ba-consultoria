@@ -281,7 +281,11 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
     {/* Logo row */}
     <div className="flex justify-between items-center mb-5">
       <div className="flex items-center gap-2.5">
-        <LogoIcon initials={c.logoInitials} color={c.logoColor} />
+        {c.logoImage ? (
+          <img src={c.logoImage} alt={c.company} className="flex-shrink-0 object-cover" style={{ width: 36, height: 36, borderRadius: 8 }} />
+        ) : (
+          <LogoIcon initials={c.logoInitials} color={c.logoColor} />
+        )}
         <div className="flex flex-col">
           <span className="text-[1.1rem] font-bold leading-tight uppercase" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
             {c.company}
