@@ -46,7 +46,7 @@ interface ClosingSectionProps {
   afterDeliverables?: React.ReactNode;
 }
 
-const ClosingSection = ({ onCTA }: ClosingSectionProps) => {
+const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
   return (
     <>
       {/* SEÇÃO 05 — PARA QUEM É */}
