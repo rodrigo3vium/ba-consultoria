@@ -212,7 +212,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Isso não é um curso.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              É um sistema pensado para que <strong style={{ color: IVORY }}>ganhar dinheiro construindo sistemas de IA</strong>.
+              É um sistema pensado para que você saia com <strong style={{ color: IVORY }}>algo funcionando</strong>.
             </p>
           </div>
 
