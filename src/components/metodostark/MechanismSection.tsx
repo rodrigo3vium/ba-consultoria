@@ -493,7 +493,7 @@ const ReactorSection = () => {
               className="text-xs uppercase tracking-[5px]"
               style={{ fontFamily: FONT_MONO, color: DIM }}
             >
-              04 — O Que É o Método Stark
+              04 — O Que É a Revolução
             </span>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold"
