@@ -326,7 +326,7 @@ const MetodoStark = () => {
             width: "100%",
             height: "100%",
             background: "linear-gradient(180deg, rgba(12,18,32,0.75) 0%, rgba(12,18,32,0.60) 40%, rgba(12,18,32,0.75) 100%)",
-            zIndex: 1,
+            zIndex: 2,
             pointerEvents: "none",
           }}
         />
