@@ -251,7 +251,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
               Aprenda como construir uma oferta para vender consultorias de criação de sistemas de{" "}
-              <strong style={{ color: STARK_GOLD }}>R$20 a R$30 mil reais</strong>.
+              <strong style={{ color: STARK_GOLD }}>R$5 a R$30 mil reais</strong>.
             </p>
           </div>
         </div>
