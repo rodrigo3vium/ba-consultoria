@@ -49,7 +49,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               05 — Para quem é
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-              Para quem decidiu sair do <span style={{ color: ARC }}>jogo antigo</span>
+              Para quem decidiu aproveitar a <span style={{ color: ARC }}>segunda onda da IA</span>
             </h2>
           </div>
 
