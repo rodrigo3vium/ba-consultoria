@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import cheggLogo from "@/assets/chegg-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
@@ -33,6 +34,7 @@ interface CasualtyData {
   ticker: string;
   logoInitials: string;
   logoColor: string;
+  logoImage?: string;
   badge: string;
   stat: string;
   statLabel: string;
@@ -49,6 +51,7 @@ const casualties: CasualtyData[] = [
     ticker: "NYSE: CHGG",
     logoInitials: "C",
     logoColor: "#F37321",
+    logoImage: cheggLogo,
     badge: "Extinta",
     stat: "−99%",
     statLabel: "Valor de mercado",
@@ -278,7 +281,11 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
     {/* Logo row */}
     <div className="flex justify-between items-center mb-5">
       <div className="flex items-center gap-2.5">
-        <LogoIcon initials={c.logoInitials} color={c.logoColor} />
+        {c.logoImage ? (
+          <img src={c.logoImage} alt={c.company} className="flex-shrink-0 object-cover" style={{ width: 36, height: 36, borderRadius: 8 }} />
+        ) : (
+          <LogoIcon initials={c.logoInitials} color={c.logoColor} />
+        )}
         <div className="flex flex-col">
           <span className="text-[1.1rem] font-bold leading-tight uppercase" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
             {c.company}
