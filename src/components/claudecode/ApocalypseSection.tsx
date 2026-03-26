@@ -201,10 +201,12 @@ const newsClippings: NewsClipData[] = [
     source: "InvestorPlace",
     sourceInitials: "I",
     sourceColor: "#0A7B3E",
+    sourceLogo: investorplaceLogo,
     url: "investorplace.com/2026/02/saasmageddon-is-here",
     date: "10 Fev 2026",
     headline: "SaaSmageddon chegou — e ",
     highlightText: "nem todo software vai sobreviver",
+    headlineImage: headlineInvestorplace,
     excerpt: "Como grupo, ações SaaS caíram mais de 20% desde o final de 2025 — um dos drawdowns mais rápidos fora da crise de 2008.",
   },
   {
