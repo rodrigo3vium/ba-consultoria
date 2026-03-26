@@ -329,10 +329,16 @@ const MetodoStark = () => {
               </div>
 
               <p
+                className="text-lg font-semibold mb-2"
+                style={{ fontFamily: FONT_DISPLAY, color: TEXT_COLOR }}
+              >
+                Usa IA como um Google melhorado. Tem a sensação de que não usa IA no seu máximo potencial.
+              </p>
+              <p
                 className="text-base leading-relaxed"
                 style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8 }}
               >
-                Usa IA como um Google melhorado. Abre o chat, faz uma pergunta, lê a resposta, fecha. Repete amanhã. Talvez reescreva um e-mail. Talvez peça uma legenda. Sente que "está usando IA" mas não consegue nomear o que mudou no seu negócio.
+                Abre o chat, faz uma pergunta, lê a resposta, fecha. Repete amanhã. Talvez reescreva um e-mail. Talvez peça uma legenda. Sente que "está usando IA" mas não consegue nomear o que mudou no seu negócio.
               </p>
             </div>
 
