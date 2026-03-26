@@ -110,13 +110,19 @@ const MechanismSection = () => {
             >
               Não é um curso.
               <br />
-              <span style={{ color: ARC }}>É uma crença.</span>
+              <span style={{ color: ARC }}>É um Ecossistema.</span>
             </h3>
             <p
               className="text-base md:text-lg leading-relaxed"
               style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
             >
-              Por trás do Método Stark existe um conjunto de convicções sobre como o trabalho vai funcionar daqui para frente — e sobre o que separa os profissionais que vão liderar essa transição dos que vão ser engolidos por ela.
+              No Método Stark existe uma arquitetura de sistemas que separa os profissionais que entenderam como o trabalho vai funcionar daqui pra frente.
+            </p>
+            <p
+              className="text-base md:text-lg leading-relaxed"
+              style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
+            >
+              Por trás do Método Stark existe um conjunto de convicções sobre como o trabalho vai funcionar daqui para frente e sobre o que separa os profissionais que vão liderar essa transição dos que vão ser engolidos por ela.
             </p>
           </div>
 
