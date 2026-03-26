@@ -387,7 +387,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Ou pode:
             </p>
             <p className="text-2xl md:text-3xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: ARC }}>
-              aprender um modelo que já está funcionando agora.
+              aprender um modelo revolucionário que já está funcionando agora.
             </p>
           </div>
 
