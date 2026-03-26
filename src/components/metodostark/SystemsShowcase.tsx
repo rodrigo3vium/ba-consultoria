@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import viralVideoFinderImg from "@/assets/sistema-viral-video-finder.png";
+import relatorioStoriesImg from "@/assets/sistema-relatorio-stories.png";
 
 const VOID = "#060A12";
 const SURFACE = "#0C1220";
