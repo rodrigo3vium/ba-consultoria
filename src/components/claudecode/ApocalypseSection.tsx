@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import cheggLogo from "@/assets/chegg-logo.png";
 import duolingoLogo from "@/assets/duolingo-logo.png";
 import uipathLogo from "@/assets/uipath-logo.png";
+import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
