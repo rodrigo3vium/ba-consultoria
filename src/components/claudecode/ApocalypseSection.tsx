@@ -4,6 +4,7 @@ import duolingoLogo from "@/assets/duolingo-logo.png";
 import uipathLogo from "@/assets/uipath-logo.png";
 import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 import servicenowLogo from "@/assets/servicenow-logo.png";
+import headlineChegg from "@/assets/headline-chegg.png";
 
 // Método Stark palette
 const ARC = "#38BDF8";
