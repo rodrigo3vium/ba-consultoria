@@ -29,11 +29,11 @@ const systems = [
     stat: "Horas → Minutos",
   },
   {
-    title: "Viral Video Finder",
-    description: "Sistema que encontra vídeos virais em qualquer nicho para facilitar a produção de conteúdo. Filtra por plataforma, palavras-chave e métricas de engajamento.",
-    image: viralVideoFinderImg,
-    tags: ["Conteúdo", "TikTok", "Pesquisa"],
-    stat: "Horas → Minutos",
+    title: "Relatório de Stories",
+    description: "Sistema que analisa automaticamente a qualidade de produção de Stories do Instagram, gerando relatórios com métricas de consistência visual, engajamento e resumo do dia.",
+    image: relatorioStoriesImg,
+    tags: ["Instagram", "Análise", "Automação"],
+    stat: "Manual → Automático",
   },
   {
     title: "Viral Video Finder",
