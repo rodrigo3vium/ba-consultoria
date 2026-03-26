@@ -318,6 +318,9 @@ const MetodoStark = () => {
         </div>
       </section>
 
+      {/* O Mundo Já Mudou */}
+      <ApocalypseSection onCTA={handleCTA} />
+
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
