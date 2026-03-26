@@ -55,7 +55,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
 
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              O Método STARK <strong style={{ color: IVORY }}>não foi feito para curiosos</strong>.
+              A Revolução <strong style={{ color: IVORY }}>não foi feita para curiosos</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
               Foi feito para quem já percebeu que o modelo antigo está condenado.
