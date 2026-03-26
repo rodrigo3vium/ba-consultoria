@@ -167,8 +167,25 @@ const MechanismSection = () => {
             ))}
           </div>
 
+          {/* From builder to builder */}
+          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "20px" }}>
+            <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${STARK_GOLD}40, transparent)` }} />
+            <p
+              className="text-sm uppercase tracking-[4px]"
+              style={{ fontFamily: FONT_MONO, color: STARK_GOLD }}
+            >
+              From builder to builder
+            </p>
+            <p
+              className="text-base md:text-lg"
+              style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}
+            >
+              O Método Stark é pensado para quem quer ganhar dinheiro. Tudo é pensado para gerar o maior retorno possível, e com velocidade. Sem teoria desnecessária, sem firula motivacional.
+            </p>
+          </div>
+
           {/* Closing statement */}
-          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "40px" }}>
+          <div className="text-center max-w-3xl mx-auto space-y-4" style={{ paddingTop: "20px" }}>
             <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${ARC}40, transparent)` }} />
             <h3
               className="text-2xl md:text-3xl font-bold"
@@ -186,7 +203,7 @@ const MechanismSection = () => {
               className="text-base md:text-lg"
               style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.7, fontWeight: 300 }}
             >
-              Essa mentalidade muda tudo.
+              Essa mentalidade muda o jogo.
             </p>
           </div>
         </div>
