@@ -325,6 +325,12 @@ const MetodoStark = () => {
       {/* Gradient separator */}
       <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
 
+      {/* O Mecanismo + Estado Alpha */}
+      <MechanismSection />
+
+      {/* Gradient separator */}
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+
       {/* CTA Final */}
       <section
         className="relative px-6"
