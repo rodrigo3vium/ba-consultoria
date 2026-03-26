@@ -302,7 +302,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               Investimento
             </p>
             <p className="text-base" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, fontWeight: 300 }}>
-              Acesso completo ao Método STARK
+              Acesso completo à Revolução
             </p>
             <div>
               <p className="text-4xl md:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
