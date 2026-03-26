@@ -404,10 +404,13 @@ const NewsClip = ({ n }: { n: NewsClipData }) => (
         </span>
       </div>
 
-      {/* Headline */}
-      <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: FONT_DISPLAY, color: IVORY, fontWeight: 600 }}>
-        {n.headline}<span style={{ color: ARC, fontWeight: 700 }}>{n.highlightText}</span>
-      </p>
+      {n.headlineImage ? (
+        <img src={n.headlineImage} alt={n.headline + n.highlightText} className="w-full rounded mb-2" style={{ maxHeight: 120, objectFit: "contain", objectPosition: "left" }} />
+      ) : (
+        <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: FONT_DISPLAY, color: IVORY, fontWeight: 600 }}>
+          {n.headline}<span style={{ color: ARC, fontWeight: 700 }}>{n.highlightText}</span>
+        </p>
+      )}
 
       {/* Excerpt */}
       <p
