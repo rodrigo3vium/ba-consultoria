@@ -173,7 +173,7 @@ const MetodoStark = () => {
               className="text-xs uppercase tracking-[5px]"
               style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "3px" }}
             >
-              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;Método STARK de Vibe Coding&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
+              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;A Revolução de Vibe Coding&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
             </span>
           </div>
 
