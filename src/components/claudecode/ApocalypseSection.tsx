@@ -5,6 +5,7 @@ import uipathLogo from "@/assets/uipath-logo.png";
 import stackoverflowLogo from "@/assets/stackoverflow-logo.png";
 import servicenowLogo from "@/assets/servicenow-logo.png";
 import headlineChegg from "@/assets/headline-chegg.png";
+import cnbcLogo from "@/assets/cnbc-logo.jpg";
 
 // Método Stark palette
 const ARC = "#38BDF8";
