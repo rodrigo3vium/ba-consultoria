@@ -28,7 +28,7 @@ const beliefs = [
   {
     num: "03",
     title: "Sem código. Mas com arquitetura.",
-    text: "Você não precisa programar para construir sistemas de IA. Precisa pensar como arquiteto — entender entradas, saídas, fluxos e objetivos. Isso é ensinável para qualquer pessoa que opera um negócio.",
+    text: "Você não precisa programar para construir sistemas de IA. Precisa pensar como arquiteto: entender entradas, saídas, fluxos e objetivos. Isso é ensinável para qualquer pessoa que opera um negócio.",
   },
   {
     num: "04",
