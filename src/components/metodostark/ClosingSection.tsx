@@ -43,6 +43,7 @@ const deliverables = [
 
 interface ClosingSectionProps {
   onCTA: (location: string) => void;
+  afterDeliverables?: React.ReactNode;
 }
 
 const ClosingSection = ({ onCTA }: ClosingSectionProps) => {
