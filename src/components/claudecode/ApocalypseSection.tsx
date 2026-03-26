@@ -497,7 +497,7 @@ export default function ApocalypseSection({ onCTA }: ApocalypseSectionProps) {
           </h2>
 
           <p className="text-[1.05rem] max-w-[620px] mb-16" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.7, fontWeight: 300 }}>
-            Empresas bilionárias estão derretendo em tempo real. Não é teoria — são números.{" "}
+            Empresas bilionárias estão derretendo em tempo real. Os números não mentem.{" "}
             <strong style={{ color: IVORY, fontWeight: 600 }}>
               Quem não se adapta à inteligência artificial está sendo engolido por quem já se adaptou.
             </strong>
