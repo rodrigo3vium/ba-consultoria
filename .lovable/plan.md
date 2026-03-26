@@ -1,35 +1,58 @@
 
+## Plano: atacar a causa mais provável no domínio customizado
 
-## Plan: Fix "O Mundo Se Dividiu" Scroll Animation on Production
+### O que isso indica
+Como funciona no preview, no localhost e no domínio publicado padrão, mas falha só em `benitesalbuquerque.com.br`, o problema muito provavelmente **não está na rota nem no React**. O suspeito mais forte é a **entrega do vídeo no domínio customizado**, especialmente para **seek/scrubbing por `currentTime`**.
 
-### Problem
-The scroll-driven animation depends entirely on the video loading. Line 57 checks `if (!video.duration)` — if the video fails to load or is slow, `scrollProgress` never updates, so the video never plays. The cards work because they still get the initial `scrollProgress` value that triggers their entrance, but the video scrubbing never starts.
+### Causa mais provável
+Esse efeito depende de o navegador conseguir “pular” para frames diferentes do MP4 conforme o scroll. Para isso, a entrega do vídeo precisa suportar bem:
+- `Accept-Ranges: bytes`
+- respostas `206 Partial Content` durante seek
+- buffering rápido o suficiente para mudanças contínuas de `currentTime`
 
-### Root Cause
-The video file `/videos/mundo_dividindo.mp4` may not be loading on the production domain, or loads too slowly. The entire scroll logic is gated behind `video.duration` being truthy.
+Um `200 OK` sozinho não garante que isso esteja funcionando corretamente. Em domínio customizado, proxy/CDN/cache pode:
+- servir o arquivo sem range request adequado
+- segurar cache antigo do vídeo
+- alterar comportamento de streaming/seek
+- responder de forma diferente do domínio padrão da plataforma
 
-### Solution
-Decouple the scroll progress calculation from the video readiness. Two separate concerns:
+### Outro ponto importante
+Hoje a seção 1 ainda depende de **scrubbing de vídeo** para o efeito “mundo partindo”. Se o vídeo carrega mas o seek falha/intermitente, os cards entram, mas o “partindo ao meio” não acontece visualmente.
 
-1. **Scroll tracking** — always runs, updates `scrollProgress` based on section position
-2. **Video scrubbing** — only runs when video is ready, reads `scrollProgress` to set `currentTime`
+### Plano de implementação
+1. **Instrumentar o vídeo para diagnóstico real**
+   - adicionar handlers de `onError`, `onCanPlay`, `onLoadedData`, `onSeeked`, `onStalled`
+   - registrar `readyState`, `networkState`, `currentTime`, `duration`
+   - isso confirma se o problema é de seek/buffer no domínio customizado
 
-### Changes — `src/pages/MetodoStark.tsx`
+2. **Endurecer a lógica de prontidão**
+   - não marcar o vídeo como pronto só em `loadedmetadata`
+   - só liberar scrub quando houver dados suficientes (`readyState >= 2` ou `canplay`)
+   - evitar atualizar `currentTime` cedo demais
 
-**Replace the single `useEffect` (lines 48-83) with two:**
+3. **Adicionar fallback visual independente do MP4**
+   - manter o vídeo quando funcionar
+   - mas implementar o “mundo se dividindo” também com uma camada CSS/SVG baseada em `scrollProgress`
+   - assim, mesmo que o seek do vídeo falhe no domínio customizado, o efeito visual continua
 
-1. **Scroll observer** (no video dependency):
-   - rAF loop that reads `sectionRef.getBoundingClientRect()`
-   - Calculates and sets `scrollProgress` always
-   - No dependency on `videoReady` or `video.duration`
+4. **Se necessário, substituir o efeito principal**
+   - opção mais robusta: abandonar scrub do MP4 e fazer o efeito com:
+     - duas metades da arte/imagem
+     - `clip-path`, `transform`, `opacity`, blur leve
+     - animação 100% controlada por scroll
+   - isso elimina dependência de streaming, codec e proxy
 
-2. **Video scrubber** (depends on `videoReady` + `scrollProgress`):
-   - Separate `useEffect` watching `videoReady` and `scrollProgress`
-   - When video is ready, sets `video.currentTime` based on `scrollProgress`
-   - Uses lerp for smooth interpolation as before
+### Arquivo principal
+- `src/pages/MetodoStark.tsx`
 
-This ensures the cards animate and scroll progress works even if the video never loads, while the video still scrubs smoothly when available.
+### Detalhes técnicos
+A hipótese mais forte é: **o vídeo abre, mas o navegador no domínio customizado não consegue fazer seek progressivo de forma confiável**.  
+Isso explica perfeitamente o sintoma:
+- cards animam = `scrollProgress` está funcionando
+- vídeo existe e retorna 200 = arquivo está acessível
+- efeito visual do “mundo dividindo” não acontece = o problema está na atualização do frame, não no scroll
 
-### Files to edit
-1. `src/pages/MetodoStark.tsx` — Split the scroll/video useEffect into two independent effects
-
+### Resultado esperado
+Depois dessa correção, a seção 1 ficará resiliente:
+- no melhor caso, o MP4 continua scrubbando normalmente
+- no pior caso, o fallback CSS mantém o efeito de “mundo se dividindo” igual para preview, localhost e domínio customizado
