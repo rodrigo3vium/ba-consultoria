@@ -412,7 +412,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Quero aprender o Método STARK e criar meu primeiro sistema com IA
+            Quero aprender o Método STARK e começar a criar meus sistemas de IA
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
