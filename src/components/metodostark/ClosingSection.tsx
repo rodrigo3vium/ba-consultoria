@@ -32,11 +32,8 @@ const notForYouItems = [
 ];
 
 const deliverables = [
-  { title: "Método STARK completo", sub: "Do zero até a criação de sistemas vendáveis" },
-  { title: "Estrutura de Vibe Coding", sub: "O modelo que transforma IA em soluções que empresas pagam" },
-  { title: "Modelos de sistemas prontos", sub: "Para adaptar e usar em projetos reais" },
-  { title: "Framework de oferta", sub: "Para transformar soluções em projetos de alto valor" },
-  { title: "Processo de vendas simples", sub: "Sem precisar virar vendedor profissional" },
+  { title: "Método STARK completo", sub: "Do zero até a criação de sistemas" },
+  { title: "Sistemas prontos", sub: "Para adaptar e usar em projetos reais. Control C + V para você aplicar no seu negócio e no dos seus clientes." },
   { title: "Comunidade de praticantes", sub: "Pessoas construindo, testando e compartilhando resultados" },
   { title: "Atualizações constantes", sub: "Novas estratégias, sistemas e aplicações conforme o mercado evolui" },
 ];
