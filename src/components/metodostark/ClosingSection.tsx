@@ -58,7 +58,7 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               O Método STARK <strong style={{ color: IVORY }}>não foi feito para curiosos</strong>.
             </p>
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: DIM, lineHeight: 1.8, fontWeight: 300 }}>
-              Foi feito para quem já percebeu que o modelo atual não funciona como prometeram.
+              Foi feito para quem já percebeu que o modelo antigo está condenado.
             </p>
           </div>
 
