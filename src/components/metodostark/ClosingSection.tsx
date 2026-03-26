@@ -206,13 +206,16 @@ const ClosingSection = ({ onCTA, afterDeliverables }: ClosingSectionProps) => {
               07 — O que você recebe
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ fontFamily: FONT_DISPLAY, color: IVORY }}>
-              Um sistema completo para transformar <span style={{ color: ARC }}>IA em receita</span>
+              Um ecossistema completo para transformar <span style={{ color: ARC }}>IA em receita</span>
             </h2>
           </div>
 
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
+          <div className="text-center space-y-4 max-w-2xl mx-auto">
             <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
-              Isso não é um curso. <strong style={{ color: IVORY }}>É um sistema</strong> pensado para que você saia com algo funcionando.
+              Isso não é um curso.
+            </p>
+            <p className="text-lg" style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8, fontWeight: 300 }}>
+              É um sistema pensado para que <strong style={{ color: IVORY }}>ganhar dinheiro construindo sistemas de IA</strong>.
             </p>
           </div>
 
