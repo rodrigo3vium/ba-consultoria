@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { tracker } from "@/lib/tracking";
-import rampChart from "@/assets/ramp-chart.png";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const ImersaoClaude = () => {
   const [activeTab, setActiveTab] = useState("revolucoes");
   const adoptionChartRef = useRef<HTMLCanvasElement>(null);
   const users100mChartRef = useRef<HTMLCanvasElement>(null);
+  const marketShareChartRef = useRef<HTMLCanvasElement>(null);
   const adoptionBuilt = useRef(false);
   const users100mBuilt = useRef(false);
+  const marketShareBuilt = useRef(false);
   const chartScriptLoaded = useRef(false);
 
   useEffect(() => {
@@ -135,6 +136,59 @@ const ImersaoClaude = () => {
       },
     });
   };
+
+  const buildMarketShareChart = () => {
+    if (marketShareBuilt.current || !marketShareChartRef.current || !(window as any).Chart) return;
+    marketShareBuilt.current = true;
+    const ctx = marketShareChartRef.current.getContext("2d");
+    if (!ctx) return;
+    new (window as any).Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Fev\n2025","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez","Jan\n2026","Fev"],
+        datasets: [
+          { label: "Claude Enterprise", data: [3,3,3,3,3,3,3,3,3,4,4,4,5], backgroundColor: "#7a3010", stack: "s" },
+          { label: "Claude Max", data: [2,2,2,2,2,2,2,2,2,3,4,5,5], backgroundColor: "#c06020", stack: "s" },
+          { label: "Claude Team", data: [4,5,7,10,13,15,17,20,22,28,33,38,45], backgroundColor: "#e8903a", stack: "s" },
+          { label: "Outro Anthropic", data: [1,2,2,3,3,3,3,3,3,4,5,6,14], backgroundColor: "#f5ddb0", stack: "s" },
+          { label: "ChatGPT Business", data: [44,41,38,36,34,33,33,32,30,25,19,15,12], backgroundColor: "#7ab8f0", stack: "s" },
+          { label: "ChatGPT Plus", data: [20,18,15,13,12,12,12,12,13,14,16,16,10], backgroundColor: "#4a90d9", stack: "s" },
+          { label: "ChatGPT Pro", data: [13,13,14,14,14,14,13,12,12,11,10,10,5], backgroundColor: "#2e6eb5", stack: "s" },
+          { label: "Outro OpenAI", data: [13,16,19,19,19,18,17,16,15,11,9,6,4], backgroundColor: "#1a4a8a", stack: "s" },
+        ],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (c: any) => ` ${c.dataset.label}: ${c.parsed.y}%` } },
+        },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: "#888", autoSkip: false, maxRotation: 0 } },
+          y: { stacked: true, min: 0, max: 100, ticks: { stepSize: 10, font: { size: 11 }, color: "#888", callback: (v: any) => v + "%" }, grid: { color: "rgba(150,150,150,0.15)" } },
+        },
+      },
+    });
+  };
+
+  // Auto-build market share chart when section scrolls into view
+  useEffect(() => {
+    const canvas = marketShareChartRef.current;
+    if (!canvas) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            buildMarketShareChart();
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(canvas);
+    return () => observer.disconnect();
+  }, []);
 
   const switchTab = (tab: string) => {
     setActiveTab(tab);
@@ -586,12 +640,38 @@ const ImersaoClaude = () => {
         <div className="ic-container" style={{ textAlign: "center" }}>
           <video src="/videos/claude-migration.mp4" autoPlay loop muted playsInline style={{ width: 120, height: "auto", margin: "0 auto 24px", display: "block", borderRadius: 8 }} />
           <h2>Descubra porque <span className="ic-highlight-arc">50% dos usuários sérios</span> de IA generativa nos últimos meses migraram do ChatGPT para o Claude.</h2>
-          <div style={{ marginTop: 40, background: "#fff", borderRadius: 8, overflow: "hidden", border: "1px solid var(--ic-border-subtle)" }}>
-            <img src={rampChart} alt="Gráfico Ramp Economics Lab — Anthropic lidera gastos corporativos com IA chat, ultrapassando OpenAI em fevereiro de 2026" style={{ width: "100%", height: "auto", display: "block" }} />
+
+          <div style={{ marginTop: 40, background: "var(--ic-bg-card)", borderRadius: 8, border: "1px solid var(--ic-border-subtle)", padding: "24px 20px 16px" }}>
+            <p style={{ fontSize: 18, fontWeight: 500, color: "var(--ic-text-primary)", margin: "0 0 4px", textAlign: "left" }}>Uso do ChatGPT vs Claude</p>
+            <p style={{ fontSize: 14, fontWeight: 500, color: "var(--ic-text-secondary)", margin: "0 0 4px", textAlign: "left" }}>Dados até fev 2026</p>
+            <p style={{ fontSize: 12, color: "var(--ic-text-secondary)", margin: "0 0 16px", textAlign: "left" }}>Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginBottom: 16 }}>
+              {[
+                { color: "#1a4a8a", label: "Outro OpenAI" },
+                { color: "#2e6eb5", label: "ChatGPT Pro" },
+                { color: "#4a90d9", label: "ChatGPT Plus" },
+                { color: "#7ab8f0", label: "ChatGPT Business" },
+                { color: "#f5ddb0", label: "Outro Anthropic" },
+                { color: "#e8903a", label: "Claude Team" },
+                { color: "#c06020", label: "Claude Max" },
+                { color: "#7a3010", label: "Claude Enterprise" },
+              ].map((l) => (
+                <span key={l.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "var(--ic-text-secondary)" }}>
+                  <span style={{ width: 12, height: 12, borderRadius: 2, background: l.color, flexShrink: 0 }} />
+                  {l.label}
+                </span>
+              ))}
+            </div>
+
+            <div style={{ position: "relative", width: "100%", height: 380 }}>
+              <canvas ref={marketShareChartRef} />
+            </div>
+
+            <p style={{ fontSize: 10, color: "var(--ic-text-muted)", marginTop: 12, textAlign: "left", lineHeight: 1.5 }}>
+              Fonte: Ramp Economics Lab (ramp.com/data). Dados de cartão corporativo e pagamento de contas de mais de 50.000 empresas dos EUA na plataforma financeira da Ramp.
+            </p>
           </div>
-          <p style={{ color: "var(--ic-text-muted)", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
-            Fonte: Ramp Economics Lab · Dados de 50.000+ empresas nos EUA · Fev 2026
-          </p>
 
           <p style={{ color: "var(--ic-text-secondary)", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem" }}>
             Nos últimos 12 meses, mais mudou na forma como se ganha dinheiro do que nos últimos 12 anos. E isso é só o começo. Os números mostram o que está por vir:
