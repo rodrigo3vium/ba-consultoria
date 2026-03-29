@@ -18,6 +18,7 @@ import ComoAplicarIA from "./pages/ComoAplicarIA";
 import OCaminho from "./pages/OCaminho";
 import ClaudeCode from "./pages/ClaudeCode";
 import MetodoStark from "./pages/MetodoStark";
+import ImersaoClaude from "./pages/ImersaoClaude";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Auth from "./pages/Auth";
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/educacao/claude-code" element={<ClaudeCode />} />
           <Route path="/educacao/a-revolucao" element={<MetodoStark />} />
           <Route path="/educacao/metodo-stark" element={<MetodoStark />} />
+          <Route path="/educacao/imersao-claude" element={<ImersaoClaude />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
