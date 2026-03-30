@@ -604,7 +604,7 @@ const ImersaoClaude = () => {
       <section className="ic-hero">
         <div className="ic-container">
           <div className="ic-hero__reactor"><div className="ic-hero__reactor-core" /></div>
-          <div className="ic-hero__event-tag"><span>Use o cupom IMERSAO74 para ganhar 74% de desconto</span></div>
+          <div className="ic-hero__event-tag"><span>Oferta especial: Compre hoje com 67% de desconto!</span></div>
 
           <h1 className="ic-hero__title">
             Aprenda tudo sobre o <span className="ic-highlight-arc">Claude.</span> A IA mais poderosa do mundo, que executa tarefas ao invés de só responder perguntas.
