@@ -44,6 +44,7 @@ import PropostaMonique from "./pages/PropostaMonique";
 import PropostaPadrao from "./pages/PropostaPadrao";
 import PropostaClinicaSupreme from "./pages/PropostaClinicaSupreme";
 import PropostaGiuliaSalvatora from "./pages/PropostaGiuliaSalvatora";
+import PropostaWesleySardou from "./pages/PropostaWesleySardou";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,7 @@ const App = () => (
               <Route path="/proposta-padrao" element={<PropostaPadrao />} />
               <Route path="/propostas/clinica-supreme" element={<PropostaClinicaSupreme />} />
           <Route path="/propostas/giulia-salvatore" element={<PropostaGiuliaSalvatora />} />
+          <Route path="/propostas/wesley-sardou" element={<PropostaWesleySardou />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
