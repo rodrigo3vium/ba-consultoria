@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { tracker } from "@/lib/tracking";
+import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
 
 const ImersaoClaude = () => {
@@ -198,7 +199,10 @@ const ImersaoClaude = () => {
 
   const handleCTA = (location: string) => {
     tracker.track("cta_click", { product: "imersao-claude", cta_location: location, page: "/imersao-claude" });
-    window.open("https://pay.hotmart.com/W98498495O?checkoutMode=10", "_blank");
+    const checkoutUrl = buildHotmartCheckoutUrl({
+      baseUrl: "https://pay.hotmart.com/T104822269G?checkoutMode=10",
+    });
+    window.open(checkoutUrl, "_blank");
   };
 
   const forYouItems = [
