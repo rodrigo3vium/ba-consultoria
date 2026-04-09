@@ -53,7 +53,7 @@ const PropostaDSLCarTexas = () => {
         >
           <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: "linear-gradient(135deg, #a06d42, #c8956c, #e0b893)", opacity: 0.4 }} />
 
-          <img src={dslLogo} alt="DSL Car Texas" style={{ width: "120px", height: "120px", objectFit: "cover", borderRadius: "50%", marginBottom: "32px", animation: "dsl-fadeDown 0.8s ease both" }} />
+          <img loading="lazy" src={dslLogo} alt="DSL Car Texas" style={{ width: "120px", height: "120px", objectFit: "cover", borderRadius: "50%", marginBottom: "32px", animation: "dsl-fadeDown 0.8s ease both" }} />
 
           <div
             style={{
@@ -152,7 +152,7 @@ const PropostaDSLCarTexas = () => {
                 border: "1px solid rgba(200,149,108,0.15)",
               }}
             >
-              <img
+              <img loading="lazy"
                 src={rodrigoPhoto}
                 alt="Rodrigo Albuquerque"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -219,7 +219,7 @@ const PropostaDSLCarTexas = () => {
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(200,149,108,0.15)"; e.currentTarget.style.transform = "translateY(0)"; }}
               >
                 <div style={{ width: "80px", height: "80px", borderRadius: "50%", overflow: "hidden", margin: "0 auto 12px", border: "1px solid rgba(200,149,108,0.2)" }}>
-                  <img src={m.photo} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(30%)" }} />
+                  <img loading="lazy" src={m.photo} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(30%)" }} />
                 </div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "15px", fontWeight: 600, color: "#f0ebe3", marginBottom: "4px" }}>{m.name}</h3>
                 <p style={{ fontSize: "12px", fontWeight: 600, color: "#c8956c", marginBottom: "8px" }}>{m.role}</p>

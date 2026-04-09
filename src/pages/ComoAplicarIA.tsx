@@ -204,7 +204,7 @@ const ComoAplicarIA = () => {
                 alt: "Workday - Relatório Global de IA para Executivos"
               }].map((news, idx) => <CarouselItem key={idx} className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/2">
                     <div className="group relative rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-ba-blue-light/30 transition-all duration-300">
-                      <img src={news.src} alt={news.alt} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img loading="lazy" src={news.src} alt={news.alt} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                   </CarouselItem>)}
               </CarouselContent>

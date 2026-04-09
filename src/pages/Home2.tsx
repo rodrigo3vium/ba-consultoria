@@ -301,7 +301,7 @@ const Home2 = () => {
             {founders.map((f, i) => (
               <div key={i} className="space-y-6">
                 <div className="aspect-[4/5] overflow-hidden" style={{ borderRadius: 4, border: `1px solid ${C.gold}33` }}>
-                  <img src={f.photo} alt={f.name} className="w-full h-full object-cover grayscale" style={{ mixBlendMode: 'luminosity' }} />
+                  <img loading="lazy" src={f.photo} alt={f.name} className="w-full h-full object-cover grayscale" style={{ mixBlendMode: 'luminosity' }} />
                 </div>
                 <h3 className="font-playfair text-2xl md:text-3xl" style={{ color: C.parchment }}>{f.name}</h3>
                 <p className="font-cormorant font-semibold text-sm" style={{ color: C.gold, letterSpacing: 3, textTransform: 'uppercase' }}>{f.role}</p>
@@ -357,7 +357,7 @@ const Home2 = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {technologies.map((t, i) => (
               <div key={i} className="da-card p-6 flex flex-col items-center justify-center aspect-square text-center">
-                <img src={t.logo} alt={t.name} className="w-16 h-16 mb-3 object-contain" />
+                <img loading="lazy" src={t.logo} alt={t.name} className="w-16 h-16 mb-3 object-contain" />
                 <h3 className="font-playfair text-lg mb-2" style={{ color: C.parchment }}>{t.name}</h3>
                 <p className="font-cormorant text-xs" style={{ color: C.muted }}>{t.desc}</p>
               </div>
@@ -412,7 +412,7 @@ const Home2 = () => {
             <div className="flex da-animate-scroll">
               {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
                 <div key={i} className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300">
-                  <img src={logo} alt={`Cliente ${i + 1}`} className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-80" />
+                  <img loading="lazy" src={logo} alt={`Cliente ${i + 1}`} className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-80" />
                 </div>
               ))}
             </div>
@@ -466,7 +466,7 @@ const Home2 = () => {
             BA Consultoria no Mundo
           </h2>
           <div className="relative aspect-video max-w-4xl mx-auto overflow-hidden" style={{ borderRadius: 4, border: `1px solid ${C.gold}33` }}>
-            <img src={worldMap} alt="Mapa Mundi - BA Consultoria no Mundo" className="w-full h-full object-cover scale-110" />
+            <img loading="lazy" src={worldMap} alt="Mapa Mundi - BA Consultoria no Mundo" className="w-full h-full object-cover scale-110" />
           </div>
           <p className="font-cormorant text-center mt-12 max-w-2xl mx-auto" style={{ color: C.muted, fontSize: 18, lineHeight: 1.85 }}>
             Presença global, impacto local. Levando expertise empresarial brasileira para o mundo.
@@ -487,7 +487,7 @@ const Home2 = () => {
             {mentors.map((m, i) => (
               <div key={i} className="da-card p-6">
                 <div className="aspect-square overflow-hidden mb-4" style={{ borderRadius: 4, border: `1px solid ${C.gold}26` }}>
-                  <img src={m.photo} alt={m.name} className="w-full h-full object-cover grayscale" />
+                  <img loading="lazy" src={m.photo} alt={m.name} className="w-full h-full object-cover grayscale" />
                 </div>
                 <h3 className="font-playfair text-lg mb-1" style={{ color: C.parchment }}>{m.name}</h3>
                 <p className="font-cormorant font-semibold text-sm mb-3" style={{ color: C.gold }}>{m.role}</p>

@@ -138,7 +138,7 @@ const CaseDetails = () => {
 
             <div className="mt-8">
               {caseData.cliente_logo_url ? (
-                <img 
+                <img loading="lazy" 
                   src={caseData.cliente_logo_url} 
                   alt={caseData.cliente_nome}
                   className="w-full max-h-96 object-cover rounded-2xl border border-white/10"
@@ -205,17 +205,17 @@ const CaseDetails = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Criativos da Campanha</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/ftx-creative-1.png" 
                     alt="Criativo FTX - Riviera Home Club"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/ftx-creative-2.png" 
                     alt="Criativo FTX - Localização Privilegiada"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/ftx-creative-3.png" 
                     alt="Criativo FTX - Novas Experiências"
                     className="rounded-xl w-full h-auto border border-white/10"
@@ -229,22 +229,22 @@ const CaseDetails = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Exemplos da Newsletter</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/puma-creative-1.png" 
                     alt="Newsletter Puma - Benefícios do Tiro Esportivo"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/puma-creative-2.png" 
                     alt="Newsletter Puma - Legítima Defesa"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/puma-creative-3.png" 
                     alt="Newsletter Puma - Aniversário"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/puma-creative-4.png" 
                     alt="Newsletter Puma - Arsenal de Defesa"
                     className="rounded-xl w-full h-auto border border-white/10"
@@ -258,17 +258,17 @@ const CaseDetails = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Posts do Instagram</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/quintal-creative-1.png" 
                     alt="Post Instagram - Seu cantinho para relaxar em Bodoquena"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/quintal-creative-2.png" 
                     alt="Post Instagram - Comemore seu evento conosco"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/quintal-creative-3.png" 
                     alt="Post Instagram - Você em contato com a natureza"
                     className="rounded-xl w-full h-auto border border-white/10"
@@ -284,7 +284,7 @@ const CaseDetails = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   O primeiro passo foi fazer o processo criativo e rascunhos à mão.
                 </p>
-                <img 
+                <img loading="lazy" 
                   src="/lovable-uploads/mjr-sketch.png" 
                   alt="Instituto MJR - Rascunhos do processo criativo da logo"
                   className="rounded-xl w-full h-auto border border-white/10 mb-6"
@@ -292,7 +292,7 @@ const CaseDetails = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Com as ideias aparecendo, definimos o modelo ideal e passamos para o computador para finalização.
                 </p>
-                <img 
+                <img loading="lazy" 
                   src="/lovable-uploads/mjr-grid.png" 
                   alt="Instituto MJR - Grid de construção da logo"
                   className="rounded-xl w-full h-auto border border-white/10 mb-6"
@@ -300,7 +300,7 @@ const CaseDetails = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   Remodelamos a logo mantendo a semelhança de forma tradicional e elegante.
                 </p>
-                <img 
+                <img loading="lazy" 
                   src="/lovable-uploads/mjr-symbol.png" 
                   alt="Instituto MJR - Símbolo final com as letras M, J e R"
                   className="rounded-xl w-full h-auto border border-white/10 mb-6"
@@ -314,7 +314,7 @@ const CaseDetails = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   A função desta paleta é auxiliar e transmitir confiança, lealdade, segurança e respeito.
                 </p>
-                <img 
+                <img loading="lazy" 
                   src="/lovable-uploads/mjr-colors.png" 
                   alt="Instituto MJR - Paleta de cores baseada no outono profundo"
                   className="rounded-xl w-full h-auto border border-white/10 mb-6"
@@ -325,7 +325,7 @@ const CaseDetails = () => {
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   A escolha por uma fonte sem serifa e reta, também balizada pela diferenciação do nicho. Já que a maior parte dos perfis concorrentes utilizam de fontes serifadas.
                 </p>
-                <img 
+                <img loading="lazy" 
                   src="/lovable-uploads/mjr-typography.png" 
                   alt="Instituto MJR - Tipografia Montserrat"
                   className="rounded-xl w-full h-auto border border-white/10"
@@ -338,29 +338,29 @@ const CaseDetails = () => {
               <div>
                 <h2 className="text-2xl font-bold mb-6 text-ba-blue-light">Aplicações da Identidade Visual</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/mjr-creative-1.png" 
                     alt="Instituto MJR - Posts Instagram sobre saúde"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/mjr-creative-2.png" 
                     alt="Instituto MJR - Exemplos de aplicação em posts educativos"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/mjr-creative-3.png" 
                     alt="Instituto MJR - Papelaria institucional"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/mjr-creative-4.png" 
                     alt="Instituto MJR - Aplicação em canecas"
                     className="rounded-xl w-full h-auto border border-white/10"
                   />
                 </div>
                 <div className="mt-4">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/mjr-creative-5.png" 
                     alt="Instituto MJR - Aplicação em caneta"
                     className="rounded-xl w-full h-auto border border-white/10"

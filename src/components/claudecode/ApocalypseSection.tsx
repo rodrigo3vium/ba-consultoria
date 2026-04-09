@@ -316,7 +316,7 @@ const CasualtyCard = ({ c }: { c: CasualtyData }) => (
     <div className="flex justify-between items-center mb-5">
       <div className="flex items-center gap-2.5">
         {c.logoImage ? (
-          <img src={c.logoImage} alt={c.company} className="flex-shrink-0 object-cover" style={{ width: 36, height: 36, borderRadius: 8 }} />
+          <img loading="lazy" src={c.logoImage} alt={c.company} className="flex-shrink-0 object-cover" style={{ width: 36, height: 36, borderRadius: 8 }} />
         ) : (
           <LogoIcon initials={c.logoInitials} color={c.logoColor} />
         )}
@@ -407,7 +407,7 @@ const NewsClip = ({ n }: { n: NewsClipData }) => (
       {/* Source row */}
       <div className="flex items-center gap-2 mb-2.5">
         {n.sourceLogo ? (
-          <img
+          <img loading="lazy"
             src={n.sourceLogo}
             alt={n.source}
             className="flex-shrink-0"
@@ -437,7 +437,7 @@ const NewsClip = ({ n }: { n: NewsClipData }) => (
       </div>
 
       {n.headlineImage ? (
-        <img src={n.headlineImage} alt={n.headline + n.highlightText} className="w-full rounded mb-2" style={{ maxHeight: 120, objectFit: "contain", objectPosition: "left" }} />
+        <img loading="lazy" src={n.headlineImage} alt={n.headline + n.highlightText} className="w-full rounded mb-2" style={{ maxHeight: 120, objectFit: "contain", objectPosition: "left" }} />
       ) : (
         <p className="text-[1.05rem] leading-[1.4] mb-2" style={{ fontFamily: FONT_DISPLAY, color: IVORY, fontWeight: 600 }}>
           {n.headline}<span style={{ color: ARC, fontWeight: 700 }}>{n.highlightText}</span>

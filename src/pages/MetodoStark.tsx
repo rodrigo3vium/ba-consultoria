@@ -106,7 +106,7 @@ const MetodoStark = () => {
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={metodoStarkLogo} alt="Método Stark" className="w-8 h-8" />
+            <img loading="lazy" src={metodoStarkLogo} alt="Método Stark" className="w-8 h-8" />
             <span
               className="text-lg tracking-[3px] font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: ARC }}
@@ -158,7 +158,7 @@ const MetodoStark = () => {
 
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
           <div className="flex justify-center">
-            <img src={metodoStarkLogo} alt="Método Stark" className="w-24 h-24 md:w-32 md:h-32" />
+            <img loading="lazy" src={metodoStarkLogo} alt="Método Stark" className="w-24 h-24 md:w-32 md:h-32" />
           </div>
 
           <div className="inline-flex items-center gap-3">
@@ -511,7 +511,7 @@ const MetodoStark = () => {
       >
         <div className="max-w-5xl mx-auto text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
-            <img src={metodoStarkLogo} alt="Método Stark" className="w-10 h-10" />
+            <img loading="lazy" src={metodoStarkLogo} alt="Método Stark" className="w-10 h-10" />
             <span
               className="text-base tracking-[3px] font-bold uppercase"
               style={{ fontFamily: FONT_DISPLAY, color: ARC }}

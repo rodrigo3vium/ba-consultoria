@@ -174,7 +174,7 @@ const Cases = () => {
                       <div className="flex items-center justify-between">
                         <div>
                           {caseItem.cliente_logo_url ? (
-                            <img 
+                            <img loading="lazy" 
                               src={caseItem.cliente_logo_url} 
                               alt={caseItem.cliente_nome}
                               className="h-32 w-full object-cover rounded-xl mb-4"

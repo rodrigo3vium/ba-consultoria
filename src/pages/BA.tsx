@@ -117,7 +117,7 @@ const BA = () => {
             <div className="space-y-6">
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={rodrigoAlbuquerquePhoto} 
                     alt="Rodrigo Albuquerque" 
                     className="w-full h-full object-cover"
@@ -151,7 +151,7 @@ const BA = () => {
             <div className="space-y-6">
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={francielliBenitesPhoto} 
                     alt="Francielli Benites" 
                     className="w-full h-full object-cover"
@@ -182,7 +182,7 @@ const BA = () => {
             <div className="space-y-6">
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={jonathanBarrosPhoto} 
                     alt="Jonathan Barros" 
                     className="w-full h-full object-cover"
@@ -267,7 +267,7 @@ const BA = () => {
             {/* Lovable */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={lovableLogo} alt="Lovable" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={lovableLogo} alt="Lovable" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Lovable</h3>
                 <p className="text-xs text-muted-foreground">Desenvolvimento rápido</p>
               </div>
@@ -276,7 +276,7 @@ const BA = () => {
             {/* n8n */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={n8nLogo} alt="n8n" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={n8nLogo} alt="n8n" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">n8n</h3>
                 <p className="text-xs text-muted-foreground">Automação avançada</p>
               </div>
@@ -285,7 +285,7 @@ const BA = () => {
             {/* ChatGPT */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={chatgptLogo} alt="ChatGPT" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={chatgptLogo} alt="ChatGPT" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">ChatGPT</h3>
                 <p className="text-xs text-muted-foreground">IA conversacional</p>
               </div>
@@ -294,7 +294,7 @@ const BA = () => {
             {/* Gemini */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={geminiLogo} alt="Gemini" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={geminiLogo} alt="Gemini" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Gemini</h3>
                 <p className="text-xs text-muted-foreground">IA multimodal</p>
               </div>
@@ -303,7 +303,7 @@ const BA = () => {
             {/* Claude */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={claudeLogo} alt="Claude" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={claudeLogo} alt="Claude" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Claude</h3>
                 <p className="text-xs text-muted-foreground">IA analítica</p>
               </div>
@@ -312,7 +312,7 @@ const BA = () => {
             {/* Grok */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={grokLogo} alt="Grok" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={grokLogo} alt="Grok" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Grok</h3>
                 <p className="text-xs text-muted-foreground">IA em tempo real</p>
               </div>
@@ -321,7 +321,7 @@ const BA = () => {
             {/* Make */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={makeLogo} alt="Make" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={makeLogo} alt="Make" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Make</h3>
                 <p className="text-xs text-muted-foreground">Integração visual</p>
               </div>
@@ -330,7 +330,7 @@ const BA = () => {
             {/* Typebot */}
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
               <div className="text-center">
-                <img src={typebotLogo} alt="Typebot" className="w-16 h-16 mb-3 mx-auto object-contain" />
+                <img loading="lazy" src={typebotLogo} alt="Typebot" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
                 <h3 className="text-lg font-bold text-foreground mb-2">Typebot</h3>
                 <p className="text-xs text-muted-foreground">Chatbots inteligentes</p>
               </div>
@@ -469,7 +469,7 @@ const BA = () => {
                 >
                   <div className="relative">
                     <div className="absolute inset-0 bg-black/40 rounded-lg"></div>
-                    <img
+                    <img loading="lazy"
                       src={logo}
                       alt={`Cliente ${index + 1}`}
                       className="h-16 md:h-24 w-auto object-contain opacity-70 hover:opacity-100 relative z-10"
@@ -584,7 +584,7 @@ const BA = () => {
             BA Consultoria no Mundo
           </h2>
           <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-black/90 backdrop-blur-sm">
-            <img 
+            <img loading="lazy" 
               src={worldMap} 
               alt="Mapa Mundi - BA Consultoria no Mundo" 
               className="w-full h-full object-cover scale-110"
@@ -609,7 +609,7 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
                 <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={diegoBarretoPhoto} 
                     alt="Diego Barreto" 
                     className="w-full h-full object-cover"
@@ -627,7 +627,7 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
                 <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={pedroSommaPhoto} 
                     alt="Pedro Somma" 
                     className="w-full h-full object-cover"
@@ -645,7 +645,7 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
                 <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={vaboPhoto} 
                     alt="Luis Vabo Jr." 
                     className="w-full h-full object-cover"
@@ -663,7 +663,7 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
                 <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={joaoOliverioPhoto} 
                     alt="João Olivério" 
                     className="w-full h-full object-cover"
@@ -681,7 +681,7 @@ const BA = () => {
             <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
               <div className="mb-4">
                 <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src={joseDiogoPhoto} 
                     alt="José Diogo Costódio Rodrigues" 
                     className="w-full h-full object-cover"

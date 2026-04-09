@@ -132,14 +132,14 @@ const IADoZero = () => {
                     <Carousel className="w-full">
                       <CarouselContent>
                         <CarouselItem>
-                          <img 
+                          <img loading="lazy" 
                             src="/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png" 
                             alt="Duolingo substituindo trabalhadores por IA" 
                             className="w-full h-auto object-contain rounded"
                           />
                         </CarouselItem>
                         <CarouselItem>
-                          <img 
+                          <img loading="lazy" 
                             src="/lovable-uploads/5bb241ec-4824-4db5-813c-2e1292f72128.png" 
                             alt="CEO sobre uso de IA no trabalho" 
                             className="w-full h-auto object-contain rounded"
@@ -180,7 +180,7 @@ const IADoZero = () => {
                   <div className="bg-white rounded-lg p-6 mb-4">
                     <div className="text-center">
                       <div className="mb-4">
-                        <img src="/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png" alt="IQ Test Chart" className="w-full h-auto object-contain rounded" />
+                        <img loading="lazy" src="/lovable-uploads/09c2831d-7172-433f-878b-484b0cc8a22c.png" alt="IQ Test Chart" className="w-full h-auto object-contain rounded" />
                       </div>
                     </div>
                   </div>
@@ -227,14 +227,14 @@ const IADoZero = () => {
           
           <div className="max-w-5xl mx-auto">
             {/* Desktop Image */}
-            <img 
+            <img loading="lazy" 
               src={bancoPromptsImage} 
               alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
               className="hidden md:block w-full h-auto"
             />
             {/* Mobile Image */}
             <div className="block md:hidden overflow-hidden -mr-4">
-              <img 
+              <img loading="lazy" 
                 src={bancoPromptsMobileImage} 
                 alt="Banco de Prompts Secreto - Mais de 50 prompts validados" 
                 className="h-auto transform"

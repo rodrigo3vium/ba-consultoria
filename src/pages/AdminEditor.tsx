@@ -440,7 +440,7 @@ const AdminEditor = () => {
                   <Card className="bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
                     {formValues.image && (
                       <div className="aspect-video overflow-hidden rounded-t-lg">
-                        <img 
+                        <img loading="lazy" 
                           src={formValues.image} 
                           alt={formValues.title || "Preview"}
                           className="w-full h-full object-cover"

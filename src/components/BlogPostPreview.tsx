@@ -31,7 +31,7 @@ export const BlogPostPreview = ({
         <Card className="bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
           {image && (
             <div className="aspect-video overflow-hidden rounded-t-lg">
-              <img 
+              <img loading="lazy" 
                 src={image} 
                 alt={title || "Preview"}
                 className="w-full h-full object-cover"

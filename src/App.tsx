@@ -1,51 +1,54 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePageViewTracking } from "@/hooks/usePageViewTracking";
-import BA from "./pages/BA";
-import Cases from "./pages/Cases";
-import CaseDetails from "./pages/CaseDetails";
-import Consultoria from "./pages/Consultoria";
-import Servicos from "./pages/Servicos";
-import Tecnologia from "./pages/Tecnologia";
-import Educacao from "./pages/Educacao";
-import IAParaNegocios from "./pages/IAParaNegocios";
-import IADoZero from "./pages/IADoZero";
-import GoogleMeuNegocio from "./pages/GoogleMeuNegocio";
-import ComoAplicarIA from "./pages/ComoAplicarIA";
-import OCaminho from "./pages/OCaminho";
-import ClaudeCode from "./pages/ClaudeCode";
-import MetodoStark from "./pages/MetodoStark";
-import ImersaoClaude from "./pages/ImersaoClaude";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Auth from "./pages/Auth";
-import Admin from "./pages/Admin";
-import AdminBlog from "./pages/AdminBlog";
-import AdminCRM from "./pages/AdminCRM";
-import AdminImport from "./pages/AdminImport";
-import AdminImportDirect from "./pages/AdminImportDirect";
-import AdminImportMapping from "./pages/AdminImportMapping";
-import AdminFunnels from "./pages/AdminFunnels";
-import AdminKanban from "./pages/AdminKanban";
-import AdminEditor from "./pages/AdminEditor";
-import AdminCases from "./pages/AdminCases";
-import Newsletter from "./pages/Newsletter";
-import NewsletterSimples from "./pages/NewsletterSimples";
-import NewsletterRating from "./pages/NewsletterRating";
 import NotFound from "./pages/NotFound";
-import Home2 from "./pages/Home2";
-import Proposta from "./pages/Proposta";
-import PropostaDSLCarTexas from "./pages/PropostaDSLCarTexas";
-import PropostaDudaBambil from "./pages/PropostaDudaBambil";
-import PropostaMonique from "./pages/PropostaMonique";
-import PropostaPadrao from "./pages/PropostaPadrao";
-import PropostaClinicaSupreme from "./pages/PropostaClinicaSupreme";
-import PropostaGiuliaSalvatora from "./pages/PropostaGiuliaSalvatora";
-import PropostaWesleySardou from "./pages/PropostaWesleySardou";
-import FollowUpClinicaSupreme from "./pages/FollowUpClinicaSupreme";
+
+const BA = lazy(() => import("./pages/BA"));
+const Cases = lazy(() => import("./pages/Cases"));
+const CaseDetails = lazy(() => import("./pages/CaseDetails"));
+const Consultoria = lazy(() => import("./pages/Consultoria"));
+const Servicos = lazy(() => import("./pages/Servicos"));
+const Tecnologia = lazy(() => import("./pages/Tecnologia"));
+const Educacao = lazy(() => import("./pages/Educacao"));
+const IAParaNegocios = lazy(() => import("./pages/IAParaNegocios"));
+const IADoZero = lazy(() => import("./pages/IADoZero"));
+const GoogleMeuNegocio = lazy(() => import("./pages/GoogleMeuNegocio"));
+const ComoAplicarIA = lazy(() => import("./pages/ComoAplicarIA"));
+const OCaminho = lazy(() => import("./pages/OCaminho"));
+const ClaudeCode = lazy(() => import("./pages/ClaudeCode"));
+const MetodoStark = lazy(() => import("./pages/MetodoStark"));
+const ImersaoClaude = lazy(() => import("./pages/ImersaoClaude"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Auth = lazy(() => import("./pages/Auth"));
+const Admin = lazy(() => import("./pages/Admin"));
+const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const AdminCRM = lazy(() => import("./pages/AdminCRM"));
+const AdminImport = lazy(() => import("./pages/AdminImport"));
+const AdminImportDirect = lazy(() => import("./pages/AdminImportDirect"));
+const AdminImportMapping = lazy(() => import("./pages/AdminImportMapping"));
+const AdminFunnels = lazy(() => import("./pages/AdminFunnels"));
+const AdminKanban = lazy(() => import("./pages/AdminKanban"));
+const AdminEditor = lazy(() => import("./pages/AdminEditor"));
+const AdminCases = lazy(() => import("./pages/AdminCases"));
+const Newsletter = lazy(() => import("./pages/Newsletter"));
+const NewsletterSimples = lazy(() => import("./pages/NewsletterSimples"));
+const NewsletterRating = lazy(() => import("./pages/NewsletterRating"));
+const Home2 = lazy(() => import("./pages/Home2"));
+const Proposta = lazy(() => import("./pages/Proposta"));
+const PropostaDSLCarTexas = lazy(() => import("./pages/PropostaDSLCarTexas"));
+const PropostaDudaBambil = lazy(() => import("./pages/PropostaDudaBambil"));
+const PropostaMonique = lazy(() => import("./pages/PropostaMonique"));
+const PropostaPadrao = lazy(() => import("./pages/PropostaPadrao"));
+const PropostaClinicaSupreme = lazy(() => import("./pages/PropostaClinicaSupreme"));
+const PropostaGiuliaSalvatora = lazy(() => import("./pages/PropostaGiuliaSalvatora"));
+const PropostaWesleySardou = lazy(() => import("./pages/PropostaWesleySardou"));
+const PropostaDanielleSena = lazy(() => import("./pages/PropostaDanielleSena"));
+const FollowUpClinicaSupreme = lazy(() => import("./pages/FollowUpClinicaSupreme"));
 
 const queryClient = new QueryClient();
 
@@ -61,6 +64,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <PageViewTracker />
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background"><div className="w-8 h-8 border-2 border-ba-blue-light border-t-transparent rounded-full animate-spin" /></div>}>
         <Routes>
           <Route path="/" element={<BA />} />
           <Route path="/cases" element={<Cases />} />
@@ -104,10 +108,12 @@ const App = () => (
               <Route path="/propostas/clinica-supreme" element={<PropostaClinicaSupreme />} />
           <Route path="/propostas/giulia-salvatore" element={<PropostaGiuliaSalvatora />} />
           <Route path="/propostas/wesley-sardou" element={<PropostaWesleySardou />} />
+          <Route path="/propostas/danielle-sena" element={<PropostaDanielleSena />} />
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

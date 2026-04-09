@@ -179,7 +179,7 @@ const BlogPost = () => {
           <Card className="bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
             {post.image && (
               <div className="aspect-video overflow-hidden rounded-t-lg">
-                <img 
+                <img loading="lazy" 
                   src={post.image} 
                   alt={post.title}
                   className="w-full h-full object-cover"
@@ -292,7 +292,7 @@ const BlogPost = () => {
                   <Card key={relatedPost.id} className="group hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 hover:bg-slate-800 hover:scale-105 hover:border-blue-500/30">
                     {relatedPost.image && (
                       <div className="aspect-video overflow-hidden rounded-t-lg">
-                        <img 
+                        <img loading="lazy" 
                           src={relatedPost.image} 
                           alt={relatedPost.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

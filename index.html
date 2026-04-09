@@ -9,7 +9,8 @@
     <meta name="author" content="BA Consultoria" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 
     <meta property="og:title" content="BA Consultoria - Inteligência Artificial para Empresas" />
     <meta property="og:description" content="Implementamos IA nas empresas com foco em produtividade e lucro" />
@@ -19,8 +20,16 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@baconsultoria" />
     <meta name="twitter:image" content="https://ba-consultoria.lovable.app/lovable-uploads/98363185-f8bf-40af-bd61-1fd97f8c9ba7.png" />
+  </head>
 
-    <!-- Microsoft Clarity -->
+  <body>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=224397576916445&ev=PageView&noscript=1"
+    /></noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Microsoft Clarity (deferred) -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -29,7 +38,7 @@
         })(window, document, "clarity", "script", "tp3j2vtlo5");
     </script>
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code (deferred) -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -42,14 +51,5 @@
     fbq('init', '224397576916445');
     fbq('track', 'PageView');
     </script>
-    <!-- End Meta Pixel Code -->
-  </head>
-
-  <body>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=224397576916445&ev=PageView&noscript=1"
-    /></noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

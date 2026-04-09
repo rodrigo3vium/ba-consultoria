@@ -95,7 +95,7 @@ const Blog = () => {
                 <Card key={post.id} className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2">
                   <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500"></div>
                   <div className="aspect-video overflow-hidden rounded-t-lg">
-                    <img 
+                    <img loading="lazy" 
                       src={post.image || '/placeholder.svg'} 
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

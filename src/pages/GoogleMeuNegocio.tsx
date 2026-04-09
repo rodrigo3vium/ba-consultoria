@@ -127,7 +127,7 @@ const GoogleMeuNegocio = () => {
                 </h3>
                 
                 <div className="w-full rounded-lg mb-8 overflow-hidden border border-ba-blue-light/20">
-                  <img 
+                  <img loading="lazy" 
                     src="/lovable-uploads/google-meu-negocio-comparison.png" 
                     alt="Comparação entre perfil Google Meu Negócio mal configurado e bem configurado" 
                     className="w-full h-auto"
@@ -262,7 +262,7 @@ const GoogleMeuNegocio = () => {
                     <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
                       <div className="flex items-center gap-4 mb-6">
                         <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
-                          <img 
+                          <img loading="lazy" 
                             src="/lovable-uploads/senzano-logo.jpeg" 
                             alt="Senzano Imobiliária" 
                             className="w-full h-full object-cover"
@@ -325,7 +325,7 @@ const GoogleMeuNegocio = () => {
                     <Card className="p-8 md:p-10 bg-black/80 backdrop-blur-sm border-ba-blue-light/20 hover:shadow-glow transition-all duration-500">
                       <div className="flex items-center gap-4 mb-6">
                         <div className="w-16 h-16 rounded-lg overflow-hidden border border-ba-blue-light/20">
-                          <img 
+                          <img loading="lazy" 
                             src="/lovable-uploads/luana-guastini-logo.png" 
                             alt="Luana Guastini" 
                             className="w-full h-full object-contain bg-white p-2"

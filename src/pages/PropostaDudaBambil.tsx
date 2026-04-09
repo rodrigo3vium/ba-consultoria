@@ -639,7 +639,7 @@ const PropostaDudaBambil = () => {
           <h2 className="pdb-section-title">Quem está por trás desta proposta</h2>
           <div className="pdb-who-grid">
             <div className="pdb-who-avatar">
-              <img src={rodrigoAlbuquerque} alt="Rodrigo Albuquerque" />
+              <img loading="lazy" src={rodrigoAlbuquerque} alt="Rodrigo Albuquerque" />
             </div>
             <div>
               <p className="pdb-section-text" style={{ marginBottom: 16 }}>
@@ -689,7 +689,7 @@ const PropostaDudaBambil = () => {
             ].map((m) => (
               <div key={m.name} className="pdb-mentor-card">
                 <div className="pdb-mentor-photo">
-                  <img src={m.photo} alt={m.name} />
+                  <img loading="lazy" src={m.photo} alt={m.name} />
                 </div>
                 <h3 className="pdb-mentor-name">{m.name}</h3>
                 <p className="pdb-mentor-role">{m.role}</p>

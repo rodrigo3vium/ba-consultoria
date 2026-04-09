@@ -994,7 +994,7 @@ const ImersaoClaude = () => {
           <h2 style={{ textAlign: "center" }}>Nós estamos juntos<br />nesse barco.</h2>
 
           <div className="ic-author">
-            <img src={rodrigoPhoto} alt="Rodrigo Albuquerque" className="ic-author__avatar" style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }} />
+            <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" className="ic-author__avatar" style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }} />
             <div>
               <div className="ic-author__name">Rodrigo Albuquerque</div>
               <div className="ic-author__role">Empreendedor · Entusiasta de IA · Estrategista de Negócios</div>
