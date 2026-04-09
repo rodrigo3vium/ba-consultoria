@@ -6,8 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { usePageViewTracking } from "@/hooks/usePageViewTracking";
 import NotFound from "./pages/NotFound";
+import BA from "./pages/BA";
 
-const BA = lazy(() => import("./pages/BA"));
 const Cases = lazy(() => import("./pages/Cases"));
 const CaseDetails = lazy(() => import("./pages/CaseDetails"));
 const Consultoria = lazy(() => import("./pages/Consultoria"));
