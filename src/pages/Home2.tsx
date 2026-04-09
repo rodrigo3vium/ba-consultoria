@@ -20,14 +20,14 @@ import mjr from "@/assets/clients/mjr.png";
 import cfBuffet from "@/assets/clients/cf-buffet.png";
 import dionello from "@/assets/clients/dionello.png";
 import client10 from "@/assets/clients/client-10.png";
-import vaboPhoto from "@/assets/mentors/vabo.jpg";
+import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
-import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.png";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
-import jonathanBarrosPhoto from "@/assets/founders/jonathan-barros.jpg";
-import rodrigoAlbuquerquePhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
-import francielliBenitesPhoto from "@/assets/founders/francielli-benites.jpg";
+import jonathanBarrosPhoto from "@/assets/founders/jonathan-barros.webp";
+import rodrigoAlbuquerquePhoto from "@/assets/founders/rodrigo-albuquerque.webp";
+import francielliBenitesPhoto from "@/assets/founders/francielli-benites.webp";
 
 /* ── Color Constants ── */
 const C = {

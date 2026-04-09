@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { tracker } from "@/lib/tracking";
 import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
-import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.jpg";
+import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 
 const ImersaoClaude = () => {
   const [activeTab, setActiveTab] = useState("revolucoes");
