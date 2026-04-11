@@ -48,6 +48,7 @@ const PropostaClinicaSupreme = lazy(() => import("./pages/PropostaClinicaSupreme
 const PropostaGiuliaSalvatora = lazy(() => import("./pages/PropostaGiuliaSalvatora"));
 const PropostaWesleySardou = lazy(() => import("./pages/PropostaWesleySardou"));
 const PropostaDanielleSena = lazy(() => import("./pages/PropostaDanielleSena"));
+const PropostaRoseMiranda = lazy(() => import("./pages/PropostaRoseMiranda"));
 const FollowUpClinicaSupreme = lazy(() => import("./pages/FollowUpClinicaSupreme"));
 
 const queryClient = new QueryClient();
@@ -109,6 +110,7 @@ const App = () => (
           <Route path="/propostas/giulia-salvatore" element={<PropostaGiuliaSalvatora />} />
           <Route path="/propostas/wesley-sardou" element={<PropostaWesleySardou />} />
           <Route path="/propostas/danielle-sena" element={<PropostaDanielleSena />} />
+          <Route path="/propostas/rose-miranda" element={<PropostaRoseMiranda />} />
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
