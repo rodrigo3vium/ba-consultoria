@@ -202,34 +202,67 @@ const PropostaRoseMiranda = () => {
         .rm-obj-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
         .rm-obj-text { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.55; }
 
-        /* ── Investimento ── */
-        .rm-pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-        .rm-pricing-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
-          padding: 40px 32px; position: relative; overflow: hidden; transition: border-color 0.3s;
+        /* ── Investimento (Tabela) ── */
+        .rm-pricing-table {
+          margin-top: 48px;
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0;
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          overflow: hidden;
         }
-        .rm-pricing-card.rm-featured {
-          background: linear-gradient(160deg, #1f1a15 0%, var(--bg-card) 100%);
-          border-color: var(--gold);
+        .rm-pricing-table thead th {
+          background: var(--bg-card);
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          padding: 20px 24px;
+          text-align: left;
+          border-bottom: 1px solid var(--border);
         }
-        .rm-pricing-ribbon {
-          position: absolute; top: 18px; right: -30px;
-          background: var(--gradient-gold); color: var(--bg-dark);
-          font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-          padding: 5px 38px; transform: rotate(45deg);
+        .rm-pricing-table thead th:last-child { text-align: right; }
+        .rm-pricing-table tbody tr { transition: background 0.3s; }
+        .rm-pricing-table tbody tr:hover { background: rgba(200,149,108,0.04); }
+        .rm-pricing-table tbody td {
+          padding: 20px 24px;
+          border-bottom: 1px solid var(--border);
+          font-size: 15px;
+          color: var(--text-secondary);
+          font-weight: 300;
+          vertical-align: middle;
         }
-        .rm-pricing-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-        .rm-pricing-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
-        .rm-pricing-desc { font-size: 14px; color: var(--text-muted); font-weight: 300; margin-bottom: 24px; line-height: 1.55; }
-        .rm-pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--border); }
-        .rm-pricing-row-label { font-size: 14px; color: var(--text-secondary); font-weight: 400; }
-        .rm-pricing-row-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
-        .rm-pricing-row-value.rm-small { font-size: 16px; font-weight: 500; color: var(--text-secondary); }
-        .rm-pricing-deliverables { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
-        .rm-pricing-deliverables-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
-        .rm-pricing-deliverables-list { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; }
-        .rm-pricing-deliverables-list li { font-size: 13px; color: var(--text-secondary); font-weight: 300; padding-left: 22px; position: relative; line-height: 1.5; }
-        .rm-pricing-deliverables-list li::before { content: '✦'; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: 9px; }
+        .rm-pricing-table tbody tr:last-child td { border-bottom: none; }
+        .rm-pricing-table tbody td:first-child { font-weight: 500; color: var(--text-primary); }
+        .rm-pricing-table tbody td:last-child {
+          text-align: right;
+          font-family: 'Playfair Display', serif;
+          font-size: 18px;
+          font-weight: 700;
+          color: var(--text-primary);
+        }
+        .rm-pricing-note {
+          font-size: 13px;
+          color: var(--text-muted);
+          font-style: italic;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 300;
+        }
+        .rm-pricing-badge {
+          display: inline-block;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: var(--gold);
+          background: rgba(200,149,108,0.1);
+          padding: 3px 10px;
+          border-radius: 100px;
+          margin-left: 8px;
+          vertical-align: middle;
+        }
 
         /* ── CTA ── */
         .rm-cta {
@@ -456,83 +489,39 @@ const PropostaRoseMiranda = () => {
           <div style={{ maxWidth: "960px", margin: "0 auto" }}>
             <p className="rm-section-label">Investimento</p>
             <h2 className="rm-section-title">Proposta comercial</h2>
-            <p className="rm-section-subtitle">Duas opções pensadas para atender o momento da Rose — desde a estrutura essencial até a operação completa com geração ativa de demanda.</p>
+            <p className="rm-section-subtitle">Serviços disponíveis para montar a estrutura ideal para o seu momento.</p>
 
-            <div className="rm-pricing-grid">
-              {/* Opção 1 */}
-              <div className="rm-pricing-card">
-                <div className="rm-pricing-label">Opção 1</div>
-                <h3 className="rm-pricing-name">Estrutura Essencial</h3>
-                <p className="rm-pricing-desc">
-                  A base para sair do zero: automação do WhatsApp com CRM personalizado e uma landing page profissional para captar leads.
-                </p>
-
-                {[
-                  { label: "Automação WhatsApp + CRM", value: "R$ 8.000", small: false },
-                  { label: "Landing Page", value: "R$ 1.500", small: true },
-                  { label: "Total", value: "R$ 9.500", small: false },
-                  { label: "Formato", value: "Pagamento único", small: true },
-                ].map((row) => (
-                  <div key={row.label} className="rm-pricing-row">
-                    <span className="rm-pricing-row-label">{row.label}</span>
-                    <span className={`rm-pricing-row-value ${row.small ? "rm-small" : ""}`}>{row.value}</span>
-                  </div>
-                ))}
-
-                <div className="rm-pricing-deliverables">
-                  <div className="rm-pricing-deliverables-label">Entregáveis</div>
-                  <ul className="rm-pricing-deliverables-list">
-                    {[
-                      "CRM personalizado para seu modelo de consultoria",
-                      "Automação de WhatsApp com disparos segmentados",
-                      "Funil de atendimento configurado e integrado",
-                      "Landing page profissional de captação",
-                      "Treinamento de uso do CRM e da automação",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Opção 2 — Featured */}
-              <div className="rm-pricing-card rm-featured">
-                <div className="rm-pricing-ribbon">RECOMENDADO</div>
-                <div className="rm-pricing-label">Opção 2</div>
-                <h3 className="rm-pricing-name">Operação Completa</h3>
-                <p className="rm-pricing-desc">
-                  Tudo da Opção 1 + site completo e gestão de tráfego pago mensal para gerar demanda ativa e contínua.
-                </p>
-
-                {[
-                  { label: "Automação WhatsApp + CRM", value: "R$ 8.000", small: false },
-                  { label: "Site Completo", value: "R$ 3.000", small: true },
-                  { label: "Total implementação", value: "R$ 11.000", small: false },
-                  { label: "Gestão de Tráfego Pago", value: "R$ 1.500/mês", small: true },
-                ].map((row) => (
-                  <div key={row.label} className="rm-pricing-row">
-                    <span className="rm-pricing-row-label">{row.label}</span>
-                    <span className={`rm-pricing-row-value ${row.small ? "rm-small" : ""}`}>{row.value}</span>
-                  </div>
-                ))}
-
-                <div className="rm-pricing-deliverables">
-                  <div className="rm-pricing-deliverables-label">Entregáveis</div>
-                  <ul className="rm-pricing-deliverables-list">
-                    {[
-                      "Tudo da Opção 1 incluso",
-                      "Site completo e profissional com múltiplas páginas",
-                      "Criação e gestão de campanhas de tráfego pago (Meta Ads)",
-                      "Otimização contínua de criativos e segmentações",
-                      "Relatórios mensais de performance e leads gerados",
-                      "Acompanhamento estratégico mensal",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <table className="rm-pricing-table">
+              <thead>
+                <tr>
+                  <th>Serviço</th>
+                  <th>Observação</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Automação WhatsApp + CRM</td>
+                  <td><span className="rm-pricing-note">Implementação personalizada</span></td>
+                  <td>R$ 8.000</td>
+                </tr>
+                <tr>
+                  <td>Landing Page</td>
+                  <td><span className="rm-pricing-note">Página única</span></td>
+                  <td>R$ 1.500</td>
+                </tr>
+                <tr>
+                  <td>Site Completo</td>
+                  <td><span className="rm-pricing-note">—</span></td>
+                  <td>R$ 3.000</td>
+                </tr>
+                <tr>
+                  <td>Gestão de Tráfego Pago <span className="rm-pricing-badge">Mensal</span></td>
+                  <td><span className="rm-pricing-note">Recorrente</span></td>
+                  <td>R$ 1.500<span style={{ fontSize: "13px", fontWeight: 400, color: "var(--text-muted)" }}>/mês</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
