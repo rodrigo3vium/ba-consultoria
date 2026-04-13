@@ -21,7 +21,9 @@ const ComoAplicarIA = lazy(() => import("./pages/ComoAplicarIA"));
 const OCaminho = lazy(() => import("./pages/OCaminho"));
 const ClaudeCode = lazy(() => import("./pages/ClaudeCode"));
 const MetodoStark = lazy(() => import("./pages/MetodoStark"));
+const ARevolucaoV2 = lazy(() => import("./pages/ARevolucaoV2"));
 const ImersaoClaude = lazy(() => import("./pages/ImersaoClaude"));
+const ImersaoClaudeV2 = lazy(() => import("./pages/ImersaoClaudeV2"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Auth = lazy(() => import("./pages/Auth"));
@@ -80,8 +82,10 @@ const App = () => (
           <Route path="/educacao/o-caminho" element={<OCaminho />} />
           <Route path="/educacao/claude-code" element={<ClaudeCode />} />
           <Route path="/educacao/a-revolucao" element={<MetodoStark />} />
+          <Route path="/educacao/a-revolucao-v2" element={<ARevolucaoV2 />} />
           <Route path="/educacao/metodo-stark" element={<MetodoStark />} />
           <Route path="/educacao/imersao-claude" element={<ImersaoClaude />} />
+          <Route path="/educacao/imersao-claude-v2" element={<ImersaoClaudeV2 />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
