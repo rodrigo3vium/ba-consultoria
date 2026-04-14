@@ -5,6 +5,9 @@ import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
 import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
+import proofHotmart from "@/assets/proof-hotmart-vendas.png";
+import proofInstagram from "@/assets/proof-instagram-profile.jpg";
+import proofTikTok from "@/assets/proof-tiktok-profile.jpg";
 
 /* ── Dados fixos ───────────────────────────────────────────── */
 
@@ -697,13 +700,13 @@ const PropostaRevenueBasesFinancing = () => {
           {/* Screenshot grid */}
           <div className="rbf-screenshot-grid">
             <div className="rbf-screenshot">
-              <img src="/assets/proof-vendas.png" loading="lazy" alt="580 vendas na Hotmart" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              <img src={proofHotmart} loading="lazy" alt="580 vendas na Hotmart" />
             </div>
             <div className="rbf-screenshot">
-              <img src="/assets/profile-instagram.jpg" loading="lazy" alt="Perfil Instagram" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              <img src={proofInstagram} loading="lazy" alt="Perfil Instagram 28.1K seguidores" />
             </div>
             <div className="rbf-screenshot">
-              <img src="/assets/profile-tiktok.jpg" loading="lazy" alt="Perfil TikTok" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              <img src={proofTikTok} loading="lazy" alt="Perfil TikTok 32.3K seguidores" />
             </div>
           </div>
 
