@@ -97,8 +97,9 @@ const EducacaoSkillsNegocios = () => {
           observacoes: `Segmento: ${form.segmento}`,
           produto: "20-skills-negocios",
           origem: "Página 20 Skills de IA",
+          status: "novo" as const,
         },
-        { onConflict: "email", ignoreDuplicates: false }
+        { onConflict: "whatsapp" }
       );
       if (error) throw error;
 
@@ -113,9 +114,10 @@ const EducacaoSkillsNegocios = () => {
 
       setModalOpen(false);
       navigate("/educacao/obrigado-imersao-claude");
-    } catch (err) {
-      console.error(err);
-      setFormError("Erro ao enviar. Tente novamente.");
+    } catch (err: unknown) {
+      const msg = (err as { message?: string })?.message;
+      console.error("Lead form error:", err);
+      setFormError(msg ? `Erro: ${msg}` : "Erro ao enviar. Tente novamente.");
     } finally {
       setIsSubmitting(false);
     }
