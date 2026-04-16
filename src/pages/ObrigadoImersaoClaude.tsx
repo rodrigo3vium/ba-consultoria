@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { tracker } from "@/lib/tracking";
+import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 
 const CSS = `
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -720,7 +721,9 @@ const CSS = `
 }
 `;
 
-const CTA_URL = "https://wa.me/5511999718595";
+const HOTMART_BASE = "https://pay.hotmart.com/T104822269G?checkoutMode=10";
+const NOTION_EBOOK =
+  "https://treevium.notion.site/20-skills-para-neg-cios-344fc75e990e80178309ef115f65912e?source=copy_link";
 
 const ObrigadoImersaoClaude = () => {
   const [seconds, setSeconds] = useState(14 * 60 + 59);
@@ -759,8 +762,9 @@ const ObrigadoImersaoClaude = () => {
   };
 
   const handleCta = (location: string) => {
-    tracker.track("cta_click", { product: "imersao-claude", location });
-    window.open(CTA_URL, "_blank");
+    tracker.track("cta_click", { product: "imersao-claude", cta_location: location, page: "/educacao/obrigado-imersao-claude" });
+    const checkoutUrl = buildHotmartCheckoutUrl({ baseUrl: HOTMART_BASE });
+    window.open(checkoutUrl, "_blank");
   };
 
   return (
@@ -1065,7 +1069,7 @@ const ObrigadoImersaoClaude = () => {
       {/* SKIP */}
       <div className="skip-section">
         <p className="skip-text">
-          <a href="/educacao/imersao-claude">
+          <a href={NOTION_EBOOK} target="_blank" rel="noopener noreferrer">
             Não quero a Imersão agora — ir direto para o ebook
           </a>
         </p>
