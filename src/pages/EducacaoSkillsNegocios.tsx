@@ -1,8 +1,57 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { tracker } from "@/lib/tracking";
+import { supabase } from "@/integrations/supabase/client";
+
+const FATURAMENTO_OPTIONS = [
+  "Até R$ 10 mil/mês",
+  "Entre R$ 10 e R$ 30 mil",
+  "Entre R$ 30 e R$ 100 mil",
+  "Entre R$ 100 e R$ 300 mil",
+  "Acima de R$ 300 mil",
+];
+const CARGO_OPTIONS = [
+  "CEO / Fundador",
+  "Diretor",
+  "Gerente",
+  "Coordenador",
+  "Analista",
+  "Outro",
+];
+const SEGMENTO_OPTIONS = [
+  "Agência / Marketing",
+  "Saúde / Clínica",
+  "Educação",
+  "E-commerce / Varejo",
+  "Consultoria / Serviços",
+  "Jurídico / Advocacia",
+  "Tecnologia",
+  "Outro",
+];
+
+interface FormData {
+  nome: string;
+  email: string;
+  whatsapp: string;
+  faturamento: string;
+  cargo: string;
+  segmento: string;
+}
 
 const EducacaoSkillsNegocios = () => {
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [form, setForm] = useState<FormData>({
+    nome: "",
+    email: "",
+    whatsapp: "",
+    faturamento: "",
+    cargo: "",
+    segmento: "",
+  });
 
   useEffect(() => {
     document.body.style.backgroundColor = "#060A12";
@@ -20,7 +69,56 @@ const EducacaoSkillsNegocios = () => {
       cta_location: location,
       page: "/educacao/20-skill-negocios",
     });
-    window.open("https://wa.me/5511999718595", "_blank");
+    setModalOpen(true);
+  };
+
+  const handleField = (field: keyof FormData, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    setFormError("");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.nome.trim() || !form.email.trim() || !form.whatsapp.trim() ||
+        !form.faturamento || !form.cargo || !form.segmento) {
+      setFormError("Preencha todos os campos para continuar.");
+      return;
+    }
+    setIsSubmitting(true);
+    setFormError("");
+    try {
+      const { error } = await supabase.from("leads").upsert(
+        {
+          nome: form.nome.trim(),
+          email: form.email.trim(),
+          whatsapp: form.whatsapp.trim(),
+          faturamento: form.faturamento,
+          situacao_profissional: form.cargo,
+          observacoes: `Segmento: ${form.segmento}`,
+          produto: "20-skills-negocios",
+          origem: "Página 20 Skills de IA",
+        },
+        { onConflict: "email", ignoreDuplicates: false }
+      );
+      if (error) throw error;
+
+      await tracker.identify(form.email.trim(), form.whatsapp.trim(), form.nome.trim());
+      await tracker.track("form_submitted", {
+        form_type: "20-skills-negocios",
+        product: "20-skills-negocios",
+        faturamento: form.faturamento,
+        cargo: form.cargo,
+        segmento: form.segmento,
+      });
+
+      setModalOpen(false);
+      navigate("/educacao/obrigado-imersao-claude");
+    } catch (err) {
+      console.error(err);
+      setFormError("Erro ao enviar. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleFaq = (index: number) => {
@@ -461,11 +559,9 @@ const EducacaoSkillsNegocios = () => {
             enrolação.
           </p>
           <a
-            href="https://wa.me/5511999718595"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#cta"
             className="sn-btn-cta-final"
-            onClick={() => handleCTA("final_cta")}
+            onClick={(e) => { e.preventDefault(); handleCTA("final_cta"); }}
           >
             Baixar Ebook Gratuitamente
           </a>
@@ -513,6 +609,86 @@ const EducacaoSkillsNegocios = () => {
         </div>
         <div className="sn-footer-copy">© 2026 · Todos os direitos reservados</div>
       </footer>
+
+      {/* LEAD MODAL */}
+      {modalOpen && (
+        <div className="sn-modal-overlay" onClick={() => setModalOpen(false)}>
+          <div className="sn-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="sn-modal-close" onClick={() => setModalOpen(false)}>×</button>
+            <div className="sn-modal-header">
+              <div className="sn-section-label" style={{ marginBottom: 8 }}>Acesso gratuito</div>
+              <h3 className="sn-modal-title">INFORME SEUS DADOS:</h3>
+            </div>
+            <form className="sn-modal-form" onSubmit={handleSubmit} noValidate>
+              <input
+                className="sn-modal-input"
+                type="text"
+                placeholder="* Seu nome..."
+                value={form.nome}
+                onChange={(e) => handleField("nome", e.target.value)}
+                autoComplete="name"
+              />
+              <input
+                className="sn-modal-input"
+                type="email"
+                placeholder="* Seu melhor e-mail..."
+                value={form.email}
+                onChange={(e) => handleField("email", e.target.value)}
+                autoComplete="email"
+              />
+              <input
+                className="sn-modal-input"
+                type="tel"
+                placeholder="* +55 · Seu whatsapp..."
+                value={form.whatsapp}
+                onChange={(e) => handleField("whatsapp", e.target.value)}
+                autoComplete="tel"
+              />
+              <select
+                className="sn-modal-select"
+                value={form.faturamento}
+                onChange={(e) => handleField("faturamento", e.target.value)}
+              >
+                <option value="">* Qual é a sua receita MENSAL aproximada?</option>
+                {FATURAMENTO_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+              <select
+                className="sn-modal-select"
+                value={form.cargo}
+                onChange={(e) => handleField("cargo", e.target.value)}
+              >
+                <option value="">* Cargo</option>
+                {CARGO_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+              <select
+                className="sn-modal-select"
+                value={form.segmento}
+                onChange={(e) => handleField("segmento", e.target.value)}
+              >
+                <option value="">* Segmento</option>
+                {SEGMENTO_OPTIONS.map((o) => (
+                  <option key={o} value={o}>{o}</option>
+                ))}
+              </select>
+              {formError && <div className="sn-modal-error">{formError}</div>}
+              <button
+                type="submit"
+                className="sn-modal-btn"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "ENVIANDO..." : "BAIXAR EBOOK GRATUITAMENTE"}
+              </button>
+              <div className="sn-cta-micro" style={{ marginTop: 8 }}>
+                ✓ gratuito &nbsp;·&nbsp; sem spam &nbsp;·&nbsp; acesso imediato
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Fonts + Styles */}
       <style>{`
@@ -1575,6 +1751,120 @@ const EducacaoSkillsNegocios = () => {
             padding-right: 20px;
           }
           .sn-proof-strip { padding: 20px; }
+        }
+
+        /* MODAL */
+        .sn-modal-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 200;
+          background: rgba(6,10,18,0.82);
+          backdrop-filter: blur(6px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        }
+        .sn-modal {
+          position: relative;
+          background: var(--sn-surface);
+          border: 0.5px solid rgba(56,189,248,0.2);
+          border-radius: var(--sn-radius-lg);
+          padding: 36px 32px 32px;
+          width: 100%;
+          max-width: 480px;
+          box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 0.5px rgba(56,189,248,0.06) inset;
+        }
+        .sn-modal::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 50%; transform: translateX(-50%);
+          width: 120px; height: 2px;
+          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
+          opacity: 0.5;
+          border-radius: 1px;
+        }
+        .sn-modal-close {
+          position: absolute;
+          top: 14px; right: 18px;
+          background: none;
+          border: none;
+          color: var(--sn-dim);
+          font-size: 22px;
+          cursor: pointer;
+          line-height: 1;
+          transition: color 0.2s;
+          font-family: var(--sn-font-mono);
+        }
+        .sn-modal-close:hover { color: var(--sn-ivory); }
+        .sn-modal-header { margin-bottom: 24px; }
+        .sn-modal-title {
+          font-family: var(--sn-font-display);
+          font-size: 18px;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: var(--sn-ivory);
+          letter-spacing: 1px;
+        }
+        .sn-modal-form {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .sn-modal-input,
+        .sn-modal-select {
+          width: 100%;
+          background: rgba(56,189,248,0.04);
+          border: 0.5px solid rgba(56,189,248,0.14);
+          border-radius: var(--sn-radius-sm);
+          padding: 13px 16px;
+          font-family: var(--sn-font-body);
+          font-size: 14px;
+          font-weight: 300;
+          color: var(--sn-ivory);
+          outline: none;
+          transition: border-color 0.2s, background 0.2s;
+          appearance: none;
+          -webkit-appearance: none;
+        }
+        .sn-modal-input::placeholder { color: var(--sn-dim); }
+        .sn-modal-input:focus,
+        .sn-modal-select:focus {
+          border-color: rgba(56,189,248,0.4);
+          background: rgba(56,189,248,0.07);
+        }
+        .sn-modal-select option {
+          background: #0C1220;
+          color: var(--sn-ivory);
+        }
+        .sn-modal-select option[value=""] { color: var(--sn-dim); }
+        .sn-modal-error {
+          font-family: var(--sn-font-mono);
+          font-size: 10px;
+          letter-spacing: 1px;
+          color: #F87171;
+          padding: 4px 0;
+        }
+        .sn-modal-btn {
+          background: var(--sn-arc);
+          color: var(--sn-void);
+          font-family: var(--sn-font-display);
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 2.5px;
+          padding: 16px 24px;
+          border: none;
+          border-radius: var(--sn-radius-md);
+          cursor: pointer;
+          transition: all 0.3s;
+          margin-top: 4px;
+        }
+        .sn-modal-btn:hover:not(:disabled) { box-shadow: var(--sn-glow-arc); transform: translateY(-1px); }
+        .sn-modal-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        @media (max-width: 860px) {
+          .sn-modal { padding: 28px 20px 24px; }
         }
       `}</style>
     </div>
