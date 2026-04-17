@@ -48,25 +48,10 @@ const NewsletterSimples = () => {
       await tracker.identify(data.email, "", data.nome);
       const anonymousId = tracker.getAnonymousId();
 
-      // Save to leads table
-      const { data: lead, error: leadError } = await supabase
-        .from("leads")
-        .upsert(
-          {
-            nome: data.nome,
-            email: data.email,
-            whatsapp: "",
-            produto: "Newsletter BA",
-            origem: "Newsletter Simples",
-          },
-          { onConflict: "email", ignoreDuplicates: false }
-        )
-        .select("id")
-        .single();
-
-      if (leadError) {
-        throw new Error(leadError.message);
-      }
+      // Salvar no BA Hub contacts
+      await supabase.functions.invoke('submit-contact', {
+        body: { name: data.nome, email: data.email, source: 'newsletter' },
+      });
 
       // Save to newsletter_subscribers table
       const urlParams = new URLSearchParams(window.location.search);
@@ -76,7 +61,6 @@ const NewsletterSimples = () => {
           {
             nome: data.nome,
             email: data.email,
-            lead_id: lead.id,
             anonymous_id: anonymousId,
             subscription_source: "newsletter_simples",
             utm_source: urlParams.get("utm_source"),

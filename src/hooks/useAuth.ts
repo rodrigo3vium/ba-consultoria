@@ -4,6 +4,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 
+const ADMIN_EMAILS = ['rodrigo@benitesalbuquerque.com.br'];
+
 const authSchema = z.object({
   email: z.string().email('Email inválido'),
   password: z.string().min(6, 'Senha deve ter no mínimo 6 caracteres')
@@ -25,9 +27,7 @@ export const useAuth = () => {
         
         // Check admin role when user changes
         if (session?.user) {
-          setTimeout(() => {
-            checkAdminRole(session.user.id);
-          }, 0);
+          checkAdminRole(session.user.email);
         } else {
           setIsAdmin(false);
           setLoading(false);
@@ -39,11 +39,9 @@ export const useAuth = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
-      
+
       if (session?.user) {
-        setTimeout(() => {
-          checkAdminRole(session.user.id);
-        }, 0);
+        checkAdminRole(session.user.email);
       } else {
         setLoading(false);
       }
@@ -52,23 +50,9 @@ export const useAuth = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const checkAdminRole = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', userId)
-        .eq('role', 'admin')
-        .maybeSingle();
-
-      if (error) throw error;
-      setIsAdmin(!!data);
-    } catch (error) {
-      console.error('Error checking admin role:', error);
-      setIsAdmin(false);
-    } finally {
-      setLoading(false);
-    }
+  const checkAdminRole = (email: string | null | undefined) => {
+    setIsAdmin(!!email && ADMIN_EMAILS.includes(email));
+    setLoading(false);
   };
 
   const signUp = async (email: string, password: string) => {

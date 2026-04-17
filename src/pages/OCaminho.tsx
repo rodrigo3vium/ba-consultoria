@@ -65,17 +65,14 @@ const OCaminho = () => {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("leads").upsert(
-        {
-          nome: data.nome,
+      const { error } = await supabase.functions.invoke('submit-contact', {
+        body: {
+          name: data.nome,
           email: data.email,
           whatsapp: data.whatsapp,
-          produto: "o-caminho",
-          origem: "Landing Page O Caminho",
-          status: "novo",
+          source: 'o-caminho',
         },
-        { onConflict: "whatsapp" }
-      );
+      });
 
       if (error) throw error;
 

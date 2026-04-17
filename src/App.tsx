@@ -30,14 +30,9 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/Admin"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
-const AdminCRM = lazy(() => import("./pages/AdminCRM"));
-const AdminImport = lazy(() => import("./pages/AdminImport"));
-const AdminImportDirect = lazy(() => import("./pages/AdminImportDirect"));
-const AdminImportMapping = lazy(() => import("./pages/AdminImportMapping"));
-const AdminFunnels = lazy(() => import("./pages/AdminFunnels"));
-const AdminKanban = lazy(() => import("./pages/AdminKanban"));
 const AdminEditor = lazy(() => import("./pages/AdminEditor"));
 const AdminCases = lazy(() => import("./pages/AdminCases"));
+const AdminLandingPages = lazy(() => import("./pages/AdminLandingPages"));
 const Newsletter = lazy(() => import("./pages/Newsletter"));
 const NewsletterSimples = lazy(() => import("./pages/NewsletterSimples"));
 const NewsletterRating = lazy(() => import("./pages/NewsletterRating"));
@@ -96,15 +91,10 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/blog" element={<AdminBlog />} />
-          <Route path="/admin/crm" element={<AdminCRM />} />
-          <Route path="/admin/crm/import" element={<AdminImport />} />
-          <Route path="/admin/import-direct" element={<AdminImportDirect />} />
-          <Route path="/admin/import-mapping" element={<AdminImportMapping />} />
-          <Route path="/admin/funnels" element={<AdminFunnels />} />
-          <Route path="/admin/crm/kanban" element={<AdminKanban />} />
           <Route path="/admin/editor" element={<AdminEditor />} />
           <Route path="/admin/editor/:id" element={<AdminEditor />} />
           <Route path="/admin/cases" element={<AdminCases />} />
+          <Route path="/admin/landing-pages" element={<AdminLandingPages />} />
           <Route path="/newsletter-ia" element={<Newsletter />} />
           <Route path="/newsletter" element={<NewsletterSimples />} />
           <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />

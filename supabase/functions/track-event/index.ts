@@ -12,6 +12,7 @@ function parseAllowedHosts(): string[] {
 }
 
 function isAllowedOrigin(origin: string | null, allowedHosts: string[]): boolean {
+  if (allowedHosts.length === 0) return true; // allow all when ALLOWED_ORIGINS not configured
   if (!origin) return false;
   try {
     const host = new URL(origin).host;
@@ -19,23 +20,6 @@ function isAllowedOrigin(origin: string | null, allowedHosts: string[]): boolean
   } catch {
     return false;
   }
-}
-
-// Resolve lead_id apenas no servidor (nunca confie no body)
-async function resolveLeadIdByAnonymousId(supabase: any, anonymous_id: string): Promise<string | null> {
-  const { data, error } = await supabase
-    .from("lead_aliases")
-    .select("lead_id")
-    .eq("anonymous_id", anonymous_id)
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
-  if (error) {
-    console.warn("resolveLeadId error:", error.message);
-    return null;
-  }
-  return data?.lead_id ?? null;
 }
 
 serve(async (req) => {
@@ -74,52 +58,23 @@ serve(async (req) => {
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")! // bypass RLS
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, // bypass RLS
+      { db: { schema: 'ba_site' } }
     );
-
-    // Resolve lead_id via alias (NÃO confie no body)
-    const lead_id = await resolveLeadIdByAnonymousId(supabase, anonymous_id);
-
-    // Busca regra de score
-    const { data: rule, error: ruleErr } = await supabase
-      .from("scoring_rules")
-      .select("points, daily_cap, active")
-      .eq("event_name", event_name)
-      .maybeSingle();
-
-    if (ruleErr) {
-      console.warn("scoring_rules error:", ruleErr.message);
-    }
-
-    let score_points = (rule?.active && rule?.points) ? rule.points : 0;
-
-    // Cap diário via RPC com timezone correto
-    if (rule?.daily_cap && score_points > 0) {
-      const { data: countToday, error: capErr } = await supabase
-        .rpc("count_events_today", { p_lead_id: lead_id, p_anonymous_id: anonymous_id, p_event_name: event_name });
-
-      if (capErr) {
-        console.warn("count_events_today error:", capErr.message);
-      } else if ((countToday ?? 0) >= rule.daily_cap) {
-        console.log(`Daily cap reached for ${event_name}: ${countToday}/${rule.daily_cap}`);
-        score_points = 0;
-      }
-    }
 
     // Inserção do evento (NÃO confie no timestamp do client para created_at)
     const insertPayload: Json = {
       event_name,
       anonymous_id,
       session_id,
-      lead_id, // pode ser null
+      lead_id: null, // lead linkage moved to BA Hub
       page_url: page_url || null,
       referrer: referrer || null,
       properties: {
         ...(properties || {}),
-        // registra horário do client como metadado apenas
         client_event_time: timestamp || null
       },
-      score_points,
+      score_points: 0,
       idempotency_key: idem
     };
 
@@ -132,26 +87,6 @@ serve(async (req) => {
         return new Response(JSON.stringify({ success: true, duplicate: true }), { headers: baseHeaders });
       }
       throw insErr;
-    }
-
-    // Atualiza score do lead (se identificado e ganhou pontos)
-    if (lead_id && score_points > 0) {
-      // incremento simples; V2: mover para job/trigger com decay
-      const { data: lead } = await supabase.from("leads").select("score").eq("id", lead_id).maybeSingle();
-      const newScore = (lead?.score || 0) + score_points;
-
-      const lastTouch = (properties?.utm_source)
-        ? {
-            last_touch_source: properties.utm_source,
-            last_touch_medium: properties.utm_medium ?? null,
-            last_touch_campaign: properties.utm_campaign ?? null
-          }
-        : {};
-
-      await supabase
-        .from("leads")
-        .update({ score: newScore, score_updated_at: new Date().toISOString(), last_active_at: new Date().toISOString(), ...lastTouch })
-        .eq("id", lead_id);
     }
 
     // Atualiza sessão via RPC (não sobrescreve first_event_at)
@@ -168,9 +103,9 @@ serve(async (req) => {
       p_device: properties?.user_agent ?? null
     });
 
-    console.log(`Event tracked: ${event_name} (${score_points} pts) for ${lead_id || anonymous_id}`);
+    console.log(`Event tracked: ${event_name} for ${anonymous_id}`);
 
-    return new Response(JSON.stringify({ success: true, score_points, session_id }), { headers: baseHeaders });
+    return new Response(JSON.stringify({ success: true, session_id }), { headers: baseHeaders });
 
   } catch (e) {
     console.error("track-event error:", e);

@@ -25,45 +25,29 @@ const Footer = () => {
     setIsLoading(true);
     
     try {
-      // 1. Identificar o lead no tracker
       await tracker.identify(email, '', '');
       const anonymousId = tracker.getAnonymousId();
-
-      // 2. Buscar ou criar lead
-      const { data: existingLead } = await supabase
-        .from('leads')
-        .select('id')
-        .eq('email', email)
-        .maybeSingle();
-
-      let leadId = existingLead?.id;
-
-      if (!existingLead) {
-        const { data: newLead, error: leadError } = await supabase
-          .from('leads')
-          .insert({
-            email,
-            nome: email.split('@')[0],
-            whatsapp: '',
-            produto: 'newsletter',
-            origem: 'footer',
-          })
-          .select('id')
-          .single();
-
-        if (leadError) throw leadError;
-        leadId = newLead.id;
-      }
-
-      // 3. Salvar inscrição na newsletter
       const utmParams = new URLSearchParams(window.location.search);
-      
+
+      // Salvar no BA Hub contacts
+      await supabase.functions.invoke('submit-contact', {
+        body: {
+          email,
+          source: 'newsletter-footer',
+          utm: {
+            source: utmParams.get('utm_source'),
+            medium: utmParams.get('utm_medium'),
+            campaign: utmParams.get('utm_campaign'),
+          },
+        },
+      });
+
+      // Salvar inscrição na newsletter
       const { error: subscriberError } = await supabase
         .from('newsletter_subscribers')
         .insert({
           email,
           nome: email.split('@')[0],
-          lead_id: leadId,
           anonymous_id: anonymousId,
           subscription_source: 'footer',
           utm_source: utmParams.get('utm_source') || null,
@@ -77,7 +61,7 @@ const Footer = () => {
         throw subscriberError;
       }
 
-      // 4. Registrar evento de tracking
+      // Registrar evento de tracking
       await tracker.track('newsletter_signup_footer', {
         email,
         source: 'footer',

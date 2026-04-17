@@ -1,4 +1,4 @@
-project_id = "vmmosextmuuibhuyeqkq"
+project_id = "sebjvyvcjkxfonfosymq"
 
 [functions.track-event]
 verify_jwt = false
@@ -10,4 +10,7 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.sync-activecampaign]
+verify_jwt = false
+
+[functions.submit-contact]
 verify_jwt = false

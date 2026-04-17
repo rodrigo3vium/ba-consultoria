@@ -15,7 +15,7 @@ Site institucional + plataforma educacional da BA Consultoria. Combina site de m
 - **Estado:** TanStack React Query (server state), React Router (navigation)
 - **Forms:** React Hook Form + Zod
 - **Ícones:** Lucide React
-- **Deploy:** Lovable (lovable.dev)
+- **Deploy:** Vercel (auto-deploy via push em `main`)
 
 ## Estrutura do Projeto
 
@@ -25,7 +25,6 @@ src/
 ├── components/
 │   ├── ui/             # shadcn/ui (Button, Card, Dialog, etc.)
 │   ├── claudecode/     # Componentes da página Claude Code
-│   ├── crm/            # Componentes do CRM admin
 │   └── metodostark/    # Componentes do Método Stark
 ├── hooks/              # useAuth, usePageViewTracking, use-mobile, use-toast
 ├── lib/                # tracking.ts, blogData.ts, utils.ts

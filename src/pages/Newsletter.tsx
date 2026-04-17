@@ -39,49 +39,32 @@ const Newsletter = () => {
       setIsSubmitting(true);
       console.log('📧 Iniciando cadastro newsletter:', values.email);
 
-      // 1. Identificar lead via tracker (mantém tracking)
-      console.log('🔍 Identificando lead...');
       await tracker.identify(values.email, values.whatsapp || "", values.name);
-      
-      // Obter anonymous_id do tracker
       const anonymousId = tracker.getAnonymousId();
-      console.log('✅ Lead identificado, anonymous_id:', anonymousId);
-
-      // 2. Salvar lead na tabela leads (upsert)
-      console.log('💾 Salvando lead...');
       const urlParams = new URLSearchParams(window.location.search);
-      
-      const { data: lead, error: leadError } = await supabase
-        .from('leads')
+
+      // Salvar no BA Hub contacts
+      await supabase.functions.invoke('submit-contact', {
+        body: {
+          name: values.name,
+          email: values.email,
+          whatsapp: values.whatsapp || null,
+          source: 'newsletter',
+          utm: {
+            source: urlParams.get('utm_source'),
+            medium: urlParams.get('utm_medium'),
+            campaign: urlParams.get('utm_campaign'),
+          },
+        },
+      });
+
+      // Salvar na tabela newsletter_subscribers
+      const { error: upsertError } = await supabase
+        .from('newsletter_subscribers')
         .upsert({
           email: values.email,
           nome: values.name,
           whatsapp: values.whatsapp || null,
-          produto: 'newsletter',
-          origem: 'Newsletter'
-        }, {
-          onConflict: 'email',
-          ignoreDuplicates: false
-        })
-        .select('id')
-        .single();
-
-      if (leadError) {
-        console.error('❌ Erro ao salvar lead:', leadError);
-        throw new Error(`Falha ao salvar lead: ${leadError.message}`);
-      }
-      console.log('✅ Lead salvo com sucesso, ID:', lead.id);
-
-      // 3. Salvar na tabela newsletter_subscribers
-      console.log('💾 Salvando na tabela newsletter...');
-      
-      const { error: upsertError } = await supabase
-        .from('newsletter_subscribers')
-        .upsert({ 
-          email: values.email,
-          nome: values.name,
-          whatsapp: values.whatsapp || null,
-          lead_id: lead.id,
           anonymous_id: anonymousId,
           subscription_source: 'newsletter_page',
           utm_source: urlParams.get('utm_source'),
@@ -94,25 +77,17 @@ const Newsletter = () => {
           ignoreDuplicates: true
         });
 
-      if (upsertError) {
-        console.error('❌ Erro ao salvar inscrição:', upsertError);
-        
-        // Tratamento especial para email já cadastrado
-        if (upsertError.code === '23505') {
-          toast({
-            title: "Você já está inscrito! ✅",
-            description: "Verifique sua caixa de entrada toda segunda às 8h.",
-          });
-          form.reset();
-          return;
-        }
-        
-        throw new Error(`Falha ao salvar inscrição: ${upsertError.message}`);
+      if (upsertError && upsertError.code === '23505') {
+        toast({
+          title: "Você já está inscrito! ✅",
+          description: "Verifique sua caixa de entrada toda segunda às 8h.",
+        });
+        form.reset();
+        return;
       }
-      console.log('✅ Inscrição salva com sucesso');
+      if (upsertError) throw new Error(upsertError.message);
 
-      // 4. Sincronizar com ActiveCampaign
-      console.log('🔄 Sincronizando com ActiveCampaign...');
+      // Sincronizar com ActiveCampaign
       try {
         const { error: acError } = await supabase.functions.invoke('sync-activecampaign', {
           body: {
@@ -134,15 +109,9 @@ const Newsletter = () => {
         // Continua mesmo se ActiveCampaign falhar
       }
 
-      // 5. Registrar evento (mantém analytics)
-      console.log('📊 Rastreando evento...');
-      await tracker.track('newsletter_signup', {
-        source: 'newsletter_page',
-        email: values.email
-      });
-      console.log('✅ Evento rastreado');
+      await tracker.track('newsletter_signup', { source: 'newsletter_page' });
 
-      // 6. Sucesso
+      // Sucesso
       toast({
         title: "Inscrição confirmada! 🎉",
         description: "Você receberá nossa newsletter toda segunda-feira às 8h.",

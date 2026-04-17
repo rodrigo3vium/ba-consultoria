@@ -87,16 +87,18 @@ const EducacaoSkillsNegocios = () => {
     setIsSubmitting(true);
     setFormError("");
     try {
-      const { error } = await supabase.from("leads").insert({
-        nome: form.nome.trim(),
-        email: form.email.trim(),
-        whatsapp: form.whatsapp.trim(),
-        faturamento: form.faturamento,
-        situacao_profissional: form.cargo,
-        observacoes: `Segmento: ${form.segmento}`,
-        produto: "ebook-20-skills",
-        origem: "Página 20 Skills de IA",
-        status: "novo" as const,
+      const { error } = await supabase.functions.invoke('submit-contact', {
+        body: {
+          name: form.nome.trim(),
+          email: form.email.trim(),
+          whatsapp: form.whatsapp.trim(),
+          source: 'ebook-20-skills',
+          metadata: {
+            faturamento: form.faturamento,
+            cargo: form.cargo,
+            segmento: form.segmento,
+          },
+        },
       });
       if (error) throw error;
 

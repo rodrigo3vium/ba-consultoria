@@ -1,88 +1,127 @@
-import { useNavigate } from 'react-router-dom';
-import { useRequireAuth } from '@/hooks/useRequireAuth';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { FileText, Users, Loader2, Filter } from 'lucide-react';
+import { Link } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { SITE_ROUTES, CATEGORY_LABELS, CATEGORY_ORDER, SiteCategory } from "@/lib/siteMap";
+import { ExternalLink, Globe, Layers, FileText, Image } from "lucide-react";
 
-const Admin = () => {
-  const navigate = useNavigate();
-  const { loading } = useRequireAuth(true);
+const STATUS_COLOR: Record<string, string> = {
+  ativa: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+  stub: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+  quebrada: "bg-red-500/20 text-red-300 border-red-500/30",
+};
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
+export default function Admin() {
+  useRequireAuth(true);
 
-  const dashboardItems = [
-    {
-      title: "Blog",
-      description: "Gerencie posts, categorias e conteúdo do blog",
-      icon: FileText,
-      action: () => navigate("/admin/blog"),
-      buttonText: "Acessar Blog"
+  const totalPages = SITE_ROUTES.length;
+  const landingPages = SITE_ROUTES.filter((r) => r.isLandingPage).length;
+  const stubs = SITE_ROUTES.filter((r) => r.status === "stub").length;
+  const broken = SITE_ROUTES.filter((r) => r.status === "quebrada").length;
+
+  const grouped = CATEGORY_ORDER.reduce<Record<SiteCategory, typeof SITE_ROUTES>>(
+    (acc, cat) => {
+      acc[cat] = SITE_ROUTES.filter((r) => r.category === cat);
+      return acc;
     },
-    {
-      title: "CRM",
-      description: "Gerencie clientes, leads e relacionamentos",
-      icon: Users,
-      action: () => navigate("/admin/crm"),
-      buttonText: "Acessar CRM"
-    },
-    {
-      title: "Funis de Vendas",
-      description: "Gerencie funis e etapas do processo comercial",
-      icon: Filter,
-      action: () => navigate("/admin/funnels"),
-      buttonText: "Gerenciar Funis"
-    }
-  ];
+    {} as Record<SiteCategory, typeof SITE_ROUTES>
+  );
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen bg-background">
       <Header />
-      
-      <main className="flex-1 container mx-auto py-12 px-4">
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Painel Administrativo</h1>
-          <p className="text-muted-foreground">Escolha uma área para gerenciar</p>
+      <main className="container mx-auto px-4 py-10 max-w-5xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-1">Admin</h1>
+          <p className="text-muted-foreground">Mapa do site e gestão de conteúdo</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {dashboardItems.map((item) => (
-            <Card 
-              key={item.title}
-              className="p-8 flex flex-col items-center text-center hover:shadow-lg transition-shadow"
-            >
-              <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <item.icon className="w-12 h-12 text-primary" />
-              </div>
-              
-              <h2 className="text-3xl font-bold mb-4">{item.title}</h2>
-              
-              <p className="text-muted-foreground mb-8 flex-1">
-                {item.description}
-              </p>
-              
-              <Button 
-                onClick={item.action}
-                size="lg"
-                className="w-full"
-              >
-                {item.buttonText}
-              </Button>
+        {/* Nav rápida */}
+        <div className="flex flex-wrap gap-3 mb-8">
+          <Button asChild variant="outline" size="sm">
+            <Link to="/admin/blog"><FileText className="w-4 h-4 mr-2" />Blog</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/admin/cases"><Image className="w-4 h-4 mr-2" />Cases</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link to="/admin/landing-pages"><Layers className="w-4 h-4 mr-2" />Landing Pages</Link>
+          </Button>
+        </div>
+
+        {/* Métricas */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          {[
+            { label: "Total de páginas", value: totalPages, icon: Globe },
+            { label: "Landing Pages", value: landingPages, icon: Layers },
+            { label: "Stubs pendentes", value: stubs, icon: FileText },
+            { label: "Quebradas", value: broken, icon: ExternalLink },
+          ].map(({ label, value, icon: Icon }) => (
+            <Card key={label} className="shadow-card">
+              <CardContent className="pt-4 pb-3">
+                <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                  <Icon className="w-4 h-4" />
+                  <span className="text-xs">{label}</span>
+                </div>
+                <p className="text-2xl font-bold text-foreground">{value}</p>
+              </CardContent>
             </Card>
           ))}
         </div>
+
+        {/* Mapa do site por categoria */}
+        <div className="space-y-6">
+          {CATEGORY_ORDER.map((cat) => {
+            const routes = grouped[cat];
+            if (!routes.length) return null;
+            return (
+              <Card key={cat} className="shadow-card">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base text-foreground">{CATEGORY_LABELS[cat]}</CardTitle>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <div className="divide-y divide-border">
+                    {routes.map((route) => (
+                      <div key={route.path} className="flex items-center justify-between py-2.5 gap-3">
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="text-sm font-medium text-foreground truncate">{route.label}</span>
+                          {route.isLandingPage && (
+                            <Badge variant="outline" className="text-xs px-1.5 py-0 border-ba-blue-light/40 text-ba-blue-light shrink-0">
+                              LP
+                            </Badge>
+                          )}
+                          {route.status !== "ativa" && (
+                            <Badge variant="outline" className={`text-xs px-1.5 py-0 shrink-0 ${STATUS_COLOR[route.status]}`}>
+                              {route.status}
+                            </Badge>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0">
+                          <code className="text-xs text-muted-foreground hidden sm:block">{route.path}</code>
+                          {!route.path.includes(":") && (
+                            <a
+                              href={route.path}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
       </main>
-      
       <Footer />
     </div>
   );
-};
-
-export default Admin;
+}

@@ -35,7 +35,8 @@ serve(async (req) => {
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+      { db: { schema: 'ba_site' } }
     );
 
     // Atualiza last_event_at e duration derivada (server-side, sem confiar no client)
