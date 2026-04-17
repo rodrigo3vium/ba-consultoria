@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto
 
-Site institucional + plataforma educacional da BA Consultoria. Combina site de marketing, landing pages especializadas (Método Stark), blog, sistema de cases, painel admin com CRM, e geração de propostas comerciais.
+Site institucional + plataforma educacional da BA Consultoria. Combina site de marketing, landing pages especializadas (Método Stark), blog, sistema de cases, painel admin de conteúdo e geração de propostas comerciais.
 
 **Público-alvo:** Empresários e profissionais que querem implementar IA nos negócios.
 
@@ -11,7 +11,7 @@ Site institucional + plataforma educacional da BA Consultoria. Combina site de m
 - **Framework:** React 18 + TypeScript + Vite (SWC)
 - **Estilo:** Tailwind CSS 3 + shadcn/ui (Radix UI) + CSS variables
 - **Roteamento:** React Router DOM 6
-- **Backend:** Supabase (auth, database, edge functions)
+- **Backend:** Supabase (auth, database, edge functions) — projeto `sebjvyvcjkxfonfosymq`, schema `ba_site`
 - **Estado:** TanStack React Query (server state), React Router (navigation)
 - **Forms:** React Hook Form + Zod
 - **Ícones:** Lucide React
@@ -21,24 +21,85 @@ Site institucional + plataforma educacional da BA Consultoria. Combina site de m
 
 ```
 src/
-├── pages/              # Páginas (38 arquivos)
+├── pages/              # Páginas
 ├── components/
 │   ├── ui/             # shadcn/ui (Button, Card, Dialog, etc.)
 │   ├── claudecode/     # Componentes da página Claude Code
 │   └── metodostark/    # Componentes do Método Stark
 ├── hooks/              # useAuth, usePageViewTracking, use-mobile, use-toast
-├── lib/                # tracking.ts, blogData.ts, utils.ts
+├── lib/                # tracking.ts, blogData.ts, utils.ts, siteMap.ts, hotmartUtils.ts
 ├── integrations/
-│   └── supabase/       # Client config e types
+│   └── supabase/       # Client config e types (schema ba_site)
 ├── assets/             # Imagens, logos, fotos
 └── index.css           # Tokens globais (CSS variables)
 public/
 └── videos/             # Vídeos (mundo_dividindo.mp4)
+supabase/
+├── functions/          # Edge Functions (ver seção abaixo)
+└── migrations/         # Migrations ativas do schema ba_site
 ```
 
 ## Aliases
 
 - `@/` → `./src/` (configurado em vite.config.ts e tsconfig.json)
+
+## Supabase — Schema `ba_site`
+
+O site usa o mesmo projeto Supabase do **BA Hub** (`sebjvyvcjkxfonfosymq`), schema dedicado `ba_site`. O client está configurado com `db: { schema: 'ba_site' }`.
+
+### Tabelas ativas
+
+| Tabela | Uso |
+|---|---|
+| `blog_posts` | Posts do blog — CRUD em `/admin/blog` |
+| `cases` | Cases/portfólio — CRUD em `/admin/cases` |
+| `events` | Eventos de tracking anônimo (via edge function `track-event`) |
+| `sessions` | Sessões de usuário (via `track-event` e `session-heartbeat`) |
+| `newsletter_subscribers` | Inscritos na newsletter |
+| `newsletter_ratings` | Avaliações de edições da newsletter |
+| `hotmart_sales` | Vendas importadas da Hotmart (via `import-hotmart-leads`) |
+
+**Não existe mais** a camada de CRM/leads neste schema — leads do site vão direto para `public.contacts` do BA Hub via edge function `submit-contact`.
+
+### Edge Functions
+
+| Função | O que faz |
+|---|---|
+| `submit-contact` | Recebe lead do site e faz upsert em `public.contacts` do BA Hub (tenant PB `8b53f762-e90a-4fde-9280-4522d88a2712`) |
+| `track-event` | Registra evento anônimo em `events` + upsert de sessão via RPC |
+| `session-heartbeat` | Atualiza duração de sessão em `sessions` |
+| `track-newsletter-rating` | Registra avaliação de newsletter |
+| `import-hotmart-leads` | Importa vendas CSV da Hotmart → `hotmart_sales` |
+| `sync-activecampaign` | Sincroniza inscrito da newsletter com ActiveCampaign |
+
+### Captura de leads (formulários públicos)
+
+Todo formulário de captura (IAParaNegocios, IADoZero, OCaminho, EducacaoSkillsNegocios, Newsletter, NewsletterSimples, Footer) chama:
+
+```ts
+await supabase.functions.invoke('submit-contact', {
+  body: {
+    name,
+    email,
+    whatsapp,          // opcional
+    source: 'slug-do-produto',
+    utm: { source, medium, campaign },
+    metadata: { ... }, // campos extras (faturamento, cargo, etc.)
+  },
+});
+```
+
+O tracker continua sendo chamado normalmente (`tracker.identify()` + `tracker.track()`).
+
+### Auth do /admin
+
+Proteção via `useRequireAuth(true)`. Admin é determinado por allowlist de emails em `src/hooks/useAuth.ts`:
+
+```ts
+const ADMIN_EMAILS = ['rodrigo@benitesalbuquerque.com.br'];
+```
+
+Para adicionar admin: editar essa constante.
 
 ## Design Tokens
 
@@ -129,6 +190,11 @@ const Page = () => {
 - `tracker.page("Nome")` no useEffect de cada página
 - `tracker.track("evento", { props })` para CTAs e interações
 - LGPD-compliant (consent-based)
+- Tracking é anônimo — liga anonymous_id a contato no BA Hub via `submit-contact`, não via `identify-lead`
+
+### Mapa do Site
+
+`src/lib/siteMap.ts` é a **fonte única de verdade** de todas as rotas públicas. Usado pelo `/admin` (dashboard) e `/admin/landing-pages`. Ao adicionar uma rota nova em `App.tsx`, adicionar também em `SITE_ROUTES`.
 
 ### CTAs
 
@@ -148,7 +214,10 @@ const Page = () => {
 - `/educacao/claude-code` — Página Claude Code
 - `/educacao/imersao-claude` — Imersão Claude
 - `/cases`, `/blog` — Cases e blog (dados do Supabase)
-- `/admin/*` — Painel admin (protegido por auth)
+- `/admin` — Dashboard admin com mapa do site (protegido por allowlist de emails)
+- `/admin/blog` — CRUD de posts
+- `/admin/cases` — CRUD de cases
+- `/admin/landing-pages` — Lista de landing pages com links
 - `/propostas/*` — Propostas comerciais customizadas
 
 ## Comandos
@@ -157,4 +226,13 @@ const Page = () => {
 npm run dev      # Dev server (Vite)
 npm run build    # Build de produção
 npm run preview  # Preview do build
+
+# Gerar types Supabase (rodar após alterar schema)
+npx supabase gen types typescript --project-id sebjvyvcjkxfonfosymq --schema ba_site > src/integrations/supabase/types.ts
+
+# Deploy de edge function
+npx supabase functions deploy <nome> --project-ref sebjvyvcjkxfonfosymq
+
+# Setar secret de edge function
+npx supabase secrets set CHAVE=valor --project-ref sebjvyvcjkxfonfosymq
 ```
