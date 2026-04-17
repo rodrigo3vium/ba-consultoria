@@ -87,20 +87,17 @@ const EducacaoSkillsNegocios = () => {
     setIsSubmitting(true);
     setFormError("");
     try {
-      const { error } = await supabase.from("leads").upsert(
-        {
-          nome: form.nome.trim(),
-          email: form.email.trim(),
-          whatsapp: form.whatsapp.trim(),
-          faturamento: form.faturamento,
-          situacao_profissional: form.cargo,
-          observacoes: `Segmento: ${form.segmento}`,
-          produto: "20-skills-negocios",
-          origem: "Página 20 Skills de IA",
-          status: "novo" as const,
-        },
-        { onConflict: "whatsapp" }
-      );
+      const { error } = await supabase.from("leads").insert({
+        nome: form.nome.trim(),
+        email: form.email.trim(),
+        whatsapp: form.whatsapp.trim(),
+        faturamento: form.faturamento,
+        situacao_profissional: form.cargo,
+        observacoes: `Segmento: ${form.segmento}`,
+        produto: "20-skills-negocios",
+        origem: "Página 20 Skills de IA",
+        status: "novo" as const,
+      });
       if (error) throw error;
 
       await tracker.identify(form.email.trim(), form.whatsapp.trim(), form.nome.trim());
