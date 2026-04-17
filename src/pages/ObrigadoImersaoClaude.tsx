@@ -729,6 +729,7 @@ const ObrigadoImersaoClaude = () => {
   const [seconds, setSeconds] = useState(14 * 60 + 59);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     tracker.page("Obrigado Imersão Claude");
 
     // inject Google Fonts
