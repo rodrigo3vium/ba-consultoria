@@ -10,9 +10,9 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
+    PostgrestVersion: "14.1"
   }
-  public: {
+  ba_site: {
     Tables: {
       blog_posts: {
         Row: {
@@ -516,7 +516,7 @@ export type Database = {
           descricao: string
           id: string
           lead_id: string
-          tipo: Database["public"]["Enums"]["interaction_type"]
+          tipo: Database["ba_site"]["Enums"]["interaction_type"]
           user_id: string | null
         }
         Insert: {
@@ -524,7 +524,7 @@ export type Database = {
           descricao: string
           id?: string
           lead_id: string
-          tipo: Database["public"]["Enums"]["interaction_type"]
+          tipo: Database["ba_site"]["Enums"]["interaction_type"]
           user_id?: string | null
         }
         Update: {
@@ -532,7 +532,7 @@ export type Database = {
           descricao?: string
           id?: string
           lead_id?: string
-          tipo?: Database["public"]["Enums"]["interaction_type"]
+          tipo?: Database["ba_site"]["Enums"]["interaction_type"]
           user_id?: string | null
         }
         Relationships: [
@@ -631,7 +631,7 @@ export type Database = {
           score: number | null
           score_updated_at: string | null
           situacao_profissional: string | null
-          status: Database["public"]["Enums"]["lead_status"]
+          status: Database["ba_site"]["Enums"]["lead_status"]
           tags: string[] | null
           ultima_interacao: string | null
           whatsapp: string
@@ -656,7 +656,7 @@ export type Database = {
           score?: number | null
           score_updated_at?: string | null
           situacao_profissional?: string | null
-          status?: Database["public"]["Enums"]["lead_status"]
+          status?: Database["ba_site"]["Enums"]["lead_status"]
           tags?: string[] | null
           ultima_interacao?: string | null
           whatsapp: string
@@ -681,7 +681,7 @@ export type Database = {
           score?: number | null
           score_updated_at?: string | null
           situacao_profissional?: string | null
-          status?: Database["public"]["Enums"]["lead_status"]
+          status?: Database["ba_site"]["Enums"]["lead_status"]
           tags?: string[] | null
           ultima_interacao?: string | null
           whatsapp?: string
@@ -911,19 +911,19 @@ export type Database = {
         Row: {
           created_at: string | null
           id: string
-          role: Database["public"]["Enums"]["app_role"]
+          role: Database["ba_site"]["Enums"]["app_role"]
           user_id: string
         }
         Insert: {
           created_at?: string | null
           id?: string
-          role: Database["public"]["Enums"]["app_role"]
+          role: Database["ba_site"]["Enums"]["app_role"]
           user_id: string
         }
         Update: {
           created_at?: string | null
           id?: string
-          role?: Database["public"]["Enums"]["app_role"]
+          role?: Database["ba_site"]["Enums"]["app_role"]
           user_id?: string
         }
         Relationships: []
@@ -957,7 +957,7 @@ export type Database = {
       }
       has_role: {
         Args: {
-          _role: Database["public"]["Enums"]["app_role"]
+          _role: Database["ba_site"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
@@ -1112,7 +1112,7 @@ export type CompositeTypes<
     : never
 
 export const Constants = {
-  public: {
+  ba_site: {
     Enums: {
       app_role: ["admin", "user"],
       interaction_type: ["email", "whatsapp", "telefone", "reuniao", "nota"],
@@ -1126,3 +1126,5 @@ export const Constants = {
     },
   },
 } as const
+A new version of Supabase CLI is available: v2.90.0 (currently installed v2.75.0)
+We recommend updating regularly for new features and bug fixes: https://supabase.com/docs/guides/cli/getting-started#updating-the-supabase-cli
