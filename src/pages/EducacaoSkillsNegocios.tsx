@@ -94,7 +94,7 @@ const EducacaoSkillsNegocios = () => {
         faturamento: form.faturamento,
         situacao_profissional: form.cargo,
         observacoes: `Segmento: ${form.segmento}`,
-        produto: "20-skills-negocios",
+        produto: "ebook-20-skills",
         origem: "Página 20 Skills de IA",
         status: "novo" as const,
       });
