@@ -4,10 +4,11 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 type EbookSlug = "20-skills-negocios";
 
-const EBOOKS: Record<EbookSlug, { subject: string; link: string }> = {
+const EBOOKS: Record<EbookSlug, { subject: string; link: string; form_aula_link: string }> = {
   "20-skills-negocios": {
     subject: "Seu guia chegou: 20 Skills de IA Para Negócios",
     link: "https://treevium.notion.site/20-skills-para-neg-cios-344fc75e990e80178309ef115f65912e",
+    form_aula_link: "https://benitesalbuquerque.com.br",
   },
 };
 
@@ -142,6 +143,26 @@ const EMAIL_TEMPLATE = `<!DOCTYPE html>
                 </tr>
               </table>
 
+              <!-- CTA Intermedi&#225;rio &#8212; Aula gratuita -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);border-radius:6px;margin-bottom:24px;">
+                <tr>
+                  <td style="padding:24px;">
+                    <p style="margin:0 0 4px 0;font-family:'Courier New',monospace;font-size:10px;font-weight:600;letter-spacing:3px;color:#38BDF8;text-transform:uppercase;">
+                      B&#212;NUS EXCLUSIVO
+                    </p>
+                    <p style="margin:0 0 12px 0;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:700;color:#F0F6FF;line-height:1.3;">
+                      Quer o mapa mental por tr&#225;s dos 20 sistemas?
+                    </p>
+                    <p style="margin:0 0 16px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:14px;color:#C8D6E5;line-height:1.6;">
+                      Gravei uma aula de 30 minutos mostrando a arquitetura que uso nos meus 3 neg&#243;cios para operar com IA &#8212; os 4 pilares, as 3 armadilhas e as perguntas certas antes de construir qualquer coisa. N&#227;o est&#225; no YouTube. Responde 2 perguntas r&#225;pidas e libera.
+                    </p>
+                    <a href="{{form_aula_link}}" target="_blank" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;color:#38BDF8;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
+                      QUERO A AULA &#8594;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
               <!-- Secondary CTA block -->
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.12);border-radius:6px;">
                 <tr>
@@ -199,11 +220,12 @@ const EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
-function renderEmail(name: string, ebook: { link: string }): string {
+function renderEmail(name: string, ebook: { link: string; form_aula_link: string }): string {
   const firstName = escapeHtml(name.split(" ")[0] || "");
   return EMAIL_TEMPLATE
     .replace(/\{\{name\}\}/g, firstName)
-    .replace(/\{\{ebook_link\}\}/g, ebook.link);
+    .replace(/\{\{ebook_link\}\}/g, ebook.link)
+    .replace(/\{\{form_aula_link\}\}/g, ebook.form_aula_link);
 }
 
 serve(async (req) => {
