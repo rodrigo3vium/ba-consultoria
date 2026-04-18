@@ -8,7 +8,7 @@ const EBOOKS: Record<EbookSlug, { subject: string; link: string; form_aula_link:
   "20-skills-negocios": {
     subject: "Seu guia chegou: 20 Skills de IA Para Negócios",
     link: "https://treevium.notion.site/20-skills-para-neg-cios-344fc75e990e80178309ef115f65912e",
-    form_aula_link: "https://benitesalbuquerque.com.br",
+    form_aula_link: "https://hub.benitesalbuquerque.com.br/f/pb-formulario-de-qualificacao",
   },
 };
 
