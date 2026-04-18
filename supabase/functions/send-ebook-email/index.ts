@@ -176,7 +176,7 @@ const EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <p style="margin:0 0 16px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:14px;color:#C8D6E5;line-height:1.6;">
                       A Imers&#227;o em Claude te ensina o m&#233;todo por tr&#225;s dos 20 sistemas &#8212; em 2 horas voc&#234; sai construindo os seus pr&#243;prios. R$97.
                     </p>
-                    <a href="https://benitesalbuquerque.com.br/educacao/obrigado-imersao-claude" target="_blank" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;color:#DC2626;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
+                    <a href="https://www.benitesalbuquerque.com.br/educacao/imersao-claude-v2" target="_blank" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;color:#DC2626;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
                       QUERO A IMERS&#195;O &#8594;
                     </a>
                   </td>
