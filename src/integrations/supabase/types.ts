@@ -134,6 +134,42 @@ export type Database = {
         }
         Relationships: []
       }
+      ebook_sends: {
+        Row: {
+          ebook_slug: string
+          email: string
+          error: string | null
+          id: string
+          ip: string | null
+          metadata: Json
+          resend_id: string | null
+          sent_at: string
+          status: string
+        }
+        Insert: {
+          ebook_slug: string
+          email: string
+          error?: string | null
+          id?: string
+          ip?: string | null
+          metadata?: Json
+          resend_id?: string | null
+          sent_at?: string
+          status?: string
+        }
+        Update: {
+          ebook_slug?: string
+          email?: string
+          error?: string | null
+          id?: string
+          ip?: string | null
+          metadata?: Json
+          resend_id?: string | null
+          sent_at?: string
+          status?: string
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           anonymous_id: string

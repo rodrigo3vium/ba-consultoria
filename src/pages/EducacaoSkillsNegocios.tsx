@@ -44,6 +44,7 @@ const EducacaoSkillsNegocios = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
+  const [utm, setUtm] = useState<Record<string, string>>({});
   const [form, setForm] = useState<FormData>({
     nome: "",
     email: "",
@@ -57,6 +58,15 @@ const EducacaoSkillsNegocios = () => {
     document.body.style.backgroundColor = "#060A12";
     document.body.style.paddingTop = "0";
     tracker.page("20 Skills de IA Para Negócios");
+
+    const params = new URLSearchParams(window.location.search);
+    const captured: Record<string, string> = {};
+    ["source", "medium", "campaign", "term", "content"].forEach((k) => {
+      const v = params.get(`utm_${k}`);
+      if (v) captured[k] = v;
+    });
+    if (Object.keys(captured).length) setUtm(captured);
+
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.paddingTop = "";
@@ -87,22 +97,46 @@ const EducacaoSkillsNegocios = () => {
     setIsSubmitting(true);
     setFormError("");
     try {
-      const { error } = await supabase.functions.invoke('submit-contact', {
-        body: {
-          name: form.nome.trim(),
-          email: form.email.trim(),
-          whatsapp: form.whatsapp.trim(),
-          source: 'ebook-20-skills',
-          metadata: {
-            faturamento: form.faturamento,
-            cargo: form.cargo,
-            segmento: form.segmento,
-          },
-        },
-      });
-      if (error) throw error;
+      const name = form.nome.trim();
+      const email = form.email.trim();
+      const whatsapp = form.whatsapp.trim();
+      const utmPayload = Object.keys(utm).length ? utm : undefined;
 
-      await tracker.identify(form.email.trim(), form.whatsapp.trim(), form.nome.trim());
+      const [contactRes, emailRes] = await Promise.allSettled([
+        supabase.functions.invoke("submit-contact", {
+          body: {
+            name,
+            email,
+            whatsapp,
+            source: "ebook-20-skills",
+            utm: utmPayload,
+            metadata: {
+              faturamento: form.faturamento,
+              cargo: form.cargo,
+              segmento: form.segmento,
+            },
+          },
+        }),
+        supabase.functions.invoke("send-ebook-email", {
+          body: {
+            name,
+            email,
+            ebook_slug: "20-skills-negocios",
+            utm: utmPayload,
+          },
+        }),
+      ]);
+
+      if (contactRes.status === "rejected") throw contactRes.reason;
+      if ((contactRes.value as { error?: unknown })?.error) throw (contactRes.value as { error: unknown }).error;
+
+      if (emailRes.status === "rejected" || (emailRes.value as { error?: unknown })?.error) {
+        console.error("Ebook email delivery failed:", emailRes);
+      } else {
+        await tracker.track("ebook_email_dispatched", { ebook: "20-skills-negocios" });
+      }
+
+      await tracker.identify(email, whatsapp, name);
       await tracker.track("form_submitted", {
         form_type: "20-skills-negocios",
         product: "20-skills-negocios",
