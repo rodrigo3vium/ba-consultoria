@@ -154,7 +154,7 @@ const EMAIL_TEMPLATE = `<!DOCTYPE html>
                       Quer o mapa mental por tr&#225;s dos 20 sistemas?
                     </p>
                     <p style="margin:0 0 16px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:14px;color:#C8D6E5;line-height:1.6;">
-                      Gravei uma aula de 30 minutos mostrando a arquitetura que uso nos meus 3 neg&#243;cios para operar com IA &#8212; os 4 pilares, as 3 armadilhas e as perguntas certas antes de construir qualquer coisa. N&#227;o est&#225; no YouTube. Responde 2 perguntas r&#225;pidas e libera.
+                      Gravei uma aula de 30 minutos mostrando a arquitetura que uso nos meus 3 neg&#243;cios para operar eles com IA &#8212; os 4 pilares, as 3 armadilhas e as perguntas certas antes de construir qualquer coisa. Clique no bot&#227;o abaixo para responder um formul&#225;rio r&#225;pido e receber o acesso gratuito a essa aula exclusiva.
                     </p>
                     <a href="{{form_aula_link}}" target="_blank" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;color:#38BDF8;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
                       QUERO A AULA &#8594;
