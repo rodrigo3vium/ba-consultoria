@@ -4,11 +4,10 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 type EbookSlug = "20-skills-negocios";
 
-const EBOOKS: Record<EbookSlug, { subject: string; link: string; title: string }> = {
+const EBOOKS: Record<EbookSlug, { subject: string; link: string }> = {
   "20-skills-negocios": {
-    subject: "Seu ebook chegou: 20 Skills de IA Para Negócios 📘",
+    subject: "Seu guia chegou: 20 Skills de IA Para Negócios",
     link: "https://treevium.notion.site/20-skills-para-neg-cios-344fc75e990e80178309ef115f65912e",
-    title: "20 Skills de IA Para Negócios",
   },
 };
 
@@ -42,75 +41,169 @@ function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
-function renderEmail(name: string, ebook: { subject: string; link: string; title: string }): string {
-  const firstName = escapeHtml(name.split(" ")[0] || "");
-  const link = ebook.link;
-  const title = escapeHtml(ebook.title);
-  return `<!doctype html>
+const EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escapeHtml(ebook.subject)}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seu guia chegou</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
 </head>
-<body style="margin:0;padding:0;background:#f4f6fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#111a2e;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6fb;padding:32px 16px;">
+<body style="margin:0;padding:0;background-color:#060A12;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;-webkit-font-smoothing:antialiased;">
+
+  <!-- Wrapper -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#060A12;">
     <tr>
-      <td align="center">
-        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(17,26,46,0.08);">
+      <td align="center" style="padding:40px 16px;">
+
+        <!-- Container -->
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background-color:#0C1220;border:1px solid rgba(56,189,248,0.08);border-radius:8px;">
+
+          <!-- Header bar -->
           <tr>
-            <td style="padding:28px 32px;border-bottom:1px solid #eef0f6;">
-              <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#6b7a90;font-weight:600;">BA Consultoria</div>
+            <td style="padding:32px 40px 24px 40px;border-bottom:1px solid rgba(56,189,248,0.08);">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <span style="font-family:'Courier New',monospace;font-size:10px;font-weight:600;letter-spacing:3px;color:#38BDF8;text-transform:uppercase;">RODRIGO ALBUQUERQUE</span>
+                  </td>
+                  <td align="right">
+                    <span style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;color:#3D5068;text-transform:uppercase;">GUIDE DELIVERY</span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
+
+          <!-- Main content -->
           <tr>
-            <td style="padding:32px;">
-              <h1 style="margin:0 0 16px;font-size:24px;line-height:1.3;color:#111a2e;">Olá, ${firstName}! 👋</h1>
-              <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#2f3a52;">
-                Aqui está o seu ebook <strong>${title}</strong>, como prometido.
+            <td style="padding:40px;">
+
+              <!-- Greeting -->
+              <p style="margin:0 0 8px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:14px;color:#5A7089;line-height:1.4;">
+                Ol&#225;, {{name}}
               </p>
-              <p style="margin:0 0 28px;font-size:16px;line-height:1.6;color:#2f3a52;">
-                São 20 aplicações práticas de IA que você pode implementar no seu negócio já nessa semana — sem precisar ser técnico.
+
+              <!-- Title -->
+              <h1 style="margin:0 0 24px 0;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:700;color:#F0F6FF;line-height:1.2;text-transform:uppercase;letter-spacing:1px;">
+                Seu guia est&#225; pronto.
+              </h1>
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:0 0 24px 0;">
+                    <div style="height:1px;background:linear-gradient(to right, #38BDF8, rgba(56,189,248,0.08));"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Body text -->
+              <p style="margin:0 0 24px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:15px;color:#C8D6E5;line-height:1.7;">
+                Dentro desse material voc&#234; vai encontrar <strong style="color:#F0F6FF;">20 sistemas de IA prontos</strong> para sua equipe usar amanh&#227;. Cada um resolve um problema real do dia a dia &#8212; vendas, marketing, atendimento, gest&#227;o e financeiro.
               </p>
-              <div style="text-align:center;margin:0 0 20px;">
-                <a href="${link}" style="display:inline-block;background:#f59e0b;color:#111a2e;font-weight:700;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:16px;">
-                  Acessar o ebook →
+
+              <p style="margin:0 0 32px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:15px;color:#C8D6E5;line-height:1.7;">
+                N&#227;o &#233; teoria. &#201; copiar, colar e ver funcionar.
+              </p>
+
+              <!-- CTA Button -->
+              <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 12px auto;">
+                <tr>
+                  <td align="center" style="background-color:#38BDF8;border-radius:6px;">
+                    <a href="{{ebook_link}}" target="_blank" style="display:inline-block;padding:16px 48px;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:15px;font-weight:700;color:#060A12;text-decoration:none;text-transform:uppercase;letter-spacing:1px;">
+                      Acessar o guia
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Fallback link -->
+              <p style="margin:0 0 40px 0;text-align:center;">
+                <a href="{{ebook_link}}" target="_blank" style="font-family:'Courier New',monospace;font-size:11px;color:#5A7089;text-decoration:underline;">
+                  Bot&#227;o n&#227;o funcionou? Clique aqui.
                 </a>
-              </div>
-              <p style="margin:0 0 32px;font-size:13px;line-height:1.5;color:#6b7a90;text-align:center;">
-                Se o botão não funcionar, copie e cole este link no navegador:<br>
-                <a href="${link}" style="color:#2563eb;word-break:break-all;">${link}</a>
               </p>
-              <div style="border-top:1px solid #eef0f6;padding-top:24px;">
-                <p style="margin:0 0 12px;font-size:15px;line-height:1.5;color:#2f3a52;">
-                  <strong>Próximo passo:</strong> transforme o conhecimento em resultado.
-                </p>
-                <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#2f3a52;">
-                  Abri uma turma da <strong>Imersão em Claude</strong> por <strong>R$ 97</strong> (51% OFF).
-                  Te ensino a implementar essas skills na prática, no seu negócio, em 1 tarde.
-                </p>
-                <p style="margin:0;font-size:14px;">
-                  <a href="https://benitesalbuquerque.com.br/educacao/obrigado-imersao-claude" style="color:#2563eb;text-decoration:underline;">
-                    Ver detalhes da Imersão em Claude →
-                  </a>
-                </p>
-              </div>
+
+              <!-- Separator -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding:0 0 32px 0;">
+                    <div style="height:1px;background:rgba(56,189,248,0.08);"></div>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Secondary CTA block -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:rgba(220,38,38,0.06);border:1px solid rgba(220,38,38,0.12);border-radius:6px;">
+                <tr>
+                  <td style="padding:24px;">
+                    <p style="margin:0 0 4px 0;font-family:'Courier New',monospace;font-size:10px;font-weight:600;letter-spacing:3px;color:#DC2626;text-transform:uppercase;">
+                      PR&#211;XIMO PASSO
+                    </p>
+                    <p style="margin:0 0 12px 0;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:700;color:#F0F6FF;line-height:1.3;">
+                      Quer aprender a construir esses sistemas do zero?
+                    </p>
+                    <p style="margin:0 0 16px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:14px;color:#C8D6E5;line-height:1.6;">
+                      A Imers&#227;o em Claude te ensina o m&#233;todo por tr&#225;s dos 20 sistemas &#8212; em 2 horas voc&#234; sai construindo os seus pr&#243;prios. R$97.
+                    </p>
+                    <a href="https://benitesalbuquerque.com.br/educacao/obrigado-imersao-claude" target="_blank" style="font-family:'Courier New',monospace;font-size:12px;font-weight:700;color:#DC2626;text-decoration:none;text-transform:uppercase;letter-spacing:2px;">
+                      QUERO A IMERS&#195;O &#8594;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
             </td>
           </tr>
+
+          <!-- Footer -->
           <tr>
-            <td style="padding:20px 32px;background:#f9fafc;border-top:1px solid #eef0f6;font-size:12px;line-height:1.5;color:#6b7a90;">
-              Rodrigo Benites Albuquerque · BA Consultoria<br>
-              <a href="mailto:rodrigo@benitesalbuquerque.com.br" style="color:#6b7a90;">rodrigo@benitesalbuquerque.com.br</a>
-              &nbsp;·&nbsp;
-              <a href="mailto:rodrigo@benitesalbuquerque.com.br?subject=Descadastrar" style="color:#6b7a90;">Descadastrar</a>
+            <td style="padding:24px 40px;border-top:1px solid rgba(56,189,248,0.08);">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <p style="margin:0 0 4px 0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;font-size:13px;color:#5A7089;">
+                      Rodrigo Albuquerque
+                    </p>
+                    <p style="margin:0;font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;color:#3D5068;text-transform:uppercase;">
+                      IA + Neg&#243;cios
+                    </p>
+                  </td>
+                  <td align="right" valign="bottom">
+                    <a href="mailto:rodrigo@benitesalbuquerque.com.br?subject=Descadastrar" style="font-family:'Courier New',monospace;font-size:10px;color:#3D5068;text-decoration:underline;">
+                      descadastrar
+                    </a>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
+
         </table>
+        <!-- /Container -->
+
       </td>
     </tr>
   </table>
+  <!-- /Wrapper -->
+
 </body>
 </html>`;
+
+function renderEmail(name: string, ebook: { link: string }): string {
+  const firstName = escapeHtml(name.split(" ")[0] || "");
+  return EMAIL_TEMPLATE
+    .replace(/\{\{name\}\}/g, firstName)
+    .replace(/\{\{ebook_link\}\}/g, ebook.link);
 }
 
 serve(async (req) => {
