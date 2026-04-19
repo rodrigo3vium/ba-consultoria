@@ -65,6 +65,11 @@ const EducacaoSkillsNegocios = () => {
       const v = params.get(`utm_${k}`);
       if (v) captured[k] = v;
     });
+    ["fbclid", "gclid"].forEach((k) => {
+      const v = params.get(k);
+      if (v) captured[k] = v;
+    });
+    if (document.referrer) captured.referrer = document.referrer;
     if (Object.keys(captured).length) setUtm(captured);
 
     return () => {

@@ -155,14 +155,20 @@ serve(async (req) => {
             .eq("id", existingOpp.id);
           oppAction = "skipped_active";
         } else {
+          const oppRow: Record<string, unknown> = {
+            tenant_id: tenantId,
+            contact_id: contactId,
+            funnel_id: FUNNEL_PB_ID,
+            stage: "lead",
+          };
+          if (utm?.source)   oppRow.utm_source   = utm.source;
+          if (utm?.medium)   oppRow.utm_medium   = utm.medium;
+          if (utm?.campaign) oppRow.utm_campaign = utm.campaign;
+          if (utm?.content)  oppRow.utm_content  = utm.content;
+          if (utm?.term)     oppRow.utm_term     = utm.term;
           const { error: oppErr } = await admin
             .from("opportunities")
-            .insert({
-              tenant_id: tenantId,
-              contact_id: contactId,
-              funnel_id: FUNNEL_PB_ID,
-              stage: "lead",
-            });
+            .insert(oppRow);
           if (oppErr) console.error("opp insert error:", oppErr);
           oppAction = existingOpp ? "reactivated" : "created";
         }
@@ -182,23 +188,21 @@ serve(async (req) => {
           },
         });
 
-        if (metadata && typeof metadata === "object") {
-          const profile: Record<string, any> = {};
-          if (metadata.faturamento) profile.monthly_revenue = String(metadata.faturamento);
-          if (metadata.cargo) profile.occupation = String(metadata.cargo);
-          if (metadata.segmento) profile.segment = String(metadata.segmento);
-          if (Object.keys(profile).length > 0) {
-            const { error: profErr } = await admin
-              .from("lead_profiles")
-              .upsert(
-                { contact_id: contactId, ...profile },
-                { onConflict: "contact_id" }
-              );
-            if (profErr) console.error("lead_profiles upsert error:", profErr);
-          }
-        }
-
         console.log(`Bridge: opp ${oppAction} for ${emailLower} (${source})`);
+
+        // Normalize metadata into lead_facts via BA Hub
+        const baHubUrl = Deno.env.get("BA_HUB_URL") ?? "https://hub.benitesalbuquerque.com.br";
+        const baHubCronSecret = Deno.env.get("BA_HUB_CRON_SECRET");
+        if (baHubCronSecret) {
+          fetch(`${baHubUrl}/api/crm/bridge-fact`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${baHubCronSecret}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ contact_id: contactId }),
+          }).catch((err: unknown) => console.error("bridge-fact fetch error (non-fatal):", err));
+        }
       } catch (bridgeErr: any) {
         console.error("bridge error (non-fatal):", bridgeErr);
       }
