@@ -123,6 +123,87 @@ serve(async (req) => {
 
     console.log(`Contact ${existing ? "updated" : "created"}: ${contactId} (${email}) from ${source || "site"}`);
 
+    // Bridge: LPs de produto viram opportunity no funil PB
+    const OPP_ALLOWED_SOURCES = new Set([
+      "ebook-20-skills",
+      "ia-para-negocios",
+      "ia-do-zero",
+      "o-caminho",
+    ]);
+    const FUNNEL_PB_ID = "2ed6923e-5ad3-4b3b-9349-3495133812cf";
+    const ACTIVE_STAGES = new Set([
+      "lead", "comprou_front", "mql", "reuniao_agendada", "sal", "negociacao",
+    ]);
+
+    if (source && OPP_ALLOWED_SOURCES.has(source)) {
+      try {
+        const { data: existingOpp } = await admin
+          .from("opportunities")
+          .select("id, stage")
+          .eq("tenant_id", tenantId)
+          .eq("contact_id", contactId)
+          .eq("funnel_id", FUNNEL_PB_ID)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+
+        let oppAction: "created" | "reactivated" | "skipped_active";
+        if (existingOpp && ACTIVE_STAGES.has(existingOpp.stage)) {
+          await admin
+            .from("opportunities")
+            .update({ updated_at: new Date().toISOString() })
+            .eq("id", existingOpp.id);
+          oppAction = "skipped_active";
+        } else {
+          const { error: oppErr } = await admin
+            .from("opportunities")
+            .insert({
+              tenant_id: tenantId,
+              contact_id: contactId,
+              funnel_id: FUNNEL_PB_ID,
+              stage: "lead",
+            });
+          if (oppErr) console.error("opp insert error:", oppErr);
+          oppAction = existingOpp ? "reactivated" : "created";
+        }
+
+        await admin.from("lead_interactions").insert({
+          tenant_id: tenantId,
+          contact_id: contactId,
+          type: "form_submitted",
+          source: "site",
+          title: `Formulário submetido: ${source}`,
+          description: `Opportunity ${oppAction}`,
+          metadata: {
+            source,
+            opp_action: oppAction,
+            ...(utm ? { utm } : {}),
+            ...(metadata ? { form_metadata: metadata } : {}),
+          },
+        });
+
+        if (metadata && typeof metadata === "object") {
+          const profile: Record<string, any> = {};
+          if (metadata.faturamento) profile.monthly_revenue = String(metadata.faturamento);
+          if (metadata.cargo) profile.occupation = String(metadata.cargo);
+          if (metadata.segmento) profile.segment = String(metadata.segmento);
+          if (Object.keys(profile).length > 0) {
+            const { error: profErr } = await admin
+              .from("lead_profiles")
+              .upsert(
+                { contact_id: contactId, ...profile },
+                { onConflict: "contact_id" }
+              );
+            if (profErr) console.error("lead_profiles upsert error:", profErr);
+          }
+        }
+
+        console.log(`Bridge: opp ${oppAction} for ${emailLower} (${source})`);
+      } catch (bridgeErr: any) {
+        console.error("bridge error (non-fatal):", bridgeErr);
+      }
+    }
+
     return new Response(JSON.stringify({ ok: true, contact_id: contactId }), { headers: baseHeaders });
 
   } catch (e: any) {
