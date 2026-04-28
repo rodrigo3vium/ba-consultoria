@@ -192,6 +192,14 @@ const Page = () => {
 - LGPD-compliant (consent-based)
 - Tracking é anônimo — liga anonymous_id a contato no BA Hub via `submit-contact`, não via `identify-lead`
 
+### UTM Persistence
+
+`getPersistedUtm()` exportado de `src/lib/tracking.ts` — lê UTMs da URL atual,
+persiste em `sessionStorage` (last-touch, sobrevive a navegações internas) e faz
+fallback pro `document.referrer` como `source=<domínio>|medium=Referencia` se não
+houver UTM. **Usar sempre esta função** — não ler `window.location.search` direto
+em componentes.
+
 ### Mapa do Site
 
 `src/lib/siteMap.ts` é a **fonte única de verdade** de todas as rotas públicas. Usado pelo `/admin` (dashboard) e `/admin/landing-pages`. Ao adicionar uma rota nova em `App.tsx`, adicionar também em `SITE_ROUTES`.
@@ -200,6 +208,17 @@ const Page = () => {
 
 - WhatsApp como canal principal: `https://wa.me/5511999718595`
 - Sempre usar `tracker.track("cta_click", { product, location })` antes do redirect
+
+### Checkout Hotmart
+
+`buildHotmartCheckoutUrl({ baseUrl, email?, contactId? })` em `src/lib/hotmartUtils.ts`
+— monta URL com todos os `utm_*` e o parâmetro `sck` no formato
+`cid=<uuid>|source=X|medium=Y|campaign=Z|content=W|term=V` (pipe literal via `decodeURI`).
+
+- Sempre passar `contactId` quando disponível (retornado pelo `submit-contact`) pra
+  fechar o loop de atribuição no webhook de venda do BA Hub
+- `cid` ausente nos click diretos sem form — `sck` ainda leva UTMs
+- O BA Hub precisa parsear o `sck` no handler de webhook da Hotmart (tarefa separada)
 
 ## Convenções de Rotas
 
