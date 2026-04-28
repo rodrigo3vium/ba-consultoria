@@ -40,7 +40,7 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
       const validatedData = leadSchema.parse(formData);
       setLoading(true);
 
-      const { error } = await supabase.functions.invoke('submit-contact', {
+      const { data, error } = await supabase.functions.invoke('submit-contact', {
         body: {
           name: validatedData.nome,
           email: validatedData.email,
@@ -51,6 +51,7 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
       });
 
       if (error) throw error;
+      const contactId = (data as { contact_id?: string } | null)?.contact_id;
 
       await tracker.identify(
         validatedData.email,
@@ -71,10 +72,11 @@ export const LeadFormIADoZero = ({ open, onOpenChange }: LeadFormIADoZeroProps) 
 
       onOpenChange(false);
       
-      // Construir URL de checkout com UTMs e email do lead
+      // Construir URL de checkout com UTMs, sck e email do lead
       const checkoutUrl = buildHotmartCheckoutUrl({
         baseUrl: 'https://pay.hotmart.com/L94763179U?checkoutMode=10',
-        email: validatedData.email
+        email: validatedData.email,
+        contactId,
       });
       
       // Redirecionar para página de pagamento

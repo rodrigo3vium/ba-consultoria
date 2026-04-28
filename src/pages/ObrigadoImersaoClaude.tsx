@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { tracker } from "@/lib/tracking";
 import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 
@@ -727,6 +728,8 @@ const NOTION_EBOOK =
 
 const ObrigadoImersaoClaude = () => {
   const [seconds, setSeconds] = useState(14 * 60 + 59);
+  const location = useLocation();
+  const contactId = (location.state as { contactId?: string } | null)?.contactId;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -762,9 +765,9 @@ const ObrigadoImersaoClaude = () => {
     return `${m < 10 ? "0" : ""}${m}:${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  const handleCta = (location: string) => {
-    tracker.track("cta_click", { product: "imersao-claude", cta_location: location, page: "/educacao/obrigado-imersao-claude" });
-    const checkoutUrl = buildHotmartCheckoutUrl({ baseUrl: HOTMART_BASE });
+  const handleCta = (ctaLocation: string) => {
+    tracker.track("cta_click", { product: "imersao-claude", cta_location: ctaLocation, page: "/educacao/obrigado-imersao-claude" });
+    const checkoutUrl = buildHotmartCheckoutUrl({ baseUrl: HOTMART_BASE, contactId });
     window.open(checkoutUrl, "_blank");
   };
 

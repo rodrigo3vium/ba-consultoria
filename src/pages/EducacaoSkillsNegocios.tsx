@@ -133,7 +133,9 @@ const EducacaoSkillsNegocios = () => {
       ]);
 
       if (contactRes.status === "rejected") throw contactRes.reason;
-      if ((contactRes.value as { error?: unknown })?.error) throw (contactRes.value as { error: unknown }).error;
+      const contactValue = contactRes.value as { error?: unknown; data?: { contact_id?: string } | null };
+      if (contactValue?.error) throw contactValue.error;
+      const contactId = contactValue?.data?.contact_id;
 
       if (emailRes.status === "rejected" || (emailRes.value as { error?: unknown })?.error) {
         console.error("Ebook email delivery failed:", emailRes);
@@ -151,7 +153,7 @@ const EducacaoSkillsNegocios = () => {
       });
 
       setModalOpen(false);
-      navigate("/educacao/obrigado-imersao-claude");
+      navigate("/educacao/obrigado-imersao-claude", { state: { contactId } });
     } catch (err: unknown) {
       const msg = (err as { message?: string })?.message;
       console.error("Lead form error:", err);

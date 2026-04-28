@@ -8,6 +8,53 @@ async function sha256(message: string): Promise<string> {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+export interface PersistedUtm {
+  source: string | null;
+  medium: string | null;
+  campaign: string | null;
+  content: string | null;
+  term: string | null;
+}
+
+const UTM_KEYS = ['source', 'medium', 'campaign', 'content', 'term'] as const;
+
+export function getPersistedUtm(): PersistedUtm {
+  if (typeof window === 'undefined') {
+    return { source: null, medium: null, campaign: null, content: null, term: null };
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const result: Record<string, string | null> = {};
+
+  for (const k of UTM_KEYS) {
+    const fromUrl = params.get(`utm_${k}`);
+    if (fromUrl) {
+      sessionStorage.setItem(`_utm_${k}`, fromUrl);
+      result[k] = fromUrl;
+    } else {
+      result[k] = sessionStorage.getItem(`_utm_${k}`);
+    }
+  }
+
+  // Fallback Pablo Cabral: se NADA persistido, usa document.referrer
+  const hasAny = UTM_KEYS.some(k => result[k]);
+  if (!hasAny && document.referrer) {
+    try {
+      const domain = new URL(document.referrer).hostname;
+      if (domain && domain !== window.location.hostname) {
+        result.source = domain;
+        result.medium = 'Referencia';
+        sessionStorage.setItem('_utm_source', domain);
+        sessionStorage.setItem('_utm_medium', 'Referencia');
+      }
+    } catch {
+      // referrer inválido, ignora
+    }
+  }
+
+  return result as PersistedUtm;
+}
+
 class LeadTracker {
   private anonymousId: string;
   private sessionId: string;
@@ -30,6 +77,9 @@ class LeadTracker {
 
     // Verificar consentimento
     this.checkConsent();
+
+    // Persistir UTMs do primeiro pageview (sessionStorage + first-touch)
+    getPersistedUtm();
 
     // Iniciar heartbeat
     this.startHeartbeat();
