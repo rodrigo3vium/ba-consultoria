@@ -4,11 +4,13 @@ import { tracker } from "@/lib/tracking";
 import { supabase } from "@/integrations/supabase/client";
 
 const FATURAMENTO_OPTIONS = [
-  "Até R$ 10 mil/mês",
-  "Entre R$ 10 e R$ 30 mil",
-  "Entre R$ 30 e R$ 100 mil",
+  "Abaixo de R$ 30 mil",
+  "Entre R$ 30 e R$ 50 mil",
+  "Entre R$ 50 e R$ 100 mil",
   "Entre R$ 100 e R$ 300 mil",
-  "Acima de R$ 300 mil",
+  "Entre R$ 300 e R$ 500 mil",
+  "Entre R$ 500 mil e R$ 1 milhão",
+  "Acima de R$ 1 milhão",
 ];
 const CARGO_OPTIONS = [
   "CEO / Fundador",
