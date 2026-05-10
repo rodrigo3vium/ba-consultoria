@@ -1021,6 +1021,32 @@ const ImersaoClaudeV2 = () => {
             </p>
           </div>
 
+          {/* Bônus 2 — Grupo de networking */}
+          <div
+            className="ic-bonus-box"
+            style={{
+              background: "rgba(0,168,232,0.04)",
+              borderColor: "rgba(0,168,232,0.25)",
+            }}
+          >
+            <span className="ic-bonus-tag" style={{ color: "var(--ic-arc-reactor)" }}>
+              Bônus exclusivo
+            </span>
+            <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
+              <strong>Grupo exclusivo de networking</strong> — acesso vitalício à comunidade fechada dos alunos da Imersão. Troca diária com gente que está implementando IA de verdade nos próprios negócios, oportunidades de parceria e respostas pra travas no caminho.
+            </p>
+          </div>
+
+          {/* Bônus 3 — Biblioteca de prompts */}
+          <div className="ic-bonus-box">
+            <span className="ic-bonus-tag">Bônus incluso</span>
+            <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
+              <strong>Biblioteca de prompts premium</strong> — coleção curada dos prompts que eu uso no dia a dia com Claude para vendas, copy, análise de dados, planejamento e operação.{" "}
+              <span style={{ color: "var(--ic-text-muted)", textDecoration: "line-through" }}>De R$ 97</span>{" "}
+              <strong style={{ color: "var(--ic-stark-gold)" }}>por R$ 0</strong> pra quem garantir vaga agora.
+            </p>
+          </div>
+
           <div className="ic-guarantee">
             <div className="ic-guarantee__icon">🔒</div>
             <div className="ic-guarantee__title">Garantia incondicional de 7 dias</div>
