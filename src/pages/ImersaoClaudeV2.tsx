@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { tracker } from "@/lib/tracking";
 import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
+import bancoPromptsImage from "@/assets/banco-prompts-laptop.png";
+import bancoPromptsMobileImage from "@/assets/banco-prompts-mobile.png";
 
 const ImersaoClaudeV2 = () => {
   const [activeTab, setActiveTab] = useState("revolucoes");
@@ -215,7 +217,7 @@ const ImersaoClaudeV2 = () => {
   ];
 
   const faqItems = [
-    { q: "Quanto custa?", a: "A imersão completa com as 3 aulas custa R$97 — pagamento único ou parcelado em até 12× no cartão. E você tem garantia incondicional de 7 dias: se não gostar, peça o reembolso integral." },
+    { q: "Quanto custa?", a: "A imersão completa com as 3 aulas custa R$47 — pagamento único ou parcelado em até 6× no cartão. E você tem garantia incondicional de 7 dias: se não gostar, peça o reembolso integral." },
     { q: "Preciso saber programar?", a: "De jeito nenhum. O Claude entende comandos em português. Você conversa com ele, diz o que precisa, e ele executa. A imersão inteira foi desenhada para quem nunca escreveu uma linha de código na vida." },
     { q: "É só conteúdo motivacional ou tem prática?", a: "Muita prática. Na Aula 3, eu abro o Claude e construo um sistema completo na sua frente. Você sai sabendo replicar. Sem enrolação, sem teoria vazia." },
     { q: "Isso é só pra quem trabalha com tecnologia?", a: "Não. A imersão foi pensada para empreendedores, profissionais liberais, gestores e qualquer pessoa que opera um negócio." },
@@ -257,6 +259,23 @@ const ImersaoClaudeV2 = () => {
         .ic-page h3 { font-size: clamp(1.1rem,3vw,1.4rem); }
         .ic-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
         .ic-section { padding: 80px 0; position: relative; }
+        /* LIGHT VARIANT — redefines color tokens in scope so inline var(...) refs cascade to light palette automatically. Accents (cyan/gold) keep popping. */
+        .ic-section--light {
+          background: #EFEFF5;
+          --ic-text-primary: #0A0A12;
+          --ic-text-secondary: #3A3A48;
+          --ic-text-muted: #6A6A78;
+          --ic-bg-card: #FFFFFF;
+          --ic-bg-card-hover: #F7F7FB;
+          --ic-border-subtle: #D8D8E0;
+          --ic-border-accent: rgba(0,168,232,0.45);
+        }
+        .ic-section--light h1,
+        .ic-section--light h2,
+        .ic-section--light h3,
+        .ic-section--light h4,
+        .ic-section--light strong { color: #0A0A12; }
+        .ic-section--light .ic-author__role { color: #B8860B; }
         .ic-mono { font-family: 'IBM Plex Mono', monospace; }
         .ic-text-arc { color: var(--ic-arc-reactor); }
         .ic-text-gold { color: var(--ic-stark-gold); }
@@ -565,6 +584,12 @@ const ImersaoClaudeV2 = () => {
           font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
           color: var(--ic-stark-gold); margin-bottom: 8px; display: block;
         }
+        /* BÔNUS · imagem do banco de prompts */
+        .ic-bonus-prompts-desktop {
+          width: 100%; max-width: 900px; height: auto;
+          margin: 0 auto; display: block;
+        }
+        .ic-bonus-prompts-mobile { display: none; }
         /* FAQ */
         .ic-faq-item { border-bottom: 1px solid var(--ic-border-subtle); padding: 18px 0; }
         .ic-faq-item summary {
@@ -614,6 +639,11 @@ const ImersaoClaudeV2 = () => {
           .ic-nowbar { flex-wrap: wrap; }
           .ic-nowbar-pct { font-size: 16px !important; }
           .ic-chart-tab { font-size: 0.7rem !important; padding: 6px 12px !important; }
+          .ic-bonus-prompts-desktop { display: none; }
+          .ic-bonus-prompts-mobile {
+            display: block; width: 150%; max-width: none;
+            transform: translateX(-0.75rem); height: auto;
+          }
         }
       `}</style>
 
@@ -636,7 +666,7 @@ const ImersaoClaudeV2 = () => {
           <div className="ic-hero__form-wrap">
             <button className="ic-cta-btn" onClick={() => handleCTA("hero")}>
               QUERO DOMINAR O CLAUDE
-              <span className="ic-cta-sub">3 aulas · Acesso imediato · R$97</span>
+              <span className="ic-cta-sub">3 aulas · Acesso imediato · R$47</span>
             </button>
           </div>
 
@@ -895,7 +925,7 @@ const ImersaoClaudeV2 = () => {
           <div style={{ marginTop: 28 }}>
             <button className="ic-cta-btn ic-cta-btn--arc" onClick={() => handleCTA("mid")}>
               QUERO PARTICIPAR DA IMERSÃO
-              <span className="ic-cta-sub">3 aulas por apenas R$97</span>
+              <span className="ic-cta-sub">3 aulas por apenas R$47</span>
             </button>
           </div>
         </div>
@@ -948,7 +978,7 @@ const ImersaoClaudeV2 = () => {
       <div className="ic-divider" />
 
       {/* ══════ QUEM É O RODRIGO ══════ */}
-      <section className="ic-section">
+      <section className="ic-section ic-section--light">
         <div className="ic-container">
           <h3 style={{ color: "var(--ic-text-muted)", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: 2, fontFamily: "'IBM Plex Mono',monospace", marginBottom: 8, textAlign: "center" }}>Quem vai conduzir a imersão</h3>
           <h2 style={{ textAlign: "center" }}>Nós estamos juntos<br />nesse barco.</h2>
@@ -986,6 +1016,139 @@ const ImersaoClaudeV2 = () => {
         </div>
       </section>
 
+      <div className="ic-divider" />
+
+      {/* ══════ BÔNUS · NETWORKING ══════ */}
+      <section className="ic-section ic-section--light">
+        <div className="ic-container" style={{ textAlign: "center", maxWidth: 900 }}>
+          <span
+            className="ic-bonus-tag"
+            style={{
+              color: "var(--ic-arc-reactor)",
+              display: "inline-block",
+              marginBottom: 16,
+            }}
+          >
+            Bônus exclusivo · só pra alunos
+          </span>
+          <h2 style={{ textAlign: "center" }}>
+            Entre no <span className="ic-highlight-arc">Grupo Exclusivo de Networking</span> dos alunos da Imersão
+          </h2>
+          <p
+            style={{
+              color: "var(--ic-text-secondary)",
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              maxWidth: 720,
+              margin: "20px auto 0",
+            }}
+          >
+            Acesso vitalício à comunidade fechada de quem está implementando IA de verdade nos próprios negócios. Troca diária com empresários e profissionais à frente da curva, oportunidades de parceria e respostas pra travas no caminho — sem ruído de grupos públicos.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: 16,
+              marginTop: 40,
+              maxWidth: 780,
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            {[
+              { tag: "01", title: "Implementações reais", desc: "Cases dos próprios alunos rodando em produção, com prints e prompts." },
+              { tag: "02", title: "Parcerias B2B", desc: "Empresários se conectando para co-criar produtos e indicar clientes." },
+              { tag: "03", title: "Suporte de pares", desc: "Travou numa automação? Alguém já passou por isso e responde no grupo." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "var(--ic-bg-card)",
+                  border: "1px solid rgba(0,168,232,0.18)",
+                  borderRadius: 8,
+                  padding: "20px 18px",
+                  textAlign: "left",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontSize: "0.7rem",
+                    letterSpacing: 2,
+                    color: "var(--ic-arc-reactor)",
+                    marginBottom: 8,
+                  }}
+                >
+                  {item.tag}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Chakra Petch', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    color: "var(--ic-text-primary)",
+                    marginBottom: 6,
+                  }}
+                >
+                  {item.title}
+                </div>
+                <div style={{ color: "var(--ic-text-secondary)", fontSize: "0.85rem", lineHeight: 1.5 }}>
+                  {item.desc}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="ic-divider" />
+
+      {/* ══════ BÔNUS · BIBLIOTECA DE PROMPTS ══════ */}
+      <section className="ic-section ic-section--light">
+        <div className="ic-container" style={{ textAlign: "center", maxWidth: 1100 }}>
+          <span
+            className="ic-bonus-tag"
+            style={{
+              display: "inline-block",
+              marginBottom: 16,
+            }}
+          >
+            Bônus incluso · de R$ 97 por R$ 0
+          </span>
+          <h2 style={{ textAlign: "center" }}>
+            Tenha acesso ao meu <span className="ic-highlight-gold">Banco de Prompts Secreto</span>
+          </h2>
+          <p
+            style={{
+              color: "var(--ic-text-secondary)",
+              fontSize: "1.05rem",
+              lineHeight: 1.7,
+              maxWidth: 720,
+              margin: "20px auto 0",
+            }}
+          >
+            Mais de 50 prompts validados, prontos pra copiar e colar. São os prompts que eu uso no dia a dia com Claude — vendas, copy, análise, planejamento, operação. Atalho de meses de teste.
+          </p>
+
+          <div style={{ marginTop: 40 }}>
+            <img
+              loading="lazy"
+              src={bancoPromptsImage}
+              alt="Banco de Prompts Secreto — mais de 50 prompts validados"
+              className="ic-bonus-prompts-desktop"
+            />
+            <img
+              loading="lazy"
+              src={bancoPromptsMobileImage}
+              alt="Banco de Prompts Secreto — mais de 50 prompts validados"
+              className="ic-bonus-prompts-mobile"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ══════ OFERTA ══════ */}
       <section className="ic-section" id="oferta" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,168,232,0.05) 0%, transparent 70%)" }}>
         <div className="ic-container" style={{ textAlign: "center" }}>
@@ -1001,9 +1164,9 @@ const ImersaoClaudeV2 = () => {
           <div className="ic-price-box">
             <div className="ic-price-box__tag">Vagas limitadas</div>
             <div className="ic-price-box__label">Imersão em Claude — 3 aulas ao vivo</div>
-            <div className="ic-price-box__old">De R$ 297,00</div>
-            <div className="ic-price-box__amount"><span className="ic-highlight-arc">R$ 97</span></div>
-            <div className="ic-price-box__installment">ou 12× de R$ 9,70 no cartão</div>
+            <div className="ic-price-box__old">De R$ 197,00</div>
+            <div className="ic-price-box__amount"><span className="ic-highlight-arc">R$ 47</span></div>
+            <div className="ic-price-box__installment">ou 6× de R$ 8,82 no cartão</div>
             <button className="ic-cta-btn" onClick={() => handleCTA("pricing")} style={{ width: "100%", maxWidth: 380 }}>
               GARANTIR MINHA VAGA AGORA
               <span className="ic-cta-sub">Acesso imediato após a confirmação do pagamento</span>
@@ -1018,32 +1181,6 @@ const ImersaoClaudeV2 = () => {
             <span className="ic-bonus-tag">Bônus incluso</span>
             <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
               <strong>Framework de diagnóstico AVEE</strong> — descubra em 15 minutos quais são os 3 processos do seu negócio onde IA gera mais retorno.
-            </p>
-          </div>
-
-          {/* Bônus 2 — Grupo de networking */}
-          <div
-            className="ic-bonus-box"
-            style={{
-              background: "rgba(0,168,232,0.04)",
-              borderColor: "rgba(0,168,232,0.25)",
-            }}
-          >
-            <span className="ic-bonus-tag" style={{ color: "var(--ic-arc-reactor)" }}>
-              Bônus exclusivo
-            </span>
-            <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
-              <strong>Grupo exclusivo de networking</strong> — acesso vitalício à comunidade fechada dos alunos da Imersão. Troca diária com gente que está implementando IA de verdade nos próprios negócios, oportunidades de parceria e respostas pra travas no caminho.
-            </p>
-          </div>
-
-          {/* Bônus 3 — Biblioteca de prompts */}
-          <div className="ic-bonus-box">
-            <span className="ic-bonus-tag">Bônus incluso</span>
-            <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
-              <strong>Biblioteca de prompts premium</strong> — coleção curada dos prompts que eu uso no dia a dia com Claude para vendas, copy, análise de dados, planejamento e operação.{" "}
-              <span style={{ color: "var(--ic-text-muted)", textDecoration: "line-through" }}>De R$ 97</span>{" "}
-              <strong style={{ color: "var(--ic-stark-gold)" }}>por R$ 0</strong> pra quem garantir vaga agora.
             </p>
           </div>
 
