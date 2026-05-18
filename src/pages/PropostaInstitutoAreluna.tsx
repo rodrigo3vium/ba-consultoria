@@ -195,12 +195,12 @@ const PropostaInstitutoAreluna = () => {
 
         .ar-client-logo {
           display: inline-flex; align-items: center; justify-content: center;
-          background: rgba(255,255,255,0.95); border-radius: 12px;
-          padding: 16px 28px; margin-bottom: 36px;
+          background: rgba(255,255,255,0.95); border-radius: 16px;
+          padding: 20px 32px; margin-bottom: 36px;
           animation: arFadeDown 0.8s 0.1s ease both;
           box-shadow: 0 4px 24px rgba(0,0,0,0.4);
         }
-        .ar-client-logo img { height: 56px; width: auto; }
+        .ar-client-logo img { height: 72px; width: auto; }
 
         .ar-hero-title {
           font-family: 'Playfair Display', serif;
@@ -393,22 +393,6 @@ const PropostaInstitutoAreluna = () => {
             Proposta Comercial
           </div>
 
-          <div
-            className="ar-client-logo"
-            ref={(el) => {
-              if (el) {
-                const img = el.querySelector("img");
-                if (img) img.onerror = () => { el.style.display = "none"; };
-              }
-            }}
-          >
-            <img
-              src="/instituto-areluna-logo.png"
-              alt="Instituto Areluna"
-              style={{ height: 56, width: "auto" }}
-            />
-          </div>
-
           <h1 className="ar-hero-title">
             Proposta comercial
             <br />
@@ -485,31 +469,6 @@ const PropostaInstitutoAreluna = () => {
                   <p className="ar-mentor-bio">{m.bio}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="ar-divider" />
-
-        {/* ========== CONTEXTO ========== */}
-        <section style={{ padding: "100px 24px" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">Contexto</p>
-            <h2 className="ar-section-title">Onde a Areluna <em>está hoje</em></h2>
-
-            <div className="ar-context-card">
-              <p>
-                A operação tem método comercial definido, equipe estruturada e volume de conversa suficiente para gerar leitura. O que não há hoje é <strong>visibilidade do que acontece de fato</strong> nas duas etapas que decidem receita: o atendimento da pré-venda e a reunião de fechamento.
-              </p>
-              <p>
-                A leitura dessas etapas depende de relato do próprio vendedor. Isso significa que a gestão comercial toma decisão com base em versão, não em dado de execução.
-              </p>
-              <p>
-                Como consequência prática: lead qualificado é perdido por falha não identificada, vendedor com performance abaixo do esperado fica sem correção precisa, e o método comercial perde aderência ao longo do tempo sem que isso seja percebido até o resultado mensal aparecer.
-              </p>
-              <p>
-                <span className="ar-context-highlight">Atlas Insight foi desenhado especificamente para essa lacuna.</span>
-              </p>
             </div>
           </div>
         </section>
