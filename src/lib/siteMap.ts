@@ -31,6 +31,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/educacao/a-revolucao-v2', label: 'A Revolução v2', category: 'educacao', status: 'ativa', isLandingPage: true },
   { path: '/educacao/imersao-claude', label: 'Imersão Claude', category: 'educacao', status: 'ativa', isLandingPage: true },
   { path: '/educacao/imersao-claude-v2', label: 'Imersão Claude v2', category: 'educacao', status: 'ativa', isLandingPage: true },
+  { path: '/educacao/imersao-claude-v3', label: 'Imersão Claude v3', category: 'educacao', status: 'ativa', isLandingPage: true },
   { path: '/educacao/obrigado-imersao-claude', label: 'Obrigado Imersão Claude', category: 'educacao', status: 'ativa' },
   { path: '/educacao/20-skill-negocios', label: '20 Skills de IA para Negócios', category: 'educacao', status: 'ativa', isLandingPage: true },
 
