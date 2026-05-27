@@ -1,5 +1,13 @@
 import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
+import img01 from "@/assets/agentic-os/aos-01-crm.jpg";
+import img02 from "@/assets/agentic-os/aos-02-whatsapp.jpg";
+import img03 from "@/assets/agentic-os/aos-03-call.jpg";
+import img04 from "@/assets/agentic-os/aos-04-relatorio.jpg";
+import img05 from "@/assets/agentic-os/aos-05-trafego.jpg";
+import iconFinanceiro from "@/assets/agentic-os/icon-financeiro.jpg";
+import iconTarefas from "@/assets/agentic-os/icon-tarefas.jpg";
+import iconConteudo from "@/assets/agentic-os/icon-conteudo.jpg";
 
 const AgenticOS = () => {
   useEffect(() => {
@@ -105,9 +113,7 @@ const AgenticOS = () => {
 /* HEADER */
 .aos-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 18px 32px;
   background: rgba(5, 9, 11, 0.85);
@@ -142,8 +148,7 @@ const AgenticOS = () => {
 }
 .aos-live-dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--aos-accent-cyan);
   box-shadow: 0 0 8px var(--aos-accent-cyan-glow);
@@ -164,14 +169,11 @@ const AgenticOS = () => {
 }
 .aos-compass {
   position: absolute;
-  right: -120px;
-  top: 50%;
+  right: -120px; top: 50%;
   transform: translateY(-50%);
-  width: 580px;
-  height: 580px;
+  width: 580px; height: 580px;
   pointer-events: none;
-  opacity: 0.18;
-  z-index: 1;
+  opacity: 0.18; z-index: 1;
 }
 .aos-compass svg { width: 100%; height: 100%; }
 .aos-compass-rotate {
@@ -194,8 +196,7 @@ const AgenticOS = () => {
 }
 .aos-briefing-coords::before {
   content: '';
-  width: 32px;
-  height: 1px;
+  width: 32px; height: 1px;
   background: var(--aos-accent-cyan);
   display: inline-block;
 }
@@ -224,8 +225,8 @@ const AgenticOS = () => {
   letter-spacing: 0.005em;
   margin-bottom: 48px;
 }
-.aos-h1 .aos-accent { color: var(--aos-accent-cyan); }
-.aos-h1 .aos-red { color: var(--aos-accent-red); }
+.aos-accent { color: var(--aos-accent-cyan); }
+.aos-red { color: var(--aos-accent-red); }
 
 .aos-sub-headline {
   font-family: var(--aos-font-body);
@@ -267,10 +268,8 @@ const AgenticOS = () => {
 .aos-benefit-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 1px;
+  top: 0; left: 0;
+  width: 24px; height: 1px;
   background: var(--aos-accent-cyan);
 }
 .aos-benefit-number {
@@ -334,19 +333,15 @@ const AgenticOS = () => {
 .aos-cta-transition::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: calc(50% - 40px);
-  width: 80px;
-  height: 1px;
+  top: -1px; left: calc(50% - 40px);
+  width: 80px; height: 1px;
   background: var(--aos-accent-cyan);
 }
 .aos-cta-transition::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  left: calc(50% - 40px);
-  width: 80px;
-  height: 1px;
+  bottom: -1px; left: calc(50% - 40px);
+  width: 80px; height: 1px;
   background: var(--aos-accent-cyan);
 }
 .aos-cta-arrow {
@@ -388,8 +383,7 @@ const AgenticOS = () => {
 }
 .aos-section-label::before {
   content: '';
-  width: 28px;
-  height: 1px;
+  width: 28px; height: 1px;
   background: var(--aos-accent-cyan);
   display: inline-block;
 }
@@ -404,7 +398,6 @@ const AgenticOS = () => {
   letter-spacing: 0.01em;
   margin-bottom: 36px;
 }
-.aos-h2 .aos-accent { color: var(--aos-accent-cyan); }
 
 .aos-section-intro {
   font-size: 17px;
@@ -413,11 +406,7 @@ const AgenticOS = () => {
   margin-bottom: 96px;
   line-height: 1.7;
 }
-.aos-section-intro strong, .aos-section-intro em {
-  font-style: normal;
-  color: var(--aos-text-primary);
-  font-weight: 500;
-}
+.aos-section-intro strong { font-style: normal; color: var(--aos-text-primary); font-weight: 500; }
 
 /* MODULE COMERCIAL */
 .aos-module-comercial {
@@ -430,10 +419,8 @@ const AgenticOS = () => {
 .aos-module-comercial::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 24px;
-  height: 24px;
+  top: -1px; left: -1px;
+  width: 24px; height: 24px;
   border-top: 2px solid var(--aos-accent-cyan);
   border-left: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -441,10 +428,8 @@ const AgenticOS = () => {
 .aos-module-comercial::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 24px;
-  height: 24px;
+  bottom: -1px; right: -1px;
+  width: 24px; height: 24px;
   border-bottom: 2px solid var(--aos-accent-cyan);
   border-right: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -486,7 +471,6 @@ const AgenticOS = () => {
 }
 .aos-module-item:nth-child(even) .aos-item-visual { order: 2; }
 .aos-module-item:nth-child(even) .aos-item-content { order: 1; }
-
 .aos-item-content { padding: 8px 0; }
 
 .aos-item-number {
@@ -527,10 +511,8 @@ const AgenticOS = () => {
 .aos-item-visual::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 16px;
-  height: 16px;
+  top: -1px; left: -1px;
+  width: 16px; height: 16px;
   border-top: 1px solid var(--aos-accent-cyan);
   border-left: 1px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -538,18 +520,15 @@ const AgenticOS = () => {
 .aos-item-visual::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 16px;
-  height: 16px;
+  bottom: -1px; right: -1px;
+  width: 16px; height: 16px;
   border-bottom: 1px solid var(--aos-accent-cyan);
   border-right: 1px solid var(--aos-accent-cyan);
   pointer-events: none;
 }
 .aos-visual-label {
   position: absolute;
-  top: -22px;
-  left: 0;
+  top: -22px; left: 0;
   font-family: var(--aos-font-mono);
   font-size: 9px;
   color: var(--aos-text-muted);
@@ -558,53 +537,17 @@ const AgenticOS = () => {
 }
 .aos-visual-coord {
   position: absolute;
-  top: -22px;
-  right: 0;
+  top: -22px; right: 0;
   font-family: var(--aos-font-mono);
   font-size: 9px;
   color: var(--aos-accent-cyan);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.aos-visual-inner {
+.aos-item-visual img {
   width: 100%;
-  aspect-ratio: 16/10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(32,221,235,0.03) 0%, transparent 100%);
-  position: relative;
-  overflow: hidden;
-}
-.aos-visual-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-.aos-visual-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 24px;
-}
-.aos-visual-icon {
-  font-family: var(--aos-font-display);
-  font-size: 48px;
-  color: var(--aos-accent-cyan);
-  opacity: 0.4;
-  line-height: 1;
-  margin-bottom: 12px;
-  text-shadow: 0 0 24px var(--aos-accent-cyan-glow);
-}
-.aos-visual-tag {
-  font-family: var(--aos-font-mono);
-  font-size: 9px;
-  color: var(--aos-text-muted);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  height: auto;
+  display: block;
 }
 
 /* IMPACT BREAK */
@@ -616,6 +559,17 @@ const AgenticOS = () => {
   border-top: 1px solid var(--aos-border-active);
   border-bottom: 1px solid var(--aos-border-active);
 }
+.aos-impact-break::before {
+  content: '⟶';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--aos-bg-deep);
+  padding: 0 16px;
+  color: var(--aos-accent-cyan);
+  font-family: var(--aos-font-mono);
+  font-size: 18px;
+}
 .aos-impact-break-text {
   font-family: var(--aos-font-display);
   font-size: clamp(36px, 5.5vw, 84px);
@@ -625,8 +579,11 @@ const AgenticOS = () => {
   line-height: 0.95;
   letter-spacing: 0.01em;
 }
-.aos-impact-break-text strong { color: var(--aos-accent-cyan); font-weight: 400; text-shadow: 0 0 32px var(--aos-accent-cyan-glow); }
-.aos-impact-break-text .aos-red { color: var(--aos-accent-red); }
+.aos-impact-break-text strong {
+  color: var(--aos-accent-cyan);
+  font-weight: 400;
+  text-shadow: 0 0 32px var(--aos-accent-cyan-glow);
+}
 
 /* OTHER MODULES */
 .aos-other-modules-intro {
@@ -654,10 +611,8 @@ const AgenticOS = () => {
 .aos-module-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 1px;
+  top: 0; left: 0;
+  width: 32px; height: 1px;
   background: var(--aos-accent-cyan);
 }
 .aos-module-card:hover { border-color: var(--aos-border-active); }
@@ -672,14 +627,12 @@ const AgenticOS = () => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: relative;
 }
-.aos-module-icon-inner {
-  font-family: var(--aos-font-display);
-  font-size: 72px;
-  color: var(--aos-accent-cyan);
-  opacity: 0.25;
-  text-shadow: 0 0 32px var(--aos-accent-cyan-glow);
+.aos-module-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .aos-module-card-tag {
   font-family: var(--aos-font-mono);
@@ -717,11 +670,9 @@ const AgenticOS = () => {
 .aos-comparison-section::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: 50%;
+  top: -1px; left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 2px;
+  width: 120px; height: 2px;
   background: var(--aos-accent-cyan);
   box-shadow: 0 0 16px var(--aos-accent-cyan-glow);
 }
@@ -736,7 +687,6 @@ const AgenticOS = () => {
   margin-bottom: 32px;
   letter-spacing: 0.01em;
 }
-.aos-h3-display .aos-accent { color: var(--aos-accent-cyan); }
 .aos-comparison-intro p {
   font-size: 16px;
   color: var(--aos-text-secondary);
@@ -754,10 +704,8 @@ const AgenticOS = () => {
 .aos-table-wrapper::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 20px;
-  height: 20px;
+  top: -1px; left: -1px;
+  width: 20px; height: 20px;
   border-top: 2px solid var(--aos-accent-cyan);
   border-left: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -765,10 +713,8 @@ const AgenticOS = () => {
 .aos-table-wrapper::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 20px;
-  height: 20px;
+  bottom: -1px; right: -1px;
+  width: 20px; height: 20px;
   border-bottom: 2px solid var(--aos-accent-cyan);
   border-right: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -790,20 +736,18 @@ const AgenticOS = () => {
   border-bottom: 1px solid var(--aos-border-subtle);
   vertical-align: middle;
 }
-.aos-table thead th.aos-th-criterio { color: var(--aos-accent-cyan); }
-.aos-table thead th.aos-th-aos {
-  color: var(--aos-accent-cyan-soft);
-  font-size: 12px;
-  letter-spacing: 0.3em;
+.aos-th-criterio { color: var(--aos-accent-cyan) !important; }
+.aos-th-aos {
+  color: var(--aos-accent-cyan-soft) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.3em !important;
   position: relative;
   text-shadow: 0 0 12px var(--aos-accent-cyan-glow);
 }
-.aos-table thead th.aos-th-aos::after {
+.aos-th-aos::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  left: 18px;
-  right: 18px;
+  bottom: -1px; left: 18px; right: 18px;
   height: 2px;
   background: var(--aos-accent-cyan);
   box-shadow: 0 0 10px var(--aos-accent-cyan-glow);
@@ -820,10 +764,10 @@ const AgenticOS = () => {
 .aos-table tbody tr:last-child td { border-bottom: none; }
 .aos-table tbody tr:hover td { background: var(--aos-accent-cyan-bg); }
 .aos-td-criterio {
-  font-family: var(--aos-font-mono);
-  font-size: 11px;
-  color: var(--aos-text-primary);
-  font-weight: 500;
+  font-family: var(--aos-font-mono) !important;
+  font-size: 11px !important;
+  color: var(--aos-text-primary) !important;
+  font-weight: 500 !important;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   line-height: 1.4;
@@ -831,18 +775,19 @@ const AgenticOS = () => {
   max-width: 220px;
 }
 .aos-td-aos {
-  color: var(--aos-accent-cyan-soft);
-  font-weight: 500;
-  background: var(--aos-accent-cyan-bg);
-  border-left: 1px solid var(--aos-border-active);
-  border-right: 1px solid var(--aos-border-active);
+  color: var(--aos-accent-cyan-soft) !important;
+  font-weight: 500 !important;
+  background: var(--aos-accent-cyan-bg) !important;
+  border-left: 1px solid var(--aos-border-active) !important;
+  border-right: 1px solid var(--aos-border-active) !important;
 }
 .aos-table tbody tr:last-child .aos-td-aos {
-  border-bottom: 1px solid var(--aos-border-active);
+  border-bottom: 1px solid var(--aos-border-active) !important;
 }
-.aos-status-pos { color: #20DDEB; font-weight: 600; margin-right: 6px; }
-.aos-status-neg { color: var(--aos-accent-red); opacity: 0.85; font-weight: 600; margin-right: 6px; }
-.aos-status-warn { color: #F2BD3B; font-weight: 600; margin-right: 6px; }
+.sp { font-family: var(--aos-font-mono); font-weight: 600; font-size: 14px; margin-right: 6px; }
+.sp-pos { color: #20DDEB; }
+.sp-neg { color: var(--aos-accent-red); opacity: 0.85; }
+.sp-warn { color: #F2BD3B; }
 
 /* AUTHORITY */
 .aos-authority-section {
@@ -854,11 +799,9 @@ const AgenticOS = () => {
 .aos-authority-section::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: 50%;
+  top: -1px; left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 2px;
+  width: 120px; height: 2px;
   background: var(--aos-accent-cyan);
   box-shadow: 0 0 16px var(--aos-accent-cyan-glow);
 }
@@ -888,20 +831,18 @@ const AgenticOS = () => {
 .aos-quote-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 1px;
+  top: 0; left: 0;
+  width: 24px; height: 1px;
   background: var(--aos-accent-cyan);
 }
-.aos-quote-card.aos-featured {
+.aos-featured {
   grid-column: span 6;
-  padding: 56px;
-  background: linear-gradient(135deg, rgba(32,221,235,0.04) 0%, var(--aos-bg-card) 100%);
-  border-color: var(--aos-border-active);
+  padding: 56px !important;
+  background: linear-gradient(135deg, rgba(32,221,235,0.04) 0%, var(--aos-bg-card) 100%) !important;
+  border-color: var(--aos-border-active) !important;
 }
-.aos-quote-card.aos-secondary { grid-column: span 3; }
-.aos-quote-card.aos-tertiary { grid-column: span 2; }
+.aos-secondary { grid-column: span 3; }
+.aos-tertiary { grid-column: span 2; }
 .aos-quote-mark {
   font-family: var(--aos-font-display);
   font-size: 72px;
@@ -925,7 +866,7 @@ const AgenticOS = () => {
   font-size: clamp(20px, 2.2vw, 26px);
   line-height: 1.45;
 }
-.aos-quote-text strong, .aos-featured .aos-quote-text strong { color: var(--aos-accent-cyan-soft); font-weight: 500; }
+.aos-quote-text strong { color: var(--aos-accent-cyan-soft); font-weight: 500; }
 .aos-tertiary .aos-quote-text { font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
 .aos-attribution {
   border-top: 1px solid var(--aos-border-subtle);
@@ -971,10 +912,8 @@ const AgenticOS = () => {
 .aos-final-closing::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 32px;
-  height: 32px;
+  top: -1px; left: -1px;
+  width: 32px; height: 32px;
   border-top: 2px solid var(--aos-accent-cyan);
   border-left: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -982,10 +921,8 @@ const AgenticOS = () => {
 .aos-final-closing::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  right: -1px;
-  width: 32px;
-  height: 32px;
+  bottom: -1px; right: -1px;
+  width: 32px; height: 32px;
   border-bottom: 2px solid var(--aos-accent-cyan);
   border-right: 2px solid var(--aos-accent-cyan);
   pointer-events: none;
@@ -1008,11 +945,7 @@ const AgenticOS = () => {
   letter-spacing: 0.01em;
   margin-bottom: 40px;
 }
-.aos-final-lead .aos-accent {
-  color: var(--aos-accent-cyan);
-  text-shadow: 0 0 32px var(--aos-accent-cyan-glow);
-}
-.aos-final-lead .aos-red { color: var(--aos-accent-red); }
+.aos-final-lead .aos-accent { text-shadow: 0 0 32px var(--aos-accent-cyan-glow); }
 .aos-final-body {
   font-size: clamp(17px, 1.8vw, 21px);
   color: var(--aos-text-secondary);
@@ -1090,13 +1023,13 @@ const AgenticOS = () => {
   .aos-module-item:nth-child(even) .aos-item-content { order: 0; }
   .aos-other-modules { grid-template-columns: 1fr; }
   .aos-authority-grid { grid-template-columns: 1fr; gap: 16px; }
-  .aos-quote-card.aos-featured,
-  .aos-quote-card.aos-secondary,
-  .aos-quote-card.aos-tertiary { grid-column: span 1; }
-  .aos-featured { padding: 32px 24px !important; }
+  .aos-featured { grid-column: span 1; padding: 32px 24px !important; }
+  .aos-secondary { grid-column: span 1; }
+  .aos-tertiary { grid-column: span 1; }
   .aos-impact-break { padding: 48px 16px; }
   .aos-final-closing { padding: 56px 24px; margin-top: 60px; }
   .aos-cta-btn { padding: 18px 32px; font-size: 13px; }
+  .aos-briefing-coords { font-size: 10px; gap: 16px; }
   .aos-table-wrapper { padding: 20px; }
 }
     `;
@@ -1119,9 +1052,9 @@ const AgenticOS = () => {
       {/* HEADER */}
       <header className="aos-header">
         <div className="aos-header-inner">
-          <span className="aos-logo">
+          <a href="#" className="aos-logo">
             <span className="aos-logo-mark">⟁</span> AGENTIC OS
-          </span>
+          </a>
           <div className="aos-header-meta">
             <span className="aos-live-dot" />
             BRIEFING ESTRATÉGICO · 2026
@@ -1222,9 +1155,10 @@ const AgenticOS = () => {
         </div>
       </section>
 
-      {/* SEÇÃO 3 — COMO FUNCIONA */}
+      {/* SEÇÃO — COMO FUNCIONA */}
       <section className="aos-section-3">
         <div className="aos-container">
+
           <span className="aos-section-label">Como funciona na prática</span>
           <h2 className="aos-h2">E na prática, como uma <span className="aos-accent">Agentic OS</span> funciona?</h2>
           <p className="aos-section-intro">
@@ -1244,128 +1178,140 @@ const AgenticOS = () => {
             <div className="aos-module-items">
 
               <div className="aos-module-item">
+                <div className="aos-item-visual">
+                  <span className="aos-visual-label">EVIDÊNCIA · FRAME 01</span>
+                  <span className="aos-visual-coord">CRM · AUTO-SYNC</span>
+                  <img src={img01} alt="CRM com preenchimento automático via Agentic OS" loading="lazy" />
+                </div>
                 <div className="aos-item-content">
                   <span className="aos-item-number">01</span>
-                  <h4 className="aos-item-title">Pipeline Inteligente</h4>
+                  <h4 className="aos-item-title">Seu CRM se preenche sozinho</h4>
                   <p className="aos-item-text">
-                    Cada lead que entra no seu negócio é classificado automaticamente. A IA analisa o perfil, o comportamento e os dados históricos para determinar o potencial de fechamento — e move o lead pelo funil sem intervenção manual. Seu time foca em vender, não em organizar planilhas.
+                    Toda conversa de WhatsApp, toda call de fechamento, toda reunião de diagnóstico, cada interação no site — tudo é transcrito, analisado e registrado no CRM automaticamente. Status, próximos passos, objeções, oportunidades. Hoje, vendedores gastam só 28% do tempo vendendo de fato — o resto vai pra tarefas administrativas, atualização de CRM e busca de informação. Agora, não mais. Seu CRM nunca mais ficará sem informações.
                   </p>
-                </div>
-                <div className="aos-item-visual">
-                  <span className="aos-visual-label">Evidência · Frame 01</span>
-                  <span className="aos-visual-coord">CRM · Auto-Sync</span>
-                  <div className="aos-visual-inner">
-                    <div className="aos-visual-grid" aria-hidden />
-                    <div className="aos-visual-content">
-                      <div className="aos-visual-icon">⟁</div>
-                      <div className="aos-visual-tag">Pipeline · Qualificação Automática</div>
-                    </div>
-                  </div>
+                  <p className="aos-benefit-source" style={{ marginTop: 14 }}>Fonte: Salesforce State of Sales 2025 · Forrester Activity Study (3.031 vendedores).</p>
                 </div>
               </div>
 
               <div className="aos-module-item">
+                <div className="aos-item-visual">
+                  <span className="aos-visual-label">EVIDÊNCIA · FRAME 02</span>
+                  <span className="aos-visual-coord">WHATSAPP · 24/7</span>
+                  <img src={img02} alt="Análise de WhatsApp em tempo real via Agentic OS" loading="lazy" />
+                </div>
                 <div className="aos-item-content">
                   <span className="aos-item-number">02</span>
-                  <h4 className="aos-item-title">Follow-up Automatizado</h4>
+                  <h4 className="aos-item-title">Cada WhatsApp atendido é analisado em tempo real</h4>
                   <p className="aos-item-text">
-                    A maior causa de perda de vendas não é o produto ruim — é o follow-up que não aconteceu. O agente monitora cada oportunidade, identifica o momento certo para agir e dispara a mensagem personalizada. Nenhum lead é abandonado por falta de atenção.
+                    Agentes monitoram o atendimento comercial via WhatsApp 24/7. Identificam quando o time não respondeu uma objeção, quando perdeu uma oportunidade de upsell, quando deixou um lead esfriar, quando não seguiu o script de atendimento. Seu time nunca mais vai esquecer de um cliente.
                   </p>
-                </div>
-                <div className="aos-item-visual">
-                  <span className="aos-visual-label">Evidência · Frame 02</span>
-                  <span className="aos-visual-coord">Seq · Auto-Trigger</span>
-                  <div className="aos-visual-inner">
-                    <div className="aos-visual-grid" aria-hidden />
-                    <div className="aos-visual-content">
-                      <div className="aos-visual-icon">◈</div>
-                      <div className="aos-visual-tag">Follow-up · Timing Inteligente</div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
               <div className="aos-module-item">
+                <div className="aos-item-visual">
+                  <span className="aos-visual-label">EVIDÊNCIA · FRAME 03</span>
+                  <span className="aos-visual-coord">CALL · ANÁLISE SEMÂNTICA</span>
+                  <img src={img03} alt="Avaliação de call de fechamento via Agentic OS" loading="lazy" />
+                </div>
                 <div className="aos-item-content">
                   <span className="aos-item-number">03</span>
-                  <h4 className="aos-item-title">Inteligência de Vendas</h4>
+                  <h4 className="aos-item-title">Cada call de fechamento é avaliada</h4>
                   <p className="aos-item-text">
-                    Cada interação vira dado. Cada dado vira padrão. O sistema identifica quais argumentos fecham mais, quais objeções aparecem com mais frequência, e qual perfil de cliente tem maior LTV. Sua equipe comercial opera com informação — não com intuição.
+                    Toda call comercial é transcrita e analisada contra a sua metodologia de vendas. O sistema identifica o que funcionou, o que faltou, e onde o vendedor pode melhorar. Treinamento contínuo sem você precisar revisar gravação.
                   </p>
                 </div>
+              </div>
+
+              <div className="aos-module-item">
                 <div className="aos-item-visual">
-                  <span className="aos-visual-label">Evidência · Frame 03</span>
-                  <span className="aos-visual-coord">Analytics · Real-Time</span>
-                  <div className="aos-visual-inner">
-                    <div className="aos-visual-grid" aria-hidden />
-                    <div className="aos-visual-content">
-                      <div className="aos-visual-icon">▲</div>
-                      <div className="aos-visual-tag">Insights · Padrões de Fechamento</div>
-                    </div>
-                  </div>
+                  <span className="aos-visual-label">EVIDÊNCIA · FRAME 04</span>
+                  <span className="aos-visual-coord">RELATÓRIO · WEEKLY SYNC</span>
+                  <img src={img04} alt="Relatório semanal consolidado automaticamente via Agentic OS" loading="lazy" />
+                </div>
+                <div className="aos-item-content">
+                  <span className="aos-item-number">04</span>
+                  <h4 className="aos-item-title">Relatórios semanais consolidados, sem ninguém fazer relatório</h4>
+                  <p className="aos-item-text">
+                    Toda semana, um agente consolida o que aconteceu no comercial — WhatsApps, calls, taxa de conversão por etapa, gargalos detectados — e te entrega um relatório executivo. Você abre a segunda-feira já sabendo onde focar.
+                  </p>
+                </div>
+              </div>
+
+              <div className="aos-module-item">
+                <div className="aos-item-visual">
+                  <span className="aos-visual-label">EVIDÊNCIA · FRAME 05</span>
+                  <span className="aos-visual-coord">TRÁFEGO · ATTRIBUTION SYNC</span>
+                  <img src={img05} alt="Tráfego pago integrado à inteligência comercial via Agentic OS" loading="lazy" />
+                </div>
+                <div className="aos-item-content">
+                  <span className="aos-item-number">05</span>
+                  <h4 className="aos-item-title">Tráfego pago integrado à inteligência comercial</h4>
+                  <p className="aos-item-text">
+                    O sistema cruza dados das suas campanhas (Meta, Google) com o desempenho real no fechamento. Você descobre qual criativo gera lead que fecha, não só lead que clica. E sua verba de tráfego para de ser gasta com leads curiosos.
+                  </p>
                 </div>
               </div>
 
             </div>
           </div>
 
-          {/* IMPACTO */}
+          {/* QUEBRA DE IMPACTO */}
           <div className="aos-impact-break">
-            <div className="aos-impact-break-text">
-              Um módulo.<br />
-              <strong>Três agentes trabalhando 24h.</strong><br />
-              Sem custo de hora extra<span className="aos-red">.</span>
-            </div>
+            <p className="aos-impact-break-text">
+              E tudo isso é apenas <strong>UM</strong> dos módulos<span className="aos-red">.</span>
+            </p>
           </div>
 
           {/* OUTROS MÓDULOS */}
           <p className="aos-other-modules-intro">
-            E o módulo Comercial é só o começo. Um Agentic OS completo cobre todas as alavancas do seu negócio:
+            Uma Agentic OS madura conecta toda a operação. Veja outros módulos comuns:
           </p>
 
           <div className="aos-other-modules">
             <div className="aos-module-card">
               <div className="aos-module-icon">
-                <span className="aos-module-icon-inner">⚙</span>
+                <img src={iconFinanceiro} alt="Módulo Financeiro" loading="lazy" />
               </div>
               <span className="aos-module-card-tag">⟶ Módulo 02</span>
-              <h4 className="aos-module-card-title">Operações</h4>
+              <h3 className="aos-module-card-title">Financeiro</h3>
               <p className="aos-module-card-text">
-                Processos internos mapeados e automatizados. Agentes monitoram gargalos em tempo real, redistribuem tarefas e geram relatórios de eficiência sem intervenção humana. Sua operação escala sem escalar o headcount.
+                Categorização de despesas em tempo real, projeção de fluxo de caixa rodando todo dia, alertas quando um indicador sai do padrão. Seu financeiro para de ser histórico e vira preditivo. Você descobre o problema antes dele virar problema.
               </p>
             </div>
 
             <div className="aos-module-card">
               <div className="aos-module-icon">
-                <span className="aos-module-icon-inner">◎</span>
+                <img src={iconTarefas} alt="Módulo Gestão de Tarefas" loading="lazy" />
               </div>
               <span className="aos-module-card-tag">⟶ Módulo 03</span>
-              <h4 className="aos-module-card-title">Marketing</h4>
+              <h3 className="aos-module-card-title">Gestão de Tarefas</h3>
               <p className="aos-module-card-text">
-                Conteúdo gerado, segmentado e distribuído com IA. Análise contínua de performance, ajuste de mensagem por canal e identificação de oportunidades de crescimento — tudo conectado ao CRM e ao pipeline comercial.
+                Tarefas extraídas automaticamente de reuniões, emails e WhatsApps. Atribuição inteligente baseada em carga e contexto de cada pessoa. Acompanhamento de execução sem ninguém precisar atualizar status. Seu time executa, a OS organiza.
               </p>
             </div>
 
             <div className="aos-module-card">
               <div className="aos-module-icon">
-                <span className="aos-module-icon-inner">◈</span>
+                <img src={iconConteudo} alt="Módulo Conteúdo" loading="lazy" />
               </div>
               <span className="aos-module-card-tag">⟶ Módulo 04</span>
-              <h4 className="aos-module-card-title">Atendimento</h4>
+              <h3 className="aos-module-card-title">Conteúdo</h3>
               <p className="aos-module-card-text">
-                Primeira linha de resposta totalmente automatizada, com contexto completo do cliente. Problemas simples resolvidos em segundos. Casos complexos escalados com o histórico completo. CSAT que sobe enquanto o custo desce.
+                Calendário editorial, briefings, status de produção e métricas por canal — tudo no mesmo lugar. O conteúdo orgânico que alimenta o topo do funil para de viver em planilhas espalhadas e passa a operar como parte de um organismo único, sincronizado com o resto da empresa.
               </p>
             </div>
           </div>
 
-          {/* COMPARATIVO */}
+          {/* TABELA COMPARATIVA */}
           <div className="aos-comparison-section">
             <div className="aos-comparison-intro">
+              <span className="aos-section-label">Análise comparativa</span>
               <h3 className="aos-h3-display">
-                AOS vs.<br /><span className="aos-accent">as outras opções</span>
+                Por que <span className="aos-accent">Agentic OS</span> é diferente de tudo que sua empresa já usou.
               </h3>
               <p>
-                Você já considerou as alternativas. Ferramenta SaaS genérica. Agência de marketing. Contratar uma equipe maior. Cada uma tem limitações que o mercado já conhece — mas raramente assume.
+                Sua empresa já operou tecnologia de várias formas. Cada uma resolveu uma parte do problema — e deixou outras abertas. A tabela abaixo mostra onde cada modelo entrega e onde falha.
               </p>
             </div>
 
@@ -1373,158 +1319,166 @@ const AgenticOS = () => {
               <table className="aos-table">
                 <thead>
                   <tr>
-                    <th className="aos-th-criterio">Critério</th>
-                    <th className="aos-th-aos">AGENTIC OS</th>
-                    <th>SaaS Genérico</th>
-                    <th>Agência</th>
-                    <th>Equipe Interna</th>
+                    <th className="aos-th-criterio">⟶ Critério</th>
+                    <th>SaaS</th>
+                    <th>Planilhas + automações</th>
+                    <th>Dev Interno</th>
+                    <th className="aos-th-aos">Agentic OS</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="aos-td-criterio">Personalização para o negócio</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> 100% sob medida</td>
-                    <td><span className="aos-status-neg">✗</span> Genérico por design</td>
-                    <td><span className="aos-status-warn">~</span> Parcial, cara</td>
-                    <td><span className="aos-status-warn">~</span> Depende do perfil</td>
-                  </tr>
-                  <tr>
                     <td className="aos-td-criterio">Integração entre áreas</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> Nativa e total</td>
-                    <td><span className="aos-status-neg">✗</span> Silos por padrão</td>
-                    <td><span className="aos-status-neg">✗</span> Não cobre operação</td>
-                    <td><span className="aos-status-warn">~</span> Complexo de coordenar</td>
+                    <td><span className="sp sp-neg">✕</span> Cada ferramenta isolada</td>
+                    <td><span className="sp sp-warn">!</span> Frágil, depende de cola</td>
+                    <td><span className="sp sp-pos">✓</span> Possível, mas custosa</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Nativa, por design</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Custo mensal recorrente</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> Investimento pontual + manutenção mínima</td>
-                    <td><span className="aos-status-neg">✗</span> Cresce com usuários/features</td>
-                    <td><span className="aos-status-neg">✗</span> Mensalidade fixa alta</td>
-                    <td><span className="aos-status-neg">✗</span> Folha + encargos</td>
+                    <td className="aos-td-criterio">Adaptação ao seu negócio</td>
+                    <td><span className="sp sp-neg">✕</span> Você se adapta a ela</td>
+                    <td><span className="sp sp-pos">✓</span> Total, mas manual</td>
+                    <td><span className="sp sp-pos">✓</span> Alta</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Total, automatizada</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Evolui com o negócio</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> Modular e expansível</td>
-                    <td><span className="aos-status-neg">✗</span> Roadmap deles, não seu</td>
-                    <td><span className="aos-status-warn">~</span> Requer novo projeto</td>
-                    <td><span className="aos-status-warn">~</span> Requer nova contratação</td>
+                    <td className="aos-td-criterio">Inteligência aplicada</td>
+                    <td><span className="sp sp-warn">!</span> Pontual, por feature</td>
+                    <td><span className="sp sp-neg">✕</span> Inexistente</td>
+                    <td><span className="sp sp-warn">!</span> Se você programar</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Agentes em todo lugar</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Inteligência sobre seus dados</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> Profunda, contínua, preditiva</td>
-                    <td><span className="aos-status-neg">✗</span> Relatórios básicos</td>
-                    <td><span className="aos-status-neg">✗</span> Sem acesso ao core</td>
-                    <td><span className="aos-status-warn">~</span> Lenta para escalar</td>
+                    <td className="aos-td-criterio">Evolução com a empresa</td>
+                    <td><span className="sp sp-warn">!</span> Roadmap do fornecedor</td>
+                    <td><span className="sp sp-neg">✕</span> Vira espaguete</td>
+                    <td><span className="sp sp-warn">!</span> Custo cresce muito</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Cresce junto, sem atrito</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Trabalha 24/7 sem supervisão</td>
-                    <td className="aos-td-aos"><span className="aos-status-pos">✓</span> Agentes autônomos</td>
-                    <td><span className="aos-status-warn">~</span> Automações básicas</td>
-                    <td><span className="aos-status-neg">✗</span> Horário comercial</td>
-                    <td><span className="aos-status-neg">✗</span> Depende de pessoas</td>
+                    <td className="aos-td-criterio">Visão unificada</td>
+                    <td><span className="sp sp-neg">✕</span> 12 abas abertas</td>
+                    <td><span className="sp sp-neg">✕</span> Cada um vê uma coisa</td>
+                    <td><span className="sp sp-pos">✓</span> Sim, se bem feito</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Um único organismo</td>
+                  </tr>
+                  <tr>
+                    <td className="aos-td-criterio">Dependência de fornecedor</td>
+                    <td><span className="sp sp-neg">✕</span> Total — refém</td>
+                    <td><span className="sp sp-pos">✓</span> Zero</td>
+                    <td><span className="sp sp-pos">✓</span> Zero (se o time fica)</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Zero — é seu</td>
+                  </tr>
+                  <tr>
+                    <td className="aos-td-criterio">Começar a operar amanhã</td>
+                    <td><span className="sp sp-pos">✓</span> Imediato</td>
+                    <td><span className="sp sp-pos">✓</span> Imediato</td>
+                    <td><span className="sp sp-neg">✕</span> Anos</td>
+                    <td className="aos-td-aos"><span className="sp sp-warn">!</span> Implantação progressiva</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          {/* PROVA DE AUTORIDADE */}
+          {/* PROVA POR AUTORIDADE */}
           <div className="aos-authority-section">
             <div className="aos-authority-intro">
-              <span className="aos-section-label">O mercado já está dizendo</span>
+              <span className="aos-section-label">Prova por autoridade</span>
               <h3 className="aos-h3-display">
-                O que as maiores<br /><span className="aos-accent">referências do mundo</span><br />estão vendo
+                Isso não é <span className="aos-accent">opinião isolada</span>. É para onde a tecnologia está indo.
               </h3>
               <p>
-                Não é especulação. Não é tendência de futuro distante. Os líderes de tecnologia, estratégia e negócios já articulam o que você está prestes a implementar.
+                Você não precisa acreditar em mim. Os CEOs que estão construindo o futuro da computação já estão dizendo, em alto e bom som, que o paradigma mudou. Veja o que eles estão falando:
               </p>
             </div>
 
             <div className="aos-authority-grid">
+
               <div className="aos-quote-card aos-featured">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  Em 2025, os agentes de IA não serão mais experimentais — serão <strong>o sistema nervoso central das empresas que lideram o mercado</strong>. Aquelas que ainda dependem de ferramentas fragmentadas e equipes sobrecarregadas estarão competindo contra adversários que operam em outra velocidade.
+                  Minha mensagem para os CEOs neste momento: <strong>somos a última geração a gerenciar apenas humanos</strong>. A partir daqui, vamos gerenciar trabalhadores humanos e trabalhadores digitais.
                 </p>
                 <div className="aos-attribution">
-                  <div className="aos-author">Jensen Huang</div>
-                  <div className="aos-role">CEO · NVIDIA</div>
-                  <div className="aos-source">Declaração pública, CES 2025</div>
+                  <div className="aos-author">Marc Benioff</div>
+                  <div className="aos-role">CEO · Salesforce</div>
+                  <div className="aos-source">World Economic Forum · Davos, Janeiro 2025</div>
                 </div>
               </div>
 
               <div className="aos-quote-card aos-secondary">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  O futuro não pertence às empresas com mais funcionários — pertence às que conseguirem <strong>multiplicar a capacidade de cada pessoa com IA</strong>. O Agentic OS é exatamente essa alavanca.
+                  Acreditamos que, em 2025, vamos ver os primeiros agentes de IA <strong>"entrarem na força de trabalho"</strong> e mudarem materialmente o output das empresas.
                 </p>
                 <div className="aos-attribution">
                   <div className="aos-author">Sam Altman</div>
                   <div className="aos-role">CEO · OpenAI</div>
-                  <div className="aos-source">Blog OpenAI, Janeiro 2025</div>
+                  <div className="aos-source">Blog post "Reflections" · Janeiro 2025</div>
                 </div>
               </div>
 
               <div className="aos-quote-card aos-secondary">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  As empresas que vão dominar a próxima década <strong>não são as que têm mais dados — são as que souberem transformar dados em ação com IA</strong>. A vantagem competitiva se deslocou para a camada de inteligência.
+                  Nosso agente de IA faz hoje o trabalho equivalente a <strong>mais de 853 funcionários em tempo integral</strong>. Economizamos US$ 60 milhões e melhoramos o tempo de resposta em 82%.
                 </p>
                 <div className="aos-attribution">
-                  <div className="aos-author">Satya Nadella</div>
-                  <div className="aos-role">CEO · Microsoft</div>
-                  <div className="aos-source">Microsoft Build 2025</div>
+                  <div className="aos-author">Sebastian Siemiatkowski</div>
+                  <div className="aos-role">CEO · Klarna</div>
+                  <div className="aos-source">Q3 2025 Earnings Call · Novembro 2025</div>
                 </div>
               </div>
 
               <div className="aos-quote-card aos-tertiary">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  IA agêntica é a <strong>maior mudança de plataforma desde a internet</strong>.
+                  Antes de pedir mais headcount, times precisam demonstrar por que não conseguem fazer o trabalho usando IA. Como essa área se pareceria se agentes autônomos já fossem parte do time?
                 </p>
                 <div className="aos-attribution">
-                  <div className="aos-author">Dario Amodei</div>
-                  <div className="aos-role">CEO · Anthropic</div>
-                  <div className="aos-source">The Economist, 2025</div>
+                  <div className="aos-author">Tobi Lütke</div>
+                  <div className="aos-role">CEO · Shopify</div>
+                  <div className="aos-source">Memorando interno · Abril 2025</div>
                 </div>
               </div>
 
               <div className="aos-quote-card aos-tertiary">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  <strong>O custo de não ter IA integrada</strong> já supera o custo de implementar.
+                  As forças de trabalho do futuro serão uma combinação de humanos e humanos digitais. Você vai licenciar alguns e contratar outros, dependendo da expertise.
                 </p>
                 <div className="aos-attribution">
-                  <div className="aos-author">McKinsey Global Institute</div>
-                  <div className="aos-role">Relatório · State of AI 2025</div>
-                  <div className="aos-source">Publicado em Março 2025</div>
+                  <div className="aos-author">Jensen Huang</div>
+                  <div className="aos-role">CEO · NVIDIA</div>
+                  <div className="aos-source">Entrevista Citadel Securities · Outubro 2025</div>
                 </div>
               </div>
 
               <div className="aos-quote-card aos-tertiary">
                 <div className="aos-quote-mark">"</div>
                 <p className="aos-quote-text">
-                  Empresas com <strong>IA integrada ao core do negócio</strong> crescem 2,5x mais rápido que as concorrentes.
+                  41% dos empregadores esperam reduzir headcount até 2030 por causa de transformação tecnológica. O paradigma de trabalho está sendo reescrito agora.
                 </p>
                 <div className="aos-attribution">
-                  <div className="aos-author">Bain &amp; Company</div>
-                  <div className="aos-role">Relatório · AI Advantage 2025</div>
-                  <div className="aos-source">Publicado em Fevereiro 2025</div>
+                  <div className="aos-author">World Economic Forum</div>
+                  <div className="aos-role">Future of Jobs Report</div>
+                  <div className="aos-source">Edição 2025</div>
                 </div>
               </div>
+
             </div>
           </div>
 
           {/* FECHAMENTO FINAL */}
           <div className="aos-final-closing">
-            <div className="aos-final-meta">⟶ Próximo passo · Briefing estratégico</div>
-            <div className="aos-final-lead">
-              Seu negócio<br />
-              merece um<br />
-              <span className="aos-accent">OS</span><span className="aos-red">.</span>
-            </div>
+            <div className="aos-final-meta">⟶ Conclusão do Briefing</div>
+            <p className="aos-final-lead">
+              O mundo <span className="aos-accent">mudou</span><span className="aos-red">.</span>
+            </p>
             <p className="aos-final-body">
-              A janela para implementar antes da concorrência está aberta — mas não por muito tempo. <strong>Empresas que construírem seu Agentic OS agora vão operar em uma categoria diferente</strong>. As que esperarem vão competir em desvantagem estrutural.
+              O Agentic OS é o oposto do paradigma do SaaS tradicional.<br />
+              <strong>Não é você se adaptando à ferramenta. É a ferramenta sendo construída pra ser você.</strong>
             </p>
             <a
               href="https://wa.me/5511999718595"
@@ -1533,23 +1487,18 @@ const AgenticOS = () => {
               rel="noopener noreferrer"
               onClick={() => tracker.track("cta_click", { product: "agentic-os", location: "final-cta" })}
             >
-              Quero entender como uma Agentic OS pode transformar o meu negócio
+              Quero viver essa revolução
             </a>
           </div>
 
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="aos-footer">
         <div className="aos-container">
           <div className="aos-footer-inner">
-            <div className="aos-footer-logo">
-              <span className="aos-dot-cyan">⟁</span> AGENTIC OS
-            </div>
-            <div className="aos-footer-meta">
-              © 2026 BA Consultoria · Todos os direitos reservados
-            </div>
+            <div className="aos-footer-logo"><span className="aos-accent">⟁</span> AGENTIC OS</div>
+            <div className="aos-footer-meta">DOC 001 · V2.0 · 2026 · BRIEFING ESTRATÉGICO</div>
           </div>
         </div>
       </footer>
