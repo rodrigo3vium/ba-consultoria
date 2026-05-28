@@ -1,252 +1,287 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Code, GraduationCap, TrendingUp, Briefcase } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Code, GraduationCap, TrendingUp, Briefcase } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import chatgptLogo from "@/assets/chatgpt-logo.png";
-import grokLogo from "@/assets/grok-logo.png";
-import geminiLogo from "@/assets/gemini-logo.png";
-import claudeLogo from "@/assets/claude-logo.png";
-import n8nLogo from "@/assets/n8n-logo.png";
-import typebotLogo from "@/assets/typebot-logo.png";
-import lovableLogo from "@/assets/lovable-logo.png";
-import makeLogo from "@/assets/make-logo.png";
-import worldMap from "@/assets/world-map.jpeg";
-import hurbana from "@/assets/clients/hurbana.png";
-import client2 from "@/assets/clients/client-2.png";
-import vocical from "@/assets/clients/vocical.png";
-import client4 from "@/assets/clients/client-4.png";
-import pincelos from "@/assets/clients/pincelos.png";
-import ftx from "@/assets/clients/ftx.png";
-import mjr from "@/assets/clients/mjr.png";
-import cfBuffet from "@/assets/clients/cf-buffet.png";
-import dionello from "@/assets/clients/dionello.png";
-import client10 from "@/assets/clients/client-10.png";
-import vaboPhoto from "@/assets/mentors/vabo.webp";
-import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
-import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
-import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
-import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
-import jonathanBarrosPhoto from "@/assets/founders/jonathan-barros.webp";
-import rodrigoAlbuquerquePhoto from "@/assets/founders/rodrigo-albuquerque.webp";
-import francielliBenitesPhoto from "@/assets/founders/francielli-benites.webp";
+import CornerBrackets from '@/components/pb/CornerBrackets';
+import SectionHeader from '@/components/pb/SectionHeader';
+import Stamp from '@/components/pb/Stamp';
+import Tag from '@/components/pb/Tag';
+import { tracker } from '@/lib/tracking';
+
+import chatgptLogo from '@/assets/chatgpt-logo.png';
+import grokLogo from '@/assets/grok-logo.png';
+import geminiLogo from '@/assets/gemini-logo.png';
+import claudeLogo from '@/assets/claude-logo.png';
+import n8nLogo from '@/assets/n8n-logo.png';
+import typebotLogo from '@/assets/typebot-logo.png';
+import lovableLogo from '@/assets/lovable-logo.png';
+import makeLogo from '@/assets/make-logo.png';
+import worldMap from '@/assets/world-map.jpeg';
+import hurbana from '@/assets/clients/hurbana.png';
+import client2 from '@/assets/clients/client-2.png';
+import vocical from '@/assets/clients/vocical.png';
+import client4 from '@/assets/clients/client-4.png';
+import pincelos from '@/assets/clients/pincelos.png';
+import ftx from '@/assets/clients/ftx.png';
+import mjr from '@/assets/clients/mjr.png';
+import cfBuffet from '@/assets/clients/cf-buffet.png';
+import dionello from '@/assets/clients/dionello.png';
+import client10 from '@/assets/clients/client-10.png';
+import vaboPhoto from '@/assets/mentors/vabo.webp';
+import joseDiogoPhoto from '@/assets/mentors/jose-diogo.webp';
+import diegoBarretoPhoto from '@/assets/mentors/diego-barreto.webp';
+import joaoOliverioPhoto from '@/assets/mentors/joao-oliverio.webp';
+import pedroSommaPhoto from '@/assets/mentors/pedro-somma.webp';
+import jonathanBarrosPhoto from '@/assets/founders/jonathan-barros.webp';
+import rodrigoAlbuquerquePhoto from '@/assets/founders/rodrigo-albuquerque.webp';
+import francielliBenitesPhoto from '@/assets/founders/francielli-benites.webp';
+
+const WHATSAPP_URL = 'https://wa.me/5511999718595';
+
+const IMG_DARK = 'grayscale(100%) contrast(1.1) brightness(0.85)';
+const IMG_LOGO = 'grayscale(100%) brightness(1.4)';
+
+const clientLogos = [
+  hurbana, client2, vocical, client4, pincelos,
+  ftx, mjr, cfBuffet, dionello, client10,
+];
+
+const pillars = [
+  { icon: Code,          idx: '01', title: 'Tecnologia',  desc: 'Sistemas que operam enquanto você dorme. IA aplicada ao processo, não à vitrine.', link: '/tecnologia' },
+  { icon: GraduationCap, idx: '02', title: 'Educação',    desc: 'Doutrina antes de ferramenta. Você precisa entender o que comanda antes de delegar.', link: '/educacao' },
+  { icon: TrendingUp,    idx: '03', title: 'Consultoria', desc: 'Estratégia é saber o que não fazer. Nós ajudamos a tomar essa decisão primeiro.', link: '/consultoria' },
+  { icon: Briefcase,     idx: '04', title: 'Serviços',    desc: 'Execução com método. Vendas e performance com disciplina de operação.', link: '/servicos' },
+];
+
+const techs = [
+  { logo: lovableLogo,  name: 'Lovable',  desc: 'Produto rápido' },
+  { logo: n8nLogo,      name: 'n8n',      desc: 'Automação' },
+  { logo: chatgptLogo,  name: 'ChatGPT',  desc: 'IA conversacional' },
+  { logo: geminiLogo,   name: 'Gemini',   desc: 'IA multimodal' },
+  { logo: claudeLogo,   name: 'Claude',   desc: 'IA analítica' },
+  { logo: grokLogo,     name: 'Grok',     desc: 'IA em tempo real' },
+  { logo: makeLogo,     name: 'Make',     desc: 'Integração' },
+  { logo: typebotLogo,  name: 'Typebot',  desc: 'Chatbots' },
+];
+
+const useCases = [
+  { title: 'Prospecção de obras por IA', category: 'Captação', desc: 'Entre 20.000 obras em bases oficiais, selecionamos as 100 com maior probabilidade de contrato para sua construtora.', metric: '+2× obras qualificadas' },
+  { title: 'Automação de Notas Fiscais', category: 'Operacional', desc: 'Processamento integrado ao ERP elimina horas de trabalho manual. Equipe foca no que gera valor.', metric: '+30% eficiência' },
+  { title: 'Atendimento Inteligente 24/7', category: 'Customer Success', desc: 'Chatbot com IA resolve, agenda e qualifica leads automaticamente — inclusive fora do horário comercial.', metric: '+40% conversão' },
+  { title: 'Análise Preditiva de Vendas', category: 'Vendas', desc: 'Machine learning sobre histórico identifica tendências e oportunidades antes do time comercial.', metric: '+25% receita' },
+  { title: 'Gestão de Campanhas com IA', category: 'Marketing', desc: 'Otimização automática que maximiza ROI e acerta o público no momento ideal.', metric: '−35% CPL' },
+  { title: 'Onboarding Automatizado', category: 'RH', desc: 'Integração completa de novos colaboradores — documentação, treinamento e follow-up por IA.', metric: '50% mais rápido' },
+];
+
+const mentors = [
+  { photo: diegoBarretoPhoto,  name: 'Diego Barreto',                   role: 'CEO — iFood',                                         bio: 'Estrategista de crescimento e inovação. Autor de "Nova Economia". Visão orientada a dados no maior ecossistema de delivery do Brasil.' },
+  { photo: pedroSommaPhoto,    name: 'Pedro Somma',                     role: 'Ex-COO — 99 Taxi',                                    bio: 'Liderou operações e expansão da 99 Taxi. Experiência em escala de plataformas de mobilidade urbana no Brasil.' },
+  { photo: vaboPhoto,          name: 'Luis Vabo Jr.',                   role: 'Ex-Diretor — Stone',                                  bio: 'Empreendedor serial, OPM por Harvard. Autor de "Falar em público é para você!". Investidor e especialista em softskills.' },
+  { photo: joaoOliverioPhoto,  name: 'João Olivério',                   role: 'CEO — Sales As A System\nCountry Manager — Apollo.io', bio: 'Metodologia proprietária para líderes de vendas. Passagens por Zendesk e G4 Sales. Referência em inteligência comercial.' },
+  { photo: joseDiogoPhoto,     name: 'José Diogo C. Rodrigues',         role: 'CMO Latam & Canada — Tinder',                         bio: 'Brand Manager na Nike e Red Bull. Hoje dirige o marketing do Tinder na América Latina e Canadá.' },
+];
+
+const stats = [
+  { value: '+7',     label: 'Países atendidos',            cyan: false },
+  { value: '+R$130M', label: 'Em vendas geradas',          cyan: true  },
+  { value: '+10K',   label: 'Leads gerados',               cyan: false },
+  { value: '+50M',   label: 'Alcance orgânico',            cyan: true  },
+  { value: '+700',   label: 'Clientes atendidos',          cyan: false },
+  { value: '+6',     label: 'Anos no mercado',             cyan: true  },
+];
+
+const faqs = [
+  {
+    q: 'Como a IA muda o meu negócio?',
+    a: 'Automatiza o que é repetível. Analisa o que é volumoso. Libera o time para o que exige julgamento. A IA não decide por você — ela amplia sua capacidade de decidir bem.',
+  },
+  {
+    q: 'Quanto tempo leva para rodar?',
+    a: 'Depende do escopo. Soluções simples ficam operacionais em 2 a 4 semanas. Projetos de maior profundidade, 2 a 3 meses. Trabalhamos em ciclos curtos para entregar valor antes do projeto terminar.',
+  },
+  {
+    q: 'Tem suporte após a entrega?',
+    a: 'Sim. Monitoramento, atualizações e treinamento de equipe. A solução não termina na entrega — ela começa a operar.',
+  },
+  {
+    q: 'Qual o investimento?',
+    a: 'Varia com escopo e complexidade. Mas a conversa inicial é gratuita. Entendemos o problema antes de apresentar proposta.',
+  },
+  {
+    q: 'Minha equipe precisa saber de tecnologia?',
+    a: 'Não. Desenvolvemos com interfaces operacionais e treinamos o time. O objetivo é que qualquer pessoa use — não apenas quem entende de código.',
+  },
+];
 
 const BA = () => {
-  const clientLogos = [
-    hurbana,
-    client2,
-    vocical,
-    client4,
-    pincelos,
-    ftx,
-    mjr,
-    cfBuffet,
-    dionello,
-    client10,
-  ];
+  useEffect(() => {
+    tracker.page('BA Consultoria - Home');
+  }, []);
 
-  const pillars = [
-    {
-      icon: Code,
-      title: 'Tecnologia',
-      description: 'Soluções tecnológicas inovadoras para impulsionar seu negócio',
-      link: '/tecnologia'
-    },
-    {
-      icon: GraduationCap,
-      title: 'Educação',
-      description: 'Capacitação e desenvolvimento de equipes de alta performance',
-      link: '/educacao'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Consultoria',
-      description: 'Estratégias personalizadas para crescimento empresarial',
-      link: '/consultoria'
-    },
-    {
-      icon: Briefcase,
-      title: 'Serviços',
-      description: 'Serviços especializados em vendas e performance comercial',
-      link: '/consultoria'
-    }
-  ];
+  const handleCta = (location: string) => {
+    tracker.track('cta_click', { product: 'home', location });
+  };
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Pro-Life Banner */}
-      <div className="bg-ba-blue-medium text-white py-3 px-4 text-center font-medium text-sm relative z-50">
-        Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
+    <div className="min-h-screen bg-pb-void text-pb-ink">
+
+      {/* 00 — Meta bar pró-vida */}
+      <div
+        className="fixed top-0 left-0 right-0 z-[60] flex items-center gap-3 px-5 py-2 font-mono text-[10px] uppercase tracking-mono-wide"
+        style={{ background: 'rgba(5,9,11,0.97)', borderBottom: '1px solid rgba(228,73,53,0.25)' }}
+      >
+        <span
+          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 animate-pulse-cyan"
+          style={{ background: 'hsl(var(--accent-red))', boxShadow: '0 0 8px hsl(var(--accent-red) / 0.6)' }}
+          aria-hidden
+        />
+        <span className="text-pb-ink-muted">
+          Empresa pró-vida · somos contra todo tipo de aborto
+        </span>
+        <span className="ml-auto hidden sm:block text-pb-ink-faint">
+          POSIÇÃO: PERMANENTE
+        </span>
       </div>
 
-      <Header />
+      {/* Header: deslocado para baixo da meta-bar (36px) */}
+      <div style={{ paddingTop: 36 }}>
+        <Header />
+      </div>
 
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl"></div>
+      {/* ================================================================
+          01 — HERO
+      ================================================================ */}
+      <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <CornerBrackets size={32} offset={24} />
+
+        {/* Coordinates */}
+        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:block">
+          <div className="flex flex-col items-end gap-1">
+            <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">HOME-01</span></span>
+            <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
+            <span><span className="text-pb-ink-faint mr-3">OWNER</span><span className="text-pb-ink-soft">BA</span></span>
+            <span><span className="text-pb-ink-faint mr-3">STATE</span><span className="text-pb-cyan">ACTIVE</span></span>
+          </div>
         </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-relaxed pb-2">
-              Atraia mais clientes para o seu negócio
+
+        {/* Protocol badge */}
+        <div className="absolute top-8 left-8 hidden md:block">
+          <Stamp>Protocolo 01 / Home</Stamp>
+        </div>
+
+        <div className="max-w-7xl mx-auto w-full pt-24 pb-32">
+          <div className="max-w-5xl">
+            <h1
+              className="font-display uppercase text-pb-ink leading-[0.88]"
+              style={{ fontSize: 'clamp(72px, 11vw, 160px)', letterSpacing: '0.005em' }}
+            >
+              Mais<br />
+              lucro<span className="text-pb-red">.</span>
+              <br />
+              <span className="text-pb-ink-soft">Menos<br />ruído</span>
+              <span className="text-pb-red">.</span>
             </h1>
-            <h2 className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
-              Ecossistema completo de soluções em Marketing, Tecnologia e Comercial para aumentar o lucro do seu negócio.
-            </h2>
-            <div className="pt-8">
-              <Button size="lg" variant="hero" className="text-lg px-10 py-6">
-                Falar com um especialista
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Founders Section */}
-      <section className="py-20 px-4 relative bg-black border-y border-ba-blue-light/10">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Nossos Fundadores
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Rodrigo Albuquerque */}
-            <div className="space-y-6">
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={rodrigoAlbuquerquePhoto} 
-                    alt="Rodrigo Albuquerque" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -z-10 top-8 -right-8 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                Rodrigo Albuquerque
-              </h3>
-              <p className="text-xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
-                CO-FUNDADOR
-              </p>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Rodrigo Albuquerque passou alguns anos sendo mentorado e aprendendo com alguns dos maiores empreendedores do país.
-                </p>
-                <p>
-                  É apaixonado por Marketing e Negócios.
-                </p>
-                <p>
-                  Tem como hobbie estudar filosofia e psicologia. Já tendo realizado diversos cursos na área (Stanford, Jordan Peterson, Jonas Madureira…)
-                </p>
-                <p>
-                  Compilou na Benites Albuquerque o aprendizado que adquiriu nessas experiências e que extraiu das mais de 100 consultorias que deu.
-                </p>
-              </div>
-            </div>
+            <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+              Implementamos IA nos negócios com método, não com hype.
+              Estratégia antes de automação. Direção antes de ferramenta.
+            </p>
 
-            {/* Francielli Benites */}
-            <div className="space-y-6">
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={francielliBenitesPhoto} 
-                    alt="Francielli Benites" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -z-10 -bottom-8 -left-8 w-64 h-64 bg-ba-orange/10 rounded-full blur-3xl"></div>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                Francielli Benites
-              </h3>
-              <p className="text-xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
-                CO-FUNDADORA
-              </p>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Francielli Benites tem um histórico de conquistas que carrega desde a adolescência em uma gama de atividades. Conquistou o sétimo lugar do país em um concurso de redação, tem diversas medalhas da olimpíada de matemática, além de ter cursado matemática e Engenharia Civil ao mesmo tempo.
-                </p>
-                <p>
-                  Ao sair da faculdade, expandiu seus interesses para a área de humanas, mergulhando em literatura clássica.
-                </p>
-                <p>
-                  Na Benites Albuquerque, ela usa o seu amplo conhecimento da realidade para ter ideias únicas para resolver desafios de forma eficiente e criativa.
-                </p>
-              </div>
-            </div>
-
-            {/* Jonathan Barros */}
-            <div className="space-y-6">
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={jonathanBarrosPhoto} 
-                    alt="Jonathan Barros" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -z-10 top-8 left-1/2 -translate-x-1/2 w-72 h-72 bg-ba-orange/10 rounded-full blur-3xl"></div>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                Jonathan Barros
-              </h3>
-              <p className="text-xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent">
-                CO-FUNDADOR
-              </p>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Jonathan Barros é entusiasta por vendas, relacionamento humano e performance pessoal e profissional.
-                </p>
-                <p>
-                  Tem como missão, ensinar, treinar e transformar times comerciais, gerando os resultados e a transformação que os clientes buscam.
-                </p>
-                <p>
-                  Já liderou times de vendas e foi responsável por gerar mais de R$30 milhões em faturamento nos últimos anos. Hoje, compila em sua experiência o aprendizado de mais de 18 anos no mercado B2B, criando conexões sólidas e soluções estratégicas para empresas de diferentes segmentos.
-                </p>
-                <p>
-                  Tem como hobbies a corrida, leitura, futebol e Muay Thai — práticas que refletem disciplina, resiliência e busca constante por superação.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pillars Section */}
-      <section className="py-20 px-4 relative bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Nossos Pilares
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((pillar, index) => (
-              <div
-                key={index}
-                className="group relative bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2"
-                style={{ animationDelay: `${index * 0.1}s` }}
+            <div className="mt-12 flex flex-wrap gap-4">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                onClick={() => handleCta('hero')}
               >
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 mb-6 rounded-xl bg-gradient-primary flex items-center justify-center">
-                    <pillar.icon className="w-8 h-8 text-background" />
+                Falar com um especialista
+                <span aria-hidden>→</span>
+              </a>
+              <Link
+                to="/cases"
+                className="btn-ghost"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Ver cases
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom rule */}
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
+          <span className="text-pb-cyan animate-pulse-cyan">● Operacional</span>
+          <span className="hidden sm:inline">+700 clientes atendidos</span>
+          <span className="hidden md:inline">+R$130M em vendas geradas</span>
+          <span className="hidden lg:inline">7 países</span>
+          <span className="ml-auto text-pb-ink-faint">BA Consultoria — 2026</span>
+        </div>
+      </section>
+
+      {/* ================================================================
+          02 — FUNDADORES
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="02 / COMANDO"
+            label="Fundadores"
+            headline={<>Quem assina<br />as decisões<span className="text-pb-red">.</span></>}
+          />
+
+          <div className="grid lg:grid-cols-3 gap-10">
+            {[
+              {
+                photo: rodrigoAlbuquerquePhoto,
+                name: 'Rodrigo Albuquerque',
+                role: 'Co-Fundador',
+                bio: [
+                  'Mentorado por alguns dos maiores empreendedores do país. Compilou na BA o aprendizado de mais de 100 consultorias.',
+                  'Apaixonado por marketing, negócios e pelo estudo de filosofia e psicologia — Stanford, Jordan Peterson, Jonas Madureira.',
+                ],
+              },
+              {
+                photo: francielliBenitesPhoto,
+                name: 'Francielli Benites',
+                role: 'Co-Fundadora',
+                bio: [
+                  '7º lugar nacional em redação, medalhas em olimpíadas de matemática, dupla graduação em Matemática e Engenharia Civil.',
+                  'Usa amplitude intelectual para criar soluções únicas — literatura clássica e lógica aplicadas ao problema real do cliente.',
+                ],
+              },
+              {
+                photo: jonathanBarrosPhoto,
+                name: 'Jonathan Barros',
+                role: 'Co-Fundador',
+                bio: [
+                  '18 anos no mercado B2B. Responsável por mais de R$30M em faturamento liderando times comerciais.',
+                  'Missão: transformar times de vendas com método e disciplina. Corrida, leitura, futebol e Muay Thai como laboratório de performance.',
+                ],
+              },
+            ].map((f) => (
+              <div key={f.name} className="relative bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong p-0 overflow-hidden group">
+                <CornerBrackets size={14} offset={10} />
+
+                <div className="aspect-[4/5] overflow-hidden">
+                  <img
+                    loading="lazy"
+                    src={f.photo}
+                    alt={f.name}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{ filter: IMG_DARK }}
+                  />
+                </div>
+
+                <div className="p-8">
+                  <Stamp>{f.role}</Stamp>
+                  <h3 className="font-display uppercase text-pb-ink text-3xl mt-3 mb-1 leading-[0.95]">{f.name}</h3>
+                  <div className="mt-4 space-y-3">
+                    {f.bio.map((b, i) => (
+                      <p key={i} className="font-body text-pb-ink-soft text-sm leading-relaxed">{b}</p>
+                    ))}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">{pillar.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{pillar.description}</p>
-                  <Link 
-                    to={pillar.link}
-                    className="inline-block"
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-                  >
-                    <Button 
-                      variant="outline"
-                      className="border-ba-blue-light/40 text-foreground hover:bg-ba-blue-light/10 rounded-full"
-                    >
-                      Saiba Mais
-                    </Button>
-                  </Link>
                 </div>
               </div>
             ))}
@@ -254,559 +289,306 @@ const BA = () => {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="py-20 px-4 relative bg-black border-y border-ba-blue-light/10">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
-            Tecnologias
-          </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
-            Utilizamos as mais avançadas ferramentas e plataformas para entregar soluções de ponta
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {/* Lovable */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={lovableLogo} alt="Lovable" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Lovable</h3>
-                <p className="text-xs text-muted-foreground">Desenvolvimento rápido</p>
-              </div>
-            </div>
+      {/* ================================================================
+          03 — PILARES
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="03 / DOUTRINA"
+            label="Pilares"
+            headline={<>Quatro frentes<span className="text-pb-red">.</span><br />Uma tese<span className="text-pb-red">.</span></>}
+          />
 
-            {/* n8n */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={n8nLogo} alt="n8n" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">n8n</h3>
-                <p className="text-xs text-muted-foreground">Automação avançada</p>
-              </div>
-            </div>
-
-            {/* ChatGPT */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={chatgptLogo} alt="ChatGPT" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">ChatGPT</h3>
-                <p className="text-xs text-muted-foreground">IA conversacional</p>
-              </div>
-            </div>
-
-            {/* Gemini */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={geminiLogo} alt="Gemini" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Gemini</h3>
-                <p className="text-xs text-muted-foreground">IA multimodal</p>
-              </div>
-            </div>
-
-            {/* Claude */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={claudeLogo} alt="Claude" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Claude</h3>
-                <p className="text-xs text-muted-foreground">IA analítica</p>
-              </div>
-            </div>
-
-            {/* Grok */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={grokLogo} alt="Grok" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Grok</h3>
-                <p className="text-xs text-muted-foreground">IA em tempo real</p>
-              </div>
-            </div>
-
-            {/* Make */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={makeLogo} alt="Make" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Make</h3>
-                <p className="text-xs text-muted-foreground">Integração visual</p>
-              </div>
-            </div>
-
-            {/* Typebot */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2 flex flex-col items-center justify-center aspect-square">
-              <div className="text-center">
-                <img loading="lazy" src={typebotLogo} alt="Typebot" width={64} height={64} className="w-16 h-16 mb-3 mx-auto object-contain" />
-                <h3 className="text-lg font-bold text-foreground mb-2">Typebot</h3>
-                <p className="text-xs text-muted-foreground">Chatbots inteligentes</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases Carousel Section */}
-      <section className="py-20 px-4 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
-            Cases de Uso
-          </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-3xl mx-auto">
-            Soluções comprovadas que transformam negócios
-          </p>
-          
-          <div className="relative">
-            <div className="flex animate-scroll-slow gap-6">
-              {[
-                {
-                  title: "Prospecção de obras orientada por IA",
-                  category: "Captação de leads",
-                  description: "Selecionamos, entre 20.000 obras em bases oficiais, as 100 com maior probabilidade de contrato para sua construtora.",
-                  metric: "+2x obras qualificadas"
-                },
-                {
-                  title: "Automação de Notas Fiscais",
-                  category: "Operacional",
-                  description: "A automação de processamento de Notas Fiscais integrado com o seu ERP poupa horas de trabalho manual e permite foco em tarefas que agregam valor.",
-                  metric: "+30% eficiência"
-                },
-                {
-                  title: "Atendimento Inteligente 24/7",
-                  category: "Customer Success",
-                  description: "Sistema de chatbot com IA que resolve dúvidas, agenda reuniões e qualifica leads automaticamente, mesmo fora do horário comercial.",
-                  metric: "+40% conversão"
-                },
-                {
-                  title: "Análise Preditiva de Vendas",
-                  category: "Vendas",
-                  description: "Machine learning para prever tendências de vendas, identificar oportunidades e otimizar estratégias comerciais com base em dados históricos.",
-                  metric: "+25% receita"
-                },
-                {
-                  title: "Gestão de Campanhas com IA",
-                  category: "Marketing",
-                  description: "Otimização automática de campanhas publicitárias usando IA para maximizar ROI e alcançar o público certo no momento ideal.",
-                  metric: "-35% custo por lead"
-                },
-                {
-                  title: "Onboarding Automatizado",
-                  category: "RH",
-                  description: "Processo completo de integração de novos colaboradores automatizado, desde documentação até treinamentos personalizados por IA.",
-                  metric: "50% mais rápido"
-                }
-              ].concat([
-                {
-                  title: "Prospecção de obras orientada por IA",
-                  category: "Captação de leads",
-                  description: "Selecionamos, entre 20.000 obras em bases oficiais, as 100 com maior probabilidade de contrato para sua construtora.",
-                  metric: "+2x obras qualificadas"
-                },
-                {
-                  title: "Automação de Notas Fiscais",
-                  category: "Operacional",
-                  description: "A automação de processamento de Notas Fiscais integrado com o seu ERP poupa horas de trabalho manual e permite foco em tarefas que agregam valor.",
-                  metric: "+30% eficiência"
-                },
-                {
-                  title: "Atendimento Inteligente 24/7",
-                  category: "Customer Success",
-                  description: "Sistema de chatbot com IA que resolve dúvidas, agenda reuniões e qualifica leads automaticamente, mesmo fora do horário comercial.",
-                  metric: "+40% conversão"
-                },
-                {
-                  title: "Análise Preditiva de Vendas",
-                  category: "Vendas",
-                  description: "Machine learning para prever tendências de vendas, identificar oportunidades e otimizar estratégias comerciais com base em dados históricos.",
-                  metric: "+25% receita"
-                },
-                {
-                  title: "Gestão de Campanhas com IA",
-                  category: "Marketing",
-                  description: "Otimização automática de campanhas publicitárias usando IA para maximizar ROI e alcançar o público certo no momento ideal.",
-                  metric: "-35% custo por lead"
-                },
-                {
-                  title: "Onboarding Automatizado",
-                  category: "RH",
-                  description: "Processo completo de integração de novos colaboradores automatizado, desde documentação até treinamentos personalizados por IA.",
-                  metric: "50% mais rápido"
-                }
-              ]).map((useCase, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-[380px] bg-black/90 backdrop-blur-sm border border-ba-blue-light/20 rounded-3xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500"
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-pb-grid-strong">
+            {pillars.map((p) => (
+              <div
+                key={p.idx}
+                className="bg-pb-void p-8 flex flex-col gap-6 group hover:bg-pb-void-card transition-colors duration-300"
+              >
+                <div className="flex items-start justify-between">
+                  <p.icon
+                    size={28}
+                    strokeWidth={1.2}
+                    className="text-pb-cyan group-hover:drop-shadow-[0_0_8px_hsl(var(--accent-cyan))] transition-all"
+                  />
+                  <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">// {p.idx}</span>
+                </div>
+                <div>
+                  <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-3">{p.title}</h3>
+                  <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{p.desc}</p>
+                </div>
+                <Link
+                  to={p.link}
+                  className="mt-auto font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan hover:text-pb-cyan-soft transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
-                  <div className="mb-4">
-                    <span className="inline-block px-4 py-2 bg-white/10 text-foreground border border-white/20 rounded-full text-sm font-medium">
-                      {useCase.category}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-foreground min-h-[64px]">
-                    {useCase.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6 min-h-[96px]">
-                    {useCase.description}
-                  </p>
-                  <div className="pt-4 border-t border-ba-blue-light/20">
-                    <p className="text-ba-orange font-bold text-lg">
-                      {useCase.metric}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  Saiba mais →
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Clients Section */}
-      <section className="py-20 px-4 bg-black border-y border-ba-blue-light/10">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Nossos Clientes
-          </h2>
-          <div className="relative overflow-hidden">
-            <div className="flex animate-scroll">
-              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300 relative"
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-black/40 rounded-lg"></div>
-                    <img loading="lazy"
-                      src={logo}
-                      alt={`Cliente ${index + 1}`}
-                      className="h-16 md:h-24 w-auto object-contain opacity-70 hover:opacity-100 relative z-10"
-                    />
-                  </div>
+      {/* ================================================================
+          04 — STACK
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="04 / STACK"
+            label="Ferramentas"
+            headline={<>Ferramentas que<br />operam a tese<span className="text-pb-red">.</span></>}
+            sub="Não usamos o que está na moda. Usamos o que funciona. Cada ferramenta tem uma função específica no processo."
+          />
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-pb-grid-strong">
+            {techs.map((t) => (
+              <div
+                key={t.name}
+                className="bg-pb-void p-8 flex flex-col items-center gap-4 group hover:bg-pb-void-card transition-colors duration-300"
+              >
+                <img
+                  loading="lazy"
+                  src={t.logo}
+                  alt={t.name}
+                  className="w-12 h-12 object-contain transition-all duration-300 group-hover:scale-110"
+                  style={{ filter: IMG_LOGO }}
+                />
+                <div className="text-center">
+                  <p className="font-mono text-[12px] uppercase tracking-mono-wide text-pb-ink-soft group-hover:text-pb-ink transition-colors">{t.name}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint mt-1">{t.desc}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 bg-black border-t border-ba-blue-light/10">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-foreground">
-            Perguntas Frequentes
-          </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-            Tire suas dúvidas sobre nossos serviços e soluções
-          </p>
-          
-          <div className="space-y-4">
-            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Como a IA pode ajudar meu negócio?
-                  </h3>
-                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-muted-foreground">
-                  <p>A IA pode automatizar processos repetitivos, analisar grandes volumes de dados para insights estratégicos, melhorar o atendimento ao cliente e otimizar operações. Implementamos soluções personalizadas que se adaptam às necessidades específicas do seu negócio.</p>
-                </div>
-              </details>
-            </div>
+      {/* ================================================================
+          05 — OPERAÇÕES (use cases carousel)
+      ================================================================ */}
+      <section className="py-24 border-t border-pb-grid-strong overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
+          <SectionHeader
+            idx="05 / OPERAÇÕES"
+            label="Cases de uso"
+            headline={<>Problema<span className="text-pb-red">.</span> Execução<span className="text-pb-red">.</span><br />Resultado<span className="text-pb-red">.</span></>}
+          />
+        </div>
 
-            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Quanto tempo leva para implementar uma solução?
-                  </h3>
-                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-muted-foreground">
-                  <p>O tempo de implementação varia conforme a complexidade do projeto. Soluções simples podem estar operacionais em 2-4 semanas, enquanto projetos mais robustos podem levar de 2 a 3 meses. Trabalhamos com metodologias ágeis para entregar valor rapidamente.</p>
+        <div className="relative">
+          <div className="flex animate-scroll-slow gap-5">
+            {[...useCases, ...useCases].map((uc, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 w-[340px] bg-pb-void-card border border-pb-grid-strong p-8 flex flex-col gap-5"
+              >
+                <Tag variant="cyan">{uc.category}</Tag>
+                <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] min-h-[56px]">{uc.title}</h3>
+                <p className="font-body text-pb-ink-soft text-sm leading-relaxed flex-1">{uc.desc}</p>
+                <div className="pt-5 border-t border-pb-grid-strong">
+                  <span className="font-display uppercase text-pb-cyan text-2xl">{uc.metric}</span>
                 </div>
-              </details>
-            </div>
-
-            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Vocês oferecem suporte após a implementação?
-                  </h3>
-                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-muted-foreground">
-                  <p>Sim! Oferecemos suporte contínuo com diferentes planos de manutenção. Isso inclui monitoramento, atualizações, treinamento de equipe e suporte técnico dedicado para garantir que sua solução continue performando no máximo.</p>
-                </div>
-              </details>
-            </div>
-
-            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Qual o investimento necessário?
-                  </h3>
-                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-muted-foreground">
-                  <p>O investimento varia conforme o escopo e complexidade do projeto. Oferecemos consultoria gratuita para entender suas necessidades e apresentar uma proposta personalizada com melhor custo-benefício. Entre em contato para um orçamento sem compromisso.</p>
-                </div>
-              </details>
-            </div>
-
-            <div className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl overflow-hidden">
-              <details className="group">
-                <summary className="flex justify-between items-center cursor-pointer p-6 hover:bg-white/5 transition-colors">
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Preciso ter conhecimento técnico para usar as soluções?
-                  </h3>
-                  <svg className="w-5 h-5 text-ba-blue-light transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-6 pb-6 text-muted-foreground">
-                  <p>Não! Desenvolvemos soluções com interfaces intuitivas e oferecemos treinamento completo para sua equipe. Nosso objetivo é tornar a tecnologia acessível e fácil de usar, independentemente do nível de conhecimento técnico.</p>
-                </div>
-              </details>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* World Map Section */}
-      <section className="py-20 px-4 relative overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ba-blue-light/3 to-transparent"></div>
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            BA Consultoria no Mundo
-          </h2>
-          <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ba-blue-light/20 bg-black/90 backdrop-blur-sm">
-            <img loading="lazy" 
-              src={worldMap} 
-              alt="Mapa Mundi - BA Consultoria no Mundo" 
-              className="w-full h-full object-cover scale-110"
+      {/* ================================================================
+          06 — CLIENTES (logos carousel)
+      ================================================================ */}
+      <section className="py-20 border-t border-pb-grid-strong overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-12">
+          <SectionHeader
+            idx="06 / CAMPO"
+            label="Clientes"
+            headline={<>Quem já decidiu<br />operar com a BA<span className="text-pb-red">.</span></>}
+          />
+        </div>
+
+        <div className="relative">
+          <div className="flex animate-scroll gap-10">
+            {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+              <div key={i} className="flex-shrink-0 flex items-center justify-center h-16">
+                <img
+                  loading="lazy"
+                  src={logo}
+                  alt={`Cliente ${(i % clientLogos.length) + 1}`}
+                  className="h-10 w-auto object-contain transition-all duration-300 opacity-40 hover:opacity-80"
+                  style={{ filter: IMG_LOGO }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          07 — FAQ
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-4xl mx-auto">
+          <SectionHeader
+            idx="07 / DÚVIDAS DE CAMPO"
+            label="FAQ"
+            headline={<>5 perguntas que<br />todo mundo faz<span className="text-pb-red">.</span></>}
+          />
+
+          <div className="divide-y divide-pb-grid-strong border border-pb-grid-strong">
+            {faqs.map((faq, i) => (
+              <details key={i} className="group">
+                <summary className="flex items-center justify-between gap-6 px-8 py-6 cursor-pointer list-none hover:bg-pb-void-card transition-colors">
+                  <h3 className="font-display uppercase text-pb-ink text-xl leading-[0.95]">{faq.q}</h3>
+                  <span className="font-mono text-pb-cyan text-lg leading-none group-open:hidden flex-shrink-0">+</span>
+                  <span className="font-mono text-pb-cyan text-lg leading-none hidden group-open:block flex-shrink-0">−</span>
+                </summary>
+                <div className="px-8 pb-8">
+                  <p className="font-body text-pb-ink-soft text-base leading-relaxed">{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          08 — ALCANCE (world map)
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="08 / ALCANCE"
+            label="Presença"
+            headline={<>Operação em<br />7 países<span className="text-pb-red">.</span></>}
+            sub="Presença global, método brasileiro. Exportamos doutrina, não produto."
+          />
+
+          <div className="relative border border-pb-grid-strong overflow-hidden">
+            <CornerBrackets size={20} offset={12} />
+            <img
+              loading="lazy"
+              src={worldMap}
+              alt="Mapa de presença da BA Consultoria"
+              className="w-full aspect-video object-cover"
+              style={{ filter: 'grayscale(100%) brightness(0.35) contrast(1.6)' }}
+            />
+            {/* Overlay grid on map */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: 'linear-gradient(to right, rgba(32,221,235,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(32,221,235,0.04) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
             />
           </div>
-          <div className="text-center mt-12">
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Presença global, impacto local. Levando expertise empresarial brasileira para o mundo.
-            </p>
+        </div>
+      </section>
+
+      {/* ================================================================
+          09 — INTELIGÊNCIA EXTERNA (mentores)
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="09 / INTELIGÊNCIA EXTERNA"
+            label="Mentores"
+            headline={<>Quem nos<br />treinou<span className="text-pb-red">.</span></>}
+          />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-pb-grid-strong">
+            {mentors.map((m) => (
+              <div
+                key={m.name}
+                className="bg-pb-void p-0 overflow-hidden group hover:bg-pb-void-card transition-colors duration-300"
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    loading="lazy"
+                    src={m.photo}
+                    alt={m.name}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{ filter: IMG_DARK }}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display uppercase text-pb-ink text-lg leading-[0.95] mb-2">{m.name}</h3>
+                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3 whitespace-pre-line">{m.role}</p>
+                  <p className="font-body text-pb-ink-soft text-xs leading-relaxed">{m.bio}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Leaders Section */}
-      <section className="py-20 px-4 relative bg-black border-t border-ba-blue-light/10">
-        <div className="container mx-auto max-w-7xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Nossos Mentores e Professores
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-            {/* Diego Barreto */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-              <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={diegoBarretoPhoto} 
-                    alt="Diego Barreto" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">Diego Barreto</h3>
-                <p className="text-ba-orange font-semibold text-sm mb-2">CEO - iFood</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Com vasta experiência em estratégia e finanças, Diego lidera a expansão e inovação no iFood, impulsionando o crescimento da empresa no setor de tecnologia e delivery. Autor do best-seller "Nova Economia," ele se destaca por sua visão disruptiva e abordagem orientada a dados para transformar o mercado brasileiro de delivery.
-                </p>
-              </div>
-            </div>
+      {/* ================================================================
+          10 — NÚMEROS
+      ================================================================ */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            idx="10 / NÚMEROS"
+            label="Resultados"
+            headline={<>O que a BA<br />já entregou<span className="text-pb-red">.</span></>}
+          />
 
-            {/* Pedro Somma */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-              <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={pedroSommaPhoto} 
-                    alt="Pedro Somma" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">Pedro Somma</h3>
-                <p className="text-ba-orange font-semibold text-sm mb-2">Ex-COO - 99 Taxi</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Com uma trajetória de destaque na área de mobilidade urbana, Pedro foi COO da 99 Taxi, onde desempenhou um papel fundamental na expansão e operação da empresa. Sua experiência em gestão e inovação contribuiu para consolidar a 99 como uma das principais plataformas de transporte no Brasil, impulsionando a transformação do setor de mobilidade no país.
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+            {stats.map((s, i) => (
+              <div key={i} className="bg-pb-void p-8 flex flex-col gap-3 hover:bg-pb-void-card transition-colors duration-300">
+                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{s.label}</p>
+                <p
+                  className="font-display leading-none"
+                  style={{ fontSize: 'clamp(40px, 5vw, 64px)', color: s.cyan ? 'hsl(var(--accent-cyan))' : 'hsl(var(--text-primary))' }}
+                >
+                  {s.value}
                 </p>
               </div>
-            </div>
-
-            {/* Luis Vabo Jr. */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-              <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={vaboPhoto} 
-                    alt="Luis Vabo Jr." 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">Luis Vabo Jr.</h3>
-                <p className="text-ba-orange font-semibold text-sm mb-2">Ex-diretor - Stone</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Empreendedor serial e investidor com ampla experiência em venture capital, Luis Vabo Jr. foi diretor e sócio da Stone. Nos últimos anos, tem se destacado pela sua atuação voltada a Softskills, além de ser OPM por Harvard e Autor do livro "Falar em público é para você!".
-                </p>
-              </div>
-            </div>
-
-            {/* João Olivério */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-              <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={joaoOliverioPhoto} 
-                    alt="João Olivério" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">João Olivério</h3>
-                <p className="text-ba-orange font-semibold text-sm mb-2">CEO - Sales As A System | Country Manager - Apollo.io</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Especialista em vendas e tecnologia, João Olivério é CEO da Sales As A System, onde criou uma metodologia inovadora para líderes de vendas, e Country Manager da Apollo.io, plataforma de inteligência de leads. Com passagens pela Zendesk, onde liderou operações globais desde 2013, e como mentor no G4 Sales, ele se destaca por sua visão estratégica, apoiando startups e empreendedores a alcançarem excelência no mercado.
-                </p>
-              </div>
-            </div>
-
-            {/* José Diogo Costódio Rodrigues */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-6 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-              <div className="mb-4">
-                <div className="aspect-square rounded-xl overflow-hidden mb-4 border border-ba-blue-light/20">
-                  <img loading="lazy" 
-                    src={joseDiogoPhoto} 
-                    alt="José Diogo Costódio Rodrigues" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-1">José Diogo Costódio Rodrigues</h3>
-                <p className="text-ba-orange font-semibold text-sm mb-2">CMO Latam & Canada - Tinder</p>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Com ampla experiência em Branding Marketing, José Costódio passou por algumas das mais Icônicas empresas do mundo, tendo sido Brand Manager na Nike e Redbull. Atualmente, é diretor geral de marketing do Tinder na América Latina e Canadá.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 relative bg-black border-t border-ba-blue-light/10">
-        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-light/5 via-transparent to-ba-blue-light/5"></div>
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-foreground">
-            Números que Falam por Si
+      {/* ================================================================
+          11 — CTA FINAL
+      ================================================================ */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong relative overflow-hidden">
+        <CornerBrackets size={40} offset={32} />
+
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-8">
+            // Próxima operação
+          </p>
+          <h2
+            className="font-display uppercase text-pb-ink leading-[0.88] mx-auto"
+            style={{ fontSize: 'clamp(48px, 7vw, 96px)', maxWidth: '900px' }}
+          >
+            Sua empresa ainda<br />
+            opera no<br />
+            <span className="text-pb-ink-soft">escuro</span>
+            <span className="text-pb-red">?</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Países Atendidos */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +7
-                </div>
-                <p className="text-foreground font-semibold">Países Atendidos</p>
-              </div>
-            </div>
-
-            {/* Vendas Geradas */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +R$130M
-                </div>
-                <p className="text-foreground font-semibold">Em Vendas Geradas</p>
-              </div>
-            </div>
-
-            {/* Leads Gerados */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +10K
-                </div>
-                <p className="text-foreground font-semibold">Leads Gerados</p>
-              </div>
-            </div>
-
-            {/* Pessoas Alcançadas */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +50M
-                </div>
-                <p className="text-foreground font-semibold">Pessoas Alcançadas Organicamente</p>
-              </div>
-            </div>
-
-            {/* Clientes Atendidos */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +700
-                </div>
-                <p className="text-foreground font-semibold">Clientes Atendidos</p>
-              </div>
-            </div>
-
-            {/* Anos no Mercado */}
-            <div className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl p-8 hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 text-center">
-              <div className="mb-4">
-                <div className="text-ba-orange mb-2">↘</div>
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-ba-blue-light to-ba-orange bg-clip-text text-transparent mb-4">
-                  +6
-                </div>
-                <p className="text-foreground font-semibold">Anos no Mercado</p>
-              </div>
-            </div>
+          <p className="mt-8 font-body text-pb-ink-soft text-lg max-w-xl mx-auto leading-relaxed">
+            A conversa inicial é gratuita. Em 30 minutos, você sabe exatamente onde a IA pode operar no seu negócio.
+          </p>
+          <div className="mt-12">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              onClick={() => handleCta('cta_final')}
+            >
+              Falar com um especialista
+              <span aria-hidden>→</span>
+            </a>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.333%);
-          }
-        }
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-        @keyframes scroll-slow {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-scroll-slow {
-          animation: scroll-slow 60s linear infinite;
-        }
-        .animate-scroll-slow:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </div>
   );
 };

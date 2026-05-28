@@ -1,200 +1,186 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X, User, LogOut, Shield } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, LogOut, Shield, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
-import { Avatar, AvatarFallback } from './ui/avatar';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+
+const NAV_LINKS = [
+  { to: '/ba',       label: 'BA',       idx: '01' },
+  { to: '/cases',    label: 'Cases',    idx: '02' },
+  { to: '/servicos', label: 'Serviços', idx: '03' },
+  { to: '/blog',     label: 'Blog',     idx: '04' },
+  { to: '/educacao', label: 'Educação', idx: '05' },
+];
+
+const WHATSAPP_URL = 'https://wa.me/5511999718595';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, isAdmin, signOut } = useAuth();
 
-  const handleLogout = async () => {
-    await signOut();
-  };
-
-  const getUserInitials = () => {
-    if (!user?.email) return 'U';
-    return user.email.charAt(0).toUpperCase();
-  };
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-glow">
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-pb-void/85 backdrop-blur-xl border-b border-pb-grid-strong">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <img 
-              src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png" 
-              alt="BA Consultoria Logo" 
-              className="h-8 w-auto"
+          <Link to="/" className="flex items-center gap-3 group" onClick={() => window.scrollTo(0, 0)}>
+            <img
+              src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png"
+              alt="BA Consultoria"
+              className="h-7 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <h1 className="text-xl font-bold font-poppins bg-gradient-primary bg-clip-text text-transparent hidden sm:block">
-              BA Consultoria
-            </h1>
+            <span className="hidden sm:flex flex-col leading-none">
+              <span className="font-display text-pb-ink text-lg tracking-wider uppercase">BA</span>
+              <span className="font-mono text-[9px] text-pb-ink-muted tracking-mono-wide uppercase">Consultoria</span>
+            </span>
           </Link>
-          
-          {/* Navigation - Centered pill */}
-          <nav className="hidden lg:block">
-            <div className="flex items-center space-x-1 bg-black/60 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2">
-              <Link to="/ba" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                BA
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => window.scrollTo(0, 0)}
+                className="group relative px-4 py-2 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-soft hover:text-pb-ink transition-colors"
+              >
+                <span className="text-pb-ink-faint mr-2 group-hover:text-pb-cyan transition-colors">{link.idx}</span>
+                {link.label}
               </Link>
-              <Link to="/cases" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Cases
-              </Link>
-              <Link to="/servicos" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Serviços
-              </Link>
-              <Link to="/blog" className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-inter rounded-full hover:bg-white/5">
-                Blog
-              </Link>
-            </div>
+            ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* Right cluster */}
           <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="relative h-9 w-9 rounded-full hover:bg-white/10">
-                    <Avatar className="h-9 w-9">
-                      <AvatarFallback className="bg-gradient-primary text-background">{getUserInitials()}</AvatarFallback>
-                    </Avatar>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="bg-black/90 backdrop-blur-xl border-white/10">
-                  <DropdownMenuLabel className="text-foreground">Minha Conta</DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-white/10" />
-                  {isAdmin && (
-                    <>
-                      <DropdownMenuItem asChild className="text-muted-foreground focus:bg-white/10 focus:text-foreground cursor-pointer">
-                        <Link to="/admin">
-                          <Shield className="mr-2 h-4 w-4" />
-                          Painel Admin
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator className="bg-white/10" />
-                    </>
-                  )}
-                  <DropdownMenuItem 
-                    onClick={handleLogout} 
-                    className="text-muted-foreground focus:bg-white/10 focus:text-foreground cursor-pointer"
+              <div className="flex items-center gap-2">
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-soft hover:text-pb-cyan transition-colors"
                   >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Sair
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link to="/auth">
-                <Button variant="ghost" size="sm" className="rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground">
-                  <User className="mr-2 h-4 w-4" />
-                  Entrar
-                </Button>
-              </Link>
-            )}
-            
-            <Button 
-              size="default"
-              className="font-inter bg-gradient-primary hover:opacity-90 text-background rounded-full px-6 shadow-glow transition-all"
-            >
-              Fale Conosco
-            </Button>
-          </div>
-
-        {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-muted-foreground hover:text-foreground p-2 rounded-full hover:bg-white/10 transition-colors"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="mt-4 md:hidden bg-black/40 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden">
-            <div className="px-4 pt-4 pb-4 space-y-2">
-              <Link 
-                to="/ba" 
-                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                BA
-              </Link>
-              <Link 
-                to="/cases" 
-                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Cases
-              </Link>
-              <Link 
-                to="/servicos" 
-                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Serviços
-              </Link>
-              <Link 
-                to="/blog" 
-                className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
-              {user && isAdmin && (
-                <Link 
-                  to="/admin" 
-                  className="block px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors font-inter rounded-2xl"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Painel Admin
-                </Link>
-              )}
-              <div className="pt-2 space-y-2">
-                {user ? (
-                  <Button 
-                    onClick={handleLogout}
-                    variant="outline" 
-                    className="w-full font-inter border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-full"
-                  >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    Sair
-                  </Button>
-                ) : (
-                  <Link to="/auth" className="block">
-                    <Button 
-                      variant="outline" 
-                      className="w-full font-inter border-white/10 text-muted-foreground hover:bg-white/10 hover:text-foreground rounded-full"
-                    >
-                      <User className="mr-2 h-4 w-4" />
-                      Entrar
-                    </Button>
+                    <Shield size={12} />
+                    Admin
                   </Link>
                 )}
-                <Button 
-                  className="w-full font-inter bg-gradient-primary hover:opacity-90 text-background rounded-full shadow-glow"
+                <button
+                  onClick={signOut}
+                  className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-red transition-colors"
+                  aria-label="Sair"
                 >
-                  Fale Conosco
-                </Button>
+                  <LogOut size={12} />
+                  Sair
+                </button>
               </div>
+            ) : (
+              <Link
+                to="/auth"
+                className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-ink transition-colors"
+              >
+                <User size={12} />
+                Entrar
+              </Link>
+            )}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
+              Fale Conosco
+              <span aria-hidden>→</span>
+            </a>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-pb-ink-soft hover:text-pb-cyan p-2 transition-colors"
+            aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile drawer */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-pb-void/95 backdrop-blur-xl md:hidden pt-[72px]">
+          <div className="max-w-7xl mx-auto px-6 py-10 h-full overflow-y-auto">
+            <div className="flex items-center gap-3 mb-10 font-mono text-[11px] uppercase tracking-mono-wide">
+              <span className="text-pb-cyan">// MENU</span>
+              <span className="h-px flex-1 bg-pb-grid-strong" />
+            </div>
+            <nav className="space-y-1">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="flex items-baseline gap-4 py-4 border-b border-pb-grid-strong/40 group"
+                  onClick={() => { setIsMenuOpen(false); window.scrollTo(0, 0); }}
+                >
+                  <span className="font-mono text-[10px] text-pb-cyan tracking-mono-wide">{link.idx}</span>
+                  <span className="font-display text-3xl uppercase text-pb-ink-soft group-hover:text-pb-ink transition-colors">
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
+              {user && isAdmin && (
+                <Link
+                  to="/admin"
+                  className="flex items-baseline gap-4 py-4 border-b border-pb-grid-strong/40 group"
+                  onClick={() => { setIsMenuOpen(false); window.scrollTo(0, 0); }}
+                >
+                  <span className="font-mono text-[10px] text-pb-cyan tracking-mono-wide">06</span>
+                  <span className="font-display text-3xl uppercase text-pb-ink-soft group-hover:text-pb-ink transition-colors">
+                    Admin
+                  </span>
+                </Link>
+              )}
+            </nav>
+            <div className="mt-10 space-y-4">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full justify-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Fale Conosco
+                <span aria-hidden>→</span>
+              </a>
+              {user ? (
+                <button
+                  onClick={() => { setIsMenuOpen(false); signOut(); }}
+                  className="btn-ghost w-full justify-center"
+                >
+                  <LogOut size={12} />
+                  Sair
+                </button>
+              ) : (
+                <Link
+                  to="/auth"
+                  className="btn-ghost w-full justify-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <User size={12} />
+                  Entrar
+                </Link>
+              )}
             </div>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      )}
+    </>
   );
 };
 

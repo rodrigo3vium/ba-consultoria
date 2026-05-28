@@ -27,45 +27,22 @@ export default {
 							lineHeight: '1.75',
 							fontSize: '1.125rem',
 						},
-						'h1': {
-							marginTop: '0',
-							marginBottom: '1.5rem',
-						},
-						'h2': {
-							marginTop: '2.5rem',
-							marginBottom: '1.5rem',
-						},
-						'h3': {
-							marginTop: '2rem',
-							marginBottom: '1rem',
-						},
-						'ul, ol': {
-							marginTop: '1.5rem',
-							marginBottom: '1.5rem',
-						},
-						'li': {
-							marginTop: '0.5rem',
-							marginBottom: '0.5rem',
-						},
-						'blockquote': {
-							marginTop: '2rem',
-							marginBottom: '2rem',
-						},
-						'pre': {
-							marginTop: '2rem',
-							marginBottom: '2rem',
-						},
-						'hr': {
-							marginTop: '3rem',
-							marginBottom: '3rem',
-						},
+						'h1': { marginTop: '0', marginBottom: '1.5rem' },
+						'h2': { marginTop: '2.5rem', marginBottom: '1.5rem' },
+						'h3': { marginTop: '2rem', marginBottom: '1rem' },
+						'ul, ol': { marginTop: '1.5rem', marginBottom: '1.5rem' },
+						'li': { marginTop: '0.5rem', marginBottom: '0.5rem' },
+						'blockquote': { marginTop: '2rem', marginBottom: '2rem' },
+						'pre': { marginTop: '2rem', marginBottom: '2rem' },
+						'hr': { marginTop: '3rem', marginBottom: '3rem' },
 					},
 				},
 			},
 			fontFamily: {
-				'inter': ['Inter', 'sans-serif'],
-				'poppins': ['Poppins', 'sans-serif'],
-				'sans': ['Inter', 'sans-serif'],
+				display: ['Bebas Neue', 'Oswald', 'Anton', 'sans-serif'],
+				mono:    ['IBM Plex Mono', 'Space Mono', 'monospace'],
+				body:    ['Fraunces', 'Georgia', 'serif'],
+				sans:    ['Fraunces', 'Georgia', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -100,16 +77,24 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
-					premium: 'hsl(var(--card-premium))',
-					'premium-border': 'hsl(var(--card-premium-border))',
-					'premium-hover': 'hsl(var(--card-premium-hover))',
 				},
-				ba: {
-					'blue-light': 'hsl(var(--ba-blue-light))',
-					'blue-medium': 'hsl(var(--ba-blue-medium))',
-					'blue-dark': 'hsl(var(--ba-blue-dark))',
-					'orange': 'hsl(var(--ba-orange))',
-					'black': 'hsl(var(--ba-black))',
+				/* === PB tokens (Strategic HUD Editorial) === */
+				pb: {
+					'cyan':       'hsl(var(--accent-cyan))',
+					'cyan-soft':  'hsl(var(--accent-cyan-soft))',
+					'cyan-dim':   'hsl(var(--accent-cyan-dim))',
+					'red':        'hsl(var(--accent-red))',
+					'red-dim':    'hsl(var(--accent-red-dim))',
+					'void':       'hsl(var(--bg-main))',
+					'void-deep':  'hsl(var(--bg-deep))',
+					'void-card':  'hsl(var(--bg-card))',
+					'void-elev':  'hsl(var(--bg-elev))',
+					'ink':        'hsl(var(--text-primary))',
+					'ink-soft':   'hsl(var(--text-secondary))',
+					'ink-muted':  'hsl(var(--text-muted))',
+					'ink-faint':  'hsl(var(--text-faint))',
+					'grid':       'rgba(255,255,255,0.045)',
+					'grid-strong':'rgba(255,255,255,0.10)',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -122,40 +107,28 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
-			backgroundImage: {
-				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-accent': 'var(--gradient-accent)',
-			},
 			boxShadow: {
-				'glow': 'var(--shadow-glow)',
-				'card-custom': 'var(--shadow-card)',
-				'premium': 'var(--shadow-premium)',
-			},
-			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)',
+				'cyan-glow': '0 0 24px hsl(var(--accent-cyan) / 0.45)',
+				'cyan-soft': '0 0 12px hsl(var(--accent-cyan) / 0.25)',
+				'red-glow':  '0 0 16px hsl(var(--accent-red) / 0.5)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			letterSpacing: {
+				'mono-wide': '0.15em',
+				'mono-x':    '0.2em',
+			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to:   { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to:   { height: '0' }
 				}
 			},
 			animation: {
