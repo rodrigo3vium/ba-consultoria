@@ -1330,30 +1330,30 @@ const AgenticOS = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="aos-td-criterio">Integração entre áreas</td>
-                    <td><span className="sp sp-neg">✕</span> Cada ferramenta isolada</td>
-                    <td><span className="sp sp-warn">!</span> Frágil, depende de cola</td>
+                    <td className="aos-td-criterio">Dados confiáveis</td>
+                    <td><span className="sp sp-neg">✕</span> Dados não se comunicam entre ferramentas</td>
+                    <td><span className="sp sp-warn">!</span> Precisa de gambiarra para integrar</td>
                     <td><span className="sp sp-pos">✓</span> Possível, mas custosa</td>
                     <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Nativa, por design</td>
                   </tr>
                   <tr>
                     <td className="aos-td-criterio">Adaptação ao seu negócio</td>
-                    <td><span className="sp sp-neg">✕</span> Você se adapta a ela</td>
-                    <td><span className="sp sp-pos">✓</span> Total, mas manual</td>
+                    <td><span className="sp sp-neg">✕</span> Inexistente</td>
+                    <td><span className="sp sp-warn">!</span> Manual</td>
                     <td><span className="sp sp-pos">✓</span> Alta</td>
                     <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Total, automatizada</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Inteligência aplicada</td>
-                    <td><span className="sp sp-warn">!</span> Pontual, por feature</td>
+                    <td className="aos-td-criterio">Inteligência Artificial</td>
+                    <td><span className="sp sp-neg">✕</span> Isolada</td>
                     <td><span className="sp sp-neg">✕</span> Inexistente</td>
-                    <td><span className="sp sp-warn">!</span> Se você programar</td>
-                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Agentes em todo lugar</td>
+                    <td><span className="sp sp-neg">✕</span> Inexistente</td>
+                    <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Agentes trabalhando 24h por dia para o seu negócio</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Evolução com a empresa</td>
-                    <td><span className="sp sp-warn">!</span> Roadmap do fornecedor</td>
-                    <td><span className="sp sp-neg">✕</span> Vira espaguete</td>
+                    <td className="aos-td-criterio">Tecnologia Viva</td>
+                    <td><span className="sp sp-neg">✕</span> Inexistente</td>
+                    <td><span className="sp sp-neg">✕</span> Inexistente</td>
                     <td><span className="sp sp-warn">!</span> Custo cresce muito</td>
                     <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Cresce junto, sem atrito</td>
                   </tr>
@@ -1365,14 +1365,14 @@ const AgenticOS = () => {
                     <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Um único organismo</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Dependência de fornecedor</td>
-                    <td><span className="sp sp-neg">✕</span> Total — refém</td>
+                    <td className="aos-td-criterio">Dependência</td>
+                    <td><span className="sp sp-neg">✕</span> Dependência do fornecedor</td>
                     <td><span className="sp sp-pos">✓</span> Zero</td>
                     <td><span className="sp sp-pos">✓</span> Zero (se o time fica)</td>
                     <td className="aos-td-aos"><span className="sp sp-pos">✓</span> Zero — é seu</td>
                   </tr>
                   <tr>
-                    <td className="aos-td-criterio">Começar a operar amanhã</td>
+                    <td className="aos-td-criterio">Velocidade de Implementação</td>
                     <td><span className="sp sp-pos">✓</span> Imediato</td>
                     <td><span className="sp sp-pos">✓</span> Imediato</td>
                     <td><span className="sp sp-neg">✕</span> Anos</td>
