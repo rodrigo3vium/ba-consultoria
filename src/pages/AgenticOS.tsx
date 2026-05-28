@@ -218,8 +218,8 @@ const AgenticOS = () => {
 .aos-h1 {
   font-family: var(--aos-font-display);
   font-weight: 400;
-  font-size: clamp(56px, 8.5vw, 132px);
-  line-height: 0.92;
+  font-size: clamp(42px, 4.3vw, 62px);
+  line-height: 0.95;
   color: var(--aos-text-primary);
   text-transform: uppercase;
   letter-spacing: 0.005em;
@@ -1103,8 +1103,10 @@ const AgenticOS = () => {
             </span>
 
             <h1 className="aos-h1">
-              Você não precisa de mais uma ferramenta de IA.<br />
-              Você precisa de um <span className="aos-accent">ecossistema vivo</span>, onde a IA conecta cada área do seu negócio<span className="aos-red">.</span>
+              Você não precisa de mais uma ferramenta.<br />
+              Você precisa de um <span className="aos-accent">ecossistema vivo</span>,<br />
+              onde a IA conecta<br />
+              cada área do seu negócio<span className="aos-red">.</span>
             </h1>
 
             <p className="aos-sub-headline">
