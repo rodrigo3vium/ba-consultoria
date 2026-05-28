@@ -134,6 +134,8 @@ const AgenticOS = () => {
   letter-spacing: 0.12em;
   color: var(--aos-text-primary);
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .aos-logo-mark { color: var(--aos-accent-cyan); margin-right: 4px; }
 .aos-header-meta {
@@ -218,7 +220,7 @@ const AgenticOS = () => {
 .aos-h1 {
   font-family: var(--aos-font-display);
   font-weight: 400;
-  font-size: clamp(42px, 4.3vw, 62px);
+  font-size: clamp(20px, 4.8vw, 62px);
   line-height: 0.95;
   color: var(--aos-text-primary);
   text-transform: uppercase;
@@ -227,6 +229,8 @@ const AgenticOS = () => {
 }
 .aos-accent { color: var(--aos-accent-cyan); }
 .aos-red { color: var(--aos-accent-red); }
+.aos-desktop-only { display: block; }
+.aos-mobile-only { display: none; }
 
 .aos-sub-headline {
   font-family: var(--aos-font-body);
@@ -1011,6 +1015,13 @@ const AgenticOS = () => {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .aos-desktop-only { display: none; }
+  .aos-mobile-only { display: block; }
+  .aos-h1-desktop { display: none; }
+  .aos-h1 { font-size: 36px; line-height: 1; }
+  .aos-pre-headline { margin-bottom: 56px; }
+  .aos-header { padding: 12px 16px; }
+  .aos-header-meta { font-size: 8px; letter-spacing: 0.1em; }
   .aos-section, .aos-section-3 { padding: 80px 0; }
   .aos-container { padding: 0 20px; }
   .aos-hero { padding-top: 100px; min-height: auto; }
@@ -1029,7 +1040,9 @@ const AgenticOS = () => {
   .aos-impact-break { padding: 48px 16px; }
   .aos-final-closing { padding: 56px 24px; margin-top: 60px; }
   .aos-cta-btn { padding: 18px 32px; font-size: 13px; }
-  .aos-briefing-coords { font-size: 10px; gap: 16px; }
+  .aos-briefing-coords { font-size: 9px; gap: 10px; margin-bottom: 28px; }
+  .aos-briefing-coords span:nth-child(2),
+  .aos-briefing-coords span:nth-child(3) { display: none; }
   .aos-table-wrapper { padding: 20px; }
 }
     `;
@@ -1097,16 +1110,19 @@ const AgenticOS = () => {
               <span>LAT −20.4486 · LONG −54.6295</span>
             </div>
 
-            <span className="aos-pre-headline">
+            <span className="aos-pre-headline aos-desktop-only">
               Para empresários que já entenderam:<br />
               IA não é uma ferramenta. É a nova infraestrutura.
+            </span>
+            <span className="aos-pre-headline aos-mobile-only">
+              Para empresários que entenderam que IA é infraestrutura
             </span>
 
             <h1 className="aos-h1">
               Você não precisa de mais uma ferramenta.<br />
-              Você precisa de um <span className="aos-accent">ecossistema vivo</span>,<br />
+              Você precisa de um <span className="aos-accent">ecossistema vivo</span><span className="aos-h1-desktop">,<br />
               onde a IA conecta<br />
-              cada área do seu negócio<span className="aos-red">.</span>
+              cada área do seu negócio</span><span className="aos-red">.</span>
             </h1>
 
             <p className="aos-sub-headline">
