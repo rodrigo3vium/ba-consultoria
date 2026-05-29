@@ -50,6 +50,7 @@ const PropostaDanielleSena = lazy(() => import("./pages/PropostaDanielleSena"));
 const PropostaRoseMiranda = lazy(() => import("./pages/PropostaRoseMiranda"));
 const PropostaRevenueBasesFinancing = lazy(() => import("./pages/PropostaRevenueBasesFinancing"));
 const PropostaInstitutoAreluna = lazy(() => import("./pages/PropostaInstitutoAreluna"));
+const PropostaRoyalEagle = lazy(() => import("./pages/PropostaRoyalEagle"));
 const FollowUpClinicaSupreme = lazy(() => import("./pages/FollowUpClinicaSupreme"));
 const EducacaoSkillsNegocios = lazy(() => import("./pages/EducacaoSkillsNegocios"));
 const AgenticOS = lazy(() => import("./pages/AgenticOS"));
@@ -115,6 +116,7 @@ const App = () => (
           <Route path="/propostas/rose-miranda" element={<PropostaRoseMiranda />} />
           <Route path="/propostas/revenue-based-financing" element={<PropostaRevenueBasesFinancing />} />
           <Route path="/propostas/instituto-areluna" element={<PropostaInstitutoAreluna />} />
+          <Route path="/propostas/royal-eagle" element={<PropostaRoyalEagle />} />
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           <Route path="/educacao/20-skill-negocios" element={<EducacaoSkillsNegocios />} />
           <Route path="/educacao/aos" element={<AgenticOS />} />
