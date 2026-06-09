@@ -408,7 +408,7 @@ const PropostaRaioXDoTerreno = () => {
                 <span className="corner-tl" /><span className="corner-tr" />
                 <div className="ribbon">Completo</div>
                 <h3>Produto Completo</h3>
-                <div className="price">R$15.000<small>economia de R$2.000 · + R$1.000/mês · prazo 18 dias úteis</small></div>
+                <div className="price">R$15.000<small>economia de R$2.000 · Custo mensal de Infraestrutura é do cliente. · prazo 18 dias úteis</small></div>
                 <ul>
                   <li>Tudo do MVP incluso</li>
                   <li className="dim">+ Construção da estratégia da esteira de produtos</li>
