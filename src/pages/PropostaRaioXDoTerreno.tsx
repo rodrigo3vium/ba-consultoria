@@ -143,7 +143,7 @@ const PropostaRaioXDoTerreno = () => {
         .rx-page .diag-col.down li::before{color:var(--accent-red);}
 
         /* PRODUCT FLOW */
-        .rx-page .flow{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong); margin-top:8px;}
+        .rx-page .flow{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong); margin-top:8px;}
         .rx-page .step{background:var(--bg-card); padding:26px 20px; position:relative;}
         .rx-page .step .num{font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--accent-cyan);}
         .rx-page .step h4{font-family:var(--font-display); font-size:22px; text-transform:uppercase; line-height:0.98; margin:14px 0 10px;}
@@ -212,7 +212,7 @@ const PropostaRaioXDoTerreno = () => {
           .rx-page .about-photo{max-width:200px;}
           .rx-page .ref-list{grid-template-columns:1fr;}
           .rx-page .diag{grid-template-columns:1fr;}
-          .rx-page .flow{grid-template-columns:1fr 1fr;}
+          .rx-page .flow{grid-template-columns:1fr;}
           .rx-page .obj-grid{grid-template-columns:1fr;}
           .rx-page .plans{grid-template-columns:1fr;}
           .rx-page .pay{grid-template-columns:1fr 1fr;}
@@ -348,11 +348,9 @@ const PropostaRaioXDoTerreno = () => {
             <p className="lead">Um produto self-service de <span className="cyan">R$97</span> que entrega a sua pré-viabilidade no automático — e dá ao cliente um diagnóstico que vale muito mais do que pagou.</p>
             <p className="kicker" style={{ marginTop: "14px" }}>NOME DE TRABALHO · DEFINIDO COM VOCÊ</p>
             <div className="flow">
-              <div className="step"><div className="num">PASSO 01</div><h4>Paga</h4><p>O cliente paga R$97 no checkout.</p></div>
-              <div className="step"><div className="num">PASSO 02</div><h4>Responde</h4><p>Questionário guiado: área, localização, valor do m², uso atual, zoneamento, intenção.</p></div>
-              <div className="step"><div className="num">PASSO 03</div><h4>Envia</h4><p>Upload da matrícula e da planta do terreno.</p></div>
-              <div className="step"><div className="num">PASSO 04</div><h4>Recebe</h4><p>A IA gera o relatório em PDF: lotes estimados, VGV, investimento, retorno e viabilidade preliminar.</p></div>
-              <div className="step"><div className="num">PASSO 05</div><h4>Avança</h4><p>Convite pra sua consultoria completa. Quem recebe "viável, VGV R$X" chega pré-vendido.</p></div>
+              <div className="step"><div className="num">PASSO 01</div><h4>Responde</h4><p>O cliente preenche o questionário guiado com as informações do terreno: localização, área, zoneamento e intenção de uso.</p></div>
+              <div className="step"><div className="num">PASSO 02</div><h4>IA Analisa</h4><p>O motor de inteligência artificial processa os dados, cruza com parâmetros urbanísticos e calcula a pré-viabilidade do loteamento.</p></div>
+              <div className="step"><div className="num">PASSO 03</div><h4>Relatório</h4><p>O cliente recebe o relatório em PDF com lotes estimados, VGV, investimento e retorno — e um convite direto para a sua consultoria completa.</p></div>
             </div>
             <p className="body">O R$97 não é o negócio. É a porta de entrada que paga a aquisição, entrega valor real e enche a sua consultoria de leads quentes — enquanto roda sozinho.</p>
           </section>
