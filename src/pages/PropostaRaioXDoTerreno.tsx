@@ -379,7 +379,7 @@ const PropostaRaioXDoTerreno = () => {
                 <span className="corner-tl" /><span className="corner-tr" />
                 <div className="ribbon">Recomendado</div>
                 <h3>MVP · O Motor de Venda</h3>
-                <div className="price">R$8.000<small>+ R$1.000/mês gerenciado (após go-live) · prazo 10 dias úteis</small></div>
+                <div className="price">R$8.000<small>Custo mensal de Infraestrutura é do cliente. · prazo 10 dias úteis</small></div>
                 <ul>
                   <li>Landing page de vendas</li>
                   <li>Checkout integrado (Kiwify/Hotmart)</li>
@@ -409,7 +409,7 @@ const PropostaRaioXDoTerreno = () => {
             <div className="pay">
               <div className="opt"><div className="t">À vista · PIX</div><div className="v cyan">−5%</div><div className="d">Pagamento único antecipado. A melhor condição.</div></div>
               <div className="opt"><div className="t">50% + 50% · PIX</div><div className="v">Valor cheio</div><div className="d">Entrada na assinatura, saldo na entrega. Referência.</div></div>
-              <div className="opt"><div className="t">Cartão · até 12x</div><div className="v">+18%</div><div className="d">Repasse da taxa de parcelamento. Recebimento à vista.</div></div>
+              <div className="opt"><div className="t">Cartão · até 12x</div><div className="v">+18%</div></div>
               <div className="opt"><div className="t">Entrega expressa</div><div className="v red">+40%</div><div className="d">Produto no ar em 72h. Prioridade total na fila.</div></div>
             </div>
             <p className="note">MODELO GERENCIADO — VOCÊ NÃO TOCA EM NADA TÉCNICO. HOSPEDAGEM, CUSTOS DE IA (ATÉ 100 RELATÓRIOS/MÊS) E MANUTENÇÃO INCLUSOS NA MENSALIDADE. VOLUME EXCEDENTE OU ALTERAÇÕES MAIORES: R$300/H.</p>
