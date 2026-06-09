@@ -411,6 +411,7 @@ const PropostaRaioXDoTerreno = () => {
                 <div className="price">R$15.000<small>economia de R$2.000 · + R$1.000/mês · prazo 18 dias úteis</small></div>
                 <ul>
                   <li>Tudo do MVP incluso</li>
+                  <li>Construção da estratégia da esteira de produtos</li>
                   <li className="dim">+ Área logada persistente (cliente acessa relatórios anteriores)</li>
                   <li className="dim">+ Dashboard analítico completo (métricas, filtros, pipeline, origem por canal)</li>
                   <li className="dim">+ Automação do funil de upsell (sequência pós-relatório)</li>
