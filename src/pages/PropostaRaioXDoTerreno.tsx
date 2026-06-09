@@ -122,7 +122,7 @@ const PropostaRaioXDoTerreno = () => {
         .rx-page .stat .value.cyan{color:var(--accent-cyan);}
 
         /* REFERENCES */
-        .rx-page .ref-list{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong);}
+        .rx-page .ref-list{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong);}
         .rx-page .ref{background:var(--bg-card); padding:24px 26px;}
         .rx-page .ref .name{font-family:var(--font-display); font-size:24px; text-transform:uppercase; line-height:1;}
         .rx-page .ref .role{font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent-cyan); margin-top:8px;}
