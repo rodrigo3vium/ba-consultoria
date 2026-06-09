@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
+import { ClipboardList, BrainCircuit, FileCheck } from "lucide-react";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
@@ -145,6 +146,7 @@ const PropostaRaioXDoTerreno = () => {
         /* PRODUCT FLOW */
         .rx-page .flow{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong); margin-top:8px;}
         .rx-page .step{background:var(--bg-card); padding:26px 20px; position:relative;}
+        .rx-page .step-icon{display:flex; align-items:center; justify-content:center; width:48px; height:48px; border:1px solid var(--accent-cyan-dim); color:var(--accent-cyan); margin-bottom:20px; box-shadow:0 0 16px rgba(32,221,235,0.12);}
         .rx-page .step .num{font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--accent-cyan);}
         .rx-page .step h4{font-family:var(--font-display); font-size:22px; text-transform:uppercase; line-height:0.98; margin:14px 0 10px;}
         .rx-page .step p{font-family:var(--font-body); font-size:13.5px; line-height:1.5; color:var(--text-muted);}
@@ -345,14 +347,26 @@ const PropostaRaioXDoTerreno = () => {
           {/* PRODUTO */}
           <section id="produto">
             <div className="sec-head"><span className="idx">[ 05 / PRODUTO ]</span><h2 className="sec-title">"Raio-X do Terreno"</h2></div>
-            <p className="lead">Um produto self-service de <span className="cyan">R$97</span> que entrega a sua pré-viabilidade no automático — e dá ao cliente um diagnóstico que vale muito mais do que pagou.</p>
+            <p className="lead">Um produto self-service de <span className="cyan">R$197</span> que entrega a sua pré-viabilidade no automático — e dá ao cliente um diagnóstico que vale muito mais do que pagou.</p>
             <p className="kicker" style={{ marginTop: "14px" }}>NOME DE TRABALHO · DEFINIDO COM VOCÊ</p>
             <div className="flow">
-              <div className="step"><div className="num">PASSO 01</div><h4>Responde</h4><p>O cliente preenche o questionário guiado com as informações do terreno: localização, área, zoneamento e intenção de uso.</p></div>
-              <div className="step"><div className="num">PASSO 02</div><h4>IA Analisa</h4><p>O motor de inteligência artificial processa os dados, cruza com parâmetros urbanísticos e calcula a pré-viabilidade do loteamento.</p></div>
-              <div className="step"><div className="num">PASSO 03</div><h4>Relatório</h4><p>O cliente recebe o relatório em PDF com lotes estimados, VGV, investimento e retorno — e um convite direto para a sua consultoria completa.</p></div>
+              <div className="step">
+                <div className="step-icon"><ClipboardList size={22} strokeWidth={1.5} /></div>
+                <div className="num">PASSO 01</div><h4>Responde</h4>
+                <p>O cliente preenche o questionário guiado com as informações do terreno: localização, área, zoneamento e intenção de uso.</p>
+              </div>
+              <div className="step">
+                <div className="step-icon"><BrainCircuit size={22} strokeWidth={1.5} /></div>
+                <div className="num">PASSO 02</div><h4>IA Analisa</h4>
+                <p>O motor de inteligência artificial processa os dados, cruza com parâmetros urbanísticos e calcula a pré-viabilidade do loteamento.</p>
+              </div>
+              <div className="step">
+                <div className="step-icon"><FileCheck size={22} strokeWidth={1.5} /></div>
+                <div className="num">PASSO 03</div><h4>Relatório</h4>
+                <p>O cliente recebe o relatório em PDF com lotes estimados, VGV, investimento e retorno — e um convite direto para a sua consultoria completa.</p>
+              </div>
             </div>
-            <p className="body">O R$97 não é o negócio. É a porta de entrada que paga a aquisição, entrega valor real e enche a sua consultoria de leads quentes — enquanto roda sozinho.</p>
+            <p className="body">O R$197 não é o negócio. É a porta de entrada que paga a aquisição, entrega valor real e enche a sua consultoria de leads quentes — enquanto roda sozinho.</p>
           </section>
 
           {/* OBJETIVO */}
