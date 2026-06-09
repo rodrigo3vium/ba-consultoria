@@ -1,5 +1,11 @@
 import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
+import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
+import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
+import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
+import vaboPhoto from "@/assets/mentors/vabo.webp";
+import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
+import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
 const PropostaRaioXDoTerreno = () => {
   useEffect(() => {
@@ -184,6 +190,15 @@ const PropostaRaioXDoTerreno = () => {
         .rx-page .final p{font-family:var(--font-body); font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:680px; margin-top:26px;}
         .rx-page .final .cta-row{margin-top:40px;}
 
+        /* ABOUT PHOTO */
+        .rx-page .about-grid{display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:start; margin-top:32px;}
+        .rx-page .about-photo{width:100%; aspect-ratio:1; overflow:hidden; border:1px solid var(--grid-strong);}
+        .rx-page .about-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(.35) contrast(1.05) brightness(.9);}
+
+        /* REF PHOTO */
+        .rx-page .ref-photo{width:100%; aspect-ratio:1.4; overflow:hidden; border-bottom:1px solid var(--grid-strong); margin-bottom:14px; margin:-24px -26px 14px; width:calc(100% + 52px);}
+        .rx-page .ref-photo img{width:100%; height:100%; object-fit:cover; object-position:top; filter:grayscale(.4) contrast(1.05) brightness(.88);}
+
         /* FOOTER */
         .rx-page footer{border-top:1px solid var(--grid-strong); padding:28px 0; font-family:var(--font-mono); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint);}
         .rx-page .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
@@ -193,6 +208,8 @@ const PropostaRaioXDoTerreno = () => {
           .rx-page .stat-grid{grid-template-columns:repeat(2,1fr);}
           .rx-page .stat:nth-child(2){border-right:none;}
           .rx-page .stat:nth-child(1),.rx-page .stat:nth-child(2){border-bottom:1px solid var(--grid-strong);}
+          .rx-page .about-grid{grid-template-columns:1fr;}
+          .rx-page .about-photo{max-width:200px;}
           .rx-page .ref-list{grid-template-columns:1fr;}
           .rx-page .diag{grid-template-columns:1fr;}
           .rx-page .flow{grid-template-columns:1fr 1fr;}
@@ -230,7 +247,7 @@ const PropostaRaioXDoTerreno = () => {
             </div>
             <div className="tags">
               <span className="tag cyan">PROPOSTA · CONFIDENCIAL</span>
-              <span className="tag">PARA: [NOME DO CLIENTE]</span>
+              <span className="tag">PARA: JULIANO PEDROSA</span>
             </div>
             <h1>TIRE O MÉTODO<br />DA SUA CABEÇA<span className="red">.</span></h1>
             <p className="sub">A sua pré-viabilidade de loteamento, transformada em produto digital. Entrega diagnóstico de valor real, qualifica em escala e alimenta a sua consultoria de alto ticket — sem depender do seu tempo.</p>
@@ -243,8 +260,15 @@ const PropostaRaioXDoTerreno = () => {
           {/* SOBRE */}
           <section id="sobre">
             <div className="sec-head"><span className="idx">[ 01 / SOBRE ]</span><h2 className="sec-title">Quem está por trás</h2></div>
-            <p className="lead big">Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado de mais de 100 empresas atendidas.</p>
-            <p className="body">A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.</p>
+            <div className="about-grid">
+              <div className="about-photo">
+                <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+              </div>
+              <div>
+                <p className="lead big">Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado de mais de 100 empresas atendidas.</p>
+                <p className="body">A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.</p>
+              </div>
+            </div>
             <div className="stat-grid">
               <div className="stat"><div className="label">Gerados em vendas</div><div className="value cyan">+R$130M</div></div>
               <div className="stat"><div className="label">Consultorias</div><div className="value">100+</div></div>
@@ -258,11 +282,26 @@ const PropostaRaioXDoTerreno = () => {
             <div className="sec-head"><span className="idx">[ 02 / REFERÊNCIAS ]</span><h2 className="sec-title">Nossos mentores</h2></div>
             <p className="lead">Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.</p>
             <div className="ref-list" style={{ marginTop: "32px" }}>
-              <div className="ref"><div className="name">Diego Barreto</div><div className="role">CEO · iFood</div><div className="desc">Autor do best-seller "Nova Economia". Lidera expansão e inovação no iFood.</div></div>
-              <div className="ref"><div className="name">Pedro Somma</div><div className="role">Ex-COO · 99</div><div className="desc">Papel central na expansão e operação da 99, líder em mobilidade.</div></div>
-              <div className="ref"><div className="name">Luis Vabo Jr.</div><div className="role">Ex-diretor · Stone</div><div className="desc">Empreendedor serial, investidor e autor.</div></div>
-              <div className="ref"><div className="name">João Olivério</div><div className="role">CEO · Sales As A System</div><div className="desc">Country Manager da Apollo.io e mentor no G4 Sales.</div></div>
-              <div className="ref"><div className="name">José Diogo C. Rodrigues</div><div className="role">CMO Latam · Tinder</div><div className="desc">Passagem por Nike e Red Bull. Brand Marketing Latam.</div></div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={diegoBarretoPhoto} alt="Diego Barreto" /></div>
+                <div className="name">Diego Barreto</div><div className="role">CEO · iFood</div><div className="desc">Autor do best-seller "Nova Economia". Lidera expansão e inovação no iFood.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={pedroSommaPhoto} alt="Pedro Somma" /></div>
+                <div className="name">Pedro Somma</div><div className="role">Ex-COO · 99</div><div className="desc">Papel central na expansão e operação da 99, líder em mobilidade.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={vaboPhoto} alt="Luis Vabo Jr." /></div>
+                <div className="name">Luis Vabo Jr.</div><div className="role">Ex-diretor · Stone</div><div className="desc">Empreendedor serial, investidor e autor.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={joaoOliverioPhoto} alt="João Olivério" /></div>
+                <div className="name">João Olivério</div><div className="role">CEO · Sales As A System</div><div className="desc">Country Manager da Apollo.io e mentor no G4 Sales.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={joseDiogoPhoto} alt="José Diogo C. Rodrigues" /></div>
+                <div className="name">José Diogo C. Rodrigues</div><div className="role">CMO Latam · Tinder</div><div className="desc">Passagem por Nike e Red Bull. Brand Marketing Latam.</div>
+              </div>
             </div>
           </section>
 
@@ -380,7 +419,7 @@ const PropostaRaioXDoTerreno = () => {
           <section className="final">
             <span className="idx">[ 08 / PRÓXIMO PASSO ]</span>
             <h2 style={{ marginTop: "24px" }}>Vamos colocar isso no ar<span className="red">.</span></h2>
-            <p>[Nome], você já provou o método e já tem o mercado vindo atrás. O que falta não é validação — é tirar a pré-viabilidade da sua cabeça e transformar num produto que trabalha por você, em escala, enquanto você foca no que só você faz.</p>
+            <p>Juliano, você já provou o método e já tem o mercado vindo atrás. O que falta não é validação — é tirar a pré-viabilidade da sua cabeça e transformar num produto que trabalha por você, em escala, enquanto você foca no que só você faz.</p>
             <div className="cta-row">
               <a
                 href="https://wa.me/5511999718595"

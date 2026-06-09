@@ -61,7 +61,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/propostas/rose-miranda', label: 'Proposta Rose Miranda', category: 'propostas', status: 'ativa' },
   { path: '/propostas/revenue-based-financing', label: 'Proposta Revenue Based', category: 'propostas', status: 'ativa' },
   { path: '/propostas/royal-eagle', label: 'Proposta Royal Eagle', category: 'propostas', status: 'ativa' },
-  { path: '/propostas/raio-x-do-terreno', label: 'Proposta Raio-X do Terreno', category: 'propostas', status: 'ativa' },
+  { path: '/propostas/juliano-pedrosa', label: 'Proposta Juliano Pedrosa (Raio-X do Terreno)', category: 'propostas', status: 'ativa' },
   { path: '/follow-up/clinica-supreme', label: 'Follow-up Clínica Supreme', category: 'propostas', status: 'ativa' },
 ];
 
