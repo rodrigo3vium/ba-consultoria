@@ -284,23 +284,23 @@ const PropostaRaioXDoTerreno = () => {
             <div className="ref-list" style={{ marginTop: "32px" }}>
               <div className="ref">
                 <div className="ref-photo"><img loading="lazy" src={diegoBarretoPhoto} alt="Diego Barreto" /></div>
-                <div className="name">Diego Barreto</div><div className="role">CEO · iFood</div><div className="desc">Autor do best-seller "Nova Economia". Lidera expansão e inovação no iFood.</div>
+                <div className="name">Diego Barreto</div><div className="role">CEO · iFood</div><div className="desc">Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.</div>
               </div>
               <div className="ref">
                 <div className="ref-photo"><img loading="lazy" src={pedroSommaPhoto} alt="Pedro Somma" /></div>
-                <div className="name">Pedro Somma</div><div className="role">Ex-COO · 99</div><div className="desc">Papel central na expansão e operação da 99, líder em mobilidade.</div>
+                <div className="name">Pedro Somma</div><div className="role">Ex-COO · 99</div><div className="desc">Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade.</div>
               </div>
               <div className="ref">
                 <div className="ref-photo"><img loading="lazy" src={vaboPhoto} alt="Luis Vabo Jr." /></div>
-                <div className="name">Luis Vabo Jr.</div><div className="role">Ex-diretor · Stone</div><div className="desc">Empreendedor serial, investidor e autor.</div>
+                <div className="name">Luis Vabo Jr.</div><div className="role">Ex-diretor · Stone</div><div className="desc">Empreendedor serial, investidor e autor de 'Falar em público é para você!'.</div>
               </div>
               <div className="ref">
                 <div className="ref-photo"><img loading="lazy" src={joaoOliverioPhoto} alt="João Olivério" /></div>
-                <div className="name">João Olivério</div><div className="role">CEO · Sales As A System</div><div className="desc">Country Manager da Apollo.io e mentor no G4 Sales.</div>
+                <div className="name">João Olivério</div><div className="role">CEO · Sales As A System</div><div className="desc">Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales.</div>
               </div>
               <div className="ref">
                 <div className="ref-photo"><img loading="lazy" src={joseDiogoPhoto} alt="José Diogo C. Rodrigues" /></div>
-                <div className="name">José Diogo C. Rodrigues</div><div className="role">CMO Latam · Tinder</div><div className="desc">Passagem por Nike e Red Bull. Brand Marketing Latam.</div>
+                <div className="name">José Diogo C. Rodrigues</div><div className="role">CMO Latam · Tinder</div><div className="desc">Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá.</div>
               </div>
             </div>
           </section>
