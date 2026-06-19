@@ -63,6 +63,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/propostas/royal-eagle', label: 'Proposta Royal Eagle', category: 'propostas', status: 'ativa' },
   { path: '/propostas/juliano-pedrosa', label: 'Proposta Juliano Pedrosa (Raio-X do Terreno)', category: 'propostas', status: 'ativa' },
   { path: '/follow-up/clinica-supreme', label: 'Follow-up Clínica Supreme', category: 'propostas', status: 'ativa' },
+  { path: '/projetos/royal-eagle-crm', label: 'Relatório de Andamento — Royal Eagle CRM', category: 'outros', status: 'ativa' },
 ];
 
 export const CATEGORY_LABELS: Record<SiteCategory, string> = {
