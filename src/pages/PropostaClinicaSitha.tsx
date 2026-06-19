@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { tracker } from "@/lib/tracking";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
@@ -6,634 +7,467 @@ import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 
-/* ── Dados fixos ───────────────────────────────────────────── */
-
-const stats = [
-  { num: "+R$130M", label: "gerados em vendas" },
-  { num: "100+", label: "consultorias realizadas" },
-  { num: "+7", label: "países atendidos" },
-  { num: "+54", label: "avaliações 5 estrelas" },
-];
-
-const mentors = [
-  {
-    name: "Diego Barreto",
-    role: "CEO - iFood",
-    photo: diegoBarretoPhoto,
-    bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.',
-  },
-  {
-    name: "Pedro Somma",
-    role: "Ex-COO - 99 Taxi",
-    photo: pedroSommaPhoto,
-    bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade.",
-  },
-  {
-    name: "Luis Vabo Jr.",
-    role: "Ex-diretor - Stone",
-    photo: vaboPhoto,
-    bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'.",
-  },
-  {
-    name: "João Olivério",
-    role: "CEO - Sales As A System",
-    photo: joaoOliverioPhoto,
-    bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales.",
-  },
-  {
-    name: "José Diogo C. Rodrigues",
-    role: "CMO Latam - Tinder",
-    photo: joseDiogoPhoto,
-    bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá.",
-  },
-];
-
-/* ── Componente ────────────────────────────────────────────── */
-
 const PropostaClinicaSitha = () => {
   useEffect(() => {
+    tracker.page("Proposta Clínica Sitha");
     const prev = {
       bg: document.body.style.backgroundColor,
       color: document.body.style.color,
       pt: document.body.style.paddingTop,
+      ox: document.body.style.overflowX,
     };
-    document.body.style.backgroundColor = "#0a0a0a";
-    document.body.style.color = "#f0ebe3";
+    document.body.style.backgroundColor = "#05090B";
+    document.body.style.color = "#F2EDE4";
     document.body.style.paddingTop = "0";
+    document.body.style.overflowX = "hidden";
     return () => {
       document.body.style.backgroundColor = prev.bg;
       document.body.style.color = prev.color;
       document.body.style.paddingTop = prev.pt;
+      document.body.style.overflowX = prev.ox;
     };
   }, []);
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
 
         .sit-page {
-          --bg-dark: #0a0a0a;
-          --bg-section: #111111;
-          --bg-card: #1a1a1a;
-          --gold: #c8956c;
-          --gold-light: #e0b893;
-          --gold-dark: #a06d42;
-          --text-primary: #f0ebe3;
-          --text-secondary: #9a9590;
-          --text-muted: #6b6560;
-          --accent-green: #6ba87a;
-          --accent-red: #a86b6b;
-          --border: rgba(200,149,108,0.15);
-          --border-strong: rgba(200,149,108,0.35);
-          --gradient-gold: linear-gradient(135deg, #a06d42, #c8956c, #e0b893);
+          --bg-main:#05090B; --bg-deep:#020405; --bg-card:#0B1114; --bg-elev:#11171A;
+          --text-primary:#F2EDE4; --text-secondary:#C8C0B2; --text-muted:#7D827D; --text-faint:#4A4F4D;
+          --accent-cyan:#20DDEB; --accent-cyan-soft:#38F3FF; --accent-cyan-dim:#0F8995; --accent-cyan-glow:rgba(32,221,235,0.45);
+          --accent-red:#E44935; --accent-red-dim:#8C2A20;
+          --grid-line:rgba(255,255,255,0.045); --grid-strong:rgba(255,255,255,0.10);
+          --font-display:'Bebas Neue','Oswald',sans-serif;
+          --font-mono:'IBM Plex Mono','Space Mono',monospace;
+          --font-body:'Fraunces',Georgia,serif;
 
-          font-family: 'DM Sans', sans-serif;
-          background: var(--bg-dark);
-          color: var(--text-primary);
-          line-height: 1.75;
-          overflow-x: hidden;
-          -webkit-font-smoothing: antialiased;
+          background:var(--bg-main); color:var(--text-primary);
+          font-family:var(--font-body); position:relative; overflow-x:hidden;
+          scroll-behavior:smooth; min-height:100vh;
+          -webkit-font-smoothing:antialiased;
         }
+        .sit-page *{margin:0;padding:0;box-sizing:border-box;}
 
-        /* ── Utilitários ── */
-        .sit-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        .sit-section-label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-        .sit-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; line-height: 1.25; margin-bottom: 20px; }
-        .sit-section-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 700px; font-weight: 300; }
-        .sit-divider { width: 60px; height: 1px; background: var(--gradient-gold); margin: 0 auto; }
-
-        /* ── Hero ── */
-        .sit-hero {
-          min-height: 100vh;
-          display: flex; flex-direction: column; justify-content: center; align-items: center;
-          text-align: center; padding: 60px 24px; position: relative;
-          background: radial-gradient(ellipse at 30% 20%, rgba(160,109,66,0.08) 0%, transparent 60%),
-                      radial-gradient(ellipse at 70% 80%, rgba(107,168,122,0.04) 0%, transparent 50%),
-                      var(--bg-dark);
+        .sit-noise{
+          position:fixed; inset:0; pointer-events:none; z-index:1; mix-blend-mode:overlay; opacity:0.6;
+          background-image:
+            radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.65) 100%),
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.93  0 0 0 0 0.89  0 0 0 0.12 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
         }
-        .sit-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gradient-gold); opacity: 0.4; }
-
-        .sit-hero-badge {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 8px 20px; border: 1px solid var(--border); border-radius: 100px;
-          font-size: 13px; font-weight: 500; color: var(--gold-light);
-          letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px;
-          animation: sit-fadeDown 0.8s ease both;
+        .sit-bggrid{
+          position:fixed; inset:0; pointer-events:none; z-index:0;
+          background-image:
+            linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+          background-size:80px 80px;
+          -webkit-mask-image:radial-gradient(ellipse at center, black 30%, transparent 90%);
+          mask-image:radial-gradient(ellipse at center, black 30%, transparent 90%);
         }
-        .sit-hero-badge .sit-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: sit-pulse-dot 2s infinite; }
+        .sit-page .wrap{position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:0 32px;}
 
-        .sit-hero-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 700;
-          line-height: 1.15; margin-bottom: 24px;
-          animation: sit-fadeUp 0.8s 0.2s ease both;
+        /* META BAR */
+        .sit-page .meta-bar{
+          position:sticky; top:0; z-index:50; display:flex; justify-content:space-between; align-items:center;
+          padding:12px 32px; border-bottom:1px solid var(--grid-strong);
+          background:rgba(5,9,11,0.85); backdrop-filter:blur(12px);
+          font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted);
         }
-        .sit-hero-title .sit-gold { background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .sit-page .meta-bar .left{display:flex; align-items:center; gap:14px;}
+        .sit-page .meta-bar .dot{width:6px; height:6px; border-radius:50%; background:var(--accent-cyan); box-shadow:0 0 8px var(--accent-cyan-glow); animation:sitPulse 2s infinite;}
+        .sit-page .meta-bar .right{color:var(--text-faint);}
+        @keyframes sitPulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
-        .sit-hero-desc {
-          font-size: 18px; color: var(--text-secondary); max-width: 640px;
-          margin-bottom: 48px; font-weight: 300;
-          animation: sit-fadeUp 0.8s 0.4s ease both;
+        /* SECTION SCAFFOLD */
+        .sit-page section{padding:96px 0; border-top:1px solid var(--grid-strong); position:relative; scroll-margin-top:70px;}
+        .sit-page .sec-head{display:flex; align-items:center; gap:16px; margin-bottom:40px;}
+        .sit-page .idx{font-family:var(--font-mono); font-size:12px; letter-spacing:0.2em; color:var(--accent-cyan); text-transform:uppercase;}
+        .sit-page .sec-title{font-family:var(--font-display); font-size:clamp(32px,4vw,56px); text-transform:uppercase; letter-spacing:0.01em; line-height:0.95;}
+        .sit-page .lead{font-family:var(--font-body); font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:760px;}
+        .sit-page .lead.big{font-size:20px;}
+        .sit-page p.body{font-family:var(--font-body); font-size:16px; line-height:1.6; color:var(--text-secondary); max-width:760px; margin-top:18px;}
+        .sit-page .kicker{font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted);}
+        .sit-page .red{color:var(--accent-red);} .sit-page .cyan{color:var(--accent-cyan);}
+
+        /* HERO */
+        .sit-page .hero{min-height:92vh; display:flex; flex-direction:column; justify-content:center; position:relative; padding:120px 0 80px; border-top:none;}
+        .sit-page .corner-tl,.sit-page .corner-tr,.sit-page .corner-bl,.sit-page .corner-br{position:absolute; width:26px; height:26px; border:1px solid var(--accent-cyan);}
+        .sit-page .hero .corner-tl{top:90px; left:0; border-right:none; border-bottom:none;}
+        .sit-page .hero .corner-tr{top:90px; right:0; border-left:none; border-bottom:none;}
+        .sit-page .hero .corner-bl{bottom:30px; left:0; border-right:none; border-top:none;}
+        .sit-page .hero .corner-br{bottom:30px; right:0; border-left:none; border-top:none;}
+        .sit-page .coords{position:absolute; top:96px; right:0; text-align:right; font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em; color:var(--text-muted); text-transform:uppercase; line-height:2;}
+        .sit-page .coords b{color:var(--accent-cyan); font-weight:500;}
+        .sit-page .hero .tags{display:flex; gap:10px; margin-bottom:28px; flex-wrap:wrap;}
+        .sit-page .tag{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.15em; padding:5px 10px; border:1px solid var(--grid-strong); color:var(--text-secondary);}
+        .sit-page .tag.cyan{border-color:var(--accent-cyan-dim); color:var(--accent-cyan);}
+        .sit-page .tag.red{border-color:var(--accent-red-dim); color:var(--accent-red);}
+        .sit-page .hero h1{font-family:var(--font-display); font-size:clamp(64px,11vw,168px); line-height:0.86; letter-spacing:0.005em; text-transform:uppercase; max-width:14ch;}
+        .sit-page .hero .sub{margin-top:32px; max-width:640px; font-family:var(--font-body); font-size:19px; line-height:1.6; color:var(--text-secondary);}
+        .sit-page .hero .cta-row{margin-top:44px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+
+        /* BUTTONS */
+        .sit-page .btn-primary{display:inline-flex; align-items:center; gap:12px; padding:15px 26px; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0.2em; border:1px solid var(--accent-cyan); color:var(--accent-cyan); background:transparent; cursor:pointer; transition:all 0.25s ease; text-decoration:none;}
+        .sit-page .btn-primary:hover{background:var(--accent-cyan); color:var(--bg-deep); box-shadow:0 0 24px var(--accent-cyan-glow);}
+        .sit-page .btn-ghost{display:inline-flex; align-items:center; gap:12px; padding:15px 26px; font-family:var(--font-mono); font-size:12px; text-transform:uppercase; letter-spacing:0.2em; border:1px solid var(--grid-strong); color:var(--text-secondary); background:transparent; text-decoration:none; transition:all 0.25s ease;}
+        .sit-page .btn-ghost:hover{border-color:var(--text-secondary); color:var(--text-primary);}
+
+        /* STAT GRID */
+        .sit-page .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--grid-strong); margin-top:40px;}
+        .sit-page .stat{padding:28px 24px; border-right:1px solid var(--grid-strong);}
+        .sit-page .stat:last-child{border-right:none;}
+        .sit-page .stat .label{font-family:var(--font-mono); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.15em;}
+        .sit-page .stat .value{font-family:var(--font-display); font-size:clamp(40px,4.6vw,56px); line-height:1; margin-top:10px;}
+        .sit-page .stat .value.cyan{color:var(--accent-cyan);}
+
+        /* REFERENCES */
+        .sit-page .ref-list{display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong);}
+        .sit-page .ref{background:var(--bg-card); padding:24px 26px;}
+        .sit-page .ref .name{font-family:var(--font-display); font-size:24px; text-transform:uppercase; line-height:1;}
+        .sit-page .ref .role{font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent-cyan); margin-top:8px;}
+        .sit-page .ref .desc{font-family:var(--font-body); font-size:14px; line-height:1.55; color:var(--text-muted); margin-top:10px;}
+        .sit-page .ref-photo{width:100%; aspect-ratio:1.4; overflow:hidden; border-bottom:1px solid var(--grid-strong); margin:-24px -26px 14px; width:calc(100% + 52px);}
+        .sit-page .ref-photo img{width:100%; height:100%; object-fit:cover; object-position:top; filter:grayscale(.4) contrast(1.05) brightness(.88);}
+
+        /* ABOUT */
+        .sit-page .about-grid{display:grid; grid-template-columns:240px 1fr; gap:40px; align-items:start; margin-top:32px;}
+        .sit-page .about-photo{width:100%; aspect-ratio:1; overflow:hidden; border:1px solid var(--grid-strong);}
+        .sit-page .about-photo img{width:100%; height:100%; object-fit:cover; filter:grayscale(.35) contrast(1.05) brightness(.9);}
+
+        /* DIAGNOSTIC */
+        .sit-page .diag{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:8px;}
+        .sit-page .diag-col{background:linear-gradient(180deg,var(--bg-card) 0%,var(--bg-elev) 100%); border:1px solid var(--grid-strong); padding:32px; position:relative;}
+        .sit-page .diag-col .corner-tl{top:14px; left:14px; width:18px; height:18px; border-right:none; border-bottom:none;}
+        .sit-page .diag-col h3{font-family:var(--font-display); font-size:28px; text-transform:uppercase; line-height:0.95; margin-bottom:20px;}
+        .sit-page .diag-col h3 .stamp-dot{display:inline-block; width:8px; height:8px; margin-right:10px; vertical-align:middle;}
+        .sit-page .diag-col.up h3 .stamp-dot{background:var(--accent-cyan); box-shadow:0 0 8px var(--accent-cyan-glow);}
+        .sit-page .diag-col.down h3 .stamp-dot{background:var(--accent-red);}
+        .sit-page .diag-col ul{list-style:none;}
+        .sit-page .diag-col li{font-family:var(--font-body); font-size:15px; line-height:1.5; color:var(--text-secondary); padding:10px 0 10px 22px; border-bottom:1px solid var(--grid-line); position:relative;}
+        .sit-page .diag-col li:last-child{border-bottom:none;}
+        .sit-page .diag-col li::before{content:'›'; position:absolute; left:0; font-family:var(--font-mono); color:var(--accent-cyan);}
+        .sit-page .diag-col.down li::before{color:var(--accent-red);}
+
+        /* OBJECTIVE */
+        .sit-page .obj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px 40px; margin-top:8px;}
+        .sit-page .obj-item{font-family:var(--font-body); font-size:16px; line-height:1.5; color:var(--text-secondary); padding-left:26px; position:relative;}
+        .sit-page .obj-item::before{content:'+'; position:absolute; left:0; font-family:var(--font-mono); color:var(--accent-cyan); font-weight:600;}
+
+        /* COMO FUNCIONA — value cards */
+        .sit-page .value-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--grid-strong); border:1px solid var(--grid-strong); margin-top:8px;}
+        .sit-page .value-card{background:var(--bg-card); padding:32px 28px; position:relative;}
+        .sit-page .value-card .v-num{font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--accent-cyan); text-transform:uppercase; margin-bottom:16px;}
+        .sit-page .value-card h4{font-family:var(--font-display); font-size:26px; text-transform:uppercase; line-height:0.95; margin-bottom:14px;}
+        .sit-page .value-card p{font-family:var(--font-body); font-size:14.5px; line-height:1.55; color:var(--text-muted);}
+
+        /* INVESTMENT */
+        .sit-page .plans{display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px;}
+        .sit-page .plan{background:linear-gradient(180deg,var(--bg-card) 0%,var(--bg-elev) 100%); border:1px solid var(--grid-strong); padding:36px 32px; position:relative;}
+        .sit-page .plan.featured{border-color:var(--accent-cyan-dim);}
+        .sit-page .plan .corner-tl,.sit-page .plan .corner-tr{width:20px; height:20px;}
+        .sit-page .plan .corner-tl{top:14px; left:14px; border-right:none; border-bottom:none;}
+        .sit-page .plan .corner-tr{top:14px; right:14px; border-left:none; border-bottom:none;}
+        .sit-page .plan .ribbon{font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent-cyan); display:flex; align-items:center; gap:10px; margin-bottom:18px;}
+        .sit-page .plan .ribbon::before{content:''; width:6px; height:6px; background:var(--accent-cyan); box-shadow:0 0 8px var(--accent-cyan-glow);}
+        .sit-page .plan h3{font-family:var(--font-display); font-size:34px; text-transform:uppercase; line-height:0.95;}
+        .sit-page .plan .plan-desc{font-family:var(--font-body); font-size:14px; line-height:1.55; color:var(--text-muted); margin-top:12px; margin-bottom:4px;}
+        .sit-page .plan .price-row{display:flex; justify-content:space-between; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--grid-line);}
+        .sit-page .plan .price-label{font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted);}
+        .sit-page .plan .price-val{font-family:var(--font-display); font-size:36px; line-height:1;}
+        .sit-page .plan.featured .price-val.main{color:var(--accent-cyan);}
+        .sit-page .plan .price-val.sub{font-family:var(--font-mono); font-size:15px; color:var(--text-secondary); letter-spacing:0.05em;}
+        .sit-page .plan .deliverables-label{font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-top:22px; margin-bottom:12px;}
+        .sit-page .plan ul{list-style:none;}
+        .sit-page .plan li{font-family:var(--font-body); font-size:14.5px; line-height:1.5; color:var(--text-secondary); padding:9px 0 9px 22px; border-bottom:1px solid var(--grid-line); position:relative;}
+        .sit-page .plan li:last-child{border-bottom:none;}
+        .sit-page .plan li::before{content:'›'; position:absolute; left:0; font-family:var(--font-mono); color:var(--accent-cyan);}
+
+        /* REC NOTE */
+        .sit-page .rec-note{border:1px solid var(--grid-strong); border-left:2px solid var(--accent-cyan); padding:24px 28px; margin-top:24px; font-family:var(--font-body); font-size:15px; line-height:1.7; color:var(--text-secondary);}
+        .sit-page .rec-note strong{color:var(--text-primary);}
+
+        /* CTA FINAL */
+        .sit-page .final{text-align:left; padding:120px 0;}
+        .sit-page .final h2{font-family:var(--font-display); font-size:clamp(44px,7vw,104px); text-transform:uppercase; line-height:0.9; max-width:16ch;}
+        .sit-page .final p{font-family:var(--font-body); font-size:18px; line-height:1.6; color:var(--text-secondary); max-width:680px; margin-top:26px;}
+        .sit-page .final .cta-row{margin-top:40px;}
+
+        /* FOOTER */
+        .sit-page footer{border-top:1px solid var(--grid-strong); padding:28px 0; font-family:var(--font-mono); font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-faint);}
+        .sit-page .footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+
+        /* RESPONSIVE */
+        @media(max-width:880px){
+          .sit-page .wrap{padding:0 20px;}
+          .sit-page .stat-grid{grid-template-columns:repeat(2,1fr);}
+          .sit-page .stat:nth-child(2){border-right:none;}
+          .sit-page .stat:nth-child(1),.sit-page .stat:nth-child(2){border-bottom:1px solid var(--grid-strong);}
+          .sit-page .about-grid{grid-template-columns:1fr;}
+          .sit-page .about-photo{max-width:200px;}
+          .sit-page .ref-list{grid-template-columns:1fr 1fr;}
+          .sit-page .diag{grid-template-columns:1fr;}
+          .sit-page .value-grid{grid-template-columns:1fr;}
+          .sit-page .obj-grid{grid-template-columns:1fr;}
+          .sit-page .plans{grid-template-columns:1fr;}
+          .sit-page .coords{display:none;}
         }
-        .sit-hero-desc strong { color: var(--text-primary); font-weight: 500; }
-
-        .sit-hero-meta {
-          display: flex; gap: 32px; font-size: 13px; color: var(--text-muted);
-          animation: sit-fadeUp 0.8s 0.6s ease both; flex-wrap: wrap; justify-content: center;
-        }
-        .sit-hero-meta-item { display: flex; align-items: center; gap: 6px; }
-        .sit-hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
-
-        /* ── Sobre ── */
-        .sit-about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; margin-top: 40px; }
-        .sit-about-photo { width: 100%; aspect-ratio: 1; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
-        .sit-about-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .sit-about-text { color: var(--text-secondary); font-size: 16px; font-weight: 300; margin-bottom: 16px; }
-        .sit-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
-        .sit-stat-card { padding: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
-        .sit-stat-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--gold); }
-        .sit-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-
-        /* ── Mentores ── */
-        .sit-mentors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .sit-mentor-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-          padding: 20px; text-align: center; transition: border-color 0.3s, transform 0.3s;
-        }
-        .sit-mentor-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-        .sit-mentor-photo { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 12px; border: 1px solid rgba(200,149,108,0.2); }
-        .sit-mentor-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
-        .sit-mentor-name { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-        .sit-mentor-role { font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
-        .sit-mentor-bio { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
-
-        /* ── Contexto ── */
-        .sit-context-card {
-          margin-top: 40px; padding: 32px; background: var(--bg-card);
-          border: 1px solid var(--border); border-left: 3px solid var(--gold);
-          border-radius: 0 16px 16px 0;
-        }
-        .sit-context-card p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
-        .sit-context-card p + p { margin-top: 12px; }
-        .sit-context-highlight { color: var(--gold-light); font-weight: 500; font-style: italic; }
-
-        /* ── Diagnóstico ── */
-        .sit-diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-        .sit-diag-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
-        .sit-diag-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-        .sit-diag-header.sit-green { color: var(--accent-green); }
-        .sit-diag-header.sit-red { color: var(--accent-red); }
-        .sit-diag-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
-        .sit-diag-icon.sit-green { background: rgba(107,168,122,0.12); }
-        .sit-diag-icon.sit-red { background: rgba(168,107,107,0.12); }
-        .sit-diag-list { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; }
-        .sit-diag-list li { font-size: 14px; color: var(--text-secondary); font-weight: 300; padding-left: 20px; position: relative; line-height: 1.55; }
-        .sit-diag-list.sit-green li::before { content: '✦'; position: absolute; left: 0; top: 1px; color: var(--accent-green); font-size: 9px; }
-        .sit-diag-list.sit-red li::before { content: '▪'; position: absolute; left: 0; top: 2px; color: var(--accent-red); font-size: 10px; }
-
-        /* ── Objetivos ── */
-        .sit-obj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 40px; }
-        .sit-obj-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-          padding: 24px; transition: border-color 0.3s, transform 0.3s;
-        }
-        .sit-obj-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-        .sit-obj-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
-        .sit-obj-text { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.55; }
-
-        /* ── Como funciona (valor) ── */
-        .sit-value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-        .sit-value-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-          padding: 32px; transition: border-color 0.3s, transform 0.3s;
-        }
-        .sit-value-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-        .sit-value-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; background: rgba(200,149,108,0.1); margin-bottom: 18px; }
-        .sit-value-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 10px; line-height: 1.3; }
-        .sit-value-text { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.6; }
-
-        /* ── Investimento ── */
-        .sit-pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-        .sit-pricing-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
-          padding: 40px 32px; position: relative; overflow: hidden; transition: border-color 0.3s;
-        }
-        .sit-pricing-card.sit-featured {
-          background: linear-gradient(160deg, #1f1a15 0%, var(--bg-card) 100%);
-          border-color: var(--gold);
-        }
-        .sit-pricing-ribbon {
-          position: absolute; top: 18px; right: -30px;
-          background: var(--gradient-gold); color: var(--bg-dark);
-          font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
-          padding: 5px 38px; transform: rotate(45deg);
-        }
-        .sit-pricing-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-        .sit-pricing-name { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
-        .sit-pricing-desc { font-size: 14px; color: var(--text-muted); font-weight: 300; margin-bottom: 24px; line-height: 1.55; }
-        .sit-pricing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--border); gap: 16px; }
-        .sit-pricing-row-label { font-size: 14px; color: var(--text-secondary); font-weight: 400; }
-        .sit-pricing-row-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; text-align: right; }
-        .sit-pricing-row-value.sit-small { font-size: 16px; font-weight: 500; color: var(--text-secondary); }
-        .sit-pricing-deliverables { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
-        .sit-pricing-deliverables-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
-        .sit-pricing-deliverables-list { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; }
-        .sit-pricing-deliverables-list li { font-size: 13px; color: var(--text-secondary); font-weight: 300; padding-left: 22px; position: relative; line-height: 1.5; }
-        .sit-pricing-deliverables-list li::before { content: '✦'; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: 9px; }
-
-        /* ── Recomendação ── */
-        .sit-recommend {
-          margin-top: 40px; padding: 28px 32px; background: var(--bg-card);
-          border: 1px solid var(--border); border-left: 3px solid var(--gold);
-          border-radius: 0 16px 16px 0;
-        }
-        .sit-recommend p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
-        .sit-recommend strong { color: var(--gold-light); font-weight: 500; }
-
-        /* ── CTA ── */
-        .sit-cta {
-          text-align: center; padding: 120px 24px;
-          background: radial-gradient(ellipse at 50% 50%, rgba(160,109,66,0.06) 0%, transparent 70%), var(--bg-dark);
-        }
-        .sit-cta-message { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; font-style: italic; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
-        .sit-cta-button {
-          display: inline-flex; align-items: center; gap: 12px;
-          padding: 18px 48px; background: var(--gradient-gold); color: var(--bg-dark);
-          font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
-          letter-spacing: 1px; text-transform: uppercase; border: none; border-radius: 100px;
-          cursor: pointer; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .sit-cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,149,108,0.25); }
-
-        /* ── Footer ── */
-        .sit-footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
-
-        /* ── Animações ── */
-        @keyframes sit-fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes sit-fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes sit-pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        /* ── Responsivo ── */
-        @media (max-width: 768px) {
-          .sit-about-grid { grid-template-columns: 1fr !important; }
-          .sit-about-grid > div:first-child { max-width: 200px; margin: 0 auto; }
-          .sit-diag-grid { grid-template-columns: 1fr !important; }
-          .sit-value-grid { grid-template-columns: 1fr !important; }
-          .sit-pricing-grid { grid-template-columns: 1fr !important; }
-          .sit-stats-grid { grid-template-columns: 1fr 1fr !important; }
-          .sit-mentors-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        @media(max-width:520px){
+          .sit-page .ref-list{grid-template-columns:1fr;}
         }
       `}</style>
 
       <div className="sit-page">
+        <div className="sit-bggrid" aria-hidden="true" />
+        <div className="sit-noise" aria-hidden="true" />
 
-        {/* ========== HERO ========== */}
-        <div className="sit-hero">
-          <div className="sit-hero-badge">
-            <span className="sit-dot" />
-            Proposta Exclusiva
-          </div>
-
-          <h1 className="sit-hero-title">
-            Inteligência comercial para a
-            <br />
-            <span className="sit-gold">Clínica Sitha</span>
-          </h1>
-
-          <p className="sit-hero-desc">
-            A clínica não tem problema de demanda — tem perda no meio do funil. Leads que
-            esfriam no WhatsApp, no-shows que viram cadeira vazia e follow-ups que dependem
-            de alguém lembrar. Esta proposta estrutura isso em <strong>dois níveis</strong>.
-          </p>
-
-          <div className="sit-hero-meta">
-            <span className="sit-hero-meta-item">
-              <span className="sit-hero-meta-dot" />
-              Proponente: Rodrigo Albuquerque
-            </span>
-            <span className="sit-hero-meta-item">
-              <span className="sit-hero-meta-dot" />
-              Cliente: Clínica Sitha
-            </span>
-            <span className="sit-hero-meta-item">
-              <span className="sit-hero-meta-dot" />
-              BA Consultoria
-            </span>
-          </div>
+        {/* META BAR */}
+        <div className="meta-bar">
+          <div className="left"><span className="dot" /> BA CONSULTORIA · PROPOSTA EXCLUSIVA</div>
+          <div className="right">CONFIDENCIAL · 2026</div>
         </div>
 
-        {/* DIVIDER */}
-        <div className="sit-divider" />
+        <div className="wrap">
 
-        {/* ========== SOBRE (FIXO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
-          <p className="sit-section-label">Sobre</p>
-          <h2 className="sit-section-title">Quem está por trás desta proposta</h2>
-
-          <div className="sit-about-grid">
-            <div className="sit-about-photo">
-              <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+          {/* ── HERO ── */}
+          <header className="hero">
+            <span className="corner-tl" /><span className="corner-tr" />
+            <span className="corner-bl" /><span className="corner-br" />
+            <div className="coords">
+              FILE: <b>CLINICA-SITHA</b><br />
+              OWNER: <b>R. ALBUQUERQUE</b><br />
+              ESTADO: <b>AGUARDANDO DECISÃO</b>
             </div>
-            <div>
-              <p className="sit-about-text">
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$ milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
-              </p>
-              <p className="sit-about-text">
-                A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
-              </p>
-              <div className="sit-stats-grid">
-                {stats.map((s) => (
-                  <div key={s.num} className="sit-stat-card">
-                    <div className="sit-stat-num">{s.num}</div>
-                    <div className="sit-stat-label">{s.label}</div>
-                  </div>
-                ))}
+            <div className="tags">
+              <span className="tag cyan">PROPOSTA · CONFIDENCIAL</span>
+              <span className="tag">PARA: CLÍNICA SITHA</span>
+            </div>
+            <h1>O FUNIL NÃO<br />ESTÁ VAZIO<span className="red">.</span><br />ESTÁ VAZANDO<span className="red">.</span></h1>
+            <p className="sub">
+              A clínica tem demanda. O que falta é estrutura para não perder o que já chega —
+              leads que esfriam no WhatsApp, no-shows que viram cadeira vazia, follow-ups que
+              dependem de alguém lembrar. Esta proposta estrutura isso em dois níveis.
+            </p>
+            <div className="cta-row">
+              <a href="#investimento" className="btn-primary">VER PROPOSTA →</a>
+              <a href="#como-funciona" className="btn-ghost">COMO FUNCIONA</a>
+            </div>
+          </header>
+
+          {/* ── SOBRE ── */}
+          <section id="sobre">
+            <div className="sec-head"><span className="idx">[ 01 / SOBRE ]</span><h2 className="sec-title">Quem está por trás</h2></div>
+            <div className="about-grid">
+              <div className="about-photo">
+                <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+              </div>
+              <div>
+                <p className="lead big">Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado de mais de 100 empresas atendidas.</p>
+                <p className="body">A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.</p>
               </div>
             </div>
-          </div>
-        </section>
+            <div className="stat-grid">
+              <div className="stat"><div className="label">Gerados em vendas</div><div className="value cyan">+R$130M</div></div>
+              <div className="stat"><div className="label">Consultorias</div><div className="value">100+</div></div>
+              <div className="stat"><div className="label">Países atendidos</div><div className="value">+7</div></div>
+              <div className="stat"><div className="label">Avaliações 5★</div><div className="value">+54</div></div>
+            </div>
+          </section>
 
-        {/* DIVIDER */}
-        <div className="sit-divider" />
-
-        {/* ========== MENTORES (FIXO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "1100px", margin: "0 auto" }}>
-          <p className="sit-section-label" style={{ textAlign: "center" }}>Referências</p>
-          <h2 className="sit-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
-          <p className="sit-section-subtitle" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
-          </p>
-
-          <div className="sit-mentors-grid">
-            {mentors.map((m) => (
-              <div key={m.name} className="sit-mentor-card">
-                <div className="sit-mentor-photo">
-                  <img loading="lazy" src={m.photo} alt={m.name} />
-                </div>
-                <h3 className="sit-mentor-name">{m.name}</h3>
-                <p className="sit-mentor-role">{m.role}</p>
-                <p className="sit-mentor-bio">{m.bio}</p>
+          {/* ── REFERÊNCIAS ── */}
+          <section id="referencias">
+            <div className="sec-head"><span className="idx">[ 02 / REFERÊNCIAS ]</span><h2 className="sec-title">Nossos mentores</h2></div>
+            <p className="lead">Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.</p>
+            <div className="ref-list" style={{ marginTop: "32px" }}>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={diegoBarretoPhoto} alt="Diego Barreto" /></div>
+                <div className="name">Diego Barreto</div><div className="role">CEO · iFood</div>
+                <div className="desc">Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.</div>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={pedroSommaPhoto} alt="Pedro Somma" /></div>
+                <div className="name">Pedro Somma</div><div className="role">Ex-COO · 99</div>
+                <div className="desc">Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={vaboPhoto} alt="Luis Vabo Jr." /></div>
+                <div className="name">Luis Vabo Jr.</div><div className="role">Ex-diretor · Stone</div>
+                <div className="desc">Empreendedor serial, investidor e autor de 'Falar em público é para você!'.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={joaoOliverioPhoto} alt="João Olivério" /></div>
+                <div className="name">João Olivério</div><div className="role">CEO · Sales As A System</div>
+                <div className="desc">Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales.</div>
+              </div>
+              <div className="ref">
+                <div className="ref-photo"><img loading="lazy" src={joseDiogoPhoto} alt="José Diogo C. Rodrigues" /></div>
+                <div className="name">José Diogo C. Rodrigues</div><div className="role">CMO Latam · Tinder</div>
+                <div className="desc">Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá.</div>
+              </div>
+            </div>
+          </section>
 
-        {/* DIVIDER */}
-        <div className="sit-divider" />
+          {/* ── CONTEXTO ── */}
+          <section id="contexto">
+            <div className="sec-head"><span className="idx">[ 03 / CONTEXTO ]</span><h2 className="sec-title">Onde a Sitha está hoje</h2></div>
+            <p className="lead big">O tráfego traz o lead. A clínica tem demanda. O que falta é estrutura para não perder o que já chega.</p>
+            <p className="body">O conhecimento que faz a clínica funcionar — protocolos, decisões, histórico de casos, o jeito Sitha de conduzir cada tratamento — vive espalhado na cabeça das pessoas: da Dra. Thais, da nutri, de quem está no WhatsApp naquele dia. Quem sai da equipe leva junto. Quem entra demora meses.</p>
+            <p className="body">Em paralelo, cada negociação acontece numa conversa que ninguém volta a ler. O paciente pergunta o preço e some. Marca e não aparece. Diz "vou pensar" e não é retomado. No fim do mês a agenda podia ter sido maior — e ninguém sabe onde furou, porque a resposta está enterrada em milhares de mensagens.</p>
+            <p className="body">O gargalo não é demanda. É <span className="cyan">conhecimento disperso</span> e <span className="cyan">lead que esfria sem acompanhamento.</span></p>
+          </section>
 
-        {/* ========== CONTEXTO (DINÂMICO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
-          <p className="sit-section-label">Contexto</p>
-          <h2 className="sit-section-title">Onde a Clínica Sitha está hoje</h2>
-          <p className="sit-section-subtitle">
-            O tráfego traz o lead e a clínica tem demanda. O que falta é estrutura para não
-            perder o que já chega.
-          </p>
-
-          <div className="sit-context-card">
-            <p>
-              O conhecimento que faz a clínica funcionar — protocolos, decisões, histórico de
-              casos, o jeito Sitha de conduzir cada tratamento — vive espalhado na cabeça das
-              pessoas: da Dra. Thais, da nutri, de quem está no WhatsApp naquele dia. Em paralelo,
-              cada negociação acontece numa conversa que ninguém volta a ler, e as decisões
-              comerciais acabam tomadas sem visibilidade do que de fato travou.
-            </p>
-            <p>
-              O gargalo agora não é demanda — é{" "}
-              <span className="sit-context-highlight">conhecimento disperso e lead que esfria sem acompanhamento.</span>{" "}
-              O paciente pergunta o preço e some, marca e não aparece, diz "vou pensar" e não é
-              retomado — e no fim do mês a agenda poderia ter sido maior.
-            </p>
-          </div>
-        </section>
-
-        {/* ========== DIAGNÓSTICO (DINÂMICO) ========== */}
-        <div style={{ background: "var(--bg-section)", padding: "100px 24px" }}>
-          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-            <p className="sit-section-label">Diagnóstico</p>
-            <h2 className="sit-section-title">O que mapeamos na nossa conversa</h2>
-            <p className="sit-section-subtitle">A base é forte. O retorno está em fechar as frestas por onde o paciente escapa.</p>
-
-            <div className="sit-diag-grid">
-              {/* Pontos Fortes */}
-              <div className="sit-diag-card">
-                <div className="sit-diag-header sit-green">
-                  <span className="sit-diag-icon sit-green">✦</span>
-                  Pontos Fortes
-                </div>
-                <ul className="sit-diag-list sit-green">
-                  {[
-                    "Demanda saudável: o tráfego já traz leads de forma consistente.",
-                    "Um jeito Sitha de conduzir os tratamentos que comprovadamente converte e fideliza.",
-                    "Base de pacientes e histórico de casos acumulados ao longo dos anos.",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
+          {/* ── DIAGNÓSTICO ── */}
+          <section id="diagnostico">
+            <div className="sec-head"><span className="idx">[ 04 / DIAGNÓSTICO ]</span><h2 className="sec-title">O que mapeamos</h2></div>
+            <p className="lead">A base é forte. O retorno está em fechar as frestas por onde o paciente escapa.</p>
+            <div className="diag">
+              <div className="diag-col up">
+                <span className="corner-tl" />
+                <h3><span className="stamp-dot" />Pontos fortes</h3>
+                <ul>
+                  <li>Demanda saudável: o tráfego já traz leads de forma consistente</li>
+                  <li>Um jeito Sitha de conduzir tratamentos que comprovadamente converte e fideliza</li>
+                  <li>Base de pacientes e histórico de casos acumulados ao longo dos anos</li>
                 </ul>
               </div>
-
-              {/* Gargalos */}
-              <div className="sit-diag-card">
-                <div className="sit-diag-header sit-red">
-                  <span className="sit-diag-icon sit-red">▪</span>
-                  Gargalos Atuais
-                </div>
-                <ul className="sit-diag-list sit-red">
-                  {[
-                    "O conhecimento depende da memória de cada pessoa — quem sai da equipe leva junto, quem entra demora meses.",
-                    "Leads esfriam no WhatsApp sem follow-up e no-shows viram cadeira vazia.",
-                    "Falta visibilidade de onde cada negociação trava — a resposta fica enterrada nas conversas.",
-                  ].map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
+              <div className="diag-col down">
+                <span className="corner-tl" />
+                <h3><span className="stamp-dot" />Gargalos atuais</h3>
+                <ul>
+                  <li>O conhecimento depende da memória de cada pessoa — quem sai leva junto, quem entra demora meses</li>
+                  <li>Leads esfriam no WhatsApp sem follow-up e no-shows viram cadeira vazia</li>
+                  <li>Sem visibilidade de onde cada negociação trava — a resposta está enterrada nas conversas</li>
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
 
-        {/* DIVIDER */}
-        <div className="sit-divider" />
-
-        {/* ========== OBJETIVOS (DINÂMICO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
-          <p className="sit-section-label">Objetivo</p>
-          <h2 className="sit-section-title">O que este projeto vai resolver</h2>
-          <p className="sit-section-subtitle">Transformar o conhecimento e o tráfego que já existem em agenda cheia.</p>
-
-          <div className="sit-obj-grid">
-            {[
-              { num: "01", text: "Centralizar o conhecimento da clínica num cérebro único e consultável, que deixa de depender da memória de cada pessoa." },
-              { num: "02", text: "Identificar onde cada negociação é perdida e transformar cada venda que escapou em correção." },
-              { num: "03", text: "Garantir que nenhum lead morno, no-show ou paciente inativo esfrie sem o toque certo na hora certa." },
-            ].map((obj) => (
-              <div key={obj.num} className="sit-obj-card">
-                <div className="sit-obj-num">{obj.num}</div>
-                <p className="sit-obj-text">{obj.text}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ========== COMO FUNCIONA / VALOR (DINÂMICO) ========== */}
-        <div style={{ background: "var(--bg-section)", padding: "100px 24px" }}>
-          <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-            <p className="sit-section-label">Como funciona</p>
-            <h2 className="sit-section-title">O que o Agente de IA faz todos os dias</h2>
-            <p className="sit-section-subtitle">
-              Sobre a fundação do Segundo Cérebro (Opção A), o Agente de IA (Opção B) trabalha o
-              comercial sem depender de ninguém lembrar de fazer. Três frentes:
-            </p>
-
-            <div className="sit-value-grid">
-              {[
-                {
-                  icon: "🔎",
-                  title: "Mostra onde o dinheiro escapou",
-                  text: "O agente lê cada conversa de WhatsApp e cada call de venda e aponta o ponto exato em que o paciente foi perdido: a objeção não tratada, o preço cedo demais, o \"vou pensar\" largado. Cada venda perdida vira correção, não mistério.",
-                },
-                {
-                  icon: "⭐",
-                  title: "Faz o melhor atendimento virar padrão",
-                  text: "Como conversa com o Segundo Cérebro, o agente orienta com a clínica inteira por trás. O jeito Sitha deixa de ser talento individual e vira padrão da casa — a atendente nova passa a vender no nível da melhor da equipe.",
-                },
-                {
-                  icon: "🔁",
-                  title: "Não deixa nenhum lead esfriar sozinho",
-                  text: "O \"vou pensar\" recebe o follow-up certo na hora certa. O no-show é resgatado antes de virar cadeira vazia. O paciente que sumiu há meses volta para a pauta. Lead que você já pagou para trazer deixa de morrer no esquecimento.",
-                },
-              ].map((v) => (
-                <div key={v.title} className="sit-value-card">
-                  <div className="sit-value-icon">{v.icon}</div>
-                  <h3 className="sit-value-title">{v.title}</h3>
-                  <p className="sit-value-text">{v.text}</p>
-                </div>
-              ))}
+          {/* ── OBJETIVO ── */}
+          <section id="objetivo">
+            <div className="sec-head"><span className="idx">[ 05 / OBJETIVO ]</span><h2 className="sec-title">O que este projeto resolve</h2></div>
+            <p className="lead">Transformar o conhecimento e o tráfego que já existem em agenda cheia.</p>
+            <div className="obj-grid" style={{ marginTop: "32px" }}>
+              <div className="obj-item">Centralizar o conhecimento da clínica num cérebro único e consultável — que deixa de depender da memória de cada pessoa</div>
+              <div className="obj-item">Identificar onde cada negociação é perdida e transformar cada venda que escapou em correção</div>
+              <div className="obj-item">Garantir que nenhum lead morno, no-show ou paciente inativo esfrie sem o toque certo na hora certa</div>
+              <div className="obj-item">Fazer o jeito Sitha de atender deixar de ser talento individual e virar padrão da casa</div>
             </div>
-          </div>
-        </div>
+          </section>
 
-        {/* DIVIDER */}
-        <div className="sit-divider" />
+          {/* ── COMO FUNCIONA ── */}
+          <section id="como-funciona">
+            <div className="sec-head"><span className="idx">[ 06 / COMO FUNCIONA ]</span><h2 className="sec-title">O que o agente faz</h2></div>
+            <p className="lead">Sobre a fundação do Segundo Cérebro, o Agente de IA trabalha o comercial todos os dias — sem depender de ninguém lembrar de fazer.</p>
+            <div className="value-grid">
+              <div className="value-card">
+                <div className="v-num">FRENTE 01</div>
+                <h4>MOSTRA ONDE O DINHEIRO ESCAPOU</h4>
+                <p>O agente lê cada conversa de WhatsApp e cada call de venda e aponta o ponto exato em que o paciente foi perdido: a objeção não tratada, o preço jogado cedo demais, o "vou pensar" largado. Cada venda perdida vira correção — não mistério no fim do mês.</p>
+              </div>
+              <div className="value-card">
+                <div className="v-num">FRENTE 02</div>
+                <h4>FAZ O MELHOR ATENDIMENTO VIRAR PADRÃO</h4>
+                <p>Como conversa com o Segundo Cérebro, o agente orienta com a clínica inteira por trás. O jeito Sitha deixa de ser talento individual e vira padrão da casa — a atendente nova passa a vender no nível da melhor da equipe.</p>
+              </div>
+              <div className="value-card">
+                <div className="v-num">FRENTE 03</div>
+                <h4>NÃO DEIXA NENHUM LEAD ESFRIAR</h4>
+                <p>O "vou pensar" recebe o follow-up certo na hora certa. O no-show é resgatado antes de virar cadeira vazia. O paciente que sumiu há meses volta pra pauta. Lead que você já pagou pra trazer deixa de morrer no esquecimento.</p>
+              </div>
+            </div>
+          </section>
 
-        {/* ========== INVESTIMENTO (DINÂMICO) ========== */}
-        <div style={{ background: "var(--bg-section)", padding: "100px 24px" }}>
-          <div style={{ maxWidth: "960px", margin: "0 auto" }}>
-            <p className="sit-section-label">Investimento</p>
-            <h2 className="sit-section-title">Proposta comercial</h2>
-            <p className="sit-section-subtitle">
-              Dois níveis. A Opção A é a fundação que guarda e responde; a Opção B coloca a
-              fundação para agir todos os dias no comercial.
-            </p>
+          {/* ── INVESTIMENTO ── */}
+          <section id="investimento">
+            <div className="sec-head"><span className="idx">[ 07 / INVESTIMENTO ]</span><h2 className="sec-title">Proposta comercial</h2></div>
+            <p className="lead">Dois níveis. A Opção A é a fundação que guarda e responde. A Opção B coloca a fundação para agir todos os dias no comercial.</p>
 
-            <div className="sit-pricing-grid">
-              {/* Opção A — Segundo Cérebro */}
-              <div className="sit-pricing-card">
-                <div className="sit-pricing-label">Opção A</div>
-                <h3 className="sit-pricing-name">Segundo Cérebro</h3>
-                <p className="sit-pricing-desc">
-                  O conhecimento da clínica deixa de morar na cabeça das pessoas e vira a memória
-                  viva da casa — consultável em linguagem natural.
-                </p>
-
-                {[
-                  { label: "Implementação", value: "R$ 9.500", small: false },
-                  { label: "Sustentação mensal", value: "R$ 997/mês", small: true },
-                  { label: "Escopo", value: "Guarda e responde", small: true },
-                ].map((row) => (
-                  <div key={row.label} className="sit-pricing-row">
-                    <span className="sit-pricing-row-label">{row.label}</span>
-                    <span className={`sit-pricing-row-value ${row.small ? "sit-small" : ""}`}>{row.value}</span>
-                  </div>
-                ))}
-
-                <div className="sit-pricing-deliverables">
-                  <div className="sit-pricing-deliverables-label">Entregáveis</div>
-                  <ul className="sit-pricing-deliverables-list">
-                    {[
-                      "Base de protocolos, processos e histórico organizada num cérebro único e consultável",
-                      "Consulta em linguagem natural, direto no WhatsApp ou painel",
-                      "Ingestão contínua: cada decisão e caso novo alimenta a base automaticamente",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+            <div className="plans">
+              {/* OPÇÃO A */}
+              <div className="plan">
+                <span className="corner-tl" /><span className="corner-tr" />
+                <div className="ribbon">Opção A</div>
+                <h3>Segundo Cérebro</h3>
+                <p className="plan-desc">O conhecimento da clínica deixa de morar na cabeça das pessoas e vira a memória viva da casa — consultável em linguagem natural.</p>
+                <div className="price-row">
+                  <span className="price-label">Implementação</span>
+                  <span className="price-val">R$9.500</span>
                 </div>
+                <div className="price-row">
+                  <span className="price-label">Sustentação mensal</span>
+                  <span className="price-val sub">R$997/mês</span>
+                </div>
+                <div className="deliverables-label">Entregáveis</div>
+                <ul>
+                  <li>Base de protocolos, processos e histórico organizada num cérebro único e consultável</li>
+                  <li>Consulta em linguagem natural, direto no WhatsApp ou painel</li>
+                  <li>Ingestão contínua: cada decisão e caso novo alimenta a base automaticamente</li>
+                </ul>
               </div>
 
-              {/* Opção B — Featured */}
-              <div className="sit-pricing-card sit-featured">
-                <div className="sit-pricing-ribbon">RECOMENDADO</div>
-                <div className="sit-pricing-label">Opção B</div>
-                <h3 className="sit-pricing-name">Segundo Cérebro + Agente de IA</h3>
-                <p className="sit-pricing-desc">
-                  Tudo da Opção A — e sobre essa base um Agente de IA que trabalha o comercial
-                  todos os dias. A clínica deixa de ter memória e passa a ter visão. E a visão age.
-                </p>
-
-                {[
-                  { label: "Implementação", value: "R$ 24.000", small: false },
-                  { label: "Parcelamento", value: "ou 2x R$ 12.000", small: true },
-                  { label: "Operação mensal", value: "R$ 2.500/mês", small: true },
-                ].map((row) => (
-                  <div key={row.label} className="sit-pricing-row">
-                    <span className="sit-pricing-row-label">{row.label}</span>
-                    <span className={`sit-pricing-row-value ${row.small ? "sit-small" : ""}`}>{row.value}</span>
-                  </div>
-                ))}
-
-                <div className="sit-pricing-deliverables">
-                  <div className="sit-pricing-deliverables-label">Entregáveis</div>
-                  <ul className="sit-pricing-deliverables-list">
-                    {[
-                      "Todo o Segundo Cérebro da Opção A",
-                      "Análise automática de WhatsApp e calls de venda, com diagnóstico do que travou cada negociação",
-                      "Follow-up inteligente de leads frios, no-shows e pacientes inativos",
-                      "Padronização do atendimento puxada do que já funciona na clínica",
-                      "Relatório comercial: onde está vazando e quanto",
-                    ].map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+              {/* OPÇÃO B — FEATURED */}
+              <div className="plan featured">
+                <span className="corner-tl" /><span className="corner-tr" />
+                <div className="ribbon">Recomendado · Opção B</div>
+                <h3>Segundo Cérebro + Agente de IA</h3>
+                <p className="plan-desc">Tudo da Opção A — e sobre essa base um Agente de IA que trabalha o comercial todos os dias. A clínica deixa de ter memória e passa a ter visão. E a visão age.</p>
+                <div className="price-row">
+                  <span className="price-label">Implementação</span>
+                  <span className="price-val main">R$24.000</span>
                 </div>
+                <div className="price-row">
+                  <span className="price-label">Parcelamento</span>
+                  <span className="price-val sub">ou 2× R$12.000</span>
+                </div>
+                <div className="price-row">
+                  <span className="price-label">Operação mensal</span>
+                  <span className="price-val sub">R$2.500/mês</span>
+                </div>
+                <div className="deliverables-label">Entregáveis</div>
+                <ul>
+                  <li>Todo o Segundo Cérebro da Opção A</li>
+                  <li>Análise automática de WhatsApp e calls com diagnóstico do que travou cada negociação</li>
+                  <li>Follow-up inteligente de leads frios, no-shows e pacientes inativos</li>
+                  <li>Padronização do atendimento puxada do que já funciona na clínica</li>
+                  <li>Relatório comercial: onde está vazando e quanto</li>
+                </ul>
               </div>
             </div>
 
-            <div className="sit-recommend">
-              <p>
-                <strong>A recomendação é honesta.</strong> A Opção A é uma fundação sólida — mas
-                memória sem ação rende pouco. O retorno mora na Opção B: é onde o conhecimento da
-                clínica vira paciente fechado, atendimento padronizado e lead que para de morrer no
-                esquecimento. Recuperar 2 ou 3 pacientes por mês que hoje escorrem já paga a
-                estrutura inteira — e ela trabalha todo dia, sem depender de você.
-              </p>
+            <div className="rec-note">
+              <strong>A recomendação é honesta.</strong> A Opção A é uma fundação sólida — mas memória sem ação rende pouco. O retorno mora na Opção B: é onde o conhecimento da clínica vira paciente fechado, atendimento padronizado e lead que para de morrer no esquecimento. Recuperar 2 ou 3 pacientes por mês que hoje escorrem já paga a estrutura inteira — e ela trabalha todo dia, sem depender de você.
+            </div>
+          </section>
+
+          {/* ── CTA FINAL ── */}
+          <section className="final">
+            <span className="idx">[ 08 / PRÓXIMO PASSO ]</span>
+            <h2 style={{ marginTop: "24px" }}>Vamos parar<br />de perder o que<br />já é seu<span className="red">.</span></h2>
+            <p>A pergunta não é se a Sitha pode investir nisso. É quanto a operação ganha ao parar de perder o que já chegou até ela.</p>
+            <div className="cta-row">
+              <a
+                href="https://wa.me/5511999718595"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+                onClick={() => tracker.track("cta_click", { product: "clinica-sitha", location: "proposta_cta" })}
+              >
+                FALAR COM RODRIGO →
+              </a>
+            </div>
+          </section>
+
+        </div>
+
+        <footer>
+          <div className="wrap">
+            <div className="footer-row">
+              <span>BA CONSULTORIA © 2026</span>
+              <span>PROPOSTA CLÍNICA SITHA · V1</span>
+              <span>VÁLIDA POR 7 DIAS</span>
             </div>
           </div>
-        </div>
-
-        {/* ========== CTA ========== */}
-        <div className="sit-cta">
-          <p className="sit-section-label">Próximo passo</p>
-          <h2 className="sit-section-title">Vamos começar?</h2>
-          <p className="sit-cta-message">
-            A pergunta não é se a Sitha pode investir nisso. É quanto a operação ganha ao parar de
-            perder o que já é seu.
-          </p>
-          <a
-            href="https://wa.me/5511999718595"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sit-cta-button"
-          >
-            Falar com Rodrigo →
-          </a>
-        </div>
-
-        {/* FOOTER */}
-        <div className="sit-footer">
-          BA Consultoria © 2026 — Proposta válida por 7 dias
-        </div>
+        </footer>
       </div>
     </>
   );
