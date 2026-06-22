@@ -242,7 +242,7 @@ const PropostaClinicaSitha = () => {
               <span className="tag cyan">PROPOSTA · CONFIDENCIAL</span>
               <span className="tag">PARA: CLÍNICA SITHA</span>
             </div>
-            <h1>SUA ESTRUTURA<br />JÁ É BOA.<br />FALTA ENXERGAR<span className="red">.</span></h1>
+            <h1>PROPOSTA DE<br />CONSULTORIA<br />DE IA<span className="red">.</span></h1>
             <p className="sub">
               A clínica tem demanda, uma estrutura sólida e um jeito de atender que funciona.
               O próximo salto não vem de consertar nada — vem da camada de inteligência que
@@ -392,11 +392,11 @@ const PropostaClinicaSitha = () => {
                 <p className="plan-desc">O conhecimento da clínica deixa de morar na cabeça das pessoas e vira a memória viva da casa — consultável em linguagem natural.</p>
                 <div className="price-row">
                   <span className="price-label">Implementação</span>
-                  <span className="price-val">R$9.500</span>
+                  <span className="price-val">R$8.000</span>
                 </div>
                 <div className="price-row">
-                  <span className="price-label">Sustentação mensal</span>
-                  <span className="price-val sub">R$997/mês</span>
+                  <span className="price-label">Infraestrutura</span>
+                  <span className="price-val sub">Custo do cliente</span>
                 </div>
                 <div className="deliverables-label">Entregáveis</div>
                 <ul>
@@ -421,8 +421,8 @@ const PropostaClinicaSitha = () => {
                   <span className="price-val sub">ou 2× R$12.000</span>
                 </div>
                 <div className="price-row">
-                  <span className="price-label">Operação mensal</span>
-                  <span className="price-val sub">R$2.500/mês</span>
+                  <span className="price-label">Infraestrutura</span>
+                  <span className="price-val sub">Custo do cliente</span>
                 </div>
                 <div className="deliverables-label">Entregáveis</div>
                 <ul>
