@@ -57,7 +57,7 @@ const EducacaoSkillsNegocios = () => {
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#060A12";
+    document.body.style.backgroundColor = "#05090B";
     document.body.style.paddingTop = "0";
     tracker.page("20 Skills de IA Para Negócios");
 
@@ -174,8 +174,8 @@ const EducacaoSkillsNegocios = () => {
       q: "É realmente gratuito?",
       a: (
         <>
-          <span className="sn-faq-check">✓ Sim.</span> O ebook é 100% gratuito,
-          sem cartão e com acesso imediato. Sem truque, sem upsell obrigatório.
+          <span className="text-pb-cyan font-mono">SIM.</span>{" "}
+          O ebook é 100% gratuito, sem cartão e com acesso imediato. Sem truque, sem upsell obrigatório.
         </>
       ),
     },
@@ -183,8 +183,8 @@ const EducacaoSkillsNegocios = () => {
       q: "Serve para qualquer tipo de negócio?",
       a: (
         <>
-          <span className="sn-faq-check">✓ Sim.</span> O conteúdo foi
-          desenvolvido para empreendedores e profissionais liberais de qualquer
+          <span className="text-pb-cyan font-mono">SIM.</span>{" "}
+          O conteúdo foi desenvolvido para empreendedores e profissionais liberais de qualquer
           segmento — agências, clínicas, prestadores de serviço, infoprodutores.
           As skills se adaptam à realidade de cada operação.
         </>
@@ -227,94 +227,174 @@ const EducacaoSkillsNegocios = () => {
   ];
 
   return (
-    <div className="sn-root">
+    <div className="bg-pb-void text-pb-ink-soft font-body text-base leading-relaxed overflow-x-hidden">
+
       {/* NAV */}
-      <nav className="sn-nav">
-        <div className="sn-nav-brand">
-          RA <span>·</span> Skills de IA
+      <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-10 py-[18px] border-b border-pb-grid-strong bg-pb-void/85 backdrop-blur-xl">
+        <div className="font-mono text-[11px] uppercase tracking-mono-x text-pb-ink">
+          RA <span className="text-pb-cyan">·</span> Skills de IA
         </div>
-        <a href="#cta" className="sn-nav-cta">
-          Baixar Grátis
+        <a
+          href="#cta"
+          className="btn-primary text-[10px] py-[10px] px-[22px]"
+        >
+          Baixar Gratis
         </a>
       </nav>
 
       {/* HERO */}
-      <section className="sn-hero-section">
-        <div className="sn-hero">
-          <div className="sn-hero-left">
-            <div className="sn-hero-eyebrow">
-              <span className="sn-dot-live"></span>
+      <section className="relative min-h-screen" style={{ background: "radial-gradient(ellipse at 15% 40%, rgba(32,221,235,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(228,73,53,0.04) 0%, transparent 45%), #05090B" }}>
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "linear-gradient(rgba(32,221,235,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(32,221,235,0.022) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+        {/* Corner bracket top-left */}
+        <div className="absolute top-[92px] left-5 w-10 h-10 border-t border-l border-pb-cyan/25 pointer-events-none" />
+
+        <div className="relative grid grid-cols-2 gap-[60px] items-center px-10 pt-[120px] pb-20 max-w-[1100px] mx-auto" style={{ minHeight: "100vh" }}>
+          {/* LEFT */}
+          <div>
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-6">
+              <span className="w-1.5 h-1.5 bg-pb-cyan animate-[pb-pulse_2s_ease-in-out_infinite]" />
               Ebook gratuito · Rodrigo Albuquerque
             </div>
-            <h1 className="sn-h1">
-              As <span className="sn-num">20 Skills</span>
+
+            <h1 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4.2vw,56px)] mb-4 tracking-wide">
+              As <span className="text-pb-cyan">20 Skills</span>
               <br />
               que separam
               <br />
               quem usa IA
               <br />
-              <span className="sn-accent">de quem fatura com ela.</span>
+              <span className="text-pb-cyan">de quem fatura com ela.</span>
             </h1>
-            <p className="sn-hero-body">
+
+            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-2 max-w-[460px]">
               Há alguns anos, automatizar seu negócio com inteligência artificial
               era coisa de empresa de tecnologia com time de engenheiros.
             </p>
-            <p className="sn-hero-contrast">
+            <p className="font-body text-[15px] text-pb-cyan leading-relaxed mb-9 max-w-[460px]">
               Hoje, o empreendedor que não domina essas skills está entregando
               dinheiro para quem domina.
             </p>
-            <div className="sn-cta-group">
+
+            <div className="flex flex-col gap-[14px] max-w-[380px]">
               <a
                 href="#cta"
-                className="sn-btn-primary"
+                className="btn-primary justify-center w-full text-[12px] py-[18px] px-9"
                 onClick={() => handleCTA("hero")}
               >
                 Baixar Ebook Gratuitamente
               </a>
-              <span className="sn-cta-micro">
-                ✓ acesso imediato &nbsp;·&nbsp; sem cartão &nbsp;·&nbsp; pdf
-                completo
+              <span className="font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted text-center">
+                acesso imediato · sem cartao · pdf completo
               </span>
             </div>
-            <div className="sn-skill-tags">
-              <span className="sn-skill-tag">Criação de conteúdo</span>
-              <span className="sn-skill-tag">Automação comercial</span>
-              <span className="sn-skill-tag">Prospecção com IA</span>
-              <span className="sn-skill-tag">Análise de dados</span>
-              <span className="sn-skill-tag">Atendimento</span>
-              <span className="sn-skill-tag sn-skill-tag-gold">+ 15 skills</span>
+
+            <div className="flex flex-wrap gap-[7px] mt-7 max-w-[460px]">
+              {["Criação de conteúdo", "Automação comercial", "Prospecção com IA", "Análise de dados", "Atendimento"].map((tag) => (
+                <span key={tag} className="pb-tag cyan text-[9px] px-[11px] py-[5px]">{tag}</span>
+              ))}
+              <span className="pb-tag text-[9px] px-[11px] py-[5px] border-pb-grid-strong text-pb-ink-soft">+ 15 skills</span>
             </div>
           </div>
 
-          <div className="sn-hero-visual">
-            <div className="sn-book-wrap">
-              <div className="sn-book-glow-bg"></div>
-              <div className="sn-book-pages-top"></div>
-              <div className="sn-book-spine"></div>
-              <div className="sn-book-cover">
-                <div className="sn-book-reactor">
-                  <div className="sn-book-reactor-inner"></div>
+          {/* RIGHT — Book mockup */}
+          <div className="flex items-center justify-center relative">
+            <div className="relative w-[360px] h-[460px]">
+              {/* Glow */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none animate-[pb-pulse_3.5s_ease-in-out_infinite]"
+                style={{ background: "radial-gradient(circle, rgba(32,221,235,0.1) 0%, transparent 70%)" }}
+              />
+              {/* Pages top */}
+              <div
+                className="absolute top-[18px] left-[46px] w-[256px] h-[7px] pointer-events-none"
+                style={{
+                  background: "repeating-linear-gradient(90deg, rgba(242,237,228,0.07) 0, rgba(242,237,228,0.07) 1px, transparent 1px, transparent 2.5px)",
+                  transform: "rotate(-1.5deg)",
+                  animation: "snFloat 4s ease-in-out infinite",
+                }}
+              />
+              {/* Spine */}
+              <div
+                className="absolute top-[22px] left-[38px] w-[9px] h-[330px] border border-pb-grid-strong border-r-0 bg-pb-void-deep pointer-events-none"
+                style={{
+                  background: "linear-gradient(to right, #040710, #0C1525)",
+                  transform: "rotate(-1.5deg)",
+                  animation: "snFloat 4s ease-in-out infinite",
+                }}
+              />
+              {/* Cover */}
+              <div
+                className="absolute top-[22px] left-[47px] w-[252px] h-[330px] border border-pb-cyan/20 flex flex-col items-center justify-center text-center px-[22px] py-7 overflow-hidden"
+                style={{
+                  background: "linear-gradient(150deg, #0F1E3A 0%, #0A1528 45%, #070D1C 100%)",
+                  boxShadow: "6px 10px 40px rgba(0,0,0,0.75), inset 0 0 0 0.5px rgba(32,221,235,0.08)",
+                  transform: "rotate(-1.5deg)",
+                  animation: "snFloat 4s ease-in-out infinite",
+                }}
+              >
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)", opacity: 0.4 }} />
+                {/* Corner bracket */}
+                <div className="absolute top-2 right-2 w-[14px] h-[14px] border-t border-r border-pb-cyan/30" />
+
+                {/* "Reactor" */}
+                <div
+                  className="w-[52px] h-[52px] border border-pb-cyan/35 flex items-center justify-center mb-[14px]"
+                  style={{ animation: "snReactorSpin 10s linear infinite" }}
+                >
+                  <div
+                    className="w-[30px] h-[30px] border border-pb-cyan/50 animate-[pb-pulse_2.5s_ease-in-out_infinite]"
+                    style={{ background: "radial-gradient(circle, rgba(32,221,235,0.5) 0%, rgba(32,221,235,0.12) 60%, transparent 100%)" }}
+                  />
                 </div>
-                <div className="sn-book-author">Rodrigo Albuquerque</div>
-                <div className="sn-book-big-num">20</div>
-                <div className="sn-book-big-label">Skills de IA</div>
-                <div className="sn-book-subtitle">Para Negócios</div>
-                <div className="sn-book-divider"></div>
-                <div className="sn-book-tagline">
-                  O guia prático para <strong>faturar mais</strong>
-                  <br />
-                  trabalhando menos com IA
+
+                <div className="font-mono text-[7px] uppercase tracking-[2.5px] text-pb-ink-muted mb-[10px]">
+                  Rodrigo Albuquerque
+                </div>
+                <div className="font-display text-[52px] text-pb-cyan leading-none" style={{ textShadow: "0 0 24px rgba(32,221,235,0.35)" }}>
+                  20
+                </div>
+                <div className="font-display text-[12px] uppercase text-pb-ink tracking-widest mb-1">
+                  Skills de IA
+                </div>
+                <div className="font-display text-[16px] uppercase text-pb-ink mb-[14px] leading-[1.15]">
+                  Para Negocios
+                </div>
+                <div className="w-9 h-px mx-auto mb-3" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
+                <div className="font-mono text-[7px] uppercase tracking-[0.8px] text-pb-ink-muted leading-relaxed">
+                  O guia pratico para <strong className="text-pb-cyan">faturar mais</strong>
+                  <br />trabalhando menos com IA
                 </div>
               </div>
-              <div className="sn-float-badge">
-                <span className="sn-float-badge-num">100%</span>
-                <span className="sn-float-badge-lbl">Gratuito</span>
+
+              {/* Float badge */}
+              <div
+                className="absolute top-1 right-1 border border-pb-grid-strong bg-pb-void-card px-[14px] py-[10px] text-center"
+                style={{ animation: "snFloatAlt 3.5s ease-in-out infinite 1s" }}
+              >
+                <span className="font-display text-[18px] text-pb-cyan block leading-none">100%</span>
+                <span className="font-mono text-[7px] uppercase tracking-[1.5px] text-pb-ink-muted block mt-[3px]">Gratuito</span>
               </div>
-              <div className="sn-float-stat">
-                <div className="sn-float-stat-icon">⚡</div>
+
+              {/* Float stat */}
+              <div
+                className="absolute bottom-[30px] -right-[10px] bg-pb-void-card border border-pb-grid-strong px-4 py-[10px] flex items-center gap-[10px]"
+                style={{ animation: "snFloatAlt 3.5s ease-in-out infinite 2s" }}
+              >
+                <div className="w-[30px] h-[30px] border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center text-[13px]">
+                  IA
+                </div>
                 <div>
-                  <span className="sn-float-stat-num">20 Skills</span>
-                  <span className="sn-float-stat-lbl">aplicáveis hoje</span>
+                  <span className="font-display text-[13px] text-pb-cyan block leading-none">20 Skills</span>
+                  <span className="font-mono text-[7.5px] uppercase tracking-[1px] text-pb-ink-muted block mt-[3px]">aplicaveis hoje</span>
                 </div>
               </div>
             </div>
@@ -323,44 +403,45 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* PROOF STRIP */}
-      <div className="sn-proof-strip">
-        <div className="sn-proof-strip-inner">
-          <div className="sn-proof-item">
-            <span>100%</span>Gratuito
-          </div>
-          <div className="sn-proof-sep"></div>
-          <div className="sn-proof-item">
-            <span>20</span>Skills práticas
-          </div>
-          <div className="sn-proof-sep"></div>
-          <div className="sn-proof-item">
-            <span>PDF</span>Acesso imediato
-          </div>
-          <div className="sn-proof-sep"></div>
-          <div className="sn-proof-item">
-            <span>0</span>Conhecimento técnico necessário
-          </div>
+      <div className="bg-pb-void-card border-t border-b border-pb-grid-strong px-10 py-5">
+        <div className="max-w-[1100px] mx-auto flex items-center justify-center gap-12 flex-wrap">
+          {[
+            { val: "100%", lbl: "Gratuito" },
+            { val: "20", lbl: "Skills práticas" },
+            { val: "PDF", lbl: "Acesso imediato" },
+            { val: "0", lbl: "Conhecimento técnico necessário" },
+          ].map(({ val, lbl }, i, arr) => (
+            <>
+              <div key={lbl} className="flex items-center gap-[10px] font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+                <span className="text-pb-cyan font-display text-base">{val}</span>
+                {lbl}
+              </div>
+              {i < arr.length - 1 && <div className="w-px h-7 bg-pb-grid-strong" />}
+            </>
+          ))}
         </div>
       </div>
 
       {/* BULLETS */}
-      <section className="sn-bullets-section">
-        <div className="sn-bullets-inner">
+      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
+        <div className="max-w-[1100px] mx-auto grid grid-cols-2 gap-20 items-center">
           <div>
-            <div className="sn-section-label">O problema</div>
-            <h2 className="sn-bullets-h2">
-              IA não é
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              O problema
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(24px,3vw,36px)] mb-5">
+              IA nao e
               <br />
               vantagem de quem
               <br />
-              <em>sabe que existe.</em>
+              <em className="not-italic text-pb-cyan">sabe que existe.</em>
             </h2>
-            <p className="sn-bullets-body">
+            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-8">
               O guia prático com as habilidades que aplico no meu negócio e
               ensinei a centenas de empreendedores que hoje usam inteligência
               artificial para trabalhar menos e faturar mais.
             </p>
-            <ul className="sn-bullet-list">
+            <ul className="list-none flex flex-col gap-[14px] p-0">
               {[
                 "Implementação sem precisar de equipe técnica",
                 "Conteúdo e vendas rodando no piloto automático",
@@ -368,40 +449,44 @@ const EducacaoSkillsNegocios = () => {
                 "Crie sistemas que trabalham enquanto você dorme",
                 "Use IA como vantagem competitiva real, não como curiosidade",
               ].map((item) => (
-                <li className="sn-bullet-item" key={item}>
-                  <span className="sn-bullet-check"></span>
+                <li key={item} className="flex items-start gap-[14px] text-[14px] text-pb-ink-soft leading-snug font-body">
+                  <span className="min-w-[20px] w-5 h-5 mt-0.5 border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center font-mono text-[10px] text-pb-cyan flex-shrink-0">
+                    ✓
+                  </span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="sn-benefits-grid">
+
+          <div className="grid grid-cols-2 gap-4">
             {[
               {
-                icon: "⚡",
+                label: "RESULTADO",
                 title: "Resultado imediato",
                 desc: "Aplique as primeiras skills em menos de 48 horas e sinta a diferença no operacional.",
               },
               {
-                icon: "🎯",
+                label: "ACESSIVEL",
                 title: "Sem jargão técnico",
                 desc: "Cada skill explicada para quem tem negócio, não para quem programa.",
               },
               {
-                icon: "📈",
+                label: "ROI",
                 title: "ROI mensurável",
                 desc: "Cada skill tem métricas de impacto: tempo economizado, receita gerada.",
               },
               {
-                icon: "🔁",
+                label: "ADAPTAVEL",
                 title: "Qualquer negócio",
                 desc: "Agência, clínica, consultoria, infoproduto — o método se adapta ao seu modelo.",
               },
-            ].map(({ icon, title, desc }) => (
-              <div className="sn-benefit-card" key={title}>
-                <div className="sn-benefit-icon">{icon}</div>
-                <div className="sn-benefit-title">{title}</div>
-                <div className="sn-benefit-desc">{desc}</div>
+            ].map(({ label, title, desc }) => (
+              <div key={title} className="strat-card relative group">
+                <div className="absolute top-2 right-2 w-[10px] h-[10px] border-t border-r border-pb-cyan/20" />
+                <div className="font-mono text-[9px] uppercase tracking-mono-x text-pb-cyan mb-[10px]">{label}</div>
+                <div className="font-display text-[12px] uppercase text-pb-ink mb-[6px] tracking-wide">{title}</div>
+                <div className="font-body text-[12px] text-pb-ink-muted leading-snug">{desc}</div>
               </div>
             ))}
           </div>
@@ -409,21 +494,23 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* PILLARS */}
-      <section className="sn-pillars-section">
-        <div className="sn-pillars-inner">
-          <div className="sn-section-header">
-            <div className="sn-section-label">Os fundamentos</div>
-            <h2 className="sn-section-h2">
-              Os três pilares
+      <section className="px-10 py-[100px] bg-pb-void-card border-t border-b border-pb-grid-strong">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-[60px]">
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              Os fundamentos
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)] mb-[14px]">
+              Os tres pilares
               <br />
               das 20 Skills
             </h2>
-            <p className="sn-section-desc">
-              Cada skill foi selecionada com base em três critérios
-              inegociáveis.
+            <p className="font-body text-[15px] text-pb-ink-muted max-w-[540px] mx-auto">
+              Cada skill foi selecionada com base em três critérios inegociáveis.
             </p>
           </div>
-          <div className="sn-pillars-grid">
+
+          <div className="grid grid-cols-3 gap-6">
             {[
               {
                 num: "01",
@@ -441,9 +528,11 @@ const EducacaoSkillsNegocios = () => {
                 desc: "Agência de marketing, clínica, escritório de advocacia, e-commerce, consultoria — o método se adapta à sua realidade.",
               },
             ].map(({ num, title, desc }) => (
-              <div className="sn-pillar-card" key={num}>
-                <div className="sn-pillar-num">{num}</div>
-                <div className="sn-pillar-title">
+              <div key={num} className="bg-pb-void border border-pb-grid-strong px-7 py-8 text-center relative transition-[border-color] duration-300 hover:border-pb-cyan/25">
+                {/* Top accent */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-px opacity-50" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
+                <div className="font-display text-[48px] text-pb-cyan opacity-15 leading-none mb-3">{num}</div>
+                <div className="font-display text-[14px] uppercase text-pb-ink mb-3 tracking-wide leading-[1.15]">
                   {title.split("\n").map((line, i) => (
                     <span key={i}>
                       {line}
@@ -451,7 +540,7 @@ const EducacaoSkillsNegocios = () => {
                     </span>
                   ))}
                 </div>
-                <div className="sn-pillar-desc">{desc}</div>
+                <div className="font-body text-[13px] text-pb-ink-muted leading-relaxed">{desc}</div>
               </div>
             ))}
           </div>
@@ -459,79 +548,85 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* CONTENTS */}
-      <section className="sn-contents-section">
-        <div className="sn-contents-inner">
-          <div className="sn-section-header">
-            <div className="sn-section-label">O que você vai receber</div>
-            <h2 className="sn-section-h2">
+      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 20% 80%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-[60px]">
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              O que você vai receber
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)] mb-[14px]">
               Skills prontas
               <br />
               para aplicar agora
             </h2>
-            <p className="sn-section-desc">
-              Com exemplos reais, passo a passo e os prompts que eu mesmo uso no
-              dia a dia.
+            <p className="font-body text-[15px] text-pb-ink-muted max-w-[540px] mx-auto">
+              Com exemplos reais, passo a passo e os prompts que eu mesmo uso no dia a dia.
             </p>
           </div>
-          <div className="sn-contents-grid">
+
+          <div className="grid grid-cols-2 gap-[14px] mt-12">
             {contents.map(([num, text]) => (
-              <div className="sn-content-row" key={num}>
-                <span className="sn-content-row-num">{num}</span>
-                <span className="sn-content-row-text">{text}</span>
+              <div key={num} className="flex items-center gap-4 bg-pb-void-card border border-pb-grid-strong px-5 py-4 transition-[border-color] duration-300 hover:border-pb-cyan/25">
+                <span className="font-mono text-[10px] text-pb-cyan opacity-60 min-w-[28px]">{num}</span>
+                <span className="font-body text-[14px] text-pb-ink-soft">{text}</span>
               </div>
             ))}
-            <div className="sn-content-row">
-              <span className="sn-content-row-num">11–20</span>
-              <span className="sn-content-row-text sn-content-row-accent">
-                + 10 skills avançadas reveladas no ebook
-              </span>
+            <div className="flex items-center gap-4 bg-pb-void-card border border-pb-grid-strong px-5 py-4 transition-[border-color] duration-300 hover:border-pb-cyan/25">
+              <span className="font-mono text-[10px] text-pb-cyan opacity-60 min-w-[28px]">11–20</span>
+              <span className="font-body text-[14px] text-pb-cyan">+ 10 skills avançadas reveladas no ebook</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="sn-testimonials-section">
-        <div className="sn-testimonials-inner">
-          <div className="sn-section-header">
-            <div className="sn-section-label">Prova social</div>
-            <h2 className="sn-section-h2">
+      <section className="px-10 py-[100px] bg-pb-void-card border-t border-b border-pb-grid-strong">
+        <div className="max-w-[1100px] mx-auto">
+          <div className="text-center mb-[60px]">
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              Prova social
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)]">
               Empreendedores que
               <br />
-              já aplicaram o método
+              ja aplicaram o metodo
             </h2>
           </div>
-          <div className="sn-testimonials-grid">
+
+          <div className="grid grid-cols-3 gap-5 mt-12">
             {[
               {
-                quote:
-                  "Em dois dias de aplicação eliminei 6 horas semanais de trabalho repetitivo. O que mais me surpreendeu foi a simplicidade — não precisei de nenhum conhecimento técnico.",
+                quote: "Em dois dias de aplicação eliminei 6 horas semanais de trabalho repetitivo. O que mais me surpreendeu foi a simplicidade — não precisei de nenhum conhecimento técnico.",
                 initials: "MF",
                 name: "Marcos F.",
                 role: "Dono de agência digital",
               },
               {
-                quote:
-                  "Apliquei a skill de prospecção e em uma semana fechei dois clientes novos. Antes eu ficava horas montando mensagens. Agora o processo é automático.",
+                quote: "Apliquei a skill de prospecção e em uma semana fechei dois clientes novos. Antes eu ficava horas montando mensagens. Agora o processo é automático.",
                 initials: "CL",
                 name: "Carolina L.",
                 role: "Consultora de marketing",
               },
               {
-                quote:
-                  "Sou médico e nunca pensei que conseguiria usar IA no meu negócio. As skills são tão claras que qualquer pessoa aplica. Meu atendimento melhorou 100%.",
+                quote: "Sou médico e nunca pensei que conseguiria usar IA no meu negócio. As skills são tão claras que qualquer pessoa aplica. Meu atendimento melhorou 100%.",
                 initials: "RP",
                 name: "Dr. Ricardo P.",
                 role: "Médico e gestor de clínica",
               },
             ].map(({ quote, initials, name, role }) => (
-              <div className="sn-testimonial-card" key={name}>
-                <p className="sn-testimonial-quote">{quote}</p>
-                <div className="sn-testimonial-author">
-                  <div className="sn-testimonial-avatar">{initials}</div>
+              <div key={name} className="bg-pb-void border border-pb-grid-strong p-7 relative transition-[border-color] duration-300 hover:border-pb-cyan/25">
+                <div className="absolute top-2 right-2 w-[10px] h-[10px] border-t border-r border-pb-cyan/15" />
+                <p className="font-body text-[13px] text-pb-ink-soft leading-relaxed mb-5 italic">
+                  <span className="text-pb-cyan font-body text-xl not-italic align-[-6px] mr-1">"</span>
+                  {quote}
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center font-mono text-[11px] text-pb-cyan flex-shrink-0">
+                    {initials}
+                  </div>
                   <div>
-                    <div className="sn-testimonial-name">{name}</div>
-                    <div className="sn-testimonial-role">{role}</div>
+                    <div className="font-display text-[11px] uppercase text-pb-ink tracking-wide">{name}</div>
+                    <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mt-0.5">{role}</div>
                   </div>
                 </div>
               </div>
@@ -541,30 +636,39 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* AUTHOR */}
-      <section className="sn-author-section">
-        <div className="sn-author-inner">
-          <div className="sn-author-photo-wrap">
-            <div className="sn-author-photo">
+      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 70% 40%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
+        <div className="max-w-[1100px] mx-auto grid gap-16 items-center" style={{ gridTemplateColumns: "280px 1fr" }}>
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-[220px] h-[220px] bg-pb-void-card border-2 border-pb-cyan/20 flex items-center justify-center font-display text-[64px] text-pb-cyan relative overflow-visible">
               RA
-              <div className="sn-author-ring"></div>
+              <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 30% 30%, rgba(32,221,235,0.12) 0%, transparent 60%)" }} />
+              {/* Spinning ring */}
+              <div
+                className="absolute pointer-events-none border border-pb-cyan/12"
+                style={{
+                  inset: "-8px",
+                  animation: "snReactorSpin 15s linear infinite",
+                }}
+              >
+                <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-pb-cyan opacity-60" />
+              </div>
             </div>
-            <div className="sn-author-name-badge">
-              <div className="sn-author-name-badge-main">
-                Rodrigo Albuquerque
-              </div>
-              <div className="sn-author-name-badge-sub">
-                Empreendedor · IA · Negócios
-              </div>
+            <div className="bg-pb-void-card border border-pb-grid-strong px-[18px] py-[10px] text-center">
+              <div className="font-display text-[13px] uppercase text-pb-ink tracking-wide">Rodrigo Albuquerque</div>
+              <div className="font-mono text-[8px] uppercase tracking-[2px] text-pb-cyan mt-[3px]">Empreendedor · IA · Negócios</div>
             </div>
           </div>
+
           <div>
-            <div className="sn-section-label">Quem desenvolveu o método</div>
-            <h2 className="sn-author-h2">
-              Construído por quem
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              Quem desenvolveu o método
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(20px,2.5vw,30px)] mb-4">
+              Construido por quem
               <br />
-              <span>usa no próprio negócio</span>
+              <span className="text-pb-cyan">usa no proprio negocio</span>
             </h2>
-            <p className="sn-author-body">
+            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-7">
               Rodrigo Albuquerque é empreendedor, criador de conteúdo sobre IA e
               negócios, e fundador da BA — holding com operações em marketing,
               assessoria de receita e educação digital. Nos últimos anos,
@@ -572,15 +676,15 @@ const EducacaoSkillsNegocios = () => {
               negócio e compilou nesse ebook as 20 skills que mais geraram
               resultado real — para ele e para os empreendedores que acompanha.
             </p>
-            <div className="sn-author-stats">
+            <div className="flex gap-8 flex-wrap">
               {[
                 { num: "3", lbl: "Empresas na holding" },
                 { num: "20", lbl: "Skills validadas" },
                 { num: "100%", lbl: "Baseado em casos reais" },
               ].map(({ num, lbl }) => (
-                <div className="sn-author-stat-item" key={lbl}>
-                  <span className="sn-author-stat-num">{num}</span>
-                  <span className="sn-author-stat-lbl">{lbl}</span>
+                <div key={lbl} className="flex flex-col gap-1">
+                  <span className="font-display text-[24px] text-pb-cyan">{num}</span>
+                  <span className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted">{lbl}</span>
                 </div>
               ))}
             </div>
@@ -589,57 +693,75 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="sn-final-cta" id="cta">
-        <div className="sn-final-cta-bg-glow"></div>
-        <div className="sn-final-cta-inner">
-          <div className="sn-section-label">Acesso gratuito</div>
-          <h2>
-            Baixe agora as <span>20 Skills de IA</span>
+      <section className="px-10 py-[120px] bg-pb-void-card border-t border-pb-grid-strong text-center relative overflow-hidden" id="cta">
+        {/* Top accent line */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-40" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
+        {/* Glow */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] pointer-events-none"
+          style={{ background: "radial-gradient(ellipse, rgba(32,221,235,0.06) 0%, transparent 70%)" }}
+        />
+        <div className="max-w-[680px] mx-auto relative z-[1]">
+          <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+            Acesso gratuito
+          </div>
+          <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3.2vw,40px)] mb-[14px]">
+            Baixe agora as <span className="text-pb-cyan">20 Skills de IA</span>
             <br />e comece hoje.
           </h2>
-          <p>
+          <p className="font-body text-[15px] text-pb-ink-muted mb-10 leading-relaxed">
             Use inteligência artificial como vantagem de negócio — não como
-            ferramenta de curiosidade. Acesso imediato, sem cartão, sem
-            enrolação.
+            ferramenta de curiosidade. Acesso imediato, sem cartão, sem enrolação.
           </p>
           <a
             href="#cta"
-            className="sn-btn-cta-final"
+            className="btn-primary inline-flex text-[13px] py-5 px-14 mb-4"
             onClick={(e) => { e.preventDefault(); handleCTA("final_cta"); }}
           >
             Baixar Ebook Gratuitamente
           </a>
-          <span className="sn-cta-final-micro">
-            ✓ gratuito &nbsp;·&nbsp; acesso imediato &nbsp;·&nbsp; pdf completo
-            &nbsp;·&nbsp; sem cartão
+          <span className="block font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted mt-3">
+            gratuito · acesso imediato · pdf completo · sem cartao
           </span>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="sn-faq-section">
-        <div className="sn-faq-inner">
-          <div className="sn-section-header sn-left">
-            <div className="sn-section-label">Dúvidas frequentes</div>
-            <h2 className="sn-section-h2 sn-left">
+      <section className="px-10 py-[100px] bg-pb-void border-t border-pb-grid-strong">
+        <div className="max-w-[760px] mx-auto">
+          <div className="text-left mb-[60px]">
+            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
+              Dúvidas frequentes
+            </div>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)]">
               Perguntas
               <br />
               frequentes
             </h2>
           </div>
-          <div className="sn-faq-list">
+          <div className="flex flex-col gap-3 mt-12">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`sn-faq-item${openFaq === index ? " open" : ""}`}
+                className={`bg-pb-void-card border overflow-hidden transition-[border-color] duration-300 ${openFaq === index ? "border-pb-cyan/20" : "border-pb-grid-strong hover:border-pb-cyan/15"}`}
               >
-                <div
-                  className="sn-faq-q"
+                <button
+                  className="w-full px-6 py-5 font-display text-[13px] uppercase text-pb-ink tracking-wide cursor-pointer flex justify-between items-center gap-4 select-none bg-transparent border-none text-left"
                   onClick={() => toggleFaq(index)}
                 >
                   {faq.q}
+                  <span className="text-pb-cyan font-mono text-xl font-light min-w-5 text-right flex-shrink-0 transition-transform duration-300" style={{ transform: openFaq === index ? "rotate(45deg)" : "none" }}>
+                    +
+                  </span>
+                </button>
+                <div
+                  className="overflow-hidden transition-all duration-[400ms] ease-in-out"
+                  style={{ maxHeight: openFaq === index ? "300px" : "0" }}
+                >
+                  <div className="px-6 pb-5 font-body text-[14px] text-pb-ink-muted leading-relaxed">
+                    {faq.a}
+                  </div>
                 </div>
-                <div className="sn-faq-a">{faq.a}</div>
               </div>
             ))}
           </div>
@@ -647,1268 +769,149 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="sn-footer">
-        <div className="sn-footer-brand">
-          Rodrigo <span>Albuquerque</span>
+      <footer className="px-10 py-10 bg-pb-void border-t border-pb-grid-strong text-center">
+        <div className="font-display text-[12px] uppercase text-pb-ink-muted tracking-[1.5px] mb-2">
+          Rodrigo <span className="text-pb-cyan">Albuquerque</span>
         </div>
-        <div className="sn-footer-copy">© 2026 · Todos os direitos reservados</div>
+        <div className="font-mono text-[9px] uppercase tracking-[1.5px] text-pb-ink-muted">
+          © 2026 · Todos os direitos reservados
+        </div>
       </footer>
 
       {/* LEAD MODAL */}
       {modalOpen && (
-        <div className="sn-modal-overlay" onClick={() => setModalOpen(false)}>
-          <div className="sn-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="sn-modal-close" onClick={() => setModalOpen(false)}>×</button>
-            <div className="sn-modal-header">
-              <div className="sn-section-label" style={{ marginBottom: 8 }}>Acesso gratuito</div>
-              <h3 className="sn-modal-title">INFORME SEUS DADOS:</h3>
+        <div
+          className="fixed inset-0 z-[200] bg-pb-void/82 backdrop-blur-md flex items-center justify-center p-5"
+          onClick={() => setModalOpen(false)}
+        >
+          <div
+            className="relative bg-pb-void-card border border-pb-cyan/20 px-8 py-9 w-full max-w-[480px]"
+            style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.7), inset 0 0 0 0.5px rgba(32,221,235,0.06)" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top accent line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-px opacity-50" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
+
+            <button
+              className="absolute top-[14px] right-[18px] bg-transparent border-none text-pb-ink-muted text-[22px] cursor-pointer leading-none transition-colors duration-200 hover:text-pb-ink font-mono"
+              onClick={() => setModalOpen(false)}
+            >
+              ×
+            </button>
+
+            <div className="mb-6">
+              <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-2">
+                Acesso gratuito
+              </div>
+              <h3 className="font-display text-[18px] uppercase text-pb-ink tracking-wide">
+                INFORME SEUS DADOS:
+              </h3>
             </div>
-            <form className="sn-modal-form" onSubmit={handleSubmit} noValidate>
+
+            <form className="flex flex-col gap-3" onSubmit={handleSubmit} noValidate>
               <input
-                className="sn-modal-input"
+                className="pb-input"
                 type="text"
-                placeholder="* Seu nome..."
+                placeholder="* SEU NOME..."
                 value={form.nome}
                 onChange={(e) => handleField("nome", e.target.value)}
                 autoComplete="name"
               />
               <input
-                className="sn-modal-input"
+                className="pb-input"
                 type="email"
-                placeholder="* Seu melhor e-mail..."
+                placeholder="* SEU MELHOR E-MAIL..."
                 value={form.email}
                 onChange={(e) => handleField("email", e.target.value)}
                 autoComplete="email"
               />
               <input
-                className="sn-modal-input"
+                className="pb-input"
                 type="tel"
-                placeholder="* +55 · Seu whatsapp..."
+                placeholder="* +55 · SEU WHATSAPP..."
                 value={form.whatsapp}
                 onChange={(e) => handleField("whatsapp", e.target.value)}
                 autoComplete="tel"
               />
               <select
-                className="sn-modal-select"
+                className="pb-input appearance-none"
                 value={form.faturamento}
                 onChange={(e) => handleField("faturamento", e.target.value)}
+                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* Qual é a sua receita MENSAL aproximada?</option>
+                <option value="">* QUAL É A SUA RECEITA MENSAL APROXIMADA?</option>
                 {FATURAMENTO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
               <select
-                className="sn-modal-select"
+                className="pb-input appearance-none"
                 value={form.cargo}
                 onChange={(e) => handleField("cargo", e.target.value)}
+                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* Cargo</option>
+                <option value="">* CARGO</option>
                 {CARGO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
               <select
-                className="sn-modal-select"
+                className="pb-input appearance-none"
                 value={form.segmento}
                 onChange={(e) => handleField("segmento", e.target.value)}
+                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* Segmento</option>
+                <option value="">* SEGMENTO</option>
                 {SEGMENTO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
-              {formError && <div className="sn-modal-error">{formError}</div>}
+
+              {formError && (
+                <div className="font-mono text-[10px] uppercase tracking-[1px] text-pb-red py-1">
+                  {formError}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="sn-modal-btn"
+                className="btn-primary justify-center w-full text-[11px] py-4 mt-1 disabled:opacity-60 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "ENVIANDO..." : "BAIXAR EBOOK GRATUITAMENTE"}
               </button>
-              <div className="sn-cta-micro" style={{ marginTop: 8 }}>
-                ✓ gratuito &nbsp;·&nbsp; sem spam &nbsp;·&nbsp; acesso imediato
+
+              <div className="font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted text-center mt-2">
+                gratuito · sem spam · acesso imediato
               </div>
             </form>
           </div>
         </div>
       )}
 
-      {/* Fonts + Styles */}
+      {/* Keyframe animations (no Tailwind equivalent for these specific transforms) */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Exo+2:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
 
-        .sn-root {
-          --sn-void: #060A12;
-          --sn-surface: #0C1220;
-          --sn-hud: #111A2E;
-          --sn-arc: #38BDF8;
-          --sn-arc-bright: #7DD3FC;
-          --sn-arc-dim: #0C4A6E;
-          --sn-arc-subtle: rgba(56,189,248,0.06);
-          --sn-arc-border: rgba(56,189,248,0.08);
-          --sn-arc-border-hover: rgba(56,189,248,0.22);
-          --sn-gold: #F59E0B;
-          --sn-gold-subtle: rgba(245,158,11,0.08);
-          --sn-ivory: #F0F6FF;
-          --sn-text: #C8D6E5;
-          --sn-dim: #5A7089;
-          --sn-muted: #3D5068;
-          --sn-success: #34D399;
-          --sn-font-display: 'Chakra Petch', sans-serif;
-          --sn-font-mono: 'IBM Plex Mono', monospace;
-          --sn-font-body: 'Exo 2', sans-serif;
-          --sn-glow-arc: 0 0 32px rgba(56,189,248,0.2);
-          --sn-radius-sm: 6px;
-          --sn-radius-md: 10px;
-          --sn-radius-lg: 14px;
-          background: var(--sn-void);
-          font-family: var(--sn-font-body);
-          color: var(--sn-text);
-          font-size: 16px;
-          line-height: 1.7;
-          overflow-x: hidden;
-        }
-
-        /* NAV */
-        .sn-nav {
-          position: fixed;
-          top: 0; left: 0; right: 0;
-          z-index: 100;
-          padding: 18px 40px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: rgba(6,10,18,0.85);
-          backdrop-filter: blur(12px);
-          border-bottom: 0.5px solid var(--sn-arc-border);
-        }
-        .sn-nav-brand {
-          font-family: var(--sn-font-display);
-          font-size: 14px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 1px;
-        }
-        .sn-nav-brand span { color: var(--sn-arc); }
-        .sn-nav-cta {
-          font-family: var(--sn-font-display);
-          font-size: 10px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          color: var(--sn-void);
-          background: var(--sn-arc);
-          border: none;
-          padding: 10px 22px;
-          border-radius: var(--sn-radius-sm);
-          cursor: pointer;
-          transition: all 0.3s;
-          text-decoration: none;
-          display: inline-block;
-        }
-        .sn-nav-cta:hover { box-shadow: var(--sn-glow-arc); transform: translateY(-1px); }
-
-        /* HERO */
-        .sn-hero-section {
-          position: relative;
-          background:
-            radial-gradient(ellipse at 15% 40%, rgba(56,189,248,0.07) 0%, transparent 55%),
-            radial-gradient(ellipse at 85% 15%, rgba(220,38,38,0.04) 0%, transparent 45%),
-            var(--sn-void);
-        }
-        .sn-hero-section::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image:
-            linear-gradient(rgba(56,189,248,0.022) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(56,189,248,0.022) 1px, transparent 1px);
-          background-size: 64px 64px;
-          pointer-events: none;
-        }
-        .sn-hero-section::after {
-          content: '';
-          position: absolute;
-          top: 90px; left: 20px;
-          width: 40px; height: 40px;
-          border-top: 1.5px solid rgba(56,189,248,0.25);
-          border-left: 1.5px solid rgba(56,189,248,0.25);
-          pointer-events: none;
-        }
-        .sn-hero {
-          min-height: 100vh;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          align-items: center;
-          gap: 60px;
-          padding: 120px 40px 80px;
-          max-width: 1100px;
-          margin: 0 auto;
-          position: relative;
-        }
-        .sn-hero-eyebrow {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-family: var(--sn-font-mono);
-          font-size: 10px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: var(--sn-arc);
-          margin-bottom: 24px;
-        }
-        .sn-dot-live {
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--sn-arc);
-          animation: snLivePulse 2s ease-in-out infinite;
-        }
-        @keyframes snLivePulse {
-          0%,100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
-        }
-        .sn-h1 {
-          font-family: var(--sn-font-display);
-          font-size: clamp(32px, 4.2vw, 56px);
-          font-weight: 700;
-          text-transform: uppercase;
-          line-height: 1.05;
-          color: var(--sn-ivory);
-          margin-bottom: 16px;
-          letter-spacing: -0.5px;
-        }
-        .sn-num { color: var(--sn-arc); }
-        .sn-accent {
-          display: block;
-          background: linear-gradient(90deg, var(--sn-arc), var(--sn-arc-bright));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .sn-hero-body {
-          font-size: 15px;
-          font-weight: 300;
-          color: var(--sn-text);
-          line-height: 1.7;
-          margin-bottom: 8px;
-          max-width: 460px;
-        }
-        .sn-hero-contrast {
-          font-size: 15px;
-          font-weight: 400;
-          color: var(--sn-arc);
-          line-height: 1.65;
-          margin-bottom: 36px;
-          max-width: 460px;
-        }
-        .sn-cta-group {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          max-width: 380px;
-        }
-        .sn-btn-primary {
-          background: var(--sn-arc);
-          color: var(--sn-void);
-          font-family: var(--sn-font-display);
-          font-size: 12px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2.5px;
-          padding: 18px 36px;
-          border: none;
-          border-radius: var(--sn-radius-md);
-          cursor: pointer;
-          transition: all 0.3s;
-          width: 100%;
-          text-align: center;
-          text-decoration: none;
-          display: block;
-        }
-        .sn-btn-primary:hover { box-shadow: var(--sn-glow-arc); transform: translateY(-2px); }
-        .sn-cta-micro {
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 2.5px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-          text-align: center;
-        }
-        .sn-skill-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 7px;
-          margin-top: 28px;
-          max-width: 460px;
-        }
-        .sn-skill-tag {
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 0.5px;
-          padding: 5px 11px;
-          border-radius: 4px;
-          background: var(--sn-arc-subtle);
-          color: var(--sn-arc);
-          border: 0.5px solid rgba(56,189,248,0.14);
-        }
-        .sn-skill-tag-gold {
-          background: var(--sn-gold-subtle);
-          color: var(--sn-gold);
-          border-color: rgba(245,158,11,0.2);
-        }
-
-        /* BOOK MOCKUP */
-        .sn-hero-visual {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-        .sn-book-wrap {
-          position: relative;
-          width: 360px;
-          height: 460px;
-        }
-        .sn-book-glow-bg {
-          position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%,-50%);
-          width: 300px; height: 300px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
-          animation: snGlowBeat 3.5s ease-in-out infinite;
-        }
-        @keyframes snGlowBeat {
-          0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
-          50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
-        }
-        .sn-book-pages-top {
-          position: absolute;
-          top: 18px; left: 46px;
-          width: 256px; height: 7px;
-          background: repeating-linear-gradient(90deg, rgba(240,246,255,0.07) 0, rgba(240,246,255,0.07) 1px, transparent 1px, transparent 2.5px);
-          border-radius: 0 2px 0 0;
-          transform: rotate(-1.5deg);
-          animation: snFloat 4s ease-in-out infinite;
-        }
-        .sn-book-spine {
-          position: absolute;
-          top: 22px; left: 38px;
-          width: 9px; height: 330px;
-          background: linear-gradient(to right, #040710, #0C1525);
-          border: 0.5px solid rgba(56,189,248,0.12);
-          border-right: none;
-          border-radius: 2px 0 0 2px;
-          transform: rotate(-1.5deg);
-          animation: snFloat 4s ease-in-out infinite;
-        }
-        .sn-book-cover {
-          position: absolute;
-          top: 22px; left: 47px;
-          width: 252px; height: 330px;
-          background: linear-gradient(150deg, #0F1E3A 0%, #0A1528 45%, #070D1C 100%);
-          border-radius: 3px 12px 12px 3px;
-          border: 0.5px solid rgba(56,189,248,0.22);
-          box-shadow: 6px 10px 40px rgba(0,0,0,0.75), inset 0 0 0 0.5px rgba(56,189,248,0.08);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 28px 22px;
-          text-align: center;
-          overflow: hidden;
-          transform: rotate(-1.5deg);
-          animation: snFloat 4s ease-in-out infinite;
-        }
         @keyframes snFloat {
-          0%,100% { transform: rotate(-1.5deg) translateY(0); }
-          50% { transform: rotate(-1.5deg) translateY(-10px); }
+          0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+          50%       { transform: rotate(-1.5deg) translateY(-10px); }
         }
-        .sn-book-cover::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
-          opacity: 0.4;
-        }
-        .sn-book-cover::after {
-          content: '';
-          position: absolute;
-          top: 8px; right: 8px;
-          width: 14px; height: 14px;
-          border-top: 1px solid rgba(56,189,248,0.3);
-          border-right: 1px solid rgba(56,189,248,0.3);
-        }
-        .sn-book-reactor {
-          width: 52px; height: 52px;
-          border-radius: 50%;
-          border: 1px solid rgba(56,189,248,0.35);
-          display: flex; align-items: center; justify-content: center;
-          margin-bottom: 14px;
-          animation: snReactorSpin 10s linear infinite;
+        @keyframes snFloatAlt {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-7px); }
         }
         @keyframes snReactorSpin {
           from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          to   { transform: rotate(360deg); }
         }
-        .sn-book-reactor-inner {
-          width: 30px; height: 30px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(56,189,248,0.5) 0%, rgba(56,189,248,0.12) 60%, transparent 100%);
-          border: 1px solid rgba(56,189,248,0.5);
-          animation: snLivePulse 2.5s ease-in-out infinite;
-        }
-        .sn-book-author {
-          font-family: var(--sn-font-mono);
-          font-size: 7px;
-          letter-spacing: 2.5px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-          margin-bottom: 10px;
-        }
-        .sn-book-big-num {
-          font-family: var(--sn-font-display);
-          font-size: 52px;
-          font-weight: 700;
-          color: var(--sn-arc);
-          line-height: 1;
-          text-shadow: 0 0 24px rgba(56,189,248,0.35);
-          letter-spacing: -2px;
-        }
-        .sn-book-big-label {
-          font-family: var(--sn-font-display);
-          font-size: 12px;
-          font-weight: 600;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 2px;
-          margin-bottom: 4px;
-        }
-        .sn-book-subtitle {
-          font-family: var(--sn-font-display);
-          font-size: 16px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          margin-bottom: 14px;
-          line-height: 1.15;
-        }
-        .sn-book-divider {
-          width: 36px; height: 1px;
-          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
-          margin: 0 auto 12px;
-        }
-        .sn-book-tagline {
-          font-family: var(--sn-font-mono);
-          font-size: 7px;
-          letter-spacing: 0.8px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-          line-height: 1.6;
-        }
-        .sn-book-tagline strong { color: var(--sn-arc); }
-        .sn-float-badge {
-          position: absolute;
-          top: 4px; right: 4px;
-          background: rgba(245,158,11,0.1);
-          border: 1px solid rgba(245,158,11,0.3);
-          border-radius: var(--sn-radius-md);
-          padding: 10px 14px;
-          text-align: center;
-          animation: snFloatAlt 3.5s ease-in-out infinite 1s;
-        }
-        @keyframes snFloatAlt {
-          0%,100% { transform: translateY(0); }
-          50% { transform: translateY(-7px); }
-        }
-        .sn-float-badge-num {
-          font-family: var(--sn-font-display);
-          font-size: 18px;
-          font-weight: 700;
-          color: var(--sn-gold);
-          display: block;
-          line-height: 1;
-        }
-        .sn-float-badge-lbl {
-          font-family: var(--sn-font-mono);
-          font-size: 7px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: rgba(245,158,11,0.65);
-          margin-top: 3px;
-          display: block;
-        }
-        .sn-float-stat {
-          position: absolute;
-          bottom: 30px; right: -10px;
-          background: var(--sn-surface);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-md);
-          padding: 10px 16px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          animation: snFloatAlt 3.5s ease-in-out infinite 2s;
-        }
-        .sn-float-stat-icon {
-          width: 30px; height: 30px;
-          border-radius: 50%;
-          background: var(--sn-arc-subtle);
-          border: 0.5px solid rgba(56,189,248,0.18);
-          display: flex; align-items: center; justify-content: center;
-          font-size: 13px;
-        }
-        .sn-float-stat-num {
-          font-family: var(--sn-font-display);
-          font-size: 13px;
-          font-weight: 700;
-          color: var(--sn-arc);
-          display: block; line-height: 1;
-        }
-        .sn-float-stat-lbl {
-          font-family: var(--sn-font-mono);
-          font-size: 7.5px;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-          display: block; margin-top: 3px;
-        }
-
-        /* PROOF STRIP */
-        .sn-proof-strip {
-          background: var(--sn-surface);
-          border-top: 0.5px solid var(--sn-arc-border);
-          border-bottom: 0.5px solid var(--sn-arc-border);
-          padding: 20px 40px;
-        }
-        .sn-proof-strip-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 48px;
-          flex-wrap: wrap;
-        }
-        .sn-proof-item {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-family: var(--sn-font-mono);
-          font-size: 10px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-        }
-        .sn-proof-item span {
-          color: var(--sn-arc);
-          font-size: 16px;
-          font-weight: 600;
-          font-family: var(--sn-font-display);
-        }
-        .sn-proof-sep { width: 1px; height: 28px; background: var(--sn-arc-border); }
-
-        /* BULLETS */
-        .sn-bullets-section {
-          padding: 100px 40px;
-          background:
-            radial-gradient(ellipse at 80% 50%, rgba(56,189,248,0.05) 0%, transparent 50%),
-            var(--sn-void);
-        }
-        .sn-bullets-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 80px;
-          align-items: center;
-        }
-        .sn-section-label {
-          font-family: var(--sn-font-mono);
-          font-size: 10px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: var(--sn-arc);
-          opacity: 0.85;
-          display: inline-block;
-          margin-bottom: 16px;
-        }
-        .sn-bullets-h2 {
-          font-family: var(--sn-font-display);
-          font-size: clamp(24px, 3vw, 36px);
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          line-height: 1.1;
-          margin-bottom: 20px;
-        }
-        .sn-bullets-h2 em { color: var(--sn-arc); font-style: normal; display: block; }
-        .sn-bullets-body {
-          font-size: 15px;
-          font-weight: 300;
-          color: var(--sn-text);
-          line-height: 1.7;
-          margin-bottom: 32px;
-        }
-        .sn-bullet-list { list-style: none; display: flex; flex-direction: column; gap: 14px; padding: 0; }
-        .sn-bullet-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          font-size: 14px;
-          color: var(--sn-text);
-          line-height: 1.5;
-        }
-        .sn-bullet-check {
-          width: 20px; height: 20px;
-          min-width: 20px;
-          border-radius: 4px;
-          background: rgba(52,211,153,0.1);
-          border: 0.5px solid rgba(52,211,153,0.3);
-          display: flex; align-items: center; justify-content: center;
-          margin-top: 2px;
-        }
-        .sn-bullet-check::after {
-          content: '✓';
-          color: var(--sn-success);
-          font-size: 10px;
-          font-family: var(--sn-font-mono);
-          font-weight: 600;
-        }
-        .sn-benefits-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-        }
-        .sn-benefit-card {
-          background: var(--sn-surface);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-lg);
-          padding: 20px;
-          position: relative;
-          transition: border-color 0.3s;
-        }
-        .sn-benefit-card:hover { border-color: var(--sn-arc-border-hover); }
-        .sn-benefit-card::after {
-          content: '';
-          position: absolute;
-          top: 8px; right: 8px;
-          width: 10px; height: 10px;
-          border-top: 1px solid rgba(56,189,248,0.2);
-          border-right: 1px solid rgba(56,189,248,0.2);
-        }
-        .sn-benefit-icon { font-size: 22px; margin-bottom: 10px; }
-        .sn-benefit-title {
-          font-family: var(--sn-font-display);
-          font-size: 12px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          margin-bottom: 6px;
-          letter-spacing: 0.5px;
-        }
-        .sn-benefit-desc { font-size: 12px; font-weight: 300; color: var(--sn-dim); line-height: 1.5; }
-
-        /* PILLARS */
-        .sn-pillars-section {
-          padding: 100px 40px;
-          background: var(--sn-surface);
-          border-top: 0.5px solid var(--sn-arc-border);
-          border-bottom: 0.5px solid var(--sn-arc-border);
-        }
-        .sn-pillars-inner { max-width: 1100px; margin: 0 auto; }
-        .sn-section-header { text-align: center; margin-bottom: 60px; }
-        .sn-section-h2 {
-          font-family: var(--sn-font-display);
-          font-size: clamp(22px, 3vw, 34px);
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          line-height: 1.15;
-          margin-bottom: 14px;
-        }
-        .sn-section-desc { font-size: 15px; font-weight: 300; color: var(--sn-dim); max-width: 540px; margin: 0 auto; }
-        .sn-pillars-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-        .sn-pillar-card {
-          background: var(--sn-void);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-lg);
-          padding: 32px 28px;
-          position: relative;
-          transition: border-color 0.3s, transform 0.3s;
-          text-align: center;
-        }
-        .sn-pillar-card:hover { border-color: var(--sn-arc-border-hover); transform: translateY(-4px); }
-        .sn-pillar-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 50%;
-          transform: translateX(-50%);
-          width: 60px; height: 2px;
-          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
-          opacity: 0.5;
-        }
-        .sn-pillar-num {
-          font-family: var(--sn-font-display);
-          font-size: 48px;
-          font-weight: 700;
-          color: var(--sn-arc);
-          opacity: 0.15;
-          line-height: 1;
-          margin-bottom: 12px;
-        }
-        .sn-pillar-title {
-          font-family: var(--sn-font-display);
-          font-size: 14px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          margin-bottom: 12px;
-          letter-spacing: 0.5px;
-        }
-        .sn-pillar-desc { font-size: 13px; font-weight: 300; color: var(--sn-dim); line-height: 1.6; }
-
-        /* CONTENTS */
-        .sn-contents-section {
-          padding: 100px 40px;
-          background:
-            radial-gradient(ellipse at 20% 80%, rgba(56,189,248,0.05) 0%, transparent 50%),
-            var(--sn-void);
-        }
-        .sn-contents-inner { max-width: 1100px; margin: 0 auto; }
-        .sn-contents-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
-          margin-top: 48px;
-        }
-        .sn-content-row {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          background: var(--sn-surface);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-md);
-          padding: 16px 20px;
-          transition: border-color 0.3s;
-        }
-        .sn-content-row:hover { border-color: var(--sn-arc-border-hover); }
-        .sn-content-row-num {
-          font-family: var(--sn-font-mono);
-          font-size: 10px;
-          color: var(--sn-arc);
-          opacity: 0.6;
-          min-width: 28px;
-        }
-        .sn-content-row-text { font-size: 14px; color: var(--sn-text); font-weight: 300; }
-        .sn-content-row-accent { color: var(--sn-arc) !important; }
-
-        /* TESTIMONIALS */
-        .sn-testimonials-section {
-          padding: 100px 40px;
-          background: var(--sn-surface);
-          border-top: 0.5px solid var(--sn-arc-border);
-          border-bottom: 0.5px solid var(--sn-arc-border);
-        }
-        .sn-testimonials-inner { max-width: 1100px; margin: 0 auto; }
-        .sn-testimonials-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          margin-top: 48px;
-        }
-        .sn-testimonial-card {
-          background: var(--sn-void);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-lg);
-          padding: 28px;
-          position: relative;
-          transition: border-color 0.3s;
-        }
-        .sn-testimonial-card:hover { border-color: var(--sn-arc-border-hover); }
-        .sn-testimonial-card::after {
-          content: '';
-          position: absolute;
-          top: 8px; right: 8px;
-          width: 10px; height: 10px;
-          border-top: 1px solid rgba(56,189,248,0.15);
-          border-right: 1px solid rgba(56,189,248,0.15);
-        }
-        .sn-testimonial-quote {
-          font-size: 13px;
-          font-weight: 300;
-          color: var(--sn-text);
-          line-height: 1.7;
-          margin-bottom: 20px;
-          font-style: italic;
-        }
-        .sn-testimonial-quote::before {
-          content: '"';
-          color: var(--sn-arc);
-          font-size: 20px;
-          font-family: Georgia, serif;
-          font-style: normal;
-          line-height: 0;
-          vertical-align: -6px;
-          margin-right: 4px;
-        }
-        .sn-testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .sn-testimonial-avatar {
-          width: 36px; height: 36px;
-          border-radius: 50%;
-          background: var(--sn-arc-subtle);
-          border: 0.5px solid rgba(56,189,248,0.2);
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--sn-font-display);
-          font-size: 12px;
-          font-weight: 700;
-          color: var(--sn-arc);
-          flex-shrink: 0;
-        }
-        .sn-testimonial-name {
-          font-family: var(--sn-font-display);
-          font-size: 11px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 0.5px;
-        }
-        .sn-testimonial-role {
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-          margin-top: 2px;
-        }
-
-        /* AUTHOR */
-        .sn-author-section {
-          padding: 100px 40px;
-          background:
-            radial-gradient(ellipse at 70% 40%, rgba(56,189,248,0.05) 0%, transparent 50%),
-            var(--sn-void);
-        }
-        .sn-author-inner {
-          max-width: 1100px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 280px 1fr;
-          gap: 64px;
-          align-items: center;
-        }
-        .sn-author-photo-wrap {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 16px;
-        }
-        .sn-author-photo {
-          width: 220px; height: 220px;
-          border-radius: 50%;
-          background: var(--sn-surface);
-          border: 2px solid rgba(56,189,248,0.2);
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--sn-font-display);
-          font-size: 64px;
-          font-weight: 700;
-          color: var(--sn-arc);
-          position: relative;
-          overflow: visible;
-        }
-        .sn-author-photo::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 50%;
-          background: radial-gradient(circle at 30% 30%, rgba(56,189,248,0.12) 0%, transparent 60%);
-        }
-        .sn-author-ring {
-          position: absolute;
-          inset: -8px;
-          border-radius: 50%;
-          border: 1px solid rgba(56,189,248,0.12);
-          animation: snReactorSpin 15s linear infinite;
-          pointer-events: none;
-        }
-        .sn-author-ring::before {
-          content: '';
-          position: absolute;
-          top: -3px; left: 50%;
-          transform: translateX(-50%);
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--sn-arc);
-          opacity: 0.6;
-        }
-        .sn-author-name-badge {
-          background: var(--sn-surface);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-md);
-          padding: 10px 18px;
-          text-align: center;
-        }
-        .sn-author-name-badge-main {
-          font-family: var(--sn-font-display);
-          font-size: 13px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 0.5px;
-        }
-        .sn-author-name-badge-sub {
-          font-family: var(--sn-font-mono);
-          font-size: 8px;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: var(--sn-arc);
-          margin-top: 3px;
-        }
-        .sn-author-h2 {
-          font-family: var(--sn-font-display);
-          font-size: clamp(20px, 2.5vw, 30px);
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          margin-bottom: 16px;
-          line-height: 1.15;
-        }
-        .sn-author-h2 span { color: var(--sn-arc); }
-        .sn-author-body {
-          font-size: 15px;
-          font-weight: 300;
-          color: var(--sn-text);
-          line-height: 1.8;
-          margin-bottom: 28px;
-        }
-        .sn-author-stats { display: flex; gap: 32px; flex-wrap: wrap; }
-        .sn-author-stat-item { display: flex; flex-direction: column; gap: 4px; }
-        .sn-author-stat-num {
-          font-family: var(--sn-font-display);
-          font-size: 24px;
-          font-weight: 700;
-          color: var(--sn-arc);
-        }
-        .sn-author-stat-lbl {
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: var(--sn-dim);
-        }
-
-        /* FINAL CTA */
-        .sn-final-cta {
-          padding: 120px 40px;
-          background: var(--sn-surface);
-          border-top: 0.5px solid var(--sn-arc-border);
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-        .sn-final-cta::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 50%; transform: translateX(-50%);
-          width: 600px; height: 2px;
-          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
-          opacity: 0.4;
-        }
-        .sn-final-cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-        .sn-final-cta-bg-glow {
-          position: absolute;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          width: 500px; height: 300px;
-          border-radius: 50%;
-          background: radial-gradient(ellipse, rgba(56,189,248,0.06) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .sn-final-cta h2 {
-          font-family: var(--sn-font-display);
-          font-size: clamp(22px, 3.2vw, 40px);
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          margin-bottom: 14px;
-          line-height: 1.1;
-        }
-        .sn-final-cta h2 span { color: var(--sn-arc); }
-        .sn-final-cta p {
-          font-size: 15px;
-          font-weight: 300;
-          color: var(--sn-dim);
-          margin-bottom: 40px;
-          line-height: 1.7;
-        }
-        .sn-btn-cta-final {
-          background: var(--sn-arc);
-          color: var(--sn-void);
-          font-family: var(--sn-font-display);
-          font-size: 13px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2.5px;
-          padding: 20px 56px;
-          border: none;
-          border-radius: var(--sn-radius-md);
-          cursor: pointer;
-          transition: all 0.3s;
-          display: inline-block;
-          text-decoration: none;
-          margin-bottom: 16px;
-        }
-        .sn-btn-cta-final:hover { box-shadow: var(--sn-glow-arc); transform: translateY(-2px); }
-        .sn-cta-final-micro {
-          display: block;
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 2.5px;
-          text-transform: uppercase;
-          color: var(--sn-muted);
-          margin-top: 12px;
-        }
-
-        /* FAQ */
-        .sn-faq-section {
-          padding: 100px 40px;
-          background: var(--sn-void);
-          border-top: 0.5px solid var(--sn-arc-border);
-        }
-        .sn-faq-inner { max-width: 760px; margin: 0 auto; }
-        .sn-left { text-align: left !important; }
-        .sn-faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
-        .sn-faq-item {
-          background: var(--sn-surface);
-          border: 0.5px solid var(--sn-arc-border);
-          border-radius: var(--sn-radius-lg);
-          overflow: hidden;
-          transition: border-color 0.3s;
-        }
-        .sn-faq-item:hover { border-color: rgba(56,189,248,0.14); }
-        .sn-faq-q {
-          padding: 20px 24px;
-          font-family: var(--sn-font-display);
-          font-size: 13px;
-          font-weight: 600;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 0.5px;
-          cursor: pointer;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          user-select: none;
-        }
-        .sn-faq-q::after {
-          content: '+';
-          color: var(--sn-arc);
-          font-size: 20px;
-          font-weight: 300;
-          font-family: var(--sn-font-mono);
-          min-width: 20px;
-          text-align: right;
-          transition: transform 0.3s;
-          flex-shrink: 0;
-        }
-        .sn-faq-item.open .sn-faq-q::after { content: '−'; }
-        .sn-faq-a {
-          padding: 0 24px;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.4s ease, padding 0.3s;
-          font-size: 14px;
-          font-weight: 300;
-          color: var(--sn-dim);
-          line-height: 1.75;
-        }
-        .sn-faq-item.open .sn-faq-a {
-          max-height: 300px;
-          padding: 0 24px 20px;
-        }
-        .sn-faq-check { color: var(--sn-success); font-weight: 500; }
-
-        /* FOOTER */
-        .sn-footer {
-          padding: 40px;
-          background: var(--sn-void);
-          border-top: 0.5px solid var(--sn-arc-border);
-          text-align: center;
-        }
-        .sn-footer-brand {
-          font-family: var(--sn-font-display);
-          font-size: 12px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-muted);
-          letter-spacing: 1.5px;
-          margin-bottom: 8px;
-        }
-        .sn-footer-brand span { color: var(--sn-arc); }
-        .sn-footer-copy {
-          font-family: var(--sn-font-mono);
-          font-size: 9px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: var(--sn-muted);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 860px) {
-          .sn-nav { padding: 16px 20px; }
-          .sn-hero { grid-template-columns: 1fr; padding: 100px 20px 60px; gap: 48px; }
-          .sn-hero-visual { order: -1; }
-          .sn-book-wrap { width: 280px; height: 360px; }
-          .sn-book-cover { width: 200px; height: 268px; left: 37px; top: 18px; }
-          .sn-book-spine { left: 28px; top: 18px; height: 268px; }
-          .sn-book-pages-top { left: 36px; top: 15px; width: 204px; }
-          .sn-book-glow-bg { width: 220px; height: 220px; }
-          .sn-book-big-num { font-size: 40px; }
-          .sn-float-stat { right: 0; }
-          .sn-bullets-inner { grid-template-columns: 1fr; gap: 48px; }
-          .sn-pillars-grid { grid-template-columns: 1fr; }
-          .sn-contents-grid { grid-template-columns: 1fr; }
-          .sn-testimonials-grid { grid-template-columns: 1fr; }
-          .sn-author-inner { grid-template-columns: 1fr; text-align: center; }
-          .sn-author-photo-wrap { align-items: center; }
-          .sn-author-stats { justify-content: center; }
-          .sn-benefits-grid { grid-template-columns: 1fr; }
-          .sn-proof-strip-inner { gap: 24px; }
-          .sn-proof-sep { display: none; }
-          .sn-bullets-section,
-          .sn-pillars-section,
-          .sn-contents-section,
-          .sn-testimonials-section,
-          .sn-author-section,
-          .sn-final-cta,
-          .sn-faq-section {
-            padding-left: 20px;
-            padding-right: 20px;
-          }
-          .sn-proof-strip { padding: 20px; }
-        }
-
-        /* MODAL */
-        .sn-modal-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 200;
-          background: rgba(6,10,18,0.82);
-          backdrop-filter: blur(6px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-        }
-        .sn-modal {
-          position: relative;
-          background: var(--sn-surface);
-          border: 0.5px solid rgba(56,189,248,0.2);
-          border-radius: var(--sn-radius-lg);
-          padding: 36px 32px 32px;
-          width: 100%;
-          max-width: 480px;
-          box-shadow: 0 24px 64px rgba(0,0,0,0.7), 0 0 0 0.5px rgba(56,189,248,0.06) inset;
-        }
-        .sn-modal::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 50%; transform: translateX(-50%);
-          width: 120px; height: 2px;
-          background: linear-gradient(90deg, transparent, var(--sn-arc), transparent);
-          opacity: 0.5;
-          border-radius: 1px;
-        }
-        .sn-modal-close {
-          position: absolute;
-          top: 14px; right: 18px;
-          background: none;
-          border: none;
-          color: var(--sn-dim);
-          font-size: 22px;
-          cursor: pointer;
-          line-height: 1;
-          transition: color 0.2s;
-          font-family: var(--sn-font-mono);
-        }
-        .sn-modal-close:hover { color: var(--sn-ivory); }
-        .sn-modal-header { margin-bottom: 24px; }
-        .sn-modal-title {
-          font-family: var(--sn-font-display);
-          font-size: 18px;
-          font-weight: 700;
-          text-transform: uppercase;
-          color: var(--sn-ivory);
-          letter-spacing: 1px;
-        }
-        .sn-modal-form {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-        .sn-modal-input,
-        .sn-modal-select {
-          width: 100%;
-          background: rgba(56,189,248,0.04);
-          border: 0.5px solid rgba(56,189,248,0.14);
-          border-radius: var(--sn-radius-sm);
-          padding: 13px 16px;
-          font-family: var(--sn-font-body);
-          font-size: 14px;
-          font-weight: 300;
-          color: var(--sn-ivory);
-          outline: none;
-          transition: border-color 0.2s, background 0.2s;
-          appearance: none;
-          -webkit-appearance: none;
-        }
-        .sn-modal-input::placeholder { color: var(--sn-dim); }
-        .sn-modal-input:focus,
-        .sn-modal-select:focus {
-          border-color: rgba(56,189,248,0.4);
-          background: rgba(56,189,248,0.07);
-        }
-        .sn-modal-select option {
-          background: #0C1220;
-          color: var(--sn-ivory);
-        }
-        .sn-modal-select option[value=""] { color: var(--sn-dim); }
-        .sn-modal-error {
-          font-family: var(--sn-font-mono);
-          font-size: 10px;
-          letter-spacing: 1px;
-          color: #F87171;
-          padding: 4px 0;
-        }
-        .sn-modal-btn {
-          background: var(--sn-arc);
-          color: var(--sn-void);
-          font-family: var(--sn-font-display);
-          font-size: 11px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2.5px;
-          padding: 16px 24px;
-          border: none;
-          border-radius: var(--sn-radius-md);
-          cursor: pointer;
-          transition: all 0.3s;
-          margin-top: 4px;
-        }
-        .sn-modal-btn:hover:not(:disabled) { box-shadow: var(--sn-glow-arc); transform: translateY(-1px); }
-        .sn-modal-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
         @media (max-width: 860px) {
-          .sn-modal { padding: 28px 20px 24px; }
+          .esn-hero-grid { grid-template-columns: 1fr !important; }
+          .esn-hero-visual { order: -1; }
+          .esn-two-col { grid-template-columns: 1fr !important; }
+          .esn-three-col { grid-template-columns: 1fr !important; }
+          .esn-author-grid { grid-template-columns: 1fr !important; text-align: center; }
         }
       `}</style>
     </div>

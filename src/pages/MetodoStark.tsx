@@ -8,23 +8,13 @@ import ClosingSection from "@/components/metodostark/ClosingSection";
 import SystemsShowcase from "@/components/metodostark/SystemsShowcase";
 import metodoStarkLogo from "@/assets/metodo-stark-logo.svg";
 
-const VOID = "#060A12";
-const SURFACE = "#0C1220";
-const HUD_DARK = "#111A2E";
-const ARC = "#38BDF8";
-const ARC_BRIGHT = "#7DD3FC";
-const STARK_GOLD = "#F59E0B";
-const IVORY = "#F0F6FF";
-const TEXT_COLOR = "#C8D6E5";
-const DIM = "#5A7089";
-const MUTED_COLOR = "#3D5068";
-
-const BORDER_NORMAL = "rgba(56,189,248,0.08)";
-const BORDER_HOVER = "rgba(56,189,248,0.18)";
-
-const FONT_DISPLAY = "'Chakra Petch', sans-serif";
-const FONT_MONO = "'IBM Plex Mono', monospace";
-const FONT_BODY = "'Exo 2', sans-serif";
+// Strategic HUD Editorial v.02 — paleta PB
+const CYAN = "#20DDEB";
+const BG_MAIN = "#05090B";
+const BG_CARD = "#0B1114";
+const BG_ELEV = "#11171A";
+const BORDER_NORMAL = "rgba(255,255,255,0.10)";
+const BORDER_HOVER = "rgba(32,221,235,0.18)";
 
 const MetodoStark = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,7 +23,7 @@ const MetodoStark = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    document.body.style.backgroundColor = VOID;
+    document.body.style.backgroundColor = BG_MAIN;
     document.body.style.paddingTop = "0";
     return () => {
       document.body.style.backgroundColor = "";
@@ -85,7 +75,7 @@ const MetodoStark = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: VOID }}>
+    <div className="min-h-screen overflow-hidden bg-pb-void">
       {/* Grain overlay */}
       <div
         className="fixed inset-0 pointer-events-none"
@@ -98,41 +88,28 @@ const MetodoStark = () => {
 
       {/* Navbar */}
       <nav
-        className="sticky top-0 z-50 px-6 py-4"
-        style={{
-          backgroundColor: SURFACE,
-          borderBottom: `0.5px solid ${BORDER_NORMAL}`,
-        }}
+        className="sticky top-0 z-50 px-6 py-4 bg-pb-void-card"
+        style={{ borderBottom: `0.5px solid ${BORDER_NORMAL}` }}
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img loading="lazy" src={metodoStarkLogo} alt="Método Stark" className="w-8 h-8" />
-            <span
-              className="text-lg tracking-[3px] font-bold uppercase"
-              style={{ fontFamily: FONT_DISPLAY, color: ARC }}
-            >
+            <span className="text-lg tracking-[3px] font-display uppercase text-pb-cyan">
               A REVOLUÇÃO
             </span>
           </div>
           <button
             onClick={() => handleCTA("nav")}
-            className="text-sm uppercase tracking-[3px] px-5 py-2 transition-all duration-300 font-semibold"
-            style={{
-              fontFamily: FONT_MONO,
-              color: VOID,
-              backgroundColor: ARC,
-              borderRadius: "6px",
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-            }}
+            className="font-mono text-[12px] uppercase tracking-[0.1em] px-5 py-2 transition-all duration-300 text-pb-cyan"
+            style={{ border: `1px solid ${CYAN}`, background: "transparent" }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = ARC_BRIGHT;
-              e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 4px 20px rgba(56,189,248,0.3)";
+              e.currentTarget.style.background = CYAN;
+              e.currentTarget.style.color = BG_MAIN;
+              e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.45)`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = ARC;
-              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = CYAN;
               e.currentTarget.style.boxShadow = "none";
             }}
           >
@@ -144,7 +121,7 @@ const MetodoStark = () => {
       {/* Hero */}
       <section className="relative px-6" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse 60% 40% at 50% 20%, rgba(56,189,248,0.06) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse 60% 40% at 50% 20%, rgba(32,221,235,0.06) 0%, transparent 70%)`,
         }} />
 
         <div
@@ -152,7 +129,7 @@ const MetodoStark = () => {
           style={{
             width: "1px",
             height: "120px",
-            background: `linear-gradient(180deg, transparent, ${ARC}30, transparent)`,
+            background: `linear-gradient(180deg, transparent, ${CYAN}30, transparent)`,
           }}
         />
 
@@ -162,20 +139,14 @@ const MetodoStark = () => {
           </div>
 
           <div className="inline-flex items-center gap-3">
-            <span
-              className="text-xs uppercase tracking-[5px]"
-              style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "3px" }}
-            >
-              <span style={{ color: ARC }}>—</span>&nbsp;&nbsp;A Revolução&nbsp;&nbsp;<span style={{ color: ARC }}>—</span>
+            <span className="font-mono text-[11px] uppercase tracking-[3px] text-pb-ink-muted">
+              <span className="text-pb-cyan">—</span>&nbsp;&nbsp;A Revolução&nbsp;&nbsp;<span className="text-pb-cyan">—</span>
             </span>
           </div>
 
-          <h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2]"
-            style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
-          >
+          <h1 className="font-display uppercase text-pb-ink leading-[0.92] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             Pare de usar IA como um Google melhorado e aprenda a criar sistemas que trabalham 24h por dia enquanto{" "}
-            <span style={{ color: ARC }}>
+            <span className="text-pb-cyan">
               você fecha contratos de até R$30 mil
             </span>
             , mesmo sem saber programar
@@ -184,22 +155,16 @@ const MetodoStark = () => {
           <div className="pt-4">
             <button
               onClick={() => handleCTA("hero")}
-              className="inline-flex items-center gap-3 uppercase tracking-[2px] px-8 py-4 transition-all duration-300 font-semibold"
-              style={{
-                fontFamily: FONT_MONO,
-                color: VOID,
-                backgroundColor: ARC,
-                borderRadius: "6px",
-                fontSize: "0.85rem",
-              }}
+              className="inline-flex items-center gap-3 font-mono uppercase tracking-[2px] px-8 py-4 transition-all duration-300 text-pb-cyan text-[13px]"
+              style={{ border: `1px solid ${CYAN}`, background: "transparent" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = ARC_BRIGHT;
-                e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 32px rgba(56,189,248,0.3)";
+                e.currentTarget.style.background = CYAN;
+                e.currentTarget.style.color = BG_MAIN;
+                e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.45)`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = ARC;
-                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = CYAN;
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -211,16 +176,15 @@ const MetodoStark = () => {
       </section>
 
       {/* Gradient separator */}
-      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
       {/* SEÇÃO 1 — O MUNDO SE DIVIDIU */}
       <section
         ref={sectionRef}
-        className="px-6"
+        className="px-6 bg-pb-void-card"
         style={{
           paddingTop: "100px",
           paddingBottom: "100px",
-          backgroundColor: SURFACE,
           position: "relative",
           overflow: "hidden",
         }}
@@ -270,12 +234,12 @@ const MetodoStark = () => {
                   left: 0,
                   width: "50%",
                   height: "100%",
-                  background: `linear-gradient(135deg, ${SURFACE} 0%, ${VOID} 100%)`,
+                  background: `linear-gradient(135deg, ${BG_CARD} 0%, ${BG_MAIN} 100%)`,
                   transform: `translateX(-${splitAmount}%)`,
                   zIndex: 0,
                   pointerEvents: "none",
-                  borderRight: splitProgress > 0.05 ? `1px solid ${ARC}15` : "none",
-                  boxShadow: splitProgress > 0.05 ? `inset -20px 0 40px rgba(56,189,248,0.03)` : "none",
+                  borderRight: splitProgress > 0.05 ? `1px solid ${CYAN}15` : "none",
+                  boxShadow: splitProgress > 0.05 ? `inset -20px 0 40px rgba(32,221,235,0.03)` : "none",
                   transition: "none",
                 }}
               />
@@ -288,12 +252,12 @@ const MetodoStark = () => {
                   right: 0,
                   width: "50%",
                   height: "100%",
-                  background: `linear-gradient(225deg, ${SURFACE} 0%, ${VOID} 100%)`,
+                  background: `linear-gradient(225deg, ${BG_CARD} 0%, ${BG_MAIN} 100%)`,
                   transform: `translateX(${splitAmount}%)`,
                   zIndex: 0,
                   pointerEvents: "none",
-                  borderLeft: splitProgress > 0.05 ? `1px solid ${ARC}15` : "none",
-                  boxShadow: splitProgress > 0.05 ? `inset 20px 0 40px rgba(56,189,248,0.03)` : "none",
+                  borderLeft: splitProgress > 0.05 ? `1px solid ${CYAN}15` : "none",
+                  boxShadow: splitProgress > 0.05 ? `inset 20px 0 40px rgba(32,221,235,0.03)` : "none",
                   transition: "none",
                 }}
               />
@@ -308,7 +272,7 @@ const MetodoStark = () => {
                     transform: "translateX(-50%)",
                     width: `${Math.max(splitProgress * 8, 1)}px`,
                     height: "100%",
-                    background: `linear-gradient(180deg, transparent, ${ARC}15, ${ARC}08, transparent)`,
+                    background: `linear-gradient(180deg, transparent, ${CYAN}15, ${CYAN}08, transparent)`,
                     zIndex: 0,
                     pointerEvents: "none",
                   }}
@@ -327,7 +291,7 @@ const MetodoStark = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            background: "linear-gradient(180deg, rgba(12,18,32,0.75) 0%, rgba(12,18,32,0.60) 40%, rgba(12,18,32,0.75) 100%)",
+            background: "linear-gradient(180deg, rgba(5,9,11,0.75) 0%, rgba(5,9,11,0.60) 40%, rgba(5,9,11,0.75) 100%)",
             zIndex: 1,
             pointerEvents: "none",
           }}
@@ -336,11 +300,8 @@ const MetodoStark = () => {
         <div className="max-w-5xl mx-auto space-y-16" style={{ position: "relative", zIndex: 2 }}>
           {/* Section header */}
           <div className="text-center space-y-4">
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold uppercase"
-              style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
-            >
-              O mundo <span style={{ color: ARC }}>se dividiu em 2</span>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl lg:text-5xl">
+              O mundo <span className="text-pb-cyan">se dividiu em 2</span>
             </h2>
           </div>
 
@@ -350,9 +311,8 @@ const MetodoStark = () => {
             <div
               className="p-8 md:p-10 space-y-6 transition-colors duration-300"
               style={{
-                backgroundColor: HUD_DARK,
+                backgroundColor: BG_ELEV,
                 border: `0.5px solid ${BORDER_NORMAL}`,
-                borderRadius: "14px",
                 opacity: Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1),
                 transform: `translateX(${(1 - Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1)) * -60}px)`,
                 transition: "border-color 0.3s",
@@ -365,25 +325,16 @@ const MetodoStark = () => {
               }}
             >
               <div className="flex items-center gap-3">
-                <Users className="w-5 h-5" style={{ color: DIM }} />
-                <span
-                  className="text-sm uppercase tracking-[4px] font-semibold"
-                  style={{ fontFamily: FONT_MONO, color: DIM }}
-                >
+                <Users className="w-5 h-5 text-pb-ink-muted" />
+                <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">
                   Grupo A
                 </span>
               </div>
 
-              <p
-                className="text-lg font-semibold mb-2"
-                style={{ fontFamily: FONT_DISPLAY, color: TEXT_COLOR }}
-              >
+              <p className="font-display uppercase text-pb-ink-soft text-lg mb-2">
                 Usa IA como um Google melhorado. Tem a sensação de que não usa IA no seu máximo potencial.
               </p>
-              <p
-                className="text-base leading-relaxed"
-                style={{ fontFamily: FONT_BODY, color: TEXT_COLOR, lineHeight: 1.8 }}
-              >
+              <p className="font-body text-pb-ink-soft leading-relaxed" style={{ lineHeight: 1.8 }}>
                 Abre o ChatGPT, digita uma pergunta, copia a resposta, fecha a aba. No dia seguinte, faz a mesma coisa. Assiste a vídeos sobre IA, testa ferramentas, mas nunca transforma nada disso em algo que funciona sozinho. A IA entra na rotina como ferramenta, mas nunca produzindo resultado real.
               </p>
             </div>
@@ -392,83 +343,56 @@ const MetodoStark = () => {
             <div
               className="p-8 md:p-10 space-y-6 transition-colors duration-300"
               style={{
-                backgroundColor: HUD_DARK,
-                border: `0.5px solid ${ARC}25`,
-                borderRadius: "14px",
-                boxShadow: `0 0 40px rgba(56,189,248,0.04)`,
+                backgroundColor: BG_ELEV,
+                border: `0.5px solid ${CYAN}25`,
+                boxShadow: `0 0 40px rgba(32,221,235,0.04)`,
                 opacity: Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1),
                 transform: `translateX(${(1 - Math.min(Math.max((scrollProgress - 0.25) / 0.2, 0), 1)) * 60}px)`,
                 transition: "border-color 0.3s, box-shadow 0.3s",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = `${ARC}40`;
-                e.currentTarget.style.boxShadow = "0 0 60px rgba(56,189,248,0.08)";
+                e.currentTarget.style.borderColor = `${CYAN}40`;
+                e.currentTarget.style.boxShadow = `0 0 60px rgba(32,221,235,0.08)`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = `${ARC}25`;
-                e.currentTarget.style.boxShadow = "0 0 40px rgba(56,189,248,0.04)";
+                e.currentTarget.style.borderColor = `${CYAN}25`;
+                e.currentTarget.style.boxShadow = `0 0 40px rgba(32,221,235,0.04)`;
               }}
             >
               <div className="flex items-center gap-3">
-                <Cpu className="w-5 h-5" style={{ color: ARC }} />
-                <span
-                  className="text-sm uppercase tracking-[4px] font-semibold"
-                  style={{ fontFamily: FONT_MONO, color: ARC }}
-                >
+                <Cpu className="w-5 h-5 text-pb-cyan" />
+                <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan">
                   Grupo B
                 </span>
               </div>
 
-              <p
-                className="text-lg font-semibold mb-2"
-                style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
-              >
+              <p className="font-display uppercase text-pb-ink text-lg mb-2">
                 Dominou a construção de sistemas de IA, com agentes trabalhando 24h por dia para ele e seus clientes.
               </p>
-              <p
-                className="text-base leading-relaxed"
-                style={{ fontFamily: FONT_BODY, color: IVORY, lineHeight: 1.8 }}
-              >
-                Consegue fazer mais, mais rápido e ganhando mais dinheiro. Não "usa" IA, <strong style={{ color: ARC }}>comanda um time de agentes</strong>.
+              <p className="font-body text-pb-ink leading-relaxed" style={{ lineHeight: 1.8 }}>
+                Consegue fazer mais, mais rápido e ganhando mais dinheiro. Não "usa" IA, <strong className="text-pb-cyan">comanda um time de agentes</strong>.
               </p>
             </div>
           </div>
 
           {/* The difference */}
           <div className="text-center space-y-8 max-w-3xl mx-auto" style={{ paddingTop: "40px" }}>
-            <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${ARC}40, transparent)` }} />
+            <div className="h-px w-24 mx-auto" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
             <div className="space-y-2">
-              <h3
-                className="text-2xl md:text-3xl font-bold"
-                style={{ fontFamily: FONT_DISPLAY, color: IVORY }}
-              >
+              <h3 className="font-display uppercase text-pb-ink text-2xl md:text-3xl">
                 A diferença entre os dois grupos
               </h3>
-              <p
-                className="text-2xl md:text-3xl"
-                style={{ fontFamily: FONT_DISPLAY, color: DIM }}
-              >
+              <p className="font-display uppercase text-pb-ink-muted text-2xl md:text-3xl">
                 não é inteligência.
               </p>
-              <p
-                className="text-3xl md:text-4xl font-bold"
-                style={{ fontFamily: FONT_DISPLAY, color: ARC }}
-              >
+              <p className="font-display uppercase text-pb-cyan text-3xl md:text-4xl">
                 É quem consegue arquitetar as melhores soluções.
               </p>
             </div>
 
-            <p
-              className="text-base md:text-lg leading-relaxed"
-              style={{
-                fontFamily: FONT_BODY,
-                color: TEXT_COLOR,
-                lineHeight: 1.8,
-                fontWeight: 300,
-              }}
-            >
-              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O que diferencia os dois grupos é conhecimento. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong style={{ color: IVORY }}>construir sistemas</strong>.
+            <p className="font-body text-pb-ink-soft text-base md:text-lg leading-relaxed" style={{ lineHeight: 1.8 }}>
+              A IA está disponível para todos. Os modelos são os mesmos. Os preços são acessíveis. O que diferencia os dois grupos é conhecimento. É a diferença entre quem aprendeu a usar ferramentas e quem aprendeu a <strong className="text-pb-ink">construir sistemas</strong>.
             </p>
           </div>
         </div>
@@ -478,57 +402,45 @@ const MetodoStark = () => {
       <ApocalypseSection onCTA={handleCTA} />
 
       {/* Gradient separator */}
-      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
       {/* O Outro Lado da Moeda */}
       <OpportunitySection onCTA={handleCTA} />
 
       {/* Gradient separator */}
-      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
       {/* O Mecanismo + Método Stark */}
       <MechanismSection />
 
       {/* Gradient separator */}
-      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
       {/* Sistemas Reais */}
       <SystemsShowcase onCTA={handleCTA} />
 
       {/* Gradient separator */}
-      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${ARC}25, transparent)` }} />
+      <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, ${CYAN}40, transparent)` }} />
 
       {/* Sections 05-07 + Pricing + Final CTA */}
       <ClosingSection onCTA={handleCTA} />
 
       {/* Footer */}
       <footer
-        className="px-6 py-12"
-        style={{
-          backgroundColor: VOID,
-          borderTop: `0.5px solid ${BORDER_NORMAL}`,
-        }}
+        className="px-6 py-12 bg-pb-void"
+        style={{ borderTop: `0.5px solid ${BORDER_NORMAL}` }}
       >
         <div className="max-w-5xl mx-auto text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <img loading="lazy" src={metodoStarkLogo} alt="Método Stark" className="w-10 h-10" />
-            <span
-              className="text-base tracking-[3px] font-bold uppercase"
-              style={{ fontFamily: FONT_DISPLAY, color: ARC }}
-            >
+            <span className="font-display uppercase text-pb-cyan tracking-[3px] text-base">
               A REVOLUÇÃO
             </span>
           </div>
-          <p
-            className="text-sm"
-            style={{ fontFamily: FONT_MONO, color: DIM, letterSpacing: "1px", fontSize: "0.7rem" }}
-          >
+          <p className="font-mono text-[11px] uppercase tracking-[1px] text-pb-ink-muted">
             por Rodrigo Albuquerque
           </p>
-          <p
-            className="text-xs tracking-[2px]"
-            style={{ fontFamily: FONT_MONO, color: MUTED_COLOR, fontSize: "0.65rem" }}
-          >
+          <p className="font-mono text-[10px] uppercase tracking-[2px] text-pb-ink-faint">
             © {new Date().getFullYear()} BA Consultoria. Todos os direitos reservados.
           </p>
         </div>
@@ -536,7 +448,7 @@ const MetodoStark = () => {
 
       {/* Google Fonts */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
       `}</style>
     </div>
   );

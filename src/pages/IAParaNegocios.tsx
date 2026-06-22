@@ -1,46 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { 
-  Brain, 
-  Target, 
-  TrendingUp, 
-  Users, 
-  Calendar, 
-  Award, 
-  CheckCircle, 
-  ArrowRight, 
-  Clock, 
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  Brain,
+  Target,
+  TrendingUp,
+  Users,
+  Award,
+  CheckCircle,
+  ArrowRight,
+  Clock,
   DollarSign,
   Building2,
-  Zap,
-  BarChart,
-  Shield,
-  Palette,
   MessageSquare,
   Database,
-  Bot,
-  Workflow,
-  Star,
-  Timer,
-  Gift,
+  Shield,
   Heart,
-  PiggyBank,
   Lightbulb,
-  Rocket
+  Rocket,
+  Gift,
+  Star
 } from 'lucide-react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import LeadFormIANegocios from '@/components/LeadFormIANegocios';
 import { tracker } from '@/lib/tracking';
 
 const IAParaNegocios = () => {
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
-  // Set body background to black and remove header padding for this page
   useEffect(() => {
-    document.body.style.backgroundColor = '#000000';
+    document.body.style.backgroundColor = '#05090B';
     document.body.style.paddingTop = '0';
     return () => {
       document.body.style.backgroundColor = '';
@@ -63,147 +50,111 @@ const IAParaNegocios = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      
+    <div className="min-h-screen bg-pb-void">
+
+      {/* Top Bar */}
+      <div className="bg-pb-void-card border-b border-pb-grid-strong py-3 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">
+          Exclusivo para PMEs que faturam entre R$ 1 e 5 milhões por ano
+        </p>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-black">
-        {/* Top Bar */}
-        <div className="bg-gradient-primary py-3 text-center relative z-10">
-          <p className="text-background font-semibold text-sm md:text-base font-inter uppercase tracking-wide">
-            Exclusivo para PMEs que faturam entre R$ 1 e 5 milhões por ano
-          </p>
-        </div>
+      <section className="relative overflow-hidden bg-pb-void py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        {/* Hero Content */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
-          <div className="absolute top-20 right-20 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 left-20 w-64 h-64 bg-ba-orange/10 rounded-full blur-3xl"></div>
+            {/* Left Column */}
+            <div className="space-y-8">
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">
+                IA para Negócios — Ecossistema de Implementação
+              </p>
+              <h1 className="font-display uppercase text-pb-ink leading-[0.92] text-5xl md:text-6xl lg:text-7xl">
+                Se torne o líder do seu mercado utilizando soluções de Inteligência Artificial para aumentar lucro e ganhar produtividade no seu negócio
+              </h1>
 
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column - Content */}
-              <div className="space-y-8">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-                  Se torne o líder do seu mercado{' '}
-                  <span className="bg-gradient-primary bg-clip-text text-transparent">
-                    utilizando soluções de Inteligência Artificial
-                  </span>
-                  {' '}para aumentar lucro e ganhar produtividade no seu negócio.
-                </h1>
+              <p className="font-body text-pb-ink-soft leading-relaxed text-lg md:text-xl">
+                O IA para negócios é um ecossistema completo, que auxilia você e sua equipe
+                na implementação de soluções de IA na sua empresa.
+              </p>
 
-                <p className="text-lg md:text-xl text-muted-foreground font-inter leading-relaxed">
-                  O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
-                  na implementação de soluções de IA na sua empresa.
-                </p>
+              <button
+                className="btn-primary"
+                onClick={() => handleWhatsAppContact('hero_top')}
+              >
+                Quero mais informações
+                <ArrowRight size={16} />
+              </button>
 
-                <Button 
-                  size="lg" 
-                  className="text-lg px-10 py-6 font-inter bg-gradient-primary hover:opacity-90 text-background font-semibold uppercase tracking-wide shadow-glow hover:shadow-glow-intense transition-all duration-300 rounded-full"
-                  onClick={() => handleWhatsAppContact('hero_top')}
-                >
-                  Quero mais informações
-                </Button>
-
-                {/* Trust Indicators */}
-                <div className="flex flex-col space-y-3 pt-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-2">
-                      <div className="w-10 h-10 rounded-full bg-gradient-primary border-2 border-black flex items-center justify-center">
-                        <Building2 size={20} className="text-background" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ba-blue-dark to-ba-blue-light border-2 border-black flex items-center justify-center">
-                        <TrendingUp size={20} className="text-white" />
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-ba-orange to-ba-orange/80 border-2 border-black flex items-center justify-center">
-                        <Award size={20} className="text-background" />
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground font-inter">
-                      <span className="text-ba-blue-light font-semibold">+ de 100 empresas</span> já transformaram seus negócios com IA
-                    </p>
+              {/* Trust Indicators */}
+              <div className="flex items-center gap-3 pt-4 border-t border-pb-grid-strong">
+                <div className="flex -space-x-2">
+                  <div className="w-10 h-10 bg-pb-void-card border border-pb-grid-strong flex items-center justify-center">
+                    <Building2 size={18} className="text-pb-cyan" />
+                  </div>
+                  <div className="w-10 h-10 bg-pb-void-elev border border-pb-grid-strong flex items-center justify-center">
+                    <TrendingUp size={18} className="text-pb-ink" />
+                  </div>
+                  <div className="w-10 h-10 bg-pb-void-card border border-pb-grid-strong flex items-center justify-center">
+                    <Award size={18} className="text-pb-cyan" />
                   </div>
                 </div>
+                <p className="font-mono text-[11px] text-pb-ink-muted uppercase tracking-mono-wide">
+                  <span className="text-pb-cyan">+ de 100 empresas</span> já transformaram seus negócios com IA
+                </p>
               </div>
+            </div>
 
-              {/* Right Column - Visual Cards */}
-              <div className="relative h-[400px] lg:h-[500px]">
-                {/* Background gradient glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-ba-blue-light/10 via-transparent to-ba-orange/10 rounded-3xl blur-2xl"></div>
-                
-                {/* Floating Cards */}
-                <div className="relative h-full flex items-center justify-center">
-                  {/* Card 1 - Top Right */}
-                  <Card className="absolute top-8 right-4 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float">
-                    <CardContent className="p-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+12</span>
-                        <div className="text-left">
-                          <p className="text-sm text-muted-foreground font-inter">Anos de</p>
-                          <p className="text-sm text-muted-foreground font-inter">mercado</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Card 2 - Middle Left */}
-                  <Card className="absolute top-32 left-0 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float" style={{ animationDelay: '0.5s' }}>
-                    <CardContent className="p-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+100</span>
-                        <div className="text-left">
-                          <p className="text-sm text-muted-foreground font-inter">Empresas</p>
-                          <p className="text-sm text-muted-foreground font-inter">atendidas</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  {/* Card 3 - Bottom Right */}
-                  <Card className="absolute bottom-8 right-8 bg-black/80 border-ba-blue-light/20 backdrop-blur-sm shadow-glow hover:border-ba-blue-light/60 transition-all duration-300 animate-float" style={{ animationDelay: '1s' }}>
-                    <CardContent className="p-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent font-poppins">+40%</span>
-                        <div className="text-left">
-                          <p className="text-sm text-muted-foreground font-inter">Aumento médio</p>
-                          <p className="text-sm text-muted-foreground font-inter">de produtividade</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
+            {/* Right Column — Stat Grid */}
+            <div className="stat-grid grid-cols-2">
+              <div className="stat-cell">
+                <div className="label">Anos de mercado</div>
+                <div className="value cyan">+12</div>
+              </div>
+              <div className="stat-cell">
+                <div className="label">Empresas atendidas</div>
+                <div className="value">+100</div>
+              </div>
+              <div className="stat-cell">
+                <div className="label">Produtividade média</div>
+                <div className="value cyan">+40%</div>
+                <div className="delta">aumento documentado</div>
+              </div>
+              <div className="stat-cell">
+                <div className="label">Prazo de resultado</div>
+                <div className="value">90</div>
+                <div className="delta">dias</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sobre a Mentoria */}
-      <section className="py-16 bg-black relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Sobre o Ecossistema */}
+      <section className="py-16 bg-pb-void-card border-y border-pb-grid-strong">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-inter">
-              O IA para negócios é um ecossistema completo, que auxilia você e sua equipe 
-              na implementação de soluções de IA na sua empresa. Colhendo resultados concretos, 
-              em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações. 
+            <p className="font-body text-pb-ink-soft leading-relaxed text-lg md:text-xl">
+              O IA para negócios é um ecossistema completo, que auxilia você e sua equipe
+              na implementação de soluções de IA na sua empresa. Colhendo resultados concretos,
+              em 90 dias, mesmo que vocês estejam saindo do zero e sem precisar fazer novas contratações.
               Temos trilhas dedicadas para quem está no Estratégico e no Operacional do negócio.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Isso é pra você se... */}
-      <section className="py-20 bg-black relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-ba-blue-dark/5 to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Para quem é */}
+      <section className="py-20 bg-pb-void">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-              Isso é pra você <span className="bg-gradient-primary bg-clip-text text-transparent">se...</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Perfil ideal</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              Isso é pra você se...
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong max-w-6xl mx-auto border border-pb-grid-strong">
             {[
               {
                 icon: Building2,
@@ -212,7 +163,7 @@ const IAParaNegocios = () => {
               },
               {
                 icon: Clock,
-                title: "Suas tarefas (ou da equipe) estão consumindo horas em planilhas, e-mails e follow-ups manuais",
+                title: "Suas tarefas estão consumindo horas em planilhas, e-mails e follow-ups manuais",
                 description: "mas você ainda não sabe automatizar com segurança."
               },
               {
@@ -228,7 +179,7 @@ const IAParaNegocios = () => {
               {
                 icon: Users,
                 title: "Não tem equipe técnica dedicada",
-                description: "(ou não pretende contratar desenvolvedores agora) e precisa de soluções no-code que o próprio time possa tocar."
+                description: "e precisa de soluções no-code que o próprio time possa tocar."
               },
               {
                 icon: Heart,
@@ -238,19 +189,15 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 hover:bg-black/90 hover:border-ba-blue-light/60 transition-all duration-300 shadow-glow">
-                  <CardHeader>
-                    <div className="p-3 bg-gradient-primary rounded-full w-fit mb-4">
-                      <IconComponent size={24} className="text-background" />
-                    </div>
-                    <CardTitle className="text-lg font-poppins mb-2 text-foreground">
-                      {item.title}
-                    </CardTitle>
-                    <CardDescription className="font-inter text-muted-foreground">
-                      {item.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                <div key={index} className="strat-card p-8 bg-pb-void-card">
+                  <IconComponent size={24} className="text-pb-cyan mb-6" />
+                  <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-xl mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="font-body text-pb-ink-soft leading-relaxed text-sm">
+                    {item.description}
+                  </p>
+                </div>
               );
             })}
           </div>
@@ -258,63 +205,63 @@ const IAParaNegocios = () => {
       </section>
 
       {/* A História */}
-      <section className="py-20 bg-black relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-ba-blue-dark/5 to-transparent"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20 bg-pb-void-card border-y border-pb-grid-strong">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 text-center bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-              A História — <span className="bg-gradient-primary bg-clip-text text-transparent">da Dor ao Desejo</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4 text-center">Narrativa de transformação</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl text-center mb-12">
+              Da dor ao desejo
             </h2>
-            
-            <div className="space-y-6 text-lg text-muted-foreground font-inter leading-relaxed">
+
+            <div className="space-y-6 font-body text-pb-ink-soft leading-relaxed text-lg">
               <p>
-                Imagine chegar ao fim do mês e perceber que <strong>40% do seu tempo (e da sua equipe) foi gasto em tarefas que não geram receita</strong>: 
-                copiar dados, enviar lembretes, montar relatórios, responder perguntas repetidas. Enquanto isso, grandes players usam IA para reduzir custos, 
-                criar campanhas em minutos e atender clientes 24/7 — <strong>roubando mercado num piscar de olhos</strong>.
+                Imagine chegar ao fim do mês e perceber que <strong className="text-pb-ink">40% do seu tempo foi gasto em tarefas que não geram receita</strong>:
+                copiar dados, enviar lembretes, montar relatórios, responder perguntas repetidas. Enquanto isso, grandes players usam IA para reduzir custos,
+                criar campanhas em minutos e atender clientes 24/7 — <strong className="text-pb-ink">roubando mercado num piscar de olhos</strong>.
               </p>
-              
+
               <p>
-                Eu estava exatamente aí. Minha empresa faturava razoavelmente bem, mas cada ponto de crescimento custava mais horas, 
-                mais gente, mais estresse. <strong>O lucro encolhia, a concorrência escalava</strong> e eu sentia que ficaria preso nesse ciclo para sempre.
+                Eu estava exatamente aí. Minha empresa faturava razoavelmente bem, mas cada ponto de crescimento custava mais horas,
+                mais gente, mais estresse. <strong className="text-pb-ink">O lucro encolhia, a concorrência escalava</strong> e eu sentia que ficaria preso nesse ciclo para sempre.
               </p>
-              
+
               <p>
                 Foi quando decidi testar pequenas automações de IA — mesmo sem saber programar.
               </p>
-              
-              <p className="font-semibold text-foreground">Em três meses:</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
-                  <CardContent className="pt-6">
-                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Cortei 60% do tempo de proposta</strong> usando geração automática de PDFs via ChatGPT e Make.</div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
-                  <CardContent className="pt-6">
-                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Aumentei em 27% o ticket médio</strong> com um bot de upsell que trabalha enquanto a equipe dorme.</div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:border-ba-blue-light/60 transition-all shadow-glow">
-                  <CardContent className="pt-6">
-                    <div className="text-sm text-muted-foreground"><strong className="text-ba-blue-light">Economizei R$ 8 mil/mês</strong> só com reconciliação financeira automatizada.</div>
-                  </CardContent>
-                </Card>
+
+              <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan">Em três meses:</p>
+
+              <div className="stat-grid grid-cols-1 md:grid-cols-3 my-8">
+                <div className="stat-cell">
+                  <div className="label">Tempo de proposta</div>
+                  <div className="value cyan">−60%</div>
+                  <div className="delta">geração automática de PDFs via ChatGPT + Make</div>
+                </div>
+                <div className="stat-cell">
+                  <div className="label">Ticket médio</div>
+                  <div className="value">+27%</div>
+                  <div className="delta">bot de upsell trabalhando 24/7</div>
+                </div>
+                <div className="stat-cell">
+                  <div className="label">Economia mensal</div>
+                  <div className="value cyan">R$8k</div>
+                  <div className="delta">reconciliação financeira automatizada</div>
+                </div>
               </div>
-              
+
               <p>
-                O mais surpreendente? <strong>Ninguém novo foi contratado</strong>. Bastou um roteiro claro, ferramentas no-code e uma cadência de melhoria contínua.
+                O mais surpreendente? <strong className="text-pb-ink">Ninguém novo foi contratado</strong>. Bastou um roteiro claro, ferramentas no-code e uma cadência de melhoria contínua.
               </p>
-              
+
               <p>
-                Esse roteiro virou o ecossistema <strong>IA para Negócios</strong>: mentoria, trilhas práticas e suporte que colocam 
-                <strong> você no volante da próxima revolução</strong>, sem depender de devs ou orçamentos gigantes. Porque a verdadeira dor não é aprender uma nova tecnologia, 
-                e sim <strong>ficar parado enquanto ela decide quem prospera e quem fecha as portas</strong>.
+                Esse roteiro virou o ecossistema <strong className="text-pb-ink">IA para Negócios</strong>: mentoria, trilhas práticas e suporte que colocam
+                <strong className="text-pb-ink"> você no volante da próxima revolução</strong>, sem depender de devs ou orçamentos gigantes. Porque a verdadeira dor não é aprender uma nova tecnologia,
+                e sim <strong className="text-pb-ink">ficar parado enquanto ela decide quem prospera e quem fecha as portas</strong>.
               </p>
-              
-              <div className="text-center mt-8">
-                <p className="text-xl font-semibold text-foreground">
-                  Se o seu desejo é liderar o mercado — em vez de persegui-lo —, esta mentoria foi feita para você.
+
+              <div className="border border-pb-grid-strong p-8 text-center mt-8">
+                <p className="font-display uppercase text-pb-ink leading-[0.92] text-2xl md:text-3xl">
+                  Se o seu desejo é liderar o mercado — em vez de persegui-lo —, esta mentoria foi feita para você
                 </p>
               </div>
             </div>
@@ -322,48 +269,47 @@ const IAParaNegocios = () => {
         </div>
       </section>
 
-      {/* Promessa Poderosa */}
-      <section className="py-20 relative bg-black">
-        <div className="absolute inset-0 bg-gradient-to-br from-ba-blue-light/10 to-ba-orange/10"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Promessa Poderosa</span>
+      {/* Promessa */}
+      <section className="py-20 bg-pb-void">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4 text-center">Compromisso do programa</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl text-center mb-12">
+              Promessa poderosa
             </h2>
-            
-            <Card className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 p-8 hover:border-ba-blue-light/60 transition-all shadow-glow">
-              <CardContent className="pt-0">
-                <div className="text-2xl md:text-3xl font-bold font-poppins leading-tight text-foreground">
-                  "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio, 
-                  reduzir até 40% dos custos operacionais e liberar pelo menos 10 horas por semana — 
-                  tudo isso usando ferramentas de IA no-code, sem contratar nenhum desenvolvedor."
-                </div>
-              </CardContent>
-            </Card>
+
+            <div className="strat-card p-10 bg-pb-void-card text-center">
+              <p className="font-body text-pb-ink leading-relaxed text-xl md:text-2xl">
+                "Em apenas 90 dias você e sua equipe vão automatizar três processos críticos do seu negócio,
+                reduzir até 40% dos custos operacionais e liberar pelo menos 10 horas por semana —
+                tudo isso usando ferramentas de IA no-code, sem contratar nenhum desenvolvedor."
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefícios Detalhados */}
-      <section className="py-20 bg-slate-900">
+      {/* O que muda na prática */}
+      <section className="py-20 bg-pb-void-card border-y border-pb-grid-strong">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              O que muda <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">na prática</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Resultados esperados</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              O que muda na prática
             </h2>
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="overflow-x-auto">
+            <div className="border border-pb-grid-strong overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-700">
-                    <th className="text-left p-4 font-poppins text-lg text-white">Benefício</th>
-                    <th className="text-left p-4 font-poppins text-lg text-white">Antes</th>
-                    <th className="text-left p-4 font-poppins text-lg text-white">Depois da Mentoria IA para Negócios</th>
+                  <tr className="border-b border-pb-grid-strong bg-pb-void-elev">
+                    <th className="text-left p-4 font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Benefício</th>
+                    <th className="text-left p-4 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">Antes</th>
+                    <th className="text-left p-4 font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Depois da Mentoria</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700">
+                <tbody>
                   {[
                     {
                       benefit: "Produtividade Explosiva",
@@ -378,7 +324,7 @@ const IAParaNegocios = () => {
                     {
                       benefit: "Custos Operacionais Menores",
                       before: "Planilhas, copi-cola, erros humanos que drenam caixa.",
-                      after: "Processos de back-office (financeiro, estoque, RH) automatizados; corte de até 40% nos custos ocultos."
+                      after: "Processos de back-office automatizados; corte de até 40% nos custos ocultos."
                     },
                     {
                       benefit: "Decisão Guiada por Dados",
@@ -396,10 +342,10 @@ const IAParaNegocios = () => {
                       after: "Você implementa primeiro: atendimento 24/7, resposta instantânea, marketing dinâmico."
                     }
                   ].map((item, index) => (
-                    <tr key={index} className="hover:bg-slate-800/20 transition-colors">
-                      <td className="p-4 font-semibold text-white">{item.benefit}</td>
-                      <td className="p-4 text-gray-300 text-sm">{item.before}</td>
-                      <td className="p-4 text-sm font-medium text-gray-300">{item.after}</td>
+                    <tr key={index} className="border-b border-pb-grid-strong hover:bg-pb-void-elev transition-colors">
+                      <td className="p-4 font-display uppercase text-pb-ink text-sm">{item.benefit}</td>
+                      <td className="p-4 font-body text-pb-ink-muted text-sm">{item.before}</td>
+                      <td className="p-4 font-body text-pb-ink-soft text-sm">{item.after}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -410,18 +356,19 @@ const IAParaNegocios = () => {
       </section>
 
       {/* O que está incluso */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-20 bg-pb-void">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              O que está <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">incluso</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Escopo completo</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              O que está incluso
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-inter">
+            <p className="font-body text-pb-ink-soft leading-relaxed text-xl max-w-3xl mx-auto mt-4">
               A oferta completa do ecossistema IA para Negócios
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong max-w-6xl mx-auto border border-pb-grid-strong">
             {[
               {
                 icon: Rocket,
@@ -433,7 +380,7 @@ const IAParaNegocios = () => {
               },
               {
                 icon: Target,
-                title: "Plano 90 dias 'mão na massa'",
+                title: "Plano 90 dias mão na massa",
                 items: [
                   "3 processos críticos automatizados (definidos no E1 e implantados no O3/O4).",
                   "1 painel executivo com 3–5 KPIs ligados ao caixa.",
@@ -458,7 +405,7 @@ const IAParaNegocios = () => {
               },
               {
                 icon: Database,
-                title: "Playbooks & templates prontos",
+                title: "Playbooks e templates prontos",
                 items: [
                   "Biblioteca de 120+ prompts por área (marketing, vendas, atendimento, back-office).",
                   "Cenários clonáveis (n8n): É só copiar, colar e rodar.",
@@ -471,7 +418,7 @@ const IAParaNegocios = () => {
                 items: [
                   "Aulas ao vivo gravadas + acesso às gravações por 12 meses.",
                   "Guias passo a passo (PDF) por módulo e listas de checagem.",
-                  "Estudos de caso por nicho (varejo, serviços de saúde, construção, agência de marketing)."
+                  "Estudos de caso por nicho (varejo, saúde, construção, agência de marketing)."
                 ]
               },
               {
@@ -486,89 +433,80 @@ const IAParaNegocios = () => {
             ].map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700">
-                  <CardHeader>
-                    <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
-                      <IconComponent size={24} className="text-blue-400" />
-                    </div>
-                    <CardTitle className="text-lg font-poppins mb-4 text-white">
-                      {item.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <ul className="space-y-2">
-                      {item.items.map((subItem, idx) => (
-                        <li key={idx} className="flex items-start space-x-2">
-                          <CheckCircle size={12} className="text-blue-400 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-300">{subItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <div key={index} className="strat-card p-8 bg-pb-void-card">
+                  <IconComponent size={24} className="text-pb-cyan mb-6" />
+                  <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-lg mb-4">
+                    {item.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {item.items.map((subItem, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <CheckCircle size={12} className="text-pb-cyan mt-0.5 flex-shrink-0" />
+                        <span className="font-body text-pb-ink-soft text-sm leading-relaxed">{subItem}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Prova Social */}
-      <section className="py-20 bg-slate-900">
+      {/* Estudos de Caso */}
+      <section className="py-20 bg-pb-void-card border-y border-pb-grid-strong">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Estudos de Caso</span> Reais
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Prova social</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              Estudos de caso reais
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong max-w-6xl mx-auto border border-pb-grid-strong mb-12">
             {[
               {
-                title: "Agência de Marketing – Relatórios automatizados",
+                title: "Agência de Marketing — Relatórios automatizados",
                 problem: "Gastar tempo gerando relatórios periódicos para clientes",
                 solution: "Gerenciador → Planilhas → Mensagem automática pro cliente + Dashboard",
                 result: "+2h/semana liberadas"
               },
               {
-                title: "Clínica odontológica – No-show",
-                problem: "faltas em consultas comprometendo a agenda.",
-                solution: "bot WhatsApp com confirmação automática + remarcação assistida por IA.",
+                title: "Clínica odontológica — No-show",
+                problem: "Faltas em consultas comprometendo a agenda.",
+                solution: "Bot WhatsApp com confirmação automática + remarcação assistida por IA.",
                 result: "−35% no-show e fila organizada."
               },
               {
-                title: "Construção civil – Orçamentos",
-                problem: "propostas demoradas e pouco padronizadas.",
-                solution: "geração automática de orçamento em PDF (Sheets + GPT + Make).",
+                title: "Construção civil — Orçamentos",
+                problem: "Propostas demoradas e pouco padronizadas.",
+                solution: "Geração automática de orçamento em PDF (Sheets + GPT + Make).",
                 result: "−60% do tempo de preparo e +18% taxa de aceite."
               }
             ].map((caseStudy, index) => (
-              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700">
-                <CardHeader>
-                  <CardTitle className="text-lg font-poppins mb-4 text-white">
-                    {caseStudy.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div>
-                      <span className="font-semibold text-red-500">Problema:</span>
-                      <span className="text-gray-300 ml-1">{caseStudy.problem}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-blue-400">Solução:</span>
-                      <span className="text-gray-300 ml-1">{caseStudy.solution}</span>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-green-400">Resultado:</span>
-                      <span className="text-gray-300 ml-1">{caseStudy.result}</span>
-                    </div>
+              <div key={index} className="strat-card p-8 bg-pb-void-card">
+                <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-lg mb-6">
+                  {caseStudy.title}
+                </h3>
+                <div className="space-y-3 font-body text-sm">
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-red">Problema — </span>
+                    <span className="text-pb-ink-soft">{caseStudy.problem}</span>
                   </div>
-                </CardContent>
-              </Card>
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Solução — </span>
+                    <span className="text-pb-ink-soft">{caseStudy.solution}</span>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink">Resultado — </span>
+                    <span className="text-pb-ink font-semibold">{caseStudy.result}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong max-w-4xl mx-auto border border-pb-grid-strong">
             {[
               {
                 quote: "Em dois meses automatizamos proposta e follow-up. Liberamos o equivalente a 10 horas/semana",
@@ -583,89 +521,77 @@ const IAParaNegocios = () => {
                 author: "[Nome, Sócio]"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 text-center">
-                <CardContent className="pt-6">
-                  <div className="flex justify-center mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} className="text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <blockquote className="text-gray-300 italic mb-4">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <cite className="text-sm font-semibold text-white">
-                    {testimonial.author}
-                  </cite>
-                </CardContent>
-              </Card>
+              <div key={index} className="strat-card p-8 bg-pb-void-elev text-center">
+                <div className="flex justify-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} className="text-pb-cyan fill-current" />
+                  ))}
+                </div>
+                <blockquote className="font-body text-pb-ink-soft italic mb-4 leading-relaxed">
+                  "{testimonial.quote}"
+                </blockquote>
+                <cite className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+                  {testimonial.author}
+                </cite>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Garantia */}
-      <section className="py-20 bg-gradient-to-br from-green-500/10 to-blue-500/10">
+      <section className="py-20 bg-pb-void">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              Garantia — <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Risco Zero</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Proteção do investimento</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              Garantia — risco zero
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto font-inter">
+            <p className="font-body text-pb-ink-soft leading-relaxed text-xl max-w-3xl mx-auto mt-4">
               Dupla proteção para você decidir com tranquilidade
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="bg-slate-800/80 backdrop-blur-sm border border-green-500/30">
-              <CardHeader>
-                <div className="p-3 bg-green-500/20 rounded-full w-fit mb-4">
-                  <Shield size={24} className="text-green-400" />
-                </div>
-                <CardTitle className="text-xl font-poppins text-white">
-                  Garantia Incondicional de 7 Dias
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Entre, assista às primeiras aulas (E1 + O1) e teste os templates. Se não fizer sentido para sua realidade, 
-                  <strong> devolvemos 100%</strong> do investimento. Sem perguntas.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong max-w-4xl mx-auto border border-pb-grid-strong">
+            <div className="strat-card p-8 bg-pb-void-card">
+              <Shield size={24} className="text-pb-cyan mb-6" />
+              <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-xl mb-4">
+                Garantia Incondicional de 7 Dias
+              </h3>
+              <p className="font-body text-pb-ink-soft leading-relaxed">
+                Entre, assista às primeiras aulas (E1 + O1) e teste os templates. Se não fizer sentido para sua realidade,
+                <strong className="text-pb-ink"> devolvemos 100%</strong> do investimento. Sem perguntas.
+              </p>
+            </div>
 
-            <Card className="bg-slate-800/80 backdrop-blur-sm border border-blue-500/30">
-              <CardHeader>
-                <div className="p-3 bg-blue-500/20 rounded-full w-fit mb-4">
-                  <CheckCircle size={24} className="text-blue-400" />
-                </div>
-                <CardTitle className="text-xl font-poppins text-white">
-                  Garantia de Implementação em 90 Dias
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-300">
-                  Se, cumprindo as ações combinadas, você <strong>não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos</strong>, 
-                  nós devolvemos 100% do seu dinheiro, sem questionamentos.
-                </p>
-              </CardContent>
-            </Card>
+            <div className="strat-card p-8 bg-pb-void-card">
+              <CheckCircle size={24} className="text-pb-cyan mb-6" />
+              <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-xl mb-4">
+                Garantia de Implementação em 90 Dias
+              </h3>
+              <p className="font-body text-pb-ink-soft leading-relaxed">
+                Se, cumprindo as ações combinadas, você <strong className="text-pb-ink">não tiver ao menos 3 processos automatizados + 1 painel com 3–5 KPIs ativos</strong>,
+                nós devolvemos 100% do seu dinheiro, sem questionamentos.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Bônus */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-20 bg-pb-void-card border-y border-pb-grid-strong">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Bônus</span> Exclusivos
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Apenas nesta turma</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              Bônus exclusivos
             </h2>
-            <Badge variant="outline" className="border-green-500 text-green-400 bg-green-500/10 text-lg px-4 py-2">
-              Valor de referência: R$ 2.800 — Apenas nesta turma
-            </Badge>
+            <div className="mt-4 inline-flex">
+              <span className="pb-tag cyan">Valor de referência: R$ 2.800</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong max-w-6xl mx-auto border border-pb-grid-strong">
             {[
               {
                 title: "GPT Tutors do Curso",
@@ -686,102 +612,87 @@ const IAParaNegocios = () => {
                 delivery: "sessão de 30 min + checklist assinado"
               }
             ].map((bonus, index) => (
-              <Card key={index} className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 relative">
-                <div className="absolute -top-3 -right-3">
-                  <Badge variant="default" className="bg-green-500 text-white">
-                    {bonus.value}
-                  </Badge>
+              <div key={index} className="strat-card p-8 bg-pb-void-elev relative">
+                <div className="absolute top-4 right-4">
+                  <span className="pb-tag cyan">{bonus.value}</span>
                 </div>
-                <CardHeader>
-                  <div className="p-3 bg-slate-700 rounded-full w-fit mb-4">
-                    <Gift size={24} className="text-blue-400" />
-                  </div>
-                  <CardTitle className="text-lg font-poppins text-white">
-                    Bônus #{index + 1} — {bonus.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 text-sm mb-3">
-                    {bonus.description}
-                  </p>
-                  <p className="text-xs text-gray-400 italic">
-                    Entrega: {bonus.delivery}
-                  </p>
-                </CardContent>
-              </Card>
+                <Gift size={24} className="text-pb-cyan mb-6" />
+                <h3 className="font-display uppercase text-pb-ink leading-[0.92] text-lg mb-4 pr-20">
+                  Bônus #{index + 1} — {bonus.title}
+                </h3>
+                <p className="font-body text-pb-ink-soft text-sm leading-relaxed mb-3">
+                  {bonus.description}
+                </p>
+                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+                  Entrega: {bonus.delivery}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Preço e Ancoragem */}
-      <section className="py-20 bg-gradient-to-br from-blue-500/10 to-green-500/10">
+      {/* Investimento */}
+      <section className="py-20 bg-pb-void">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-                <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Investimento</span>
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Condições de acesso</p>
+              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+                Investimento
               </h2>
             </div>
 
-            <Card className="bg-slate-800/90 backdrop-blur-sm border border-blue-500/30 p-8">
-              <CardContent className="space-y-6">
-                <div className="text-center">
-                  <div className="text-5xl font-bold text-white mb-4">
-                    R$ 3.000
-                  </div>
-                  <p className="text-xl text-gray-300 mb-6">à vista ou 12× de R$ 300</p>
-                </div>
+            <div className="strat-card p-10 bg-pb-void-card">
+              <div className="text-center mb-8">
+                <div className="font-display text-7xl text-pb-ink leading-none mb-2">R$ 3.000</div>
+                <p className="font-body text-pb-ink-soft text-xl">à vista ou 12× de R$ 300</p>
+              </div>
 
-                <Separator className="bg-slate-700" />
+              <div className="border-t border-pb-grid-strong pt-8 space-y-4">
+                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan text-center mb-4">Inclui:</p>
+                <ul className="space-y-3">
+                  {[
+                    "Mentoria 12 semanas (trilho Estratégico + Operacional)",
+                    "Tutores GPT personalizados (Estratégico e Operacional)",
+                    "Biblioteca de 120+ prompts por área",
+                    "Cenários de n8n clonáveis",
+                    "Revisão técnica de 1 workflow",
+                    "Comunidade e gravações por 12 meses"
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <CheckCircle size={16} className="text-pb-cyan mt-0.5 flex-shrink-0" />
+                      <span className="font-body text-pb-ink-soft">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white text-center">Inclui:</h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Mentoria 12 semanas (trilho Estratégico + Operacional)",
-                      "Tutores GPT personalizados (Estratégico e Operacional)",
-                      "Biblioteca de 120+ prompts por área",
-                      "Cenários de n8n clonáveis",
-                      "Revisão técnica de 1 workflow",
-                      "Comunidade e gravações por 12 meses"
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <CheckCircle size={20} className="text-green-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-300">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Separator className="bg-slate-700" />
-
-                <div className="text-center">
-                  <Button 
-                    size="lg" 
-                    className="text-lg px-10 py-6 font-inter bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold uppercase tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 w-full"
-                    onClick={() => handleWhatsAppContact('pricing_section')}
-                  >
-                    Garantir minha vaga
-                    <ArrowRight className="ml-2" size={20} />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              <div className="border-t border-pb-grid-strong pt-8 text-center">
+                <button
+                  className="btn-primary justify-center w-full"
+                  onClick={() => handleWhatsAppContact('pricing_section')}
+                >
+                  Garantir minha vaga
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-20 bg-slate-900">
+      {/* FAQ */}
+      <section className="py-20 bg-pb-void-card border-y border-pb-grid-strong">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4 text-white">
-              Perguntas <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">Frequentes</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">Dúvidas frequentes</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl">
+              Perguntas frequentes
             </h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto border border-pb-grid-strong">
             <Accordion type="single" collapsible className="w-full">
               {[
                 {
@@ -817,11 +728,11 @@ const IAParaNegocios = () => {
                   answer: "Recomendado 2–6 participantes (1 decisor + 1–5 operadores). Turma limitada a 15 empresas para manter o suporte próximo."
                 }
               ].map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left font-poppins text-white">
+                <AccordionItem key={index} value={`item-${index}`} className="border-b border-pb-grid-strong last:border-b-0">
+                  <AccordionTrigger className="px-6 py-5 font-display uppercase text-pb-ink text-left hover:no-underline hover:text-pb-cyan transition-colors">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 font-inter">
+                  <AccordionContent className="px-6 pb-5 font-body text-pb-ink-soft leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -832,50 +743,52 @@ const IAParaNegocios = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 right-10 w-40 h-40 bg-green-500 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-xl"></div>
-        </div>
-        
+      <section className="py-20 bg-pb-void">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8 leading-tight text-white">
-              Você pode continuar com a rotina que drena tempo e margem — ou, nos próximos 90 dias, 
-              <span className="bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent"> liderar seu mercado</span>
+            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-6">Decisão final</p>
+            <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-5xl mb-8">
+              Você pode continuar com a rotina que drena tempo e margem — ou, nos próximos 90 dias, liderar seu mercado
             </h2>
-            
-            <p className="text-lg text-gray-300 mb-8 font-inter leading-relaxed">
-              A mentoria IA para Negócios foi desenhada para PMEs como a sua: direta, prática e com garantia dupla. 
+
+            <p className="font-body text-pb-ink-soft leading-relaxed text-lg mb-8 max-w-3xl mx-auto">
+              A mentoria IA para Negócios foi desenhada para PMEs como a sua: direta, prática e com garantia dupla.
               As vagas são limitadas a 15 empresas.
             </p>
-            
-            <div className="text-xl font-semibold mb-8 text-white">
-              Se o plano é liderar (não reagir), é agora.
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button 
-                size="lg" 
-                className="text-xl px-12 py-6 font-inter bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white"
+
+            <p className="font-display uppercase text-pb-ink text-2xl mb-10">
+              Se o plano é liderar (não reagir), é agora
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <button
+                className="btn-primary"
                 onClick={() => handleWhatsAppContact('final_cta')}
               >
                 Quero liderar meu mercado com IA
-                <ArrowRight className="ml-2" size={24} />
-              </Button>
+                <ArrowRight size={16} />
+              </button>
             </div>
-            
-            <div className="space-y-2 text-sm text-gray-300">
-              <p><strong>P.S.</strong> Bônus de R$ 2.800 incluídos nesta turma e 7 dias de teste sem risco.</p>
-              <p><strong>P.P.S.</strong> Ainda em dúvida? <button onClick={() => handleWhatsAppContact('schedule_link')} className="underline text-blue-400 hover:text-blue-300">Agende 15 min</button> para entendermos se faz sentido para o seu caso.</p>
+
+            <div className="space-y-2 font-body text-pb-ink-soft text-sm border-t border-pb-grid-strong pt-8">
+              <p><strong className="text-pb-ink">P.S.</strong> Bônus de R$ 2.800 incluídos nesta turma e 7 dias de teste sem risco.</p>
+              <p>
+                <strong className="text-pb-ink">P.P.S.</strong> Ainda em dúvida?{' '}
+                <button
+                  onClick={() => handleWhatsAppContact('schedule_link')}
+                  className="underline text-pb-cyan hover:text-pb-cyan-soft transition-colors"
+                >
+                  Agende 15 min
+                </button>{' '}
+                para entendermos se faz sentido para o seu caso.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      
-      <LeadFormIANegocios 
-        open={isLeadFormOpen} 
+      <LeadFormIANegocios
+        open={isLeadFormOpen}
         onOpenChange={setIsLeadFormOpen}
         onSuccess={handleLeadSuccess}
       />
