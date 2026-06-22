@@ -1,860 +1,283 @@
-import { useEffect } from "react";
 import rodrigoAlbuquerque from "@/assets/founders/rodrigo-albuquerque.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
 import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
+import PropostaLayout from "@/components/pb/PropostaLayout";
+
+const mentors = [
+  { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
+  { name: "Pedro Somma", role: "Ex-COO - 99 Taxi", photo: pedroSommaPhoto, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
+  { name: "Luis Vabo Jr.", role: "Ex-diretor - Stone", photo: vaboPhoto, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
+  { name: "João Olivério", role: "CEO - Sales As A System", photo: joaoOliverioPhoto, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
+  { name: "José Diogo C. Rodrigues", role: "CMO Latam - Tinder", photo: joseDiogoPhoto, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
+];
 
 const PropostaDudaBambil = () => {
-  useEffect(() => {
-    document.body.style.paddingTop = "0px";
-    return () => {
-      document.body.style.paddingTop = "";
-    };
-  }, []);
-
   return (
-    <>
-      <style>{`
-        .pdb-page {
-          --bg-dark: #0a0a0a;
-          --bg-section: #111111;
-          --bg-card: #1a1a1a;
-          --gold: #c8956c;
-          --gold-light: #e0b893;
-          --gold-dark: #a06d42;
-          --cream: #f5efe6;
-          --text-primary: #f0ebe3;
-          --text-secondary: #9a9590;
-          --text-muted: #6b6560;
-          --accent-blue: #5b8fa8;
-          --pdb-border: rgba(200,149,108,0.15);
-          --gradient-gold: linear-gradient(135deg, #a06d42, #c8956c, #e0b893);
-
-          font-family: 'DM Sans', sans-serif;
-          background: var(--bg-dark);
-          color: var(--text-primary);
-          line-height: 1.7;
-          overflow-x: hidden;
-        }
-
-        .pdb-page * { box-sizing: border-box; }
-
-        /* HERO */
-        .pdb-hero {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          padding: 60px 24px;
-          position: relative;
-          background: radial-gradient(ellipse at 30% 20%, rgba(160,109,66,0.08) 0%, transparent 60%),
-                      radial-gradient(ellipse at 70% 80%, rgba(91,143,168,0.05) 0%, transparent 50%),
-                      var(--bg-dark);
-        }
-
-        .pdb-hero::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 1px;
-          background: var(--gradient-gold);
-          opacity: 0.4;
-        }
-
-        .pdb-hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 8px 20px;
-          border: 1px solid var(--pdb-border);
-          border-radius: 100px;
-          font-size: 13px;
-          font-weight: 500;
-          color: var(--gold-light);
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          margin-bottom: 40px;
-          animation: pdbFadeDown 0.8s ease both;
-        }
-
-        .pdb-hero-badge::before {
-          content: '';
-          width: 6px; height: 6px;
-          border-radius: 50%;
-          background: var(--gold);
-          animation: pdbPulseDot 2s infinite;
-        }
-
-        @keyframes pdbPulseDot {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.3; }
-        }
-
-        .pdb-hero h1 {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.8rem, 6vw, 5rem);
-          font-weight: 700;
-          line-height: 1.15;
-          margin-bottom: 24px;
-          animation: pdbFadeUp 0.8s 0.2s ease both;
-        }
-
-        .pdb-hero h1 .pdb-gold {
-          background: var(--gradient-gold);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .pdb-hero-sub {
-          font-size: 18px;
-          color: var(--text-secondary);
-          max-width: 560px;
-          margin-bottom: 48px;
-          font-weight: 300;
-          animation: pdbFadeUp 0.8s 0.4s ease both;
-        }
-
-        .pdb-hero-sub strong {
-          color: var(--text-primary);
-          font-weight: 500;
-        }
-
-        @keyframes pdbFadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pdbFadeDown {
-          from { opacity: 0; transform: translateY(-16px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* SECTIONS */
-        .pdb-section {
-          padding: 100px 24px;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .pdb-section-label {
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: var(--gold);
-          margin-bottom: 16px;
-        }
-
-        .pdb-section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(1.8rem, 4vw, 2.6rem);
-          font-weight: 600;
-          margin-bottom: 20px;
-          line-height: 1.25;
-        }
-
-        .pdb-section-text {
-          color: var(--text-secondary);
-          font-size: 16px;
-          max-width: 700px;
-          font-weight: 300;
-        }
-
-        /* DIVIDER */
-        .pdb-divider {
-          width: 60px;
-          height: 1px;
-          background: var(--gradient-gold);
-          margin: 0 auto;
-        }
-
-        /* DIAGNOSTIC */
-        .pdb-diagnostic {
-          background: var(--bg-section);
-          border-radius: 0;
-          padding: 100px 24px;
-          max-width: 100%;
-          position: relative;
-        }
-
-        .pdb-diagnostic-inner {
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .pdb-diagnostic-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          margin-top: 48px;
-        }
-
-        .pdb-diag-card {
-          background: var(--bg-card);
-          border: 1px solid var(--pdb-border);
-          border-radius: 16px;
-          padding: 32px;
-          transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .pdb-diag-card:hover {
-          border-color: rgba(200,149,108,0.35);
-          transform: translateY(-2px);
-        }
-
-        .pdb-diag-icon {
-          width: 40px; height: 40px;
-          border-radius: 10px;
-          background: rgba(200,149,108,0.1);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 16px;
-          font-size: 18px;
-        }
-
-        .pdb-diag-card h3 {
-          font-size: 16px;
-          font-weight: 600;
-          margin-bottom: 8px;
-          color: var(--text-primary);
-        }
-
-        .pdb-diag-card p {
-          font-size: 14px;
-          color: var(--text-secondary);
-          font-weight: 300;
-          line-height: 1.6;
-        }
-
-        /* STRATEGY */
-        .pdb-strategy-steps {
-          margin-top: 48px;
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-        }
-
-        .pdb-step {
-          display: grid;
-          grid-template-columns: 80px 1fr;
-          gap: 0;
-          position: relative;
-        }
-
-        .pdb-step-line {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .pdb-step-num {
-          width: 48px; height: 48px;
-          border-radius: 50%;
-          background: var(--bg-card);
-          border: 2px solid var(--gold);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: 'Playfair Display', serif;
-          font-size: 18px;
-          font-weight: 700;
-          color: var(--gold);
-          flex-shrink: 0;
-        }
-
-        .pdb-step-connector {
-          width: 2px;
-          flex: 1;
-          background: linear-gradient(to bottom, var(--gold-dark), transparent);
-          min-height: 20px;
-        }
-
-        .pdb-step-content {
-          padding: 8px 0 48px 0;
-        }
-
-        .pdb-step-content h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 8px;
-        }
-
-        .pdb-step-content p {
-          color: var(--text-secondary);
-          font-size: 15px;
-          font-weight: 300;
-          line-height: 1.7;
-        }
-
-        .pdb-step:last-child .pdb-step-connector { display: none; }
-        .pdb-step:last-child .pdb-step-content { padding-bottom: 0; }
-
-        /* PRICING */
-        .pdb-pricing-section {
-          background: var(--bg-section);
-          padding: 100px 24px;
-          max-width: 100%;
-        }
-
-        .pdb-pricing-inner {
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .pdb-pricing-cards {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px;
-          margin-top: 48px;
-        }
-
-        .pdb-price-card {
-          background: var(--bg-card);
-          border: 1px solid var(--pdb-border);
-          border-radius: 20px;
-          padding: 40px 32px;
-          position: relative;
-          overflow: hidden;
-          transition: border-color 0.3s;
-        }
-
-        .pdb-price-card:hover {
-          border-color: rgba(200,149,108,0.4);
-        }
-
-        .pdb-price-card.pdb-featured {
-          border-color: var(--gold);
-          background: linear-gradient(160deg, #1f1a15 0%, var(--bg-card) 100%);
-        }
-
-        .pdb-price-card.pdb-featured::before {
-          content: 'RECOMENDADO';
-          position: absolute;
-          top: 16px; right: -32px;
-          background: var(--gradient-gold);
-          color: var(--bg-dark);
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 1.5px;
-          padding: 6px 40px;
-          transform: rotate(45deg);
-        }
-
-        .pdb-price-card-label {
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: var(--gold);
-          margin-bottom: 12px;
-        }
-
-        .pdb-price-card h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 22px;
-          font-weight: 600;
-          margin-bottom: 16px;
-        }
-
-        .pdb-price-card .pdb-price {
-          font-size: 14px;
-          color: var(--text-secondary);
-          margin-bottom: 24px;
-          padding-bottom: 24px;
-          border-bottom: 1px solid var(--pdb-border);
-        }
-
-        .pdb-price .pdb-amount {
-          font-family: 'Playfair Display', serif;
-          font-size: 36px;
-          font-weight: 700;
-          color: var(--text-primary);
-          display: block;
-          margin-bottom: 4px;
-        }
-
-        .pdb-price-card ul {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          padding: 0;
-          margin: 0;
-        }
-
-        .pdb-price-card ul li {
-          font-size: 14px;
-          color: var(--text-secondary);
-          font-weight: 300;
-          padding-left: 24px;
-          position: relative;
-        }
-
-        .pdb-price-card ul li::before {
-          content: '✦';
-          position: absolute;
-          left: 0;
-          color: var(--gold);
-          font-size: 10px;
-          top: 3px;
-        }
-
-        /* TIMELINE */
-        .pdb-timeline-bar {
-          display: flex;
-          gap: 0;
-          margin-top: 48px;
-          border-radius: 12px;
-          overflow: hidden;
-          border: 1px solid var(--pdb-border);
-        }
-
-        .pdb-tl-phase {
-          flex: 1;
-          padding: 28px 20px;
-          background: var(--bg-card);
-          border-right: 1px solid var(--pdb-border);
-          transition: background 0.3s;
-        }
-
-        .pdb-tl-phase:last-child { border-right: none; }
-
-        .pdb-tl-phase:hover {
-          background: rgba(200,149,108,0.05);
-        }
-
-        .pdb-tl-phase-label {
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          color: var(--gold);
-          margin-bottom: 8px;
-        }
-
-        .pdb-tl-phase h4 {
-          font-size: 15px;
-          font-weight: 600;
-          margin-bottom: 6px;
-        }
-
-        .pdb-tl-phase p {
-          font-size: 13px;
-          color: var(--text-muted);
-          font-weight: 300;
-          line-height: 1.5;
-        }
-
-        /* CTA */
-        .pdb-cta-section {
-          text-align: center;
-          padding: 120px 24px;
-          position: relative;
-          background: radial-gradient(ellipse at 50% 50%, rgba(160,109,66,0.06) 0%, transparent 70%),
-                      var(--bg-dark);
-        }
-
-        .pdb-cta-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          padding: 18px 48px;
-          background: var(--gradient-gold);
-          color: var(--bg-dark);
-          font-family: 'DM Sans', sans-serif;
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          border: none;
-          border-radius: 100px;
-          cursor: pointer;
-          text-decoration: none;
-          transition: transform 0.3s, box-shadow 0.3s;
-          margin-top: 40px;
-        }
-
-        .pdb-cta-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 40px rgba(200,149,108,0.25);
-        }
-
-        /* FOOTER */
-        .pdb-footer {
-          text-align: center;
-          padding: 40px 24px;
-          border-top: 1px solid var(--pdb-border);
-          font-size: 13px;
-          color: var(--text-muted);
-        }
-
-        /* WHO */
-        .pdb-who-grid {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 48px;
-          align-items: start;
-          margin-top: 40px;
-        }
-
-        .pdb-who-avatar {
-          width: 100%;
-          aspect-ratio: 1;
-          border-radius: 20px;
-          background: linear-gradient(135deg, #1a1510 0%, #2a221a 100%);
-          border: 1px solid var(--pdb-border);
-          overflow: hidden;
-        }
-
-        .pdb-who-avatar img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .pdb-who-avatar .pdb-brand {
-          font-size: 11px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: var(--text-muted);
-        }
-
-        .pdb-who-stats {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-          margin-top: 24px;
-        }
-
-        .pdb-who-stat {
-          padding: 16px;
-          background: var(--bg-card);
-          border: 1px solid var(--pdb-border);
-          border-radius: 12px;
-        }
-
-        .pdb-who-stat .pdb-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 24px;
-          font-weight: 700;
-          color: var(--gold);
-        }
-
-        .pdb-who-stat .pdb-label {
-          font-size: 12px;
-          color: var(--text-muted);
-          margin-top: 4px;
-        }
-
-        /* MENTORS */
-        .pdb-mentors-grid {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 20px;
-        }
-        .pdb-mentor-card {
-          background: var(--bg-card);
-          border: 1px solid var(--pdb-border);
-          border-radius: 4px;
-          padding: 20px;
-          text-align: center;
-          transition: border-color 0.3s, transform 0.3s;
-        }
-        .pdb-mentor-card:hover {
-          border-color: var(--pdb-gold-40);
-          transform: translateY(-2px);
-        }
-        .pdb-mentor-photo {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          overflow: hidden;
-          margin: 0 auto 12px;
-          border: 1px solid var(--pdb-border);
-        }
-        .pdb-mentor-photo img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          filter: grayscale(30%);
-        }
-        .pdb-mentor-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 15px;
-          font-weight: 600;
-          color: var(--text-primary);
-          margin-bottom: 4px;
-        }
-        .pdb-mentor-role {
-          font-size: 12px;
-          font-weight: 600;
-          color: var(--pdb-gold);
-          margin-bottom: 8px;
-        }
-        .pdb-mentor-bio {
-          font-size: 12px;
-          color: var(--text-muted);
-          font-weight: 300;
-          line-height: 1.5;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-          .pdb-diagnostic-grid, .pdb-pricing-cards, .pdb-who-grid { grid-template-columns: 1fr; }
-          .pdb-mentors-grid { grid-template-columns: repeat(2, 1fr); }
-          .pdb-timeline-bar { flex-direction: column; }
-          .pdb-tl-phase { border-right: none; border-bottom: 1px solid var(--pdb-border); }
-          .pdb-tl-phase:last-child { border-bottom: none; }
-          .pdb-who-avatar { max-width: 200px; margin: 0 auto; }
-          .pdb-section { padding: 80px 20px; }
-          .pdb-step { grid-template-columns: 60px 1fr; }
-        }
-      `}</style>
-
-      <div className="pdb-page">
-        {/* HERO */}
-        <div className="pdb-hero">
-          <div className="pdb-hero-badge">Proposta Exclusiva</div>
-          <h1>
-            Transforme seu conhecimento<br />
-            em <span className="pdb-gold">receita digital</span>
-          </h1>
-          <p className="pdb-hero-sub">
-            Proposta personalizada para <strong>Duda Bambil</strong> — estratégia orgânica + tráfego de retargeting para escalar as vendas do seu curso e construir uma máquina digital previsível.
-          </p>
-        </div>
-
-        <div className="pdb-divider" />
-
-        {/* SOBRE */}
-        <section className="pdb-section">
-          <div className="pdb-section-label">Sobre</div>
-          <h2 className="pdb-section-title">Quem está por trás desta proposta</h2>
-          <div className="pdb-who-grid">
-            <div className="pdb-who-avatar">
-              <img loading="lazy" src={rodrigoAlbuquerque} alt="Rodrigo Albuquerque" />
-            </div>
-            <div>
-              <p className="pdb-section-text" style={{ marginBottom: 16 }}>
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
-              </p>
-              <p className="pdb-section-text">
-                A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
-              </p>
-              <div className="pdb-who-stats">
-                <div className="pdb-who-stat">
-                  <div className="pdb-num">+R$130M</div>
-                  <div className="pdb-label">gerados em vendas</div>
-                </div>
-                <div className="pdb-who-stat">
-                  <div className="pdb-num">100+</div>
-                  <div className="pdb-label">consultorias realizadas</div>
-                </div>
-                <div className="pdb-who-stat">
-                  <div className="pdb-num">+7</div>
-                  <div className="pdb-label">países atendidos</div>
-                </div>
-                <div className="pdb-who-stat">
-                  <div className="pdb-num">+54</div>
-                  <div className="pdb-label">avaliações 5 estrelas</div>
-                </div>
-              </div>
-            </div>
+    <PropostaLayout
+      cliente="Duda Bambil"
+      projeto="Receita Digital Previsível"
+    >
+      {/* ══════════ INTRO ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-6">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 01 CONTEXTO</p>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          Proposta personalizada para <span className="text-pb-ink font-medium">Duda Bambil</span> — estratégia orgânica + tráfego de retargeting para escalar as vendas do seu curso e construir uma máquina digital previsível.
+        </p>
+      </div>
+
+      {/* ══════════ SOBRE ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 02 SOBRE</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Quem está por trás desta proposta</h2>
+        <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="w-full md:w-48 flex-shrink-0 border border-pb-grid-strong overflow-hidden aspect-square">
+            <img
+              loading="lazy"
+              src={rodrigoAlbuquerque}
+              alt="Rodrigo Albuquerque"
+              className="w-full h-full object-cover"
+              style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
+            />
           </div>
-        </section>
-
-        <div className="pdb-divider" />
-
-        {/* MENTORES */}
-        <section className="pdb-section">
-          <div className="pdb-section-label" style={{ textAlign: "center" }}>Referências</div>
-          <h2 className="pdb-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
-          <p className="pdb-section-text" style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 48px" }}>
-            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
-          </p>
-          <div className="pdb-mentors-grid">
-            {[
-              { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
-              { name: "Pedro Somma", role: "Ex-COO - 99 Taxi", photo: pedroSommaPhoto, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
-              { name: "Luis Vabo Jr.", role: "Ex-diretor - Stone", photo: vaboPhoto, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
-              { name: "João Olivério", role: "CEO - Sales As A System", photo: joaoOliverioPhoto, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
-              { name: "José Diogo C. Rodrigues", role: "CMO Latam - Tinder", photo: joseDiogoPhoto, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
-            ].map((m) => (
-              <div key={m.name} className="pdb-mentor-card">
-                <div className="pdb-mentor-photo">
-                  <img loading="lazy" src={m.photo} alt={m.name} />
-                </div>
-                <h3 className="pdb-mentor-name">{m.name}</h3>
-                <p className="pdb-mentor-role">{m.role}</p>
-                <p className="pdb-mentor-bio">{m.bio}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="pdb-divider" />
-
-        {/* DIAGNÓSTICO */}
-        <div className="pdb-diagnostic">
-          <div className="pdb-diagnostic-inner">
-            <div className="pdb-section-label">Diagnóstico</div>
-            <h2 className="pdb-section-title">O que identificamos na nossa conversa</h2>
-            <p className="pdb-section-text">
-              A partir da nossa reunião, mapeamos os principais pontos do seu cenário atual e as oportunidades que existem para destravar o próximo nível do seu negócio digital.
+          <div className="flex-1 space-y-4">
+            <p className="font-body text-pb-ink-soft leading-relaxed">
+              Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
             </p>
-            <div className="pdb-diagnostic-grid">
-              <div className="pdb-diag-card">
-                <div className="pdb-diag-icon">📈</div>
-                <h3>Crescimento orgânico acelerado</h3>
-                <p>Em menos de 3 semanas focando em conteúdo para profissionais de estética, você ganhou quase 2.000 seguidores novos com alto engajamento. Isso prova que o público existe e está faminto pelo seu conteúdo.</p>
-              </div>
-              <div className="pdb-diag-card">
-                <div className="pdb-diag-icon">💰</div>
-                <h3>Vendas dependem de você</h3>
-                <p>100% das vendas do mês vieram diretamente do seu esforço pessoal. O time de WhatsApp não está convertendo — falta processo, script e automação para transformar interesse em compra.</p>
-              </div>
-              <div className="pdb-diag-card">
-                <div className="pdb-diag-icon">🎯</div>
-                <h3>Experiência anterior frustrante</h3>
-                <p>A agência anterior não segmentou público, não alinhou expectativas e não entregou resultado. Isso gerou desconfiança e gasto sem retorno — precisamos reconstruir confiança com resultados reais.</p>
-              </div>
-              <div className="pdb-diag-card">
-                <div className="pdb-diag-icon">🚀</div>
-                <h3>Potencial de escada de valor</h3>
-                <p>Você já tem um curso a R$297, consultoria a R$3.500 com taxa de conversão de ~10% em reuniões, e mais produtos em desenvolvimento. A estrutura para uma escada de valor já está nascendo.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ESTRATÉGIA */}
-        <section className="pdb-section">
-          <div className="pdb-section-label">Estratégia</div>
-          <h2 className="pdb-section-title">Como vamos construir sua máquina digital</h2>
-          <p className="pdb-section-text">
-            A estratégia combina a força do seu conteúdo orgânico com tráfego pago de retargeting para maximizar conversões — sem depender de funil frio arriscado.
-          </p>
-          <div className="pdb-strategy-steps">
-            {[
-              { num: 1, title: "Potencializar o orgânico", text: "Vamos estruturar sua produção de conteúdo com calendário editorial, formatos que convertem e uma estratégia de Stories focada em vendas. Você já provou que sabe engajar — agora vamos direcionar esse engajamento para a compra." },
-              { num: 2, title: "Tráfego de retargeting na base", text: "Ao invés de gastar dinheiro tentando encontrar pessoas desconhecidas, vamos investir pouco para aparecer para quem já te segue, já assistiu seus vídeos e já demonstrou interesse. Conversão muito mais alta com investimento muito menor." },
-              { num: 3, title: "Otimização do funil de vendas", text: "Vamos trabalhar cada etapa: alcance → clique no link da bio → visita na página de vendas → compra. Se uma etapa não funciona, a gente corrige antes de avançar. Isso é marketing como ciência, não achismo." },
-              { num: 4, title: "Construção da escada de valor", text: "Com a base crescendo, vamos estruturar a jornada: curso de entrada (R$297) → materiais complementares → consultoria/mentoria (R$3.500+). Cada produto alimenta o próximo, aumentando o valor médio por cliente." },
-              { num: 5, title: "Reuniões de fechamento para high-ticket", text: "Para produtos acima de R$2.000, a reunião é essencial — você já provou isso em dezembro com 7-8 fechamentos de consultoria. Vamos estruturar esse processo para que aconteça de forma consistente, não apenas em picos." },
-            ].map((step, i, arr) => (
-              <div className="pdb-step" key={step.num}>
-                <div className="pdb-step-line">
-                  <div className="pdb-step-num">{step.num}</div>
-                  {i < arr.length - 1 && <div className="pdb-step-connector" />}
-                </div>
-                <div className="pdb-step-content">
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* TIMELINE */}
-        <section className="pdb-section">
-          <div className="pdb-section-label">Expectativa</div>
-          <h2 className="pdb-section-title">Linha do tempo realista</h2>
-          <p className="pdb-section-text">
-            Transparência é fundamental. Resultados vêm com consistência — e a gente precisa ver as métricas evoluindo desde o primeiro mês.
-          </p>
-          <div className="pdb-timeline-bar">
-            <div className="pdb-tl-phase">
-              <div className="pdb-tl-phase-label">Mês 1</div>
-              <h4>Movimento e clareza</h4>
-              <p>Diagnóstico completo, estratégia definida, melhoria inicial de indicadores. Primeiros ajustes no funil e no conteúdo.</p>
-            </div>
-            <div className="pdb-tl-phase">
-              <div className="pdb-tl-phase-label">Mês 2-3</div>
-              <h4>Evolução consistente</h4>
-              <p>Crescimento de alcance, cliques e audiência qualificada. Conversão começa a ganhar tração com otimizações contínuas.</p>
-            </div>
-            <div className="pdb-tl-phase">
-              <div className="pdb-tl-phase-label">Mês 3-8</div>
-              <h4>Maturação da estrutura</h4>
-              <p>Funil validado, vendas com previsibilidade, base sólida para escalar. Introdução de novos produtos na escada de valor.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* INVESTIMENTO */}
-        <div className="pdb-pricing-section">
-          <div className="pdb-pricing-inner">
-            <div className="pdb-section-label">Investimento</div>
-            <h2 className="pdb-section-title">Proposta comercial</h2>
-            <p className="pdb-section-text">
-              Consultoria estratégica + direcionamento de crescimento digital com foco em resultado. Formato mensal, acompanhamento contínuo.
+            <p className="font-body text-pb-ink-soft leading-relaxed">
+              A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
             </p>
-
-            <div className="pdb-pricing-cards" style={{ gridTemplateColumns: "1fr" }}>
-              <div className="pdb-price-card pdb-featured">
-                <div className="pdb-price-card-label">Acompanhamento Estratégico Mensal</div>
-                <h3>Consultoria + Direcionamento Digital</h3>
-                <div className="pdb-price">
-                  <span className="pdb-amount">R$ 1.500/mês</span>
-                  Acompanhamento contínuo com foco em crescimento orgânico, conversão e otimização do funil
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              {[
+                { num: "+R$130M", label: "gerados em vendas" },
+                { num: "100+", label: "consultorias realizadas" },
+                { num: "+7", label: "países atendidos" },
+                { num: "+54", label: "avaliações 5 estrelas" },
+              ].map((s) => (
+                <div key={s.label} className="border border-pb-grid-strong bg-pb-void-card p-4">
+                  <div className="font-display text-[clamp(24px,3vw,36px)] text-pb-cyan leading-none">{s.num}</div>
+                  <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mt-1">{s.label}</div>
                 </div>
-                <ul>
-                  <li style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: 15 }}>① Direcionamento de conteúdo orgânico</li>
-                  <li>Definição das linhas editoriais mais estratégicas</li>
-                  <li>Orientação sobre formatos com maior potencial de performance</li>
-                  <li>Construção de lógica de conteúdo que aproxima a audiência da compra</li>
-                  <li>Alinhamento entre conteúdo de rotina, relacionamento e venda</li>
-                  <li style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: 15, marginTop: 16 }}>② Funil de tráfego para público quente</li>
-                  <li>Desenho da jornada de conversão para quem já conhece a marca</li>
-                  <li>Definição dos públicos mais estratégicos para reimpacto</li>
-                  <li>Estruturação da lógica de campanhas para audiência quente</li>
-                  <li>Leitura de métricas e otimizações contínuas do funil</li>
-                  <li style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: 15, marginTop: 16 }}>③ Apoio na conversão da audiência</li>
-                  <li>Orientação sobre Stories com intenção de venda</li>
-                  <li>Ajuste de chamadas para ação e gatilhos</li>
-                  <li>Estruturação de sequências de aquecimento</li>
-                  <li>Alinhamento entre conteúdo, oferta e momento de conversão</li>
-                  <li style={{ fontWeight: 600, color: "var(--text-primary)", fontSize: 15, marginTop: 16 }}>④ Acompanhamento estratégico</li>
-                  <li>Reuniões estratégicas periódicas</li>
-                  <li>Acompanhamento de alcance, cliques, tráfego e conversão</li>
-                  <li>Direcionamento de oferta e construção da escada de valor</li>
-                  <li>Ajustes de rota conforme resposta do conteúdo e do mercado</li>
-                </ul>
-              </div>
+              ))}
             </div>
-
-
-            <p className="pdb-section-text" style={{ marginTop: 32, fontStyle: "italic", fontSize: 14 }}>
-              A estratégia reduz risco, mas o resultado depende da constância. Esse projeto funciona melhor quando existe consistência de execução.
-            </p>
           </div>
-        </div>
-
-        {/* CTA */}
-        <div className="pdb-cta-section">
-          <div className="pdb-section-label">Próximo passo</div>
-          <h2 className="pdb-section-title">Vamos construir isso juntos?</h2>
-          <p className="pdb-section-text" style={{ margin: "0 auto" }}>
-            Se fizer sentido seguir, o próximo passo é validar o formato, alinhar a rotina de acompanhamento, organizar os ativos atuais e iniciar o diagnóstico do funil e da operação de conteúdo.
-          </p>
-          <a href="https://wa.me/5511999718595" className="pdb-cta-btn" target="_blank" rel="noopener noreferrer">
-            Falar com Rodrigo →
-          </a>
-        </div>
-
-        <div className="pdb-footer">
-          BA Consultoria © 2026 — Proposta válida por 7 dias
         </div>
       </div>
-    </>
+
+      {/* ══════════ MENTORES ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 03 REFERÊNCIAS</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Nossos Mentores e Professores</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {mentors.map((m) => (
+            <div key={m.name} className="border border-pb-grid-strong bg-pb-void-card p-4 text-center">
+              <div className="w-16 h-16 overflow-hidden mx-auto mb-3 border border-pb-grid-strong">
+                <img
+                  loading="lazy"
+                  src={m.photo}
+                  alt={m.name}
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
+                />
+              </div>
+              <div className="font-display uppercase text-pb-ink text-sm mb-1">{m.name}</div>
+              <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-2">{m.role}</div>
+              <div className="font-body text-pb-ink-muted text-xs leading-relaxed">{m.bio}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════ DIAGNÓSTICO ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 04 DIAGNÓSTICO</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">O que identificamos na nossa conversa</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          A partir da nossa reunião, mapeamos os principais pontos do seu cenário atual e as oportunidades que existem para destravar o próximo nível do seu negócio digital.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            {
+              icon: "→",
+              title: "Crescimento orgânico acelerado",
+              text: "Em menos de 3 semanas focando em conteúdo para profissionais de estética, você ganhou quase 2.000 seguidores novos com alto engajamento. Isso prova que o público existe e está faminto pelo seu conteúdo.",
+            },
+            {
+              icon: "→",
+              title: "Vendas dependem de você",
+              text: "100% das vendas do mês vieram diretamente do seu esforço pessoal. O time de WhatsApp não está convertendo — falta processo, script e automação para transformar interesse em compra.",
+            },
+            {
+              icon: "→",
+              title: "Experiência anterior frustrante",
+              text: "A agência anterior não segmentou público, não alinhou expectativas e não entregou resultado. Isso gerou desconfiança e gasto sem retorno — precisamos reconstruir confiança com resultados reais.",
+            },
+            {
+              icon: "→",
+              title: "Potencial de escada de valor",
+              text: "Você já tem um curso a R$297, consultoria a R$3.500 com taxa de conversão de ~10% em reuniões, e mais produtos em desenvolvimento. A estrutura para uma escada de valor já está nascendo.",
+            },
+          ].map((d) => (
+            <div key={d.title} className="border border-pb-grid-strong bg-pb-void-card p-6">
+              <h3 className="font-display uppercase text-pb-ink text-lg mb-3">
+                <span className="text-pb-cyan mr-2">{d.icon}</span>{d.title}
+              </h3>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{d.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════ ESTRATÉGIA ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 05 ESTRATÉGIA</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Como vamos construir sua máquina digital</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          A estratégia combina a força do seu conteúdo orgânico com tráfego pago de retargeting para maximizar conversões — sem depender de funil frio arriscado.
+        </p>
+        <div className="space-y-4">
+          {[
+            { num: "01", title: "Potencializar o orgânico", text: "Vamos estruturar sua produção de conteúdo com calendário editorial, formatos que convertem e uma estratégia de Stories focada em vendas. Você já provou que sabe engajar — agora vamos direcionar esse engajamento para a compra." },
+            { num: "02", title: "Tráfego de retargeting na base", text: "Ao invés de gastar dinheiro tentando encontrar pessoas desconhecidas, vamos investir pouco para aparecer para quem já te segue, já assistiu seus vídeos e já demonstrou interesse. Conversão muito mais alta com investimento muito menor." },
+            { num: "03", title: "Otimização do funil de vendas", text: "Vamos trabalhar cada etapa: alcance → clique no link da bio → visita na página de vendas → compra. Se uma etapa não funciona, a gente corrige antes de avançar. Isso é marketing como ciência, não achismo." },
+            { num: "04", title: "Construção da escada de valor", text: "Com a base crescendo, vamos estruturar a jornada: curso de entrada (R$297) → materiais complementares → consultoria/mentoria (R$3.500+). Cada produto alimenta o próximo, aumentando o valor médio por cliente." },
+            { num: "05", title: "Reuniões de fechamento para high-ticket", text: "Para produtos acima de R$2.000, a reunião é essencial — você já provou isso em dezembro com 7-8 fechamentos de consultoria. Vamos estruturar esse processo para que aconteça de forma consistente, não apenas em picos." },
+          ].map((step) => (
+            <div key={step.num} className="border border-pb-grid-strong bg-pb-void-card p-6 flex gap-6 items-start">
+              <div className="font-display text-[40px] text-pb-ink-faint leading-none flex-shrink-0 select-none w-12">{step.num}</div>
+              <div>
+                <h3 className="font-display uppercase text-pb-ink text-xl mb-2">{step.title}</h3>
+                <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{step.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════ EXPECTATIVA ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 06 EXPECTATIVA</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Linha do tempo realista</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          Transparência é fundamental. Resultados vêm com consistência — e a gente precisa ver as métricas evoluindo desde o primeiro mês.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-pb-grid-strong">
+          {[
+            { fase: "Mês 1", title: "Movimento e clareza", text: "Diagnóstico completo, estratégia definida, melhoria inicial de indicadores. Primeiros ajustes no funil e no conteúdo." },
+            { fase: "Mês 2–3", title: "Evolução consistente", text: "Crescimento de alcance, cliques e audiência qualificada. Conversão começa a ganhar tração com otimizações contínuas." },
+            { fase: "Mês 3–8", title: "Maturação da estrutura", text: "Funil validado, vendas com previsibilidade, base sólida para escalar. Introdução de novos produtos na escada de valor." },
+          ].map((f, i) => (
+            <div key={f.fase} className={`bg-pb-void-card p-6 ${i < 2 ? "border-r border-pb-grid-strong" : ""}`}>
+              <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">{f.fase}</div>
+              <div className="font-display uppercase text-pb-ink text-lg mb-2">{f.title}</div>
+              <p className="font-body text-pb-ink-muted text-sm leading-relaxed">{f.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════ INVESTIMENTO ══════════ */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 07 INVESTIMENTO</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Proposta comercial</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+          Consultoria estratégica + direcionamento de crescimento digital com foco em resultado. Formato mensal, acompanhamento contínuo.
+        </p>
+
+        <div className="border border-pb-grid-strong bg-pb-void-card p-8">
+          <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-2">Acompanhamento Estratégico Mensal</div>
+          <div className="font-display uppercase text-pb-ink text-2xl mb-4">Consultoria + Direcionamento Digital</div>
+          <div className="mb-6 pb-6 border-b border-pb-grid-strong">
+            <div className="font-display text-[clamp(48px,6vw,80px)] text-pb-cyan leading-none">R$ 1.500<span className="text-[32px] text-pb-ink-muted">/mês</span></div>
+            <p className="font-body text-pb-ink-muted text-sm mt-2">Acompanhamento contínuo com foco em crescimento orgânico, conversão e otimização do funil</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                title: "① Direcionamento de conteúdo orgânico",
+                items: [
+                  "Definição das linhas editoriais mais estratégicas",
+                  "Orientação sobre formatos com maior potencial de performance",
+                  "Construção de lógica de conteúdo que aproxima a audiência da compra",
+                  "Alinhamento entre conteúdo de rotina, relacionamento e venda",
+                ],
+              },
+              {
+                title: "② Funil de tráfego para público quente",
+                items: [
+                  "Desenho da jornada de conversão para quem já conhece a marca",
+                  "Definição dos públicos mais estratégicos para reimpacto",
+                  "Estruturação da lógica de campanhas para audiência quente",
+                  "Leitura de métricas e otimizações contínuas do funil",
+                ],
+              },
+              {
+                title: "③ Apoio na conversão da audiência",
+                items: [
+                  "Orientação sobre Stories com intenção de venda",
+                  "Ajuste de chamadas para ação e gatilhos",
+                  "Estruturação de sequências de aquecimento",
+                  "Alinhamento entre conteúdo, oferta e momento de conversão",
+                ],
+              },
+              {
+                title: "④ Acompanhamento estratégico",
+                items: [
+                  "Reuniões estratégicas periódicas",
+                  "Acompanhamento de alcance, cliques, tráfego e conversão",
+                  "Direcionamento de oferta e construção da escada de valor",
+                  "Ajustes de rota conforme resposta do conteúdo e do mercado",
+                ],
+              },
+            ].map((group) => (
+              <div key={group.title}>
+                <div className="font-display uppercase text-pb-ink text-base mb-3">{group.title}</div>
+                <ul className="space-y-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="font-body text-pb-ink-soft text-sm leading-relaxed flex gap-2">
+                      <span className="text-pb-cyan flex-shrink-0">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="font-body text-pb-ink-muted text-sm leading-relaxed italic">
+          A estratégia reduz risco, mas o resultado depende da constância. Esse projeto funciona melhor quando existe consistência de execução.
+        </p>
+      </div>
+
+      {/* ══════════ CTA ══════════ */}
+      <div className="border-t border-pb-grid-strong py-24 text-center space-y-6">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// 08 PRÓXIMO PASSO</p>
+        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(40px,6vw,72px)]">Vamos construir isso juntos?</h2>
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-lg mx-auto">
+          Se fizer sentido seguir, o próximo passo é validar o formato, alinhar a rotina de acompanhamento, organizar os ativos atuais e iniciar o diagnóstico do funil e da operação de conteúdo.
+        </p>
+        <div>
+          <a
+            href="https://wa.me/5511999718595"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Falar com Rodrigo
+          </a>
+        </div>
+        <p className="font-mono text-[10px] text-pb-ink-muted pt-4">
+          BA Consultoria © 2026 — Proposta válida por 7 dias
+        </p>
+      </div>
+    </PropostaLayout>
   );
 };
 

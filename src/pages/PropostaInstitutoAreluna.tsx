@@ -1,10 +1,12 @@
-import { useEffect } from "react";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
 import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
+import PropostaLayout from "@/components/pb/PropostaLayout";
+import SectionHeader from "@/components/pb/SectionHeader";
+import StratCard from "@/components/pb/StratCard";
 
 const stats = [
   { num: "+R$130M", label: "gerados em vendas" },
@@ -81,18 +83,15 @@ const objectives = [
 
 const antiCards = [
   {
-    title: "Não é",
-    highlight: "CRM",
+    title: "Não é CRM",
     desc: "O CRM atual da Areluna continua sendo o CRM. Atlas Insight não substitui, não migra, não compete — adiciona a camada de inteligência que falta em cima do que já roda.",
   },
   {
-    title: "Não é",
-    highlight: "ferramenta genérica",
+    title: "Não é ferramenta genérica",
     desc: "Ferramenta genérica entrega transcrição e sentiment analysis. Atlas Insight analisa contra o método comercial específico da Areluna — calibrado, não pronto de prateleira.",
   },
   {
-    title: "Não é",
-    highlight: "treinamento de equipe",
+    title: "Não é treinamento de equipe",
     desc: "Treinamento ensina o que fazer. Atlas Insight mostra se está sendo feito. São dois problemas diferentes — e Atlas Insight resolve só um deles, mas resolve direito.",
   },
 ];
@@ -121,504 +120,213 @@ const timeline = [
 ];
 
 const PropostaInstitutoAreluna = () => {
-  useEffect(() => {
-    const prev = {
-      bg: document.body.style.backgroundColor,
-      color: document.body.style.color,
-      pt: document.body.style.paddingTop,
-    };
-    document.body.style.backgroundColor = "#0a0a0a";
-    document.body.style.color = "#f0ebe3";
-    document.body.style.paddingTop = "0";
-    return () => {
-      document.body.style.backgroundColor = prev.bg;
-      document.body.style.color = prev.color;
-      document.body.style.paddingTop = prev.pt;
-    };
-  }, []);
-
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+    <PropostaLayout cliente="Instituto Areluna" projeto="Atlas Insight">
 
-        .ar-page {
-          --bg-dark: #0a0a0a;
-          --bg-section: #111111;
-          --bg-card: #1a1a1a;
-          --gold: #c8956c;
-          --gold-light: #e0b893;
-          --gold-dark: #a06d42;
-          --text-primary: #f0ebe3;
-          --text-secondary: #9a9590;
-          --text-muted: #6b6560;
-          --border: rgba(200,149,108,0.15);
-          --border-strong: rgba(200,149,108,0.35);
-          --gradient-gold: linear-gradient(135deg, #a06d42, #c8956c, #e0b893);
+      {/* ========== SOBRE ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 01"
+          label="Sobre"
+          headline={<>Quem está por trás<br />desta proposta</>}
+        />
 
-          font-family: 'DM Sans', sans-serif;
-          background: var(--bg-dark);
-          color: var(--text-primary);
-          line-height: 1.75;
-          overflow-x: hidden;
-          -webkit-font-smoothing: antialiased;
-        }
-
-        .ar-container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        .ar-section-label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-        .ar-section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
-        .ar-section-title em { font-style: italic; color: var(--gold); font-weight: 400; }
-        .ar-section-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 700px; font-weight: 300; margin-bottom: 48px; }
-        .ar-divider { width: 60px; height: 1px; background: var(--gradient-gold); margin: 0 auto; }
-
-        /* Hero */
-        .ar-hero {
-          min-height: 100vh;
-          display: flex; flex-direction: column; justify-content: center; align-items: center;
-          text-align: center; padding: 80px 24px;
-          background:
-            radial-gradient(ellipse at 30% 20%, rgba(160,109,66,0.08) 0%, transparent 60%),
-            radial-gradient(ellipse at 70% 80%, rgba(200,149,108,0.04) 0%, transparent 50%),
-            var(--bg-dark);
-          position: relative;
-        }
-        .ar-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--gradient-gold); opacity: 0.4; }
-
-        .ar-hero-badge {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 8px 20px; border: 1px solid var(--border); border-radius: 100px;
-          font-size: 13px; font-weight: 500; color: var(--gold-light);
-          letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px;
-          animation: arFadeDown 0.8s ease both;
-        }
-        .ar-hero-badge .ar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: arPulseDot 2s infinite; }
-
-        .ar-client-logo {
-          display: inline-flex; align-items: center; justify-content: center;
-          background: rgba(255,255,255,0.95); border-radius: 16px;
-          padding: 20px 32px; margin-bottom: 36px;
-          animation: arFadeDown 0.8s 0.1s ease both;
-          box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-        }
-        .ar-client-logo img { height: 72px; width: auto; }
-
-        .ar-hero-title {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 700;
-          line-height: 1.15; margin-bottom: 24px;
-          animation: arFadeUp 0.8s 0.2s ease both;
-        }
-        .ar-hero-title em { font-style: italic; color: var(--gold); font-weight: 400; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-        .ar-hero-desc {
-          font-size: 17px; color: var(--text-secondary); max-width: 640px;
-          margin-bottom: 48px; font-weight: 300; line-height: 1.6;
-          animation: arFadeUp 0.8s 0.4s ease both;
-        }
-
-        .ar-hero-meta {
-          display: flex; gap: 32px; font-size: 13px; color: var(--text-muted);
-          animation: arFadeUp 0.8s 0.6s ease both; flex-wrap: wrap; justify-content: center;
-        }
-        .ar-hero-meta-item { display: flex; align-items: center; gap: 6px; }
-        .ar-hero-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
-
-        /* Sobre */
-        .ar-about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: start; margin-top: 40px; }
-        .ar-about-photo { width: 100%; aspect-ratio: 1; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
-        .ar-about-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .ar-about-text { color: var(--text-secondary); font-size: 16px; font-weight: 300; margin-bottom: 16px; line-height: 1.7; }
-        .ar-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
-        .ar-stat-card { padding: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
-        .ar-stat-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--gold); }
-        .ar-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-
-        /* Mentores */
-        .ar-mentors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-        .ar-mentor-card {
-          background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-          padding: 20px; text-align: center; transition: border-color 0.3s, transform 0.3s;
-        }
-        .ar-mentor-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-        .ar-mentor-photo { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; margin: 0 auto 12px; border: 1px solid rgba(200,149,108,0.2); }
-        .ar-mentor-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
-        .ar-mentor-name { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
-        .ar-mentor-role { font-size: 11px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
-        .ar-mentor-bio { font-size: 11px; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
-
-        /* Contexto */
-        .ar-context-card {
-          margin-top: 40px; padding: 40px; background: var(--bg-card);
-          border: 1px solid var(--border); border-left: 3px solid var(--gold);
-          border-radius: 0 16px 16px 0;
-        }
-        .ar-context-card p { font-size: 16px; color: var(--text-secondary); font-weight: 300; line-height: 1.75; }
-        .ar-context-card p + p { margin-top: 16px; }
-        .ar-context-card strong { color: var(--text-primary); font-weight: 500; }
-        .ar-context-highlight { color: var(--gold-light); font-weight: 500; font-style: italic; }
-
-        /* Entrega */
-        .ar-delivery-list { display: grid; gap: 4px; margin-top: 40px; }
-        .ar-delivery-item {
-          background: var(--bg-card); border: 1px solid var(--border);
-          padding: 36px; display: grid; grid-template-columns: 64px 1fr; gap: 28px;
-          align-items: start; transition: border-color 0.3s, background 0.3s;
-        }
-        .ar-delivery-item:hover { border-color: var(--border-strong); background: #1f1f1f; }
-        .ar-delivery-idx {
-          font-family: 'Playfair Display', serif; font-size: 36px;
-          color: var(--gold); font-style: italic; font-weight: 400; line-height: 1;
-        }
-        .ar-delivery-item h3 {
-          font-family: 'Playfair Display', serif; font-size: 20px;
-          color: var(--text-primary); margin-bottom: 12px; font-weight: 700; line-height: 1.25;
-        }
-        .ar-delivery-item p { color: var(--text-secondary); font-size: 15px; line-height: 1.65; font-weight: 300; }
-
-        /* Objetivos */
-        .ar-obj-list { display: grid; gap: 0; margin-top: 40px; }
-        .ar-obj-row {
-          display: grid; grid-template-columns: 56px 1fr; gap: 24px;
-          padding: 20px 0; border-bottom: 1px solid var(--border); align-items: center;
-        }
-        .ar-obj-row:first-child { border-top: 1px solid var(--border); }
-        .ar-obj-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); font-style: italic; }
-        .ar-obj-text { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.55; }
-
-        /* Anti-venda */
-        .ar-anti-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-        .ar-anti-card {
-          padding: 32px; border-left: 2px solid var(--gold);
-          background: var(--bg-card); border-radius: 0 12px 12px 0;
-          transition: background 0.3s;
-        }
-        .ar-anti-card:hover { background: #1f1f1f; }
-        .ar-anti-card h4 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text-primary); margin-bottom: 12px; font-weight: 700; }
-        .ar-anti-card h4 em { font-style: italic; color: var(--gold); font-weight: 400; }
-        .ar-anti-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; }
-
-        /* Timeline */
-        .ar-timeline { margin-top: 40px; }
-        .ar-timeline-row {
-          display: grid; grid-template-columns: 160px 1fr; gap: 48px;
-          padding: 36px 0; border-bottom: 1px solid var(--border); align-items: start;
-        }
-        .ar-timeline-row:first-child { border-top: 1px solid var(--border); }
-        .ar-timeline-week { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-        .ar-timeline-num {
-          display: block; font-family: 'Playfair Display', serif; font-size: 52px;
-          color: var(--text-primary); font-style: italic; margin-top: 6px;
-          letter-spacing: -2px; font-weight: 700; line-height: 1;
-        }
-        .ar-timeline-content h3 {
-          font-family: 'Playfair Display', serif; font-size: 20px;
-          color: var(--text-primary); margin-bottom: 10px; font-weight: 700;
-        }
-        .ar-timeline-content p { color: var(--text-secondary); font-size: 15px; line-height: 1.65; font-weight: 300; }
-
-        /* Investimento */
-        .ar-invest-box {
-          background: linear-gradient(160deg, #1a1510 0%, var(--bg-card) 100%);
-          border: 1px solid var(--border-strong); border-radius: 20px;
-          padding: 64px 56px; text-align: center; position: relative; overflow: hidden;
-          margin-top: 48px;
-        }
-        .ar-invest-box::before {
-          content: ''; position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: radial-gradient(ellipse at 50% 0%, rgba(200,149,108,0.06) 0%, transparent 60%);
-          pointer-events: none;
-        }
-        .ar-invest-label { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-        .ar-invest-price {
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(56px, 8vw, 84px); color: var(--text-primary);
-          font-weight: 700; line-height: 1; margin-bottom: 16px; letter-spacing: -2px;
-        }
-        .ar-invest-price em { color: var(--gold); font-style: italic; font-weight: 400; font-size: 0.55em; vertical-align: top; margin-top: 12px; display: inline-block; }
-        .ar-invest-sub { font-size: 12px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 48px; }
-        .ar-invest-detail {
-          display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-          max-width: 680px; margin: 0 auto; padding-top: 32px;
-          border-top: 1px solid var(--border); text-align: left;
-        }
-        .ar-invest-detail h5 { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-        .ar-invest-detail p { font-size: 14px; color: var(--text-secondary); line-height: 1.65; font-weight: 300; }
-
-        /* CTA */
-        .ar-cta {
-          text-align: center; padding: 120px 24px;
-          background: radial-gradient(ellipse at 50% 50%, rgba(160,109,66,0.06) 0%, transparent 70%), var(--bg-dark);
-        }
-        .ar-cta-message { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; font-style: italic; color: var(--text-secondary); max-width: 580px; margin: 0 auto 40px; line-height: 1.65; }
-        .ar-cta-button {
-          display: inline-flex; align-items: center; gap: 12px;
-          padding: 18px 48px; background: var(--gradient-gold); color: var(--bg-dark);
-          font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
-          letter-spacing: 1.5px; text-transform: uppercase; border: none; border-radius: 100px;
-          cursor: pointer; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .ar-cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,149,108,0.25); }
-
-        /* Footer */
-        .ar-footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
-
-        /* Animações */
-        @keyframes arFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes arFadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes arPulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-          .ar-about-grid { grid-template-columns: 1fr; }
-          .ar-about-grid > div:first-child { max-width: 200px; margin: 0 auto; }
-          .ar-stats-grid { grid-template-columns: 1fr 1fr; }
-          .ar-mentors-grid { grid-template-columns: repeat(2, 1fr); }
-          .ar-anti-grid { grid-template-columns: 1fr; }
-          .ar-timeline-row { grid-template-columns: 1fr; gap: 12px; }
-          .ar-timeline-num { font-size: 38px; }
-          .ar-delivery-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 24px; }
-          .ar-invest-box { padding: 48px 24px; }
-          .ar-invest-detail { grid-template-columns: 1fr; gap: 24px; }
-          .ar-hero-meta { gap: 16px; }
-        }
-      `}</style>
-
-      <div className="ar-page">
-
-        {/* ========== HERO ========== */}
-        <div className="ar-hero">
-          <div className="ar-hero-badge">
-            <span className="ar-dot" />
-            Proposta Comercial
+        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 items-start">
+          <div className="overflow-hidden border border-pb-grid-strong aspect-square">
+            <img
+              loading="lazy"
+              src={rodrigoPhoto}
+              alt="Rodrigo Albuquerque"
+              className="w-full h-full object-cover"
+              style={{ filter: "grayscale(100%) contrast(1.1) brightness(0.85)" }}
+            />
           </div>
-
-          <h1 className="ar-hero-title">
-            Proposta comercial
-            <br />
-            <em>Areluna</em>
-          </h1>
-
-          <p className="ar-hero-desc">
-            Implementação de camada de inteligência comercial sobre a operação atual da Areluna — análise automatizada de pré-venda e fechamento, dashboard de aderência ao método e ciclo de revisão semanal.
-          </p>
-
-          <div className="ar-hero-meta">
-            <span className="ar-hero-meta-item">
-              <span className="ar-hero-meta-dot" />
-              Proponente: Rodrigo Albuquerque
-            </span>
-            <span className="ar-hero-meta-item">
-              <span className="ar-hero-meta-dot" />
-              Cliente: Instituto Areluna
-            </span>
-            <span className="ar-hero-meta-item">
-              <span className="ar-hero-meta-dot" />
-              BA Consultoria · 2026
-            </span>
+          <div className="space-y-5">
+            <p className="font-body text-pb-ink-soft leading-relaxed">
+              Rodrigo Albuquerque liderou <strong className="text-pb-ink font-medium">R$80 milhões em vendas anuais</strong> antes de fundar a BA Consultoria, onde compilou o aprendizado de mais de 100 empresas atendidas. A BA opera nas quatro frentes que sustentam crescimento de receita: consultoria estratégica, execução de marketing, automação com IA e inteligência comercial.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {stats.map((s) => (
+                <StratCard key={s.num}>
+                  <div className="font-display text-pb-cyan text-2xl leading-none mb-1">{s.num}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{s.label}</div>
+                </StratCard>
+              ))}
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="ar-divider" />
+      {/* ========== REFERÊNCIAS ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 02"
+          label="Referências"
+          headline="Nossos mentores e professores"
+          sub="Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro."
+          align="center"
+        />
 
-        {/* ========== SOBRE ========== */}
-        <section style={{ padding: "100px 24px" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">Sobre</p>
-            <h2 className="ar-section-title">Quem está por trás <em>desta proposta</em></h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {mentors.map((m) => (
+            <StratCard key={m.name} className="text-center p-6">
+              <div className="w-16 h-16 overflow-hidden border border-pb-grid-strong mx-auto mb-4">
+                <img
+                  loading="lazy"
+                  src={m.photo}
+                  alt={m.name}
+                  className="w-full h-full object-cover"
+                  style={{ filter: "grayscale(100%) contrast(1.1) brightness(0.85)" }}
+                />
+              </div>
+              <div className="font-display text-pb-ink text-sm uppercase leading-tight mb-1">{m.name}</div>
+              <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-2">{m.role}</div>
+              <div className="font-body text-pb-ink-muted text-xs leading-relaxed">{m.bio}</div>
+            </StratCard>
+          ))}
+        </div>
+      </div>
 
-            <div className="ar-about-grid">
-              <div className="ar-about-photo">
-                <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+      {/* ========== A ENTREGA ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 03"
+          label="A Entrega"
+          headline={<>Quatro camadas de visibilidade<br />sobre a operação atual</>}
+          sub="Atlas Insight não é ferramenta genérica de análise de call. É um sistema calibrado no método comercial específico da Areluna."
+        />
+
+        <div className="space-y-4">
+          {deliveryItems.map((item) => (
+            <div key={item.idx} className="border border-pb-grid-strong bg-pb-void-card p-6 flex gap-6 items-start">
+              <div className="font-display text-pb-cyan text-4xl leading-none shrink-0">{item.idx}</div>
+              <div>
+                <h3 className="font-display uppercase text-pb-ink text-xl leading-tight mb-3">{item.title}</h3>
+                <p className="font-body text-pb-ink-soft leading-relaxed text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ========== OBJETIVO ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 04"
+          label="Objetivo"
+          headline={<>O que este projeto<br />vai resolver</>}
+          sub="Sete frentes cobertas pela implementação, do diagnóstico técnico ao ciclo de revisão semanal."
+        />
+
+        <div className="space-y-0">
+          {objectives.map((text, i) => (
+            <div key={i} className="flex gap-6 items-center py-5 border-b border-pb-grid-strong first:border-t first:border-pb-grid-strong">
+              <div className="font-display text-pb-cyan text-xl leading-none shrink-0 w-10">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div className="font-body text-pb-ink-soft leading-relaxed text-sm">{text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ========== PARA QUE FIQUE CLARO ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 05"
+          label="Para Que Fique Claro"
+          headline={<>O que Atlas Insight<br />não é.</>}
+          sub="A clareza sobre o que o produto não é evita expectativa errada e garante que o resultado final seja o esperado."
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {antiCards.map((card) => (
+            <StratCard key={card.title}>
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">{card.title}</p>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{card.desc}</p>
+            </StratCard>
+          ))}
+        </div>
+      </div>
+
+      {/* ========== A IMPLEMENTAÇÃO ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 06"
+          label="A Implementação"
+          headline={<>Quatro semanas,<br />escopo travado</>}
+          sub="Cronograma fechado, sem extensões e sem evolução de escopo durante a execução. Discovery acontece no início, ajuste fino na calibração."
+        />
+
+        <div className="space-y-0">
+          {timeline.map((row) => (
+            <div key={row.week} className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 py-9 border-b border-pb-grid-strong first:border-t first:border-pb-grid-strong items-start">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-1">Semana</p>
+                <span className="font-display text-pb-ink text-5xl leading-none">{row.week}</span>
               </div>
               <div>
-                <p className="ar-about-text">
-                  Rodrigo Albuquerque liderou <strong style={{ color: "#f0ebe3", fontWeight: 500 }}>R$80 milhões em vendas anuais</strong> antes de fundar a BA Consultoria, onde compilou o aprendizado de mais de 100 empresas atendidas. A BA opera nas quatro frentes que sustentam crescimento de receita: consultoria estratégica, execução de marketing, automação com IA e inteligência comercial.
-                </p>
-                <div className="ar-stats-grid">
-                  {stats.map((s) => (
-                    <div key={s.num} className="ar-stat-card">
-                      <div className="ar-stat-num">{s.num}</div>
-                      <div className="ar-stat-label">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
+                <h3 className="font-display uppercase text-pb-ink text-xl leading-tight mb-3">{row.title}</h3>
+                <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{row.desc}</p>
               </div>
             </div>
-          </div>
-        </section>
-
-        <div className="ar-divider" />
-
-        {/* ========== REFERÊNCIAS ========== */}
-        <section style={{ padding: "100px 24px", background: "var(--bg-section)" }}>
-          <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 24px" }}>
-            <p className="ar-section-label" style={{ display: "block", textAlign: "center" }}>Referências</p>
-            <h2 className="ar-section-title" style={{ textAlign: "center" }}>Nossos mentores <em>e professores</em></h2>
-            <p className="ar-section-subtitle" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-              Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
-            </p>
-            <div className="ar-mentors-grid">
-              {mentors.map((m) => (
-                <div key={m.name} className="ar-mentor-card">
-                  <div className="ar-mentor-photo">
-                    <img loading="lazy" src={m.photo} alt={m.name} />
-                  </div>
-                  <h3 className="ar-mentor-name">{m.name}</h3>
-                  <p className="ar-mentor-role">{m.role}</p>
-                  <p className="ar-mentor-bio">{m.bio}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ========== A ENTREGA ========== */}
-        <section style={{ padding: "100px 24px", background: "var(--bg-section)" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">A Entrega</p>
-            <h2 className="ar-section-title">Quatro camadas de visibilidade <em>sobre a operação atual</em></h2>
-            <p className="ar-section-subtitle">
-              Atlas Insight não é ferramenta genérica de análise de call. É um sistema calibrado no método comercial específico da Areluna.
-            </p>
-
-            <div className="ar-delivery-list">
-              {deliveryItems.map((item) => (
-                <div key={item.idx} className="ar-delivery-item">
-                  <div className="ar-delivery-idx">{item.idx}</div>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="ar-divider" />
-
-        {/* ========== OBJETIVO ========== */}
-        <section style={{ padding: "100px 24px" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">Objetivo</p>
-            <h2 className="ar-section-title">O que este projeto <em>vai resolver</em></h2>
-            <p className="ar-section-subtitle">
-              Sete frentes cobertas pela implementação, do diagnóstico técnico ao ciclo de revisão semanal.
-            </p>
-
-            <div className="ar-obj-list">
-              {objectives.map((text, i) => (
-                <div key={i} className="ar-obj-row">
-                  <div className="ar-obj-num">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="ar-obj-text">{text}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ========== ANTI-VENDA ========== */}
-        <section style={{ padding: "100px 24px", background: "var(--bg-section)" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">Para Que Fique Claro</p>
-            <h2 className="ar-section-title">O que Atlas Insight <em>não é.</em></h2>
-            <p className="ar-section-subtitle">
-              A clareza sobre o que o produto não é evita expectativa errada e garante que o resultado final seja o esperado.
-            </p>
-
-            <div className="ar-anti-grid">
-              {antiCards.map((card) => (
-                <div key={card.highlight} className="ar-anti-card">
-                  <h4>{card.title} <em>{card.highlight}</em></h4>
-                  <p>{card.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="ar-divider" />
-
-        {/* ========== TIMELINE ========== */}
-        <section style={{ padding: "100px 24px" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">A Implementação</p>
-            <h2 className="ar-section-title">Quatro semanas, escopo <em>travado</em></h2>
-            <p className="ar-section-subtitle">
-              Cronograma fechado, sem extensões e sem evolução de escopo durante a execução. Discovery acontece no início, ajuste fino na calibração.
-            </p>
-
-            <div className="ar-timeline">
-              {timeline.map((row) => (
-                <div key={row.week} className="ar-timeline-row">
-                  <div>
-                    <span className="ar-timeline-week">Semana</span>
-                    <span className="ar-timeline-num">{row.week}</span>
-                  </div>
-                  <div className="ar-timeline-content">
-                    <h3>{row.title}</h3>
-                    <p>{row.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ========== INVESTIMENTO ========== */}
-        <section style={{ padding: "100px 24px", background: "var(--bg-section)" }}>
-          <div className="ar-container">
-            <p className="ar-section-label">Investimento</p>
-            <h2 className="ar-section-title">Projeto fechado, escopo <em>travado.</em></h2>
-
-            <div className="ar-invest-box">
-              <div className="ar-invest-label">Implementação Completa</div>
-              <div className="ar-invest-price">
-                <em>R$</em> 12.000
-              </div>
-              <div className="ar-invest-sub">4 Semanas · Pagamento Único · Suporte 30 Dias</div>
-
-              <div className="ar-invest-detail">
-                <div>
-                  <h5>Inclui</h5>
-                  <p>Implementação completa, codificação do método, integração com as fontes de áudio, calibração, treinamento operacional da equipe e 30 dias de suporte pós-go-live para ajuste fino de critérios.</p>
-                </div>
-                <div>
-                  <h5>Não inclui</h5>
-                  <p>Dispositivos de captura de áudio das reuniões presenciais. Recomendação técnica é fornecida durante a implementação — aquisição é por conta do cliente.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ========== CTA ========== */}
-        <div className="ar-cta">
-          <p className="ar-section-label">Próximo Passo</p>
-          <h2 className="ar-section-title" style={{ maxWidth: 700, margin: "0 auto 24px" }}>
-            Alinhar implementação <em>e cronograma</em>
-          </h2>
-          <p className="ar-cta-message">
-            Próximo passo é uma reunião de 30 minutos para revisar a proposta, ajustar pontos específicos da operação da Areluna e definir data de início.
-          </p>
-          <a
-            href="https://wa.me/5511999718595"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ar-cta-button"
-          >
-            Agendar Reunião →
-          </a>
+          ))}
         </div>
-
-        {/* ========== FOOTER ========== */}
-        <div className="ar-footer">
-          BA Consultoria © 2026 — Proposta válida por 7 dias · Proposta confidencial
-        </div>
-
       </div>
-    </>
+
+      {/* ========== INVESTIMENTO ========== */}
+      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+        <SectionHeader
+          idx="// 07"
+          label="Investimento"
+          headline={<>Projeto fechado,<br />escopo travado.</>}
+        />
+
+        <StratCard brackets className="text-center space-y-6">
+          <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Implementação Completa</p>
+          <div>
+            <span className="font-display text-[clamp(56px,8vw,84px)] text-pb-ink leading-none">R$ 12.000</span>
+          </div>
+          <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">4 Semanas · Pagamento Único · Suporte 30 Dias</p>
+
+          <div className="border-t border-pb-grid-strong pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">Inclui</p>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">Implementação completa, codificação do método, integração com as fontes de áudio, calibração, treinamento operacional da equipe e 30 dias de suporte pós-go-live para ajuste fino de critérios.</p>
+            </div>
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">Não inclui</p>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">Dispositivos de captura de áudio das reuniões presenciais. Recomendação técnica é fornecida durante a implementação — aquisição é por conta do cliente.</p>
+            </div>
+          </div>
+        </StratCard>
+      </div>
+
+      {/* ========== CTA ========== */}
+      <div className="border-t border-pb-grid-strong py-16 text-center space-y-8">
+        <SectionHeader
+          idx="// 08"
+          label="Próximo Passo"
+          headline={<>Alinhar implementação<br />e cronograma</>}
+          align="center"
+        />
+        <p className="font-body text-pb-ink-soft leading-relaxed max-w-xl mx-auto">
+          Próximo passo é uma reunião de 30 minutos para revisar a proposta, ajustar pontos específicos da operação da Areluna e definir data de início.
+        </p>
+        <a
+          href="https://wa.me/5511999718595"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary inline-flex items-center gap-2"
+        >
+          Agendar Reunião →
+        </a>
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
+          BA Consultoria © 2026 — Proposta válida por 7 dias · Proposta confidencial
+        </p>
+      </div>
+
+    </PropostaLayout>
   );
 };
 
