@@ -5,17 +5,75 @@ import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import bancoPromptsImage from "@/assets/banco-prompts-laptop.png";
 import bancoPromptsMobileImage from "@/assets/banco-prompts-mobile.png";
 
-const HudCorners = ({ color = "var(--ic-accent-cyan)", size = 14, inset = 8 }: { color?: string; size?: number; inset?: number }) => (
+/* ─── HUD Corner Brackets ─── */
+const HudCorners = ({
+  color = "#20DDEB",
+  size = 14,
+  inset = 8,
+}: {
+  color?: string;
+  size?: number;
+  inset?: number;
+}) => (
   <>
-    <span aria-hidden style={{ position: "absolute", top: inset, left: inset, width: size, height: size, borderTop: `1px solid ${color}`, borderLeft: `1px solid ${color}`, pointerEvents: "none" }} />
-    <span aria-hidden style={{ position: "absolute", top: inset, right: inset, width: size, height: size, borderTop: `1px solid ${color}`, borderRight: `1px solid ${color}`, pointerEvents: "none" }} />
-    <span aria-hidden style={{ position: "absolute", bottom: inset, left: inset, width: size, height: size, borderBottom: `1px solid ${color}`, borderLeft: `1px solid ${color}`, pointerEvents: "none" }} />
-    <span aria-hidden style={{ position: "absolute", bottom: inset, right: inset, width: size, height: size, borderBottom: `1px solid ${color}`, borderRight: `1px solid ${color}`, pointerEvents: "none" }} />
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        top: inset,
+        left: inset,
+        width: size,
+        height: size,
+        borderTop: `1px solid ${color}`,
+        borderLeft: `1px solid ${color}`,
+        pointerEvents: "none",
+      }}
+    />
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        top: inset,
+        right: inset,
+        width: size,
+        height: size,
+        borderTop: `1px solid ${color}`,
+        borderRight: `1px solid ${color}`,
+        pointerEvents: "none",
+      }}
+    />
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        bottom: inset,
+        left: inset,
+        width: size,
+        height: size,
+        borderBottom: `1px solid ${color}`,
+        borderLeft: `1px solid ${color}`,
+        pointerEvents: "none",
+      }}
+    />
+    <span
+      aria-hidden
+      style={{
+        position: "absolute",
+        bottom: inset,
+        right: inset,
+        width: size,
+        height: size,
+        borderBottom: `1px solid ${color}`,
+        borderRight: `1px solid ${color}`,
+        pointerEvents: "none",
+      }}
+    />
   </>
 );
 
+/* ─── Coordinate label ─── */
 const Coord = ({ children }: { children: React.ReactNode }) => (
-  <div className="ic-mono" style={{ fontSize: 10, color: "var(--ic-text-muted)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 18 }}>
+  <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-[18px]">
     {children}
   </div>
 );
@@ -43,11 +101,16 @@ const ImersaoClaudeV3 = () => {
   useEffect(() => {
     if (chartScriptLoaded.current) return;
     const script = document.createElement("script");
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";
+    script.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";
     script.async = true;
-    script.onload = () => { chartScriptLoaded.current = true; };
+    script.onload = () => {
+      chartScriptLoaded.current = true;
+    };
     document.head.appendChild(script);
-    return () => { document.head.removeChild(script); };
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
   useEffect(() => {
@@ -239,45 +302,25 @@ const ImersaoClaudeV3 = () => {
     { q: "E se eu não gostar?", a: "Você tem 7 dias de garantia incondicional. Se sentir que não valeu, basta pedir o reembolso — sem perguntas, sem burocracia, sem ressentimento. O risco é zero." },
   ];
 
-  // Grain SVG data URI — feTurbulence noise for analog texture
-  const grainDataUri = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.18'/></svg>`;
-
   return (
     <div className="ic-page">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap');
         .ic-page {
-          font-family: 'Inter Tight', 'Inter', sans-serif;
-          color: var(--ic-text-primary);
+          font-family: 'Fraunces', Georgia, serif;
+          color: hsl(36 30% 92%);
           line-height: 1.65;
           overflow-x: hidden;
           position: relative;
-          --ic-bg-main: #05090B;
-          --ic-bg-deep: #020405;
-          --ic-bg-section: #0B1114;
-          --ic-bg-card: #0F1518;
-          --ic-bg-texture: #11171A;
-          --ic-text-primary: #F2EDE4;
-          --ic-text-secondary: #C8C0B2;
-          --ic-text-muted: #7D827D;
-          --ic-accent-cyan: #20DDEB;
-          --ic-accent-cyan-soft: #38F3FF;
-          --ic-accent-cyan-glow: rgba(32,221,235,0.45);
-          --ic-accent-red: #E44935;
-          --ic-grid-line: rgba(255,255,255,0.05);
-          --ic-grid-strong: rgba(255,255,255,0.10);
-          --ic-border-subtle: rgba(255,255,255,0.06);
-          --ic-border-accent: rgba(32,221,235,0.20);
-          background: var(--ic-bg-main);
+          background: hsl(204 33% 3%);
         }
         .ic-page * { box-sizing: border-box; }
-        /* ── GLOBAL OVERLAYS ── */
         .ic-page::before {
           content: ''; position: fixed; inset: 0;
           pointer-events: none; z-index: 1;
           background-image:
-            linear-gradient(var(--ic-grid-line) 1px, transparent 1px),
-            linear-gradient(90deg, var(--ic-grid-line) 1px, transparent 1px);
+            linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
           background-size: 80px 80px;
         }
         .ic-page::after {
@@ -285,80 +328,55 @@ const ImersaoClaudeV3 = () => {
           pointer-events: none; z-index: 2;
           background:
             radial-gradient(ellipse at 50% 30%, transparent 30%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0.78) 100%),
-            url("${grainDataUri}");
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0 0.88 0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.18'/></svg>");
           background-repeat: no-repeat, repeat;
         }
         .ic-page > * { position: relative; z-index: 3; }
-        /* ── TYPOGRAPHY ── */
         .ic-page h1, .ic-page h2, .ic-page h3, .ic-page h4 {
-          font-family: 'Bebas Neue', 'Anton', 'Oswald', sans-serif;
-          font-weight: 400;
-          text-transform: uppercase;
-          letter-spacing: 0.02em;
-          line-height: 0.95;
-          color: var(--ic-text-primary);
+          font-family: 'Bebas Neue', 'Oswald', 'Anton', sans-serif;
+          font-weight: 400; text-transform: uppercase;
+          letter-spacing: 0.02em; line-height: 0.95;
+          color: hsl(36 30% 92%);
         }
         .ic-page h1 { font-size: clamp(2.6rem, 7vw, 5rem); }
         .ic-page h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
         .ic-page h3 { font-size: clamp(1.2rem, 3vw, 1.5rem); }
-        .ic-page strong { color: var(--ic-text-primary); font-weight: 700; }
+        .ic-page strong { color: hsl(36 30% 92%); font-weight: 700; }
         .ic-container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
         .ic-section { padding: 96px 0; position: relative; }
-        /* ── LIGHT VARIANT — papel quente ── */
-        .ic-section--light {
-          background: #EFECE3;
-          --ic-text-primary: #0A0E10;
-          --ic-text-secondary: #3A3F3A;
-          --ic-text-muted: #6A7068;
-          --ic-bg-card: #FFFCF5;
-          --ic-border-subtle: #D8D2C5;
-          --ic-border-accent: rgba(15,79,88,0.30);
-        }
-        .ic-section--light h1,
-        .ic-section--light h2,
-        .ic-section--light h3,
-        .ic-section--light h4 { color: #0A0E10; }
+        .ic-section--light { background: #EFECE3; }
+        .ic-section--light h1, .ic-section--light h2,
+        .ic-section--light h3, .ic-section--light h4 { color: #0A0E10; }
         .ic-section--light .ic-text-accent { color: #0F4F58; }
-        /* ── UTILITY CLASSES ── */
-        .ic-mono { font-family: 'IBM Plex Mono', 'Space Mono', monospace; }
-        .ic-text-accent { color: var(--ic-accent-cyan); }
-        .ic-text-red { color: var(--ic-accent-red); }
         .ic-highlight-cyan {
-          color: var(--ic-accent-cyan);
-          text-shadow: 0 0 18px var(--ic-accent-cyan-glow);
+          color: hsl(184 84% 52%);
+          text-shadow: 0 0 18px rgba(32,221,235,0.45);
         }
         .ic-period-red {
-          color: var(--ic-accent-red);
+          color: hsl(7 75% 55%);
           text-shadow: 0 0 12px rgba(228,73,53,0.55);
         }
         .ic-divider {
           height: 1px;
-          background: linear-gradient(90deg, transparent, var(--ic-border-accent), transparent);
+          background: linear-gradient(90deg, transparent, rgba(32,221,235,0.20), transparent);
           margin: 0 auto; max-width: 600px;
         }
-        /* ── CTA BUTTON ── */
         .ic-cta-btn {
           display: inline-flex; flex-direction: column; align-items: center;
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif;
           font-weight: 400; font-size: 1.4rem;
           letter-spacing: 0.10em; text-transform: uppercase;
-          text-decoration: none; color: var(--ic-bg-deep);
-          padding: 22px 56px; border: none; border-radius: 0;
+          text-decoration: none; color: hsl(210 33% 1%);
+          padding: 22px 56px; border: none;
           cursor: pointer; position: relative; overflow: hidden;
-          background: var(--ic-accent-cyan);
-          box-shadow:
-            0 0 0 1px var(--ic-accent-cyan-soft) inset,
-            0 0 40px var(--ic-accent-cyan-glow),
-            0 8px 32px rgba(0,0,0,0.6);
+          background: hsl(184 84% 52%);
+          box-shadow: 0 0 0 1px hsl(185 100% 61%) inset, 0 0 40px rgba(32,221,235,0.45), 0 8px 32px rgba(0,0,0,0.6);
           transition: all 0.25s ease;
         }
         .ic-cta-btn:hover {
           transform: translateY(-2px);
-          background: var(--ic-accent-cyan-soft);
-          box-shadow:
-            0 0 0 1px #fff inset,
-            0 0 60px rgba(56,243,255,0.65),
-            0 12px 40px rgba(0,0,0,0.6);
+          background: hsl(185 100% 61%);
+          box-shadow: 0 0 0 1px #fff inset, 0 0 60px rgba(56,243,255,0.65), 0 12px 40px rgba(0,0,0,0.6);
         }
         .ic-cta-btn::before {
           content: ''; position: absolute; top: 0; left: -100%;
@@ -371,50 +389,37 @@ const ImersaoClaudeV3 = () => {
           display: block; font-family: 'IBM Plex Mono', monospace;
           font-weight: 400; font-size: 0.65rem;
           letter-spacing: 0.18em; text-transform: uppercase;
-          opacity: 0.85; margin-top: 6px; color: var(--ic-bg-deep);
+          opacity: 0.85; margin-top: 6px; color: hsl(210 33% 1%);
         }
-        /* ── HERO ── */
         .ic-hero {
           min-height: 100vh; min-height: 100svh;
           display: flex; align-items: center; justify-content: center;
-          text-align: center; padding: 120px 24px 80px;
-          position: relative;
+          text-align: center; padding: 120px 24px 80px; position: relative;
         }
-        .ic-hero__route-svg {
-          position: absolute; inset: 0; width: 100%; height: 100%;
-          pointer-events: none; z-index: 0;
-        }
+        .ic-hero__route-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
         .ic-hero__content { position: relative; z-index: 2; max-width: 920px; }
         .ic-hero__badge {
           display: inline-flex; align-items: center; gap: 8px;
           font-family: 'IBM Plex Mono', monospace;
           font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--ic-accent-cyan); margin-bottom: 28px;
-          padding: 6px 14px;
-          border-top: 1px solid var(--ic-accent-cyan);
-          border-bottom: 1px solid var(--ic-accent-cyan);
+          color: hsl(184 84% 52%); margin-bottom: 28px; padding: 6px 14px;
+          border-top: 1px solid hsl(184 84% 52%); border-bottom: 1px solid hsl(184 84% 52%);
           opacity: 0; animation: ic-fadeUp 0.7s 0.3s forwards;
         }
         .ic-hero__badge-dot {
-          width: 6px; height: 6px; background: var(--ic-accent-red);
+          width: 6px; height: 6px; background: hsl(7 75% 55%);
           border-radius: 50%; animation: ic-pulse 2s infinite;
         }
         .ic-hero__title {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: clamp(2.6rem, 8vw, 5.6rem);
-          line-height: 0.92;
-          letter-spacing: 0.01em;
-          color: var(--ic-text-primary);
-          margin-bottom: 32px;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif;
+          font-size: clamp(2.6rem, 8vw, 5.6rem); line-height: 0.92;
+          letter-spacing: 0.01em; color: hsl(36 30% 92%); margin-bottom: 32px;
           opacity: 0; animation: ic-fadeUp 0.8s 0.5s forwards;
         }
         .ic-hero__sub {
-          font-family: 'Inter Tight', sans-serif;
-          font-size: clamp(0.95rem, 2vw, 1.15rem);
-          font-weight: 300;
-          color: var(--ic-text-secondary); max-width: 640px;
-          margin: 0 auto 44px;
-          line-height: 1.6;
+          font-family: 'Fraunces', Georgia, serif; font-size: clamp(0.95rem, 2vw, 1.15rem);
+          font-weight: 300; color: hsl(36 19% 74%); max-width: 640px;
+          margin: 0 auto 44px; line-height: 1.6;
           opacity: 0; animation: ic-fadeUp 0.8s 0.7s forwards;
         }
         .ic-hero__cta-wrap { opacity: 0; animation: ic-fadeUp 0.8s 0.9s forwards; }
@@ -424,360 +429,220 @@ const ImersaoClaudeV3 = () => {
           opacity: 0; animation: ic-fadeUp 0.8s 1.1s forwards;
         }
         .ic-hero__meta-item {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.72rem; color: var(--ic-text-muted);
-          letter-spacing: 0.16em; text-transform: uppercase;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+          color: hsl(109 2% 50%); letter-spacing: 0.16em; text-transform: uppercase;
           display: flex; align-items: center; gap: 8px;
         }
         .ic-hero__meta-item .ic-dot {
           width: 5px; height: 5px; border-radius: 50%;
-          background: var(--ic-accent-cyan);
-          box-shadow: 0 0 8px var(--ic-accent-cyan-glow);
+          background: hsl(184 84% 52%); box-shadow: 0 0 8px rgba(32,221,235,0.45);
         }
-        @keyframes ic-fadeUp {
-          from { opacity:0; transform:translateY(20px); }
-          to { opacity:1; transform:translateY(0); }
-        }
+        @keyframes ic-fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
         @keyframes ic-fadeIn { from { opacity:0; } to { opacity:1; } }
         @keyframes ic-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.35;transform:scale(.7);} }
-        /* ── URGENCY BAR ── */
         .ic-urgency-bar {
           background: rgba(228,73,53,0.05);
-          border-top: 1px solid rgba(228,73,53,0.35);
-          border-bottom: 1px solid rgba(228,73,53,0.35);
+          border-top: 1px solid rgba(228,73,53,0.35); border-bottom: 1px solid rgba(228,73,53,0.35);
           text-align: center; padding: 14px 24px;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; color: var(--ic-accent-red);
-          letter-spacing: 0.18em; text-transform: uppercase;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+          color: hsl(7 75% 55%); letter-spacing: 0.18em; text-transform: uppercase;
         }
-        /* ── PROBLEM CARDS ── */
         .ic-problem-grid {
           display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           gap: 16px; margin: 48px 0;
         }
         .ic-problem-card {
-          background: var(--ic-bg-card);
-          border: 1px solid var(--ic-border-subtle);
-          padding: 32px 24px; text-align: center;
-          position: relative;
+          background: hsl(204 19% 6%); border: 1px solid rgba(255,255,255,0.06);
+          padding: 32px 24px; text-align: center; position: relative;
           transition: border-color 0.3s, background 0.3s;
         }
-        .ic-problem-card:hover {
-          border-color: var(--ic-border-accent);
-          background: var(--ic-bg-texture);
-        }
+        .ic-problem-card:hover { border-color: rgba(32,221,235,0.20); background: hsl(207 14% 9%); }
         .ic-problem-card__stat {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: 3.4rem; font-weight: 400;
-          color: var(--ic-accent-cyan); line-height: 1; margin-bottom: 12px;
-          letter-spacing: 0.02em;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-size: 3.4rem; font-weight: 400;
+          color: hsl(184 84% 52%); line-height: 1; margin-bottom: 12px; letter-spacing: 0.02em;
         }
-        .ic-problem-card__stat--red { color: var(--ic-accent-red); }
+        .ic-problem-card__stat--red { color: hsl(7 75% 55%); }
         .ic-problem-card__label {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.75rem; color: var(--ic-text-muted);
-          line-height: 1.5; letter-spacing: 0.08em;
-          text-transform: uppercase;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+          color: hsl(109 2% 50%); line-height: 1.5; letter-spacing: 0.08em; text-transform: uppercase;
         }
-        /* ── AULA CARDS ── */
         .ic-aula-card {
-          background: var(--ic-bg-card);
-          border: 1px solid var(--ic-border-subtle);
-          border-left: 1px solid var(--ic-accent-cyan);
-          padding: 36px; margin-bottom: 20px;
-          display: flex; gap: 28px; align-items: flex-start;
-          position: relative;
+          background: hsl(204 19% 6%); border: 1px solid rgba(255,255,255,0.06);
+          border-left: 1px solid hsl(184 84% 52%); padding: 36px; margin-bottom: 20px;
+          display: flex; gap: 28px; align-items: flex-start; position: relative;
           transition: border-color 0.3s, background 0.3s, transform 0.3s;
         }
         .ic-aula-card:hover {
-          background: var(--ic-bg-texture);
-          border-color: var(--ic-border-accent);
-          border-left-color: var(--ic-accent-cyan-soft);
-          transform: translateX(4px);
+          background: hsl(207 14% 9%); border-color: rgba(32,221,235,0.20);
+          border-left-color: hsl(185 100% 61%); transform: translateX(4px);
         }
         .ic-aula-card__num {
-          flex-shrink: 0;
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: 4.5rem; line-height: 0.9;
-          color: var(--ic-accent-cyan);
-          text-shadow: 0 0 24px var(--ic-accent-cyan-glow);
-          letter-spacing: 0.02em;
+          flex-shrink: 0; font-family: 'Bebas Neue', 'Oswald', sans-serif;
+          font-size: 4.5rem; line-height: 0.9; color: hsl(184 84% 52%);
+          text-shadow: 0 0 24px rgba(32,221,235,0.45); letter-spacing: 0.02em;
         }
         .ic-aula-card__tag {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.7rem; letter-spacing: 0.20em;
-          text-transform: uppercase;
-          color: var(--ic-accent-cyan); margin-bottom: 10px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem;
+          letter-spacing: 0.20em; text-transform: uppercase;
+          color: hsl(184 84% 52%); margin-bottom: 10px;
         }
         .ic-aula-card__title {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-weight: 400; font-size: 1.55rem;
-          line-height: 1.05; letter-spacing: 0.01em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
-          color: var(--ic-text-primary);
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-weight: 400; font-size: 1.55rem;
+          line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase;
+          margin-bottom: 14px; color: hsl(36 30% 92%);
         }
         .ic-aula-card__desc {
-          font-size: 0.92rem; color: var(--ic-text-secondary);
-          line-height: 1.65; font-weight: 300;
+          font-family: 'Fraunces', Georgia, serif; font-size: 0.92rem;
+          color: hsl(36 19% 74%); line-height: 1.65; font-weight: 300;
         }
-        /* ── AUTHOR ── */
         .ic-author {
           display: flex; gap: 32px; align-items: flex-start;
-          padding: 40px; background: var(--ic-bg-card);
-          border: 1px solid var(--ic-border-subtle);
-          margin: 48px auto 0; max-width: 720px;
-          position: relative;
+          padding: 40px; background: hsl(204 19% 6%); border: 1px solid rgba(255,255,255,0.06);
+          margin: 48px auto 0; max-width: 720px; position: relative;
         }
         .ic-author__avatar {
-          flex-shrink: 0; width: 96px; height: 96px;
-          border-radius: 0;
-          object-fit: cover;
-          border: 1px solid var(--ic-border-accent);
-          position: relative;
+          flex-shrink: 0; width: 96px; height: 96px; object-fit: cover;
+          border: 1px solid rgba(32,221,235,0.20); position: relative;
         }
         .ic-author__name {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-weight: 400; font-size: 1.6rem;
-          letter-spacing: 0.02em; text-transform: uppercase;
-          margin-bottom: 6px;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-weight: 400; font-size: 1.6rem;
+          letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 6px;
         }
         .ic-author__role {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.72rem; color: var(--ic-accent-cyan);
-          letter-spacing: 0.16em; text-transform: uppercase;
-          margin-bottom: 16px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem;
+          color: hsl(184 84% 52%); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px;
         }
         .ic-author__text {
-          font-size: 0.92rem; color: var(--ic-text-secondary);
-          line-height: 1.7; font-weight: 300;
+          font-family: 'Fraunces', Georgia, serif; font-size: 0.92rem;
+          color: hsl(36 19% 74%); line-height: 1.7; font-weight: 300;
         }
-        /* ── BLOCKQUOTE ── */
         .ic-page blockquote {
-          border-left: 2px solid var(--ic-accent-cyan);
-          padding: 24px 32px; margin: 40px 0;
+          border-left: 2px solid hsl(184 84% 52%); padding: 24px 32px; margin: 40px 0;
           background: rgba(32,221,235,0.03);
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-          font-weight: 400;
-          letter-spacing: 0.01em;
-          line-height: 1.2;
-          text-transform: uppercase;
-          color: var(--ic-text-primary);
-          font-style: normal;
-          position: relative;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif;
+          font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 400;
+          letter-spacing: 0.01em; line-height: 1.2; text-transform: uppercase;
+          color: hsl(36 30% 92%); font-style: normal; position: relative;
         }
-        /* ── CHECK LIST ── */
         .ic-check-list { list-style: none; margin: 32px 0; padding: 0; }
         .ic-check-list li {
-          padding: 14px 0 14px 32px; position: relative;
-          color: var(--ic-text-secondary);
-          font-size: 0.95rem; font-weight: 300;
-          line-height: 1.5;
-          border-bottom: 1px solid var(--ic-border-subtle);
+          padding: 14px 0 14px 32px; position: relative; color: hsl(36 19% 74%);
+          font-family: 'Fraunces', Georgia, serif; font-size: 0.95rem; font-weight: 300;
+          line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .ic-check-list li:last-child { border-bottom: none; }
         .ic-check-list li::before {
-          content: '>';
-          font-family: 'IBM Plex Mono', monospace;
-          position: absolute; left: 0; top: 14px;
-          color: var(--ic-accent-cyan);
-          font-weight: 500;
+          content: '>'; font-family: 'IBM Plex Mono', monospace;
+          position: absolute; left: 0; top: 14px; color: hsl(184 84% 52%); font-weight: 500;
         }
-        /* ── MID CAPTURE ── */
         .ic-mid-capture {
-          background: var(--ic-bg-section);
-          border-top: 1px solid var(--ic-border-accent);
-          border-bottom: 1px solid var(--ic-border-accent);
-          padding: 80px 24px; text-align: center;
-          position: relative;
+          background: hsl(204 19% 6%);
+          border-top: 1px solid rgba(32,221,235,0.20); border-bottom: 1px solid rgba(32,221,235,0.20);
+          padding: 80px 24px; text-align: center; position: relative;
         }
-        /* ── CHART TABS ── */
         .ic-chart-tab {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.72rem; padding: 10px 18px;
-          letter-spacing: 0.16em; text-transform: uppercase;
-          border: 1px solid var(--ic-border-subtle);
-          background: transparent; color: var(--ic-text-muted);
-          cursor: pointer; transition: all 0.25s;
-          border-radius: 0;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; padding: 10px 18px;
+          letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.06);
+          background: transparent; color: hsl(109 2% 50%); cursor: pointer; transition: all 0.25s;
         }
-        .ic-chart-tab:hover {
-          border-color: var(--ic-border-accent);
-          color: var(--ic-text-secondary);
-        }
-        .ic-chart-tab.active {
-          background: rgba(32,221,235,0.08);
-          border-color: var(--ic-accent-cyan);
-          color: var(--ic-accent-cyan);
-        }
-        /* ── REVOLUTION BARS ── */
+        .ic-chart-tab:hover { border-color: rgba(32,221,235,0.20); color: hsl(36 19% 74%); }
+        .ic-chart-tab.active { background: rgba(32,221,235,0.08); border-color: hsl(184 84% 52%); color: hsl(184 84% 52%); }
         .rev-timeline-visual { display: flex; flex-direction: column; gap: 22px; }
         .rev-item { opacity: 0; animation: ic-revSlideIn 0.7s var(--delay, 0s) forwards; }
-        @keyframes ic-revSlideIn {
-          from { opacity: 0; transform: translateX(-24px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
+        @keyframes ic-revSlideIn { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
         .rev-bar {
-          height: 4px; width: var(--width, 100%);
-          background: var(--color, var(--ic-accent-cyan));
-          margin-bottom: 10px; min-width: 6px; position: relative;
-          transition: width 0.8s ease;
+          height: 4px; width: var(--width, 100%); background: var(--color, hsl(184 84% 52%));
+          margin-bottom: 10px; min-width: 6px; position: relative; transition: width 0.8s ease;
         }
         .rev-bar::after {
-          content: ''; position: absolute; right: 0; top: -3px;
-          width: 10px; height: 10px;
-          background: var(--color, var(--ic-accent-cyan));
-          box-shadow: 0 0 14px var(--color, var(--ic-accent-cyan));
+          content: ''; position: absolute; right: 0; top: -3px; width: 10px; height: 10px;
+          background: var(--color, hsl(184 84% 52%)); box-shadow: 0 0 14px var(--color, hsl(184 84% 52%));
         }
         .rev-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; }
         .rev-label {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-weight: 400; font-size: 1.15rem;
-          letter-spacing: 0.02em; text-transform: uppercase;
-          color: var(--ic-text-primary);
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-weight: 400; font-size: 1.15rem;
+          letter-spacing: 0.02em; text-transform: uppercase; color: hsl(36 30% 92%);
         }
-        .rev-date {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.7rem; color: var(--ic-text-muted);
-          letter-spacing: 0.10em;
-        }
-        .rev-span {
-          font-size: 0.85rem; color: var(--ic-text-secondary);
-          font-weight: 300;
-        }
-        .rev-span--alert { color: var(--ic-accent-red); font-weight: 500; }
-        /* ── PRICE BOX ── */
+        .rev-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: hsl(109 2% 50%); letter-spacing: 0.10em; }
+        .rev-span { font-family: 'Fraunces', Georgia, serif; font-size: 0.85rem; color: hsl(36 19% 74%); font-weight: 300; }
+        .rev-span--alert { color: hsl(7 75% 55%); font-weight: 500; }
         .ic-price-box {
-          text-align: center; background: var(--ic-bg-card);
-          border: 1px solid var(--ic-border-accent);
-          padding: 56px 36px; margin: 48px auto; max-width: 540px;
-          position: relative;
+          text-align: center; background: hsl(204 19% 6%); border: 1px solid rgba(32,221,235,0.20);
+          padding: 56px 36px; margin: 48px auto; max-width: 540px; position: relative;
         }
         .ic-price-box__tag {
-          display: inline-block;
-          font-family: 'IBM Plex Mono', monospace;
+          display: inline-block; font-family: 'IBM Plex Mono', monospace;
           font-size: 0.7rem; letter-spacing: 0.20em; text-transform: uppercase;
-          color: var(--ic-accent-red);
-          border: 1px solid var(--ic-accent-red);
-          padding: 5px 14px; margin-bottom: 24px;
+          color: hsl(7 75% 55%); border: 1px solid hsl(7 75% 55%); padding: 5px 14px; margin-bottom: 24px;
         }
         .ic-price-box__label {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; color: var(--ic-text-secondary);
-          letter-spacing: 0.14em; text-transform: uppercase;
-          margin-bottom: 24px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: hsl(36 19% 74%);
+          letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 24px;
         }
         .ic-price-box__old {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.95rem; color: var(--ic-text-muted);
-          text-decoration: line-through;
-          text-decoration-color: var(--ic-accent-red);
-          text-decoration-thickness: 2px;
-          margin-bottom: 8px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.95rem; color: hsl(109 2% 50%);
+          text-decoration: line-through; text-decoration-color: hsl(7 75% 55%);
+          text-decoration-thickness: 2px; margin-bottom: 8px;
         }
         .ic-price-box__amount {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: clamp(4.5rem, 12vw, 6.5rem);
-          font-weight: 400; line-height: 0.95;
-          letter-spacing: 0.01em;
-          margin-bottom: 8px;
-          color: var(--ic-accent-cyan);
-          text-shadow: 0 0 40px var(--ic-accent-cyan-glow);
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-size: clamp(4.5rem, 12vw, 6.5rem);
+          font-weight: 400; line-height: 0.95; letter-spacing: 0.01em; margin-bottom: 8px;
+          color: hsl(184 84% 52%); text-shadow: 0 0 40px rgba(32,221,235,0.45);
         }
         .ic-price-box__installment {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; color: var(--ic-text-muted);
-          letter-spacing: 0.12em;
-          margin-bottom: 32px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: hsl(109 2% 50%);
+          letter-spacing: 0.12em; margin-bottom: 32px;
         }
-        /* ── GUARANTEE ── */
         .ic-guarantee {
           text-align: center; padding: 40px 24px; margin: 24px 0;
-          border: 1px solid var(--ic-border-subtle);
-          background: var(--ic-bg-card);
-          max-width: 540px; margin-left: auto; margin-right: auto;
-          position: relative;
+          border: 1px solid rgba(255,255,255,0.06); background: hsl(204 19% 6%);
+          max-width: 540px; margin-left: auto; margin-right: auto; position: relative;
         }
-        .ic-guarantee__shield {
-          width: 48px; height: 48px; margin: 0 auto 16px;
-          display: block;
-        }
+        .ic-guarantee__shield { width: 48px; height: 48px; margin: 0 auto 16px; display: block; }
         .ic-guarantee__title {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: 1.4rem; font-weight: 400;
-          letter-spacing: 0.04em; text-transform: uppercase;
-          color: var(--ic-accent-cyan);
-          margin-bottom: 10px;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 400;
+          letter-spacing: 0.04em; text-transform: uppercase; color: hsl(184 84% 52%); margin-bottom: 10px;
         }
         .ic-guarantee__text {
-          color: var(--ic-text-secondary);
-          font-size: 0.88rem; font-weight: 300;
-          line-height: 1.6;
-          max-width: 460px; margin: 0 auto;
+          font-family: 'Fraunces', Georgia, serif; color: hsl(36 19% 74%);
+          font-size: 0.88rem; font-weight: 300; line-height: 1.6; max-width: 460px; margin: 0 auto;
         }
-        /* ── BONUS ── */
         .ic-bonus-box {
-          background: rgba(32,221,235,0.04);
-          border: 1px solid var(--ic-border-accent);
-          padding: 28px 32px;
-          margin: 0 auto 28px; max-width: 540px; text-align: left;
-          position: relative;
+          background: rgba(32,221,235,0.04); border: 1px solid rgba(32,221,235,0.20);
+          padding: 28px 32px; margin: 0 auto 28px; max-width: 540px; text-align: left; position: relative;
         }
         .ic-bonus-tag {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--ic-accent-cyan); margin-bottom: 10px; display: block;
+          font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem;
+          letter-spacing: 0.22em; text-transform: uppercase;
+          color: hsl(184 84% 52%); margin-bottom: 10px; display: block;
         }
-        .ic-bonus-prompts-desktop {
-          width: 100%; max-width: 900px; height: auto;
-          margin: 0 auto; display: block;
-        }
+        .ic-bonus-prompts-desktop { width: 100%; max-width: 900px; height: auto; margin: 0 auto; display: block; }
         .ic-bonus-prompts-mobile { display: none; }
-        /* ── FAQ ── */
-        .ic-faq-item {
-          border-bottom: 1px solid var(--ic-border-subtle);
-          padding: 22px 0;
-        }
+        .ic-faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); padding: 22px 0; }
         .ic-faq-item summary {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-weight: 400; font-size: 1.2rem;
-          letter-spacing: 0.02em; text-transform: uppercase;
-          cursor: pointer; color: var(--ic-text-primary);
-          list-style: none; display: flex;
-          justify-content: space-between; align-items: center;
-          gap: 16px;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-weight: 400; font-size: 1.2rem;
+          letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer; color: hsl(36 30% 92%);
+          list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;
         }
         .ic-faq-item summary::-webkit-details-marker { display: none; }
         .ic-faq-item summary::after {
-          content: '+'; font-family: 'IBM Plex Mono', monospace;
-          font-size: 1.4rem; color: var(--ic-accent-cyan);
-          transition: transform 0.3s;
+          content: '+'; font-family: 'IBM Plex Mono', monospace; font-size: 1.4rem;
+          color: hsl(184 84% 52%); transition: transform 0.3s;
         }
         .ic-faq-item[open] summary::after { content: '−'; }
         .ic-faq-item p {
-          color: var(--ic-text-secondary);
-          font-size: 0.9rem; font-weight: 300;
-          line-height: 1.65;
-          margin-top: 14px; padding-right: 28px;
+          font-family: 'Fraunces', Georgia, serif; color: hsl(36 19% 74%);
+          font-size: 0.9rem; font-weight: 300; line-height: 1.65; margin-top: 14px; padding-right: 28px;
         }
-        /* ── FOOTER ── */
         .ic-footer {
-          text-align: center; padding: 48px 24px;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.72rem; color: var(--ic-text-muted);
-          letter-spacing: 0.10em;
-          border-top: 1px solid var(--ic-border-subtle);
-          line-height: 1.8;
+          text-align: center; padding: 48px 24px; font-family: 'IBM Plex Mono', monospace;
+          font-size: 0.72rem; color: hsl(109 2% 50%); letter-spacing: 0.10em;
+          border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.8;
         }
         .ic-footer__brand {
-          font-family: 'Bebas Neue', 'Anton', sans-serif;
-          font-size: 1.6rem; font-weight: 400;
-          letter-spacing: 0.06em; text-transform: uppercase;
-          color: var(--ic-text-primary);
-          margin-bottom: 16px;
+          font-family: 'Bebas Neue', 'Oswald', sans-serif; font-size: 1.6rem; font-weight: 400;
+          letter-spacing: 0.06em; text-transform: uppercase; color: hsl(36 30% 92%); margin-bottom: 16px;
         }
-        /* ── RESPONSIVE ── */
         @media (max-width: 640px) {
           .ic-section { padding: 64px 0; }
           .ic-hero { padding: 100px 18px 64px; min-height: auto; }
@@ -809,16 +674,12 @@ const ImersaoClaudeV3 = () => {
           .ic-nowbar-pct { font-size: 18px !important; }
           .ic-chart-tab { font-size: 0.66rem !important; padding: 8px 12px !important; letter-spacing: 0.12em !important; }
           .ic-bonus-prompts-desktop { display: none; }
-          .ic-bonus-prompts-mobile {
-            display: block; width: 150%; max-width: none;
-            transform: translateX(-0.75rem); height: auto;
-          }
+          .ic-bonus-prompts-mobile { display: block; width: 150%; max-width: none; transform: translateX(-0.75rem); height: auto; }
         }
       `}</style>
 
       {/* ══════ HERO ══════ */}
       <section className="ic-hero">
-        {/* Linha curva de "rota" — gráfico ciano de navegação */}
         <svg className="ic-hero__route-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
@@ -828,17 +689,13 @@ const ImersaoClaudeV3 = () => {
             </linearGradient>
             <filter id="routeGlow"><feGaussianBlur stdDeviation="4" /></filter>
           </defs>
-          {/* Crosshair central sutil */}
           <line x1="720" y1="0" x2="720" y2="900" stroke="rgba(32,221,235,0.06)" strokeWidth="0.5" strokeDasharray="4,8" />
           <line x1="0" y1="450" x2="1440" y2="450" stroke="rgba(32,221,235,0.06)" strokeWidth="0.5" strokeDasharray="4,8" />
-          {/* Rota curva — performance/progresso */}
           <path d="M 0,720 C 200,720 320,700 480,640 C 620,585 720,500 860,400 C 980,310 1100,230 1240,160 C 1320,120 1380,100 1440,80" fill="none" stroke="url(#routeGrad)" strokeWidth="1.6" filter="url(#routeGlow)" opacity="0.85" />
           <path d="M 0,720 C 200,720 320,700 480,640 C 620,585 720,500 860,400 C 980,310 1100,230 1240,160 C 1320,120 1380,100 1440,80" fill="none" stroke="#38F3FF" strokeWidth="0.8" opacity="0.7" />
-          {/* Pontos de decisão */}
           <circle cx="480" cy="640" r="3" fill="#20DDEB" />
           <circle cx="860" cy="400" r="3" fill="#20DDEB" />
           <circle cx="1240" cy="160" r="3" fill="#38F3FF" />
-          {/* Cantos HUD */}
           <path d="M 24,24 L 24,52 M 24,24 L 52,24" stroke="#20DDEB" strokeWidth="1" opacity="0.6" fill="none" />
           <path d="M 1416,24 L 1416,52 M 1416,24 L 1388,24" stroke="#20DDEB" strokeWidth="1" opacity="0.6" fill="none" />
           <path d="M 24,876 L 24,848 M 24,876 L 52,876" stroke="#20DDEB" strokeWidth="1" opacity="0.6" fill="none" />
@@ -850,24 +707,20 @@ const ImersaoClaudeV3 = () => {
             <span className="ic-hero__badge-dot" />
             <span>OFERTA · 67% OFF · ATIVA AGORA</span>
           </div>
-
           <h1 className="ic-hero__title">
             Você usa ChatGPT pra reescrever texto e acha que está usando IA. Em 3 aulas eu vou te mostrar{" "}
             <span className="ic-highlight-cyan">o que significa usar IA de verdade no seu negócio</span>
             <span className="ic-period-red">.</span>
           </h1>
-
           <p className="ic-hero__sub">
             Descubra por que 50% do uso profissional de IA migrou do ChatGPT para o Claude — e como empresários estão economizando 10-15 horas por semana com sistemas que trabalham sozinhos.
           </p>
-
           <div className="ic-hero__cta-wrap">
             <button className="ic-cta-btn" onClick={() => handleCTA("hero")}>
               QUERO DOMINAR O CLAUDE
               <span className="ic-cta-sub">3 aulas · Acesso imediato · R$47</span>
             </button>
           </div>
-
           <div className="ic-hero__meta">
             <div className="ic-hero__meta-item"><span className="ic-dot" /> 3 aulas ao vivo</div>
             <div className="ic-hero__meta-item"><span className="ic-dot" /> Claude na prática</div>
@@ -879,23 +732,27 @@ const ImersaoClaudeV3 = () => {
 
       {/* ══════ URGENCY BAR ══════ */}
       <div className="ic-urgency-bar">
-        ⚠ As vagas são limitadas. Quando atingirmos o limite, esta página sai do ar.
+        As vagas são limitadas. Quando atingirmos o limite, esta página sai do ar.
       </div>
 
       {/* ══════ MIGRAÇÃO CLAUDE ══════ */}
       <section className="ic-section">
-        <div className="ic-container" style={{ textAlign: "center" }}>
+        <div className="ic-container text-center">
           <Coord>SEC.01 // MIGRAÇÃO_PROFISSIONAL // STATUS: LIVE</Coord>
-          <video src="/videos/claude-migration.mp4" autoPlay loop muted playsInline style={{ width: 120, height: "auto", margin: "0 auto 32px", display: "block", border: "1px solid var(--ic-border-accent)" }} />
+          <video
+            src="/videos/claude-migration.mp4"
+            autoPlay loop muted playsInline
+            className="w-[120px] h-auto mx-auto mb-8 block border border-pb-cyan/20"
+          />
           <h2>Descubra porque <span className="ic-highlight-cyan">50% dos usuários sérios</span> de IA generativa nos últimos meses migraram do ChatGPT para o Claude<span className="ic-period-red">.</span></h2>
 
-          <div style={{ marginTop: 48, background: "var(--ic-bg-card)", border: "1px solid var(--ic-border-subtle)", padding: "28px 24px 20px", position: "relative" }}>
+          <div className="relative mt-12 bg-pb-void-card border border-pb-grid-strong p-7 pb-5">
             <HudCorners />
-            <p className="ic-mono" style={{ fontSize: 11, fontWeight: 500, color: "var(--ic-accent-cyan)", letterSpacing: "0.18em", textTransform: "uppercase", margin: "0 0 6px", textAlign: "left" }}>uso // chatgpt vs claude</p>
-            <p className="ic-mono" style={{ fontSize: 10, color: "var(--ic-text-muted)", letterSpacing: "0.14em", textTransform: "uppercase", margin: "0 0 4px", textAlign: "left" }}>dados até fev 2026</p>
-            <p style={{ fontSize: 12, color: "var(--ic-text-secondary)", margin: "0 0 18px", textAlign: "left", fontWeight: 300 }}>Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
+            <p className="font-mono text-[11px] font-medium text-pb-cyan tracking-mono-wide uppercase mb-1.5 text-left">uso // chatgpt vs claude</p>
+            <p className="font-mono text-[10px] text-pb-ink-muted tracking-mono-wide uppercase mb-1 text-left">dados até fev 2026</p>
+            <p className="font-body text-xs text-pb-ink-soft mb-4 text-left font-light">Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginBottom: 18 }}>
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
               {[
                 { color: "#2A2E2B", label: "Outro OpenAI" },
                 { color: "#3D423E", label: "ChatGPT Pro" },
@@ -906,23 +763,23 @@ const ImersaoClaudeV3 = () => {
                 { color: "#0F4F58", label: "Claude Max" },
                 { color: "#0A3438", label: "Claude Enterprise" },
               ].map((l) => (
-                <span key={l.label} className="ic-mono" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, color: "var(--ic-text-secondary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-                  <span style={{ width: 12, height: 12, background: l.color, flexShrink: 0 }} />
+                <span key={l.label} className="font-mono flex items-center gap-1.5 text-[10px] text-pb-ink-soft tracking-[0.08em] uppercase">
+                  <span className="w-3 h-3 flex-shrink-0" style={{ background: l.color }} />
                   {l.label}
                 </span>
               ))}
             </div>
 
-            <div style={{ position: "relative", width: "100%", height: 380 }}>
+            <div className="relative w-full h-[380px]">
               <canvas ref={marketShareChartRef} />
             </div>
 
-            <p className="ic-mono" style={{ fontSize: 9, color: "var(--ic-text-muted)", marginTop: 14, textAlign: "left", lineHeight: 1.6, letterSpacing: "0.06em" }}>
+            <p className="font-mono text-[9px] text-pb-ink-muted mt-3.5 text-left leading-relaxed tracking-[0.06em]">
               FONTE: Ramp Economics Lab (ramp.com/data). Dados de cartão corporativo e pagamento de contas de mais de 50.000 empresas dos EUA na plataforma financeira da Ramp.
             </p>
           </div>
 
-          <p style={{ color: "var(--ic-text-secondary)", maxWidth: 640, margin: "40px auto 0", fontSize: "0.98rem", fontWeight: 300, lineHeight: 1.65 }}>
+          <p className="font-body text-pb-ink-soft max-w-xl mx-auto mt-10 text-[0.98rem] font-light leading-relaxed">
             Nos últimos 12 meses, mais mudou na forma como se ganha dinheiro do que nos últimos 12 anos. E isso é só o começo. Os números mostram o que está por vir:
           </p>
 
@@ -949,14 +806,13 @@ const ImersaoClaudeV3 = () => {
       <section className="ic-section">
         <div className="ic-container">
           <Coord>SEC.02 // VELOCIDADE_HISTÓRICA // ROGERS.1962</Coord>
-          <h2 style={{ textAlign: "center" }}>A velocidade só <span className="ic-highlight-cyan">acelera</span></h2>
-          <p style={{ textAlign: "center", color: "var(--ic-text-secondary)", maxWidth: 620, margin: "20px auto 0", fontSize: "0.98rem", fontWeight: 300, lineHeight: 1.65 }}>
+          <h2 className="text-center">A velocidade só <span className="ic-highlight-cyan">acelera</span></h2>
+          <p className="font-body text-pb-ink-soft text-center max-w-xl mx-auto mt-5 text-[0.98rem] font-light leading-relaxed">
             Pense comigo: quantas décadas seu avô viveu com a mesma profissão? Quantas vezes seus pais precisaram se reinventar? E agora… quantas mudanças você enfrentou só nos últimos dois anos?
           </p>
 
-          <div style={{ marginTop: 56 }}>
-            {/* Tab switcher */}
-            <div style={{ display: "flex", gap: 8, marginBottom: 32, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="mt-14">
+            <div className="flex gap-2 mb-8 justify-center flex-wrap">
               {[
                 { key: "revolucoes", label: "Revoluções" },
                 { key: "adocao", label: "Adoção de Tecnologia" },
@@ -976,10 +832,10 @@ const ImersaoClaudeV3 = () => {
             <div style={{ display: activeTab === "revolucoes" ? "block" : "none" }}>
               <div className="rev-timeline-visual">
                 {[
-                  { color: "var(--ic-text-muted)",   delay: "0.1s", width: "100%",  label: "Revolução Agrícola",      date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
-                  { color: "var(--ic-text-secondary)", delay: "0.3s", width: "15%",   label: "Revolução Industrial",   date: "~1800 d.C.",   span: "~150 anos até a próxima", alert: false },
-                  { color: "var(--ic-accent-cyan)",  delay: "0.5s", width: "5.5%",  label: "Revolução Tecnológica",  date: "~1950 d.C.",   span: "~65 anos até a próxima", alert: false },
-                  { color: "var(--ic-accent-red)",   delay: "0.7s", width: "0.85%", label: "Revolução da IA",        date: "~2015 d.C.",   span: "Acelerando em meses, não anos", alert: true },
+                  { color: "hsl(109 2% 50%)",   delay: "0.1s", width: "100%",  label: "Revolução Agrícola",      date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
+                  { color: "hsl(36 19% 74%)",    delay: "0.3s", width: "15%",   label: "Revolução Industrial",   date: "~1800 d.C.",   span: "~150 anos até a próxima", alert: false },
+                  { color: "hsl(184 84% 52%)",   delay: "0.5s", width: "5.5%",  label: "Revolução Tecnológica",  date: "~1950 d.C.",   span: "~65 anos até a próxima", alert: false },
+                  { color: "hsl(7 75% 55%)",     delay: "0.7s", width: "0.85%", label: "Revolução da IA",        date: "~2015 d.C.",   span: "Acelerando em meses, não anos", alert: true },
                 ].map((r, i) => (
                   <div key={i} className="rev-item" style={{ "--color": r.color, "--delay": r.delay } as React.CSSProperties}>
                     <div className="rev-bar" style={{ "--width": r.width } as React.CSSProperties} />
@@ -991,65 +847,80 @@ const ImersaoClaudeV3 = () => {
                   </div>
                 ))}
               </div>
-              <p className="ic-mono" style={{ textAlign: "center", color: "var(--ic-text-muted)", fontSize: "0.72rem", marginTop: 24, letterSpacing: "0.10em" }}>
+              <p className="font-mono text-center text-pb-ink-muted text-[0.72rem] mt-6 tracking-[0.10em]">
                 O intervalo entre revoluções caiu de milênios → séculos → décadas → anos
               </p>
             </div>
 
             {/* Panel: Adoção */}
             <div style={{ display: activeTab === "adocao" ? "block" : "none" }}>
-              <div style={{ position: "relative", width: "100%", height: 340 }}>
+              <div className="relative w-full h-[340px]">
                 <canvas ref={adoptionChartRef} />
               </div>
-              <p className="ic-mono" style={{ textAlign: "center", color: "var(--ic-text-muted)", fontSize: "0.72rem", marginTop: 16, letterSpacing: "0.10em" }}>
+              <p className="font-mono text-center text-pb-ink-muted text-[0.72rem] mt-4 tracking-[0.10em]">
                 Anos até atingir 50% de adoção nos EUA · Fonte: Our World in Data, Visual Capitalist, Epoch AI
               </p>
             </div>
 
             {/* Panel: 100M */}
             <div style={{ display: activeTab === "100m" ? "block" : "none" }}>
-              <div style={{ position: "relative", width: "100%", height: 380 }}>
+              <div className="relative w-full h-[380px]">
                 <canvas ref={users100mChartRef} />
               </div>
-              <p className="ic-mono" style={{ textAlign: "center", color: "var(--ic-text-muted)", fontSize: "0.72rem", marginTop: 16, letterSpacing: "0.10em" }}>
+              <p className="font-mono text-center text-pb-ink-muted text-[0.72rem] mt-4 tracking-[0.10em]">
                 Meses até atingir 100 milhões de usuários · Fonte: UBS, Visual Capitalist, Statista
               </p>
             </div>
           </div>
 
-          <blockquote style={{ marginTop: 48 }}>
+          <blockquote className="mt-12">
             "Em breve teremos uma pessoa fazendo o trabalho de cinco graças à IA. A dúvida é: quem não usar a tecnologia conseguirá acompanhar? Provavelmente não."
           </blockquote>
 
-          <p style={{ color: "var(--ic-text-secondary)", textAlign: "center", maxWidth: 640, margin: "40px auto 0", fontSize: "0.98rem", fontWeight: 300, lineHeight: 1.65 }}>
+          <p className="font-body text-pb-ink-soft text-center max-w-xl mx-auto mt-10 text-[0.98rem] font-light leading-relaxed">
             Em todas as eras da humanidade, quem se destacou foram aqueles que conseguiram dominar novas tecnologias com velocidade.
           </p>
-          <p style={{ color: "var(--ic-text-primary)", textAlign: "center", fontFamily: "'Bebas Neue','Anton',sans-serif", fontWeight: 400, fontSize: "1.4rem", letterSpacing: "0.02em", textTransform: "uppercase", marginTop: 20 }}>
+          <p className="font-display uppercase text-pb-ink text-[1.4rem] tracking-[0.02em] text-center mt-5">
             Isso, tem até nome. São os <span className="ic-highlight-cyan">Early Adopters</span>
           </p>
 
           {/* Curva de Rogers — HUD strategic */}
-          <div style={{ marginTop: 48, border: "1px solid var(--ic-border-accent)", overflow: "hidden", fontFamily: "'Inter Tight',sans-serif", position: "relative", background: "var(--ic-bg-deep)" }}>
-            <div style={{ background: "var(--ic-bg-section)", borderBottom: "1px solid var(--ic-border-accent)", padding: "12px 20px", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ display: "flex", gap: 6 }}>
-                <div style={{ width: 9, height: 9, background: "#E44935" }} />
-                <div style={{ width: 9, height: 9, background: "#7D827D" }} />
-                <div style={{ width: 9, height: 9, background: "#20DDEB" }} />
+          <div className="relative mt-12 border border-pb-cyan/20 overflow-hidden bg-pb-void-deep">
+            <div className="bg-pb-void-card border-b border-pb-cyan/20 px-5 py-3 flex items-center gap-2.5">
+              <div className="flex gap-1.5">
+                <div className="w-[9px] h-[9px] bg-pb-red" />
+                <div className="w-[9px] h-[9px] bg-pb-ink-muted" />
+                <div className="w-[9px] h-[9px] bg-pb-cyan" />
               </div>
-              <span className="ic-mono" style={{ fontSize: 10, color: "var(--ic-text-muted)", letterSpacing: "0.20em", textTransform: "uppercase", marginLeft: 8 }}>intel.brief // sec.03 // adoption.v3</span>
-              <span className="ic-mono" style={{ marginLeft: "auto", fontSize: 9, color: "var(--ic-accent-cyan)", border: "1px solid var(--ic-border-accent)", padding: "3px 10px", letterSpacing: "0.20em", textTransform: "uppercase" }}>● LIVE</span>
+              <span className="font-mono text-[10px] text-pb-ink-muted tracking-mono-x uppercase ml-2">intel.brief // sec.03 // adoption.v3</span>
+              <span className="font-mono ml-auto text-[9px] text-pb-cyan border border-pb-cyan/20 px-2.5 py-0.5 tracking-mono-x uppercase">● LIVE</span>
             </div>
-            <div style={{ padding: "22px 22px 18px" }}>
-              <div className="ic-mono" style={{ fontSize: 10, color: "var(--ic-accent-cyan)", letterSpacing: "0.24em", textTransform: "uppercase", marginBottom: 6 }}>03 — O Mecanismo</div>
-              <div style={{ fontFamily: "'Bebas Neue','Anton',sans-serif", fontSize: 24, fontWeight: 400, color: "var(--ic-text-primary)", textTransform: "uppercase", lineHeight: 1.05, letterSpacing: "0.02em" }}>Curva de <span style={{ color: "var(--ic-accent-cyan)" }}>adoção</span> tecnológica</div>
-              <div style={{ fontFamily: "'Inter Tight',sans-serif", fontSize: 12, color: "var(--ic-text-muted)", fontWeight: 300, marginTop: 6, marginBottom: 16 }}>Rogers (1962) — onde você está na curva define quanto você vai ganhar</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginBottom: 12 }}>
-                <div className="ic-mono" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#38F3FF" }} /><span style={{ color: "#38F3FF" }}>Adotantes por período (sino)</span></div>
-                <div className="ic-mono" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#20DDEB" }} /><span style={{ color: "#20DDEB" }}>Adoção acumulada (curva S)</span></div>
-                <div className="ic-mono" style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 9, letterSpacing: "0.14em", textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#E44935" }} /><span style={{ color: "#E44935" }}>Agentes de IA — agora</span></div>
+
+            <div className="p-5 pb-4">
+              <div className="font-mono text-[10px] text-pb-cyan tracking-mono-x uppercase mb-1.5">03 — O Mecanismo</div>
+              <div className="font-display text-2xl text-pb-ink uppercase leading-[1.05] tracking-[0.02em]">
+                Curva de <span className="text-pb-cyan">adoção</span> tecnológica
+              </div>
+              <div className="font-body text-xs text-pb-ink-muted font-light mt-1.5 mb-4">
+                Rogers (1962) — onde você está na curva define quanto você vai ganhar
               </div>
 
-              <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style={{ display: "block", width: "100%" }}>
+              <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-3">
+                <div className="font-mono flex items-center gap-1.5 text-[9px] tracking-mono-wide uppercase">
+                  <div className="w-2 h-2" style={{ background: "#38F3FF" }} />
+                  <span style={{ color: "#38F3FF" }}>Adotantes por período (sino)</span>
+                </div>
+                <div className="font-mono flex items-center gap-1.5 text-[9px] tracking-mono-wide uppercase">
+                  <div className="w-2 h-2 bg-pb-cyan" />
+                  <span className="text-pb-cyan">Adoção acumulada (curva S)</span>
+                </div>
+                <div className="font-mono flex items-center gap-1.5 text-[9px] tracking-mono-wide uppercase">
+                  <div className="w-2 h-2 bg-pb-red" />
+                  <span className="text-pb-red">Agentes de IA — agora</span>
+                </div>
+              </div>
+
+              <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" className="block w-full">
                 <defs>
                   <linearGradient id="bellGradV3" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#38F3FF" stopOpacity={0.35} />
@@ -1083,7 +954,8 @@ const ImersaoClaudeV3 = () => {
                 <circle cx="108" cy="178" r="4" fill="#E44935" opacity="0.6" />
               </svg>
 
-              <div className="ic-adoption-segs" style={{ display: "flex", gap: 6, marginTop: 14, flexWrap: "wrap" }}>
+              {/* Adoption segments */}
+              <div className="ic-adoption-segs flex gap-1.5 mt-3.5 flex-wrap">
                 {[
                   { label: "Inovadores",     pct: "2,5%",  desc: "Constroem antes do mercado existir",   color: "#38F3FF" },
                   { label: "Early Adopters", pct: "13,5%", desc: "Líderes que vencem pela vantagem",     color: "#20DDEB" },
@@ -1091,24 +963,29 @@ const ImersaoClaudeV3 = () => {
                   { label: "Late Majority",  pct: "34%",   desc: "Entram por pressão, não escolha",       color: "#7D827D" },
                   { label: "Retardatários",  pct: "16%",   desc: "Chegam quando a vantagem acabou",       color: "#5A5F5A" },
                 ].map((seg) => (
-                  <div key={seg.label} className="ic-adoption-seg" style={{ flex: 1, minWidth: 110, background: "var(--ic-bg-section)", border: "1px solid var(--ic-border-subtle)", padding: "10px 12px", position: "relative", overflow: "hidden" }}>
-                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1.5, background: `linear-gradient(90deg, transparent, ${seg.color}, transparent)` }} />
-                    <div className="ic-mono" style={{ fontSize: 8, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 4, color: seg.color }}>{seg.label}</div>
-                    <div style={{ fontFamily: "'Bebas Neue','Anton',sans-serif", fontSize: 20, fontWeight: 400, lineHeight: 1, marginBottom: 4, color: seg.color, letterSpacing: "0.02em" }}>{seg.pct}</div>
-                    <div style={{ fontFamily: "'Inter Tight',sans-serif", fontSize: 10, color: "var(--ic-text-muted)", fontWeight: 300, lineHeight: 1.4 }}>{seg.desc}</div>
+                  <div key={seg.label} className="ic-adoption-seg relative flex-1 min-w-[110px] bg-pb-void-card border border-pb-grid-strong p-2.5 overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: `linear-gradient(90deg, transparent, ${seg.color}, transparent)` }} />
+                    <div className="font-mono text-[8px] tracking-mono-wide uppercase mb-1" style={{ color: seg.color }}>{seg.label}</div>
+                    <div className="font-display text-xl leading-none mb-1" style={{ color: seg.color }}>{seg.pct}</div>
+                    <div className="font-body text-[10px] text-pb-ink-muted font-light leading-snug">{seg.desc}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="ic-nowbar" style={{ background: "rgba(228,73,53,0.06)", border: "1px solid rgba(228,73,53,0.30)", padding: "12px 16px", marginTop: 14, display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{ width: 28, height: 28, border: "1px solid #E44935", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <div style={{ width: 8, height: 8, background: "#E44935", animation: "ic-pulse 2s ease-in-out infinite" }} />
+              {/* Now bar */}
+              <div className="ic-nowbar mt-3.5 flex items-center gap-3 bg-pb-red/[0.06] border border-pb-red/30 p-3">
+                <div className="w-7 h-7 border border-pb-red flex items-center justify-center flex-shrink-0">
+                  <div className="w-2 h-2 bg-pb-red animate-pulse-cyan" />
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div className="ic-mono" style={{ fontSize: 10, fontWeight: 500, color: "#E44935", textTransform: "uppercase", letterSpacing: "0.16em" }}>⚡ Agentes de IA — Posição Atual (2025–2026)</div>
-                  <div style={{ fontFamily: "'Inter Tight',sans-serif", fontSize: 11, color: "var(--ic-text-secondary)", fontWeight: 300, marginTop: 4, lineHeight: 1.5 }}>A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.</div>
+                <div className="flex-1">
+                  <div className="font-mono text-[10px] font-medium text-pb-red uppercase tracking-mono-wide">
+                    Agentes de IA — Posição Atual (2025–2026)
+                  </div>
+                  <div className="font-body text-[11px] text-pb-ink-soft font-light mt-1 leading-snug">
+                    A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.
+                  </div>
                 </div>
-                <div className="ic-nowbar-pct" style={{ fontFamily: "'Bebas Neue','Anton',sans-serif", fontSize: 24, fontWeight: 400, color: "#E44935", letterSpacing: "0.02em" }}>~8%</div>
+                <div className="ic-nowbar-pct font-display text-2xl text-pb-red">~8%</div>
               </div>
             </div>
           </div>
@@ -1120,10 +997,10 @@ const ImersaoClaudeV3 = () => {
         <div className="ic-container">
           <Coord>SEC.04 // PRÓXIMO_PASSO</Coord>
           <h2>"Tá, Rodrigo. <span className="ic-highlight-cyan">O que eu faço com isso?</span>"</h2>
-          <p style={{ color: "var(--ic-text-secondary)", maxWidth: 620, margin: "20px auto 0", fontSize: "0.98rem", fontWeight: 300, lineHeight: 1.65 }}>
+          <p className="font-body text-pb-ink-soft max-w-xl mx-auto mt-5 text-[0.98rem] font-light leading-relaxed">
             É exatamente pra responder essa pergunta que criei a <strong>Imersão em Claude</strong>: 3 aulas onde eu vou te mostrar, na prática, como usar a IA mais poderosa do mercado pra criar sistemas que trabalham pelo seu negócio — e por que existe uma janela de oportunidade aberta agora que não vai durar.
           </p>
-          <div style={{ marginTop: 36 }}>
+          <div className="mt-9">
             <button className="ic-cta-btn" onClick={() => handleCTA("mid")}>
               QUERO PARTICIPAR DA IMERSÃO
               <span className="ic-cta-sub">3 aulas por apenas R$47</span>
@@ -1136,10 +1013,10 @@ const ImersaoClaudeV3 = () => {
       <section className="ic-section">
         <div className="ic-container">
           <Coord>SEC.05 // PROTOCOLO // 03 AULAS</Coord>
-          <p className="ic-mono" style={{ fontSize: "0.78rem", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 12, textAlign: "center", color: "var(--ic-accent-cyan)" }}>Imersão em Claude</p>
-          <h2 style={{ textAlign: "center" }}>3 aulas que podem mudar<br />o rumo da sua <span className="ic-highlight-cyan">vida</span></h2>
+          <p className="font-mono text-[0.78rem] tracking-mono-x uppercase mb-3 text-center text-pb-cyan">Imersão em Claude</p>
+          <h2 className="text-center">3 aulas que podem mudar<br />o rumo da sua <span className="ic-highlight-cyan">vida</span></h2>
 
-          <div style={{ marginTop: 52 }}>
+          <div className="mt-[52px]">
             <div className="ic-aula-card">
               <div className="ic-aula-card__num">01</div>
               <div>
@@ -1179,9 +1056,8 @@ const ImersaoClaudeV3 = () => {
       <div className="ic-divider" />
 
       {/* ══════ QUEM É O RODRIGO ══════ */}
-      <section className="ic-section ic-section--light" style={{ position: "relative", overflow: "hidden" }}>
-        {/* Bússola SVG de fundo */}
-        <svg aria-hidden style={{ position: "absolute", right: "-80px", top: "50%", transform: "translateY(-50%)", width: 480, height: 480, opacity: 0.06, pointerEvents: "none" }} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <section className="ic-section ic-section--light relative overflow-hidden">
+        <svg aria-hidden className="absolute right-[-80px] top-1/2 -translate-y-1/2 w-[480px] h-[480px] opacity-[0.06] pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <circle cx="100" cy="100" r="95" fill="none" stroke="#0A0E10" strokeWidth="0.5" />
           <circle cx="100" cy="100" r="75" fill="none" stroke="#0A0E10" strokeWidth="0.5" />
           <circle cx="100" cy="100" r="55" fill="none" stroke="#0A0E10" strokeWidth="0.5" />
@@ -1196,10 +1072,12 @@ const ImersaoClaudeV3 = () => {
           <text x="5" y="103" fontFamily="IBM Plex Mono,monospace" fontSize="6" fill="#0A0E10" textAnchor="middle">O</text>
         </svg>
 
-        <div className="ic-container" style={{ position: "relative", zIndex: 2 }}>
+        <div className="ic-container relative z-[2]">
           <Coord>SEC.06 // OPERADOR // BRIEFING</Coord>
-          <h3 style={{ color: "#0F4F58", fontFamily: "'IBM Plex Mono',monospace", fontSize: "0.78rem", textTransform: "uppercase", letterSpacing: "0.20em", marginBottom: 12, textAlign: "center", fontWeight: 500 }}>Quem vai conduzir a imersão</h3>
-          <h2 style={{ textAlign: "center" }}>Nós estamos juntos<br />nesse barco<span className="ic-period-red">.</span></h2>
+          <h3 className="font-mono text-[0.78rem] uppercase tracking-mono-x text-center font-medium mb-3" style={{ color: "#0F4F58" }}>
+            Quem vai conduzir a imersão
+          </h3>
+          <h2 className="text-center">Nós estamos juntos<br />nesse barco<span className="ic-period-red">.</span></h2>
 
           <div className="ic-author">
             <HudCorners color="#0F4F58" />
@@ -1225,9 +1103,8 @@ const ImersaoClaudeV3 = () => {
       <section className="ic-section">
         <div className="ic-container">
           <Coord>SEC.07 // TARGET // CHECKLIST</Coord>
-          <h2 style={{ textAlign: "center" }}>Esta imersão é para <span className="ic-highlight-cyan">você</span> se…</h2>
-
-          <ul className="ic-check-list" style={{ marginTop: 36 }}>
+          <h2 className="text-center">Esta imersão é para <span className="ic-highlight-cyan">você</span> se…</h2>
+          <ul className="ic-check-list mt-9">
             {forYouItems.map((item, i) => (
               <li key={i}>{item}</li>
             ))}
@@ -1239,35 +1116,29 @@ const ImersaoClaudeV3 = () => {
 
       {/* ══════ BÔNUS · NETWORKING ══════ */}
       <section className="ic-section ic-section--light">
-        <div className="ic-container" style={{ textAlign: "center", maxWidth: 900 }}>
+        <div className="ic-container text-center max-w-[900px]">
           <Coord>SEC.08 // BÔNUS_01 // NETWORKING</Coord>
-          <span className="ic-bonus-tag" style={{ color: "#0F4F58", display: "inline-block", marginBottom: 16 }}>
+          <span className="ic-bonus-tag inline-block mb-4" style={{ color: "#0F4F58" }}>
             Bônus exclusivo · só pra alunos
           </span>
-          <h2 style={{ textAlign: "center" }}>
+          <h2 className="text-center">
             Entre no <span style={{ color: "#0F4F58" }}>Grupo Exclusivo de Networking</span> dos alunos da Imersão
           </h2>
-          <p style={{ color: "var(--ic-text-secondary)", fontSize: "1rem", lineHeight: 1.7, maxWidth: 720, margin: "24px auto 0", fontWeight: 300 }}>
+          <p className="font-body text-[1rem] leading-[1.7] max-w-[720px] mx-auto mt-6 font-light" style={{ color: "#3A3F3A" }}>
             Acesso vitalício à comunidade fechada de quem está implementando IA de verdade nos próprios negócios. Troca diária com empresários e profissionais à frente da curva, oportunidades de parceria e respostas pra travas no caminho — sem ruído de grupos públicos.
           </p>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginTop: 44, maxWidth: 800, marginLeft: "auto", marginRight: "auto" }}>
+          <div className="grid gap-4 mt-11 max-w-[800px] mx-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
             {[
               { tag: "01", title: "Implementações reais", desc: "Cases dos próprios alunos rodando em produção, com prints e prompts." },
               { tag: "02", title: "Parcerias B2B", desc: "Empresários se conectando para co-criar produtos e indicar clientes." },
               { tag: "03", title: "Suporte de pares", desc: "Travou numa automação? Alguém já passou por isso e responde no grupo." },
             ].map((item, i) => (
-              <div key={i} style={{ background: "var(--ic-bg-card)", border: "1px solid rgba(15,79,88,0.25)", padding: "24px 20px", textAlign: "left", position: "relative" }}>
+              <div key={i} className="relative text-left p-6" style={{ background: "#FFFCF5", border: "1px solid rgba(15,79,88,0.25)" }}>
                 <HudCorners color="#0F4F58" size={10} inset={6} />
-                <div className="ic-mono" style={{ fontSize: "0.7rem", letterSpacing: "0.22em", textTransform: "uppercase", color: "#0F4F58", marginBottom: 10 }}>
-                  {item.tag}
-                </div>
-                <div style={{ fontFamily: "'Bebas Neue','Anton',sans-serif", fontWeight: 400, fontSize: "1.2rem", color: "#0A0E10", marginBottom: 8, letterSpacing: "0.02em", textTransform: "uppercase", lineHeight: 1.1 }}>
-                  {item.title}
-                </div>
-                <div style={{ color: "var(--ic-text-secondary)", fontSize: "0.85rem", lineHeight: 1.55, fontWeight: 300 }}>
-                  {item.desc}
-                </div>
+                <div className="font-mono text-[0.7rem] tracking-mono-x uppercase mb-2.5" style={{ color: "#0F4F58" }}>{item.tag}</div>
+                <div className="font-display font-normal text-xl uppercase leading-[1.1] mb-2" style={{ color: "#0A0E10" }}>{item.title}</div>
+                <div className="font-body text-[0.85rem] leading-[1.55] font-light" style={{ color: "#3A3F3A" }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -1278,19 +1149,19 @@ const ImersaoClaudeV3 = () => {
 
       {/* ══════ BÔNUS · BIBLIOTECA DE PROMPTS ══════ */}
       <section className="ic-section ic-section--light">
-        <div className="ic-container" style={{ textAlign: "center", maxWidth: 1100 }}>
+        <div className="ic-container text-center max-w-[1100px]">
           <Coord>SEC.09 // BÔNUS_02 // BIBLIOTECA</Coord>
-          <span className="ic-bonus-tag" style={{ color: "#0F4F58", display: "inline-block", marginBottom: 16 }}>
+          <span className="ic-bonus-tag inline-block mb-4" style={{ color: "#0F4F58" }}>
             Bônus incluso · de R$ 97 por R$ 0
           </span>
-          <h2 style={{ textAlign: "center" }}>
+          <h2 className="text-center">
             Tenha acesso ao meu <span style={{ color: "#0F4F58" }}>Banco de Prompts Secreto</span>
           </h2>
-          <p style={{ color: "var(--ic-text-secondary)", fontSize: "1rem", lineHeight: 1.7, maxWidth: 720, margin: "24px auto 0", fontWeight: 300 }}>
+          <p className="font-body text-[1rem] leading-[1.7] max-w-[720px] mx-auto mt-6 font-light" style={{ color: "#3A3F3A" }}>
             Mais de 50 prompts validados, prontos pra copiar e colar. São os prompts que eu uso no dia a dia com Claude — vendas, copy, análise, planejamento, operação. Atalho de meses de teste.
           </p>
 
-          <div style={{ marginTop: 44, position: "relative" }}>
+          <div className="mt-11 relative">
             <img loading="lazy" src={bancoPromptsImage} alt="Banco de Prompts Secreto — mais de 50 prompts validados" className="ic-bonus-prompts-desktop" />
             <img loading="lazy" src={bancoPromptsMobileImage} alt="Banco de Prompts Secreto — mais de 50 prompts validados" className="ic-bonus-prompts-mobile" />
           </div>
@@ -1298,15 +1169,17 @@ const ImersaoClaudeV3 = () => {
       </section>
 
       {/* ══════ OFERTA ══════ */}
-      <section className="ic-section" id="oferta" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(32,221,235,0.07) 0%, transparent 70%)" }}>
-        <div className="ic-container" style={{ textAlign: "center" }}>
+      <section
+        className="ic-section"
+        id="oferta"
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(32,221,235,0.07) 0%, transparent 70%)" }}
+      >
+        <div className="ic-container text-center">
           <Coord>SEC.10 // DECISÃO // OFERTA_ATIVA</Coord>
           <h2>O futuro pertence a quem<br />age <span className="ic-highlight-cyan">agora</span><span className="ic-period-red">.</span></h2>
 
-          <p style={{ color: "var(--ic-text-secondary)", maxWidth: 620, margin: "20px auto 0", fontSize: "0.98rem", fontWeight: 300, lineHeight: 1.65 }}>
-            Se a Imersão te economizar 5 horas de trabalho na primeira semana — e vai —{" "}
-            <strong>ela já se pagou.</strong>{" "}
-            Agora imagina quando você tiver sistemas funcionando.
+          <p className="font-body text-pb-ink-soft max-w-xl mx-auto mt-5 text-[0.98rem] font-light leading-relaxed">
+            Se a Imersão te economizar 5 horas de trabalho na primeira semana — e vai — <strong>ela já se pagou.</strong> Agora imagina quando você tiver sistemas funcionando.
           </p>
 
           <div className="ic-price-box">
@@ -1316,18 +1189,18 @@ const ImersaoClaudeV3 = () => {
             <div className="ic-price-box__old">De R$ 197,00</div>
             <div className="ic-price-box__amount">R$ 47</div>
             <div className="ic-price-box__installment">ou 6× de R$ 8,82 no cartão</div>
-            <button className="ic-cta-btn" onClick={() => handleCTA("pricing")} style={{ width: "100%", maxWidth: 400 }}>
+            <button className="ic-cta-btn w-full max-w-[400px]" onClick={() => handleCTA("pricing")}>
               GARANTIR MINHA VAGA AGORA
               <span className="ic-cta-sub">Acesso imediato após a confirmação</span>
             </button>
-            <p className="ic-mono" style={{ color: "var(--ic-text-muted)", fontSize: "0.7rem", marginTop: 20, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            <p className="font-mono text-pb-ink-muted text-[0.7rem] mt-5 tracking-mono-wide uppercase">
               Pagamento seguro · Garantia de 7 dias · Acesso imediato
             </p>
           </div>
 
           <div className="ic-bonus-box">
             <span className="ic-bonus-tag">Bônus incluso</span>
-            <p style={{ color: "var(--ic-text-primary)", fontSize: "0.95rem", lineHeight: 1.65, margin: 0, fontWeight: 300 }}>
+            <p className="font-body text-pb-ink text-[0.95rem] leading-relaxed m-0 font-light">
               <strong>Framework de diagnóstico AVEE</strong> — descubra em 15 minutos quais são os 3 processos do seu negócio onde IA gera mais retorno.
             </p>
           </div>
@@ -1349,10 +1222,10 @@ const ImersaoClaudeV3 = () => {
       <div className="ic-divider" />
 
       {/* ══════ FAQ ══════ */}
-      <section className="ic-section" style={{ paddingTop: 64 }}>
+      <section className="ic-section pt-16">
         <div className="ic-container">
           <Coord>SEC.11 // FAQ // QUERIES</Coord>
-          <h2 style={{ textAlign: "center", marginBottom: 44 }}>Perguntas frequentes</h2>
+          <h2 className="text-center mb-11">Perguntas frequentes</h2>
 
           {faqItems.map((faq, i) => (
             <details key={i} className="ic-faq-item">
@@ -1368,7 +1241,7 @@ const ImersaoClaudeV3 = () => {
         <div className="ic-container">
           <p className="ic-footer__brand">Imersão em Claude</p>
           <p>© 2026 Rodrigo Albuquerque · BA Consultoria · Todos os direitos reservados</p>
-          <p style={{ marginTop: 10 }}>Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho é meramente ilustrativa.</p>
+          <p className="mt-2.5">Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho é meramente ilustrativa.</p>
         </div>
       </footer>
     </div>
