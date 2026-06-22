@@ -417,10 +417,6 @@ const PropostaClinicaSitha = () => {
                   <span className="price-val main">R$24.000</span>
                 </div>
                 <div className="price-row">
-                  <span className="price-label">Parcelamento</span>
-                  <span className="price-val sub">ou 2× R$12.000</span>
-                </div>
-                <div className="price-row">
                   <span className="price-label">Infraestrutura</span>
                   <span className="price-val sub">Custo do cliente</span>
                 </div>
