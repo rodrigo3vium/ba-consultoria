@@ -35,6 +35,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/educacao/obrigado-imersao-claude', label: 'Obrigado Imersão Claude', category: 'educacao', status: 'ativa' },
   { path: '/educacao/20-skill-negocios', label: '20 Skills de IA para Negócios', category: 'educacao', status: 'ativa', isLandingPage: true },
   { path: '/educacao/aos', label: 'Agentic OS', category: 'educacao', status: 'ativa', isLandingPage: true },
+  { path: '/educacao/acervo-ia', label: 'Acervo de Ideias de IA', category: 'educacao', status: 'ativa', isLandingPage: true },
 
   // Serviços
   { path: '/servicos/google-meu-negocio', label: 'Google Meu Negócio', category: 'servicos', status: 'ativa', isLandingPage: true },

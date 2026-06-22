@@ -57,6 +57,7 @@ const FollowUpClinicaSupreme = lazy(() => import("./pages/FollowUpClinicaSupreme
 const EducacaoSkillsNegocios = lazy(() => import("./pages/EducacaoSkillsNegocios"));
 const AgenticOS = lazy(() => import("./pages/AgenticOS"));
 const RoyalEagleCRM = lazy(() => import("./pages/RoyalEagleCRM"));
+const AcervoIA = lazy(() => import("./pages/AcervoIA"));
 
 const queryClient = new QueryClient();
 
@@ -125,6 +126,7 @@ const App = () => (
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           <Route path="/educacao/20-skill-negocios" element={<EducacaoSkillsNegocios />} />
           <Route path="/educacao/aos" element={<AgenticOS />} />
+          <Route path="/educacao/acervo-ia" element={<AcervoIA />} />
           <Route path="/projetos/royal-eagle-crm" element={<RoyalEagleCRM />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
