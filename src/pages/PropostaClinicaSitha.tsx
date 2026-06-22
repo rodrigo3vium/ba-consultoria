@@ -242,11 +242,12 @@ const PropostaClinicaSitha = () => {
               <span className="tag cyan">PROPOSTA · CONFIDENCIAL</span>
               <span className="tag">PARA: CLÍNICA SITHA</span>
             </div>
-            <h1>O FUNIL NÃO<br />ESTÁ VAZIO<span className="red">.</span><br />ESTÁ VAZANDO<span className="red">.</span></h1>
+            <h1>SUA ESTRUTURA<br />JÁ É BOA.<br />FALTA ENXERGAR<span className="red">.</span></h1>
             <p className="sub">
-              A clínica tem demanda. O que falta é estrutura para não perder o que já chega —
-              leads que esfriam no WhatsApp, no-shows que viram cadeira vazia, follow-ups que
-              dependem de alguém lembrar. Esta proposta estrutura isso em dois níveis.
+              A clínica tem demanda, uma estrutura sólida e um jeito de atender que funciona.
+              O próximo salto não vem de consertar nada — vem da camada de inteligência que
+              mostra onde estão as oportunidades de crescimento que a operação já cria todos os
+              dias. Esta proposta entrega isso em dois níveis.
             </p>
             <div className="cta-row">
               <a href="#investimento" className="btn-primary">VER PROPOSTA →</a>
@@ -310,16 +311,16 @@ const PropostaClinicaSitha = () => {
           {/* ── CONTEXTO ── */}
           <section id="contexto">
             <div className="sec-head"><span className="idx">[ 03 / CONTEXTO ]</span><h2 className="sec-title">Onde a Sitha está hoje</h2></div>
-            <p className="lead big">O tráfego traz o lead. A clínica tem demanda. O que falta é estrutura para não perder o que já chega.</p>
-            <p className="body">O conhecimento que faz a clínica funcionar — protocolos, decisões, histórico de casos, o jeito Sitha de conduzir cada tratamento — vive espalhado na cabeça das pessoas: da Dra. Thais, da nutri, de quem está no WhatsApp naquele dia. Quem sai da equipe leva junto. Quem entra demora meses.</p>
-            <p className="body">Em paralelo, cada negociação acontece numa conversa que ninguém volta a ler. O paciente pergunta o preço e some. Marca e não aparece. Diz "vou pensar" e não é retomado. No fim do mês a agenda podia ter sido maior — e ninguém sabe onde furou, porque a resposta está enterrada em milhares de mensagens.</p>
-            <p className="body">O gargalo não é demanda. É <span className="cyan">conhecimento disperso</span> e <span className="cyan">lead que esfria sem acompanhamento.</span></p>
+            <p className="lead big">O tráfego traz o lead. A clínica tem demanda e uma estrutura que funciona. O que falta é visibilidade sobre onde estão as oportunidades de crescer.</p>
+            <p className="body">O conhecimento que faz a clínica funcionar — protocolos, decisões, histórico de casos, o jeito Sitha de conduzir cada tratamento — é riquíssimo, mas vive distribuído na cabeça das pessoas: da Dra. Thais, da nutri, de quem está no WhatsApp naquele dia. É um ativo enorme que ainda não está num lugar onde a clínica inteira possa consultar e crescer em cima dele.</p>
+            <p className="body">No dia a dia, cada conversa e cada decisão comercial geram um sinal valioso sobre o que está convertendo, quem vale reativar e onde há mais espaço. Hoje esse sinal não é lido nem agregado — então boa parte das oportunidades de crescimento passa despercebida, simplesmente porque ninguém tem como enxergá-la em escala.</p>
+            <p className="body">O gap não é a estrutura. É <span className="cyan">visibilidade</span> — enxergar as <span className="cyan">oportunidades que a operação já cria todos os dias.</span></p>
           </section>
 
           {/* ── DIAGNÓSTICO ── */}
           <section id="diagnostico">
             <div className="sec-head"><span className="idx">[ 04 / DIAGNÓSTICO ]</span><h2 className="sec-title">O que mapeamos</h2></div>
-            <p className="lead">A base é forte. O retorno está em fechar as frestas por onde o paciente escapa.</p>
+            <p className="lead">A base é forte. O retorno está em enxergar e capturar as oportunidades que ela já cria.</p>
             <div className="diag">
               <div className="diag-col up">
                 <span className="corner-tl" />
@@ -330,13 +331,13 @@ const PropostaClinicaSitha = () => {
                   <li>Base de pacientes e histórico de casos acumulados ao longo dos anos</li>
                 </ul>
               </div>
-              <div className="diag-col down">
+              <div className="diag-col up">
                 <span className="corner-tl" />
-                <h3><span className="stamp-dot" />Gargalos atuais</h3>
+                <h3><span className="stamp-dot" />Oportunidades</h3>
                 <ul>
-                  <li>O conhecimento depende da memória de cada pessoa — quem sai leva junto, quem entra demora meses</li>
-                  <li>Leads esfriam no WhatsApp sem follow-up e no-shows viram cadeira vazia</li>
-                  <li>Sem visibilidade de onde cada negociação trava — a resposta está enterrada nas conversas</li>
+                  <li>Uma base de pacientes e histórico que, organizados, viram inteligência para reativação e crescimento</li>
+                  <li>Um jeito Sitha de atender que, mapeado, pode ser replicado por toda a equipe</li>
+                  <li>Sinais comerciais gerados todo dia — conversas e decisões que, lidos, revelam onde há mais espaço para crescer</li>
                 </ul>
               </div>
             </div>
@@ -345,34 +346,34 @@ const PropostaClinicaSitha = () => {
           {/* ── OBJETIVO ── */}
           <section id="objetivo">
             <div className="sec-head"><span className="idx">[ 05 / OBJETIVO ]</span><h2 className="sec-title">O que este projeto resolve</h2></div>
-            <p className="lead">Transformar o conhecimento e o tráfego que já existem em agenda cheia.</p>
+            <p className="lead">Transformar o conhecimento e o tráfego que já existem em crescimento visível e dirigível.</p>
             <div className="obj-grid" style={{ marginTop: "32px" }}>
-              <div className="obj-item">Centralizar o conhecimento da clínica num cérebro único e consultável — que deixa de depender da memória de cada pessoa</div>
-              <div className="obj-item">Identificar onde cada negociação é perdida e transformar cada venda que escapou em correção</div>
-              <div className="obj-item">Garantir que nenhum lead morno, no-show ou paciente inativo esfrie sem o toque certo na hora certa</div>
-              <div className="obj-item">Fazer o jeito Sitha de atender deixar de ser talento individual e virar padrão da casa</div>
+              <div className="obj-item">Centralizar o conhecimento da clínica num cérebro único e consultável, que a equipe inteira pode usar para crescer em cima dele</div>
+              <div className="obj-item">Dar visibilidade das oportunidades de crescimento que a operação já gera — quem reativar, qual abordagem replicar, onde há mais espaço</div>
+              <div className="obj-item">Priorizar os pacientes e as abordagens com maior potencial de retorno, e ativá-los na hora certa</div>
+              <div className="obj-item">Fazer o jeito Sitha de atender deixar de ser talento individual e virar padrão da casa, replicável em escala</div>
             </div>
           </section>
 
           {/* ── COMO FUNCIONA ── */}
           <section id="como-funciona">
             <div className="sec-head"><span className="idx">[ 06 / COMO FUNCIONA ]</span><h2 className="sec-title">O que o agente faz</h2></div>
-            <p className="lead">Sobre a fundação do Segundo Cérebro, o Agente de IA trabalha o comercial todos os dias — sem depender de ninguém lembrar de fazer.</p>
+            <p className="lead">Sobre a fundação do Segundo Cérebro, o Agente de IA dá à clínica a visão que falta — e trabalha o comercial todos os dias para capturar o que ela revela.</p>
             <div className="value-grid">
               <div className="value-card">
                 <div className="v-num">FRENTE 01</div>
-                <h4>MOSTRA ONDE O DINHEIRO ESCAPOU</h4>
-                <p>O agente lê cada conversa de WhatsApp e cada call de venda e aponta o ponto exato em que o paciente foi perdido: a objeção não tratada, o preço jogado cedo demais, o "vou pensar" largado. Cada venda perdida vira correção — não mistério no fim do mês.</p>
+                <h4>MOSTRA ONDE ESTÁ O CRESCIMENTO</h4>
+                <p>O agente lê cada conversa de WhatsApp e cada call de venda e aponta onde há mais a ganhar: quais pacientes vale reativar, quais abordagens estão convertendo melhor, em que ponto da jornada a clínica tem mais espaço para crescer. A operação ganha visão de onde está o próximo resultado.</p>
               </div>
               <div className="value-card">
                 <div className="v-num">FRENTE 02</div>
-                <h4>FAZ O MELHOR ATENDIMENTO VIRAR PADRÃO</h4>
-                <p>Como conversa com o Segundo Cérebro, o agente orienta com a clínica inteira por trás. O jeito Sitha deixa de ser talento individual e vira padrão da casa — a atendente nova passa a vender no nível da melhor da equipe.</p>
+                <h4>FAZ O MELHOR VIRAR PADRÃO</h4>
+                <p>Como conversa com o Segundo Cérebro, o agente orienta com a clínica inteira por trás. O que já funciona — o atendimento que converte, o protocolo que fideliza — é mapeado e replicado em escala: a atendente nova passa a vender no nível da melhor da equipe.</p>
               </div>
               <div className="value-card">
                 <div className="v-num">FRENTE 03</div>
-                <h4>NÃO DEIXA NENHUM LEAD ESFRIAR</h4>
-                <p>O "vou pensar" recebe o follow-up certo na hora certa. O no-show é resgatado antes de virar cadeira vazia. O paciente que sumiu há meses volta pra pauta. Lead que você já pagou pra trazer deixa de morrer no esquecimento.</p>
+                <h4>ATIVA AS OPORTUNIDADES NA HORA CERTA</h4>
+                <p>Cada oportunidade que vale a pena perseguir entra na pauta no momento certo: o paciente com maior potencial de retorno, a abordagem que merece um próximo passo, a conversa pronta para avançar. O follow-up inteligente garante que o potencial que a clínica já tem vira agenda.</p>
               </div>
             </div>
           </section>
@@ -380,7 +381,7 @@ const PropostaClinicaSitha = () => {
           {/* ── INVESTIMENTO ── */}
           <section id="investimento">
             <div className="sec-head"><span className="idx">[ 07 / INVESTIMENTO ]</span><h2 className="sec-title">Proposta comercial</h2></div>
-            <p className="lead">Dois níveis. A Opção A é a fundação que guarda e responde. A Opção B coloca a fundação para agir todos os dias no comercial.</p>
+            <p className="lead">Dois níveis. A Opção A é a fundação que organiza e responde. A Opção B coloca essa fundação para enxergar e capturar oportunidades todos os dias.</p>
 
             <div className="plans">
               {/* OPÇÃO A */}
@@ -410,7 +411,7 @@ const PropostaClinicaSitha = () => {
                 <span className="corner-tl" /><span className="corner-tr" />
                 <div className="ribbon">Recomendado · Opção B</div>
                 <h3>Segundo Cérebro + Agente de IA</h3>
-                <p className="plan-desc">Tudo da Opção A — e sobre essa base um Agente de IA que trabalha o comercial todos os dias. A clínica deixa de ter memória e passa a ter visão. E a visão age.</p>
+                <p className="plan-desc">Tudo da Opção A — e sobre essa base um Agente de IA que lê a operação e revela onde estão as oportunidades de crescimento. A clínica deixa de ter só memória e passa a ter visão. E a visão age.</p>
                 <div className="price-row">
                   <span className="price-label">Implementação</span>
                   <span className="price-val main">R$24.000</span>
@@ -426,24 +427,24 @@ const PropostaClinicaSitha = () => {
                 <div className="deliverables-label">Entregáveis</div>
                 <ul>
                   <li>Todo o Segundo Cérebro da Opção A</li>
-                  <li>Análise automática de WhatsApp e calls com diagnóstico do que travou cada negociação</li>
-                  <li>Follow-up inteligente de leads frios, no-shows e pacientes inativos</li>
+                  <li>Leitura automática de WhatsApp e calls para revelar onde há mais a ganhar em cada negociação</li>
+                  <li>Ativação inteligente dos pacientes e abordagens com maior potencial de retorno</li>
                   <li>Padronização do atendimento puxada do que já funciona na clínica</li>
-                  <li>Relatório comercial: onde está vazando e quanto</li>
+                  <li>Relatório de oportunidades: onde crescer e quanto</li>
                 </ul>
               </div>
             </div>
 
             <div className="rec-note">
-              <strong>A recomendação é honesta.</strong> A Opção A é uma fundação sólida — mas memória sem ação rende pouco. O retorno mora na Opção B: é onde o conhecimento da clínica vira paciente fechado, atendimento padronizado e lead que para de morrer no esquecimento. Recuperar 2 ou 3 pacientes por mês que hoje escorrem já paga a estrutura inteira — e ela trabalha todo dia, sem depender de você.
+              <strong>A recomendação é honesta.</strong> A Opção A é uma base sólida — organiza o conhecimento e responde. O retorno mora na Opção B: é onde essa base vira visão que aponta crescimento, atendimento padronizado e oportunidade ativada na hora certa. Capturar 2 ou 3 oportunidades de crescimento por mês que hoje passam despercebidas já paga a estrutura inteira — e ela trabalha todo dia, sem depender de você.
             </div>
           </section>
 
           {/* ── CTA FINAL ── */}
           <section className="final">
             <span className="idx">[ 08 / PRÓXIMO PASSO ]</span>
-            <h2 style={{ marginTop: "24px" }}>Vamos parar<br />de perder o que<br />já é seu<span className="red">.</span></h2>
-            <p>A pergunta não é se a Sitha pode investir nisso. É quanto a operação ganha ao parar de perder o que já chegou até ela.</p>
+            <h2 style={{ marginTop: "24px" }}>Vamos enxergar<br />o próximo<br />passo<span className="red">.</span></h2>
+            <p>A Sitha já tem a estrutura e a demanda para crescer. O que falta é a inteligência que mostra por onde — e é exatamente isso que esta proposta entrega.</p>
             <div className="cta-row">
               <a
                 href="https://wa.me/5511999718595"
