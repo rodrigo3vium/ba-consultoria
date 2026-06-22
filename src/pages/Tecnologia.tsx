@@ -1,274 +1,277 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Bot, TrendingUp, MessageCircle, Zap, ArrowRight, CheckCircle } from 'lucide-react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { tracker } from '@/lib/tracking';
+import PageLayout from '@/components/pb/PageLayout';
+import Section from '@/components/pb/Section';
+import StratCard from '@/components/pb/StratCard';
+import Tag from '@/components/pb/Tag';
+import CornerBrackets from '@/components/pb/CornerBrackets';
+
+const WHATSAPP_URL = 'https://wa.me/5511999718595';
 
 const solutions = [
   {
-    title: "Automação Inteligente",
-    description: "Automatize processos repetitivos e libere sua equipe para tarefas estratégicas.",
-    icon: Bot,
+    idx: '01',
+    title: 'Automação Inteligente',
+    description: 'Automatize processos repetitivos e libere sua equipe para tarefas estratégicas.',
     features: [
-      "Automação de workflows complexos",
-      "Integração com sistemas existentes",
-      "Redução de erros manuais",
-      "Otimização de tempo e recursos"
-    ]
+      'Automação de workflows complexos',
+      'Integração com sistemas existentes',
+      'Redução de erros manuais',
+      'Otimização de tempo e recursos',
+    ],
   },
   {
-    title: "Análise Preditiva",
-    description: "Preveja tendências e tome decisões baseadas em dados precisos.",
-    icon: TrendingUp,
+    idx: '02',
+    title: 'Análise Preditiva',
+    description: 'Preveja tendências e tome decisões baseadas em dados precisos.',
     features: [
-      "Modelos de machine learning personalizados",
-      "Análise de padrões comportamentais",
-      "Previsão de demanda e vendas",
-      "Dashboards interativos"
-    ]
+      'Modelos de machine learning personalizados',
+      'Análise de padrões comportamentais',
+      'Previsão de demanda e vendas',
+      'Dashboards interativos',
+    ],
   },
   {
-    title: "Chatbots Personalizados",
-    description: "Melhore o atendimento ao cliente com assistentes virtuais inteligentes.",
-    icon: MessageCircle,
+    idx: '03',
+    title: 'Chatbots Personalizados',
+    description: 'Melhore o atendimento ao cliente com assistentes virtuais inteligentes.',
     features: [
-      "Atendimento 24/7 automatizado",
-      "Processamento de linguagem natural",
-      "Integração com CRM e sistemas",
-      "Escalabilidade automática"
-    ]
+      'Atendimento 24/7 automatizado',
+      'Processamento de linguagem natural',
+      'Integração com CRM e sistemas',
+      'Escalabilidade automática',
+    ],
   },
   {
-    title: "Otimização de Processos",
-    description: "Identifique gargalos e otimize operações para máxima eficiência.",
-    icon: Zap,
+    idx: '04',
+    title: 'Otimização de Processos',
+    description: 'Identifique gargalos e otimize operações para máxima eficiência.',
     features: [
-      "Análise de processos em tempo real",
-      "Identificação de gargalos",
-      "Otimização de recursos",
-      "Monitoramento contínuo"
-    ]
-  }
+      'Análise de processos em tempo real',
+      'Identificação de gargalos',
+      'Otimização de recursos',
+      'Monitoramento contínuo',
+    ],
+  },
+];
+
+const benefits = [
+  {
+    title: 'Personalização Total',
+    description: 'Cada solução é desenvolvida especificamente para suas necessidades e processos únicos.',
+  },
+  {
+    title: 'Implementação Rápida',
+    description: 'Metodologia ágil que permite resultados visíveis em poucas semanas.',
+  },
+  {
+    title: 'Suporte Contínuo',
+    description: 'Acompanhamento e otimização constante para garantir máximo desempenho.',
+  },
+];
+
+const steps = [
+  { step: '01', title: 'Análise',         description: 'Entendemos seus processos e identificamos oportunidades.' },
+  { step: '02', title: 'Planejamento',    description: 'Criamos uma estratégia personalizada para sua empresa.' },
+  { step: '03', title: 'Desenvolvimento', description: 'Construímos e testamos as soluções com tecnologia de ponta.' },
+  { step: '04', title: 'Implementação',   description: 'Colocamos tudo em funcionamento e treinamos sua equipe.' },
 ];
 
 const Tecnologia = () => {
+  const handleCta = (location: string) => {
+    tracker.track('cta_click', { product: 'tecnologia', location });
+  };
+
   return (
-    <div className="min-h-screen bg-black">
-      {/* Pro-Life Banner */}
-      <div className="bg-ba-blue-medium text-white py-3 px-4 text-center font-medium text-sm relative z-50">
-        Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
-      </div>
+    <PageLayout trackingName="BA Consultoria - Tecnologia">
 
-      <Header />
-      
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-ba-blue-light/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl"></div>
+      {/* ================================================================
+          HERO
+      ================================================================ */}
+      <section className="relative min-h-[60vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 border-b border-pb-grid-strong overflow-hidden">
+        <CornerBrackets size={32} offset={24} />
+
+        {/* HUD metadata */}
+        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:flex flex-col items-end gap-1">
+          <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">TECNOLOGIA-01</span></span>
+          <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
+          <span><span className="text-pb-ink-faint mr-3">OWNER</span><span className="text-pb-ink-soft">BA</span></span>
+          <span><span className="text-pb-ink-faint mr-3">STATE</span><span className="text-pb-cyan">ACTIVE</span></span>
         </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-relaxed pb-2">
-              Transforme seu Negócio com Tecnologia de Ponta
-            </h1>
-            <h2 className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto">
-              Soluções personalizadas de IA para impulsionar sua empresa
-            </h2>
-            <div className="pt-8">
-              <Button 
-                size="lg" 
-                variant="hero" 
-                className="text-lg px-10 py-6"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
+
+        <div className="max-w-7xl mx-auto w-full py-16 md:py-24">
+          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-6">
+            // Pilar 01 / Tecnologia
+          </p>
+          <h1
+            className="font-display uppercase text-pb-ink leading-[0.88]"
+            style={{ fontSize: 'clamp(56px, 9vw, 128px)', letterSpacing: '0.005em' }}
+          >
+            Transforme seu<br />
+            negócio com<br />
+            <span className="text-pb-ink-soft">tecnologia</span>
+            <span className="text-pb-red">.</span>
+          </h1>
+          <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+            Soluções personalizadas de IA para impulsionar sua empresa.
+          </p>
+          <div className="mt-12 flex flex-wrap gap-4">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              onClick={() => handleCta('hero')}
+            >
+              Falar com um especialista
+              <span aria-hidden>→</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom rule */}
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
+          <span className="text-pb-cyan animate-pulse-cyan">● Operacional</span>
+          <span className="hidden sm:inline">Automação Inteligente</span>
+          <span className="hidden md:inline">Análise Preditiva</span>
+          <span className="hidden lg:inline">Chatbots Personalizados</span>
+          <span className="ml-auto text-pb-ink-faint">BA Consultoria — 2026</span>
+        </div>
+      </section>
+
+      {/* ================================================================
+          01 — SOLUÇÕES
+      ================================================================ */}
+      <Section
+        idx="01"
+        section="SOLUÇÕES"
+        headline={<>Nossas<br />soluções<span className="text-pb-red">.</span></>}
+        sub="Tecnologias avançadas adaptadas às necessidades do seu negócio."
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          {solutions.map((s) => (
+            <StratCard key={s.idx} as="article">
+              <div className="flex items-start justify-between mb-6">
+                <Tag variant="cyan">{s.idx}</Tag>
+                <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">// SOLUÇÃO</span>
+              </div>
+              <h3 className="font-display uppercase text-pb-ink text-3xl leading-[0.95] mb-4">
+                {s.title}
+              </h3>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed mb-6">
+                {s.description}
+              </p>
+              <ul className="space-y-3">
+                {s.features.map((feature, fi) => (
+                  <li key={fi} className="flex items-start gap-3">
+                    <span className="font-mono text-pb-cyan text-[10px] mt-1 flex-shrink-0">—</span>
+                    <span className="font-body text-pb-ink-soft text-sm leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </StratCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* ================================================================
+          02 — POR QUE ESCOLHER
+      ================================================================ */}
+      <Section
+        idx="02"
+        section="DIFERENCIAIS"
+        headline={<>Por que escolher<br />nossas soluções<span className="text-pb-red">?</span></>}
+      >
+        <div className="grid md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          {benefits.map((b, i) => (
+            <StratCard key={i} as="article">
+              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-6">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-4">
+                {b.title}
+              </h3>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+                {b.description}
+              </p>
+            </StratCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* ================================================================
+          03 — COMO TRABALHAMOS
+      ================================================================ */}
+      <Section
+        idx="03"
+        section="MÉTODO"
+        headline={<>Como<br />trabalhamos<span className="text-pb-red">.</span></>}
+      >
+        <div className="grid md:grid-cols-4 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          {steps.map((p) => (
+            <StratCard key={p.step} as="article">
+              <p
+                className="font-display uppercase text-pb-cyan mb-6 leading-none"
+                style={{ fontSize: 'clamp(40px, 4vw, 56px)' }}
               >
-                Falar com um especialista
-              </Button>
-            </div>
+                {p.step}
+              </p>
+              <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-4">
+                {p.title}
+              </h3>
+              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+                {p.description}
+              </p>
+            </StratCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* ================================================================
+          04 — CTA FINAL
+      ================================================================ */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong relative overflow-hidden">
+        <CornerBrackets size={40} offset={32} />
+
+        <div className="max-w-7xl mx-auto text-center">
+          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-8">
+            // Próxima operação
+          </p>
+          <h2
+            className="font-display uppercase text-pb-ink leading-[0.88] mx-auto"
+            style={{ fontSize: 'clamp(48px, 7vw, 96px)', maxWidth: '900px' }}
+          >
+            Pronto para<br />
+            <span className="text-pb-ink-soft">inovar</span>
+            <span className="text-pb-red">?</span>
+          </h2>
+          <p className="mt-8 font-body text-pb-ink-soft text-lg max-w-xl mx-auto leading-relaxed">
+            Vamos conversar sobre como nossas soluções tecnológicas podem transformar seu negócio.
+          </p>
+          <div className="mt-12 flex flex-wrap gap-4 justify-center">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              onClick={() => handleCta('cta_final')}
+            >
+              Falar com um especialista
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost"
+              onClick={() => handleCta('agendar_demo')}
+            >
+              Agendar demonstração
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section className="py-20 bg-black border-y border-ba-blue-light/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-              Nossas <span className="bg-gradient-primary bg-clip-text text-transparent">Soluções</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-              Tecnologias avançadas adaptadas às necessidades do seu negócio
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {solutions.map((solution, index) => {
-              const IconComponent = solution.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="group bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 rounded-2xl hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500 hover:-translate-y-2"
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center space-x-4 mb-4">
-                      <div className="p-4 bg-card-premium-border rounded-full group-hover:bg-ba-orange/20 transition-all duration-300 border border-card-premium-border">
-                        <IconComponent size={28} className="text-ba-orange" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-xl font-poppins text-foreground">
-                          {solution.title}
-                        </CardTitle>
-                      </div>
-                    </div>
-                    <CardDescription className="text-muted-foreground font-inter leading-relaxed">
-                      {solution.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <ul className="space-y-3 mb-6">
-                      {solution.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-2">
-                          <CheckCircle size={16} className="text-ba-orange mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground font-inter">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button 
-                      variant="outline-glow" 
-                      className="w-full group-hover:border-ba-orange group-hover:text-ba-orange transition-all duration-300"
-                    >
-                      Saiba Mais
-                      <ArrowRight className="ml-2" size={16} />
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-12 text-center">
-              Por que Escolher Nossas Soluções?
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Personalização Total",
-                  description: "Cada solução é desenvolvida especificamente para suas necessidades e processos únicos."
-                },
-                {
-                  title: "Implementação Rápida",
-                  description: "Metodologia ágil que permite resultados visíveis em poucas semanas."
-                },
-                {
-                  title: "Suporte Contínuo",
-                  description: "Acompanhamento e otimização constante para garantir máximo desempenho."
-                }
-              ].map((benefit, index) => (
-                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold font-poppins mb-3 text-lg text-foreground">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground font-inter leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 bg-black border-y border-ba-blue-light/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-12 text-center">
-              Como Trabalhamos
-            </h2>
-            <div className="grid md:grid-cols-4 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Análise",
-                  description: "Entendemos seus processos e identificamos oportunidades"
-                },
-                {
-                  step: "02",
-                  title: "Planejamento",
-                  description: "Criamos uma estratégia personalizada para sua empresa"
-                },
-                {
-                  step: "03",
-                  title: "Desenvolvimento",
-                  description: "Construímos e testamos as soluções com tecnologia de ponta"
-                },
-                {
-                  step: "04",
-                  title: "Implementação",
-                  description: "Colocamos tudo em funcionamento e treinamos sua equipe"
-                }
-              ].map((process, index) => (
-                <Card key={index} className="bg-black/80 backdrop-blur-sm border border-ba-blue-light/20 text-center hover:shadow-glow hover:border-ba-blue-light/40 transition-all duration-500">
-                  <CardContent className="p-6">
-                    <div className="text-3xl font-bold text-ba-orange mb-4 font-poppins">
-                      {process.step}
-                    </div>
-                    <h3 className="font-semibold font-poppins mb-3 text-lg text-foreground">
-                      {process.title}
-                    </h3>
-                    <p className="text-muted-foreground font-inter leading-relaxed">
-                      {process.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-black via-ba-gray-dark/20 to-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-8">
-              Pronto para Inovar?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 font-inter leading-relaxed">
-              Vamos conversar sobre como nossas soluções tecnológicas podem transformar seu negócio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="accent" size="lg" className="text-lg px-8 py-4 font-inter">
-                Solicitar Orçamento
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button 
-                variant="outline-glow" 
-                size="lg" 
-                className="text-lg px-8 py-4 font-inter"
-                onClick={() => window.open('http://wa.me/5511999718595', '_blank')}
-              >
-                Agendar Demonstração
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
+    </PageLayout>
   );
 };
 
