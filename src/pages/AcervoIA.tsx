@@ -1,18 +1,13 @@
-import { useState, useEffect, useMemo } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { tracker } from "@/lib/tracking";
+import { useState, useMemo } from "react";
+import PageLayout from "@/components/pb/PageLayout";
 import Tag from "@/components/pb/Tag";
+import { tracker } from "@/lib/tracking";
 import { acervoIdeas, ACERVO_AREAS } from "@/lib/acervoIA";
 import { Search } from "lucide-react";
 
 const AcervoIA = () => {
   const [area, setArea] = useState<string>("Todas");
   const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    tracker.page("Acervo IA");
-  }, []);
 
   const countByArea = useMemo(() => {
     const map: Record<string, number> = {};
@@ -42,10 +37,8 @@ const AcervoIA = () => {
   const chips = ["Todas", ...ACERVO_AREAS];
 
   return (
-    <div className="min-h-screen bg-pb-void text-pb-ink">
-      <Header />
-
-      <main className="pt-28 pb-24">
+    <PageLayout trackingName="BA Consultoria - Acervo IA">
+      <div className="pb-24 text-pb-ink">
         {/* HERO */}
         <section className="relative overflow-hidden border-b border-pb-grid-strong">
           {/* grid técnico sutil */}
@@ -149,10 +142,8 @@ const AcervoIA = () => {
             </div>
           )}
         </section>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </PageLayout>
   );
 };
 
