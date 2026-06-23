@@ -2,7 +2,23 @@
 
 > Documento de referência para Claude Code, Cursor, v0 e qualquer IA que trabalhe neste projeto.
 > Leia COMPLETO antes de criar ou editar qualquer componente visual.
-> Última atualização: 2026-06
+> Última atualização: 2026-06-23
+
+## Estado da migração
+
+**Migração completa** — todas as páginas públicas do site estão no padrão Strategic HUD Editorial v.02 (concluído em 2026-06-23).
+
+| Escopo | Status |
+|--------|--------|
+| Fundação visual (`index.css`, `tailwind.config.ts`, `index.html`) | ✅ |
+| Componentes PB (`src/components/pb/`) | ✅ |
+| Header + Footer globais | ✅ |
+| Home (`BA.tsx`) | ✅ |
+| Site público: Consultoria, Serviços, Tecnologia, Educação | ✅ |
+| Conteúdo dinâmico: Cases, Blog, AcervoIA | ✅ |
+| Landings de educação (11 páginas) | ✅ |
+| Propostas comerciais (16 páginas) | ✅ |
+| Admin (Admin, AdminBlog, AdminCases, AdminEditor, AdminLandingPages) | ⏭ Fora de escopo — ferramentas internas |
 
 ---
 
@@ -109,20 +125,22 @@ Label:   font-mono    text-[10px]-[12px] uppercase      tracking-mono-wide
 
 ## Componentes disponíveis (`src/components/pb/`)
 
+10 componentes em `src/components/pb/`. Importar sempre via `@/components/pb/NomeComponente`.
+
 ### `<PageLayout trackingName="..." className?="">`
-Wrapper completo para páginas do site público. Inclui Header, Footer e `tracker.page()`.
+**Uso obrigatório em todas as páginas do site público.** Inclui Header, Footer, `tracker.page()` automático e `pt-[108px]` para safe-top.
 ```tsx
 import PageLayout from "@/components/pb/PageLayout";
 
 const MinhaPage = () => (
   <PageLayout trackingName="BA Consultoria - Serviços">
-    {/* conteúdo aqui */}
+    {/* SEM Header/Footer aqui — PageLayout já inclui */}
   </PageLayout>
 );
 ```
 
-### `<Section idx="02" section="SERVIÇOS" headline="O QUE ENTREGAMOS." sub?="" align?="left|center" noBorderTop?={false} compact?={false}>`
-Seção padronizada com `border-t`, padding e `SectionHeader` inclusos.
+### `<Section idx="02" section="SERVIÇOS" headline="..." sub?="" align?="left|center" noBorderTop?={false} compact?={false}>`
+**Uso preferencial para seções dentro de PageLayout.** Aplica `border-t border-pb-grid-strong`, padding vertical e `SectionHeader` automaticamente.
 ```tsx
 import Section from "@/components/pb/Section";
 
@@ -132,39 +150,50 @@ import Section from "@/components/pb/Section";
 ```
 
 ### `<SectionHeader idx label headline sub? align?>`
-Cabeçalho de seção com idx mono cyan + headline Bebas + sub Fraunces.
+Cabeçalho de seção isolado: idx mono cyan + linha divisória + label muted + headline Bebas + sub Fraunces opcional. Usado internamente pelo `Section` — usar diretamente só quando precisar do header sem o wrapper de seção.
 
 ### `<StratCard brackets?={false} as?="div|article|li" className?="">`
-Card com `bg-pb-void-card → pb-void-elev`, `border-pb-grid-strong`, hover border ciano.
+Card com gradiente `bg-pb-void-card → bg-pb-void-elev`, `border border-pb-grid-strong`, hover `border-pb-cyan-dim`. Prop `brackets` adiciona CornerBrackets automáticos.
 ```tsx
 <StratCard brackets>
   <Stamp>CO-FOUNDER</Stamp>
   <h3 className="font-display text-3xl uppercase mt-4">NOME</h3>
-  <p className="font-body text-pb-ink-soft mt-2 text-sm">Bio aqui.</p>
+  <p className="font-body text-pb-ink-soft mt-2 text-sm leading-relaxed">Bio aqui.</p>
 </StratCard>
 ```
 
 ### `<CornerBrackets size?={24} offset?={16} color?="cyan|ink">`
-4 brackets absolutos nos cantos — envolve heros e cards principais.
+4 brackets HUD absolutos nos cantos do elemento pai (`position: relative` obrigatório no pai). Usar em heros e cards destaque.
 
 ### `<Stamp variant?="cyan|red">`
-Dot com pulse + texto mono uppercase. Para status e categorias de card.
+Dot animado com pulse + texto mono uppercase. Para badges de status e categoria.
 ```tsx
 <Stamp>OPERACIONAL</Stamp>
-<Stamp variant="red">CRÍTICO</Stamp>
+<Stamp variant="red">ALERTA</Stamp>
 ```
 
 ### `<Tag variant?="default|cyan|red|solid">`
-Pill mono. Para filtros, categorias, tecnologias.
+Pill mono com borda. Para filtros, categorias, tecnologias, tags de post.
+```tsx
+<Tag variant="cyan">IA APLICADA</Tag>
+<Tag variant="default">ESTRATÉGIA</Tag>
+```
 
 ### `<MetaBar left right? dot?="cyan|red">`
-Barra sticky/fixa no topo com indicador pulse.
+Barra com `position: sticky top-0 z-50` e `backdrop-blur-xl`. Indicador pulse à esquerda + slot de conteúdo direito opcional. Usada pela home para o banner pró-vida.
 
 ### `<Coordinates file build owner state>`
-Bloco mono FILE/BUILD/OWNER/STATE — canto superior direito de heros.
+Bloco `position: absolute top-right` com 4 linhas mono (FILE / BUILD / OWNER / STATE). Usar no canto superior direito de heros full-height.
 
 ### `<PropostaLayout cliente projeto data?>`
-Wrapper para propostas comerciais — capa + header sticky + footer BA.
+**Uso obrigatório em todas as páginas de proposta comercial.** Inclui header sticky com nome do cliente + data, capa com CornerBrackets e headline, e footer BA. Não inclui Header/Footer globais (propostas não têm nav).
+```tsx
+import PropostaLayout from "@/components/pb/PropostaLayout";
+
+<PropostaLayout cliente="Nome do Cliente" projeto="NOME DO PROJETO" data="Junho 2026">
+  {/* seções da proposta */}
+</PropostaLayout>
+```
 
 ---
 
@@ -259,6 +288,66 @@ Borda `ink`, texto `ink`. Para ações neutras.
 - `window.scrollTo(0,0)` em `onClick` de todos os `<Link>` de navegação interna
 - `tracker.track('cta_click', { product, location })` antes de CTAs externos
 - `tracker.page('Nome da Página')` em `useEffect` de toda página
+
+---
+
+## Padrões específicos — Propostas comerciais
+
+Toda proposta usa `<PropostaLayout>`. A estrutura interna padrão:
+
+```tsx
+<PropostaLayout cliente="Nome" projeto="PROJETO" data="Junho 2026">
+
+  {/* Seção com índice mono */}
+  <div className="border-t border-pb-grid-strong py-16 space-y-8">
+    <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// 01 DIAGNÓSTICO</p>
+    <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
+      O PROBLEMA QUE VAMOS RESOLVER.
+    </h2>
+    <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      Descrição do contexto em Fraunces.
+    </p>
+
+    {/* Grid de cards de entregável */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+      <div className="bg-pb-void p-6 space-y-2">
+        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Entregável 01</p>
+        <h3 className="font-display text-2xl uppercase text-pb-ink">NOME DO ENTREGÁVEL</h3>
+        <p className="font-body text-pb-ink-soft text-sm leading-relaxed">Descrição.</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Seção de investimento */}
+  <div className="border-t border-pb-grid-strong py-16 space-y-6">
+    <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// 04 INVESTIMENTO</p>
+    <p className="font-display text-[clamp(48px,6vw,80px)] text-pb-cyan leading-none">R$X.XXX</p>
+    <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">ou X× de R$X.XXX</p>
+  </div>
+
+  {/* CTA final */}
+  <div className="border-t border-pb-grid-strong py-16 text-center space-y-6">
+    <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
+      PRÓXIMO PASSO.
+    </h2>
+    <a href="https://wa.me/5511999718595" target="_blank" rel="noopener noreferrer" className="btn-primary">
+      Falar no WhatsApp <span aria-hidden>→</span>
+    </a>
+  </div>
+
+</PropostaLayout>
+```
+
+**Fotos de pessoas em propostas:**
+```tsx
+<img
+  src={foto}
+  alt="Nome"
+  className="w-24 h-24 object-cover object-top"
+  style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
+/>
+```
+Sem `rounded-*` em nenhuma imagem.
 
 ---
 
