@@ -48,6 +48,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/newsletter-ia', label: 'Newsletter IA', category: 'conteudo', status: 'ativa', isLandingPage: true },
   { path: '/newsletter', label: 'Newsletter Simples', category: 'conteudo', status: 'ativa', isLandingPage: true },
   { path: '/avaliacao-newsletter', label: 'Avaliação Newsletter', category: 'conteudo', status: 'ativa' },
+  { path: '/newsletter/jornada-0001', label: 'Diário de Jornada — Ed. 001', category: 'conteudo', status: 'ativa' },
 
   // Propostas
   { path: '/proposta', label: 'Proposta (hub)', category: 'propostas', status: 'ativa' },

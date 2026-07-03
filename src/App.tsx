@@ -37,6 +37,7 @@ const AdminLandingPages = lazy(() => import("./pages/AdminLandingPages"));
 const Newsletter = lazy(() => import("./pages/Newsletter"));
 const NewsletterSimples = lazy(() => import("./pages/NewsletterSimples"));
 const NewsletterRating = lazy(() => import("./pages/NewsletterRating"));
+const NewsletterJornada0001 = lazy(() => import("./pages/NewsletterJornada0001"));
 const Home2 = lazy(() => import("./pages/Home2"));
 const Proposta = lazy(() => import("./pages/Proposta"));
 const PropostaDSLCarTexas = lazy(() => import("./pages/PropostaDSLCarTexas"));
@@ -107,6 +108,7 @@ const App = () => (
           <Route path="/newsletter-ia" element={<Newsletter />} />
           <Route path="/newsletter" element={<NewsletterSimples />} />
           <Route path="/avaliacao-newsletter" element={<NewsletterRating />} />
+          <Route path="/newsletter/jornada-0001" element={<NewsletterJornada0001 />} />
           <Route path="/home-2" element={<Home2 />} />
           <Route path="/proposta/dsl-car-texas" element={<PropostaDSLCarTexas />} />
           <Route path="/proposta" element={<Proposta />} />
