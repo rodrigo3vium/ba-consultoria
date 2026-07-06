@@ -301,7 +301,7 @@ const PropostaTreevium = () => {
             </span>
             <span className="trv-hero-meta-item">
               <span className="trv-hero-meta-dot" />
-              Preparado para: Daniela · Treevium
+              Preparado para: Dani Barcelos · Treevium
             </span>
             <span className="trv-hero-meta-item">
               <span className="trv-hero-meta-dot" />
@@ -573,7 +573,7 @@ const PropostaTreevium = () => {
           <p className="trv-cta-message">
             A partir do aceite, alinhamos o kickoff e a construção começa na mesma semana.
             Você acompanha cada etapa e, no fim, recebe tudo rodando e sob o seu controle.
-            Vamos construir isso, Daniela.
+            Vamos construir isso, Dani.
           </p>
           <a
             href="https://wa.me/5511999718595"

@@ -126,7 +126,7 @@ const App = () => (
           <Route path="/propostas/royal-eagle" element={<PropostaRoyalEagle />} />
           <Route path="/propostas/juliano-pedrosa" element={<PropostaRaioXDoTerreno />} />
           <Route path="/propostas/clinica-sitha" element={<PropostaClinicaSitha />} />
-          <Route path="/propostas/treevium" element={<PropostaTreevium />} />
+          <Route path="/propostas/dani-barcelos" element={<PropostaTreevium />} />
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           <Route path="/educacao/20-skill-negocios" element={<EducacaoSkillsNegocios />} />
           <Route path="/educacao/aos" element={<AgenticOS />} />
