@@ -125,8 +125,8 @@ const PropostaTreevium = () => {
 
         .trv-hero-title {
           font-family: 'Playfair Display', serif;
-          font-size: clamp(2.6rem, 5.5vw, 4.6rem); font-weight: 700;
-          line-height: 1.15; margin-bottom: 24px; max-width: 15ch;
+          font-size: clamp(2.1rem, 4.4vw, 3.4rem); font-weight: 700;
+          line-height: 1.14; margin-bottom: 24px; max-width: 24ch;
           animation: trv-fadeUp 0.8s 0.2s ease both;
         }
         .trv-hero-title .trv-gold { background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
@@ -284,8 +284,9 @@ const PropostaTreevium = () => {
           </div>
 
           <h1 className="trv-hero-title">
-            Sua captação de clientes deixa de ser{" "}
-            <span className="trv-gold">manual.</span>
+            Uma porta de entrada{" "}
+            <span className="trv-gold">à altura do evento</span> que seu cliente
+            vai fechar
           </h1>
 
           <p className="trv-hero-desc">
@@ -309,67 +310,6 @@ const PropostaTreevium = () => {
             </span>
           </div>
         </div>
-
-        {/* DIVIDER */}
-        <div className="trv-divider" />
-
-        {/* ========== SOBRE (FIXO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
-          <p className="trv-section-label">Sobre</p>
-          <h2 className="trv-section-title">Quem está por trás desta proposta</h2>
-
-          <div className="trv-about-grid">
-            <div className="trv-about-photo">
-              <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
-            </div>
-            <div>
-              <p className="trv-about-text">
-                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns
-                dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais
-                e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas
-                que receberam consultoria.
-              </p>
-              <p className="trv-about-text">
-                A BA Consultoria une consultoria estratégica, execução de marketing,
-                automação com IA e inteligência comercial — tudo focado em gerar retorno
-                financeiro real e escalável.
-              </p>
-              <div className="trv-stats-grid">
-                {stats.map((s) => (
-                  <div key={s.num} className="trv-stat-card">
-                    <div className="trv-stat-num">{s.num}</div>
-                    <div className="trv-stat-label">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* DIVIDER */}
-        <div className="trv-divider" />
-
-        {/* ========== MENTORES (FIXO) ========== */}
-        <section style={{ padding: "100px 24px", maxWidth: "1100px", margin: "0 auto" }}>
-          <p className="trv-section-label" style={{ textAlign: "center", display: "block" }}>Referências</p>
-          <h2 className="trv-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
-          <p className="trv-section-subtitle" style={{ textAlign: "center", margin: "0 auto 48px" }}>
-            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
-          </p>
-
-          <div className="trv-mentors-grid">
-            {mentors.map((m) => (
-              <div key={m.name} className="trv-mentor-card">
-                <div className="trv-mentor-photo">
-                  <img loading="lazy" src={m.photo} alt={m.name} />
-                </div>
-                <h3 className="trv-mentor-name">{m.name}</h3>
-                <p className="trv-mentor-role">{m.role}</p>
-                <p className="trv-mentor-bio">{m.bio}</p>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* DIVIDER */}
         <div className="trv-divider" />
@@ -563,6 +503,67 @@ const PropostaTreevium = () => {
                 </ul>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* DIVIDER */}
+        <div className="trv-divider" />
+
+        {/* ========== SOBRE / QUEM SOU EU (FIXO) ========== */}
+        <section style={{ padding: "100px 24px", maxWidth: "900px", margin: "0 auto" }}>
+          <p className="trv-section-label">Quem sou eu</p>
+          <h2 className="trv-section-title">Quem está por trás desta proposta</h2>
+
+          <div className="trv-about-grid">
+            <div className="trv-about-photo">
+              <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" />
+            </div>
+            <div>
+              <p className="trv-about-text">
+                Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns
+                dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais
+                e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas
+                que receberam consultoria.
+              </p>
+              <p className="trv-about-text">
+                A BA Consultoria une consultoria estratégica, execução de marketing,
+                automação com IA e inteligência comercial — tudo focado em gerar retorno
+                financeiro real e escalável.
+              </p>
+              <div className="trv-stats-grid">
+                {stats.map((s) => (
+                  <div key={s.num} className="trv-stat-card">
+                    <div className="trv-stat-num">{s.num}</div>
+                    <div className="trv-stat-label">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DIVIDER */}
+        <div className="trv-divider" />
+
+        {/* ========== MENTORES (FIXO) ========== */}
+        <section style={{ padding: "100px 24px", maxWidth: "1100px", margin: "0 auto" }}>
+          <p className="trv-section-label" style={{ textAlign: "center", display: "block" }}>Referências</p>
+          <h2 className="trv-section-title" style={{ textAlign: "center" }}>Nossos Mentores e Professores</h2>
+          <p className="trv-section-subtitle" style={{ textAlign: "center", margin: "0 auto 48px" }}>
+            Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
+          </p>
+
+          <div className="trv-mentors-grid">
+            {mentors.map((m) => (
+              <div key={m.name} className="trv-mentor-card">
+                <div className="trv-mentor-photo">
+                  <img loading="lazy" src={m.photo} alt={m.name} />
+                </div>
+                <h3 className="trv-mentor-name">{m.name}</h3>
+                <p className="trv-mentor-role">{m.role}</p>
+                <p className="trv-mentor-bio">{m.bio}</p>
+              </div>
+            ))}
           </div>
         </section>
 
