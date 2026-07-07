@@ -129,6 +129,7 @@ serve(async (req) => {
       "ia-para-negocios",
       "ia-do-zero",
       "o-caminho",
+      "venda-mais-com-ia",
     ]);
     const FUNNEL_PB_ID = "2ed6923e-5ad3-4b3b-9349-3495133812cf";
     const ACTIVE_STAGES = new Set([

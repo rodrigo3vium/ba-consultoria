@@ -17,6 +17,7 @@ const Educacao = lazy(() => import("./pages/Educacao"));
 const IAParaNegocios = lazy(() => import("./pages/IAParaNegocios"));
 const IADoZero = lazy(() => import("./pages/IADoZero"));
 const GoogleMeuNegocio = lazy(() => import("./pages/GoogleMeuNegocio"));
+const VendaMaisComIA = lazy(() => import("./pages/VendaMaisComIA"));
 const ComoAplicarIA = lazy(() => import("./pages/ComoAplicarIA"));
 const OCaminho = lazy(() => import("./pages/OCaminho"));
 const ClaudeCode = lazy(() => import("./pages/ClaudeCode"));
@@ -97,6 +98,7 @@ const App = () => (
           <Route path="/educacao/imersao-claude-v3" element={<ImersaoClaudeV3 />} />
           <Route path="/educacao/obrigado-imersao-claude" element={<ObrigadoImersaoClaude />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
+          <Route path="/venda-mais-com-ia" element={<VendaMaisComIA />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/auth" element={<Auth />} />
