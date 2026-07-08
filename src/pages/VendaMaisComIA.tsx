@@ -65,6 +65,44 @@ const PROBLEMS = [
   "Conhecimento que sai junto com a pessoa",
 ];
 
+const HOUR_DATA = [
+  { h: 0, v: 660 }, { h: 1, v: 610 }, { h: 2, v: 470 }, { h: 3, v: 250 },
+  { h: 4, v: 150 }, { h: 5, v: 80 }, { h: 6, v: 45 }, { h: 7, v: 30 }, { h: 8, v: 60 },
+  { h: 9, v: 130 }, { h: 10, v: 360 }, { h: 11, v: 660 }, { h: 12, v: 910 },
+  { h: 13, v: 1070 }, { h: 14, v: 1000 }, { h: 15, v: 1020 }, { h: 16, v: 1040 }, { h: 17, v: 990 },
+  { h: 18, v: 1000 }, { h: 19, v: 950 }, { h: 20, v: 850 }, { h: 21, v: 730 }, { h: 22, v: 710 }, { h: 23, v: 680 },
+];
+const HOUR_MAX = Math.max(...HOUR_DATA.map((d) => d.v));
+
+const HourlyLeadsChart = () => (
+  <div className="relative pt-14">
+    <div className="absolute left-[10%] top-0 -translate-x-1/2 z-10">
+      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#F2667B] to-[#F2667B]/50 border border-white/20 shadow-[0_10px_30px_-10px_rgba(242,102,123,0.7)] flex items-center justify-center">
+        <span className="text-white font-extrabold text-base">50%</span>
+      </div>
+    </div>
+    <div className="absolute left-[58%] -top-8 -translate-x-1/2 z-10">
+      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] border border-white/20 shadow-[0_10px_30px_-10px_rgba(139,124,246,0.7)] flex items-center justify-center">
+        <span className="text-white font-extrabold text-base">50%</span>
+      </div>
+    </div>
+    <div className="flex items-end gap-1 h-56">
+      {HOUR_DATA.map((d) => {
+        const biz = d.h >= 9 && d.h <= 17;
+        return (
+          <div key={d.h} className="flex-1 flex flex-col items-center justify-end h-full gap-1.5">
+            <div
+              className={`w-full rounded-t-[3px] ${biz ? "bg-gradient-to-t from-[#20DDEB] to-[#8B7CF6]" : "bg-[#F2667B]/60"}`}
+              style={{ height: `${Math.max((d.v / HOUR_MAX) * 100, 3)}%` }}
+            />
+            <span className="text-[9px] text-[#5D5F6B]">{d.h}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+);
+
 const PILLARS = [
   {
     tag: "ATENDIMENTO & SDR",
@@ -496,6 +534,38 @@ const VendaMaisComIA = () => {
               </ul>
             </div>
           </div>
+
+          <div className={"rev-item animate-fade-in mt-14 " + CARD_CLS + " p-7 md:p-10"}>
+            <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-3">
+                  O padrão que ninguém mede
+                </p>
+                <h3 className="font-extrabold text-[#F5F5FA] text-2xl leading-snug mb-8 max-w-[30ch]">
+                  Metade dos seus leads chega <Accent>fora do horário comercial</Accent>.
+                </h3>
+                <HourlyLeadsChart />
+                <p className="mt-4 text-xs text-[#5D5F6B] leading-relaxed">
+                  Distribuição típica de leads por hora do dia (0h–23h) em operações de captação via
+                  WhatsApp/formulário.
+                </p>
+              </div>
+              <div className="rounded-2xl bg-white/[0.03] border border-white/[0.08] p-7">
+                <div className="text-5xl font-extrabold mb-3">
+                  <Accent>100x</Accent>
+                </div>
+                <p className="text-[#B7B8C7] text-[15px] leading-relaxed mb-5">
+                  Responder em <b className="text-[#F5F5FA] font-semibold">5 minutos</b> em vez de 30 minutos
+                  aumenta em até 100 vezes a chance de conversão do lead.
+                </p>
+                <p className="text-xs text-[#5D5F6B] leading-relaxed">
+                  Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
+                  (2011), com dados da InsideSales.com.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="rev-item animate-fade-in mt-16 text-center">
             <p className="font-extrabold text-[clamp(22px,2.8vw,32px)] leading-snug max-w-[26ch] mx-auto">
               <Accent>
