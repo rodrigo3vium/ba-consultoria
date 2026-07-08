@@ -17,8 +17,6 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import CornerBrackets from "@/components/pb/CornerBrackets";
-import Stamp from "@/components/pb/Stamp";
 import { supabase } from "@/integrations/supabase/client";
 import { tracker, getPersistedUtm } from "@/lib/tracking";
 import { toast } from "sonner";
@@ -33,6 +31,17 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+const FONT_STACK = "'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
+
+const BTN_PRIMARY =
+  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-[#0A0A13] bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] shadow-[0_8px_28px_-8px_rgba(139,124,246,0.55)] hover:shadow-[0_10px_34px_-6px_rgba(139,124,246,0.7)] transition-shadow";
+const BTN_GHOST =
+  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-[#B7B8C7] border border-white/[0.14] hover:border-white/[0.28] hover:text-[#F5F5FA] transition-colors";
+const CARD_CLS = "rounded-2xl border border-white/[0.09] bg-[#15151F]";
+const INPUT_CLS =
+  "w-full rounded-xl bg-white/[0.04] border border-white/[0.10] text-[#F5F5FA] placeholder:text-[#5D5F6B] px-4 py-3 text-[15px] outline-none focus:border-[#8B7CF6] focus:ring-2 focus:ring-[#8B7CF6]/30 transition";
+const LABEL_CLS = "block text-xs font-semibold text-[#9A9CAA] mb-2";
+
 const LEADS_OPTIONS = ["Até 100", "100 – 500", "500 – 2.000", "Acima de 2.000"];
 
 const NAV_LINKS = [
@@ -42,9 +51,23 @@ const NAV_LINKS = [
   { label: "Garantia", id: "garantia" },
 ];
 
+const HERO_STATS = [
+  { value: "4X", label: "Capacidade de atendimento por SDR — de 25 p/ 100 leads/dia", accent: true },
+  { value: "24/7", label: "Operação ininterrupta, sem folga", accent: false },
+  { value: "<1min", label: "Tempo médio de resposta", accent: false },
+  { value: "80%", label: "Das vendas exigem 5+ follow-ups — a maioria para no 2º", accent: false },
+];
+
+const PROBLEMS = [
+  "Lead fora do horário = lead perdido",
+  "Follow-up esquecido = venda perdida",
+  "SDR caro, inconsistente e difícil de escalar",
+  "Conhecimento que sai junto com a pessoa",
+];
+
 const PILLARS = [
   {
-    tag: "AGENTE 01 · ATENDIMENTO & SDR",
+    tag: "ATENDIMENTO & SDR",
     title: "Primeiro contato em segundos",
     desc: "O lead chegou? Em menos de um minuto ele já está sendo atendido, qualificado e direcionado. Dia ou noite, feriado ou domingo.",
     checks: [
@@ -55,7 +78,7 @@ const PILLARS = [
     ],
   },
   {
-    tag: "AGENTE 02 · FOLLOW-UP & REAQUECIMENTO",
+    tag: "FOLLOW-UP & REAQUECIMENTO",
     title: "Nenhum lead fica pra trás",
     desc: "Lead sumiu? Proposta sem resposta? O agente vai atrás com cadência, timing e a copy que funciona — porque 80% das vendas só fecham no 5º toque.",
     checks: [
@@ -66,7 +89,7 @@ const PILLARS = [
     ],
   },
   {
-    tag: "AGENTE 03 · SALES COACH",
+    tag: "SALES COACH",
     title: "Seu time vendendo melhor todo dia",
     desc: "Escuta as conversas do time, identifica onde a venda foi perdida e sugere o próximo passo. Treino contínuo, sem depender de gravação assistida à mão.",
     checks: [
@@ -100,7 +123,7 @@ const DIFFS = [
       <>
         IA é 20%.
         <br />
-        Processo é 80<span className="text-pb-red">%</span>
+        Processo é <Accent>80%</Accent>
       </>
     ),
     desc: "Não adianta o melhor agente sobre um processo de vendas ruim. A gente arruma os dois — arquitetura antes de automação.",
@@ -138,19 +161,38 @@ const FAQS = [
   },
 ];
 
-const SecHead = ({ idx, title }: { idx: string; title: React.ReactNode }) => (
-  <div className="rev-item animate-fade-in mb-10 md:mb-12">
-    <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan">{idx}</span>
-    <h2 className="mt-3 font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
+function Accent({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] bg-clip-text text-transparent">{children}</span>
+  );
+}
+
+const SectionIntro = ({
+  eyebrow,
+  title,
+  sub,
+  center = false,
+}: {
+  eyebrow: string;
+  title: React.ReactNode;
+  sub?: React.ReactNode;
+  center?: boolean;
+}) => (
+  <div className={`rev-item animate-fade-in mb-10 md:mb-14 ${center ? "text-center" : ""}`}>
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold tracking-wide text-[#9A9CAA] mb-5">
+      {eyebrow}
+    </span>
+    <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-[1.12] tracking-tight max-w-[36ch]">
       {title}
     </h2>
+    {sub && <p className="mt-4 text-[#9A9CAA] text-base md:text-lg leading-relaxed max-w-[60ch]">{sub}</p>}
   </div>
 );
 
-const PulseDot = ({ color = "cyan" as "cyan" | "red" }) => (
+const PulseDot = ({ color = "gradient" as "gradient" | "rose" }) => (
   <span
-    className={`inline-block w-1.5 h-1.5 rounded-full animate-pulse-cyan flex-none ${
-      color === "cyan" ? "bg-pb-cyan shadow-[0_0_8px_rgba(32,221,235,0.6)]" : "bg-pb-red shadow-[0_0_8px_rgba(228,73,53,0.6)]"
+    className={`inline-block w-1.5 h-1.5 rounded-full flex-none animate-pulse ${
+      color === "gradient" ? "bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6]" : "bg-[#F2667B]"
     }`}
   />
 );
@@ -232,283 +274,269 @@ const VendaMaisComIA = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pb-void text-pb-ink-soft font-body">
+    <div className="venda-mais-ia min-h-screen bg-[#0A0A13] text-[#B7B8C7] antialiased" style={{ fontFamily: FONT_STACK }}>
       <Helmet>
         <title>Agente de IA — Vendas no WhatsApp 24/7</title>
         <meta
           name="description"
           content="Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp 24 horas por dia. Peça um diagnóstico gratuito e veja funcionando antes de decidir."
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
+      <style>{`
+        body::after{display:none !important;}
+        .venda-mais-ia h1, .venda-mais-ia h2, .venda-mais-ia h3, .venda-mais-ia h4 {
+          font-family: inherit;
+          text-transform: none;
+        }
+        .venda-mais-ia p {
+          font-family: inherit;
+        }
+      `}</style>
 
-      {/* META BAR */}
-      <div className="meta-bar">
-        <div className="flex items-center min-w-0">
-          <span className="dot cyan" />
-          <span className="truncate">Agente de IA // WhatsApp</span>
-        </div>
-        <nav className="flex items-center gap-6 flex-none">
-          <div className="hidden min-[860px]:flex items-center gap-6">
+      {/* HEADER */}
+      <div className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0A0A13]/80 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between gap-6">
+          <div className="flex items-center gap-2.5 font-bold text-[#F5F5FA] text-[15px]">
+            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6]" />
+            Agente BA
+          </div>
+          <nav className="hidden min-[860px]:flex items-center gap-8 text-sm font-medium text-[#9A9CAA]">
             {NAV_LINKS.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => scrollToSection(l.id)}
-                className="hover:text-pb-cyan transition-colors"
-              >
+              <button key={l.id} onClick={() => scrollToSection(l.id)} className="hover:text-[#F5F5FA] transition-colors">
                 {l.label}
               </button>
             ))}
-          </div>
-          <button
-            onClick={() => scrollToSection("aplicar")}
-            className="btn-primary"
-            style={{ padding: "8px 16px", fontSize: "10px" }}
-          >
+          </nav>
+          <button onClick={() => scrollToSection("aplicar")} className={BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px]"}>
             Quero um diagnóstico
           </button>
-        </nav>
+        </div>
       </div>
 
       {/* HERO */}
-      <header className="relative pt-10 pb-16 md:pt-14 md:pb-20 overflow-hidden">
-        <div className="hidden lg:block absolute top-5 right-8 text-right font-mono text-[10px] uppercase tracking-mono-wide leading-loose text-pb-ink-faint">
-          <div>
-            FILE: <span className="text-pb-ink-soft">AGENTE.LP</span>
-          </div>
-          <div>
-            BUILD: <span className="text-pb-ink-soft">2026.07</span>
-          </div>
-          <div>
-            CHANNEL: <span className="text-pb-ink-soft">WHATSAPP</span>
-          </div>
-          <div>
-            STATE: <span className="text-pb-cyan">● 24/7</span>
-          </div>
+      <header className="relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-[#8B7CF6]/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-[#20DDEB]/15 blur-[110px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 md:pt-20 md:pb-28">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
             <div className="rev-item animate-fade-in">
-              <Stamp>AGENTE DE IA PARA VENDAS</Stamp>
-              <p className="mt-6 font-mono text-xs uppercase tracking-mono-wide text-pb-ink-muted">
-                Para empresários que perdem lead por demora.
-              </p>
-              <h1 className="mt-4 font-display uppercase text-pb-ink text-[clamp(44px,6vw,88px)] leading-[0.9]">
-                Seu melhor vendedor
-                <br />
-                não dorme<span className="text-pb-red">.</span>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/[0.10] bg-white/[0.03] px-4 py-2 text-xs font-semibold text-[#B7B8C7] mb-7">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6]" />
+                <b className="text-[#F5F5FA]">SOLUÇÃO MAIS PROCURADA</b>
+                <span className="text-[#5D5F6B]">·</span>
+                Agente de Vendas BA
+              </span>
+              <p className="text-sm font-medium text-[#7B7C8C] mb-4">Para empresários que perdem lead por demora.</p>
+              <h1 className="font-extrabold text-[#F5F5FA] text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
+                Seu melhor vendedor <Accent>não dorme</Accent>.
               </h1>
-              <p className="mt-7 font-body text-pb-ink-soft text-base md:text-lg leading-relaxed max-w-[40ch]">
-                Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp. 24 horas por dia,
-                7 dias por semana. Responde em segundos, nunca esquece um lead e custa uma fração de um CLT.
+              <p className="text-[#B7B8C7] text-base md:text-lg leading-relaxed max-w-[46ch] mb-9">
+                Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp.{" "}
+                <b className="text-[#F5F5FA] font-semibold">24 horas por dia, 7 dias por semana.</b> Responde em
+                segundos, nunca esquece um lead e{" "}
+                <b className="text-[#F5F5FA] font-semibold">custa uma fração de um CLT.</b>
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <button onClick={() => scrollToSection("aplicar")} className="btn-primary">
-                  Quero ver funcionando
+              <div className="flex flex-wrap gap-4">
+                <button onClick={() => scrollToSection("aplicar")} className={BTN_PRIMARY}>
+                  Quero ver funcionando →
                 </button>
-                <button onClick={() => scrollToSection("solucao")} className="btn-ghost">
-                  Como funciona ↓
+                <button onClick={() => scrollToSection("solucao")} className={BTN_GHOST}>
+                  Como funciona
                 </button>
               </div>
             </div>
 
-            {/* CHAT MOCKUP */}
-            <div className="relative rev-item animate-fade-in bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong">
-              <CornerBrackets size={22} offset={-1} />
-              <div className="flex items-center justify-between px-4 py-3 border-b border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
-                <span>Agente // Conversa ao vivo</span>
-                <span className="flex items-center gap-2 text-pb-cyan">
-                  <PulseDot />
-                  Online
-                </span>
+            <div className="rev-item animate-fade-in flex flex-col gap-4">
+              {/* dashboard card */}
+              <div className={CARD_CLS + " shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)] p-5"}>
+                <div className="flex items-center justify-between text-xs text-[#7B7C8C] mb-4">
+                  <span>agente_dashboard.exe</span>
+                  <div className="flex gap-1.5">
+                    <i className="w-2 h-2 rounded-full bg-[#F26B6B] inline-block" />
+                    <i className="w-2 h-2 rounded-full bg-[#F5C451] inline-block" />
+                    <i className="w-2 h-2 rounded-full bg-[#5FD98A] inline-block" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-2.5 mb-4">
+                  <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
+                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Leads hoje</div>
+                    <div className="text-2xl font-extrabold text-[#F5F5FA]">142</div>
+                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">↑ 18%</div>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
+                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Agendados</div>
+                    <div className="text-2xl font-extrabold text-[#F5F5FA]">38</div>
+                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">↑ 9%</div>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
+                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Atendidos</div>
+                    <div className="text-2xl font-extrabold text-[#F5F5FA]">100%</div>
+                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">consistente</div>
+                  </div>
+                </div>
+                <svg width="100%" height="52" viewBox="0 0 400 52" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="heroSpark" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#8B7CF6" stopOpacity="0.45" />
+                      <stop offset="100%" stopColor="#20DDEB" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <polyline
+                    points="0,38 50,30 100,34 150,18 200,24 250,10 300,16 350,6 400,12"
+                    fill="none"
+                    stroke="#8B7CF6"
+                    strokeWidth="2"
+                  />
+                  <polygon
+                    points="0,38 50,30 100,34 150,18 200,24 250,10 300,16 350,6 400,12 400,52 0,52"
+                    fill="url(#heroSpark)"
+                    stroke="none"
+                  />
+                </svg>
               </div>
-              <div className="flex flex-col gap-3.5 p-5 bg-pb-void-deep">
-                <div className="max-w-[78%] self-start bg-pb-void-elev border border-pb-grid-strong p-3.5">
-                  <span className="block font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mb-1.5">
-                    Lead · 22:47
-                  </span>
-                  <span className="font-body text-[14.5px] leading-snug text-pb-ink-soft">
+
+              {/* chat card */}
+              <div className={CARD_CLS + " shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)] p-5"}>
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex-none" />
+                  <div>
+                    <div className="text-sm font-bold text-[#F5F5FA]">Agente BA</div>
+                    <div className="text-xs text-[#6EE7B7] flex items-center gap-1.5">
+                      <i className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7] inline-block" />
+                      online
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2.5">
+                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#B7B8C7] leading-snug">
                     Oi, ainda dá pra saber mais sobre o serviço?
-                  </span>
-                </div>
-                <div className="max-w-[78%] self-end bg-pb-cyan/[0.08] border border-pb-cyan-dim p-3.5">
-                  <span className="block font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-1.5">
-                    Agente
-                  </span>
-                  <span className="font-body text-[14.5px] leading-snug text-pb-ink">
-                    Dá sim. Funciono 24/7 por aqui. Me conta: qual o seu maior gargalo hoje?
-                  </span>
-                </div>
-                <div className="self-end flex items-center gap-2 font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted">
-                  <span className="w-1 h-1 rounded-full bg-pb-cyan shadow-[0_0_6px_rgba(32,221,235,0.6)]" />
-                  Resposta em 0.8s
-                </div>
-                <div className="max-w-[78%] self-start bg-pb-void-elev border border-pb-grid-strong p-3.5">
-                  <span className="block font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mb-1.5">
-                    Lead · 22:47
-                  </span>
-                  <span className="font-body text-[14.5px] leading-snug text-pb-ink-soft">
+                  </div>
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-[#20DDEB]/20 to-[#8B7CF6]/20 px-4 py-2.5 text-[14px] text-[#F5F5FA] leading-snug">
+                    Dá sim. Funciono 24/7 por aqui. Qual o seu maior gargalo hoje?
+                  </div>
+                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#B7B8C7] leading-snug">
                     Perco muito lead que chega de madrugada.
-                  </span>
-                </div>
-                <div className="max-w-[78%] self-end bg-pb-cyan/[0.08] border border-pb-cyan-dim p-3.5">
-                  <span className="block font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-1.5">
-                    Agente
-                  </span>
-                  <span className="font-body text-[14.5px] leading-snug text-pb-ink">
-                    Esse é exatamente o problema que eu resolvo. Já vou te qualificar e agendar com o time. Pode
-                    ser amanhã 9h?
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 border-t border-pb-grid-strong">
-                <div className="p-4 border-r border-pb-grid-strong">
-                  <div className="font-display text-3xl leading-none text-pb-ink">142</div>
-                  <div className="mt-1.5 font-mono text-[8px] uppercase tracking-mono-wide text-pb-ink-muted">
-                    Leads hoje
                   </div>
-                </div>
-                <div className="p-4 border-r border-pb-grid-strong">
-                  <div className="font-display text-3xl leading-none text-pb-ink">38</div>
-                  <div className="mt-1.5 font-mono text-[8px] uppercase tracking-mono-wide text-pb-ink-muted">
-                    Agendados (auto)
-                  </div>
-                </div>
-                <div className="p-4 bg-pb-void-deep">
-                  <div className="font-display text-3xl leading-none text-pb-cyan">100%</div>
-                  <div className="mt-1.5 font-mono text-[8px] uppercase tracking-mono-wide text-pb-ink-muted">
-                    Atendidos
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-[#20DDEB]/20 to-[#8B7CF6]/20 px-4 py-2.5 text-[14px] text-[#F5F5FA] leading-snug">
+                    Esse é exatamente o problema que eu resolvo. Já vou te qualificar e agendar com o time. Pode ser
+                    amanhã 9h?
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* STAT GRID */}
-          <div className="rev-item animate-fade-in mt-14 grid grid-cols-2 md:grid-cols-4 border border-pb-grid-strong divide-x divide-y md:divide-y-0 divide-pb-grid-strong">
-            <div className="p-6">
-              <div className="font-display text-[clamp(40px,4.4vw,58px)] leading-none text-pb-cyan">4X</div>
-              <div className="mt-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted leading-relaxed">
-                Capacidade de atendimento por SDR — de 25 p/ 100 leads/dia
+          {/* STAT STRIP */}
+          <div className="rev-item animate-fade-in mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {HERO_STATS.map((s) => (
+              <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6">
+                <div
+                  className={`text-[clamp(32px,3.6vw,44px)] font-extrabold leading-none ${
+                    s.accent ? "bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] bg-clip-text text-transparent" : "text-[#F5F5FA]"
+                  }`}
+                >
+                  {s.value}
+                </div>
+                <div className="mt-2.5 text-[13px] text-[#7B7C8C] leading-relaxed">{s.label}</div>
               </div>
-            </div>
-            <div className="p-6">
-              <div className="font-display text-[clamp(40px,4.4vw,58px)] leading-none text-pb-ink">24/7</div>
-              <div className="mt-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted leading-relaxed">
-                Operação ininterrupta, sem folga
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="font-display text-[clamp(40px,4.4vw,58px)] leading-none text-pb-ink">&lt;1min</div>
-              <div className="mt-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted leading-relaxed">
-                Tempo médio de resposta
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="font-display text-[clamp(40px,4.4vw,58px)] leading-none text-pb-ink">80%</div>
-              <div className="mt-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted leading-relaxed">
-                Das vendas exigem 5+ follow-ups — a maioria para no 2º
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </header>
 
       {/* 01 O PROBLEMA */}
-      <section id="dor" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="dor" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="01 / O PROBLEMA"
+          <SectionIntro
+            eyebrow="O problema"
             title={
               <>
-                Seu WhatsApp é um cemitério de oportunidades<span className="text-pb-red">.</span>
+                Seu WhatsApp é um cemitério de <Accent>oportunidades</Accent>.
               </>
             }
           />
           <div className="rev-item animate-fade-in grid md:grid-cols-2 gap-12 items-start">
-            <div className="space-y-5 font-body text-pb-ink-soft text-[17px] leading-relaxed">
+            <div className="space-y-5 text-[#B7B8C7] text-[17px] leading-relaxed">
               <p>
                 O lead chegou às 22h. Seu time só viu às 9h. Quando ligaram, ele já tinha fechado com o
                 concorrente que respondeu primeiro.
               </p>
               <p>
-                O follow-up ficou pra depois. <strong className="text-pb-ink font-semibold">Depois virou nunca.</strong>{" "}
-                A venda esfriou sozinha, sem ninguém perceber.
+                O follow-up ficou pra depois. <b className="text-[#F5F5FA] font-semibold">Depois virou nunca.</b> A
+                venda esfriou sozinha, sem ninguém perceber.
               </p>
               <p>
                 E o SDR humano custa caro, trabalha 8h, tem dia ruim, pede demissão — e leva o know-how embora
                 quando sai.
               </p>
             </div>
-            <div className="bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong p-8">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-2">
-                O custo invisível
-              </p>
-              <p className="font-body text-pb-ink-muted text-sm mb-6 leading-relaxed">
+            <div className={CARD_CLS + " p-8"}>
+              <p className="text-sm font-bold text-[#F5F5FA] mb-1.5">O custo invisível</p>
+              <p className="text-[#7B7C8C] text-sm mb-6 leading-relaxed">
                 A oportunidade que evapora enquanto ninguém está olhando.
               </p>
-              <ul>
-                {[
-                  "Lead fora do horário = lead perdido",
-                  "Follow-up esquecido = venda perdida",
-                  "SDR caro, inconsistente e difícil de escalar",
-                  "Conhecimento que sai junto com a pessoa",
-                ].map((t) => (
-                  <li
-                    key={t}
-                    className="flex items-start gap-3.5 py-4 border-b border-pb-grid last:border-none font-body text-[15.5px] text-pb-ink-soft"
-                  >
-                    <X className="w-4 h-4 text-pb-red flex-none mt-0.5" />
-                    {t}
+              <ul className="space-y-4">
+                {PROBLEMS.map((t) => (
+                  <li key={t} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex-none w-5 h-5 rounded-full bg-[#F2667B]/15 flex items-center justify-center">
+                      <X className="w-3 h-3 text-[#F2667B]" />
+                    </span>
+                    <span className="text-[15px] text-[#B7B8C7] leading-snug">{t}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="rev-item animate-fade-in mt-14 text-center">
-            <p className="font-display uppercase text-pb-cyan text-[clamp(26px,3.4vw,44px)] leading-[1.02] max-w-[24ch] mx-auto">
-              E se você tivesse um vendedor que nunca dorme, nunca esquece e custa uma fração de um CLT?
+          <div className="rev-item animate-fade-in mt-16 text-center">
+            <p className="font-extrabold text-[clamp(22px,2.8vw,32px)] leading-snug max-w-[26ch] mx-auto">
+              <Accent>
+                E se você tivesse um vendedor que nunca dorme, nunca esquece e custa uma fração de um CLT?
+              </Accent>
             </p>
           </div>
         </div>
       </section>
 
       {/* 02 A SOLUÇÃO */}
-      <section id="solucao" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="solucao" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="02 / A SOLUÇÃO"
+          <SectionIntro
+            eyebrow="A solução"
             title={
               <>
-                O vendedor que não dorme, não esquece e não pede demissão<span className="text-pb-red">.</span>
+                O vendedor que não dorme, não esquece e não pede <Accent>demissão</Accent>.
               </>
             }
           />
           <div className="rev-item animate-fade-in max-w-[820px]">
-            <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted mb-5">
-              Apresentamos
-            </p>
-            <div className="space-y-5 font-body text-pb-ink-soft text-lg leading-relaxed">
+            <div className="space-y-5 text-[#B7B8C7] text-lg leading-relaxed">
               <p>
-                Um agente de IA que trabalha 24 horas, nunca reclama, responde em segundos e segue o seu
-                processo com precisão. A velocidade de resposta é maior que a de qualquer humano — e ele não
-                perde o timing que fecha a venda.
+                Um agente de IA que trabalha 24 horas, nunca reclama, responde em segundos e segue o seu processo
+                com precisão. A velocidade de resposta é maior que a de qualquer humano — e ele não perde o timing
+                que fecha a venda.
               </p>
               <p>
                 Ele atua direto na restrição do funil:{" "}
-                <strong className="text-pb-ink font-semibold">
-                  o número de leads que dá pra atender por dia.
-                </strong>{" "}
-                Com o agente, dá pra comprar mais mídia sem desperdiçar lead por falta de atendimento.
+                <b className="text-[#F5F5FA] font-semibold">o número de leads que dá pra atender por dia.</b> Com o
+                agente, dá pra comprar mais mídia sem desperdiçar lead por falta de atendimento.
               </p>
             </div>
-            <div className="mt-8 flex items-start gap-4 bg-pb-void-card border border-pb-grid-strong border-l-2 border-l-pb-cyan p-6">
-              <div className="w-[22px] h-[22px] border border-pb-cyan flex-none flex items-center justify-center mt-0.5">
-                <Check className="w-3.5 h-3.5 text-pb-cyan" />
-              </div>
-              <p className="font-body text-[16px] text-pb-ink leading-relaxed">
-                Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda
-                mensagem. É um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
+            <div className={"mt-8 flex items-start gap-4 " + CARD_CLS + " p-6"}>
+              <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex items-center justify-center mt-0.5">
+                <Check className="w-4 h-4 text-[#0A0A13]" />
+              </span>
+              <p className="text-[#F5F5FA] text-base leading-relaxed">
+                Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É
+                um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
               </p>
             </div>
           </div>
@@ -516,32 +544,32 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 03 O ECOSSISTEMA */}
-      <section id="agentes" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="agentes" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="03 / O ECOSSISTEMA"
+          <SectionIntro
+            eyebrow="O ecossistema"
             title={
               <>
-                Três agentes. Uma máquina de vendas<span className="text-pb-red">.</span>
+                Três agentes. Uma <Accent>máquina de vendas</Accent>.
               </>
             }
           />
           <div className="grid md:grid-cols-3 gap-5">
-            {PILLARS.map((p) => (
+            {PILLARS.map((p, i) => (
               <div
                 key={p.tag}
-                className="rev-item animate-fade-in bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong border-t-2 border-t-pb-cyan p-7 hover:border-pb-cyan-dim transition-colors duration-300"
+                className={"rev-item animate-fade-in " + CARD_CLS + " p-7 hover:border-white/[0.18] transition-colors"}
               >
-                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">{p.tag}</p>
-                <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.98] mb-3">{p.title}</h3>
-                <p className="font-body text-pb-ink-soft text-[15px] leading-relaxed mb-5">{p.desc}</p>
+                <span className="inline-flex w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.08] items-center justify-center text-xs font-bold text-[#F5F5FA] mb-5">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-2">{p.tag}</p>
+                <h3 className="font-extrabold text-[#F5F5FA] text-xl leading-snug mb-3">{p.title}</h3>
+                <p className="text-[#9A9CAA] text-[15px] leading-relaxed mb-5">{p.desc}</p>
                 <ul className="space-y-2.5">
                   {p.checks.map((c) => (
-                    <li
-                      key={c}
-                      className="flex items-center gap-2.5 font-mono text-[11.5px] uppercase tracking-wide text-pb-ink-muted"
-                    >
-                      <Check className="w-3.5 h-3.5 text-pb-cyan flex-none" />
+                    <li key={c} className="flex items-center gap-2.5 text-[13.5px] text-[#B7B8C7]">
+                      <Check className="w-3.5 h-3.5 text-[#6EE7B7] flex-none" />
                       {c}
                     </li>
                   ))}
@@ -553,75 +581,76 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 04 O CONTRASTE */}
-      <section id="comparativo" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="comparativo" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="04 / O CONTRASTE"
+          <SectionIntro
+            eyebrow="O contraste"
             title={
               <>
-                Agente de IA vs SDR humano<span className="text-pb-red">.</span>
+                Agente de IA <Accent>vs</Accent> SDR humano.
               </>
             }
           />
           <div className="rev-item animate-fade-in grid md:grid-cols-2 gap-5">
-            <div className="border border-pb-grid-strong p-7 opacity-70">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-1.5">
-                O tradicional
-              </p>
-              <p className="font-display uppercase text-pb-ink text-[28px] leading-none mb-6">SDR humano (CLT)</p>
+            <div className="rounded-2xl border border-white/[0.07] p-7 opacity-60">
+              <p className="text-xs font-bold text-[#7B7C8C] mb-1.5">O tradicional</p>
+              <p className="font-extrabold text-[#F5F5FA] text-2xl mb-6">SDR humano (CLT)</p>
               {CMP_ROWS.map((r) => (
                 <div
                   key={r.k}
-                  className="flex items-center justify-between gap-3 py-3.5 border-b border-pb-grid last:border-none"
+                  className="flex items-center justify-between gap-3 py-3.5 border-b border-white/[0.06] last:border-none"
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{r.k}</span>
-                  <span className="font-body text-[14.5px] text-pb-ink-soft text-right">{r.old}</span>
+                  <span className="text-[13px] text-[#7B7C8C]">{r.k}</span>
+                  <span className="text-[14.5px] text-[#B7B8C7] text-right">{r.old}</span>
                 </div>
               ))}
             </div>
-            <div className="bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong border-t-2 border-t-pb-cyan p-7">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-1.5">
-                A evolução
+            <div className={CARD_CLS + " p-7 shadow-[0_0_0_1px_rgba(139,124,246,0.25),0_24px_50px_-30px_rgba(139,124,246,0.5)]"}>
+              <p className="text-xs font-bold text-[#8B7CF6] mb-1.5">A evolução</p>
+              <p className="font-extrabold text-2xl mb-6">
+                <Accent>Agente de IA</Accent>
               </p>
-              <p className="font-display uppercase text-pb-cyan text-[28px] leading-none mb-6">Agente de IA</p>
               {CMP_ROWS.map((r) => (
                 <div
                   key={r.k}
-                  className="flex items-center justify-between gap-3 py-3.5 border-b border-pb-grid last:border-none"
+                  className="flex items-center justify-between gap-3 py-3.5 border-b border-white/[0.06] last:border-none"
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{r.k}</span>
-                  <span className="font-body text-[14.5px] text-pb-ink text-right">{r.neo}</span>
+                  <span className="text-[13px] text-[#7B7C8C]">{r.k}</span>
+                  <span className="text-[14.5px] text-[#F5F5FA] font-medium text-right">{r.neo}</span>
                 </div>
               ))}
             </div>
           </div>
-          <p className="rev-item animate-fade-in mt-10 font-body italic text-pb-ink text-[clamp(17px,2vw,22px)] leading-relaxed max-w-[46ch]">
-            <span className="block w-10 h-px bg-pb-cyan mb-5" aria-hidden />
+          <p className="rev-item animate-fade-in mt-10 italic text-[#F5F5FA] text-[clamp(17px,2vw,22px)] leading-relaxed max-w-[46ch]">
+            <span
+              className="block w-10 h-[3px] rounded-full bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] mb-5"
+              aria-hidden
+            />
             Você troca um custo fixo alto e imprevisível por um custo menor e uma performance que não varia.
           </p>
         </div>
       </section>
 
       {/* 05 A IMPLEMENTAÇÃO */}
-      <section id="processo" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="processo" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="05 / A IMPLEMENTAÇÃO"
+          <SectionIntro
+            eyebrow="A implementação"
             title={
               <>
-                Em dias, não em meses<span className="text-pb-red">.</span>
+                Em dias, não em <Accent>meses</Accent>.
               </>
             }
+            sub="Do diagnóstico à operação."
           />
-          <p className="rev-item animate-fade-in font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted mb-8">
-            Do diagnóstico à operação
-          </p>
-          <div className="rev-item animate-fade-in grid md:grid-cols-4 border border-pb-grid-strong divide-y md:divide-y-0 md:divide-x divide-pb-grid-strong">
+          <div className="rev-item animate-fade-in grid md:grid-cols-4 gap-4">
             {STEPS.map((s) => (
-              <div key={s.n} className="p-6">
-                <div className="font-display text-4xl leading-none text-pb-cyan mb-3.5">{s.n}</div>
-                <h4 className="font-mono text-xs uppercase tracking-mono-wide text-pb-ink mb-3">{s.title}</h4>
-                <p className="font-body text-sm text-pb-ink-muted leading-relaxed">{s.desc}</p>
+              <div key={s.n} className={CARD_CLS + " p-6"}>
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex items-center justify-center text-xs font-extrabold text-[#0A0A13] mb-4">
+                  {s.n}
+                </div>
+                <h4 className="font-bold text-[#F5F5FA] text-[15px] mb-2.5">{s.title}</h4>
+                <p className="text-sm text-[#7B7C8C] leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -629,33 +658,35 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 06 GARANTIA */}
-      <section id="garantia" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="garantia" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rev-item animate-fade-in grid md:grid-cols-[1fr_auto] gap-10 items-center border border-pb-cyan-dim bg-gradient-to-b from-pb-cyan/[0.04] to-transparent p-9 md:p-12">
+          <div className="rev-item animate-fade-in rounded-3xl border border-white/[0.10] bg-gradient-to-br from-[#8B7CF6]/[0.08] via-transparent to-[#20DDEB]/[0.06] p-9 md:p-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
             <div>
-              <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95] mb-4">
-                Você vê antes de decidir<span className="text-pb-red">.</span>
+              <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-tight mb-4">
+                Você vê antes de <Accent>decidir</Accent>.
               </h2>
-              <p className="font-body text-pb-ink-soft text-base leading-relaxed max-w-[52ch]">
+              <p className="text-[#B7B8C7] text-base leading-relaxed max-w-[52ch]">
                 Coloca o agente pra rodar na sua operação e acompanha o resultado com os próprios olhos.{" "}
-                <strong className="text-pb-ink font-semibold">Sem letra miúda, sem burocracia.</strong> A gente
-                confia no que entrega — e faz questão de que você veja funcionando antes de qualquer decisão de
-                continuar.
+                <b className="text-[#F5F5FA] font-semibold">Sem letra miúda, sem burocracia.</b> A gente confia no
+                que entrega — e faz questão de que você veja funcionando antes de qualquer decisão de continuar.
               </p>
-              <p className="mt-4 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">
+              <p className="mt-4 text-sm font-medium text-[#7B7C8C]">
                 Demonstração ao vivo + período de operação assistida
               </p>
             </div>
-            <div className="border border-pb-cyan p-7 text-center min-w-[200px]">
-              <div className="font-display text-[clamp(38px,4vw,52px)] leading-[0.9] text-pb-cyan">
-                RISCO
-                <br />
-                ZERO
+            <div
+              className="rounded-full w-[168px] h-[168px] flex-none flex flex-col items-center justify-center text-center bg-[#0A0A13] border border-white/[0.10] mx-auto"
+              style={{ boxShadow: "0 0 0 6px rgba(139,124,246,0.10)" }}
+            >
+              <div className="font-extrabold text-xl leading-tight">
+                <Accent>
+                  RISCO
+                  <br />
+                  ZERO
+                </Accent>
               </div>
-              <div className="mt-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted leading-relaxed">
-                Você vê rodando
-                <br />
-                antes de fechar
+              <div className="mt-1.5 text-[10.5px] text-[#7B7C8C] leading-snug px-3">
+                Você vê rodando antes de fechar
               </div>
             </div>
           </div>
@@ -663,13 +694,13 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 07 POR QUE NÓS */}
-      <section id="diferenciais" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="diferenciais" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="06 / POR QUE NÓS"
+          <SectionIntro
+            eyebrow="Por que nós"
             title={
               <>
-                Por que não é só mais um chatbot<span className="text-pb-red">.</span>
+                Por que não é só mais um <Accent>chatbot</Accent>.
               </>
             }
           />
@@ -677,10 +708,10 @@ const VendaMaisComIA = () => {
             {DIFFS.map((d, i) => (
               <div
                 key={i}
-                className="rev-item animate-fade-in bg-pb-void-card border border-pb-grid-strong p-7 hover:border-pb-cyan-dim transition-colors duration-300"
+                className={"rev-item animate-fade-in " + CARD_CLS + " p-7 hover:border-white/[0.18] transition-colors"}
               >
-                <h3 className="font-display uppercase text-pb-ink text-[26px] leading-none mb-3.5">{d.title}</h3>
-                <p className="font-body text-pb-ink-soft text-[15px] leading-relaxed">{d.desc}</p>
+                <h3 className="font-extrabold text-[#F5F5FA] text-xl leading-snug mb-3">{d.title}</h3>
+                <p className="text-[#9A9CAA] text-[15px] leading-relaxed">{d.desc}</p>
               </div>
             ))}
           </div>
@@ -688,23 +719,23 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 08 AS PERGUNTAS */}
-      <section id="perguntas" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="perguntas" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SecHead
-            idx="07 / AS PERGUNTAS"
+          <SectionIntro
+            eyebrow="As perguntas"
             title={
               <>
-                O que você deve estar perguntando<span className="text-pb-red">.</span>
+                O que você deve estar <Accent>perguntando</Accent>.
               </>
             }
           />
-          <Accordion type="single" collapsible className="rev-item animate-fade-in">
+          <Accordion type="single" collapsible className="rev-item animate-fade-in space-y-3">
             {FAQS.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-pb-grid-strong">
-                <AccordionTrigger className="font-display uppercase text-pb-ink text-xl md:text-2xl hover:no-underline hover:text-pb-cyan text-left py-6">
+              <AccordionItem key={i} value={`item-${i}`} className={CARD_CLS + " border-b-0 px-6"}>
+                <AccordionTrigger className="text-[#F5F5FA] text-base md:text-lg font-semibold hover:no-underline text-left py-5">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="font-body text-pb-ink-soft text-base leading-relaxed max-w-[70ch] pb-6">
+                <AccordionContent className="text-[#9A9CAA] text-[15px] leading-relaxed max-w-[70ch] pb-5">
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
@@ -714,48 +745,44 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* 09 CTA + FORM */}
-      <section id="aplicar" className="border-t border-pb-grid-strong py-16 md:py-24">
+      <section id="aplicar" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="rev-item animate-fade-in">
-              <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan">
-                08 / O DIAGNÓSTICO
+              <span className="inline-flex items-center rounded-full border border-white/[0.10] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold text-[#9A9CAA] mb-5">
+                O diagnóstico
               </span>
-              <h2 className="mt-3 font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-                Cada minuto sem responder é uma venda pro concorrente<span className="text-pb-red">.</span>
+              <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-tight mb-5 max-w-[18ch]">
+                Cada minuto sem responder é uma venda pro <Accent>concorrente</Accent>.
               </h2>
-              <p className="mt-5 font-body text-pb-ink-soft text-base md:text-lg leading-relaxed max-w-[44ch]">
+              <p className="text-[#B7B8C7] text-base md:text-lg leading-relaxed max-w-[44ch] mb-8">
                 Agende uma conversa. A gente mostra o agente funcionando na prática e faz um diagnóstico do seu
                 processo de vendas.
               </p>
-              <ul className="mt-8 space-y-3">
+              <ul className="space-y-3">
                 {["Diagnóstico gratuito", "Demonstração ao vivo", "Sem compromisso"].map((t) => (
-                  <li
-                    key={t}
-                    className="flex items-center gap-3 font-mono text-xs uppercase tracking-mono-wide text-pb-ink-soft"
-                  >
-                    <Check className="w-3.5 h-3.5 text-pb-cyan flex-none" />
+                  <li key={t} className="flex items-center gap-3 text-sm font-medium text-[#B7B8C7]">
+                    <Check className="w-4 h-4 text-[#6EE7B7] flex-none" />
                     {t}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="relative rev-item animate-fade-in bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong p-8">
-              <CornerBrackets size={20} offset={-1} />
+            <div className={"relative rev-item animate-fade-in " + CARD_CLS + " p-8 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"}>
               {isSubmitted ? (
                 <div className="text-center py-10 px-2">
-                  <div className="w-11 h-11 border border-pb-cyan mx-auto mb-6 flex items-center justify-center">
-                    <Check className="w-5 h-5 text-pb-cyan" />
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] mx-auto mb-6 flex items-center justify-center">
+                    <Check className="w-6 h-6 text-[#0A0A13]" />
                   </div>
-                  <h4 className="font-display uppercase text-pb-ink text-3xl mb-2.5">Recebido</h4>
-                  <p className="font-body text-pb-ink-soft text-[15px] leading-relaxed">
+                  <h4 className="font-extrabold text-[#F5F5FA] text-2xl mb-2.5">Recebido!</h4>
+                  <p className="text-[#9A9CAA] text-[15px] leading-relaxed">
                     Vamos te chamar no WhatsApp pra agendar o diagnóstico e mostrar o agente rodando na prática.
                   </p>
                 </div>
               ) : (
                 <>
-                  <div className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-6">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#F5F5FA] mb-6">
                     <PulseDot />
                     Agendar diagnóstico
                   </div>
@@ -766,9 +793,9 @@ const VendaMaisComIA = () => {
                         name="nome"
                         render={({ field }) => (
                           <FormItem>
-                            <label className="pb-label mb-2 block">Nome completo</label>
+                            <label className={LABEL_CLS}>Nome completo</label>
                             <FormControl>
-                              <input placeholder="Seu nome" className="pb-input" {...field} />
+                              <input placeholder="Seu nome" className={INPUT_CLS} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -779,9 +806,9 @@ const VendaMaisComIA = () => {
                         name="whatsapp"
                         render={({ field }) => (
                           <FormItem>
-                            <label className="pb-label mb-2 block">WhatsApp</label>
+                            <label className={LABEL_CLS}>WhatsApp</label>
                             <FormControl>
-                              <input placeholder="(00) 00000-0000" className="pb-input" {...field} />
+                              <input placeholder="(00) 00000-0000" className={INPUT_CLS} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -792,9 +819,9 @@ const VendaMaisComIA = () => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <label className="pb-label mb-2 block">E-mail</label>
+                            <label className={LABEL_CLS}>E-mail</label>
                             <FormControl>
-                              <input type="email" placeholder="voce@empresa.com" className="pb-input" {...field} />
+                              <input type="email" placeholder="voce@empresa.com" className={INPUT_CLS} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -805,9 +832,9 @@ const VendaMaisComIA = () => {
                         name="empresa"
                         render={({ field }) => (
                           <FormItem>
-                            <label className="pb-label mb-2 block">Empresa</label>
+                            <label className={LABEL_CLS}>Empresa</label>
                             <FormControl>
-                              <input placeholder="Nome da empresa" className="pb-input" {...field} />
+                              <input placeholder="Nome da empresa" className={INPUT_CLS} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -818,9 +845,9 @@ const VendaMaisComIA = () => {
                         name="leadsMes"
                         render={({ field }) => (
                           <FormItem>
-                            <label className="pb-label mb-2 block">Quantos leads você recebe por mês?</label>
+                            <label className={LABEL_CLS}>Quantos leads você recebe por mês?</label>
                             <FormControl>
-                              <select className="pb-input" {...field}>
+                              <select className={INPUT_CLS} {...field}>
                                 <option value="" disabled>
                                   Selecione
                                 </option>
@@ -838,12 +865,12 @@ const VendaMaisComIA = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn-primary w-full justify-center mt-2 disabled:opacity-50"
+                        className={BTN_PRIMARY + " w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"}
                       >
                         {isSubmitting ? "Enviando..." : "Quero ver o agente funcionando"}
                       </button>
-                      <p className="flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-4">
-                        <PulseDot color="red" />
+                      <p className="flex items-center gap-2.5 text-xs text-[#7B7C8C] mt-4">
+                        <PulseDot color="rose" />
                         Vagas limitadas por mês para garantir qualidade na implementação
                       </p>
                     </form>
@@ -856,26 +883,26 @@ const VendaMaisComIA = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-pb-grid-strong py-14 md:py-16">
+      <footer className="border-t border-white/[0.06] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="rev-item animate-fade-in font-display uppercase text-pb-ink text-[clamp(28px,4vw,52px)] leading-[0.98] max-w-[22ch] mb-10">
-            O lead não espera<span className="text-pb-red">.</span>
+          <p className="rev-item animate-fade-in font-extrabold text-[#F5F5FA] text-[clamp(26px,3.6vw,42px)] leading-tight max-w-[20ch] mb-10">
+            O lead não <Accent>espera</Accent>.
           </p>
-          <div className="flex flex-wrap justify-between gap-6 border-t border-pb-grid pt-6 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">
+          <div className="flex flex-wrap justify-between gap-6 border-t border-white/[0.06] pt-6 text-sm text-[#7B7C8C]">
             <div>
-              <div className="text-pb-ink-faint mb-1">Produto</div>
+              <div className="text-[#4E505A] text-xs mb-1">Produto</div>
               Agente de IA para WhatsApp
             </div>
             <div>
-              <div className="text-pb-ink-faint mb-1">Canal</div>
+              <div className="text-[#4E505A] text-xs mb-1">Canal</div>
               Atendimento · Follow-up · Sales Coach
             </div>
             <div>
-              <div className="text-pb-ink-faint mb-1">Operação</div>
+              <div className="text-[#4E505A] text-xs mb-1">Operação</div>
               24 / 7
             </div>
             <div>
-              <div className="text-pb-ink-faint mb-1">© 2026</div>
+              <div className="text-[#4E505A] text-xs mb-1">© 2026</div>
               Todos os direitos reservados
             </div>
           </div>
