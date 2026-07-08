@@ -103,6 +103,35 @@ const HourlyLeadsChart = () => (
   </div>
 );
 
+const CONTACT_ATTEMPTS = [
+  { label: "Uma", pct: 3 },
+  { label: "Duas", pct: 6 },
+  { label: "Três", pct: 26 },
+  { label: "Quatro", pct: 10 },
+  { label: "Cinco", pct: 19 },
+  { label: "Seis", pct: 8 },
+  { label: "Sete", pct: 3 },
+  { label: "Oito", pct: 4 },
+  { label: "Mais de 8", pct: 10 },
+  { label: "Não sei", pct: 11 },
+];
+const CONTACT_MAX = Math.max(...CONTACT_ATTEMPTS.map((d) => d.pct));
+
+const ContactAttemptsChart = () => (
+  <div className="flex items-end gap-2 md:gap-3 h-56">
+    {CONTACT_ATTEMPTS.map((d) => (
+      <div key={d.label} className="flex-1 flex flex-col items-center justify-end h-full">
+        <span className="text-xs font-bold text-[#B7B8C7] mb-1.5">{d.pct}%</span>
+        <div
+          className="w-full rounded-t-md bg-gradient-to-t from-[#8B7CF6] to-[#20DDEB]"
+          style={{ height: `${Math.max((d.pct / CONTACT_MAX) * 100, 3)}%` }}
+        />
+        <span className="mt-2 text-[10px] text-[#7B7C8C] text-center leading-tight">{d.label}</span>
+      </div>
+    ))}
+  </div>
+);
+
 const PILLARS = [
   {
     tag: "ATENDIMENTO & SDR",
@@ -609,6 +638,28 @@ const VendaMaisComIA = () => {
                 um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GARGALO DO FOLLOW-UP */}
+      <section id="follow-up" className="border-t border-white/[0.06] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionIntro
+            eyebrow="O gargalo do follow-up"
+            title={
+              <>
+                A maioria desiste <Accent>antes da venda fechar</Accent>.
+              </>
+            }
+            sub="A maior parte das vendas só fecha depois da 5ª tentativa de contato — mas poucas empresas chegam até lá."
+          />
+          <div className={"rev-item animate-fade-in " + CARD_CLS + " p-7 md:p-10"}>
+            <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-8 max-w-[46ch]">
+              Em média, quantas tentativas de contato sua empresa faz com cada lead?
+            </p>
+            <ContactAttemptsChart />
+            <p className="mt-6 text-xs text-[#5D5F6B]">Fonte: Inside Sales Benchmark Brasil.</p>
           </div>
         </div>
       </section>
