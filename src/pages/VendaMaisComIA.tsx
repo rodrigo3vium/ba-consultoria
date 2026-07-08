@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Helmet } from "react-helmet";
-import { Check, X } from "lucide-react";
+import { Check, X, Flame } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -764,16 +764,40 @@ const VendaMaisComIA = () => {
             }
             sub="Do diagnóstico à operação."
           />
-          <div className="rev-item animate-fade-in grid md:grid-cols-4 gap-4">
-            {STEPS.map((s) => (
-              <div key={s.n} className={CARD_CLS + " p-6"}>
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex items-center justify-center text-xs font-extrabold text-[#0A0A13] mb-4">
-                  {s.n}
-                </div>
-                <h4 className="font-bold text-[#F5F5FA] text-[15px] mb-2.5">{s.title}</h4>
-                <p className="text-sm text-[#7B7C8C] leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
+          <div className="rev-item animate-fade-in relative">
+            <div className="hidden md:block absolute left-0 right-0 top-[42px] h-px bg-white/[0.09]" aria-hidden />
+            <div className="relative grid md:grid-cols-4 gap-4">
+              {STEPS.map((s, i) => {
+                const isFinal = i === STEPS.length - 1;
+                return (
+                  <div
+                    key={s.n}
+                    className={
+                      CARD_CLS +
+                      " p-6" +
+                      (isFinal
+                        ? " border-[#8B7CF6]/50 bg-gradient-to-b from-[#8B7CF6]/[0.08] to-transparent"
+                        : "")
+                    }
+                  >
+                    <div
+                      className={
+                        "w-9 h-9 rounded-full flex items-center justify-center text-xs font-extrabold mb-4 " +
+                        (isFinal
+                          ? "bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] text-[#0A0A13]"
+                          : "bg-[#15151F] border border-white/[0.14] text-[#F5F5FA]")
+                      }
+                    >
+                      {s.n}
+                    </div>
+                    <h4 className={"font-bold text-[15px] mb-2.5 " + (isFinal ? "text-[#8B7CF6]" : "text-[#F5F5FA]")}>
+                      {s.title}
+                    </h4>
+                    <p className="text-sm text-[#7B7C8C] leading-relaxed">{s.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -854,7 +878,7 @@ const VendaMaisComIA = () => {
             {FAQS.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className={CARD_CLS + " border-b-0 px-6"}>
                 <AccordionTrigger className="text-[#F5F5FA] text-base md:text-lg font-semibold hover:no-underline text-left py-5">
-                  {f.q}
+                  &ldquo;{f.q}&rdquo;
                 </AccordionTrigger>
                 <AccordionContent className="text-[#9A9CAA] text-[15px] leading-relaxed max-w-[70ch] pb-5">
                   {f.a}
@@ -990,10 +1014,12 @@ const VendaMaisComIA = () => {
                       >
                         {isSubmitting ? "Enviando..." : "Quero ver o agente funcionando"}
                       </button>
-                      <p className="flex items-center gap-2.5 text-xs text-[#7B7C8C] mt-4">
-                        <PulseDot color="rose" />
-                        Vagas limitadas por mês para garantir qualidade na implementação
-                      </p>
+                      <div className="flex items-center gap-2.5 rounded-xl bg-[#F2667B]/10 border border-[#F2667B]/25 px-4 py-3 mt-4">
+                        <Flame className="w-4 h-4 text-[#F2667B] flex-none" />
+                        <p className="text-xs font-semibold text-[#F2667B] leading-snug">
+                          Vagas limitadas por mês para garantir qualidade na implementação
+                        </p>
+                      </div>
                     </form>
                   </Form>
                 </>
