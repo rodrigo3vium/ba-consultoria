@@ -52,8 +52,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/newsletter/jornada-0001', label: 'Diário de Jornada — Ed. 001', category: 'conteudo', status: 'ativa' },
 
   // Portfólio — demos interativas de sistemas construídos
-  { path: '/portfolio/imovel-vazio-nao-vende', label: 'Imóvel Vazio Não Vende — Virtual Staging (SaaS)', category: 'portfolio', status: 'ativa', isLandingPage: true },
-  { path: '/portfolio/imovel-vazio-nao-vende/pb', label: 'Imóvel Vazio Não Vende — Virtual Staging (PB)', category: 'portfolio', status: 'ativa', isLandingPage: true },
+  { path: '/portfolio/imovel-vazio-nao-vende', label: 'Imóvel Vazio Não Vende — Virtual Staging', category: 'portfolio', status: 'ativa', isLandingPage: true },
 
   // Propostas
   { path: '/proposta', label: 'Proposta (hub)', category: 'propostas', status: 'ativa' },

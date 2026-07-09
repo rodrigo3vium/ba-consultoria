@@ -208,7 +208,7 @@ const ImovelVazioNaoVende = () => {
             {/* Teaser interativo — o visitante brinca antes de ler */}
             <div className="rev-item animate-fade-in">
               <div className={CARD_CLS + " p-3 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"}>
-                <HeroBeforeAfter variant="saas" />
+                <HeroBeforeAfter />
               </div>
               <p className="mt-3 text-center text-xs text-[#7B7C8C]">Arraste sobre a imagem. Vazio de um lado, mobiliado do outro.</p>
             </div>
@@ -287,7 +287,7 @@ const ImovelVazioNaoVende = () => {
             <p className="text-[#9A9CAA] text-base md:text-lg leading-relaxed max-w-[60ch] mx-auto">{DEMO.sub}</p>
           </div>
           <div className="rev-item animate-fade-in">
-            <BeforeAfterStudio variant="saas" onUsePhoto={goToForm} />
+            <BeforeAfterStudio onUsePhoto={goToForm} />
           </div>
           <p className="rev-item animate-fade-in mt-8 text-center italic text-[#F5F5FA] text-[clamp(16px,2vw,20px)] leading-relaxed max-w-[52ch] mx-auto">
             {DEMO.finish}

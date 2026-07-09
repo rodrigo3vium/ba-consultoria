@@ -9,6 +9,8 @@ export interface Ambiente {
   estiloDesc: string;  // descrição curta do estilo
   antes: string;
   depois: string;
+  antesMobile?: string;  // variante vertical (9:16), usada em telas < 768px quando disponível
+  depoisMobile?: string;
 }
 
 // Pares antes/depois REAIS (mesmo cômodo, mesmo ângulo) — o comparador faz o wipe
@@ -23,6 +25,8 @@ export const AMBIENTES: Ambiente[] = [
     estiloDesc: "Tons neutros, madeira clara",
     antes: "/portfolio/imovel-vazio/estar-antes.jpg",
     depois: "/portfolio/imovel-vazio/estar-depois.jpg",
+    antesMobile: "/portfolio/imovel-vazio/estar-antes-mobile.jpg",
+    depoisMobile: "/portfolio/imovel-vazio/estar-depois-mobile.jpg",
   },
   {
     id: "jantar",
