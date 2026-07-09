@@ -1,4 +1,4 @@
-export type SiteCategory = 'home' | 'pilares' | 'educacao' | 'servicos' | 'conteudo' | 'propostas' | 'outros';
+export type SiteCategory = 'home' | 'pilares' | 'educacao' | 'servicos' | 'conteudo' | 'portfolio' | 'propostas' | 'outros';
 export type RouteStatus = 'ativa' | 'stub' | 'quebrada';
 
 export interface SiteRoute {
@@ -51,6 +51,10 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/avaliacao-newsletter', label: 'Avaliação Newsletter', category: 'conteudo', status: 'ativa' },
   { path: '/newsletter/jornada-0001', label: 'Diário de Jornada — Ed. 001', category: 'conteudo', status: 'ativa' },
 
+  // Portfólio — demos interativas de sistemas construídos
+  { path: '/portfolio/imovel-vazio-nao-vende', label: 'Imóvel Vazio Não Vende — Virtual Staging (SaaS)', category: 'portfolio', status: 'ativa', isLandingPage: true },
+  { path: '/portfolio/imovel-vazio-nao-vende/pb', label: 'Imóvel Vazio Não Vende — Virtual Staging (PB)', category: 'portfolio', status: 'ativa', isLandingPage: true },
+
   // Propostas
   { path: '/proposta', label: 'Proposta (hub)', category: 'propostas', status: 'ativa' },
   { path: '/proposta-padrao', label: 'Proposta Padrão', category: 'propostas', status: 'ativa' },
@@ -76,8 +80,9 @@ export const CATEGORY_LABELS: Record<SiteCategory, string> = {
   educacao: 'Educação',
   servicos: 'Serviços',
   conteudo: 'Conteúdo',
+  portfolio: 'Portfólio',
   propostas: 'Propostas',
   outros: 'Outros',
 };
 
-export const CATEGORY_ORDER: SiteCategory[] = ['home', 'pilares', 'educacao', 'servicos', 'conteudo', 'propostas', 'outros'];
+export const CATEGORY_ORDER: SiteCategory[] = ['home', 'pilares', 'educacao', 'servicos', 'conteudo', 'portfolio', 'propostas', 'outros'];
