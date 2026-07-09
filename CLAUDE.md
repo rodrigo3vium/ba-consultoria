@@ -224,6 +224,7 @@ em componentes.
 
 - **Propostas:** todas as páginas de propostas comerciais devem estar sob `/propostas/*`
 - **Cursos/Educação:** todas as páginas de cursos, imersões e conteúdo educacional devem estar sob `/educacao/*` (ex: `/educacao/imersao-claude`, `/educacao/metodo-stark`)
+- **Portfólio:** demos interativas de sistemas construídos para clientes ficam sob `/portfolio/*` (ex: `/portfolio/imovel-vazio-nao-vende`). São páginas standalone (sem Header/Footer global): página de vendas + demo usável na própria página. Conteúdo compartilhado em `src/lib/portfolio/`, componentes de demo em `src/components/portfolio/`, categoria `portfolio` no `siteMap.ts`.
 - **Newsletter (PB):** edições do "Diário de Jornada" (newsletter pessoal do Rodrigo, ligada ao funil de "A Revolução") ficam sob `/newsletter/jornada-XXXX` (ex: `/newsletter/jornada-0001`). São páginas standalone (sem Header/Footer globais — próprio meta-bar + footer), no padrão IDV PB, seguindo o mesmo modelo de `AgenticOS.tsx`/`ImersaoClaudeV3.tsx` (`document.body.style.paddingTop = "0"` no useEffect). Arquivo flat em `src/pages/NewsletterJornadaXXXX.tsx`.
 
 ## Rotas Principais
