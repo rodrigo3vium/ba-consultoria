@@ -7,6 +7,7 @@ import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 import PropostaLayout from "@/components/pb/PropostaLayout";
 import SectionHeader from "@/components/pb/SectionHeader";
 import StratCard from "@/components/pb/StratCard";
+import { Accent, SAAS_BTN_PRIMARY, SAAS_GRADIENT_TEXT } from "@/components/saas/ui";
 
 const stats = [
   { num: "+R$130M", label: "gerados em vendas" },
@@ -124,7 +125,7 @@ const PropostaInstitutoAreluna = () => {
     <PropostaLayout cliente="Instituto Areluna" projeto="Atlas Insight">
 
       {/* ========== SOBRE ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 01"
           label="Sobre"
@@ -132,24 +133,23 @@ const PropostaInstitutoAreluna = () => {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 items-start">
-          <div className="overflow-hidden border border-pb-grid-strong aspect-square">
+          <div className="overflow-hidden rounded-2xl border border-white/[0.09] aspect-square">
             <img
               loading="lazy"
               src={rodrigoPhoto}
               alt="Rodrigo Albuquerque"
               className="w-full h-full object-cover"
-              style={{ filter: "grayscale(100%) contrast(1.1) brightness(0.85)" }}
             />
           </div>
           <div className="space-y-5">
-            <p className="font-body text-pb-ink-soft leading-relaxed">
-              Rodrigo Albuquerque liderou <strong className="text-pb-ink font-medium">R$80 milhões em vendas anuais</strong> antes de fundar a BA Consultoria, onde compilou o aprendizado de mais de 100 empresas atendidas. A BA opera nas quatro frentes que sustentam crescimento de receita: consultoria estratégica, execução de marketing, automação com IA e inteligência comercial.
+            <p className="text-saas-body leading-relaxed">
+              Rodrigo Albuquerque liderou <strong className="text-saas-ink font-medium">R$80 milhões em vendas anuais</strong> antes de fundar a BA Consultoria, onde compilou o aprendizado de mais de 100 empresas atendidas. A BA opera nas quatro frentes que sustentam crescimento de receita: consultoria estratégica, execução de marketing, automação com IA e inteligência comercial.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {stats.map((s) => (
                 <StratCard key={s.num}>
-                  <div className="font-display text-pb-cyan text-2xl leading-none mb-1">{s.num}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{s.label}</div>
+                  <div className={`text-2xl font-extrabold leading-none mb-1 ${SAAS_GRADIENT_TEXT}`}>{s.num}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-muted">{s.label}</div>
                 </StratCard>
               ))}
             </div>
@@ -158,7 +158,7 @@ const PropostaInstitutoAreluna = () => {
       </div>
 
       {/* ========== REFERÊNCIAS ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 02"
           label="Referências"
@@ -170,25 +170,24 @@ const PropostaInstitutoAreluna = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {mentors.map((m) => (
             <StratCard key={m.name} className="text-center p-6">
-              <div className="w-16 h-16 overflow-hidden border border-pb-grid-strong mx-auto mb-4">
+              <div className="w-16 h-16 overflow-hidden rounded-full border border-white/[0.09] mx-auto mb-4">
                 <img
                   loading="lazy"
                   src={m.photo}
                   alt={m.name}
                   className="w-full h-full object-cover"
-                  style={{ filter: "grayscale(100%) contrast(1.1) brightness(0.85)" }}
                 />
               </div>
-              <div className="font-display text-pb-ink text-sm uppercase leading-tight mb-1">{m.name}</div>
-              <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-2">{m.role}</div>
-              <div className="font-body text-pb-ink-muted text-xs leading-relaxed">{m.bio}</div>
+              <div className="font-bold text-saas-ink text-sm leading-tight mb-1">{m.name}</div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-saas-cyan mb-2">{m.role}</div>
+              <div className="text-saas-muted text-xs leading-relaxed">{m.bio}</div>
             </StratCard>
           ))}
         </div>
       </div>
 
       {/* ========== A ENTREGA ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 03"
           label="A Entrega"
@@ -198,11 +197,11 @@ const PropostaInstitutoAreluna = () => {
 
         <div className="space-y-4">
           {deliveryItems.map((item) => (
-            <div key={item.idx} className="border border-pb-grid-strong bg-pb-void-card p-6 flex gap-6 items-start">
-              <div className="font-display text-pb-cyan text-4xl leading-none shrink-0">{item.idx}</div>
+            <div key={item.idx} className="rounded-2xl border border-white/[0.09] bg-saas-card p-6 flex gap-6 items-start">
+              <div className={`text-4xl font-extrabold leading-none shrink-0 ${SAAS_GRADIENT_TEXT}`}>{item.idx}</div>
               <div>
-                <h3 className="font-display uppercase text-pb-ink text-xl leading-tight mb-3">{item.title}</h3>
-                <p className="font-body text-pb-ink-soft leading-relaxed text-sm">{item.desc}</p>
+                <h3 className="font-extrabold text-saas-ink text-xl leading-tight tracking-tight mb-3">{item.title}</h3>
+                <p className="text-saas-body leading-relaxed text-sm">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -210,7 +209,7 @@ const PropostaInstitutoAreluna = () => {
       </div>
 
       {/* ========== OBJETIVO ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 04"
           label="Objetivo"
@@ -220,18 +219,18 @@ const PropostaInstitutoAreluna = () => {
 
         <div className="space-y-0">
           {objectives.map((text, i) => (
-            <div key={i} className="flex gap-6 items-center py-5 border-b border-pb-grid-strong first:border-t first:border-pb-grid-strong">
-              <div className="font-display text-pb-cyan text-xl leading-none shrink-0 w-10">
+            <div key={i} className="flex gap-6 items-center py-5 border-b border-white/[0.06] first:border-t first:border-white/[0.06]">
+              <div className={`text-xl font-extrabold leading-none shrink-0 w-10 ${SAAS_GRADIENT_TEXT}`}>
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="font-body text-pb-ink-soft leading-relaxed text-sm">{text}</div>
+              <div className="text-saas-body leading-relaxed text-sm">{text}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ========== PARA QUE FIQUE CLARO ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 05"
           label="Para Que Fique Claro"
@@ -242,15 +241,15 @@ const PropostaInstitutoAreluna = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {antiCards.map((card) => (
             <StratCard key={card.title}>
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">{card.title}</p>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{card.desc}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-cyan mb-4">{card.title}</p>
+              <p className="text-saas-body text-sm leading-relaxed">{card.desc}</p>
             </StratCard>
           ))}
         </div>
       </div>
 
       {/* ========== A IMPLEMENTAÇÃO ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 06"
           label="A Implementação"
@@ -260,14 +259,14 @@ const PropostaInstitutoAreluna = () => {
 
         <div className="space-y-0">
           {timeline.map((row) => (
-            <div key={row.week} className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 py-9 border-b border-pb-grid-strong first:border-t first:border-pb-grid-strong items-start">
+            <div key={row.week} className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-6 py-9 border-b border-white/[0.06] first:border-t first:border-white/[0.06] items-start">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-1">Semana</p>
-                <span className="font-display text-pb-ink text-5xl leading-none">{row.week}</span>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-cyan mb-1">Semana</p>
+                <span className="font-extrabold text-saas-ink text-5xl leading-none tracking-tight">{row.week}</span>
               </div>
               <div>
-                <h3 className="font-display uppercase text-pb-ink text-xl leading-tight mb-3">{row.title}</h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{row.desc}</p>
+                <h3 className="font-extrabold text-saas-ink text-xl leading-tight tracking-tight mb-3">{row.title}</h3>
+                <p className="text-saas-body text-sm leading-relaxed">{row.desc}</p>
               </div>
             </div>
           ))}
@@ -275,53 +274,53 @@ const PropostaInstitutoAreluna = () => {
       </div>
 
       {/* ========== INVESTIMENTO ========== */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
         <SectionHeader
           idx="// 07"
           label="Investimento"
           headline={<>Projeto fechado,<br />escopo travado.</>}
         />
 
-        <StratCard brackets className="text-center space-y-6">
-          <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Implementação Completa</p>
+        <StratCard className="text-center space-y-6">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-cyan">Implementação Completa</p>
           <div>
-            <span className="font-display text-[clamp(56px,8vw,84px)] text-pb-ink leading-none">R$ 12.000</span>
+            <Accent className="font-extrabold text-[clamp(48px,7vw,80px)] leading-none tracking-tight">R$ 12.000</Accent>
           </div>
-          <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">4 Semanas · Pagamento Único · Suporte 30 Dias</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-muted">4 Semanas · Pagamento Único · Suporte 30 Dias</p>
 
-          <div className="border-t border-pb-grid-strong pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+          <div className="border-t border-white/[0.08] pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">Inclui</p>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">Implementação completa, codificação do método, integração com as fontes de áudio, calibração, treinamento operacional da equipe e 30 dias de suporte pós-go-live para ajuste fino de critérios.</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-cyan mb-3">Inclui</p>
+              <p className="text-saas-body text-sm leading-relaxed">Implementação completa, codificação do método, integração com as fontes de áudio, calibração, treinamento operacional da equipe e 30 dias de suporte pós-go-live para ajuste fino de critérios.</p>
             </div>
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">Não inclui</p>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">Dispositivos de captura de áudio das reuniões presenciais. Recomendação técnica é fornecida durante a implementação — aquisição é por conta do cliente.</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-cyan mb-3">Não inclui</p>
+              <p className="text-saas-body text-sm leading-relaxed">Dispositivos de captura de áudio das reuniões presenciais. Recomendação técnica é fornecida durante a implementação — aquisição é por conta do cliente.</p>
             </div>
           </div>
         </StratCard>
       </div>
 
       {/* ========== CTA ========== */}
-      <div className="border-t border-pb-grid-strong py-16 text-center space-y-8">
+      <div className="border-t border-white/[0.06] py-16 text-center space-y-8">
         <SectionHeader
           idx="// 08"
           label="Próximo Passo"
           headline={<>Alinhar implementação<br />e cronograma</>}
           align="center"
         />
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-xl mx-auto">
+        <p className="text-saas-body leading-relaxed max-w-xl mx-auto">
           Próximo passo é uma reunião de 30 minutos para revisar a proposta, ajustar pontos específicos da operação da Areluna e definir data de início.
         </p>
         <a
           href="https://wa.me/5511999718595"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center gap-2"
+          className={SAAS_BTN_PRIMARY}
         >
           Agendar Reunião →
         </a>
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-faint">
           BA Consultoria © 2026 — Proposta válida por 7 dias · Proposta confidencial
         </p>
       </div>

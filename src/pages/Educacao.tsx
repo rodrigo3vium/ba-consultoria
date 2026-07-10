@@ -4,7 +4,13 @@ import PageLayout from '@/components/pb/PageLayout';
 import Section from '@/components/pb/Section';
 import StratCard from '@/components/pb/StratCard';
 import Stamp from '@/components/pb/Stamp';
-import CornerBrackets from '@/components/pb/CornerBrackets';
+import {
+  Accent,
+  Eyebrow,
+  SAAS_BTN_PRIMARY,
+  SAAS_BTN_GHOST,
+  SAAS_GRADIENT_TEXT,
+} from '@/components/saas/ui';
 import { tracker } from '@/lib/tracking';
 
 const WHATSAPP_URL = 'https://wa.me/5511999718595';
@@ -98,31 +104,21 @@ const Educacao = () => {
       {/* ================================================================
           HERO
       ================================================================ */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-pb-grid-strong overflow-hidden">
-        <CornerBrackets size={32} offset={24} />
-
-        {/* HUD coordinates */}
-        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:flex flex-col items-end gap-1">
-          <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">EDU-01</span></span>
-          <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
-          <span><span className="text-pb-ink-faint mr-3">ESTADO</span><span className="text-pb-cyan">OPERACIONAL</span></span>
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-32 border-b border-white/[0.06] overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-6">
-            // 01 / Educação
-          </p>
-          <h1
-            className="font-display uppercase text-pb-ink leading-[0.88]"
-            style={{ fontSize: 'clamp(56px, 9vw, 128px)', letterSpacing: '0.005em' }}
-          >
-            Aprenda<br />
-            Inteligência<br />
-            <span className="text-pb-ink-soft">Artificial</span>
-            <span className="text-pb-red">.</span>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="mb-6">
+            <Eyebrow>01 / Educação</Eyebrow>
+          </div>
+          <h1 className="font-extrabold text-saas-ink text-[clamp(32px,6vw,64px)] leading-[1.05] tracking-tight max-w-[16ch]">
+            Aprenda Inteligência <Accent>Artificial</Accent>.
           </h1>
 
-          <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+          <p className="mt-8 text-saas-body text-lg md:text-xl leading-relaxed max-w-xl">
             Cursos práticos e treinamentos personalizados para dominar a IA.
           </p>
 
@@ -131,7 +127,7 @@ const Educacao = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY}
               onClick={() => handleCta('hero')}
             >
               Falar com um especialista
@@ -147,26 +143,28 @@ const Educacao = () => {
       <Section
         idx="02"
         section="CURSOS"
-        headline={<>Nossos<br />cursos<span className="text-pb-red">.</span></>}
+        headline={<>Nossos <Accent>cursos</Accent>.</>}
         sub="Escolha o curso ideal para seu nível e objetivos."
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2">
           {courses.map((course) => (
-            <StratCard key={course.title} brackets as="article" className="flex flex-col">
-              <Stamp>{course.stamp}</Stamp>
+            <StratCard key={course.title} as="article" className="flex flex-col">
+              <div className="mb-1">
+                <Stamp>{course.stamp}</Stamp>
+              </div>
 
-              <h3 className="font-display uppercase text-pb-ink text-3xl mt-4 leading-[0.95]">
+              <h3 className="font-extrabold text-saas-ink text-2xl mt-4 leading-tight tracking-tight">
                 {course.title}
               </h3>
-              <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted mt-2">
+              <p className="text-saas-muted text-sm leading-relaxed mt-2">
                 {course.subtitle}
               </p>
 
-              <p className="font-display uppercase text-pb-cyan mt-4 text-2xl leading-none">
+              <p className={`${SAAS_GRADIENT_TEXT} font-extrabold mt-4 text-2xl leading-none`}>
                 {course.price}
               </p>
 
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed mt-4">
+              <p className="text-saas-body text-sm leading-relaxed mt-4">
                 {course.description}
               </p>
 
@@ -175,10 +173,10 @@ const Educacao = () => {
                   <li key={feature} className="flex items-start gap-2">
                     <CheckCircle
                       size={14}
-                      className="text-pb-cyan mt-0.5 flex-shrink-0"
+                      className="text-saas-green mt-0.5 flex-shrink-0"
                       strokeWidth={1.5}
                     />
-                    <span className="font-body text-pb-ink-soft text-sm leading-relaxed">
+                    <span className="text-saas-body text-sm leading-relaxed">
                       {feature}
                     </span>
                   </li>
@@ -191,7 +189,7 @@ const Educacao = () => {
                     href={course.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-ghost w-full text-center"
+                    className={`${SAAS_BTN_GHOST} w-full`}
                     onClick={() => handleCta(`course_${course.title}`)}
                   >
                     {course.buttonText} <span aria-hidden>→</span>
@@ -199,7 +197,7 @@ const Educacao = () => {
                 ) : (
                   <Link
                     to={course.link}
-                    className="btn-primary w-full text-center"
+                    className={`${SAAS_BTN_PRIMARY} w-full`}
                     onClick={() => {
                       window.scrollTo(0, 0);
                       handleCta(`course_${course.title}`);
@@ -220,21 +218,21 @@ const Educacao = () => {
       <Section
         idx="03"
         section="DIFERENCIAIS"
-        headline={<>Por que escolher<br />nossos cursos<span className="text-pb-red">?</span></>}
+        headline={<>Por que escolher nossos <Accent>cursos</Accent>?</>}
       >
-        <div className="grid md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong mt-2">
+        <div className="grid md:grid-cols-3 gap-5 mt-2">
           {benefits.map((benefit) => (
             <div
               key={benefit.idx}
-              className="bg-pb-void p-8 flex flex-col gap-4 hover:bg-pb-void-card transition-colors duration-300"
+              className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 flex flex-col gap-4 transition-colors duration-300 hover:border-white/[0.18]"
             >
-              <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
-                // {benefit.idx}
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan">
+                {benefit.idx}
               </span>
-              <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95]">
+              <h3 className="font-extrabold text-saas-ink text-xl leading-tight tracking-tight">
                 {benefit.title}
               </h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+              <p className="text-saas-body text-sm leading-relaxed">
                 {benefit.description}
               </p>
             </div>
@@ -245,23 +243,19 @@ const Educacao = () => {
       {/* ================================================================
           04 — CTA FINAL
       ================================================================ */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong relative overflow-hidden">
-        <CornerBrackets size={40} offset={32} />
+      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06] relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[620px] h-[420px] rounded-full bg-saas-violet/15 blur-[130px]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-8">
-            // Próxima operação
-          </p>
-          <h2
-            className="font-display uppercase text-pb-ink leading-[0.88] mx-auto"
-            style={{ fontSize: 'clamp(40px, 6vw, 80px)', maxWidth: '800px' }}
-          >
-            Comece sua jornada<br />
-            na IA<br />
-            <span className="text-pb-ink-soft">hoje</span>
-            <span className="text-pb-red">.</span>
+        <div className="relative max-w-7xl mx-auto text-center">
+          <div className="mb-8 flex justify-center">
+            <Eyebrow>Próxima operação</Eyebrow>
+          </div>
+          <h2 className="font-extrabold text-saas-ink text-[clamp(30px,5vw,56px)] leading-[1.08] tracking-tight mx-auto max-w-[16ch]">
+            Comece sua jornada na IA <Accent>hoje</Accent>.
           </h2>
-          <p className="mt-8 font-body text-pb-ink-soft text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="mt-8 text-saas-body text-lg max-w-xl mx-auto leading-relaxed">
             Não fique para trás na revolução da Inteligência Artificial. Invista no seu futuro profissional agora.
           </p>
           <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
@@ -269,7 +263,7 @@ const Educacao = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY}
               onClick={() => handleCta('cta_final')}
             >
               Falar com um consultor
@@ -277,7 +271,7 @@ const Educacao = () => {
             </a>
             <Link
               to="/educacao/ia-para-negocios"
-              className="btn-ghost"
+              className={SAAS_BTN_GHOST}
               onClick={() => window.scrollTo(0, 0)}
             >
               Ver IA para Negócios

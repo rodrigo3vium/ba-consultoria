@@ -20,6 +20,15 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { tracker, getPersistedUtm } from "@/lib/tracking";
 import { toast } from "sonner";
+import {
+  Accent,
+  Eyebrow,
+  SAAS_BTN_PRIMARY,
+  SAAS_BTN_GHOST,
+  SAAS_CARD,
+  SAAS_INPUT,
+  SAAS_LABEL,
+} from "@/components/saas/ui";
 
 const formSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório").max(100),
@@ -32,15 +41,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const FONT_STACK = "'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
-
-const BTN_PRIMARY =
-  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-[#0A0A13] bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] shadow-[0_8px_28px_-8px_rgba(139,124,246,0.55)] hover:shadow-[0_10px_34px_-6px_rgba(139,124,246,0.7)] transition-shadow";
-const BTN_GHOST =
-  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-[#B7B8C7] border border-white/[0.14] hover:border-white/[0.28] hover:text-[#F5F5FA] transition-colors";
-const CARD_CLS = "rounded-2xl border border-white/[0.09] bg-[#15151F]";
-const INPUT_CLS =
-  "w-full rounded-xl bg-white/[0.04] border border-white/[0.10] text-[#F5F5FA] placeholder:text-[#5D5F6B] px-4 py-3 text-[15px] outline-none focus:border-[#8B7CF6] focus:ring-2 focus:ring-[#8B7CF6]/30 transition";
-const LABEL_CLS = "block text-xs font-semibold text-[#9A9CAA] mb-2";
 
 const LEADS_OPTIONS = ["Até 100", "100 – 500", "500 – 2.000", "Acima de 2.000"];
 
@@ -82,7 +82,7 @@ const HourlyLeadsChart = () => (
       </div>
     </div>
     <div className="absolute left-[58%] -top-8 -translate-x-1/2 z-10">
-      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] border border-white/20 shadow-[0_10px_30px_-10px_rgba(139,124,246,0.7)] flex items-center justify-center">
+      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet border border-white/20 shadow-[0_10px_30px_-10px_rgba(139,124,246,0.7)] flex items-center justify-center">
         <span className="text-white font-extrabold text-base">50%</span>
       </div>
     </div>
@@ -92,10 +92,10 @@ const HourlyLeadsChart = () => (
         return (
           <div key={d.h} className="flex-1 flex flex-col items-center justify-end h-full gap-1.5">
             <div
-              className={`w-full rounded-t-[3px] ${biz ? "bg-gradient-to-t from-[#20DDEB] to-[#8B7CF6]" : "bg-[#F2667B]/60"}`}
+              className={`w-full rounded-t-[3px] ${biz ? "bg-gradient-to-t from-saas-cyan to-saas-violet" : "bg-[#F2667B]/60"}`}
               style={{ height: `${Math.max((d.v / HOUR_MAX) * 100, 3)}%` }}
             />
-            <span className="text-[9px] text-[#5D5F6B]">{d.h}</span>
+            <span className="text-[9px] text-saas-faint-2">{d.h}</span>
           </div>
         );
       })}
@@ -121,12 +121,12 @@ const ContactAttemptsChart = () => (
   <div className="flex items-end gap-2 md:gap-3 h-56">
     {CONTACT_ATTEMPTS.map((d) => (
       <div key={d.label} className="flex-1 flex flex-col items-center justify-end h-full">
-        <span className="text-xs font-bold text-[#B7B8C7] mb-1.5">{d.pct}%</span>
+        <span className="text-xs font-bold text-saas-body mb-1.5">{d.pct}%</span>
         <div
-          className="w-full rounded-t-md bg-gradient-to-t from-[#8B7CF6] to-[#20DDEB]"
+          className="w-full rounded-t-md bg-gradient-to-t from-saas-violet to-saas-cyan"
           style={{ height: `${Math.max((d.pct / CONTACT_MAX) * 100, 3)}%` }}
         />
-        <span className="mt-2 text-[10px] text-[#7B7C8C] text-center leading-tight">{d.label}</span>
+        <span className="mt-2 text-[10px] text-saas-faint text-center leading-tight">{d.label}</span>
       </div>
     ))}
   </div>
@@ -228,12 +228,6 @@ const FAQS = [
   },
 ];
 
-function Accent({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] bg-clip-text text-transparent">{children}</span>
-  );
-}
-
 const SectionIntro = ({
   eyebrow,
   title,
@@ -246,20 +240,18 @@ const SectionIntro = ({
   center?: boolean;
 }) => (
   <div className={`rev-item animate-fade-in mb-10 md:mb-14 ${center ? "text-center" : ""}`}>
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold tracking-wide text-[#9A9CAA] mb-5">
-      {eyebrow}
-    </span>
-    <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-[1.12] tracking-tight max-w-[36ch]">
+    <Eyebrow className="mb-5">{eyebrow}</Eyebrow>
+    <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-[1.12] tracking-tight max-w-[36ch]">
       {title}
     </h2>
-    {sub && <p className="mt-4 text-[#9A9CAA] text-base md:text-lg leading-relaxed max-w-[60ch]">{sub}</p>}
+    {sub && <p className="mt-4 text-saas-muted text-base md:text-lg leading-relaxed max-w-[60ch]">{sub}</p>}
   </div>
 );
 
 const PulseDot = ({ color = "gradient" as "gradient" | "rose" }) => (
   <span
     className={`inline-block w-1.5 h-1.5 rounded-full flex-none animate-pulse ${
-      color === "gradient" ? "bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6]" : "bg-[#F2667B]"
+      color === "gradient" ? "bg-gradient-to-r from-saas-cyan to-saas-violet" : "bg-[#F2667B]"
     }`}
   />
 );
@@ -341,7 +333,7 @@ const VendaMaisComIA = () => {
   };
 
   return (
-    <div className="venda-mais-ia min-h-screen bg-[#0A0A13] text-[#B7B8C7] antialiased" style={{ fontFamily: FONT_STACK }}>
+    <div className="venda-mais-ia min-h-screen bg-saas-void text-saas-body antialiased" style={{ fontFamily: FONT_STACK }}>
       <Helmet>
         <title>Agente de IA — Vendas no WhatsApp 24/7</title>
         <meta
@@ -351,7 +343,7 @@ const VendaMaisComIA = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </Helmet>
@@ -367,20 +359,20 @@ const VendaMaisComIA = () => {
       `}</style>
 
       {/* HEADER */}
-      <div className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#0A0A13]/80 backdrop-blur-xl">
+      <div className="sticky top-0 z-50 border-b border-white/[0.06] bg-saas-void/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between gap-6">
-          <div className="flex items-center gap-2.5 font-bold text-[#F5F5FA] text-[15px]">
-            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6]" />
+          <div className="flex items-center gap-2.5 font-bold text-saas-ink text-[15px]">
+            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
             Agente BA
           </div>
-          <nav className="hidden min-[860px]:flex items-center gap-8 text-sm font-medium text-[#9A9CAA]">
+          <nav className="hidden min-[860px]:flex items-center gap-8 text-sm font-medium text-saas-muted">
             {NAV_LINKS.map((l) => (
-              <button key={l.id} onClick={() => scrollToSection(l.id)} className="hover:text-[#F5F5FA] transition-colors">
+              <button key={l.id} onClick={() => scrollToSection(l.id)} className="hover:text-saas-ink transition-colors">
                 {l.label}
               </button>
             ))}
           </nav>
-          <button onClick={() => scrollToSection("aplicar")} className={BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px]"}>
+          <button onClick={() => scrollToSection("aplicar")} className={SAAS_BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px]"}>
             Quero um diagnóstico
           </button>
         </div>
@@ -389,34 +381,34 @@ const VendaMaisComIA = () => {
       {/* HERO */}
       <header className="relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-[#8B7CF6]/20 blur-[110px]" />
-          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-[#20DDEB]/15 blur-[110px]" />
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 md:pt-20 md:pb-28">
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
             <div className="rev-item animate-fade-in">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/[0.10] bg-white/[0.03] px-4 py-2 text-xs font-semibold text-[#B7B8C7] mb-7">
-                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6]" />
-                <b className="text-[#F5F5FA]">SOLUÇÃO MAIS PROCURADA</b>
-                <span className="text-[#5D5F6B]">·</span>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/[0.10] bg-white/[0.03] px-4 py-2 text-xs font-semibold text-saas-body mb-7">
+                <span className="w-2 h-2 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
+                <b className="text-saas-ink">SOLUÇÃO MAIS PROCURADA</b>
+                <span className="text-saas-faint-2">·</span>
                 Agente de Vendas BA
               </span>
-              <p className="text-sm font-medium text-[#7B7C8C] mb-4">Para empresários que perdem lead por demora.</p>
-              <h1 className="font-extrabold text-[#F5F5FA] text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
+              <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que perdem lead por demora.</p>
+              <h1 className="font-extrabold text-saas-ink text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
                 Seu melhor vendedor <Accent>não dorme</Accent>.
               </h1>
-              <p className="text-[#B7B8C7] text-base md:text-lg leading-relaxed max-w-[46ch] mb-9">
+              <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[46ch] mb-9">
                 Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp.{" "}
-                <b className="text-[#F5F5FA] font-semibold">24 horas por dia, 7 dias por semana.</b> Responde em
+                <b className="text-saas-ink font-semibold">24 horas por dia, 7 dias por semana.</b> Responde em
                 segundos, nunca esquece um lead e{" "}
-                <b className="text-[#F5F5FA] font-semibold">custa uma fração de um CLT.</b>
+                <b className="text-saas-ink font-semibold">custa uma fração de um CLT.</b>
               </p>
               <div className="flex flex-wrap gap-4">
-                <button onClick={() => scrollToSection("aplicar")} className={BTN_PRIMARY}>
+                <button onClick={() => scrollToSection("aplicar")} className={SAAS_BTN_PRIMARY}>
                   Quero ver funcionando →
                 </button>
-                <button onClick={() => scrollToSection("solucao")} className={BTN_GHOST}>
+                <button onClick={() => scrollToSection("solucao")} className={SAAS_BTN_GHOST}>
                   Como funciona
                 </button>
               </div>
@@ -424,8 +416,8 @@ const VendaMaisComIA = () => {
 
             <div className="rev-item animate-fade-in flex flex-col gap-4">
               {/* dashboard card */}
-              <div className={CARD_CLS + " shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)] p-5"}>
-                <div className="flex items-center justify-between text-xs text-[#7B7C8C] mb-4">
+              <div className={SAAS_CARD + " shadow-saas-card p-5"}>
+                <div className="flex items-center justify-between text-xs text-saas-faint mb-4">
                   <span>agente_dashboard.exe</span>
                   <div className="flex gap-1.5">
                     <i className="w-2 h-2 rounded-full bg-[#F26B6B] inline-block" />
@@ -435,19 +427,19 @@ const VendaMaisComIA = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-2.5 mb-4">
                   <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
-                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Leads hoje</div>
-                    <div className="text-2xl font-extrabold text-[#F5F5FA]">142</div>
-                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">↑ 18%</div>
+                    <div className="text-[11px] text-saas-faint mb-1.5">Leads hoje</div>
+                    <div className="text-2xl font-extrabold text-saas-ink">142</div>
+                    <div className="text-[11px] font-bold text-saas-green mt-1">↑ 18%</div>
                   </div>
                   <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
-                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Agendados</div>
-                    <div className="text-2xl font-extrabold text-[#F5F5FA]">38</div>
-                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">↑ 9%</div>
+                    <div className="text-[11px] text-saas-faint mb-1.5">Agendados</div>
+                    <div className="text-2xl font-extrabold text-saas-ink">38</div>
+                    <div className="text-[11px] font-bold text-saas-green mt-1">↑ 9%</div>
                   </div>
                   <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
-                    <div className="text-[11px] text-[#7B7C8C] mb-1.5">Atendidos</div>
-                    <div className="text-2xl font-extrabold text-[#F5F5FA]">100%</div>
-                    <div className="text-[11px] font-bold text-[#6EE7B7] mt-1">consistente</div>
+                    <div className="text-[11px] text-saas-faint mb-1.5">Atendidos</div>
+                    <div className="text-2xl font-extrabold text-saas-ink">100%</div>
+                    <div className="text-[11px] font-bold text-saas-green mt-1">consistente</div>
                   </div>
                 </div>
                 <svg width="100%" height="52" viewBox="0 0 400 52" preserveAspectRatio="none">
@@ -472,28 +464,28 @@ const VendaMaisComIA = () => {
               </div>
 
               {/* chat card */}
-              <div className={CARD_CLS + " shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)] p-5"}>
+              <div className={SAAS_CARD + " shadow-saas-card p-5"}>
                 <div className="flex items-center gap-2.5 mb-4">
-                  <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex-none" />
+                  <span className="w-8 h-8 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex-none" />
                   <div>
-                    <div className="text-sm font-bold text-[#F5F5FA]">Agente BA</div>
-                    <div className="text-xs text-[#6EE7B7] flex items-center gap-1.5">
-                      <i className="w-1.5 h-1.5 rounded-full bg-[#6EE7B7] inline-block" />
+                    <div className="text-sm font-bold text-saas-ink">Agente BA</div>
+                    <div className="text-xs text-saas-green flex items-center gap-1.5">
+                      <i className="w-1.5 h-1.5 rounded-full bg-saas-green inline-block" />
                       online
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2.5">
-                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#B7B8C7] leading-snug">
+                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-saas-body leading-snug">
                     Oi, ainda dá pra saber mais sobre o serviço?
                   </div>
-                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-[#20DDEB]/20 to-[#8B7CF6]/20 px-4 py-2.5 text-[14px] text-[#F5F5FA] leading-snug">
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
                     Dá sim. Funciono 24/7 por aqui. Qual o seu maior gargalo hoje?
                   </div>
-                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-[#B7B8C7] leading-snug">
+                  <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-saas-body leading-snug">
                     Perco muito lead que chega de madrugada.
                   </div>
-                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-[#20DDEB]/20 to-[#8B7CF6]/20 px-4 py-2.5 text-[14px] text-[#F5F5FA] leading-snug">
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
                     Esse é exatamente o problema que eu resolvo. Já vou te qualificar e agendar com o time. Pode ser
                     amanhã 9h?
                   </div>
@@ -508,12 +500,12 @@ const VendaMaisComIA = () => {
               <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6">
                 <div
                   className={`text-[clamp(32px,3.6vw,44px)] font-extrabold leading-none ${
-                    s.accent ? "bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] bg-clip-text text-transparent" : "text-[#F5F5FA]"
+                    s.accent ? "bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent" : "text-saas-ink"
                   }`}
                 >
                   {s.value}
                 </div>
-                <div className="mt-2.5 text-[13px] text-[#7B7C8C] leading-relaxed">{s.label}</div>
+                <div className="mt-2.5 text-[13px] text-saas-faint leading-relaxed">{s.label}</div>
               </div>
             ))}
           </div>
@@ -532,13 +524,13 @@ const VendaMaisComIA = () => {
             }
           />
           <div className="rev-item animate-fade-in grid md:grid-cols-2 gap-12 items-start">
-            <div className="space-y-5 text-[#B7B8C7] text-[17px] leading-relaxed">
+            <div className="space-y-5 text-saas-body text-[17px] leading-relaxed">
               <p>
                 O lead chegou às 22h. Seu time só viu às 9h. Quando ligaram, ele já tinha fechado com o
                 concorrente que respondeu primeiro.
               </p>
               <p>
-                O follow-up ficou pra depois. <b className="text-[#F5F5FA] font-semibold">Depois virou nunca.</b> A
+                O follow-up ficou pra depois. <b className="text-saas-ink font-semibold">Depois virou nunca.</b> A
                 venda esfriou sozinha, sem ninguém perceber.
               </p>
               <p>
@@ -546,9 +538,9 @@ const VendaMaisComIA = () => {
                 quando sai.
               </p>
             </div>
-            <div className={CARD_CLS + " p-8"}>
-              <p className="text-sm font-bold text-[#F5F5FA] mb-1.5">O custo invisível</p>
-              <p className="text-[#7B7C8C] text-sm mb-6 leading-relaxed">
+            <div className={SAAS_CARD + " p-8"}>
+              <p className="text-sm font-bold text-saas-ink mb-1.5">O custo invisível</p>
+              <p className="text-saas-faint text-sm mb-6 leading-relaxed">
                 A oportunidade que evapora enquanto ninguém está olhando.
               </p>
               <ul className="space-y-4">
@@ -557,24 +549,24 @@ const VendaMaisComIA = () => {
                     <span className="mt-0.5 flex-none w-5 h-5 rounded-full bg-[#F2667B]/15 flex items-center justify-center">
                       <X className="w-3 h-3 text-[#F2667B]" />
                     </span>
-                    <span className="text-[15px] text-[#B7B8C7] leading-snug">{t}</span>
+                    <span className="text-[15px] text-saas-body leading-snug">{t}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className={"rev-item animate-fade-in mt-14 " + CARD_CLS + " p-7 md:p-10"}>
+          <div className={"rev-item animate-fade-in mt-14 " + SAAS_CARD + " p-7 md:p-10"}>
             <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-3">
                   O padrão que ninguém mede
                 </p>
-                <h3 className="font-extrabold text-[#F5F5FA] text-2xl leading-snug mb-8 max-w-[30ch]">
+                <h3 className="font-extrabold text-saas-ink text-2xl leading-snug mb-8 max-w-[30ch]">
                   Metade dos seus leads chega <Accent>fora do horário comercial</Accent>.
                 </h3>
                 <HourlyLeadsChart />
-                <p className="mt-4 text-xs text-[#5D5F6B] leading-relaxed">
+                <p className="mt-4 text-xs text-saas-faint-2 leading-relaxed">
                   Distribuição típica de leads por hora do dia (0h–23h) em operações de captação via
                   WhatsApp/formulário.
                 </p>
@@ -583,11 +575,11 @@ const VendaMaisComIA = () => {
                 <div className="text-5xl font-extrabold mb-3">
                   <Accent>100x</Accent>
                 </div>
-                <p className="text-[#B7B8C7] text-[15px] leading-relaxed mb-5">
-                  Responder em <b className="text-[#F5F5FA] font-semibold">5 minutos</b> em vez de 30 minutos
+                <p className="text-saas-body text-[15px] leading-relaxed mb-5">
+                  Responder em <b className="text-saas-ink font-semibold">5 minutos</b> em vez de 30 minutos
                   aumenta em até 100 vezes a chance de conversão do lead.
                 </p>
-                <p className="text-xs text-[#5D5F6B] leading-relaxed">
+                <p className="text-xs text-saas-faint-2 leading-relaxed">
                   Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
                   (2011), com dados da InsideSales.com.
                 </p>
@@ -617,7 +609,7 @@ const VendaMaisComIA = () => {
             }
           />
           <div className="rev-item animate-fade-in max-w-[820px]">
-            <div className="space-y-5 text-[#B7B8C7] text-lg leading-relaxed">
+            <div className="space-y-5 text-saas-body text-lg leading-relaxed">
               <p>
                 Um agente de IA que trabalha 24 horas, nunca reclama, responde em segundos e segue o seu processo
                 com precisão. A velocidade de resposta é maior que a de qualquer humano — e ele não perde o timing
@@ -625,15 +617,15 @@ const VendaMaisComIA = () => {
               </p>
               <p>
                 Ele atua direto na restrição do funil:{" "}
-                <b className="text-[#F5F5FA] font-semibold">o número de leads que dá pra atender por dia.</b> Com o
+                <b className="text-saas-ink font-semibold">o número de leads que dá pra atender por dia.</b> Com o
                 agente, dá pra comprar mais mídia sem desperdiçar lead por falta de atendimento.
               </p>
             </div>
-            <div className={"mt-8 flex items-start gap-4 " + CARD_CLS + " p-6"}>
-              <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] flex items-center justify-center mt-0.5">
-                <Check className="w-4 h-4 text-[#0A0A13]" />
+            <div className={"mt-8 flex items-start gap-4 " + SAAS_CARD + " p-6"}>
+              <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
+                <Check className="w-4 h-4 text-saas-void" />
               </span>
-              <p className="text-[#F5F5FA] text-base leading-relaxed">
+              <p className="text-saas-ink text-base leading-relaxed">
                 Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É
                 um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
               </p>
@@ -654,12 +646,12 @@ const VendaMaisComIA = () => {
             }
             sub="A maior parte das vendas só fecha depois da 5ª tentativa de contato — mas poucas empresas chegam até lá."
           />
-          <div className={"rev-item animate-fade-in " + CARD_CLS + " p-7 md:p-10"}>
-            <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-8 max-w-[46ch]">
+          <div className={"rev-item animate-fade-in " + SAAS_CARD + " p-7 md:p-10"}>
+            <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-8 max-w-[46ch]">
               Em média, quantas tentativas de contato sua empresa faz com cada lead?
             </p>
             <ContactAttemptsChart />
-            <p className="mt-6 text-xs text-[#5D5F6B]">Fonte: Inside Sales Benchmark Brasil.</p>
+            <p className="mt-6 text-xs text-saas-faint-2">Fonte: Inside Sales Benchmark Brasil.</p>
           </div>
         </div>
       </section>
@@ -679,18 +671,18 @@ const VendaMaisComIA = () => {
             {PILLARS.map((p, i) => (
               <div
                 key={p.tag}
-                className={"rev-item animate-fade-in " + CARD_CLS + " p-7 hover:border-white/[0.18] transition-colors"}
+                className={"rev-item animate-fade-in " + SAAS_CARD + " p-7 hover:border-white/[0.18] transition-colors"}
               >
-                <span className="inline-flex w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.08] items-center justify-center text-xs font-bold text-[#F5F5FA] mb-5">
+                <span className="inline-flex w-8 h-8 rounded-full bg-white/[0.05] border border-white/[0.08] items-center justify-center text-xs font-bold text-saas-ink mb-5">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-xs font-bold uppercase tracking-wide text-[#8B7CF6] mb-2">{p.tag}</p>
-                <h3 className="font-extrabold text-[#F5F5FA] text-xl leading-snug mb-3">{p.title}</h3>
-                <p className="text-[#9A9CAA] text-[15px] leading-relaxed mb-5">{p.desc}</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-2">{p.tag}</p>
+                <h3 className="font-extrabold text-saas-ink text-xl leading-snug mb-3">{p.title}</h3>
+                <p className="text-saas-muted text-[15px] leading-relaxed mb-5">{p.desc}</p>
                 <ul className="space-y-2.5">
                   {p.checks.map((c) => (
-                    <li key={c} className="flex items-center gap-2.5 text-[13.5px] text-[#B7B8C7]">
-                      <Check className="w-3.5 h-3.5 text-[#6EE7B7] flex-none" />
+                    <li key={c} className="flex items-center gap-2.5 text-[13.5px] text-saas-body">
+                      <Check className="w-3.5 h-3.5 text-saas-green flex-none" />
                       {c}
                     </li>
                   ))}
@@ -714,20 +706,20 @@ const VendaMaisComIA = () => {
           />
           <div className="rev-item animate-fade-in grid md:grid-cols-2 gap-5">
             <div className="rounded-2xl border border-white/[0.07] p-7 opacity-60">
-              <p className="text-xs font-bold text-[#7B7C8C] mb-1.5">O tradicional</p>
-              <p className="font-extrabold text-[#F5F5FA] text-2xl mb-6">SDR humano (CLT)</p>
+              <p className="text-xs font-bold text-saas-faint mb-1.5">O tradicional</p>
+              <p className="font-extrabold text-saas-ink text-2xl mb-6">SDR humano (CLT)</p>
               {CMP_ROWS.map((r) => (
                 <div
                   key={r.k}
                   className="flex items-center justify-between gap-3 py-3.5 border-b border-white/[0.06] last:border-none"
                 >
-                  <span className="text-[13px] text-[#7B7C8C]">{r.k}</span>
-                  <span className="text-[14.5px] text-[#B7B8C7] text-right">{r.old}</span>
+                  <span className="text-[13px] text-saas-faint">{r.k}</span>
+                  <span className="text-[14.5px] text-saas-body text-right">{r.old}</span>
                 </div>
               ))}
             </div>
-            <div className={CARD_CLS + " p-7 shadow-[0_0_0_1px_rgba(139,124,246,0.25),0_24px_50px_-30px_rgba(139,124,246,0.5)]"}>
-              <p className="text-xs font-bold text-[#8B7CF6] mb-1.5">A evolução</p>
+            <div className={SAAS_CARD + " p-7 shadow-[0_0_0_1px_rgba(139,124,246,0.25),0_24px_50px_-30px_rgba(139,124,246,0.5)]"}>
+              <p className="text-xs font-bold text-saas-violet mb-1.5">A evolução</p>
               <p className="font-extrabold text-2xl mb-6">
                 <Accent>Agente de IA</Accent>
               </p>
@@ -736,15 +728,15 @@ const VendaMaisComIA = () => {
                   key={r.k}
                   className="flex items-center justify-between gap-3 py-3.5 border-b border-white/[0.06] last:border-none"
                 >
-                  <span className="text-[13px] text-[#7B7C8C]">{r.k}</span>
-                  <span className="text-[14.5px] text-[#F5F5FA] font-medium text-right">{r.neo}</span>
+                  <span className="text-[13px] text-saas-faint">{r.k}</span>
+                  <span className="text-[14.5px] text-saas-ink font-medium text-right">{r.neo}</span>
                 </div>
               ))}
             </div>
           </div>
-          <p className="rev-item animate-fade-in mt-10 italic text-[#F5F5FA] text-[clamp(17px,2vw,22px)] leading-relaxed max-w-[46ch]">
+          <p className="rev-item animate-fade-in mt-10 italic text-saas-ink text-[clamp(17px,2vw,22px)] leading-relaxed max-w-[46ch]">
             <span
-              className="block w-10 h-[3px] rounded-full bg-gradient-to-r from-[#20DDEB] to-[#8B7CF6] mb-5"
+              className="block w-10 h-[3px] rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet mb-5"
               aria-hidden
             />
             Você troca um custo fixo alto e imprevisível por um custo menor e uma performance que não varia.
@@ -773,10 +765,10 @@ const VendaMaisComIA = () => {
                   <div
                     key={s.n}
                     className={
-                      CARD_CLS +
+                      SAAS_CARD +
                       " p-6" +
                       (isFinal
-                        ? " border-[#8B7CF6]/50 bg-gradient-to-b from-[#8B7CF6]/[0.08] to-transparent"
+                        ? " border-saas-violet/50 bg-gradient-to-b from-saas-violet/[0.08] to-transparent"
                         : "")
                     }
                   >
@@ -784,16 +776,16 @@ const VendaMaisComIA = () => {
                       className={
                         "w-9 h-9 rounded-full flex items-center justify-center text-xs font-extrabold mb-4 " +
                         (isFinal
-                          ? "bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] text-[#0A0A13]"
-                          : "bg-[#15151F] border border-white/[0.14] text-[#F5F5FA]")
+                          ? "bg-gradient-to-br from-saas-cyan to-saas-violet text-saas-void"
+                          : "bg-saas-card border border-white/[0.14] text-saas-ink")
                       }
                     >
                       {s.n}
                     </div>
-                    <h4 className={"font-bold text-[15px] mb-2.5 " + (isFinal ? "text-[#8B7CF6]" : "text-[#F5F5FA]")}>
+                    <h4 className={"font-bold text-[15px] mb-2.5 " + (isFinal ? "text-saas-violet" : "text-saas-ink")}>
                       {s.title}
                     </h4>
-                    <p className="text-sm text-[#7B7C8C] leading-relaxed">{s.desc}</p>
+                    <p className="text-sm text-saas-faint leading-relaxed">{s.desc}</p>
                   </div>
                 );
               })}
@@ -805,22 +797,22 @@ const VendaMaisComIA = () => {
       {/* 06 GARANTIA */}
       <section id="garantia" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rev-item animate-fade-in rounded-3xl border border-white/[0.10] bg-gradient-to-br from-[#8B7CF6]/[0.08] via-transparent to-[#20DDEB]/[0.06] p-9 md:p-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
+          <div className="rev-item animate-fade-in rounded-3xl border border-white/[0.10] bg-gradient-to-br from-saas-violet/[0.08] via-transparent to-saas-cyan/[0.06] p-9 md:p-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
             <div>
-              <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-tight mb-4">
+              <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-tight mb-4">
                 Você vê antes de <Accent>decidir</Accent>.
               </h2>
-              <p className="text-[#B7B8C7] text-base leading-relaxed max-w-[52ch]">
+              <p className="text-saas-body text-base leading-relaxed max-w-[52ch]">
                 Coloca o agente pra rodar na sua operação e acompanha o resultado com os próprios olhos.{" "}
-                <b className="text-[#F5F5FA] font-semibold">Sem letra miúda, sem burocracia.</b> A gente confia no
+                <b className="text-saas-ink font-semibold">Sem letra miúda, sem burocracia.</b> A gente confia no
                 que entrega — e faz questão de que você veja funcionando antes de qualquer decisão de continuar.
               </p>
-              <p className="mt-4 text-sm font-medium text-[#7B7C8C]">
+              <p className="mt-4 text-sm font-medium text-saas-faint">
                 Demonstração ao vivo + período de operação assistida
               </p>
             </div>
             <div
-              className="rounded-full w-[168px] h-[168px] flex-none flex flex-col items-center justify-center text-center bg-[#0A0A13] border border-white/[0.10] mx-auto"
+              className="rounded-full w-[168px] h-[168px] flex-none flex flex-col items-center justify-center text-center bg-saas-void border border-white/[0.10] mx-auto"
               style={{ boxShadow: "0 0 0 6px rgba(139,124,246,0.10)" }}
             >
               <div className="font-extrabold text-xl leading-tight">
@@ -830,7 +822,7 @@ const VendaMaisComIA = () => {
                   ZERO
                 </Accent>
               </div>
-              <div className="mt-1.5 text-[10.5px] text-[#7B7C8C] leading-snug px-3">
+              <div className="mt-1.5 text-[10.5px] text-saas-faint leading-snug px-3">
                 Você vê rodando antes de fechar
               </div>
             </div>
@@ -853,10 +845,10 @@ const VendaMaisComIA = () => {
             {DIFFS.map((d, i) => (
               <div
                 key={i}
-                className={"rev-item animate-fade-in " + CARD_CLS + " p-7 hover:border-white/[0.18] transition-colors"}
+                className={"rev-item animate-fade-in " + SAAS_CARD + " p-7 hover:border-white/[0.18] transition-colors"}
               >
-                <h3 className="font-extrabold text-[#F5F5FA] text-xl leading-snug mb-3">{d.title}</h3>
-                <p className="text-[#9A9CAA] text-[15px] leading-relaxed">{d.desc}</p>
+                <h3 className="font-extrabold text-saas-ink text-xl leading-snug mb-3">{d.title}</h3>
+                <p className="text-saas-muted text-[15px] leading-relaxed">{d.desc}</p>
               </div>
             ))}
           </div>
@@ -876,11 +868,11 @@ const VendaMaisComIA = () => {
           />
           <Accordion type="single" collapsible className="rev-item animate-fade-in space-y-3">
             {FAQS.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className={CARD_CLS + " border-b-0 px-6"}>
-                <AccordionTrigger className="text-[#F5F5FA] text-base md:text-lg font-semibold hover:no-underline text-left py-5">
+              <AccordionItem key={i} value={`item-${i}`} className={SAAS_CARD + " border-b-0 px-6"}>
+                <AccordionTrigger className="text-saas-ink text-base md:text-lg font-semibold hover:no-underline text-left py-5">
                   &ldquo;{f.q}&rdquo;
                 </AccordionTrigger>
-                <AccordionContent className="text-[#9A9CAA] text-[15px] leading-relaxed max-w-[70ch] pb-5">
+                <AccordionContent className="text-saas-muted text-[15px] leading-relaxed max-w-[70ch] pb-5">
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
@@ -894,40 +886,38 @@ const VendaMaisComIA = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="rev-item animate-fade-in">
-              <span className="inline-flex items-center rounded-full border border-white/[0.10] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold text-[#9A9CAA] mb-5">
-                O diagnóstico
-              </span>
-              <h2 className="font-extrabold text-[#F5F5FA] text-[clamp(28px,3.6vw,44px)] leading-tight mb-5 max-w-[18ch]">
+              <Eyebrow className="mb-5">O diagnóstico</Eyebrow>
+              <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-tight mb-5 max-w-[18ch]">
                 Cada minuto sem responder é uma venda pro <Accent>concorrente</Accent>.
               </h2>
-              <p className="text-[#B7B8C7] text-base md:text-lg leading-relaxed max-w-[44ch] mb-8">
+              <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[44ch] mb-8">
                 Agende uma conversa. A gente mostra o agente funcionando na prática e faz um diagnóstico do seu
                 processo de vendas.
               </p>
               <ul className="space-y-3">
                 {["Diagnóstico gratuito", "Demonstração ao vivo", "Sem compromisso"].map((t) => (
-                  <li key={t} className="flex items-center gap-3 text-sm font-medium text-[#B7B8C7]">
-                    <Check className="w-4 h-4 text-[#6EE7B7] flex-none" />
+                  <li key={t} className="flex items-center gap-3 text-sm font-medium text-saas-body">
+                    <Check className="w-4 h-4 text-saas-green flex-none" />
                     {t}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className={"relative rev-item animate-fade-in " + CARD_CLS + " p-8 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.6)]"}>
+            <div className={"relative rev-item animate-fade-in " + SAAS_CARD + " p-8 shadow-saas-card"}>
               {isSubmitted ? (
                 <div className="text-center py-10 px-2">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#20DDEB] to-[#8B7CF6] mx-auto mb-6 flex items-center justify-center">
-                    <Check className="w-6 h-6 text-[#0A0A13]" />
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet mx-auto mb-6 flex items-center justify-center">
+                    <Check className="w-6 h-6 text-saas-void" />
                   </div>
-                  <h4 className="font-extrabold text-[#F5F5FA] text-2xl mb-2.5">Recebido!</h4>
-                  <p className="text-[#9A9CAA] text-[15px] leading-relaxed">
+                  <h4 className="font-extrabold text-saas-ink text-2xl mb-2.5">Recebido!</h4>
+                  <p className="text-saas-muted text-[15px] leading-relaxed">
                     Vamos te chamar no WhatsApp pra agendar o diagnóstico e mostrar o agente rodando na prática.
                   </p>
                 </div>
               ) : (
                 <>
-                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#F5F5FA] mb-6">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-saas-ink mb-6">
                     <PulseDot />
                     Agendar diagnóstico
                   </div>
@@ -938,9 +928,9 @@ const VendaMaisComIA = () => {
                         name="nome"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={LABEL_CLS}>Nome completo</label>
+                            <label className={SAAS_LABEL}>Nome completo</label>
                             <FormControl>
-                              <input placeholder="Seu nome" className={INPUT_CLS} {...field} />
+                              <input placeholder="Seu nome" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -951,9 +941,9 @@ const VendaMaisComIA = () => {
                         name="whatsapp"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={LABEL_CLS}>WhatsApp</label>
+                            <label className={SAAS_LABEL}>WhatsApp</label>
                             <FormControl>
-                              <input placeholder="(00) 00000-0000" className={INPUT_CLS} {...field} />
+                              <input placeholder="(00) 00000-0000" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -964,9 +954,9 @@ const VendaMaisComIA = () => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={LABEL_CLS}>E-mail</label>
+                            <label className={SAAS_LABEL}>E-mail</label>
                             <FormControl>
-                              <input type="email" placeholder="voce@empresa.com" className={INPUT_CLS} {...field} />
+                              <input type="email" placeholder="voce@empresa.com" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -977,9 +967,9 @@ const VendaMaisComIA = () => {
                         name="empresa"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={LABEL_CLS}>Empresa</label>
+                            <label className={SAAS_LABEL}>Empresa</label>
                             <FormControl>
-                              <input placeholder="Nome da empresa" className={INPUT_CLS} {...field} />
+                              <input placeholder="Nome da empresa" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -990,9 +980,9 @@ const VendaMaisComIA = () => {
                         name="leadsMes"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={LABEL_CLS}>Quantos leads você recebe por mês?</label>
+                            <label className={SAAS_LABEL}>Quantos leads você recebe por mês?</label>
                             <FormControl>
-                              <select className={INPUT_CLS} {...field}>
+                              <select className={SAAS_INPUT} {...field}>
                                 <option value="" disabled>
                                   Selecione
                                 </option>
@@ -1010,7 +1000,7 @@ const VendaMaisComIA = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className={BTN_PRIMARY + " w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"}
+                        className={SAAS_BTN_PRIMARY + " w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"}
                       >
                         {isSubmitting ? "Enviando..." : "Quero ver o agente funcionando"}
                       </button>
@@ -1032,10 +1022,10 @@ const VendaMaisComIA = () => {
       {/* FOOTER */}
       <footer className="border-t border-white/[0.06] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="rev-item animate-fade-in font-extrabold text-[#F5F5FA] text-[clamp(26px,3.6vw,42px)] leading-tight max-w-[20ch] mb-10">
+          <p className="rev-item animate-fade-in font-extrabold text-saas-ink text-[clamp(26px,3.6vw,42px)] leading-tight max-w-[20ch] mb-10">
             O lead não <Accent>espera</Accent>.
           </p>
-          <div className="flex flex-wrap justify-between gap-6 border-t border-white/[0.06] pt-6 text-sm text-[#7B7C8C]">
+          <div className="flex flex-wrap justify-between gap-6 border-t border-white/[0.06] pt-6 text-sm text-saas-faint">
             <div>
               <div className="text-[#4E505A] text-xs mb-1">Produto</div>
               Agente de IA para WhatsApp

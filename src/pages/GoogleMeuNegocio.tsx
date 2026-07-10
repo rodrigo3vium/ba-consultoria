@@ -26,21 +26,18 @@ import {
   X,
   Zap,
   Users,
-  Award,
   MousePointerClick,
   ExternalLink
 } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Accent, SAAS_BTN_PRIMARY, SAAS_BTN_GHOST, SAAS_CARD, SAAS_GRADIENT_TEXT } from "@/components/saas/ui";
 
-// Strategic HUD Editorial v.02 — paleta PB
-const CYAN = "#20DDEB";
-const BG_MAIN = "#05090B";
-const BG_CARD = "#0B1114";
-const BG_ELEV = "#11171A";
-const INK = "#F2EDE4";
-const INK_MUTED = "#7D827D";
-const BORDER = "rgba(255,255,255,0.10)";
-const BORDER_CYAN = "rgba(32,221,235,0.30)";
+// SaaS IDV v.03 — hex literais só para o recharts (que não lê classes Tailwind)
+const CHART_CYAN = "#20DDEB";
+const CHART_CARD = "#15151F";
+const CHART_INK = "#F5F5FA";
+const CHART_MUTED = "#9A9CAA";
+const CHART_BORDER = "rgba(255,255,255,0.09)";
 
 const GoogleMeuNegocio = () => {
   const whatsappNumber = "5511979794086";
@@ -55,85 +52,54 @@ const GoogleMeuNegocio = () => {
   const openWhatsApp = () => window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
 
   return (
-    <div className="min-h-screen flex flex-col bg-pb-void">
-      {/* Google Fonts */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
-      `}</style>
-
+    <div className="min-h-screen flex flex-col bg-saas-void text-saas-body">
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden bg-pb-void pt-8">
-          <div className="absolute inset-0 pointer-events-none" style={{
-            background: `radial-gradient(ellipse 60% 40% at 50% 20%, rgba(32,221,235,0.05) 0%, transparent 70%)`,
-          }} />
+        <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden pt-8">
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+            <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+          </div>
 
           <div className="container mx-auto px-4 py-20 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1 mb-6"
-                style={{ border: `1px solid ${BORDER_CYAN}` }}>
-                <MapPin className="w-4 h-4 text-pb-cyan" />
-                <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">Especialistas em Google Meu Negócio</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.03] px-3.5 py-1.5 mb-6 animate-fade-in">
+                <MapPin className="w-3.5 h-3.5 text-saas-cyan" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted">Especialistas em Google Meu Negócio</span>
               </div>
 
-              <h1 className="font-display uppercase text-pb-ink leading-[0.92] text-4xl md:text-6xl mb-6">
-                Coloque sua empresa no topo do Google sem gastar R$1
+              <h1 className="font-extrabold text-saas-ink text-[clamp(28px,4vw,48px)] leading-[1.1] tracking-tight mb-6 animate-fade-in">
+                Coloque sua empresa no <Accent>topo do Google</Accent> sem gastar R$1
               </h1>
 
-              <p className="font-body text-pb-ink-soft text-xl mb-10 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-saas-body text-lg md:text-xl mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in">
                 Otimizamos seu Google Meu Negócio para transformar ele em uma máquina de geração de clientes qualificados todos os dias.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <button
-                  onClick={openWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 font-mono text-[12px] uppercase tracking-mono-wide px-8 py-4 transition-all duration-300 text-pb-cyan"
-                  style={{ border: `1px solid ${CYAN}`, background: "transparent" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = CYAN;
-                    e.currentTarget.style.color = BG_MAIN;
-                    e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.45)`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = CYAN;
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <TrendingUp className="h-5 w-5" />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-fade-in">
+                <button onClick={openWhatsApp} className={SAAS_BTN_PRIMARY}>
+                  <TrendingUp className="h-4 w-4" />
                   Quero aparecer no topo
                 </button>
-                <button
-                  onClick={openWhatsApp}
-                  className="inline-flex items-center justify-center gap-2 font-mono text-[12px] uppercase tracking-mono-wide px-8 py-4 transition-all duration-300 text-pb-ink-soft"
-                  style={{ border: `1px solid ${BORDER}`, background: "transparent" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = CYAN;
-                    e.currentTarget.style.color = CYAN;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = BORDER;
-                    e.currentTarget.style.color = INK_MUTED;
-                  }}
-                >
-                  <Search className="h-5 w-5" />
+                <button onClick={openWhatsApp} className={SAAS_BTN_GHOST}>
+                  <Search className="h-4 w-4" />
                   Fazer diagnóstico gratuito
                 </button>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-pb-cyan" />
+              <div className="flex flex-wrap items-center justify-center gap-4 font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
+                <div className="flex items-center gap-1.5">
+                  <Star className="w-4 h-4 text-saas-cyan" />
                   <span>+100 negócios locais atendidos</span>
                 </div>
                 <span className="hidden sm:inline">·</span>
-                <div className="flex items-center gap-1">
-                  <CheckCircle className="w-4 h-4 text-pb-cyan" />
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-saas-cyan" />
                   <span>100% de Satisfação</span>
                 </div>
                 <span className="hidden sm:inline">·</span>
-                <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-pb-cyan" />
+                <div className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4 text-saas-cyan" />
                   <span>São Paulo e região</span>
                 </div>
               </div>
@@ -142,25 +108,24 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Problema Section */}
-        <section className="py-20 bg-pb-void-card" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+        <section className="border-t border-white/[0.06] bg-saas-void-2 py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <AlertCircle className="w-12 h-12 text-pb-red mx-auto mb-4" />
-                <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl mb-4">
-                  Hoje, quando alguém procura "[seu serviço] perto de mim", quem aparece? Você ou seu concorrente?
+                <span className="inline-flex w-12 h-12 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet items-center justify-center mb-4">
+                  <AlertCircle className="w-6 h-6 text-saas-void" />
+                </span>
+                <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight mb-4">
+                  Hoje, quando alguém procura "[seu serviço] perto de mim", <Accent>quem aparece?</Accent> Você ou seu concorrente?
                 </h2>
               </div>
 
-              <div
-                className="p-8"
-                style={{ backgroundColor: BG_MAIN, border: `1px solid ${BORDER}` }}
-              >
-                <h3 className="font-display uppercase text-pb-ink text-2xl mb-6 text-center">
+              <div className="rounded-2xl border border-white/[0.09] bg-saas-void p-8">
+                <h3 className="font-extrabold text-saas-ink text-xl md:text-2xl tracking-tight mb-6 text-center">
                   95% dos negócios estão com o cadastro do Google feito incorretamente
                 </h3>
 
-                <div className="w-full mb-8 overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
+                <div className="w-full mb-8 overflow-hidden rounded-xl border border-white/[0.09]">
                   <img loading="lazy"
                     src="/lovable-uploads/google-meu-negocio-comparison.png"
                     alt="Comparação entre perfil Google Meu Negócio mal configurado e bem configurado"
@@ -168,8 +133,8 @@ const GoogleMeuNegocio = () => {
                   />
                 </div>
 
-                <div className="mt-8 p-8" style={{ backgroundColor: BG_CARD, border: `1px solid ${BORDER}` }}>
-                  <h4 className="font-display uppercase text-pb-ink text-2xl md:text-3xl mb-8 text-center">
+                <div className={"mt-8 p-8 " + SAAS_CARD}>
+                  <h4 className="font-extrabold text-saas-ink text-2xl md:text-3xl tracking-tight mb-8 text-center">
                     O resultado?
                   </h4>
                   <div className="grid gap-4 max-w-2xl mx-auto">
@@ -180,17 +145,13 @@ const GoogleMeuNegocio = () => {
                     ].map((item, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-4 p-4 animate-fade-in"
-                        style={{
-                          backgroundColor: BG_ELEV,
-                          border: `1px solid ${BORDER}`,
-                          animationDelay: `${i * 0.1}s`,
-                        }}
+                        className="flex items-center gap-4 p-4 rounded-xl border border-white/[0.09] bg-white/[0.03] animate-fade-in"
+                        style={{ animationDelay: `${i * 0.1}s` }}
                       >
-                        <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center" style={{ backgroundColor: BG_MAIN }}>
-                          <X className="w-5 h-5 text-pb-red" />
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/[0.04] border border-white/[0.09] flex items-center justify-center">
+                          <X className="w-5 h-5 text-saas-muted" />
                         </div>
-                        <span className="font-body text-pb-ink-soft text-lg md:text-xl">{item}</span>
+                        <span className="text-saas-body text-lg md:text-xl">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -201,15 +162,17 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Solução Section */}
-        <section className="py-20 bg-pb-void">
+        <section className="border-t border-white/[0.06] py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
-                <Target className="w-12 h-12 text-pb-cyan mx-auto mb-4" />
-                <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl mb-6">
-                  Perfil otimizado + reputação forte + atividade constante = mais clientes do Maps
+                <span className="inline-flex w-12 h-12 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-saas-void" />
+                </span>
+                <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight mb-6">
+                  Perfil otimizado + reputação forte + atividade constante = <Accent>mais clientes do Maps</Accent>
                 </h2>
-                <p className="font-body text-pb-ink-soft text-xl max-w-3xl mx-auto">
+                <p className="text-saas-body text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
                   Nós tratamos seu Google Meu Negócio como um canal de aquisição, não como uma ficha abandonada.
                 </p>
               </div>
@@ -223,42 +186,16 @@ const GoogleMeuNegocio = () => {
                 ].map((benefit, index) => (
                   <div
                     key={index}
-                    className="p-6 transition-all duration-300"
-                    style={{
-                      backgroundColor: BG_CARD,
-                      border: `1px solid ${BORDER}`,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = BORDER_CYAN;
-                      e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.08)`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = BORDER;
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className={SAAS_CARD + " p-6 hover:border-white/[0.20] transition-colors"}
                   >
-                    <benefit.icon className="w-10 h-10 text-pb-cyan mb-4" />
-                    <h3 className="font-display uppercase text-pb-ink text-lg">{benefit.title}</h3>
+                    <benefit.icon className="w-10 h-10 text-saas-cyan mb-4" />
+                    <h3 className="font-bold text-saas-ink text-lg">{benefit.title}</h3>
                   </div>
                 ))}
               </div>
 
               <div className="text-center">
-                <button
-                  onClick={openWhatsApp}
-                  className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-mono-wide px-8 py-4 transition-all duration-300 text-pb-cyan"
-                  style={{ border: `1px solid ${CYAN}`, background: "transparent" }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = CYAN;
-                    e.currentTarget.style.color = BG_MAIN;
-                    e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.45)`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = CYAN;
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
+                <button onClick={openWhatsApp} className={SAAS_BTN_PRIMARY}>
                   Quero meu diagnóstico gratuito
                 </button>
               </div>
@@ -267,11 +204,11 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Como Funciona Section */}
-        <section className="py-20 bg-pb-void-card" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+        <section className="border-t border-white/[0.06] bg-saas-void-2 py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl text-center mb-12">
-                Como funciona (plano simples)
+              <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight text-center mb-12">
+                Como funciona <Accent>(plano simples)</Accent>
               </h2>
 
               <div className="grid md:grid-cols-3 gap-8">
@@ -297,26 +234,14 @@ const GoogleMeuNegocio = () => {
                 ].map((step, index) => (
                   <div
                     key={index}
-                    className="p-8 relative overflow-hidden transition-all duration-300"
-                    style={{
-                      backgroundColor: BG_ELEV,
-                      border: `1px solid ${BORDER}`,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = BORDER_CYAN;
-                      e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.08)`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = BORDER;
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className={SAAS_CARD + " p-8 relative overflow-hidden hover:border-white/[0.20] transition-colors"}
                   >
-                    <div className="absolute top-4 right-4 font-display text-6xl leading-none" style={{ color: "rgba(32,221,235,0.08)" }}>
+                    <div className="absolute top-4 right-4 font-extrabold text-6xl leading-none text-white/[0.05]">
                       {step.step}
                     </div>
-                    <step.icon className="w-12 h-12 text-pb-cyan mb-4 relative z-10" />
-                    <h3 className="font-display uppercase text-pb-ink text-xl mb-3 relative z-10">{step.title}</h3>
-                    <p className="font-body text-pb-ink-muted relative z-10">{step.description}</p>
+                    <step.icon className="w-12 h-12 text-saas-cyan mb-4 relative z-10" />
+                    <h3 className="font-bold text-saas-ink text-xl mb-3 relative z-10">{step.title}</h3>
+                    <p className="text-saas-muted text-[15px] leading-relaxed relative z-10">{step.description}</p>
                   </div>
                 ))}
               </div>
@@ -325,23 +250,20 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Resultados Section */}
-        <section className="py-20 bg-pb-void">
+        <section className="border-t border-white/[0.06] py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl text-center mb-12">
-                Resultados de clientes
+              <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight text-center mb-12">
+                Resultados de <Accent>clientes</Accent>
               </h2>
 
               <Carousel className="max-w-6xl mx-auto">
                 <CarouselContent>
                   {/* Card Senzano Imobiliária */}
                   <CarouselItem>
-                    <div
-                      className="p-8 md:p-10 transition-all duration-300"
-                      style={{ backgroundColor: BG_CARD, border: `1px solid ${BORDER}` }}
-                    >
+                    <div className={SAAS_CARD + " p-8 md:p-10"}>
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-16 h-16 overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
+                        <div className="w-16 h-16 overflow-hidden rounded-xl border border-white/[0.09]">
                           <img loading="lazy"
                             src="/lovable-uploads/senzano-logo.jpeg"
                             alt="Senzano Imobiliária"
@@ -349,10 +271,10 @@ const GoogleMeuNegocio = () => {
                           />
                         </div>
                         <div>
-                          <h3 className="font-display uppercase text-pb-ink text-2xl">Senzano Imobiliária</h3>
+                          <h3 className="font-extrabold text-saas-ink text-xl md:text-2xl tracking-tight">Senzano Imobiliária</h3>
                           <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-pb-cyan" />
-                            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">Campo Grande - MS</p>
+                            <MapPin className="w-4 h-4 text-saas-cyan" />
+                            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">Campo Grande - MS</p>
                           </div>
                         </div>
                       </div>
@@ -365,19 +287,16 @@ const GoogleMeuNegocio = () => {
                         ].map((stat, i) => (
                           <div
                             key={i}
-                            className="flex flex-col items-center text-center p-6 transition-all duration-300"
-                            style={{ backgroundColor: BG_ELEV, border: `1px solid ${BORDER}` }}
-                            onMouseEnter={(e) => { e.currentTarget.style.borderColor = BORDER_CYAN; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.borderColor = BORDER; }}
+                            className="flex flex-col items-center text-center p-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] hover:border-white/[0.20] transition-colors"
                           >
-                            <div className="w-16 h-16 flex items-center justify-center mb-4" style={{ backgroundColor: BG_MAIN }}>
-                              <stat.icon className="w-8 h-8 text-pb-cyan" />
+                            <div className="w-14 h-14 rounded-full bg-white/[0.04] border border-white/[0.09] flex items-center justify-center mb-4">
+                              <stat.icon className="w-7 h-7 text-saas-cyan" />
                             </div>
                             <div className="flex items-center gap-2 mb-2">
-                              <TrendingUp className="w-5 h-5 text-pb-cyan" />
-                              <span className="font-display text-pb-cyan text-5xl">{stat.value}</span>
+                              <TrendingUp className="w-5 h-5 text-saas-cyan" />
+                              <span className={"font-extrabold text-4xl md:text-5xl leading-none " + SAAS_GRADIENT_TEXT}>{stat.value}</span>
                             </div>
-                            <p className="font-body text-pb-ink-muted">{stat.label}</p>
+                            <p className="text-saas-muted text-sm leading-relaxed">{stat.label}</p>
                           </div>
                         ))}
                       </div>
@@ -386,12 +305,9 @@ const GoogleMeuNegocio = () => {
 
                   {/* Card Luana Guastini */}
                   <CarouselItem>
-                    <div
-                      className="p-8 md:p-10 transition-all duration-300"
-                      style={{ backgroundColor: BG_CARD, border: `1px solid ${BORDER}` }}
-                    >
+                    <div className={SAAS_CARD + " p-8 md:p-10"}>
                       <div className="flex items-center gap-4 mb-6">
-                        <div className="w-16 h-16 overflow-hidden" style={{ border: `1px solid ${BORDER}` }}>
+                        <div className="w-16 h-16 overflow-hidden rounded-xl border border-white/[0.09]">
                           <img loading="lazy"
                             src="/lovable-uploads/luana-guastini-logo.png"
                             alt="Luana Guastini"
@@ -399,52 +315,52 @@ const GoogleMeuNegocio = () => {
                           />
                         </div>
                         <div>
-                          <h3 className="font-display uppercase text-pb-ink text-2xl">Luana Guastini</h3>
+                          <h3 className="font-extrabold text-saas-ink text-xl md:text-2xl tracking-tight">Luana Guastini</h3>
                           <div className="flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-pb-cyan" />
-                            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">Santos - SP</p>
+                            <MapPin className="w-4 h-4 text-saas-cyan" />
+                            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">Santos - SP</p>
                           </div>
                         </div>
                       </div>
 
-                      <p className="font-body text-pb-ink-muted mb-6">
+                      <p className="text-saas-muted mb-6 leading-relaxed">
                         A Dra. Luana estava cadastrada no GMN em uma categoria que não beneficiava ela. Apenas com um ajuste estratégico, conseguimos subir mais de 30 posições no ranking e gerar um movimento com clientes muito mais qualificados.
                       </p>
 
                       {/* Gráfico de Evolução */}
-                      <div className="mb-6 p-6" style={{ backgroundColor: BG_ELEV, border: `1px solid ${BORDER}` }}>
-                        <h4 className="font-display uppercase text-pb-ink text-lg mb-4 text-center">Evolução de Engajamentos</h4>
+                      <div className="mb-6 p-6 rounded-2xl border border-white/[0.09] bg-white/[0.02]">
+                        <h4 className="font-bold text-saas-ink text-lg mb-4 text-center">Evolução de Engajamentos</h4>
                         <ResponsiveContainer width="100%" height={200}>
                           <LineChart data={luanaEngagementData}>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
                             <XAxis
                               dataKey="dia"
-                              stroke={INK_MUTED}
-                              tick={{ fill: INK_MUTED, fontFamily: 'IBM Plex Mono', fontSize: 10 }}
-                              label={{ value: 'Dias', position: 'insideBottom', offset: -5, fill: INK_MUTED }}
+                              stroke={CHART_MUTED}
+                              tick={{ fill: CHART_MUTED, fontFamily: 'IBM Plex Mono', fontSize: 10 }}
+                              label={{ value: 'Dias', position: 'insideBottom', offset: -5, fill: CHART_MUTED }}
                             />
                             <YAxis
-                              stroke={INK_MUTED}
-                              tick={{ fill: INK_MUTED, fontFamily: 'IBM Plex Mono', fontSize: 10 }}
-                              label={{ value: 'Engajamentos', angle: -90, position: 'insideLeft', fill: INK_MUTED }}
+                              stroke={CHART_MUTED}
+                              tick={{ fill: CHART_MUTED, fontFamily: 'IBM Plex Mono', fontSize: 10 }}
+                              label={{ value: 'Engajamentos', angle: -90, position: 'insideLeft', fill: CHART_MUTED }}
                             />
                             <Tooltip
                               contentStyle={{
-                                backgroundColor: BG_CARD,
-                                border: `1px solid ${BORDER}`,
-                                borderRadius: '0',
+                                backgroundColor: CHART_CARD,
+                                border: `1px solid ${CHART_BORDER}`,
+                                borderRadius: '12px',
                                 fontFamily: 'IBM Plex Mono',
                                 fontSize: '11px',
                               }}
-                              labelStyle={{ color: INK }}
+                              labelStyle={{ color: CHART_INK }}
                             />
                             <Line
                               type="monotone"
                               dataKey="engajamentos"
-                              stroke={CYAN}
+                              stroke={CHART_CYAN}
                               strokeWidth={2}
-                              dot={{ fill: CYAN, r: 4, strokeWidth: 0 }}
-                              activeDot={{ r: 6, fill: CYAN }}
+                              dot={{ fill: CHART_CYAN, r: 4, strokeWidth: 0 }}
+                              activeDot={{ r: 6, fill: CHART_CYAN }}
                             />
                           </LineChart>
                         </ResponsiveContainer>
@@ -458,19 +374,16 @@ const GoogleMeuNegocio = () => {
                         ].map((stat, i) => (
                           <div
                             key={i}
-                            className="flex flex-col items-center text-center p-6 transition-all duration-300"
-                            style={{ backgroundColor: BG_ELEV, border: `1px solid ${BORDER}` }}
-                            onMouseEnter={(e) => { e.currentTarget.style.borderColor = BORDER_CYAN; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.borderColor = BORDER; }}
+                            className="flex flex-col items-center text-center p-6 rounded-2xl border border-white/[0.09] bg-white/[0.02] hover:border-white/[0.20] transition-colors"
                           >
-                            <div className="w-16 h-16 flex items-center justify-center mb-4" style={{ backgroundColor: BG_MAIN }}>
-                              <stat.icon className="w-8 h-8 text-pb-cyan" />
+                            <div className="w-14 h-14 rounded-full bg-white/[0.04] border border-white/[0.09] flex items-center justify-center mb-4">
+                              <stat.icon className="w-7 h-7 text-saas-cyan" />
                             </div>
                             <div className="flex items-center gap-2 mb-2">
-                              <TrendingUp className="w-5 h-5 text-pb-cyan" />
-                              <span className="font-display text-pb-cyan text-5xl">{stat.value}</span>
+                              <TrendingUp className="w-5 h-5 text-saas-cyan" />
+                              <span className={"font-extrabold text-4xl md:text-5xl leading-none " + SAAS_GRADIENT_TEXT}>{stat.value}</span>
                             </div>
-                            <p className="font-body text-pb-ink-muted">{stat.label}</p>
+                            <p className="text-saas-muted text-sm leading-relaxed">{stat.label}</p>
                           </div>
                         ))}
                       </div>
@@ -485,11 +398,11 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* Para Quem É Section */}
-        <section className="py-20 bg-pb-void-card" style={{ borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+        <section className="border-t border-white/[0.06] bg-saas-void-2 py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl text-center mb-12">
-                Para quem é este serviço
+              <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight text-center mb-12">
+                Para quem é <Accent>este serviço</Accent>
               </h2>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -512,23 +425,11 @@ const GoogleMeuNegocio = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="p-8 text-center transition-all duration-300"
-                    style={{
-                      backgroundColor: BG_ELEV,
-                      border: `1px solid ${BORDER}`,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = BORDER_CYAN;
-                      e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.08)`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = BORDER;
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
+                    className={SAAS_CARD + " p-8 text-center hover:border-white/[0.20] transition-colors"}
                   >
-                    <item.icon className="w-12 h-12 text-pb-cyan mx-auto mb-4" />
-                    <h3 className="font-display uppercase text-pb-ink text-xl mb-3">{item.title}</h3>
-                    <p className="font-body text-pb-ink-muted">{item.description}</p>
+                    <item.icon className="w-12 h-12 text-saas-cyan mx-auto mb-4" />
+                    <h3 className="font-bold text-saas-ink text-xl mb-3">{item.title}</h3>
+                    <p className="text-saas-muted text-[15px] leading-relaxed">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -537,11 +438,11 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-pb-void">
+        <section className="border-t border-white/[0.06] py-20 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-4xl text-center mb-12">
-                Perguntas frequentes
+              <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight text-center mb-12">
+                Perguntas <Accent>frequentes</Accent>
               </h2>
 
               <Accordion type="single" collapsible className="space-y-4">
@@ -575,13 +476,12 @@ const GoogleMeuNegocio = () => {
                   <AccordionItem
                     key={item.value}
                     value={item.value}
-                    className="px-6 transition-colors duration-300"
-                    style={{ backgroundColor: BG_CARD, border: `1px solid ${BORDER}` }}
+                    className={SAAS_CARD + " px-6 transition-colors duration-300"}
                   >
-                    <AccordionTrigger className="font-body text-pb-ink hover:no-underline hover:text-pb-cyan transition-colors">
+                    <AccordionTrigger className="text-saas-ink font-semibold text-left hover:no-underline hover:text-saas-cyan transition-colors">
                       {item.trigger}
                     </AccordionTrigger>
-                    <AccordionContent className="font-body text-pb-ink-muted">
+                    <AccordionContent className="text-saas-muted leading-relaxed">
                       {item.content}
                     </AccordionContent>
                   </AccordionItem>
@@ -592,34 +492,21 @@ const GoogleMeuNegocio = () => {
         </section>
 
         {/* CTA Final Section */}
-        <section className="py-20 bg-pb-void-card relative overflow-hidden" style={{ borderTop: `1px solid ${BORDER}` }}>
-          <div className="absolute inset-0 pointer-events-none" style={{
-            background: `radial-gradient(ellipse 50% 50% at 50% 50%, rgba(32,221,235,0.04) 0%, transparent 70%)`,
-          }} />
+        <section className="border-t border-white/[0.06] bg-saas-void-2 py-20 md:py-24 relative overflow-hidden">
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[380px] rounded-full bg-saas-violet/15 blur-[110px]" />
+            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[420px] h-[340px] rounded-full bg-saas-cyan/10 blur-[110px]" />
+          </div>
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center relative z-10">
-              <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-3xl md:text-5xl mb-6">
-                Pronto para dominar o Google Maps?
+              <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.8vw,46px)] leading-[1.08] tracking-tight mb-6">
+                Pronto para dominar o <Accent>Google Maps</Accent>?
               </h2>
-              <p className="font-body text-pb-ink-soft text-xl mb-10 max-w-2xl mx-auto">
+              <p className="text-saas-body text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
                 Faça seu diagnóstico gratuito e descubra como colocar sua empresa no topo das buscas locais.
               </p>
-              <button
-                onClick={openWhatsApp}
-                className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-mono-wide px-12 py-4 transition-all duration-300 text-pb-cyan"
-                style={{ border: `1px solid ${CYAN}`, background: "transparent" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = CYAN;
-                  e.currentTarget.style.color = BG_MAIN;
-                  e.currentTarget.style.boxShadow = `0 0 24px rgba(32,221,235,0.45)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = CYAN;
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <Search className="h-5 w-5" />
+              <button onClick={openWhatsApp} className={SAAS_BTN_PRIMARY + " px-12"}>
+                <Search className="h-4 w-4" />
                 Quero meu diagnóstico gratuito
               </button>
             </div>

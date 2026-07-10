@@ -5,13 +5,17 @@ import * as z from "zod";
 import { Mail, TrendingUp, Lightbulb, Calendar } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { tracker } from "@/lib/tracking";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  Accent,
+  Card,
+  SAAS_BTN_PRIMARY,
+  SAAS_CARD,
+  SAAS_INPUT,
+  SAAS_LABEL,
+} from "@/components/saas/ui";
 
 const newsletterSchema = z.object({
   name: z.string().min(3, "Nome deve ter no mínimo 3 caracteres").max(100, "Nome muito longo"),
@@ -24,7 +28,7 @@ type NewsletterForm = z.infer<typeof newsletterSchema>;
 const Newsletter = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
+
   const form = useForm<NewsletterForm>({
     resolver: zodResolver(newsletterSchema),
     defaultValues: {
@@ -118,10 +122,10 @@ const Newsletter = () => {
       });
 
       form.reset();
-      
+
     } catch (error) {
       console.error('❌ Erro detalhado:', error);
-      
+
       toast({
         title: "Erro ao processar inscrição",
         description: error instanceof Error ? error.message : "Tente novamente em alguns instantes.",
@@ -156,22 +160,24 @@ const Newsletter = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-saas-void text-saas-body">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Background decorations */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-ba-blue-light/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-ba-orange/5 rounded-full blur-3xl" />
-        
+        {/* Glows radiais de acento */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 left-1/4 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute bottom-0 right-1/4 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center space-y-6 px-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-ba-blue-light via-white to-ba-orange bg-clip-text text-transparent leading-[1.3] sm:leading-[1.25] pb-2">
+          <div className="max-w-5xl mx-auto text-center space-y-6 px-4 animate-fade-in">
+            <h1 className="font-extrabold text-saas-ink text-[clamp(28px,4.5vw,52px)] leading-[1.1] tracking-tight">
               Receba Insights Semanais sobre IA{" "}
-              <span className="inline-block">e Negócios</span>
+              <Accent>e Negócios</Accent>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-saas-body max-w-2xl mx-auto leading-relaxed">
               Toda segunda-feira às 8h, você recebe no seu email as melhores estratégias,
               tendências e casos práticos de Inteligência Artificial aplicada a negócios.
             </p>
@@ -182,89 +188,91 @@ const Newsletter = () => {
       {/* Formulário de Cadastro */}
       <section className="py-16 relative z-10">
         <div className="container mx-auto px-4">
-          <Card className="max-w-2xl mx-auto border-ba-blue-light/20 bg-black/40 backdrop-blur">
-            <CardHeader>
-              <CardTitle className="text-3xl text-center">Inscreva-se Gratuitamente</CardTitle>
-              <CardDescription className="text-center text-base">
+          <div className={SAAS_CARD + " max-w-2xl mx-auto p-7 md:p-8 shadow-saas-card animate-fade-in"}>
+            <div className="text-center mb-6">
+              <h2 className="font-extrabold text-saas-ink text-[clamp(24px,3vw,34px)] tracking-tight">
+                Inscreva-se Gratuitamente
+              </h2>
+              <p className="mt-2.5 text-saas-muted text-base">
                 Junte-se a centenas de profissionais que já recebem nossa newsletter
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Nome Completo</Label>
-                  <Input
-                    id="name"
-                    placeholder="Seu nome"
-                    {...form.register("name")}
-                    className="bg-black/50 border-ba-blue-light/30 focus:border-ba-blue-light"
-                  />
-                  {form.formState.errors.name && (
-                    <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
-                  )}
-                </div>
+              </p>
+            </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    {...form.register("email")}
-                    className="bg-black/50 border-ba-blue-light/30 focus:border-ba-blue-light"
-                  />
-                  {form.formState.errors.email && (
-                    <p className="text-sm text-destructive">{form.formState.errors.email.message}</p>
-                  )}
-                </div>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+              <div>
+                <label htmlFor="name" className={SAAS_LABEL}>Nome Completo</label>
+                <input
+                  id="name"
+                  placeholder="Seu nome"
+                  {...form.register("name")}
+                  className={SAAS_INPUT}
+                />
+                {form.formState.errors.name && (
+                  <p className="mt-1.5 text-sm text-destructive">{form.formState.errors.name.message}</p>
+                )}
+              </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="whatsapp">WhatsApp (opcional)</Label>
-                  <Input
-                    id="whatsapp"
-                    placeholder="(11) 98765-4321"
-                    {...form.register("whatsapp")}
-                    className="bg-black/50 border-ba-blue-light/30 focus:border-ba-blue-light"
-                  />
-                  <p className="text-sm text-muted-foreground">
-                    Opcional - para receber avisos de eventos exclusivos
-                  </p>
-                </div>
+              <div>
+                <label htmlFor="email" className={SAAS_LABEL}>Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="seu@email.com"
+                  {...form.register("email")}
+                  className={SAAS_INPUT}
+                />
+                {form.formState.errors.email && (
+                  <p className="mt-1.5 text-sm text-destructive">{form.formState.errors.email.message}</p>
+                )}
+              </div>
 
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-primary hover:shadow-glow"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Processando..." : "Quero Receber a Newsletter"}
-                </Button>
-
-                <p className="text-xs text-center text-muted-foreground">
-                  Ao se inscrever, você concorda em receber emails semanais. 
-                  Cancele quando quiser com um clique.
+              <div>
+                <label htmlFor="whatsapp" className={SAAS_LABEL}>WhatsApp (opcional)</label>
+                <input
+                  id="whatsapp"
+                  placeholder="(11) 98765-4321"
+                  {...form.register("whatsapp")}
+                  className={SAAS_INPUT}
+                />
+                <p className="mt-1.5 text-sm text-saas-faint">
+                  Opcional - para receber avisos de eventos exclusivos
                 </p>
-              </form>
-            </CardContent>
-          </Card>
+              </div>
+
+              <button
+                type="submit"
+                className={SAAS_BTN_PRIMARY + " w-full disabled:opacity-50 disabled:cursor-not-allowed"}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Processando..." : "Quero Receber a Newsletter"}
+              </button>
+
+              <p className="text-xs text-center text-saas-faint leading-relaxed">
+                Ao se inscrever, você concorda em receber emails semanais.
+                Cancele quando quiser com um clique.
+              </p>
+            </form>
+          </div>
         </div>
       </section>
 
       {/* Benefícios */}
-      <section className="py-20 bg-gradient-to-b from-transparent to-ba-blue-light/5">
+      <section className="border-t border-white/[0.06] bg-saas-void-2 py-20 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">
+          <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight text-center mb-12">
             O que você vai receber
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="border-ba-blue-light/20 bg-black/40 backdrop-blur hover:border-ba-blue-light/40 transition-all">
-                <CardContent className="pt-6 space-y-4">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-                    <benefit.icon className="w-6 h-6 text-black" />
-                  </div>
-                  <h3 className="text-xl font-semibold">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.description}</p>
-                </CardContent>
+              <Card
+                key={index}
+                className="p-6 space-y-4 hover:border-white/[0.14] transition-colors animate-fade-in"
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center">
+                  <benefit.icon className="w-6 h-6 text-saas-void" />
+                </div>
+                <h3 className="text-xl font-bold text-saas-ink">{benefit.title}</h3>
+                <p className="text-saas-muted leading-relaxed">{benefit.description}</p>
               </Card>
             ))}
           </div>
@@ -272,21 +280,21 @@ const Newsletter = () => {
       </section>
 
       {/* Frequência e Privacidade */}
-      <section className="py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <div className="flex items-center justify-center gap-2 text-ba-orange">
+            <div className="flex items-center justify-center gap-2 text-saas-cyan">
               <Calendar className="w-5 h-5" />
               <p className="text-lg font-semibold">
                 Enviada toda segunda-feira às 8h
               </p>
             </div>
-            <p className="text-muted-foreground">
-              Sem spam. Sem vendas agressivas. Apenas conteúdo de qualidade para 
+            <p className="text-saas-body">
+              Sem spam. Sem vendas agressivas. Apenas conteúdo de qualidade para
               você dominar IA e aplicar no seu negócio.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Cancelamento com um clique a qualquer momento. Seus dados estão seguros 
+            <p className="text-sm text-saas-faint">
+              Cancelamento com um clique a qualquer momento. Seus dados estão seguros
               e nunca serão compartilhados com terceiros.
             </p>
           </div>

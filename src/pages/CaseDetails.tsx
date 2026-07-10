@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { ArrowLeft } from 'lucide-react';
 import PageLayout from '@/components/pb/PageLayout';
 import Tag from '@/components/pb/Tag';
+import { Accent, Eyebrow, Card, SAAS_BTN_PRIMARY, SAAS_BTN_GHOST } from '@/components/saas/ui';
 
 interface ResultadoMetrica {
   metrica: string;
@@ -80,14 +81,12 @@ const CaseDetails = () => {
     return (
       <PageLayout trackingName="BA Consultoria - Case">
         <div className="max-w-4xl mx-auto px-4 py-24">
-          <div className="grid grid-cols-1 gap-px bg-pb-grid-strong border border-pb-grid-strong animate-pulse">
-            <div className="bg-pb-void p-8">
-              <div className="h-3 bg-pb-void-elev w-32 mb-6" />
-              <div className="h-12 bg-pb-void-elev w-3/4 mb-4" />
-              <div className="h-4 bg-pb-void-elev w-full mb-2" />
-              <div className="h-4 bg-pb-void-elev w-5/6" />
-            </div>
-          </div>
+          <Card className="p-8 animate-pulse">
+            <div className="h-3 rounded-full bg-white/[0.06] w-32 mb-6" />
+            <div className="h-12 rounded-lg bg-white/[0.06] w-3/4 mb-4" />
+            <div className="h-4 rounded-full bg-white/[0.06] w-full mb-2" />
+            <div className="h-4 rounded-full bg-white/[0.06] w-5/6" />
+          </Card>
         </div>
       </PageLayout>
     );
@@ -97,15 +96,15 @@ const CaseDetails = () => {
     return (
       <PageLayout trackingName="BA Consultoria - Case">
         <div className="max-w-4xl mx-auto px-4 py-24 text-center">
-          <h1 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95] mb-6">
+          <h1 className="font-extrabold text-saas-ink text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-tight mb-6">
             Case não encontrado
           </h1>
           <Link
             to="/cases"
             onClick={() => window.scrollTo(0, 0)}
-            className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan border border-pb-cyan px-4 py-2 hover:bg-pb-cyan/10 transition-colors duration-200 inline-flex items-center gap-2"
+            className={SAAS_BTN_GHOST}
           >
-            <ArrowLeft className="w-3 h-3" />
+            <ArrowLeft className="w-3.5 h-3.5" />
             Voltar para Cases
           </Link>
         </div>
@@ -116,12 +115,12 @@ const CaseDetails = () => {
   return (
     <PageLayout trackingName="BA Consultoria - Case">
       {/* Header do Case */}
-      <section className="border-b border-pb-grid-strong py-16 md:py-20">
+      <section className="border-b border-white/[0.06] py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/cases"
             onClick={() => window.scrollTo(0, 0)}
-            className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-cyan transition-colors duration-200 mb-8 inline-flex items-center gap-2"
+            className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted hover:text-saas-cyan transition-colors duration-200 mb-8 inline-flex items-center gap-2"
           >
             <ArrowLeft className="w-3 h-3" />
             Voltar para Cases
@@ -137,7 +136,7 @@ const CaseDetails = () => {
             </div>
 
             {/* Título */}
-            <h1 className="font-display uppercase text-pb-ink text-[clamp(36px,4vw,64px)] leading-[0.92]">
+            <h1 className="font-extrabold text-saas-ink text-[clamp(30px,3.8vw,48px)] leading-[1.1] tracking-tight">
               {caseData.titulo}
             </h1>
 
@@ -148,12 +147,11 @@ const CaseDetails = () => {
                   loading="lazy"
                   src={caseData.cliente_logo_url}
                   alt={caseData.cliente_nome}
-                  className="w-full max-h-96 object-cover border border-pb-grid-strong"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full max-h-96 object-cover rounded-2xl border border-white/[0.09]"
                 />
               </div>
             ) : (
-              <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted">
                 {caseData.cliente_nome}
               </p>
             )}
@@ -168,21 +166,19 @@ const CaseDetails = () => {
           {/* Resultados */}
           {caseData.resultados.length > 0 && (
             <div>
-              <div className="flex items-center gap-3 mb-8 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">01</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Resultados Alcançados</span>
+              <div className="mb-8">
+                <Eyebrow>Resultados Alcançados</Eyebrow>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {caseData.resultados.map((resultado, index) => (
-                  <div key={index} className="bg-pb-void-card p-6 text-center">
-                    <p className="font-display text-3xl text-pb-cyan mb-2">
-                      {resultado.valor}
+                  <div key={index} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6 text-center">
+                    <p className="text-[clamp(26px,3vw,34px)] font-extrabold leading-none mb-3">
+                      <Accent>{resultado.valor}</Accent>
                     </p>
-                    <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink mb-1">
+                    <p className="text-sm font-semibold text-saas-ink mb-1">
                       {resultado.metrica}
                     </p>
-                    <p className="font-body text-pb-ink-soft text-xs leading-relaxed">
+                    <p className="text-saas-faint text-xs leading-relaxed">
                       {resultado.descricao}
                     </p>
                   </div>
@@ -192,31 +188,27 @@ const CaseDetails = () => {
           )}
 
           {/* Desafio */}
-          <div className="border-t border-pb-grid-strong pt-12">
-            <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-              <span className="text-pb-cyan">02</span>
-              <span className="h-px w-12 bg-pb-grid-strong" />
-              <span className="text-pb-ink-muted">O Desafio</span>
+          <div className="border-t border-white/[0.06] pt-12">
+            <div className="mb-6">
+              <Eyebrow>O Desafio</Eyebrow>
             </div>
-            <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+            <p className="text-saas-body text-lg leading-relaxed">
               {caseData.desafio}
             </p>
           </div>
 
           {/* Solução */}
-          <div className="border-t border-pb-grid-strong pt-12">
-            <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-              <span className="text-pb-cyan">03</span>
-              <span className="h-px w-12 bg-pb-grid-strong" />
-              <span className="text-pb-ink-muted">Nossa Solução</span>
+          <div className="border-t border-white/[0.06] pt-12">
+            <div className="mb-6">
+              <Eyebrow>Nossa Solução</Eyebrow>
             </div>
-            <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+            <p className="text-saas-body text-lg leading-relaxed">
               {caseData.solucao}
             </p>
 
             {caseData.tecnologias_usadas && caseData.tecnologias_usadas.length > 0 && (
               <div className="mt-6">
-                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-3">
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-3">
                   Tecnologias Utilizadas
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -230,30 +222,25 @@ const CaseDetails = () => {
 
           {/* Galeria de Criativos — FTX */}
           {caseData.slug === 'ftx-imoveis-lancamento-alto-padrao' && (
-            <div className="border-t border-pb-grid-strong pt-12">
-              <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">04</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Criativos da Campanha</span>
+            <div className="border-t border-white/[0.06] pt-12">
+              <div className="mb-6">
+                <Eyebrow>Criativos da Campanha</Eyebrow>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <img loading="lazy"
                   src="/lovable-uploads/ftx-creative-1.png"
                   alt="Criativo FTX - Riviera Home Club"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/ftx-creative-2.png"
                   alt="Criativo FTX - Localização Privilegiada"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/ftx-creative-3.png"
                   alt="Criativo FTX - Novas Experiências"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
               </div>
             </div>
@@ -261,36 +248,30 @@ const CaseDetails = () => {
 
           {/* Galeria de Criativos — Puma */}
           {caseData.slug === 'puma-tactical-newsletter' && (
-            <div className="border-t border-pb-grid-strong pt-12">
-              <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">04</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Exemplos da Newsletter</span>
+            <div className="border-t border-white/[0.06] pt-12">
+              <div className="mb-6">
+                <Eyebrow>Exemplos da Newsletter</Eyebrow>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <img loading="lazy"
                   src="/lovable-uploads/puma-creative-1.png"
                   alt="Newsletter Puma - Benefícios do Tiro Esportivo"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/puma-creative-2.png"
                   alt="Newsletter Puma - Legítima Defesa"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/puma-creative-3.png"
                   alt="Newsletter Puma - Aniversário"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/puma-creative-4.png"
                   alt="Newsletter Puma - Arsenal de Defesa"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
               </div>
             </div>
@@ -298,30 +279,25 @@ const CaseDetails = () => {
 
           {/* Galeria de Criativos — Quintal do Betione */}
           {caseData.slug === 'quintal-betione-instagram' && (
-            <div className="border-t border-pb-grid-strong pt-12">
-              <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">04</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Posts do Instagram</span>
+            <div className="border-t border-white/[0.06] pt-12">
+              <div className="mb-6">
+                <Eyebrow>Posts do Instagram</Eyebrow>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <img loading="lazy"
                   src="/lovable-uploads/quintal-creative-1.png"
                   alt="Post Instagram - Seu cantinho para relaxar em Bodoquena"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/quintal-creative-2.png"
                   alt="Post Instagram - Comemore seu evento conosco"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/quintal-creative-3.png"
                   alt="Post Instagram - Você em contato com a natureza"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
               </div>
             </div>
@@ -329,109 +305,95 @@ const CaseDetails = () => {
 
           {/* Processo Criativo — Instituto MJR */}
           {caseData.slug === 'instituto-mjr-branding' && (
-            <div className="border-t border-pb-grid-strong pt-12 space-y-8">
-              <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">04</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Processo Criativo</span>
+            <div className="border-t border-white/[0.06] pt-12 space-y-8">
+              <div className="mb-6">
+                <Eyebrow>Processo Criativo</Eyebrow>
               </div>
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 O primeiro passo foi fazer o processo criativo e rascunhos à mão.
               </p>
               <img loading="lazy"
                 src="/lovable-uploads/mjr-sketch.png"
                 alt="Instituto MJR - Rascunhos do processo criativo da logo"
-                className="w-full h-auto border border-pb-grid-strong"
-                style={{ filter: 'grayscale(30%)' }}
+                className="w-full h-auto rounded-2xl border border-white/[0.09]"
               />
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 Com as ideias aparecendo, definimos o modelo ideal e passamos para o computador para finalização.
               </p>
               <img loading="lazy"
                 src="/lovable-uploads/mjr-grid.png"
                 alt="Instituto MJR - Grid de construção da logo"
-                className="w-full h-auto border border-pb-grid-strong"
-                style={{ filter: 'grayscale(30%)' }}
+                className="w-full h-auto rounded-2xl border border-white/[0.09]"
               />
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 Remodelamos a logo mantendo a semelhança de forma tradicional e elegante.
               </p>
               <img loading="lazy"
                 src="/lovable-uploads/mjr-symbol.png"
                 alt="Instituto MJR - Símbolo final com as letras M, J e R"
-                className="w-full h-auto border border-pb-grid-strong"
-                style={{ filter: 'grayscale(30%)' }}
+                className="w-full h-auto rounded-2xl border border-white/[0.09]"
               />
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 As cores foram escolhidas com base paleta outono profundo.
               </p>
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 A ideia é trazer os tons de azul como a cor principal e trabalhar com as outras cores como complementares.
               </p>
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 A função desta paleta é auxiliar e transmitir confiança, lealdade, segurança e respeito.
               </p>
               <img loading="lazy"
                 src="/lovable-uploads/mjr-colors.png"
                 alt="Instituto MJR - Paleta de cores baseada no outono profundo"
-                className="w-full h-auto border border-pb-grid-strong"
-                style={{ filter: 'grayscale(30%)' }}
+                className="w-full h-auto rounded-2xl border border-white/[0.09]"
               />
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 A tipografia expressa a personalidade do conteúdo e do expert, e pensando nisso foi escolhida uma fonte que contém características amigáveis sem perder a sofisticação e o tom moderno.
               </p>
-              <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
+              <p className="text-saas-body text-lg leading-relaxed">
                 A escolha por uma fonte sem serifa e reta, também balizada pela diferenciação do nicho. Já que a maior parte dos perfis concorrentes utilizam de fontes serifadas.
               </p>
               <img loading="lazy"
                 src="/lovable-uploads/mjr-typography.png"
                 alt="Instituto MJR - Tipografia Montserrat"
-                className="w-full h-auto border border-pb-grid-strong"
-                style={{ filter: 'grayscale(30%)' }}
+                className="w-full h-auto rounded-2xl border border-white/[0.09]"
               />
             </div>
           )}
 
           {/* Galeria de Aplicações — Instituto MJR */}
           {caseData.slug === 'instituto-mjr-branding' && (
-            <div className="border-t border-pb-grid-strong pt-12">
-              <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">05</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Aplicações da Identidade Visual</span>
+            <div className="border-t border-white/[0.06] pt-12">
+              <div className="mb-6">
+                <Eyebrow>Aplicações da Identidade Visual</Eyebrow>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <img loading="lazy"
                   src="/lovable-uploads/mjr-creative-1.png"
                   alt="Instituto MJR - Posts Instagram sobre saúde"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/mjr-creative-2.png"
                   alt="Instituto MJR - Exemplos de aplicação em posts educativos"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/mjr-creative-3.png"
                   alt="Instituto MJR - Papelaria institucional"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
                 <img loading="lazy"
                   src="/lovable-uploads/mjr-creative-4.png"
                   alt="Instituto MJR - Aplicação em canecas"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
               </div>
-              <div className="mt-px bg-pb-grid-strong">
+              <div className="mt-4">
                 <img loading="lazy"
                   src="/lovable-uploads/mjr-creative-5.png"
                   alt="Instituto MJR - Aplicação em caneta"
-                  className="w-full h-auto"
-                  style={{ filter: 'grayscale(30%)' }}
+                  className="w-full h-auto rounded-xl border border-white/[0.09]"
                 />
               </div>
             </div>
@@ -439,44 +401,42 @@ const CaseDetails = () => {
 
           {/* Depoimento */}
           {caseData.depoimento && (
-            <div className="border-t border-pb-grid-strong pt-12">
-              <div className="flex items-center gap-3 mb-8 font-mono text-[11px] uppercase tracking-mono-wide">
-                <span className="text-pb-cyan">—</span>
-                <span className="h-px w-12 bg-pb-grid-strong" />
-                <span className="text-pb-ink-muted">Depoimento</span>
+            <div className="border-t border-white/[0.06] pt-12">
+              <div className="mb-8">
+                <Eyebrow>Depoimento</Eyebrow>
               </div>
-              <div className="bg-pb-void-card border border-pb-grid-strong p-8 md:p-10">
-                <p className="font-body text-pb-ink-soft text-lg leading-relaxed italic mb-6">
+              <Card className="p-8 md:p-10">
+                <p className="text-saas-body text-lg leading-relaxed italic mb-6">
                   "{caseData.depoimento}"
                 </p>
                 {caseData.depoimento_autor && (
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink">
+                    <p className="text-sm font-semibold text-saas-ink">
                       {caseData.depoimento_autor}
                     </p>
                     {caseData.depoimento_autor_cargo && (
-                      <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-1">
+                      <p className="text-xs text-saas-muted mt-1">
                         {caseData.depoimento_autor_cargo}
                       </p>
                     )}
                   </div>
                 )}
-              </div>
+              </Card>
             </div>
           )}
         </div>
       </section>
 
       {/* CTA Final */}
-      <section className="border-t border-pb-grid-strong py-20">
+      <section className="border-t border-white/[0.06] py-20 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display uppercase text-pb-ink text-[clamp(28px,3vw,48px)] leading-[0.95] mb-8">
-            Quer resultados como este para seu negócio?
+          <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight mb-8">
+            Quer <Accent>resultados como este</Accent> para seu negócio?
           </h2>
           <Link
             to="/consultoria"
             onClick={() => window.scrollTo(0, 0)}
-            className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan border border-pb-cyan px-8 py-4 hover:bg-pb-cyan/10 transition-colors duration-200 inline-block"
+            className={SAAS_BTN_PRIMARY}
           >
             Agende uma Consulta Gratuita
           </Link>

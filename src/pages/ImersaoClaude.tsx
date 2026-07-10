@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { CheckCircle, Lock, Plus, Minus } from "lucide-react";
 import { tracker } from "@/lib/tracking";
 import { buildHotmartCheckoutUrl } from "@/lib/hotmartUtils";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
+import { Accent, Eyebrow, SAAS_CARD, SAAS_GRADIENT_TEXT } from "@/components/saas/ui";
+
+const BTN_CTA =
+  "inline-flex flex-col items-center justify-center gap-1 rounded-full px-8 py-4 text-sm font-bold text-saas-void bg-gradient-to-r from-saas-cyan to-saas-violet shadow-saas-btn hover:shadow-saas-btn-h hover:-translate-y-0.5 transition-all";
+const BTN_CTA_SUB = "text-[11px] font-medium normal-case tracking-normal opacity-80";
+
+const CHART_FONT = "'Plus Jakarta Sans', sans-serif";
 
 const ImersaoClaude = () => {
   const [activeTab, setActiveTab] = useState("revolucoes");
@@ -15,7 +23,7 @@ const ImersaoClaude = () => {
 
   useEffect(() => {
     tracker.page("Imersão Claude");
-    document.body.style.backgroundColor = "#05090B";
+    document.body.style.backgroundColor = "#0A0A13";
     document.body.style.paddingTop = "0";
     return () => {
       document.body.style.backgroundColor = "";
@@ -66,8 +74,8 @@ const ImersaoClaude = () => {
         labels: ["Telefone\n(1876)", "Eletricidade\n(1882)", "Rádio\n(1920)", "TV\n(1950)", "PC\n(1981)", "Internet\n(1991)", "Smartphone\n(2007)", "IA Gen.\n(2022)"],
         datasets: [{
           data: [100, 70, 22, 18, 16, 7, 5, 3],
-          backgroundColor: ["#7D827D","#7D827D","#7D827D","#7D827D","#C8C0B2","#C8C0B2","#20DDEB","#E44935"],
-          borderRadius: 4, borderSkipped: false, barPercentage: 0.7,
+          backgroundColor: ["#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#9A9CAA","#9A9CAA","#20DDEB","#8B7CF6"],
+          borderRadius: 6, borderSkipped: false, barPercentage: 0.7,
         }],
       },
       options: {
@@ -75,18 +83,18 @@ const ImersaoClaude = () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: "#0B1114", titleColor: "#F2EDE4", bodyColor: "#C8C0B2",
-            borderColor: "rgba(32,221,235,0.2)", borderWidth: 1,
+            backgroundColor: "#15151F", titleColor: "#F5F5FA", bodyColor: "#B7B8C7",
+            borderColor: "rgba(32,221,235,0.25)", borderWidth: 1,
             callbacks: { label: (ctx: any) => ctx.raw + " anos para atingir 50% de adoção" },
           },
         },
         scales: {
           x: {
-            grid: { color: "rgba(255,255,255,0.04)" },
-            ticks: { color: "#7D827D", font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: (v: any) => v + " anos" },
-            title: { display: true, text: "Anos até 50% de adoção", color: "#7D827D", font: { family: "'Fraunces', serif", size: 12 } },
+            grid: { color: "rgba(255,255,255,0.05)" },
+            ticks: { color: "#7B7C8C", font: { family: CHART_FONT, size: 11 }, callback: (v: any) => v + " anos" },
+            title: { display: true, text: "Anos até 50% de adoção", color: "#7B7C8C", font: { family: CHART_FONT, size: 11 } },
           },
-          y: { grid: { display: false }, ticks: { color: "#C8C0B2", font: { family: "'Fraunces', serif", size: 12 } } },
+          y: { grid: { display: false }, ticks: { color: "#B7B8C7", font: { family: CHART_FONT, size: 11 } } },
         },
       },
     });
@@ -103,8 +111,8 @@ const ImersaoClaude = () => {
         labels: ["Telefone", "Facebook", "YouTube", "Instagram", "Spotify", "TikTok", "ChatGPT"],
         datasets: [{
           data: [900, 54, 48, 30, 18, 9, 2],
-          backgroundColor: ["#7D827D","#7D827D","#7D827D","#7D827D","#7D827D","#C8C0B2","#E44935"],
-          borderRadius: 4, borderSkipped: false, barPercentage: 0.65,
+          backgroundColor: ["#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#9A9CAA","#8B7CF6"],
+          borderRadius: 6, borderSkipped: false, barPercentage: 0.65,
         }],
       },
       options: {
@@ -112,8 +120,8 @@ const ImersaoClaude = () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: "#0B1114", titleColor: "#F2EDE4", bodyColor: "#C8C0B2",
-            borderColor: "rgba(32,221,235,0.2)", borderWidth: 1,
+            backgroundColor: "#15151F", titleColor: "#F5F5FA", bodyColor: "#B7B8C7",
+            borderColor: "rgba(32,221,235,0.25)", borderWidth: 1,
             callbacks: {
               label: (ctx: any) => {
                 const v = ctx.raw;
@@ -125,14 +133,14 @@ const ImersaoClaude = () => {
         },
         scales: {
           x: {
-            grid: { color: "rgba(255,255,255,0.04)" },
+            grid: { color: "rgba(255,255,255,0.05)" },
             ticks: {
-              color: "#7D827D", font: { family: "'IBM Plex Mono', monospace", size: 11 },
+              color: "#7B7C8C", font: { family: CHART_FONT, size: 11 },
               callback: (v: any) => { if (v >= 12) return Math.round(v / 12) + " anos"; return v + " meses"; },
             },
-            title: { display: true, text: "Tempo até 100 milhões de usuários", color: "#7D827D", font: { family: "'Fraunces', serif", size: 12 } },
+            title: { display: true, text: "Tempo até 100 milhões de usuários", color: "#7B7C8C", font: { family: CHART_FONT, size: 11 } },
           },
-          y: { grid: { display: false }, ticks: { color: "#C8C0B2", font: { family: "'Fraunces', serif", size: 12 } } },
+          y: { grid: { display: false }, ticks: { color: "#B7B8C7", font: { family: CHART_FONT, size: 11 } } },
         },
       },
     });
@@ -162,11 +170,15 @@ const ImersaoClaude = () => {
         responsive: true, maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: (c: any) => ` ${c.dataset.label}: ${c.parsed.y}%` } },
+          tooltip: {
+            backgroundColor: "#15151F", titleColor: "#F5F5FA", bodyColor: "#B7B8C7",
+            borderColor: "rgba(32,221,235,0.25)", borderWidth: 1,
+            callbacks: { label: (c: any) => ` ${c.dataset.label}: ${c.parsed.y}%` },
+          },
         },
         scales: {
-          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: "#7D827D", autoSkip: false, maxRotation: 0 } },
-          y: { stacked: true, min: 0, max: 100, ticks: { stepSize: 10, font: { size: 11 }, color: "#7D827D", callback: (v: any) => v + "%" }, grid: { color: "rgba(150,150,150,0.15)" } },
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11, family: CHART_FONT }, color: "#7B7C8C", autoSkip: false, maxRotation: 0 } },
+          y: { stacked: true, min: 0, max: 100, ticks: { stepSize: 10, font: { size: 11, family: CHART_FONT }, color: "#7B7C8C", callback: (v: any) => v + "%" }, grid: { color: "rgba(255,255,255,0.06)" } },
         },
       },
     });
@@ -213,6 +225,30 @@ const ImersaoClaude = () => {
     "Você não é de tech. É empresário, profissional liberal, gestor e quer IA aplicada ao seu contexto",
   ];
 
+  const aulas = [
+    {
+      n: "01",
+      tag: "Aula 1 · A Revolução",
+      title: "O Que Está Acontecendo Agora Que Quase Ninguém Percebeu",
+      desc: "Nos últimos 12 meses, mais mudou na forma como se aprende, trabalha e ganha dinheiro do que nos últimos 12 anos. Você vai entender por que a terceira onda da IA veio para revolucionar.",
+      accent: "cyan" as const,
+    },
+    {
+      n: "02",
+      tag: "Aula 2 · A Janela",
+      title: "Quem Está Caindo, Quem Está Subindo — E Onde Você Entra",
+      desc: "Empresas bilionárias derretendo. Freelancers perdendo clientes da noite pro dia. Mas do outro lado, pessoas comuns estão faturando R$10K, R$50K, R$300K por mês, sozinhas, sem equipe, sem investidor. A janela está aberta agora. Você vai ver os números e entender exatamente por quê.",
+      accent: "muted" as const,
+    },
+    {
+      n: "03",
+      tag: "Aula 3 · O Caminho",
+      title: "Claude Na Prática E Como Isso Vira Dinheiro",
+      desc: "Eu abro o Claude e construo um sistema completo na sua frente, do zero, usando comandos em português. Depois, mostro os 4 caminhos de monetização. Você sai com um plano concreto, independente do seu nível técnico, e pode aplicar no seu negócio ou vender para os seus clientes.",
+      accent: "violet" as const,
+    },
+  ];
+
   const faqItems = [
     { q: "Quanto custa?", a: "A imersão completa com as 3 aulas custa R$97 — pagamento único ou parcelado em até 12× no cartão. E você tem garantia incondicional de 7 dias: se não gostar, peça o reembolso integral." },
     { q: "Preciso saber programar?", a: "De jeito nenhum. O Claude entende comandos em português. Você conversa com ele, diz o que precisa, e ele executa. A imersão inteira foi desenhada para quem nunca escreveu uma linha de código na vida." },
@@ -222,438 +258,84 @@ const ImersaoClaude = () => {
   ];
 
   return (
-    <div className="ic-page">
+    <div className="min-h-screen bg-saas-void text-saas-body antialiased">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
-        .ic-page {
-          font-family: 'Fraunces', Georgia, serif;
-          background: #05090B;
-          color: #F2EDE4;
-          line-height: 1.7;
-          overflow-x: hidden;
-        }
-        .ic-page * { box-sizing: border-box; }
-        .ic-page h1,.ic-page h2,.ic-page h3,.ic-page h4 {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400;
-          line-height: 0.92;
-          text-transform: uppercase;
-          color: #F2EDE4;
-        }
-        .ic-page h1 { font-size: clamp(2.2rem,6vw,3.8rem); }
-        .ic-page h2 { font-size: clamp(1.6rem,4.5vw,2.6rem); }
-        .ic-page h3 { font-size: clamp(1.1rem,3vw,1.5rem); }
-        .ic-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-        .ic-section { padding: 80px 0; position: relative; }
-        .ic-mono { font-family: 'IBM Plex Mono', monospace; }
-        .ic-text-cyan { color: #20DDEB; }
-        .ic-text-red  { color: #E44935; }
-        .ic-text-muted { color: #7D827D; }
-        .ic-highlight-cyan {
-          background: linear-gradient(90deg, #20DDEB, #38F3FF);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .ic-divider {
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(32,221,235,0.15), transparent);
-          margin: 0 auto; max-width: 500px;
-        }
-        /* CTA */
-        .ic-cta-btn {
-          display: inline-block;
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.2rem;
-          letter-spacing: 2px; text-transform: uppercase;
-          text-decoration: none; color: #05090B;
-          padding: 18px 52px; border: none;
-          cursor: pointer; position: relative; overflow: hidden;
-          background: #20DDEB;
-          box-shadow: 0 0 30px rgba(32,221,235,0.25), 0 4px 20px rgba(0,0,0,0.4);
-          transition: all 0.3s ease;
-        }
-        .ic-cta-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0 50px rgba(32,221,235,0.45), 0 8px 30px rgba(0,0,0,0.5);
-        }
-        .ic-cta-btn::before {
-          content: ''; position: absolute; top: 0; left: -100%;
-          width: 100%; height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-          transition: left 0.5s;
-        }
-        .ic-cta-btn:hover::before { left: 100%; }
-        .ic-cta-btn--red {
-          background: #E44935;
-          color: #F2EDE4;
-          box-shadow: 0 0 30px rgba(228,73,53,0.25), 0 4px 20px rgba(0,0,0,0.4);
-        }
-        .ic-cta-btn--red:hover { box-shadow: 0 0 50px rgba(228,73,53,0.45), 0 8px 30px rgba(0,0,0,0.5); }
-        .ic-cta-sub {
-          display: block; font-family: 'Fraunces', serif;
-          font-weight: 400; font-size: 0.7rem;
-          letter-spacing: 0; text-transform: none;
-          opacity: 0.85; margin-top: 4px;
-        }
-        /* HERO */
-        .ic-hero {
-          min-height: 100vh; min-height: 100svh;
-          display: flex; align-items: center; justify-content: center;
-          text-align: center; padding: 100px 24px 80px;
-          position: relative;
-          background:
-            radial-gradient(ellipse 70% 55% at 50% 0%, rgba(32,221,235,0.06) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 45% at 20% 90%, rgba(228,73,53,0.03) 0%, transparent 60%),
-            #05090B;
-        }
-        .ic-hero::after {
-          content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-          height: 120px;
-          background: linear-gradient(to bottom, transparent, #05090B);
-          pointer-events: none;
-        }
-        .ic-hero__reactor {
-          width: 80px; height: 80px; margin: 0 auto 32px;
-          background: radial-gradient(circle, rgba(32,221,235,0.15) 0%, rgba(32,221,235,0.04) 50%, transparent 70%);
-          border: 1px solid rgba(32,221,235,0.15);
-          display: flex; align-items: center; justify-content: center;
-          opacity: 0; animation: ic-pulseReactor 3s ease-in-out infinite, ic-fadeIn 0.6s 0.1s forwards;
-        }
-        .ic-hero__reactor-core {
-          width: 28px; height: 28px;
-          background: radial-gradient(circle, #38F3FF 0%, #20DDEB 60%, transparent 100%);
-          box-shadow: 0 0 20px rgba(32,221,235,0.5), 0 0 60px rgba(32,221,235,0.2);
-        }
-        @keyframes ic-pulseReactor {
-          0%,100% { box-shadow: 0 0 30px rgba(32,221,235,0.1); }
-          50% { box-shadow: 0 0 60px rgba(32,221,235,0.2); }
-        }
-        .ic-hero__event-tag {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;
-          color: #20DDEB; margin-bottom: 20px;
-          opacity: 0; animation: ic-fadeUp 0.7s 0.3s forwards;
-        }
-        .ic-hero__event-tag span {
-          display: inline-block;
-          background: rgba(32,221,235,0.08); border: 1px solid rgba(32,221,235,0.2);
-          padding: 4px 14px;
-        }
-        .ic-hero__title {
-          font-size: clamp(2.2rem,6vw,3.6rem);
-          margin-bottom: 24px; line-height: 0.95;
-          opacity: 0; animation: ic-fadeUp 0.7s 0.5s forwards;
-        }
-        .ic-hero__sub {
-          font-size: clamp(1rem,2.5vw,1.15rem);
-          color: #C8C0B2; max-width: 600px;
-          margin: 0 auto 36px; font-family: 'Fraunces', serif;
-          opacity: 0; animation: ic-fadeUp 0.7s 0.7s forwards;
-        }
-        .ic-hero__form-wrap { opacity: 0; animation: ic-fadeUp 0.7s 0.9s forwards; }
-        .ic-hero__meta {
-          display: flex; flex-wrap: wrap; justify-content: center;
-          gap: 20px; margin-top: 32px;
-          opacity: 0; animation: ic-fadeUp 0.7s 1.1s forwards;
-        }
-        .ic-hero__meta-item {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; color: #7D827D;
-          display: flex; align-items: center; gap: 6px;
-        }
-        .ic-hero__meta-item .ic-dot {
-          width: 6px; height: 6px;
-          background: #20DDEB;
-          box-shadow: 0 0 6px rgba(32,221,235,0.5);
-        }
-        @keyframes ic-fadeUp {
-          from { opacity:0; transform:translateY(18px); }
-          to { opacity:1; transform:translateY(0); }
-        }
-        @keyframes ic-fadeIn { from { opacity:0; } to { opacity:1; } }
-        @keyframes ic-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(.6);} }
-        /* URGENCY BAR */
-        .ic-urgency-bar {
-          background: linear-gradient(90deg, rgba(32,221,235,0.06), rgba(32,221,235,0.02));
-          border-top: 1px solid rgba(32,221,235,0.15); border-bottom: 1px solid rgba(32,221,235,0.15);
-          text-align: center; padding: 14px 24px;
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.82rem; color: #20DDEB; letter-spacing: 0.5px;
-        }
-        /* PROBLEM CARDS */
-        .ic-problem-grid {
-          display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 16px; margin: 40px 0;
-        }
-        .ic-problem-card {
-          background: #0B1114; border: 1px solid rgba(255,255,255,0.10);
-          padding: 24px 20px; text-align: center;
-          transition: border-color 0.3s;
-        }
-        .ic-problem-card:hover { border-color: rgba(228,73,53,0.3); }
-        .ic-problem-card__stat {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 2.4rem; font-weight: 400;
-          color: #E44935; line-height: 1; margin-bottom: 8px;
-        }
-        .ic-problem-card__label { font-size: 0.82rem; color: #7D827D; line-height: 1.4; font-family: 'Fraunces', serif; }
-        /* AULA CARDS */
-        .ic-aula-card {
-          background: #0B1114; border: 1px solid rgba(255,255,255,0.10);
-          padding: 28px; margin-bottom: 16px;
-          display: flex; gap: 20px; align-items: flex-start;
-          transition: border-color 0.3s, background 0.3s;
-        }
-        .ic-aula-card:hover { border-color: rgba(32,221,235,0.2); background: #11171A; }
-        .ic-aula-card__num {
-          flex-shrink: 0; width: 52px; height: 52px;
-          display: flex; align-items: center; justify-content: center;
-          font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.3rem;
-        }
-        .ic-aula-card__num--1 { background: rgba(32,221,235,0.08); border: 1px solid rgba(32,221,235,0.2); color: #20DDEB; }
-        .ic-aula-card__num--2 { background: rgba(200,192,178,0.08); border: 1px solid rgba(200,192,178,0.2); color: #C8C0B2; }
-        .ic-aula-card__num--3 { background: rgba(228,73,53,0.08); border: 1px solid rgba(228,73,53,0.2); color: #E44935; }
-        .ic-aula-card__tag {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.7rem; letter-spacing: 0.15em;
-          text-transform: uppercase; color: #7D827D; margin-bottom: 4px;
-        }
-        .ic-aula-card__title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.2rem; margin-bottom: 6px;
-          text-transform: uppercase; line-height: 1; color: #F2EDE4;
-        }
-        .ic-aula-card__desc { font-size: 0.9rem; color: #C8C0B2; font-family: 'Fraunces', serif; }
-        /* AUTHOR */
-        .ic-author {
-          display: flex; gap: 24px; align-items: flex-start;
-          padding: 32px; background: #0B1114;
-          border: 1px solid rgba(255,255,255,0.10);
-          margin: 40px 0;
-        }
-        .ic-author__name { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.3rem; margin-bottom: 2px; text-transform: uppercase; color: #F2EDE4; }
-        .ic-author__role { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #20DDEB; margin-bottom: 10px; }
-        .ic-author__text { font-size: 0.9rem; color: #C8C0B2; font-family: 'Fraunces', serif; line-height: 1.7; }
-        /* BLOCKQUOTE */
-        .ic-page blockquote {
-          border-left: 3px solid rgba(255,255,255,0.10);
-          padding: 18px 24px; margin: 32px 0;
-          background: rgba(255,255,255,0.02);
-          font-style: italic; color: #C8C0B2; font-size: 0.95rem;
-          font-family: 'Fraunces', serif;
-        }
-        .ic-page blockquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; color: #7D827D; font-family: 'IBM Plex Mono', monospace; }
-        /* CHECK LIST */
-        .ic-check-list { list-style: none; margin: 28px 0; padding: 0; }
-        .ic-check-list li {
-          padding: 10px 0 10px 28px; position: relative;
-          color: #C8C0B2; font-size: 0.92rem;
-          border-bottom: 1px solid rgba(255,255,255,0.10);
-          font-family: 'Fraunces', serif;
-        }
-        .ic-check-list li:last-child { border-bottom: none; }
-        .ic-check-list li::before { content: '▸'; position: absolute; left: 0; color: #20DDEB; font-weight: 700; }
-        /* MID CAPTURE */
-        .ic-mid-capture {
-          background: #0B1114;
-          border-top: 1px solid rgba(32,221,235,0.15);
-          border-bottom: 1px solid rgba(32,221,235,0.15);
-          padding: 56px 24px; text-align: center;
-        }
-        /* CHART TABS */
-        .ic-chart-tab {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; padding: 8px 16px;
-          border: 1px solid rgba(255,255,255,0.10);
-          background: transparent; color: #7D827D;
-          cursor: pointer; transition: all 0.3s;
-        }
-        .ic-chart-tab:hover { border-color: rgba(32,221,235,0.2); color: #C8C0B2; }
-        .ic-chart-tab.active {
-          background: rgba(32,221,235,0.08);
-          border-color: #20DDEB;
-          color: #20DDEB;
-        }
-        /* REVOLUTION BARS */
-        .rev-timeline-visual { display: flex; flex-direction: column; gap: 16px; }
-        .rev-item { opacity: 0; animation: ic-revSlideIn 0.6s var(--delay, 0s) forwards; }
-        @keyframes ic-revSlideIn {
-          from { opacity: 0; transform: translateX(-20px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
+        .rev-item { opacity: 0; animation: icRevSlideIn 0.6s var(--delay, 0s) forwards; }
+        @keyframes icRevSlideIn { from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); } }
         .rev-bar {
-          height: 6px; width: var(--width, 100%);
-          background: var(--color, #20DDEB);
-          margin-bottom: 8px; min-width: 8px; position: relative;
-          transition: width 0.8s ease;
+          height: 6px; width: var(--width, 100%); border-radius: 999px;
+          background: var(--color, #20DDEB); position: relative; transition: width 0.8s ease;
         }
         .rev-bar::after {
           content: ''; position: absolute; right: 0; top: -3px;
-          width: 12px; height: 12px;
-          background: var(--color, #20DDEB);
-          box-shadow: 0 0 10px var(--color, #20DDEB);
-        }
-        .rev-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
-        .rev-label { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.05rem; color: #F2EDE4; }
-        .rev-date { font-size: 0.75rem; color: #7D827D; font-family: 'IBM Plex Mono', monospace; }
-        .rev-span { font-size: 0.85rem; color: #C8C0B2; font-family: 'Fraunces', serif; }
-        .rev-span--alert { color: #E44935; font-weight: 600; }
-        /* PRICE BOX */
-        .ic-price-box {
-          text-align: center; background: #0B1114;
-          border: 1px solid rgba(32,221,235,0.2);
-          padding: 48px 32px; margin: 40px auto; max-width: 500px;
-          position: relative; overflow: hidden;
-        }
-        .ic-price-box::before {
-          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, #20DDEB, #C8C0B2, #E44935);
-        }
-        .ic-price-box__tag {
-          display: inline-block; font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-          color: #05090B; background: #20DDEB;
-          padding: 4px 14px; margin-bottom: 20px;
-        }
-        .ic-price-box__label { font-size: 0.95rem; color: #C8C0B2; margin-bottom: 8px; font-family: 'Fraunces', serif; }
-        .ic-price-box__old { font-size: 1.1rem; color: #7D827D; text-decoration: line-through; margin-bottom: 4px; font-family: 'Fraunces', serif; }
-        .ic-price-box__amount {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 4rem; font-weight: 400; line-height: 1; margin-bottom: 4px;
-        }
-        .ic-price-box__installment {
-          font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.85rem; color: #7D827D; margin-bottom: 28px;
-        }
-        .ic-guarantee { text-align: center; padding: 32px 24px; margin: 16px 0; }
-        .ic-guarantee__icon { font-size: 2rem; margin-bottom: 12px; }
-        .ic-guarantee__title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.3rem; font-weight: 400;
-          color: #20DDEB; margin-bottom: 6px; text-transform: uppercase;
-        }
-        .ic-guarantee__text { color: #7D827D; font-size: 0.88rem; max-width: 460px; margin: 0 auto; font-family: 'Fraunces', serif; }
-        /* FAQ */
-        .ic-faq-item { border-bottom: 1px solid rgba(255,255,255,0.10); padding: 18px 0; }
-        .ic-faq-item summary {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.1rem;
-          cursor: pointer; color: #F2EDE4;
-          list-style: none; display: flex;
-          justify-content: space-between; align-items: center;
-          text-transform: uppercase;
-        }
-        .ic-faq-item summary::-webkit-details-marker { display: none; }
-        .ic-faq-item summary::after { content: '+'; font-size: 1.3rem; color: #20DDEB; transition: transform 0.3s; font-family: 'IBM Plex Mono', monospace; }
-        .ic-faq-item[open] summary::after { content: '−'; }
-        .ic-faq-item p { color: #C8C0B2; font-size: 0.9rem; margin-top: 10px; padding-right: 28px; font-family: 'Fraunces', serif; line-height: 1.7; }
-        /* FOOTER */
-        .ic-footer {
-          text-align: center; padding: 36px 24px;
-          font-size: 0.75rem; color: #7D827D;
-          border-top: 1px solid rgba(255,255,255,0.10);
-          font-family: 'IBM Plex Mono', monospace;
-        }
-        /* CHART WRAPPER */
-        .ic-chart-box {
-          background: #0B1114;
-          border: 1px solid rgba(255,255,255,0.10);
-          padding: 24px 20px 16px;
-        }
-        /* ADOPTION CURVE BOX */
-        .ic-adoption-box {
-          border: 1px solid rgba(32,221,235,0.14);
-          overflow: hidden;
-        }
-        .ic-adoption-header {
-          background: #11171A;
-          border-bottom: 1px solid rgba(32,221,235,0.10);
-          padding: 10px 18px;
-          display: flex; align-items: center; gap: 8px;
-        }
-        .ic-adoption-body {
-          padding: 18px 18px 14px;
-          background: #05090B;
-        }
-        /* RESPONSIVE */
-        @media (max-width: 640px) {
-          .ic-section { padding: 56px 0; }
-          .ic-hero { padding: 80px 20px 60px; min-height: auto; }
-          .ic-hero__reactor { width: 60px; height: 60px; margin-bottom: 24px; }
-          .ic-hero__reactor-core { width: 22px; height: 22px; }
-          .ic-hero__title { font-size: 1.8rem; }
-          .ic-hero__event-tag { font-size: 0.65rem; letter-spacing: 1.5px; }
-          .ic-hero__event-tag span { padding: 3px 10px; }
-          .ic-hero__meta { gap: 12px; }
-          .ic-hero__meta-item { font-size: 0.7rem; }
-          .ic-container { padding: 0 16px; }
-          .ic-author { flex-direction: column; align-items: center; text-align: center; padding: 24px 16px; }
-          .ic-aula-card { flex-direction: column; align-items: center; text-align: center; padding: 20px 16px; }
-          .ic-aula-card__num { width: 44px; height: 44px; font-size: 0.95rem; }
-          .ic-problem-grid { grid-template-columns: 1fr; }
-          .ic-problem-card { padding: 18px 16px; }
-          .ic-problem-card__stat { font-size: 2rem; }
-          .ic-cta-btn { font-size: 1rem; padding: 16px 28px; }
-          .ic-page blockquote { padding: 14px 16px; font-size: 0.88rem; }
-          .ic-check-list li { font-size: 0.85rem; padding: 8px 0 8px 24px; }
-          .ic-price-box { padding: 36px 20px; }
-          .ic-urgency-bar { font-size: 0.72rem; padding: 12px 16px; }
-          .ic-mid-capture { padding: 48px 0; }
-          .ic-faq-item summary { font-size: 1rem; }
-          .ic-adoption-segs { flex-wrap: wrap; }
-          .ic-adoption-seg { min-width: 45% !important; flex: 1 1 45% !important; }
-          .ic-nowbar { flex-wrap: wrap; }
-          .ic-nowbar-pct { font-size: 16px !important; }
-          .ic-chart-tab { font-size: 0.7rem !important; padding: 6px 12px !important; }
+          width: 12px; height: 12px; border-radius: 50%;
+          background: var(--color, #20DDEB); box-shadow: 0 0 10px var(--color, #20DDEB);
         }
       `}</style>
 
       {/* ══════ HERO ══════ */}
-      <section className="ic-hero">
-        <div className="ic-container">
-          <div className="ic-hero__reactor"><div className="ic-hero__reactor-core" /></div>
-          <div className="ic-hero__event-tag"><span>Oferta especial: Compre hoje com 67% de desconto!</span></div>
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-28 pb-16 md:pt-36 md:pb-20 text-center">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] h-[420px] rounded-full bg-saas-violet/20 blur-[120px]" />
+          <div className="absolute top-10 right-0 w-[420px] h-[360px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+        </div>
 
-          <h1 className="ic-hero__title">
-            Aprenda tudo sobre o <span className="ic-highlight-cyan">Claude.</span> A IA mais poderosa do mundo, que executa tarefas ao invés de só responder perguntas.
+        <div className="relative max-w-3xl mx-auto animate-fade-in">
+          <div className="flex justify-center mb-6">
+            <Eyebrow>Oferta especial: compre hoje com 67% de desconto</Eyebrow>
+          </div>
+
+          <h1 className="font-extrabold text-saas-ink text-[clamp(26px,5vw,50px)] leading-[1.1] tracking-tight">
+            Aprenda tudo sobre o <Accent>Claude.</Accent> A IA mais poderosa do mundo, que executa tarefas ao invés de só responder perguntas.
           </h1>
 
-          <p className="ic-hero__sub">
+          <p className="mt-7 text-saas-body text-base md:text-lg leading-relaxed max-w-xl mx-auto">
             Em apenas 3 aulas, você vai aprender tudo o que precisa sobre o Claude e vai descobrir porque 50% do uso profissional de IA migrou do ChatGPT para o Claude nos últimos 12 meses.
           </p>
 
-          <div className="ic-hero__form-wrap">
-            <button className="ic-cta-btn ic-cta-btn--red" onClick={() => handleCTA("hero")}>
+          <div className="mt-9 flex justify-center">
+            <button className={BTN_CTA} onClick={() => handleCTA("hero")}>
               QUERO DOMINAR O CLAUDE
-              <span className="ic-cta-sub">3 aulas · Acesso imediato · R$97</span>
+              <span className={BTN_CTA_SUB}>3 aulas · Acesso imediato · R$97</span>
             </button>
           </div>
 
-          <div className="ic-hero__meta">
-            <div className="ic-hero__meta-item"><span className="ic-dot" /> 3 aulas ao vivo</div>
-            <div className="ic-hero__meta-item"><span className="ic-dot" /> Claude na prática</div>
-            <div className="ic-hero__meta-item"><span className="ic-dot" /> Zero código</div>
-            <div className="ic-hero__meta-item"><span className="ic-dot" /> Acesso imediato</div>
+          <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3">
+            {["3 aulas ao vivo", "Claude na prática", "Zero código", "Acesso imediato"].map((m) => (
+              <span key={m} className="inline-flex items-center gap-2 text-xs text-saas-faint">
+                <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
+                {m}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ══════ URGENCY BAR ══════ */}
-      <div className="ic-urgency-bar">
-        As vagas são limitadas. Quando atingirmos o limite, esta página sai do ar.
+      <div className="border-y border-saas-cyan/20 bg-saas-cyan/[0.04] text-center py-3 px-4">
+        <p className="text-saas-cyan text-[13px] md:text-sm">
+          As vagas são limitadas. Quando atingirmos o limite, esta página sai do ar.
+        </p>
       </div>
 
       {/* ══════ MIGRAÇÃO CLAUDE ══════ */}
-      <section className="ic-section">
-        <div className="ic-container" style={{ textAlign: "center" }}>
-          <video src="/videos/claude-migration.mp4" autoPlay loop muted playsInline style={{ width: 120, height: "auto", margin: "0 auto 24px", display: "block" }} />
-          <h2>Descubra porque <span className="ic-highlight-cyan">50% dos usuários sérios</span> de IA generativa nos últimos meses migraram do ChatGPT para o Claude.</h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <video
+            src="/videos/claude-migration.mp4"
+            autoPlay loop muted playsInline
+            className="w-[110px] h-auto mx-auto mb-8 rounded-xl"
+          />
+          <h2 className="font-extrabold text-saas-ink text-[clamp(24px,3.4vw,38px)] leading-[1.15] tracking-tight">
+            Descubra porque <Accent>50% dos usuários sérios</Accent> de IA generativa nos últimos meses migraram do ChatGPT para o Claude.
+          </h2>
 
-          <div className="ic-chart-box" style={{ marginTop: 40 }}>
-            <p style={{ fontSize: 18, fontWeight: 500, color: "#F2EDE4", margin: "0 0 4px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Uso do ChatGPT vs Claude</p>
-            <p style={{ fontSize: 14, fontWeight: 500, color: "#C8C0B2", margin: "0 0 4px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Dados até fev 2026</p>
-            <p style={{ fontSize: 12, color: "#C8C0B2", margin: "0 0 16px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
+          <div className={SAAS_CARD + " mt-10 p-6 md:p-7 text-left"}>
+            <p className="text-saas-ink font-semibold text-base mb-1">Uso do ChatGPT vs Claude</p>
+            <p className="text-saas-muted text-sm mb-1">Dados até fev 2026</p>
+            <p className="text-saas-faint text-xs mb-5">Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginBottom: 16 }}>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 mb-5">
               {[
                 { color: "#1a4a8a", label: "Outro OpenAI" },
                 { color: "#2e6eb5", label: "ChatGPT Pro" },
@@ -664,56 +346,56 @@ const ImersaoClaude = () => {
                 { color: "#c06020", label: "Claude Max" },
                 { color: "#7a3010", label: "Claude Enterprise" },
               ].map((l) => (
-                <span key={l.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#C8C0B2", fontFamily: "'IBM Plex Mono', monospace" }}>
-                  <span style={{ width: 12, height: 12, background: l.color, flexShrink: 0 }} />
+                <span key={l.label} className="inline-flex items-center gap-1.5 text-[11px] text-saas-faint">
+                  <span className="w-3 h-3 rounded-sm flex-shrink-0" style={{ background: l.color }} />
                   {l.label}
                 </span>
               ))}
             </div>
 
-            <div style={{ position: "relative", width: "100%", height: 380 }}>
+            <div className="relative w-full h-[340px] md:h-[380px]">
               <canvas ref={marketShareChartRef} />
             </div>
 
-            <p style={{ fontSize: 10, color: "#7D827D", marginTop: 12, textAlign: "left", lineHeight: 1.5, fontFamily: "'IBM Plex Mono', monospace" }}>
+            <p className="text-saas-faint-2 text-[11px] mt-4 leading-relaxed">
               Fonte: Ramp Economics Lab (ramp.com/data). Dados de cartão corporativo e pagamento de contas de mais de 50.000 empresas dos EUA na plataforma financeira da Ramp.
             </p>
           </div>
 
-          <p style={{ color: "#C8C0B2", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+          <p className="text-saas-body text-[15px] leading-relaxed max-w-xl mx-auto mt-10">
             Nos últimos 12 meses, mais mudou na forma como se ganha dinheiro do que nos últimos 12 anos. E isso é só o começo. Os números mostram o que está por vir:
           </p>
 
-          <div className="ic-problem-grid" style={{ marginTop: 32 }}>
-            <div className="ic-problem-card">
-              <div className="ic-problem-card__stat">92%</div>
-              <div className="ic-problem-card__label">das empresas planejam adotar IA até 2027</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+            <div className={SAAS_CARD + " p-6"}>
+              <div className={SAAS_GRADIENT_TEXT + " font-extrabold text-4xl leading-none mb-2"}>92%</div>
+              <div className="text-saas-faint text-xs leading-relaxed">das empresas planejam adotar IA até 2027</div>
             </div>
-            <div className="ic-problem-card">
-              <div className="ic-problem-card__stat">41%</div>
-              <div className="ic-problem-card__label">dos empregos podem simplesmente desaparecer</div>
+            <div className={SAAS_CARD + " p-6"}>
+              <div className={SAAS_GRADIENT_TEXT + " font-extrabold text-4xl leading-none mb-2"}>41%</div>
+              <div className="text-saas-faint text-xs leading-relaxed">dos empregos podem simplesmente desaparecer</div>
             </div>
-            <div className="ic-problem-card">
-              <div className="ic-problem-card__stat">5×</div>
-              <div className="ic-problem-card__label">mais produtividade exigida por profissional</div>
+            <div className={SAAS_CARD + " p-6"}>
+              <div className={SAAS_GRADIENT_TEXT + " font-extrabold text-4xl leading-none mb-2"}>5×</div>
+              <div className="text-saas-faint text-xs leading-relaxed">mais produtividade exigida por profissional</div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="ic-divider" />
-
       {/* ══════ VELOCIDADE DAS REVOLUÇÕES ══════ */}
-      <section className="ic-section">
-        <div className="ic-container">
-          <h2 style={{ textAlign: "center" }}>A velocidade só <span className="ic-highlight-cyan">acelera</span></h2>
-          <p style={{ textAlign: "center", color: "#C8C0B2", maxWidth: 600, margin: "16px auto 0", fontFamily: "'Fraunces', serif" }}>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-center font-extrabold text-saas-ink text-[clamp(24px,3.4vw,38px)] leading-[1.15] tracking-tight">
+            A velocidade só <Accent>acelera</Accent>
+          </h2>
+          <p className="text-center text-saas-body text-[15px] leading-relaxed max-w-xl mx-auto mt-4">
             Pense comigo: quantas décadas seu avô viveu com a mesma profissão? Quantas vezes seus pais precisaram se reinventar? E agora… quantas mudanças você enfrentou só nos últimos dois anos?
           </p>
 
-          <div style={{ marginTop: 48 }}>
+          <div className="mt-12">
             {/* Tab switcher */}
-            <div style={{ display: "flex", gap: 8, marginBottom: 24, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
               {[
                 { key: "revolucoes", label: "Revoluções" },
                 { key: "adocao", label: "Adoção de Tecnologia" },
@@ -721,8 +403,12 @@ const ImersaoClaude = () => {
               ].map((tab) => (
                 <button
                   key={tab.key}
-                  className={`ic-chart-tab ${activeTab === tab.key ? "active" : ""}`}
                   onClick={() => switchTab(tab.key)}
+                  className={`rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+                    activeTab === tab.key
+                      ? "border-saas-cyan/50 bg-saas-cyan/10 text-saas-cyan"
+                      : "border-white/[0.10] text-saas-faint hover:border-white/[0.20] hover:text-saas-body"
+                  }`}
                 >
                   {tab.label}
                 </button>
@@ -731,90 +417,92 @@ const ImersaoClaude = () => {
 
             {/* Panel: Revoluções */}
             <div style={{ display: activeTab === "revolucoes" ? "block" : "none" }}>
-              <div className="rev-timeline-visual">
+              <div className="flex flex-col gap-5">
                 {[
-                  { color: "#C8C0B2", delay: "0.1s", width: "100%", label: "Revolução Agrícola", date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
-                  { color: "#C8C0B2", delay: "0.3s", width: "15%", label: "Revolução Industrial", date: "~1800 d.C.", span: "~150 anos até a próxima", alert: false },
+                  { color: "#7B7C8C", delay: "0.1s", width: "100%", label: "Revolução Agrícola", date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
+                  { color: "#9A9CAA", delay: "0.3s", width: "15%", label: "Revolução Industrial", date: "~1800 d.C.", span: "~150 anos até a próxima", alert: false },
                   { color: "#20DDEB", delay: "0.5s", width: "5.5%", label: "Revolução Tecnológica", date: "~1950 d.C.", span: "~65 anos até a próxima", alert: false },
-                  { color: "#E44935", delay: "0.7s", width: "0.85%", label: "Revolução da IA", date: "~2015 d.C.", span: "Acelerando em meses, não anos", alert: true },
+                  { color: "#8B7CF6", delay: "0.7s", width: "0.85%", label: "Revolução da IA", date: "~2015 d.C.", span: "Acelerando em meses, não anos", alert: true },
                 ].map((r, i) => (
                   <div key={i} className="rev-item" style={{ "--color": r.color, "--delay": r.delay } as React.CSSProperties}>
                     <div className="rev-bar" style={{ "--width": r.width } as React.CSSProperties} />
-                    <div className="rev-info">
-                      <span className="rev-label">{r.label}</span>
-                      <span className="rev-date ic-mono">{r.date}</span>
-                      <span className={`rev-span ${r.alert ? "rev-span--alert" : ""}`}>{r.span}</span>
+                    <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mt-2.5">
+                      <span className="font-bold text-saas-ink text-base">{r.label}</span>
+                      <span className="font-mono text-[11px] text-saas-faint">{r.date}</span>
+                      <span className={`text-sm ${r.alert ? "text-saas-violet font-semibold" : "text-saas-body"}`}>{r.span}</span>
                     </div>
                   </div>
                 ))}
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p className="text-center font-mono text-[11px] uppercase tracking-[0.1em] text-saas-faint-2 mt-6">
                 O intervalo entre revoluções caiu de milênios → séculos → décadas → anos
               </p>
             </div>
 
             {/* Panel: Adoção */}
             <div style={{ display: activeTab === "adocao" ? "block" : "none" }}>
-              <div style={{ position: "relative", width: "100%", height: 340 }}>
+              <div className="relative w-full h-[320px] md:h-[340px]">
                 <canvas ref={adoptionChartRef} />
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p className="text-center font-mono text-[11px] uppercase tracking-[0.1em] text-saas-faint-2 mt-4">
                 Anos até atingir 50% de adoção nos EUA · Fonte: Our World in Data, Visual Capitalist, Epoch AI
               </p>
             </div>
 
             {/* Panel: 100M */}
             <div style={{ display: activeTab === "100m" ? "block" : "none" }}>
-              <div style={{ position: "relative", width: "100%", height: 380 }}>
+              <div className="relative w-full h-[360px] md:h-[380px]">
                 <canvas ref={users100mChartRef} />
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p className="text-center font-mono text-[11px] uppercase tracking-[0.1em] text-saas-faint-2 mt-4">
                 Meses até atingir 100 milhões de usuários · Fonte: UBS, Visual Capitalist, Statista
               </p>
             </div>
           </div>
 
-          <blockquote style={{ marginTop: 40 }}>
+          <blockquote className="mt-12 rounded-r-2xl border-l-2 border-saas-cyan/40 bg-white/[0.02] px-6 py-5 text-saas-body text-[15px] italic leading-relaxed">
             "Em breve teremos uma pessoa fazendo o trabalho de cinco graças à IA. A dúvida é: quem não usar a tecnologia conseguirá acompanhar? Provavelmente não."
           </blockquote>
 
-          <p style={{ color: "#C8C0B2", textAlign: "center", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+          <p className="text-center text-saas-body text-[15px] leading-relaxed max-w-xl mx-auto mt-10">
             Em todas as eras da humanidade, quem se destacou foram aqueles que conseguiram dominar novas tecnologias com velocidade.
           </p>
-          <p style={{ color: "#F2EDE4", textAlign: "center", fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "1.4rem", marginTop: 16, textTransform: "uppercase", letterSpacing: 1 }}>
-            Isso, tem até nome. São os <span className="ic-highlight-cyan">Early Adopters</span>.
+          <p className="text-center font-extrabold text-saas-ink text-xl mt-4">
+            Isso, tem até nome. São os <Accent>Early Adopters</Accent>.
           </p>
 
           {/* Curva de Adoção */}
-          <div className="ic-adoption-box" style={{ marginTop: 40 }}>
-            <div className="ic-adoption-header">
-              <div style={{ display: "flex", gap: 5 }}>
-                <div style={{ width: 10, height: 10, background: "#E44935" }} />
-                <div style={{ width: 10, height: 10, background: "#C8C0B2" }} />
-                <div style={{ width: 10, height: 10, background: "#20DDEB" }} />
-              </div>
-              <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#7D827D", letterSpacing: 2, textTransform: "uppercase", marginLeft: 6 }}>rev_lab // hud.sys // adoção.v3</span>
-              <span style={{ marginLeft: "auto", fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, color: "#20DDEB", background: "rgba(32,221,235,0.08)", border: "1px solid rgba(32,221,235,0.2)", padding: "2px 8px", letterSpacing: 2 }}>LIVE</span>
+          <div className={SAAS_CARD + " mt-12 overflow-hidden"}>
+            <div className="border-b border-white/[0.08] px-6 md:px-8 py-6">
+              <Eyebrow>03 / O mecanismo</Eyebrow>
+              <h3 className="mt-3 font-extrabold text-saas-ink text-xl md:text-2xl leading-tight tracking-tight">
+                Curva de <Accent>adoção</Accent> tecnológica
+              </h3>
+              <p className="mt-1.5 text-saas-faint text-sm">Rogers (1962) — onde você está na curva define quanto você vai ganhar</p>
             </div>
-            <div className="ic-adoption-body">
-              <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#20DDEB", letterSpacing: 3, textTransform: "uppercase", marginBottom: 4 }}>03 — O Mecanismo</div>
-              <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 20, fontWeight: 400, color: "#F2EDE4", textTransform: "uppercase", lineHeight: 1.2 }}>CURVA DE <span style={{ color: "#20DDEB" }}>ADOÇÃO</span> TECNOLÓGICA</div>
-              <div style={{ fontFamily: "'Fraunces',serif", fontSize: 12, color: "#7D827D", fontWeight: 300, marginTop: 4, marginBottom: 12 }}>Rogers (1962) — onde você está na curva define quanto você vai ganhar</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "5px 14px", marginBottom: 10 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#C8C0B2" }} /><span style={{ color: "#C8C0B2" }}>Adotantes por período (sino)</span></div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#20DDEB" }} /><span style={{ color: "#20DDEB" }}>Adoção acumulada (curva S)</span></div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#E44935" }} /><span style={{ color: "#E44935" }}>Agentes de IA — agora</span></div>
+
+            <div className="p-6 md:p-8">
+              <div className="flex flex-wrap gap-x-5 gap-y-2 mb-6">
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.1em] text-saas-muted">
+                  <span className="w-2 h-2 rounded-full bg-saas-muted" />Adotantes por período (sino)
+                </span>
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.1em] text-saas-cyan">
+                  <span className="w-2 h-2 rounded-full bg-saas-cyan" />Adoção acumulada (curva S)
+                </span>
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.1em] text-saas-violet">
+                  <span className="w-2 h-2 rounded-full bg-saas-violet" />Agentes de IA — agora
+                </span>
               </div>
 
-              <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style={{ display: "block", width: "100%" }}>
+              <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" className="block w-full">
                 <defs>
                   <linearGradient id="bellGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C8C0B2" stopOpacity={0.35} />
-                    <stop offset="100%" stopColor="#C8C0B2" stopOpacity={0.03} />
+                    <stop offset="0%" stopColor="#9A9CAA" stopOpacity={0.35} />
+                    <stop offset="100%" stopColor="#9A9CAA" stopOpacity={0.03} />
                   </linearGradient>
                   <linearGradient id="seg0" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C8C0B2" stopOpacity={0.12} />
-                    <stop offset="100%" stopColor="#C8C0B2" stopOpacity={0.02} />
+                    <stop offset="0%" stopColor="#9A9CAA" stopOpacity={0.12} />
+                    <stop offset="100%" stopColor="#9A9CAA" stopOpacity={0.02} />
                   </linearGradient>
                   <linearGradient id="seg1" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#20DDEB" stopOpacity={0.10} />
@@ -825,12 +513,12 @@ const ImersaoClaude = () => {
                     <stop offset="100%" stopColor="#20DDEB" stopOpacity={0.01} />
                   </linearGradient>
                   <linearGradient id="seg3" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#7D827D" stopOpacity={0.07} />
-                    <stop offset="100%" stopColor="#7D827D" stopOpacity={0.01} />
+                    <stop offset="0%" stopColor="#7B7C8C" stopOpacity={0.07} />
+                    <stop offset="100%" stopColor="#7B7C8C" stopOpacity={0.01} />
                   </linearGradient>
                   <linearGradient id="seg4" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#7D827D" stopOpacity={0.05} />
-                    <stop offset="100%" stopColor="#7D827D" stopOpacity={0.01} />
+                    <stop offset="0%" stopColor="#7B7C8C" stopOpacity={0.05} />
+                    <stop offset="100%" stopColor="#7B7C8C" stopOpacity={0.01} />
                   </linearGradient>
                 </defs>
 
@@ -848,11 +536,11 @@ const ImersaoClaude = () => {
                 <line x1="579.2" y1="10" x2="579.2" y2="190" stroke="rgba(32,221,235,0.12)" strokeWidth="0.5" strokeDasharray="3,3" />
 
                 {/* Segment labels */}
-                <text x="58" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#C8C0B2" textAnchor="middle" opacity="0.8">INOV.</text>
+                <text x="58" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#9A9CAA" textAnchor="middle" opacity="0.8">INOV.</text>
                 <text x="108" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#20DDEB" textAnchor="middle" opacity="0.8">EARLY ADO.</text>
                 <text x="258" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#20DDEB" textAnchor="middle" opacity="0.6">EARLY MAJORITY</text>
-                <text x="472" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7D827D" textAnchor="middle" opacity="0.8">LATE MAJORITY</text>
-                <text x="630" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7D827D" textAnchor="middle" opacity="0.6">RETARD.</text>
+                <text x="472" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7B7C8C" textAnchor="middle" opacity="0.8">LATE MAJORITY</text>
+                <text x="630" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7B7C8C" textAnchor="middle" opacity="0.6">RETARD.</text>
 
                 {/* Axes */}
                 <line x1="50" y1="190" x2="680" y2="190" stroke="rgba(32,221,235,0.2)" strokeWidth="0.5" />
@@ -860,16 +548,16 @@ const ImersaoClaude = () => {
                 <line x1="680" y1="10" x2="680" y2="190" stroke="rgba(32,221,235,0.15)" strokeWidth="0.5" />
 
                 {/* Y axis ticks left (bell) */}
-                <text x="45" y="193" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#C8C0B2" textAnchor="end">0</text>
-                <line x1="47" y1="190" x2="50" y2="190" stroke="#C8C0B2" strokeWidth="0.5" />
-                <text x="45" y="147" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#C8C0B2" textAnchor="end">25%</text>
-                <line x1="47" y1="144" x2="50" y2="144" stroke="#C8C0B2" strokeWidth="0.5" />
-                <text x="45" y="102" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#C8C0B2" textAnchor="end">50%</text>
-                <line x1="47" y1="99" x2="50" y2="99" stroke="#C8C0B2" strokeWidth="0.5" />
-                <text x="45" y="57" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#C8C0B2" textAnchor="end">75%</text>
-                <line x1="47" y1="54" x2="50" y2="54" stroke="#C8C0B2" strokeWidth="0.5" />
-                <text x="45" y="14" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#C8C0B2" textAnchor="end">100%</text>
-                <line x1="47" y1="11" x2="50" y2="11" stroke="#C8C0B2" strokeWidth="0.5" />
+                <text x="45" y="193" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#9A9CAA" textAnchor="end">0</text>
+                <line x1="47" y1="190" x2="50" y2="190" stroke="#9A9CAA" strokeWidth="0.5" />
+                <text x="45" y="147" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#9A9CAA" textAnchor="end">25%</text>
+                <line x1="47" y1="144" x2="50" y2="144" stroke="#9A9CAA" strokeWidth="0.5" />
+                <text x="45" y="102" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#9A9CAA" textAnchor="end">50%</text>
+                <line x1="47" y1="99" x2="50" y2="99" stroke="#9A9CAA" strokeWidth="0.5" />
+                <text x="45" y="57" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#9A9CAA" textAnchor="end">75%</text>
+                <line x1="47" y1="54" x2="50" y2="54" stroke="#9A9CAA" strokeWidth="0.5" />
+                <text x="45" y="14" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#9A9CAA" textAnchor="end">100%</text>
+                <line x1="47" y1="11" x2="50" y2="11" stroke="#9A9CAA" strokeWidth="0.5" />
 
                 {/* Y axis ticks right (cumulative) */}
                 <text x="685" y="193" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#20DDEB" textAnchor="start">0%</text>
@@ -882,47 +570,46 @@ const ImersaoClaude = () => {
                 <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190 Z" fill="url(#bellGrad)" />
 
                 {/* Bell curve stroke */}
-                <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190" fill="none" stroke="#C8C0B2" strokeWidth="2.5" />
+                <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190" fill="none" stroke="#9A9CAA" strokeWidth="2.5" />
 
                 {/* Cumulative S-curve */}
                 <path d="M 50,189 C 70,188 90,187 110,186 C 130,184 145,181 160,177 C 175,172 185,165 200,156 C 215,146 225,135 240,122 C 258,107 268,95 285,82 C 302,68 315,57 335,46 C 348,38 356,34 365,31 C 374,28 382,26 395,23 C 410,20 422,17 440,14 C 458,12 470,11 490,11 C 520,11 550,11 580,11 C 610,11 640,11 660,11 C 668,11 674,11 680,11" fill="none" stroke="#20DDEB" strokeWidth="2" strokeLinecap="round" />
 
                 {/* AGORA line */}
-                <line x1="108" y1="10" x2="108" y2="190" stroke="#E44935" strokeWidth="1.5" strokeDasharray="4,4" />
-                <rect x="86" y="9" width="44" height="15" rx="2" fill="#E44935" />
-                <text x="108" y="20" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#F2EDE4" textAnchor="middle" fontWeight="500">AGORA</text>
-                <circle cx="108" cy="183" r="4" fill="#E44935" />
-                <circle cx="108" cy="178" r="4" fill="#E44935" opacity="0.6" />
+                <line x1="108" y1="10" x2="108" y2="190" stroke="#8B7CF6" strokeWidth="1.5" strokeDasharray="4,4" />
+                <rect x="86" y="9" width="44" height="15" rx="4" fill="#8B7CF6" />
+                <text x="108" y="20" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#F5F5FA" textAnchor="middle" fontWeight="500">AGORA</text>
+                <circle cx="108" cy="183" r="4" fill="#8B7CF6" />
+                <circle cx="108" cy="178" r="4" fill="#8B7CF6" opacity="0.6" />
               </svg>
 
               {/* Segment cards */}
-              <div className="ic-adoption-segs" style={{ display: "flex", gap: 6, marginTop: 12, flexWrap: "wrap" }}>
+              <div className="flex flex-wrap gap-1.5 mt-4">
                 {[
-                  { label: "Inovadores", pct: "2,5%", desc: "Constroem antes do mercado existir", color: "#C8C0B2" },
+                  { label: "Inovadores", pct: "2,5%", desc: "Constroem antes do mercado existir", color: "#9A9CAA" },
                   { label: "Early Adopters", pct: "13,5%", desc: "Líderes que vencem pela vantagem", color: "#20DDEB" },
                   { label: "Early Majority", pct: "34%", desc: "Adotam depois que a prova existe", color: "#20DDEB" },
-                  { label: "Late Majority", pct: "34%", desc: "Entram por pressão, não escolha", color: "#7D827D" },
-                  { label: "Retardatários", pct: "16%", desc: "Chegam quando a vantagem acabou", color: "#7D827D" },
+                  { label: "Late Majority", pct: "34%", desc: "Entram por pressão, não escolha", color: "#7B7C8C" },
+                  { label: "Retardatários", pct: "16%", desc: "Chegam quando a vantagem acabou", color: "#7B7C8C" },
                 ].map((seg) => (
-                  <div key={seg.label} className="ic-adoption-seg" style={{ flex: 1, minWidth: 110, background: "#0B1114", border: "1px solid rgba(255,255,255,0.10)", padding: "8px 9px", position: "relative", overflow: "hidden" }}>
-                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1.5, background: `linear-gradient(90deg, transparent, ${seg.color}80, transparent)` }} />
-                    <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 7.5, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 3, color: seg.color }}>{seg.label}</div>
-                    <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 16, fontWeight: 400, lineHeight: 1, marginBottom: 2, color: seg.color }}>{seg.pct}</div>
-                    <div style={{ fontFamily: "'Fraunces',serif", fontSize: 9, color: "#7D827D", fontWeight: 300, lineHeight: 1.35 }}>{seg.desc}</div>
+                  <div key={seg.label} className="flex-1 min-w-[110px] rounded-xl border border-white/[0.08] bg-white/[0.02] p-3">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.1em] mb-1" style={{ color: seg.color }}>{seg.label}</div>
+                    <div className="font-extrabold text-lg leading-none mb-1" style={{ color: seg.color }}>{seg.pct}</div>
+                    <div className="text-saas-faint text-[10.5px] leading-snug">{seg.desc}</div>
                   </div>
                 ))}
               </div>
 
               {/* Now bar */}
-              <div className="ic-nowbar" style={{ background: "rgba(228,73,53,0.06)", border: "1px solid rgba(228,73,53,0.25)", padding: "10px 14px", marginTop: 12, display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ width: 26, height: 26, border: "1.5px solid #E44935", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <div style={{ width: 7, height: 7, background: "#E44935", animation: "ic-pulse 2s ease-in-out infinite" }} />
+              <div className="flex items-center gap-3 mt-4 rounded-xl border border-saas-violet/30 bg-saas-violet/[0.08] px-4 py-3">
+                <div className="w-7 h-7 rounded-full border border-saas-violet flex items-center justify-center flex-shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-saas-violet animate-pulse" />
                 </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 11, fontWeight: 400, color: "#E44935", textTransform: "uppercase", letterSpacing: 1 }}>Agentes de IA — Posição Atual (2025–2026)</div>
-                  <div style={{ fontFamily: "'Fraunces',serif", fontSize: 10, color: "#7D827D", fontWeight: 300, marginTop: 2 }}>A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.</div>
+                <div className="flex-1">
+                  <div className="font-bold text-saas-violet text-[11px] uppercase tracking-[0.06em]">Agentes de IA — Posição Atual (2025–2026)</div>
+                  <div className="text-saas-faint text-[11px] mt-1">A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.</div>
                 </div>
-                <div className="ic-nowbar-pct" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 20, fontWeight: 400, color: "#E44935" }}>~8%</div>
+                <div className="font-extrabold text-saas-violet text-lg flex-shrink-0">~8%</div>
               </div>
             </div>
           </div>
@@ -930,160 +617,180 @@ const ImersaoClaude = () => {
       </section>
 
       {/* ══════ MID CAPTURE ══════ */}
-      <section className="ic-mid-capture">
-        <div className="ic-container">
-          <h2>"Tá, Rodrigo. <span className="ic-highlight-cyan">O que eu faço?</span>"</h2>
-          <p style={{ color: "#C8C0B2", maxWidth: 560, margin: "12px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
-            É exatamente para responder essa pergunta que criei a <strong style={{ color: "#F2EDE4" }}>Imersão em Claude</strong>: 3 aulas onde eu vou te mostrar, na prática, como usar a IA que executa funções para sair na frente de quem ainda opera no manual.
+      <section className="border-y border-saas-cyan/15 bg-saas-card/60 py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="font-extrabold text-saas-ink text-[clamp(24px,3.2vw,34px)] leading-[1.15] tracking-tight">
+            "Tá, Rodrigo. <Accent>O que eu faço?</Accent>"
+          </h2>
+          <p className="mt-4 text-saas-body text-[15px] leading-relaxed max-w-lg mx-auto">
+            É exatamente para responder essa pergunta que criei a <strong className="text-saas-ink font-semibold">Imersão em Claude</strong>: 3 aulas onde eu vou te mostrar, na prática, como usar a IA que executa funções para sair na frente de quem ainda opera no manual.
           </p>
-          <div style={{ marginTop: 28 }}>
-            <button className="ic-cta-btn" onClick={() => handleCTA("mid")}>
+          <div className="mt-8 flex justify-center">
+            <button className={BTN_CTA} onClick={() => handleCTA("mid")}>
               QUERO PARTICIPAR DA IMERSÃO
-              <span className="ic-cta-sub">3 aulas por apenas R$97</span>
+              <span className={BTN_CTA_SUB}>3 aulas por apenas R$97</span>
             </button>
           </div>
         </div>
       </section>
 
       {/* ══════ 3 AULAS ══════ */}
-      <section className="ic-section">
-        <div className="ic-container">
-          <p className="ic-mono ic-text-cyan" style={{ fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 10, textAlign: "center" }}>Imersão em Claude</p>
-          <h2 style={{ textAlign: "center" }}>3 aulas que podem mudar<br />o rumo da sua <span className="ic-highlight-cyan">vida</span></h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex justify-center mb-4">
+            <Eyebrow>Imersão em Claude</Eyebrow>
+          </div>
+          <h2 className="text-center font-extrabold text-saas-ink text-[clamp(24px,3.4vw,38px)] leading-[1.15] tracking-tight">
+            3 aulas que podem mudar<br className="hidden sm:block" /> o rumo da sua <Accent>vida</Accent>
+          </h2>
 
-          <div style={{ marginTop: 44 }}>
-            <div className="ic-aula-card">
-              <div className="ic-aula-card__num ic-aula-card__num--1">01</div>
-              <div>
-                <div className="ic-aula-card__tag">Aula 1 · A Revolução</div>
-                <div className="ic-aula-card__title">O Que Está Acontecendo Agora Que Quase Ninguém Percebeu</div>
-                <div className="ic-aula-card__desc">
-                  Nos últimos 12 meses, mais mudou na forma como se aprende, trabalha e ganha dinheiro do que nos últimos 12 anos. Você vai entender por que a terceira onda da IA veio para revolucionar.
+          <div className="mt-12">
+            {aulas.map((a) => (
+              <div key={a.n} className={SAAS_CARD + " p-6 md:p-7 mb-4 flex gap-5 md:gap-6 items-start transition-colors hover:border-white/[0.18]"}>
+                <div
+                  className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center font-extrabold text-sm border ${
+                    a.accent === "cyan"
+                      ? "bg-saas-cyan/10 border-saas-cyan/30 text-saas-cyan"
+                      : a.accent === "violet"
+                      ? "bg-saas-violet/10 border-saas-violet/30 text-saas-violet"
+                      : "bg-white/[0.05] border-white/[0.15] text-saas-muted"
+                  }`}
+                >
+                  {a.n}
+                </div>
+                <div>
+                  <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-1.5">{a.tag}</div>
+                  <h3 className="font-extrabold text-saas-ink text-lg md:text-xl leading-snug tracking-tight mb-2">{a.title}</h3>
+                  <p className="text-saas-body text-sm leading-relaxed">{a.desc}</p>
                 </div>
               </div>
-            </div>
-
-            <div className="ic-aula-card">
-              <div className="ic-aula-card__num ic-aula-card__num--2">02</div>
-              <div>
-                <div className="ic-aula-card__tag">Aula 2 · A Janela</div>
-                <div className="ic-aula-card__title">Quem Está Caindo, Quem Está Subindo — E Onde Você Entra</div>
-                <div className="ic-aula-card__desc">
-                  Empresas bilionárias derretendo. Freelancers perdendo clientes da noite pro dia. Mas do outro lado, pessoas comuns estão faturando R$10K, R$50K, R$300K por mês, sozinhas, sem equipe, sem investidor. A janela está aberta agora. Você vai ver os números e entender exatamente por quê.
-                </div>
-              </div>
-            </div>
-
-            <div className="ic-aula-card">
-              <div className="ic-aula-card__num ic-aula-card__num--3">03</div>
-              <div>
-                <div className="ic-aula-card__tag">Aula 3 · O Caminho</div>
-                <div className="ic-aula-card__title">Claude Na Prática E Como Isso Vira Dinheiro</div>
-                <div className="ic-aula-card__desc">
-                  Eu abro o Claude e construo um sistema completo na sua frente, do zero, usando comandos em português. Depois, mostro os 4 caminhos de monetização. Você sai com um plano concreto, independente do seu nível técnico, e pode aplicar no seu negócio ou vender para os seus clientes.
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-
-      <div className="ic-divider" />
 
       {/* ══════ QUEM É O RODRIGO ══════ */}
-      <section className="ic-section">
-        <div className="ic-container">
-          <h3 style={{ color: "#7D827D", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'IBM Plex Mono',monospace", marginBottom: 8, textAlign: "center" }}>Quem vai conduzir a imersão</h3>
-          <h2 style={{ textAlign: "center" }}>Nós estamos juntos<br />nesse barco.</h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-center font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-3">
+            Quem vai conduzir a imersão
+          </p>
+          <h2 className="text-center font-extrabold text-saas-ink text-[clamp(24px,3.4vw,38px)] leading-[1.15] tracking-tight">
+            Nós estamos juntos<br className="hidden sm:block" /> nesse barco.
+          </h2>
 
-          <div className="ic-author">
-            <img loading="lazy" src={rodrigoPhoto} alt="Rodrigo Albuquerque" style={{ width: 80, height: 80, objectFit: "cover", flexShrink: 0 }} />
+          <div className={SAAS_CARD + " mt-10 p-7 md:p-9 flex flex-col md:flex-row gap-6 md:gap-8 items-start"}>
+            <img
+              loading="lazy"
+              src={rodrigoPhoto}
+              alt="Rodrigo Albuquerque"
+              className="w-20 h-20 rounded-full object-cover flex-shrink-0 border border-white/[0.10]"
+            />
             <div>
-              <div className="ic-author__name">Rodrigo Albuquerque</div>
-              <div className="ic-author__role">Empreendedor · Entusiasta de IA · Estrategista de Negócios</div>
-              <div className="ic-author__text">
-                Liderei equipes que venderam mais de R$100 milhões por ano. Gerenciei times de mais de 50 pessoas. Hoje, uso IA todos os dias para construir sistemas, automatizar operações e fechar contratos.
-                <br /><br />
-                Não sou desenvolvedor. Não sou guru de 22 anos que mora com os pais. Sou empreendedor, pai, cristão e estou com a minha esposa há mais de 10 anos. Assim como você, tenho contas para pagar e zero tempo a perder.
-                <br /><br />
-                Quando vi a velocidade dessa revolução, não fiquei debatendo se valia a pena. Parei tudo, testei dezenas de ferramentas e coloquei para rodar. O <strong style={{ color: "#20DDEB" }}>Claude</strong> é, de longe, a IA mais poderosa atualmente. Ela não só responde perguntas. Ela executa tarefas. Constrói sistemas e faz entregas inteiras sozinha. Criei essa imersão para mostrar exatamente o que descobri.
+              <div className="font-extrabold text-saas-ink text-lg mb-1">Rodrigo Albuquerque</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-4">
+                Empreendedor · Entusiasta de IA · Estrategista de Negócios
+              </div>
+              <div className="text-saas-body text-sm leading-relaxed space-y-4">
+                <p>Liderei equipes que venderam mais de R$100 milhões por ano. Gerenciei times de mais de 50 pessoas. Hoje, uso IA todos os dias para construir sistemas, automatizar operações e fechar contratos.</p>
+                <p>Não sou desenvolvedor. Não sou guru de 22 anos que mora com os pais. Sou empreendedor, pai, cristão e estou com a minha esposa há mais de 10 anos. Assim como você, tenho contas para pagar e zero tempo a perder.</p>
+                <p>
+                  Quando vi a velocidade dessa revolução, não fiquei debatendo se valia a pena. Parei tudo, testei dezenas de ferramentas e coloquei para rodar. O <strong className="text-saas-cyan font-semibold">Claude</strong> é, de longe, a IA mais poderosa atualmente. Ela não só responde perguntas. Ela executa tarefas. Constrói sistemas e faz entregas inteiras sozinha. Criei essa imersão para mostrar exatamente o que descobri.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="ic-divider" />
-
       {/* ══════ PRA QUEM É ══════ */}
-      <section className="ic-section">
-        <div className="ic-container">
-          <h2 style={{ textAlign: "center" }}>Esta imersão é para <span className="ic-highlight-cyan">você</span> se…</h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-center font-extrabold text-saas-ink text-[clamp(24px,3.4vw,38px)] leading-[1.15] tracking-tight">
+            Esta imersão é para <Accent>você</Accent> se…
+          </h2>
 
-          <ul className="ic-check-list" style={{ marginTop: 32 }}>
+          <ul className="mt-8 space-y-3 max-w-2xl mx-auto">
             {forYouItems.map((item, i) => (
-              <li key={i}>{item}</li>
+              <li
+                key={i}
+                className="flex items-start gap-3 text-saas-body text-[15px] leading-relaxed border-b border-white/[0.06] pb-3 last:border-none"
+              >
+                <CheckCircle size={16} className="text-saas-green mt-0.5 flex-shrink-0" strokeWidth={1.5} />
+                {item}
+              </li>
             ))}
           </ul>
         </div>
       </section>
 
       {/* ══════ OFERTA ══════ */}
-      <section className="ic-section" id="oferta" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(32,221,235,0.04) 0%, transparent 70%)" }}>
-        <div className="ic-container" style={{ textAlign: "center" }}>
-          <h2>O futuro pertence a quem<br />age <span className="ic-highlight-cyan">agora</span>.</h2>
-          <p style={{ color: "#C8C0B2", maxWidth: 600, margin: "16px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+      <section id="oferta" className="relative border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[560px] h-[360px] rounded-full bg-saas-cyan/10 blur-[120px]" />
+        </div>
+        <div className="relative max-w-3xl mx-auto text-center">
+          <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.6vw,42px)] leading-[1.12] tracking-tight">
+            O futuro pertence a quem<br className="hidden sm:block" /> age <Accent>agora</Accent>.
+          </h2>
+          <p className="mt-5 text-saas-body text-[15px] leading-relaxed max-w-xl mx-auto">
             Em 3 aulas, você vai entender a revolução que está redesenhando o mercado, ver o Claude construindo um sistema ao vivo na sua frente, e sair com um plano concreto de monetização independente do seu nível técnico.
           </p>
 
-          <div className="ic-price-box">
-            <div className="ic-price-box__tag">Vagas limitadas</div>
-            <div className="ic-price-box__label">Imersão em Claude — 3 aulas ao vivo</div>
-            <div className="ic-price-box__old">De R$ 297,00</div>
-            <div className="ic-price-box__amount"><span className="ic-highlight-cyan">R$ 97</span></div>
-            <div className="ic-price-box__installment">ou 12× de R$ 9,70 no cartão</div>
-            <button className="ic-cta-btn ic-cta-btn--red" onClick={() => handleCTA("pricing")} style={{ width: "100%", maxWidth: 380 }}>
+          <div className={SAAS_CARD + " max-w-md mx-auto mt-10 p-8 md:p-10 text-center"}>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-saas-cyan/10 border border-saas-cyan/30 text-saas-cyan font-mono text-[10px] uppercase tracking-[0.16em] px-3 py-1 mb-6">
+              Vagas limitadas
+            </span>
+            <p className="text-saas-muted text-sm mb-2">Imersão em Claude — 3 aulas ao vivo</p>
+            <p className="text-saas-faint text-sm line-through mb-1">De R$ 297,00</p>
+            <p className={SAAS_GRADIENT_TEXT + " font-extrabold text-[52px] md:text-[60px] leading-none mb-2"}>R$ 97</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-saas-faint mb-8">ou 12× de R$ 9,70 no cartão</p>
+            <button className={BTN_CTA + " w-full"} onClick={() => handleCTA("pricing")}>
               GARANTIR MINHA VAGA AGORA
-              <span className="ic-cta-sub">Acesso imediato após a confirmação do pagamento</span>
+              <span className={BTN_CTA_SUB}>Acesso imediato após a confirmação do pagamento</span>
             </button>
-            <p style={{ color: "#7D827D", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
-              Pagamento seguro · Garantia de 7 dias · Acesso imediato
-            </p>
+            <p className="mt-5 text-saas-faint text-xs">Pagamento seguro · Garantia de 7 dias · Acesso imediato</p>
           </div>
 
-          <div className="ic-guarantee">
-            <div className="ic-guarantee__icon">&#128274;</div>
-            <div className="ic-guarantee__title">Garantia incondicional de 7 dias</div>
-            <div className="ic-guarantee__text">
+          <div className="max-w-md mx-auto mt-6 text-center py-8">
+            <Lock className="w-7 h-7 text-saas-cyan mx-auto mb-3" strokeWidth={1.5} />
+            <p className="font-extrabold text-saas-ink text-base mb-2">Garantia incondicional de 7 dias</p>
+            <p className="text-saas-faint text-sm leading-relaxed max-w-xs mx-auto">
               Assista às aulas, aplique o que aprender. Se dentro de 7 dias você sentir que não valeu cada centavo, basta pedir o reembolso integral. Sem perguntas, sem burocracia.
-            </div>
+            </p>
           </div>
         </div>
       </section>
 
-      <div className="ic-divider" />
-
       {/* ══════ FAQ ══════ */}
-      <section className="ic-section" style={{ paddingTop: 56 }}>
-        <div className="ic-container">
-          <h2 style={{ textAlign: "center", marginBottom: 36 }}>Perguntas frequentes</h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-center font-extrabold text-saas-ink text-[clamp(24px,3.2vw,36px)] leading-[1.15] tracking-tight mb-10">
+            Perguntas frequentes
+          </h2>
 
           {faqItems.map((faq, i) => (
-            <details key={i} className="ic-faq-item">
-              <summary>{faq.q}</summary>
-              <p>{faq.a}</p>
+            <details key={i} className="group border-b border-white/[0.08] py-5">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-saas-ink text-base md:text-lg [&::-webkit-details-marker]:hidden">
+                {faq.q}
+                <span className="relative w-4 h-4 flex-shrink-0 text-saas-cyan">
+                  <Plus className="w-4 h-4 group-open:hidden" />
+                  <Minus className="w-4 h-4 hidden group-open:block" />
+                </span>
+              </summary>
+              <p className="mt-3 text-saas-body text-sm leading-relaxed pr-6">{faq.a}</p>
             </details>
           ))}
         </div>
       </section>
 
       {/* ══════ FOOTER ══════ */}
-      <footer className="ic-footer">
-        <div className="ic-container">
-          <p style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, color: "#C8C0B2", marginBottom: 8, fontSize: "0.9rem", letterSpacing: 2 }}>IMERSÃO EM CLAUDE</p>
-          <p>© 2026 Rodrigo Albuquerque · BA Consultoria · Todos os direitos reservados</p>
-          <p style={{ marginTop: 8 }}>Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho é meramente ilustrativa.</p>
-        </div>
+      <footer className="border-t border-white/[0.06] py-10 px-4 text-center">
+        <p className="font-extrabold text-saas-ink text-sm mb-2">IMERSÃO EM CLAUDE</p>
+        <p className="text-saas-faint text-xs leading-relaxed">© 2026 Rodrigo Albuquerque · BA Consultoria · Todos os direitos reservados</p>
+        <p className="text-saas-faint-2 text-[11px] mt-2 max-w-xl mx-auto leading-relaxed">
+          Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho é meramente ilustrativa.
+        </p>
       </footer>
     </div>
   );

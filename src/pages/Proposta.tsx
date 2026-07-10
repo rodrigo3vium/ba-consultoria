@@ -1,6 +1,7 @@
 import PropostaLayout from "@/components/pb/PropostaLayout";
 import SectionHeader from "@/components/pb/SectionHeader";
 import StratCard from "@/components/pb/StratCard";
+import { SAAS_BTN_PRIMARY } from "@/components/saas/ui";
 
 const diagnosticItems = [
   {
@@ -101,7 +102,7 @@ const Proposta = () => {
       projeto="Máquina Digital Previsível"
     >
       {/* SOBRE */}
-      <section className="border-t border-pb-grid-strong py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <SectionHeader
           idx="01"
           label="Sobre"
@@ -110,20 +111,20 @@ const Proposta = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {/* Avatar */}
-          <div className="border border-pb-grid-strong bg-pb-void-card p-8 flex flex-col items-center justify-center gap-4 aspect-square">
-            <span className="font-display text-[clamp(40px,6vw,64px)] text-pb-cyan leading-none">RA</span>
-            <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">Freedom Agency</span>
+          <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 flex flex-col items-center justify-center gap-4 aspect-square">
+            <span className="font-extrabold text-[clamp(40px,6vw,64px)] leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">RA</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted">Freedom Agency</span>
           </div>
 
           {/* Texto + stats */}
           <div className="md:col-span-2">
-            <p className="font-body text-pb-ink leading-relaxed mb-4 text-lg italic">
+            <p className="text-saas-ink leading-relaxed mb-4 text-lg italic">
               Rodrigo Albuquerque investiu meio milhão de reais em mentoria com
               alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões
               em vendas anuais e compilou na Freedom Agency o aprendizado
               extraído de mais de 100 empresas que receberam consultoria.
             </p>
-            <p className="font-body text-pb-ink-soft leading-relaxed mb-6">
+            <p className="text-saas-body leading-relaxed mb-6">
               A Freedom Agency não é uma agência de marketing tradicional. É uma
               operação de revenue que une consultoria estratégica, execução de
               marketing e inteligência comercial — tudo focado em gerar retorno
@@ -131,9 +132,9 @@ const Proposta = () => {
             </p>
             <div className="grid grid-cols-2 gap-3">
               {stats.map((s) => (
-                <div key={s.label} className="border border-pb-grid-strong bg-pb-void-card p-4">
-                  <span className="font-display text-[clamp(24px,3vw,36px)] text-pb-cyan leading-none block">{s.num}</span>
-                  <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-1 block">{s.label}</span>
+                <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4">
+                  <span className="font-extrabold text-[clamp(24px,3vw,36px)] leading-none block bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">{s.num}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint mt-1 block">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -142,7 +143,7 @@ const Proposta = () => {
       </section>
 
       {/* DIAGNÓSTICO */}
-      <section className="border-t border-pb-grid-strong py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <SectionHeader
           idx="02"
           label="Diagnóstico"
@@ -153,15 +154,15 @@ const Proposta = () => {
         <div className="grid md:grid-cols-2 gap-4">
           {diagnosticItems.map((item) => (
             <StratCard key={item.title}>
-              <h3 className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink mb-3">{item.title}</h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{item.text}</p>
+              <h3 className="font-bold text-saas-ink text-lg leading-snug mb-3">{item.title}</h3>
+              <p className="text-saas-body text-sm leading-relaxed">{item.text}</p>
             </StratCard>
           ))}
         </div>
       </section>
 
       {/* ESTRATÉGIA */}
-      <section className="border-t border-pb-grid-strong py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <SectionHeader
           idx="03"
           label="Estratégia"
@@ -174,17 +175,17 @@ const Proposta = () => {
             <div key={step.num} className="flex gap-6">
               {/* Número + linha */}
               <div className="flex flex-col items-center flex-shrink-0">
-                <div className="border border-pb-cyan bg-pb-void-card w-12 h-12 flex items-center justify-center">
-                  <span className="font-mono text-[11px] text-pb-cyan">{step.num}</span>
+                <div className="rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet w-12 h-12 flex items-center justify-center">
+                  <span className="font-mono text-[12px] font-bold text-saas-void">{step.num}</span>
                 </div>
                 {i < strategySteps.length - 1 && (
-                  <div className="w-px flex-1 bg-pb-grid-strong my-1" />
+                  <div className="w-px flex-1 bg-white/[0.09] my-1" />
                 )}
               </div>
               {/* Conteúdo */}
-              <div className={`pb-8 ${i === strategySteps.length - 1 ? "pb-0" : ""}`}>
-                <h3 className="font-display uppercase text-pb-ink text-xl leading-none mb-2 mt-3">{step.title}</h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{step.text}</p>
+              <div className={i === strategySteps.length - 1 ? "pb-0" : "pb-8"}>
+                <h3 className="font-bold text-saas-ink text-xl leading-tight mb-2 mt-3">{step.title}</h3>
+                <p className="text-saas-body text-sm leading-relaxed">{step.text}</p>
               </div>
             </div>
           ))}
@@ -192,7 +193,7 @@ const Proposta = () => {
       </section>
 
       {/* LINHA DO TEMPO */}
-      <section className="border-t border-pb-grid-strong py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <SectionHeader
           idx="04"
           label="Expectativa"
@@ -200,22 +201,22 @@ const Proposta = () => {
           sub="Transparência é fundamental. Resultados vêm com consistência — e a gente precisa ver as métricas evoluindo desde o primeiro mês."
         />
 
-        <div className="grid md:grid-cols-3 border border-pb-grid-strong">
+        <div className="grid md:grid-cols-3 rounded-2xl border border-white/[0.09] overflow-hidden">
           {timelinePhases.map((phase, i) => (
             <div
               key={phase.label}
-              className={`bg-pb-void-card p-6 ${i < timelinePhases.length - 1 ? "border-b md:border-b-0 md:border-r border-pb-grid-strong" : ""}`}
+              className={`bg-saas-card p-6 ${i < timelinePhases.length - 1 ? "border-b md:border-b-0 md:border-r border-white/[0.06]" : ""}`}
             >
-              <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan block mb-2">{phase.label}</span>
-              <h4 className="font-display uppercase text-pb-ink text-lg leading-none mb-3">{phase.title}</h4>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{phase.text}</p>
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan block mb-2">{phase.label}</span>
+              <h4 className="font-bold text-saas-ink text-lg leading-tight mb-3">{phase.title}</h4>
+              <p className="text-saas-body text-sm leading-relaxed">{phase.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* INVESTIMENTO */}
-      <section className="border-t border-pb-grid-strong py-16">
+      <section className="border-t border-white/[0.06] py-16">
         <SectionHeader
           idx="05"
           label="Investimento"
@@ -225,19 +226,19 @@ const Proposta = () => {
 
         <div className="grid md:grid-cols-2 gap-4">
           {/* Opção 1 */}
-          <div className="border border-pb-grid-strong bg-pb-void-card p-8">
-            <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan block mb-3">Opção 1</span>
-            <h3 className="font-display uppercase text-pb-ink text-2xl leading-none mb-4">Prestação de Serviço + Consultoria</h3>
-            <div className="border-b border-pb-grid-strong pb-6 mb-6">
-              <span className="font-display text-[clamp(28px,4vw,40px)] text-pb-ink leading-none block mb-1">Fee mensal fixo</span>
-              <span className="font-body text-pb-ink-soft text-sm">
+          <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan block mb-3">Opção 1</span>
+            <h3 className="font-extrabold text-saas-ink text-2xl leading-tight mb-4">Prestação de Serviço + Consultoria</h3>
+            <div className="border-b border-white/[0.09] pb-6 mb-6">
+              <span className="font-extrabold text-saas-ink text-[clamp(28px,4vw,40px)] leading-none block mb-1">Fee mensal fixo</span>
+              <span className="text-saas-body text-sm">
                 Valor a definir conforme escopo final + investimento mínimo em tráfego pago
               </span>
             </div>
             <ul className="flex flex-col gap-3">
               {option1Features.map((f) => (
-                <li key={f} className="flex gap-2 font-body text-pb-ink-soft text-sm leading-relaxed">
-                  <span className="text-pb-cyan flex-shrink-0">→</span>
+                <li key={f} className="flex gap-2 text-saas-body text-sm leading-relaxed">
+                  <span className="text-saas-cyan flex-shrink-0">→</span>
                   {f}
                 </li>
               ))}
@@ -245,22 +246,22 @@ const Proposta = () => {
           </div>
 
           {/* Opção 2 — destaque */}
-          <div className="border border-pb-cyan bg-pb-void-card p-8 relative overflow-hidden">
-            <div className="absolute top-4 right-0 bg-pb-cyan px-6 py-1.5 font-mono text-[9px] uppercase tracking-mono-wide text-pb-void">
+          <div className="rounded-2xl border border-saas-violet/50 bg-saas-card p-8 relative overflow-hidden">
+            <div className="absolute top-4 right-0 bg-gradient-to-r from-saas-cyan to-saas-violet px-6 py-1.5 rounded-l-full font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-saas-void">
               Recomendado
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan block mb-3">Opção 2</span>
-            <h3 className="font-display uppercase text-pb-ink text-2xl leading-none mb-4">Coprodução Estratégica</h3>
-            <div className="border-b border-pb-grid-strong pb-6 mb-6">
-              <span className="font-display text-[clamp(28px,4vw,40px)] text-pb-ink leading-none block mb-1">% sobre vendas</span>
-              <span className="font-body text-pb-ink-soft text-sm">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan block mb-3">Opção 2</span>
+            <h3 className="font-extrabold text-saas-ink text-2xl leading-tight mb-4">Coprodução Estratégica</h3>
+            <div className="border-b border-white/[0.09] pb-6 mb-6">
+              <span className="font-extrabold text-saas-ink text-[clamp(28px,4vw,40px)] leading-none block mb-1">% sobre vendas</span>
+              <span className="text-saas-body text-sm">
                 Sem fee fixo — entrada na porcentagem + investimento mínimo em tráfego pago
               </span>
             </div>
             <ul className="flex flex-col gap-3">
               {option2Features.map((f) => (
-                <li key={f} className="flex gap-2 font-body text-pb-ink-soft text-sm leading-relaxed">
-                  <span className="text-pb-cyan flex-shrink-0">→</span>
+                <li key={f} className="flex gap-2 text-saas-body text-sm leading-relaxed">
+                  <span className="text-saas-cyan flex-shrink-0">→</span>
                   {f}
                 </li>
               ))}
@@ -268,7 +269,7 @@ const Proposta = () => {
           </div>
         </div>
 
-        <p className="font-body text-pb-ink-muted text-sm italic mt-4">
+        <p className="text-saas-muted text-sm italic mt-4">
           * Em ambas as opções, o investimento mínimo em tráfego pago será
           definido em conjunto. O seu compromisso principal é com a produção
           de conteúdo orgânico consistente.
@@ -276,7 +277,7 @@ const Proposta = () => {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-pb-grid-strong py-16 text-center">
+      <section className="border-t border-white/[0.06] py-16 text-center">
         <SectionHeader
           idx="06"
           label="Próximo passo"
@@ -288,7 +289,7 @@ const Proposta = () => {
           href="https://wa.me/5511999718595"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center gap-2"
+          className={SAAS_BTN_PRIMARY}
         >
           Falar com Rodrigo →
         </a>

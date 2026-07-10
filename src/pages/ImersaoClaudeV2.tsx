@@ -17,7 +17,7 @@ const ImersaoClaudeV2 = () => {
 
   useEffect(() => {
     tracker.page("Imersão Claude v2");
-    document.body.style.backgroundColor = "#05090B";
+    document.body.style.backgroundColor = "#0A0A13";
     document.body.style.paddingTop = "0";
     return () => {
       document.body.style.backgroundColor = "";
@@ -68,7 +68,7 @@ const ImersaoClaudeV2 = () => {
         labels: ["Telefone\n(1876)", "Eletricidade\n(1882)", "Rádio\n(1920)", "TV\n(1950)", "PC\n(1981)", "Internet\n(1991)", "Smartphone\n(2007)", "IA Gen.\n(2022)"],
         datasets: [{
           data: [100, 70, 22, 18, 16, 7, 5, 3],
-          backgroundColor: ["#7D827D","#7D827D","#7D827D","#7D827D","#C8C0B2","#C8C0B2","#20DDEB","#E44935"],
+          backgroundColor: ["#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#B7B8C7","#B7B8C7","#20DDEB","#8B7CF6"],
           borderRadius: 4, borderSkipped: false, barPercentage: 0.7,
         }],
       },
@@ -77,7 +77,7 @@ const ImersaoClaudeV2 = () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: "#0B1114", titleColor: "#F2EDE4", bodyColor: "#C8C0B2",
+            backgroundColor: "#15151F", titleColor: "#F5F5FA", bodyColor: "#B7B8C7",
             borderColor: "rgba(32,221,235,0.2)", borderWidth: 1,
             callbacks: { label: (ctx: any) => ctx.raw + " anos para atingir 50% de adoção" },
           },
@@ -85,10 +85,10 @@ const ImersaoClaudeV2 = () => {
         scales: {
           x: {
             grid: { color: "rgba(255,255,255,0.04)" },
-            ticks: { color: "#7D827D", font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: (v: any) => v + " anos" },
-            title: { display: true, text: "Anos até 50% de adoção", color: "#7D827D", font: { family: "'Fraunces', serif", size: 12 } },
+            ticks: { color: "#7B7C8C", font: { family: "'IBM Plex Mono', monospace", size: 11 }, callback: (v: any) => v + " anos" },
+            title: { display: true, text: "Anos até 50% de adoção", color: "#7B7C8C", font: { family: "'Plus Jakarta Sans', sans-serif", size: 12 } },
           },
-          y: { grid: { display: false }, ticks: { color: "#C8C0B2", font: { family: "'Fraunces', serif", size: 12 } } },
+          y: { grid: { display: false }, ticks: { color: "#B7B8C7", font: { family: "'Plus Jakarta Sans', sans-serif", size: 12 } } },
         },
       },
     });
@@ -105,7 +105,7 @@ const ImersaoClaudeV2 = () => {
         labels: ["Telefone", "Facebook", "YouTube", "Instagram", "Spotify", "TikTok", "ChatGPT"],
         datasets: [{
           data: [900, 54, 48, 30, 18, 9, 2],
-          backgroundColor: ["#7D827D","#7D827D","#7D827D","#7D827D","#7D827D","#C8C0B2","#E44935"],
+          backgroundColor: ["#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#7B7C8C","#B7B8C7","#8B7CF6"],
           borderRadius: 4, borderSkipped: false, barPercentage: 0.65,
         }],
       },
@@ -114,7 +114,7 @@ const ImersaoClaudeV2 = () => {
         plugins: {
           legend: { display: false },
           tooltip: {
-            backgroundColor: "#0B1114", titleColor: "#F2EDE4", bodyColor: "#C8C0B2",
+            backgroundColor: "#15151F", titleColor: "#F5F5FA", bodyColor: "#B7B8C7",
             borderColor: "rgba(32,221,235,0.2)", borderWidth: 1,
             callbacks: {
               label: (ctx: any) => {
@@ -129,12 +129,12 @@ const ImersaoClaudeV2 = () => {
           x: {
             grid: { color: "rgba(255,255,255,0.04)" },
             ticks: {
-              color: "#7D827D", font: { family: "'IBM Plex Mono', monospace", size: 11 },
+              color: "#7B7C8C", font: { family: "'IBM Plex Mono', monospace", size: 11 },
               callback: (v: any) => { if (v >= 12) return Math.round(v / 12) + " anos"; return v + " meses"; },
             },
-            title: { display: true, text: "Tempo até 100 milhões de usuários", color: "#7D827D", font: { family: "'Fraunces', serif", size: 12 } },
+            title: { display: true, text: "Tempo até 100 milhões de usuários", color: "#7B7C8C", font: { family: "'Plus Jakarta Sans', sans-serif", size: 12 } },
           },
-          y: { grid: { display: false }, ticks: { color: "#C8C0B2", font: { family: "'Fraunces', serif", size: 12 } } },
+          y: { grid: { display: false }, ticks: { color: "#B7B8C7", font: { family: "'Plus Jakarta Sans', sans-serif", size: 12 } } },
         },
       },
     });
@@ -167,8 +167,8 @@ const ImersaoClaudeV2 = () => {
           tooltip: { callbacks: { label: (c: any) => ` ${c.dataset.label}: ${c.parsed.y}%` } },
         },
         scales: {
-          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: "#7D827D", autoSkip: false, maxRotation: 0 } },
-          y: { stacked: true, min: 0, max: 100, ticks: { stepSize: 10, font: { size: 11 }, color: "#7D827D", callback: (v: any) => v + "%" }, grid: { color: "rgba(150,150,150,0.15)" } },
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 }, color: "#7B7C8C", autoSkip: false, maxRotation: 0 } },
+          y: { stacked: true, min: 0, max: 100, ticks: { stepSize: 10, font: { size: 11 }, color: "#7B7C8C", callback: (v: any) => v + "%" }, grid: { color: "rgba(150,150,150,0.15)" } },
         },
       },
     });
@@ -227,61 +227,34 @@ const ImersaoClaudeV2 = () => {
   return (
     <div className="ic-page">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
         .ic-page {
-          font-family: 'Fraunces', Georgia, serif;
-          background: #05090B;
-          color: #F2EDE4;
+          font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          background: #0A0A13;
+          color: #F5F5FA;
           line-height: 1.7;
           overflow-x: hidden;
         }
         .ic-page * { box-sizing: border-box; }
         .ic-page h1,.ic-page h2,.ic-page h3,.ic-page h4 {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400;
-          line-height: 0.92;
-          text-transform: uppercase;
-          color: #F2EDE4;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800;
+          line-height: 1.12;
+          letter-spacing: -0.01em;
+          text-transform: none;
+          color: #F5F5FA;
         }
-        .ic-page h1 { font-size: clamp(2.2rem,6vw,3.8rem); }
-        .ic-page h2 { font-size: clamp(1.6rem,4.5vw,2.6rem); }
+        .ic-page h1 { font-size: clamp(2rem,5.5vw,3.4rem); }
+        .ic-page h2 { font-size: clamp(1.5rem,4vw,2.4rem); }
         .ic-page h3 { font-size: clamp(1.1rem,3vw,1.5rem); }
         .ic-container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
         .ic-section { padding: 80px 0; position: relative; }
-        /* LIGHT VARIANT — redefines color tokens in scope */
-        .ic-section--light {
-          background: #EFEFF5;
-          --ic-text-primary-light: #0A0A12;
-          --ic-text-secondary-light: #3A3A48;
-          --ic-text-muted-light: #6A6A78;
-          --ic-bg-card-light: #FFFFFF;
-          --ic-border-light: #D8D8E0;
-        }
-        .ic-section--light h1,
-        .ic-section--light h2,
-        .ic-section--light h3,
-        .ic-section--light h4,
-        .ic-section--light strong { color: #0A0A12; }
-        .ic-section--light .ic-author__role { color: #0F8995; }
-        .ic-section--light .ic-author__name { color: #0A0A12; }
-        .ic-section--light .ic-author__text { color: #3A3A48; }
-        .ic-section--light .ic-author {
-          background: #FFFFFF;
-          border-color: #D8D8E0;
-        }
-        .ic-section--light .ic-bonus-card {
-          background: #FFFFFF;
-          border-color: rgba(32,221,235,0.3);
-        }
-        .ic-section--light .ic-bonus-card__tag { color: #0F8995; }
-        .ic-section--light .ic-bonus-card__title { color: #0A0A12; }
-        .ic-section--light .ic-bonus-card__desc { color: #3A3A48; }
         .ic-mono { font-family: 'IBM Plex Mono', monospace; }
         .ic-text-cyan { color: #20DDEB; }
-        .ic-text-red  { color: #E44935; }
-        .ic-text-muted { color: #7D827D; }
+        .ic-text-red  { color: #8B7CF6; }
+        .ic-text-muted { color: #7B7C8C; }
         .ic-highlight-cyan {
-          background: linear-gradient(90deg, #20DDEB, #38F3FF);
+          background: linear-gradient(90deg, #20DDEB, #8B7CF6);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .ic-divider {
@@ -292,19 +265,19 @@ const ImersaoClaudeV2 = () => {
         /* CTA */
         .ic-cta-btn {
           display: inline-block;
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.2rem;
-          letter-spacing: 2px; text-transform: uppercase;
-          text-decoration: none; color: #05090B;
-          padding: 18px 52px; border: none;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700; font-size: 0.95rem;
+          letter-spacing: 0.02em; text-transform: none;
+          text-decoration: none; color: #0A0A13;
+          padding: 16px 44px; border: none; border-radius: 9999px;
           cursor: pointer; position: relative; overflow: hidden;
-          background: #20DDEB;
-          box-shadow: 0 0 30px rgba(32,221,235,0.25), 0 4px 20px rgba(0,0,0,0.4);
+          background: linear-gradient(90deg, #20DDEB, #8B7CF6);
+          box-shadow: 0 8px 28px -8px rgba(139,124,246,0.55);
           transition: all 0.3s ease;
         }
         .ic-cta-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 0 50px rgba(32,221,235,0.45), 0 8px 30px rgba(0,0,0,0.5);
+          box-shadow: 0 10px 34px -6px rgba(139,124,246,0.7);
         }
         .ic-cta-btn::before {
           content: ''; position: absolute; top: 0; left: -100%;
@@ -313,14 +286,8 @@ const ImersaoClaudeV2 = () => {
           transition: left 0.5s;
         }
         .ic-cta-btn:hover::before { left: 100%; }
-        .ic-cta-btn--red {
-          background: #E44935;
-          color: #F2EDE4;
-          box-shadow: 0 0 30px rgba(228,73,53,0.25), 0 4px 20px rgba(0,0,0,0.4);
-        }
-        .ic-cta-btn--red:hover { box-shadow: 0 0 50px rgba(228,73,53,0.45), 0 8px 30px rgba(0,0,0,0.5); }
         .ic-cta-sub {
-          display: block; font-family: 'Fraunces', serif;
+          display: block; font-family: 'Plus Jakarta Sans', sans-serif;
           font-weight: 400; font-size: 0.7rem;
           letter-spacing: 0; text-transform: none;
           opacity: 0.85; margin-top: 4px;
@@ -333,13 +300,13 @@ const ImersaoClaudeV2 = () => {
           position: relative;
           background:
             radial-gradient(ellipse 70% 55% at 50% 0%, rgba(32,221,235,0.06) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 45% at 20% 90%, rgba(228,73,53,0.03) 0%, transparent 60%),
-            #05090B;
+            radial-gradient(ellipse 50% 45% at 20% 90%, rgba(139,124,246,0.03) 0%, transparent 60%),
+            #0A0A13;
         }
         .ic-hero::after {
           content: ''; position: absolute; bottom: 0; left: 0; right: 0;
           height: 120px;
-          background: linear-gradient(to bottom, transparent, #05090B);
+          background: linear-gradient(to bottom, transparent, #0A0A13);
           pointer-events: none;
         }
         .ic-hero__reactor {
@@ -367,7 +334,7 @@ const ImersaoClaudeV2 = () => {
         .ic-hero__event-tag span {
           display: inline-block;
           background: rgba(32,221,235,0.08); border: 1px solid rgba(32,221,235,0.2);
-          padding: 4px 14px;
+          padding: 4px 14px; border-radius: 9999px;
         }
         .ic-hero__title {
           font-size: clamp(2.2rem,6vw,3.6rem);
@@ -376,8 +343,8 @@ const ImersaoClaudeV2 = () => {
         }
         .ic-hero__sub {
           font-size: clamp(1rem,2.5vw,1.15rem);
-          color: #C8C0B2; max-width: 600px;
-          margin: 0 auto 36px; font-family: 'Fraunces', serif;
+          color: #B7B8C7; max-width: 600px;
+          margin: 0 auto 36px; font-family: 'Plus Jakarta Sans', sans-serif;
           opacity: 0; animation: ic-fadeUp 0.7s 0.7s forwards;
         }
         .ic-hero__form-wrap { opacity: 0; animation: ic-fadeUp 0.7s 0.9s forwards; }
@@ -388,7 +355,7 @@ const ImersaoClaudeV2 = () => {
         }
         .ic-hero__meta-item {
           font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; color: #7D827D;
+          font-size: 0.78rem; color: #7B7C8C;
           display: flex; align-items: center; gap: 6px;
         }
         .ic-hero__meta-item .ic-dot {
@@ -416,76 +383,80 @@ const ImersaoClaudeV2 = () => {
           gap: 16px; margin: 40px 0;
         }
         .ic-problem-card {
-          background: #0B1114; border: 1px solid rgba(255,255,255,0.10);
+          background: #15151F; border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 16px;
           padding: 24px 20px; text-align: center;
           transition: border-color 0.3s;
         }
-        .ic-problem-card:hover { border-color: rgba(228,73,53,0.3); }
+        .ic-problem-card:hover { border-color: rgba(139,124,246,0.3); }
         .ic-problem-card__stat {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 2.4rem; font-weight: 400;
-          color: #E44935; line-height: 1; margin-bottom: 8px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 2.4rem; font-weight: 800;
+          color: #8B7CF6; line-height: 1; margin-bottom: 8px;
         }
-        .ic-problem-card__label { font-size: 0.82rem; color: #7D827D; line-height: 1.4; font-family: 'Fraunces', serif; }
+        .ic-problem-card__label { font-size: 0.82rem; color: #7B7C8C; line-height: 1.4; font-family: 'Plus Jakarta Sans', sans-serif; }
         /* AULA CARDS */
         .ic-aula-card {
-          background: #0B1114; border: 1px solid rgba(255,255,255,0.10);
+          background: #15151F; border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 20px;
           padding: 28px; margin-bottom: 16px;
           display: flex; gap: 20px; align-items: flex-start;
           transition: border-color 0.3s, background 0.3s;
         }
-        .ic-aula-card:hover { border-color: rgba(32,221,235,0.2); background: #11171A; }
+        .ic-aula-card:hover { border-color: rgba(32,221,235,0.2); background: #1A1A28; }
         .ic-aula-card__num {
-          flex-shrink: 0; width: 52px; height: 52px;
+          flex-shrink: 0; width: 52px; height: 52px; border-radius: 9999px;
           display: flex; align-items: center; justify-content: center;
-          font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.3rem;
+          font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.3rem;
         }
         .ic-aula-card__num--1 { background: rgba(32,221,235,0.08); border: 1px solid rgba(32,221,235,0.2); color: #20DDEB; }
-        .ic-aula-card__num--2 { background: rgba(200,192,178,0.08); border: 1px solid rgba(200,192,178,0.2); color: #C8C0B2; }
-        .ic-aula-card__num--3 { background: rgba(228,73,53,0.08); border: 1px solid rgba(228,73,53,0.2); color: #E44935; }
+        .ic-aula-card__num--2 { background: rgba(154,156,170,0.08); border: 1px solid rgba(154,156,170,0.2); color: #B7B8C7; }
+        .ic-aula-card__num--3 { background: rgba(139,124,246,0.08); border: 1px solid rgba(139,124,246,0.2); color: #8B7CF6; }
         .ic-aula-card__tag {
           font-family: 'IBM Plex Mono', monospace;
           font-size: 0.7rem; letter-spacing: 0.15em;
-          text-transform: uppercase; color: #7D827D; margin-bottom: 4px;
+          text-transform: uppercase; color: #7B7C8C; margin-bottom: 4px;
         }
         .ic-aula-card__title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.2rem; margin-bottom: 6px;
-          text-transform: uppercase; line-height: 1; color: #F2EDE4;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 800; font-size: 1.2rem; margin-bottom: 6px;
+          text-transform: none; line-height: 1.25; color: #F5F5FA;
         }
-        .ic-aula-card__desc { font-size: 0.9rem; color: #C8C0B2; font-family: 'Fraunces', serif; }
+        .ic-aula-card__desc { font-size: 0.9rem; color: #B7B8C7; font-family: 'Plus Jakarta Sans', sans-serif; }
         /* AUTHOR */
         .ic-author {
           display: flex; gap: 24px; align-items: flex-start;
-          padding: 32px; background: #0B1114;
-          border: 1px solid rgba(255,255,255,0.10);
+          padding: 32px; background: #15151F;
+          border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 20px;
           margin: 40px 0;
         }
-        .ic-author__name { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.3rem; margin-bottom: 2px; text-transform: uppercase; color: #F2EDE4; }
+        .ic-author__name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.3rem; margin-bottom: 2px; text-transform: none; color: #F5F5FA; }
         .ic-author__role { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: #20DDEB; margin-bottom: 10px; }
-        .ic-author__text { font-size: 0.9rem; color: #C8C0B2; font-family: 'Fraunces', serif; line-height: 1.7; }
+        .ic-author__text { font-size: 0.9rem; color: #B7B8C7; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.7; }
         /* BLOCKQUOTE */
         .ic-page blockquote {
-          border-left: 3px solid rgba(255,255,255,0.10);
+          border-left: 3px solid rgba(32,221,235,0.35);
+          border-radius: 0 16px 16px 0;
           padding: 18px 24px; margin: 32px 0;
           background: rgba(255,255,255,0.02);
-          font-style: italic; color: #C8C0B2; font-size: 0.95rem;
-          font-family: 'Fraunces', serif;
+          font-style: italic; color: #B7B8C7; font-size: 0.95rem;
+          font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .ic-page blockquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; color: #7D827D; font-family: 'IBM Plex Mono', monospace; }
+        .ic-page blockquote cite { display: block; margin-top: 10px; font-style: normal; font-size: 0.8rem; color: #7B7C8C; font-family: 'IBM Plex Mono', monospace; }
         /* CHECK LIST */
         .ic-check-list { list-style: none; margin: 28px 0; padding: 0; }
         .ic-check-list li {
           padding: 10px 0 10px 28px; position: relative;
-          color: #C8C0B2; font-size: 0.92rem;
+          color: #B7B8C7; font-size: 0.92rem;
           border-bottom: 1px solid rgba(255,255,255,0.10);
-          font-family: 'Fraunces', serif;
+          font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .ic-check-list li:last-child { border-bottom: none; }
         .ic-check-list li::before { content: '▸'; position: absolute; left: 0; color: #20DDEB; font-weight: 700; }
         /* MID CAPTURE */
         .ic-mid-capture {
-          background: #0B1114;
+          background: #15151F;
           border-top: 1px solid rgba(32,221,235,0.15);
           border-bottom: 1px solid rgba(32,221,235,0.15);
           padding: 56px 24px; text-align: center;
@@ -493,12 +464,12 @@ const ImersaoClaudeV2 = () => {
         /* CHART TABS */
         .ic-chart-tab {
           font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.78rem; padding: 8px 16px;
+          font-size: 0.78rem; padding: 8px 16px; border-radius: 9999px;
           border: 1px solid rgba(255,255,255,0.10);
-          background: transparent; color: #7D827D;
+          background: transparent; color: #7B7C8C;
           cursor: pointer; transition: all 0.3s;
         }
-        .ic-chart-tab:hover { border-color: rgba(32,221,235,0.2); color: #C8C0B2; }
+        .ic-chart-tab:hover { border-color: rgba(32,221,235,0.2); color: #B7B8C7; }
         .ic-chart-tab.active {
           background: rgba(32,221,235,0.08);
           border-color: #20DDEB;
@@ -512,61 +483,63 @@ const ImersaoClaudeV2 = () => {
           to { opacity: 1; transform: translateX(0); }
         }
         .rev-bar {
-          height: 6px; width: var(--width, 100%);
+          height: 6px; width: var(--width, 100%); border-radius: 4px;
           background: var(--color, #20DDEB);
           margin-bottom: 8px; min-width: 8px; position: relative;
           transition: width 0.8s ease;
         }
         .rev-bar::after {
           content: ''; position: absolute; right: 0; top: -3px;
-          width: 12px; height: 12px;
+          width: 12px; height: 12px; border-radius: 9999px;
           background: var(--color, #20DDEB);
           box-shadow: 0 0 10px var(--color, #20DDEB);
         }
         .rev-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
-        .rev-label { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: 1.05rem; color: #F2EDE4; }
-        .rev-date { font-size: 0.75rem; color: #7D827D; font-family: 'IBM Plex Mono', monospace; }
-        .rev-span { font-size: 0.85rem; color: #C8C0B2; font-family: 'Fraunces', serif; }
-        .rev-span--alert { color: #E44935; font-weight: 600; }
+        .rev-label { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400; font-size: 1.05rem; color: #F5F5FA; }
+        .rev-date { font-size: 0.75rem; color: #7B7C8C; font-family: 'IBM Plex Mono', monospace; }
+        .rev-span { font-size: 0.85rem; color: #B7B8C7; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .rev-span--alert { color: #8B7CF6; font-weight: 600; }
         /* PRICE BOX */
         .ic-price-box {
-          text-align: center; background: #0B1114;
+          text-align: center; background: #15151F;
           border: 1px solid rgba(32,221,235,0.2);
+          border-radius: 24px;
           padding: 48px 32px; margin: 40px auto; max-width: 500px;
           position: relative; overflow: hidden;
         }
         .ic-price-box::before {
           content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, #20DDEB, #C8C0B2, #E44935);
+          background: linear-gradient(90deg, #20DDEB, #8B7CF6);
         }
         .ic-price-box__tag {
           display: inline-block; font-family: 'IBM Plex Mono', monospace;
           font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-          color: #05090B; background: #20DDEB;
+          color: #0A0A13; background: #20DDEB; border-radius: 9999px;
           padding: 4px 14px; margin-bottom: 20px;
         }
-        .ic-price-box__label { font-size: 0.95rem; color: #C8C0B2; margin-bottom: 8px; font-family: 'Fraunces', serif; }
-        .ic-price-box__old { font-size: 1.1rem; color: #7D827D; text-decoration: line-through; margin-bottom: 4px; font-family: 'Fraunces', serif; }
+        .ic-price-box__label { font-size: 0.95rem; color: #B7B8C7; margin-bottom: 8px; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .ic-price-box__old { font-size: 1.1rem; color: #7B7C8C; text-decoration: line-through; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
         .ic-price-box__amount {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 4rem; font-weight: 400; line-height: 1; margin-bottom: 4px;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 4px;
         }
         .ic-price-box__installment {
           font-family: 'IBM Plex Mono', monospace;
-          font-size: 0.85rem; color: #7D827D; margin-bottom: 28px;
+          font-size: 0.85rem; color: #7B7C8C; margin-bottom: 28px;
         }
         .ic-guarantee { text-align: center; padding: 32px 24px; margin: 16px 0; }
         .ic-guarantee__icon { font-size: 2rem; margin-bottom: 12px; }
         .ic-guarantee__title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.3rem; font-weight: 400;
-          color: #20DDEB; margin-bottom: 6px; text-transform: uppercase;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 1.3rem; font-weight: 800;
+          color: #20DDEB; margin-bottom: 6px; text-transform: none;
         }
-        .ic-guarantee__text { color: #7D827D; font-size: 0.88rem; max-width: 460px; margin: 0 auto; font-family: 'Fraunces', serif; }
+        .ic-guarantee__text { color: #7B7C8C; font-size: 0.88rem; max-width: 460px; margin: 0 auto; font-family: 'Plus Jakarta Sans', sans-serif; }
         /* BONUS BOX */
         .ic-bonus-box {
           background: rgba(32,221,235,0.04);
           border: 1px solid rgba(32,221,235,0.2);
+          border-radius: 16px;
           padding: 24px 28px;
           margin: 0 auto 24px; max-width: 500px; text-align: left;
         }
@@ -578,13 +551,14 @@ const ImersaoClaudeV2 = () => {
         /* BONUS images */
         .ic-bonus-prompts-desktop {
           width: 100%; max-width: 900px; height: auto;
-          margin: 0 auto; display: block;
+          margin: 0 auto; display: block; border-radius: 16px;
         }
-        .ic-bonus-prompts-mobile { display: none; }
+        .ic-bonus-prompts-mobile { display: none; border-radius: 16px; }
         /* BONUS CARD */
         .ic-bonus-card {
-          background: #0B1114;
+          background: #15151F;
           border: 1px solid rgba(32,221,235,0.18);
+          border-radius: 16px;
           padding: 20px 18px;
           text-align: left;
         }
@@ -594,52 +568,54 @@ const ImersaoClaudeV2 = () => {
           color: #20DDEB; margin-bottom: 8px;
         }
         .ic-bonus-card__title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1rem; font-weight: 400;
-          color: #F2EDE4; margin-bottom: 6px; text-transform: uppercase;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-size: 1rem; font-weight: 800;
+          color: #F5F5FA; margin-bottom: 6px; text-transform: none;
         }
-        .ic-bonus-card__desc { color: #C8C0B2; font-size: 0.85rem; line-height: 1.5; font-family: 'Fraunces', serif; }
+        .ic-bonus-card__desc { color: #B7B8C7; font-size: 0.85rem; line-height: 1.5; font-family: 'Plus Jakarta Sans', sans-serif; }
         /* FAQ */
         .ic-faq-item { border-bottom: 1px solid rgba(255,255,255,0.10); padding: 18px 0; }
         .ic-faq-item summary {
-          font-family: 'Bebas Neue', sans-serif;
-          font-weight: 400; font-size: 1.1rem;
-          cursor: pointer; color: #F2EDE4;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-weight: 700; font-size: 1.1rem;
+          cursor: pointer; color: #F5F5FA;
           list-style: none; display: flex;
           justify-content: space-between; align-items: center;
-          text-transform: uppercase;
+          text-transform: none;
         }
         .ic-faq-item summary::-webkit-details-marker { display: none; }
         .ic-faq-item summary::after { content: '+'; font-size: 1.3rem; color: #20DDEB; transition: transform 0.3s; font-family: 'IBM Plex Mono', monospace; }
         .ic-faq-item[open] summary::after { content: '−'; }
-        .ic-faq-item p { color: #C8C0B2; font-size: 0.9rem; margin-top: 10px; padding-right: 28px; font-family: 'Fraunces', serif; line-height: 1.7; }
+        .ic-faq-item p { color: #B7B8C7; font-size: 0.9rem; margin-top: 10px; padding-right: 28px; font-family: 'Plus Jakarta Sans', sans-serif; line-height: 1.7; }
         /* FOOTER */
         .ic-footer {
           text-align: center; padding: 36px 24px;
-          font-size: 0.75rem; color: #7D827D;
+          font-size: 0.75rem; color: #7B7C8C;
           border-top: 1px solid rgba(255,255,255,0.10);
           font-family: 'IBM Plex Mono', monospace;
         }
         /* CHART WRAPPER */
         .ic-chart-box {
-          background: #0B1114;
-          border: 1px solid rgba(255,255,255,0.10);
+          background: #15151F;
+          border: 1px solid rgba(255,255,255,0.09);
+          border-radius: 16px;
           padding: 24px 20px 16px;
         }
         /* ADOPTION CURVE BOX */
         .ic-adoption-box {
           border: 1px solid rgba(32,221,235,0.14);
+          border-radius: 16px;
           overflow: hidden;
         }
         .ic-adoption-header {
-          background: #11171A;
+          background: #1A1A28;
           border-bottom: 1px solid rgba(32,221,235,0.10);
           padding: 10px 18px;
           display: flex; align-items: center; gap: 8px;
         }
         .ic-adoption-body {
           padding: 18px 18px 14px;
-          background: #05090B;
+          background: #0A0A13;
         }
         /* RESPONSIVE */
         @media (max-width: 640px) {
@@ -696,7 +672,7 @@ const ImersaoClaudeV2 = () => {
           </p>
 
           <div className="ic-hero__form-wrap">
-            <button className="ic-cta-btn ic-cta-btn--red" onClick={() => handleCTA("hero")}>
+            <button className="ic-cta-btn" onClick={() => handleCTA("hero")}>
               QUERO DOMINAR O CLAUDE
               <span className="ic-cta-sub">3 aulas · Acesso imediato · R$47</span>
             </button>
@@ -723,9 +699,9 @@ const ImersaoClaudeV2 = () => {
           <h2>Descubra porque <span className="ic-highlight-cyan">50% dos usuários sérios</span> de IA generativa nos últimos meses migraram do ChatGPT para o Claude.</h2>
 
           <div className="ic-chart-box" style={{ marginTop: 40 }}>
-            <p style={{ fontSize: 18, fontWeight: 500, color: "#F2EDE4", margin: "0 0 4px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Uso do ChatGPT vs Claude</p>
-            <p style={{ fontSize: 14, fontWeight: 500, color: "#C8C0B2", margin: "0 0 4px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Dados até fev 2026</p>
-            <p style={{ fontSize: 12, color: "#C8C0B2", margin: "0 0 16px", textAlign: "left", fontFamily: "'Fraunces', serif" }}>Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
+            <p style={{ fontSize: 18, fontWeight: 500, color: "#F5F5FA", margin: "0 0 4px", textAlign: "left", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Uso do ChatGPT vs Claude</p>
+            <p style={{ fontSize: 14, fontWeight: 500, color: "#B7B8C7", margin: "0 0 4px", textAlign: "left", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Dados até fev 2026</p>
+            <p style={{ fontSize: 12, color: "#B7B8C7", margin: "0 0 16px", textAlign: "left", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Participação de mercado em gastos com assinaturas de chat de IA nos EUA</p>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px", marginBottom: 16 }}>
               {[
@@ -738,7 +714,7 @@ const ImersaoClaudeV2 = () => {
                 { color: "#c06020", label: "Claude Max" },
                 { color: "#7a3010", label: "Claude Enterprise" },
               ].map((l) => (
-                <span key={l.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#C8C0B2", fontFamily: "'IBM Plex Mono', monospace" }}>
+                <span key={l.label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#B7B8C7", fontFamily: "'IBM Plex Mono', monospace" }}>
                   <span style={{ width: 12, height: 12, background: l.color, flexShrink: 0 }} />
                   {l.label}
                 </span>
@@ -749,12 +725,12 @@ const ImersaoClaudeV2 = () => {
               <canvas ref={marketShareChartRef} />
             </div>
 
-            <p style={{ fontSize: 10, color: "#7D827D", marginTop: 12, textAlign: "left", lineHeight: 1.5, fontFamily: "'IBM Plex Mono', monospace" }}>
+            <p style={{ fontSize: 10, color: "#7B7C8C", marginTop: 12, textAlign: "left", lineHeight: 1.5, fontFamily: "'IBM Plex Mono', monospace" }}>
               Fonte: Ramp Economics Lab (ramp.com/data). Dados de cartão corporativo e pagamento de contas de mais de 50.000 empresas dos EUA na plataforma financeira da Ramp.
             </p>
           </div>
 
-          <p style={{ color: "#C8C0B2", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ color: "#B7B8C7", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Nos últimos 12 meses, mais mudou na forma como se ganha dinheiro do que nos últimos 12 anos. E isso é só o começo. Os números mostram o que está por vir:
           </p>
 
@@ -781,7 +757,7 @@ const ImersaoClaudeV2 = () => {
       <section className="ic-section">
         <div className="ic-container">
           <h2 style={{ textAlign: "center" }}>A velocidade só <span className="ic-highlight-cyan">acelera</span></h2>
-          <p style={{ textAlign: "center", color: "#C8C0B2", maxWidth: 600, margin: "16px auto 0", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ textAlign: "center", color: "#B7B8C7", maxWidth: 600, margin: "16px auto 0", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Pense comigo: quantas décadas seu avô viveu com a mesma profissão? Quantas vezes seus pais precisaram se reinventar? E agora… quantas mudanças você enfrentou só nos últimos dois anos?
           </p>
 
@@ -807,10 +783,10 @@ const ImersaoClaudeV2 = () => {
             <div style={{ display: activeTab === "revolucoes" ? "block" : "none" }}>
               <div className="rev-timeline-visual">
                 {[
-                  { color: "#C8C0B2", delay: "0.1s", width: "100%", label: "Revolução Agrícola", date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
-                  { color: "#C8C0B2", delay: "0.3s", width: "15%", label: "Revolução Industrial", date: "~1800 d.C.", span: "~150 anos até a próxima", alert: false },
+                  { color: "#B7B8C7", delay: "0.1s", width: "100%", label: "Revolução Agrícola", date: "~10.000 a.C.", span: "~11.800 anos até a próxima revolução", alert: false },
+                  { color: "#B7B8C7", delay: "0.3s", width: "15%", label: "Revolução Industrial", date: "~1800 d.C.", span: "~150 anos até a próxima", alert: false },
                   { color: "#20DDEB", delay: "0.5s", width: "5.5%", label: "Revolução Tecnológica", date: "~1950 d.C.", span: "~65 anos até a próxima", alert: false },
-                  { color: "#E44935", delay: "0.7s", width: "0.85%", label: "Revolução da IA", date: "~2015 d.C.", span: "Acelerando em meses, não anos", alert: true },
+                  { color: "#8B7CF6", delay: "0.7s", width: "0.85%", label: "Revolução da IA", date: "~2015 d.C.", span: "Acelerando em meses, não anos", alert: true },
                 ].map((r, i) => (
                   <div key={i} className="rev-item" style={{ "--color": r.color, "--delay": r.delay } as React.CSSProperties}>
                     <div className="rev-bar" style={{ "--width": r.width } as React.CSSProperties} />
@@ -822,7 +798,7 @@ const ImersaoClaudeV2 = () => {
                   </div>
                 ))}
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p style={{ textAlign: "center", color: "#7B7C8C", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
                 O intervalo entre revoluções caiu de milênios → séculos → décadas → anos
               </p>
             </div>
@@ -832,7 +808,7 @@ const ImersaoClaudeV2 = () => {
               <div style={{ position: "relative", width: "100%", height: 340 }}>
                 <canvas ref={adoptionChartRef} />
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p style={{ textAlign: "center", color: "#7B7C8C", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
                 Anos até atingir 50% de adoção nos EUA · Fonte: Our World in Data, Visual Capitalist, Epoch AI
               </p>
             </div>
@@ -842,7 +818,7 @@ const ImersaoClaudeV2 = () => {
               <div style={{ position: "relative", width: "100%", height: 380 }}>
                 <canvas ref={users100mChartRef} />
               </div>
-              <p style={{ textAlign: "center", color: "#7D827D", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
+              <p style={{ textAlign: "center", color: "#7B7C8C", fontSize: "0.78rem", marginTop: 12, fontFamily: "'IBM Plex Mono',monospace" }}>
                 Meses até atingir 100 milhões de usuários · Fonte: UBS, Visual Capitalist, Statista
               </p>
             </div>
@@ -852,42 +828,40 @@ const ImersaoClaudeV2 = () => {
             "Em breve teremos uma pessoa fazendo o trabalho de cinco graças à IA. A dúvida é: quem não usar a tecnologia conseguirá acompanhar? Provavelmente não."
           </blockquote>
 
-          <p style={{ color: "#C8C0B2", textAlign: "center", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ color: "#B7B8C7", textAlign: "center", maxWidth: 620, margin: "32px auto 0", fontSize: "0.95rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Em todas as eras da humanidade, quem se destacou foram aqueles que conseguiram dominar novas tecnologias com velocidade.
           </p>
-          <p style={{ color: "#F2EDE4", textAlign: "center", fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "1.4rem", marginTop: 16, textTransform: "uppercase", letterSpacing: 1 }}>
+          <p style={{ color: "#F5F5FA", textAlign: "center", fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 700, fontSize: "1.4rem", marginTop: 16 }}>
             Isso, tem até nome. São os <span className="ic-highlight-cyan">Early Adopters</span>.
           </p>
 
           {/* Curva de Adoção */}
           <div className="ic-adoption-box" style={{ marginTop: 40 }}>
             <div className="ic-adoption-header">
-              <div style={{ display: "flex", gap: 5 }}>
-                <div style={{ width: 10, height: 10, background: "#E44935" }} />
-                <div style={{ width: 10, height: 10, background: "#C8C0B2" }} />
-                <div style={{ width: 10, height: 10, background: "#20DDEB" }} />
-              </div>
-              <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#7D827D", letterSpacing: 2, textTransform: "uppercase", marginLeft: 6 }}>rev_lab // hud.sys // adoção.v3</span>
-              <span style={{ marginLeft: "auto", fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, color: "#20DDEB", background: "rgba(32,221,235,0.08)", border: "1px solid rgba(32,221,235,0.2)", padding: "2px 8px", letterSpacing: 2 }}>LIVE</span>
+              <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#7B7C8C", letterSpacing: "0.14em", textTransform: "uppercase" }}>Curva de adoção tecnológica</span>
+              <span style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, color: "#20DDEB", background: "rgba(32,221,235,0.08)", border: "1px solid rgba(32,221,235,0.2)", padding: "3px 10px", borderRadius: 9999, letterSpacing: "0.1em" }}>
+                <span style={{ width: 5, height: 5, borderRadius: 9999, background: "#20DDEB", animation: "ic-pulse 2s ease-in-out infinite" }} />
+                Ao vivo
+              </span>
             </div>
             <div className="ic-adoption-body">
               <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#20DDEB", letterSpacing: 3, textTransform: "uppercase", marginBottom: 4 }}>03 — O Mecanismo</div>
-              <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 20, fontWeight: 400, color: "#F2EDE4", textTransform: "uppercase", lineHeight: 1.2 }}>CURVA DE <span style={{ color: "#20DDEB" }}>ADOÇÃO</span> TECNOLÓGICA</div>
-              <div style={{ fontFamily: "'Fraunces',serif", fontSize: 12, color: "#7D827D", fontWeight: 300, marginTop: 4, marginBottom: 12 }}>Rogers (1962) — onde você está na curva define quanto você vai ganhar</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 20, fontWeight: 800, color: "#F5F5FA", lineHeight: 1.25 }}>Curva de <span style={{ color: "#20DDEB" }}>adoção</span> tecnológica</div>
+              <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 12, color: "#7B7C8C", fontWeight: 400, marginTop: 4, marginBottom: 12 }}>Rogers (1962) — onde você está na curva define quanto você vai ganhar</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "5px 14px", marginBottom: 10 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#C8C0B2" }} /><span style={{ color: "#C8C0B2" }}>Adotantes por período (sino)</span></div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#B7B8C7" }} /><span style={{ color: "#B7B8C7" }}>Adotantes por período (sino)</span></div>
                 <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#20DDEB" }} /><span style={{ color: "#20DDEB" }}>Adoção acumulada (curva S)</span></div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#E44935" }} /><span style={{ color: "#E44935" }}>Agentes de IA — agora</span></div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase" }}><div style={{ width: 8, height: 8, background: "#8B7CF6" }} /><span style={{ color: "#8B7CF6" }}>Agentes de IA — agora</span></div>
               </div>
 
               <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style={{ display: "block", width: "100%" }}>
                 <defs>
                   <linearGradient id="bellGradV2" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C8C0B2" stopOpacity={0.35} />
-                    <stop offset="100%" stopColor="#C8C0B2" stopOpacity={0.03} />
+                    <stop offset="0%" stopColor="#B7B8C7" stopOpacity={0.35} />
+                    <stop offset="100%" stopColor="#B7B8C7" stopOpacity={0.03} />
                   </linearGradient>
                 </defs>
-                <rect x="50" y="10" width="15.75" height="180" fill="rgba(200,192,178,0.04)" />
+                <rect x="50" y="10" width="15.75" height="180" fill="rgba(154,156,170,0.04)" />
                 <rect x="65.75" y="10" width="85.05" height="180" fill="rgba(32,221,235,0.04)" />
                 <rect x="150.8" y="10" width="214.2" height="180" fill="rgba(32,221,235,0.03)" />
                 <rect x="365" y="10" width="214.2" height="180" fill="rgba(125,130,125,0.03)" />
@@ -896,50 +870,50 @@ const ImersaoClaudeV2 = () => {
                 <line x1="150.8" y1="10" x2="150.8" y2="190" stroke="rgba(32,221,235,0.12)" strokeWidth="0.5" strokeDasharray="3,3" />
                 <line x1="365" y1="10" x2="365" y2="190" stroke="rgba(32,221,235,0.12)" strokeWidth="0.5" strokeDasharray="3,3" />
                 <line x1="579.2" y1="10" x2="579.2" y2="190" stroke="rgba(32,221,235,0.12)" strokeWidth="0.5" strokeDasharray="3,3" />
-                <text x="58" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#C8C0B2" textAnchor="middle" opacity="0.8">INOV.</text>
+                <text x="58" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#B7B8C7" textAnchor="middle" opacity="0.8">INOV.</text>
                 <text x="108" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#20DDEB" textAnchor="middle" opacity="0.8">EARLY ADO.</text>
                 <text x="258" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#20DDEB" textAnchor="middle" opacity="0.6">EARLY MAJORITY</text>
-                <text x="472" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7D827D" textAnchor="middle" opacity="0.8">LATE MAJORITY</text>
-                <text x="630" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7D827D" textAnchor="middle" opacity="0.6">RETARD.</text>
+                <text x="472" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7B7C8C" textAnchor="middle" opacity="0.8">LATE MAJORITY</text>
+                <text x="630" y="22" fontFamily="IBM Plex Mono,monospace" fontSize="7" fill="#7B7C8C" textAnchor="middle" opacity="0.6">RETARD.</text>
                 <line x1="50" y1="190" x2="680" y2="190" stroke="rgba(32,221,235,0.2)" strokeWidth="0.5" />
                 <line x1="50" y1="10" x2="50" y2="190" stroke="rgba(32,221,235,0.15)" strokeWidth="0.5" />
                 <line x1="680" y1="10" x2="680" y2="190" stroke="rgba(32,221,235,0.15)" strokeWidth="0.5" />
                 <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190 Z" fill="url(#bellGradV2)" />
-                <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190" fill="none" stroke="#C8C0B2" strokeWidth="2.5" />
+                <path d="M 50,190 C 60,190 65,189 80,188 C 100,187 110,185 130,182 C 150,178 155,173 170,166 C 185,158 192,150 210,138 C 228,124 238,112 258,95 C 275,80 285,66 305,50 C 320,38 332,27 345,20 C 352,16 358,13 365,11 C 372,13 378,16 385,20 C 398,27 410,38 425,50 C 445,66 455,80 472,95 C 492,112 502,124 520,138 C 538,150 545,158 560,166 C 575,173 580,178 600,182 C 620,185 630,187 650,188 C 665,189 670,190 680,190" fill="none" stroke="#B7B8C7" strokeWidth="2.5" />
                 <path d="M 50,189 C 70,188 90,187 110,186 C 130,184 145,181 160,177 C 175,172 185,165 200,156 C 215,146 225,135 240,122 C 258,107 268,95 285,82 C 302,68 315,57 335,46 C 348,38 356,34 365,31 C 374,28 382,26 395,23 C 410,20 422,17 440,14 C 458,12 470,11 490,11 C 520,11 550,11 580,11 C 610,11 640,11 660,11 C 668,11 674,11 680,11" fill="none" stroke="#20DDEB" strokeWidth="2" strokeLinecap="round" />
-                <line x1="108" y1="10" x2="108" y2="190" stroke="#E44935" strokeWidth="1.5" strokeDasharray="4,4" />
-                <rect x="86" y="9" width="44" height="15" rx="2" fill="#E44935" />
-                <text x="108" y="20" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#F2EDE4" textAnchor="middle" fontWeight="500">AGORA</text>
-                <circle cx="108" cy="183" r="4" fill="#E44935" />
-                <circle cx="108" cy="178" r="4" fill="#E44935" opacity="0.6" />
+                <line x1="108" y1="10" x2="108" y2="190" stroke="#8B7CF6" strokeWidth="1.5" strokeDasharray="4,4" />
+                <rect x="86" y="9" width="44" height="15" rx="2" fill="#8B7CF6" />
+                <text x="108" y="20" fontFamily="IBM Plex Mono,monospace" fontSize="8" fill="#F5F5FA" textAnchor="middle" fontWeight="500">AGORA</text>
+                <circle cx="108" cy="183" r="4" fill="#8B7CF6" />
+                <circle cx="108" cy="178" r="4" fill="#8B7CF6" opacity="0.6" />
               </svg>
 
               <div className="ic-adoption-segs" style={{ display: "flex", gap: 6, marginTop: 12, flexWrap: "wrap" }}>
                 {[
-                  { label: "Inovadores", pct: "2,5%", desc: "Constroem antes do mercado existir", color: "#C8C0B2" },
+                  { label: "Inovadores", pct: "2,5%", desc: "Constroem antes do mercado existir", color: "#B7B8C7" },
                   { label: "Early Adopters", pct: "13,5%", desc: "Líderes que vencem pela vantagem", color: "#20DDEB" },
                   { label: "Early Majority", pct: "34%", desc: "Adotam depois que a prova existe", color: "#20DDEB" },
-                  { label: "Late Majority", pct: "34%", desc: "Entram por pressão, não escolha", color: "#7D827D" },
-                  { label: "Retardatários", pct: "16%", desc: "Chegam quando a vantagem acabou", color: "#7D827D" },
+                  { label: "Late Majority", pct: "34%", desc: "Entram por pressão, não escolha", color: "#7B7C8C" },
+                  { label: "Retardatários", pct: "16%", desc: "Chegam quando a vantagem acabou", color: "#7B7C8C" },
                 ].map((seg) => (
-                  <div key={seg.label} className="ic-adoption-seg" style={{ flex: 1, minWidth: 110, background: "#0B1114", border: "1px solid rgba(255,255,255,0.10)", padding: "8px 9px", position: "relative", overflow: "hidden" }}>
+                  <div key={seg.label} className="ic-adoption-seg" style={{ flex: 1, minWidth: 110, background: "#15151F", border: "1px solid rgba(255,255,255,0.10)", borderRadius: 10, padding: "8px 9px", position: "relative", overflow: "hidden" }}>
                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 1.5, background: `linear-gradient(90deg, transparent, ${seg.color}80, transparent)` }} />
                     <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 7.5, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 3, color: seg.color }}>{seg.label}</div>
-                    <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 16, fontWeight: 400, lineHeight: 1, marginBottom: 2, color: seg.color }}>{seg.pct}</div>
-                    <div style={{ fontFamily: "'Fraunces',serif", fontSize: 9, color: "#7D827D", fontWeight: 300, lineHeight: 1.35 }}>{seg.desc}</div>
+                    <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 16, fontWeight: 400, lineHeight: 1, marginBottom: 2, color: seg.color }}>{seg.pct}</div>
+                    <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 9, color: "#7B7C8C", fontWeight: 300, lineHeight: 1.35 }}>{seg.desc}</div>
                   </div>
                 ))}
               </div>
 
-              <div className="ic-nowbar" style={{ background: "rgba(228,73,53,0.06)", border: "1px solid rgba(228,73,53,0.25)", padding: "10px 14px", marginTop: 12, display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ width: 26, height: 26, border: "1.5px solid #E44935", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <div style={{ width: 7, height: 7, background: "#E44935", animation: "ic-pulse 2s ease-in-out infinite" }} />
+              <div className="ic-nowbar" style={{ background: "rgba(139,124,246,0.06)", border: "1px solid rgba(139,124,246,0.25)", borderRadius: 14, padding: "10px 14px", marginTop: 12, display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 26, height: 26, borderRadius: 9999, border: "1.5px solid #8B7CF6", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div style={{ width: 7, height: 7, borderRadius: 9999, background: "#8B7CF6", animation: "ic-pulse 2s ease-in-out infinite" }} />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 11, fontWeight: 400, color: "#E44935", textTransform: "uppercase", letterSpacing: 1 }}>Agentes de IA — Posição Atual (2025–2026)</div>
-                  <div style={{ fontFamily: "'Fraunces',serif", fontSize: 10, color: "#7D827D", fontWeight: 300, marginTop: 2 }}>A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.</div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 11, fontWeight: 700, color: "#8B7CF6" }}>Agentes de IA — Posição Atual (2025–2026)</div>
+                  <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 10, color: "#7B7C8C", fontWeight: 400, marginTop: 2 }}>A janela entre Early Adopters e Early Majority está aberta agora. Quem entrar hoje ainda pega a vantagem de quem chegou cedo.</div>
                 </div>
-                <div className="ic-nowbar-pct" style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: 20, fontWeight: 400, color: "#E44935" }}>~8%</div>
+                <div className="ic-nowbar-pct" style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: 20, fontWeight: 800, color: "#8B7CF6" }}>~8%</div>
               </div>
             </div>
           </div>
@@ -951,8 +925,8 @@ const ImersaoClaudeV2 = () => {
       <section className="ic-mid-capture">
         <div className="ic-container">
           <h2>"Tá, Rodrigo. <span className="ic-highlight-cyan">O que eu faço com isso?</span>"</h2>
-          <p style={{ color: "#C8C0B2", maxWidth: 580, margin: "12px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
-            É exatamente pra responder essa pergunta que criei a <strong style={{ color: "#F2EDE4" }}>Imersão em Claude</strong>: 3 aulas onde eu vou te mostrar, na prática, como usar a IA mais poderosa do mercado pra criar sistemas que trabalham pelo seu negócio — e por que existe uma janela de oportunidade aberta agora que não vai durar.
+          <p style={{ color: "#B7B8C7", maxWidth: 580, margin: "12px auto 0", fontSize: "0.95rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+            É exatamente pra responder essa pergunta que criei a <strong style={{ color: "#F5F5FA" }}>Imersão em Claude</strong>: 3 aulas onde eu vou te mostrar, na prática, como usar a IA mais poderosa do mercado pra criar sistemas que trabalham pelo seu negócio — e por que existe uma janela de oportunidade aberta agora que não vai durar.
           </p>
           <div style={{ marginTop: 28 }}>
             <button className="ic-cta-btn" onClick={() => handleCTA("mid")}>
@@ -1010,9 +984,9 @@ const ImersaoClaudeV2 = () => {
       <div className="ic-divider" />
 
       {/* ══════ QUEM É O RODRIGO ══════ */}
-      <section className="ic-section ic-section--light">
+      <section className="ic-section">
         <div className="ic-container">
-          <h3 style={{ color: "#6A6A78", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'IBM Plex Mono',monospace", marginBottom: 8, textAlign: "center" }}>Quem vai conduzir a imersão</h3>
+          <h3 style={{ color: "#9A9CAA", fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.15em", fontFamily: "'IBM Plex Mono',monospace", marginBottom: 8, textAlign: "center" }}>Quem vai conduzir a imersão</h3>
           <h2 style={{ textAlign: "center" }}>Nós estamos juntos<br />nesse barco.</h2>
 
           <div className="ic-author">
@@ -1025,7 +999,7 @@ const ImersaoClaudeV2 = () => {
                 <br /><br />
                 Não sou desenvolvedor. Não sou guru de 22 anos que mora com os pais. Sou empreendedor, pai, cristão e estou com a minha esposa há mais de 10 anos. Assim como você, tenho contas para pagar e zero tempo a perder.
                 <br /><br />
-                Quando vi a velocidade dessa revolução, não fiquei debatendo se valia a pena. Parei tudo, testei dezenas de ferramentas e coloquei para rodar. O <strong style={{ color: "#0F8995" }}>Claude</strong> é, de longe, a IA mais poderosa atualmente. Ela não só responde perguntas. Ela executa tarefas. Constrói sistemas e faz entregas inteiras sozinha. Criei essa imersão para mostrar exatamente o que descobri.
+                Quando vi a velocidade dessa revolução, não fiquei debatendo se valia a pena. Parei tudo, testei dezenas de ferramentas e coloquei para rodar. O <strong style={{ color: "#20DDEB" }}>Claude</strong> é, de longe, a IA mais poderosa atualmente. Ela não só responde perguntas. Ela executa tarefas. Constrói sistemas e faz entregas inteiras sozinha. Criei essa imersão para mostrar exatamente o que descobri.
               </div>
             </div>
           </div>
@@ -1051,7 +1025,7 @@ const ImersaoClaudeV2 = () => {
       <div className="ic-divider" />
 
       {/* ══════ BÔNUS · NETWORKING ══════ */}
-      <section className="ic-section ic-section--light">
+      <section className="ic-section">
         <div className="ic-container" style={{ textAlign: "center", maxWidth: 900 }}>
           <span className="ic-bonus-tag" style={{ display: "inline-block", marginBottom: 16 }}>
             Bônus exclusivo · só pra alunos
@@ -1059,7 +1033,7 @@ const ImersaoClaudeV2 = () => {
           <h2 style={{ textAlign: "center" }}>
             Entre no <span className="ic-highlight-cyan">Grupo Exclusivo de Networking</span> dos alunos da Imersão
           </h2>
-          <p style={{ color: "#3A3A48", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 720, margin: "20px auto 0", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ color: "#B7B8C7", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 720, margin: "20px auto 0", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Acesso vitalício à comunidade fechada de quem está implementando IA de verdade nos próprios negócios. Troca diária com empresários e profissionais à frente da curva, oportunidades de parceria e respostas pra travas no caminho — sem ruído de grupos públicos.
           </p>
 
@@ -1082,7 +1056,7 @@ const ImersaoClaudeV2 = () => {
       <div className="ic-divider" />
 
       {/* ══════ BÔNUS · BIBLIOTECA DE PROMPTS ══════ */}
-      <section className="ic-section ic-section--light">
+      <section className="ic-section">
         <div className="ic-container" style={{ textAlign: "center", maxWidth: 1100 }}>
           <span className="ic-bonus-tag" style={{ display: "inline-block", marginBottom: 16 }}>
             Bônus incluso · de R$ 97 por R$ 0
@@ -1090,7 +1064,7 @@ const ImersaoClaudeV2 = () => {
           <h2 style={{ textAlign: "center" }}>
             Tenha acesso ao meu <span className="ic-highlight-cyan">Banco de Prompts Secreto</span>
           </h2>
-          <p style={{ color: "#3A3A48", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 720, margin: "20px auto 0", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ color: "#B7B8C7", fontSize: "1.05rem", lineHeight: 1.7, maxWidth: 720, margin: "20px auto 0", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Mais de 50 prompts validados, prontos pra copiar e colar. São os prompts que eu uso no dia a dia com Claude — vendas, copy, análise, planejamento, operação. Atalho de meses de teste.
           </p>
 
@@ -1117,9 +1091,9 @@ const ImersaoClaudeV2 = () => {
           <h2>O futuro pertence a quem<br />age <span className="ic-highlight-cyan">agora</span>.</h2>
 
           {/* MUDANÇA 6: ROI anchor com economia de tempo */}
-          <p style={{ color: "#C8C0B2", maxWidth: 600, margin: "16px auto 0", fontSize: "0.95rem", fontFamily: "'Fraunces', serif" }}>
+          <p style={{ color: "#B7B8C7", maxWidth: 600, margin: "16px auto 0", fontSize: "0.95rem", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Se a Imersão te economizar 5 horas de trabalho na primeira semana — e vai —{" "}
-            <strong style={{ color: "#F2EDE4" }}>ela já se pagou.</strong>{" "}
+            <strong style={{ color: "#F5F5FA" }}>ela já se pagou.</strong>{" "}
             Agora imagina quando você tiver sistemas funcionando.
           </p>
 
@@ -1129,11 +1103,11 @@ const ImersaoClaudeV2 = () => {
             <div className="ic-price-box__old">De R$ 197,00</div>
             <div className="ic-price-box__amount"><span className="ic-highlight-cyan">R$ 47</span></div>
             <div className="ic-price-box__installment">ou 6× de R$ 8,82 no cartão</div>
-            <button className="ic-cta-btn ic-cta-btn--red" onClick={() => handleCTA("pricing")} style={{ width: "100%", maxWidth: 380 }}>
+            <button className="ic-cta-btn" onClick={() => handleCTA("pricing")} style={{ width: "100%", maxWidth: 380 }}>
               GARANTIR MINHA VAGA AGORA
               <span className="ic-cta-sub">Acesso imediato após a confirmação do pagamento</span>
             </button>
-            <p style={{ color: "#7D827D", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
+            <p style={{ color: "#7B7C8C", fontSize: "0.78rem", marginTop: 16, fontFamily: "'IBM Plex Mono',monospace" }}>
               Pagamento seguro · Garantia de 7 dias · Acesso imediato
             </p>
           </div>
@@ -1141,7 +1115,7 @@ const ImersaoClaudeV2 = () => {
           {/* MUDANÇA 4: Bônus — Framework AVEE */}
           <div className="ic-bonus-box">
             <span className="ic-bonus-tag">Bônus incluso</span>
-            <p style={{ color: "#F2EDE4", fontSize: "0.95rem", lineHeight: 1.6, margin: 0, fontFamily: "'Fraunces', serif" }}>
+            <p style={{ color: "#F5F5FA", fontSize: "0.95rem", lineHeight: 1.6, margin: 0, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
               <strong>Framework de diagnóstico AVEE</strong> — descubra em 15 minutos quais são os 3 processos do seu negócio onde IA gera mais retorno.
             </p>
           </div>
@@ -1175,7 +1149,7 @@ const ImersaoClaudeV2 = () => {
       {/* ══════ FOOTER ══════ */}
       <footer className="ic-footer">
         <div className="ic-container">
-          <p style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, color: "#C8C0B2", marginBottom: 8, fontSize: "0.9rem", letterSpacing: 2 }}>IMERSÃO EM CLAUDE</p>
+          <p style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontWeight: 400, color: "#B7B8C7", marginBottom: 8, fontSize: "0.9rem", letterSpacing: 2 }}>IMERSÃO EM CLAUDE</p>
           <p>© 2026 Rodrigo Albuquerque · BA Consultoria · Todos os direitos reservados</p>
           <p style={{ marginTop: 8 }}>Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho é meramente ilustrativa.</p>
         </div>

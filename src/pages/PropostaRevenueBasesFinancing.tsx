@@ -8,6 +8,7 @@ import proofHotmart from "@/assets/proof-hotmart-vendas.png";
 import proofInstagram from "@/assets/proof-instagram-profile.jpg";
 import proofTikTok from "@/assets/proof-tiktok-profile.jpg";
 import PropostaLayout from "@/components/pb/PropostaLayout";
+import { Accent, Eyebrow, StatCard, SAAS_BTN_PRIMARY, SAAS_CARD } from "@/components/saas/ui";
 
 /* ── Dados fixos ───────────────────────────────────────────── */
 
@@ -254,7 +255,7 @@ function drawCompoundChart(canvas: HTMLCanvasElement) {
       ctx.arc(xPos(i), yPos(returnAccum[i]), 4, 0, Math.PI * 2);
       ctx.fillStyle = "#20DDEB";
       ctx.fill();
-      ctx.strokeStyle = "#060A12";
+      ctx.strokeStyle = "#0A0A13";
       ctx.lineWidth = 1.5;
       ctx.stroke();
     }
@@ -286,9 +287,9 @@ const PropostaRevenueBasesFinancing = () => {
       projeto="Revenue-Based Financing"
     >
       {/* ══════════ VISÃO GERAL ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 01 VISÃO GERAL</p>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>01 · Visão Geral</Eyebrow>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           Um modelo de Revenue-Based Financing onde você financia a distribuição de produtos validados e recebe uma fatia direta das vendas.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -297,19 +298,16 @@ const PropostaRevenueBasesFinancing = () => {
             { value: "R$3k", label: "Investimento mínimo/mês" },
             { value: "12 meses", label: "Janela de atribuição" },
           ].map((m) => (
-            <div key={m.label} className="border border-pb-grid-strong bg-pb-void-card p-6">
-              <div className="font-display text-[clamp(40px,5vw,64px)] text-pb-cyan leading-none">{m.value}</div>
-              <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-2">{m.label}</div>
-            </div>
+            <StatCard key={m.label} value={m.value} label={m.label} accent />
           ))}
         </div>
       </div>
 
       {/* ══════════ COMO FUNCIONA ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 02 MODELO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Como funciona</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>02 · Modelo</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Como funciona</h2>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           Você investe um valor mensal em tráfego pago. Esse valor financia campanhas que geram leads exclusivos para o seu cohort. Todo lead captado pelas suas campanhas é rastreado via UTM + link de coprodutor na Hotmart — e você recebe 30% de tudo que esse lead comprar nos próximos 12 meses.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -319,20 +317,20 @@ const PropostaRevenueBasesFinancing = () => {
             { n: "03", title: "Leads compram", text: "Cada lead gerado pelas suas campanhas entra na minha esteira de produtos. Toda venda é registrada automaticamente na Hotmart com split de coprodutor." },
             { n: "04", title: "Você recebe", text: "30% da receita líquida (pós-impostos e taxa Hotmart) é creditada automaticamente na sua conta. Sem burocracia, sem cobrança manual." },
           ].map((s) => (
-            <div key={s.n} className="border border-pb-grid-strong bg-pb-void-card p-6 relative">
-              <span className="font-display text-[64px] text-pb-ink-faint absolute top-4 right-5 leading-none select-none">{s.n}</span>
-              <h3 className="font-display uppercase text-pb-ink text-[22px] mb-3">{s.title}</h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{s.text}</p>
+            <div key={s.n} className={SAAS_CARD + " p-6 relative"}>
+              <span className="font-extrabold text-[56px] text-white/[0.07] absolute top-3 right-5 leading-none select-none">{s.n}</span>
+              <h3 className="font-bold text-saas-ink text-lg mb-3">{s.title}</h3>
+              <p className="text-saas-body text-sm leading-relaxed">{s.text}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ ESTEIRA DE PRODUTOS ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 03 ESTEIRA DE PRODUTOS</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Onde seu investimento gera receita</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>03 · Esteira de Produtos</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Onde seu investimento gera receita</h2>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           Os leads captados pelo seu tráfego entram em uma esteira progressiva de produtos. Quanto maior o valor percebido, maior o ticket — e o seu retorno cresce com cada upsell natural ao longo dos 12 meses.
         </p>
         <div className="space-y-3">
@@ -342,14 +340,14 @@ const PropostaRevenueBasesFinancing = () => {
             { name: "Super Agentes", desc: "Mentoria em grupo com calls ao vivo — venda via closer", ticket: "R$8.000", badge: "Back-end" },
             { name: "Consultoria de OS", desc: "Consultoria individual de construção de sistema operacional com IA", ticket: "R$36.000", badge: "High-end" },
           ].map((p) => (
-            <div key={p.name} className="border border-pb-grid-strong bg-pb-void-card p-5 flex flex-wrap items-center justify-between gap-4">
+            <div key={p.name} className={SAAS_CARD + " p-5 flex flex-wrap items-center justify-between gap-4"}>
               <div>
-                <div className="font-display uppercase text-pb-ink text-xl">{p.name}</div>
-                <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-1">{p.desc}</div>
+                <div className="font-bold text-saas-ink text-lg">{p.name}</div>
+                <div className="text-[13px] text-saas-faint mt-1">{p.desc}</div>
               </div>
               <div className="flex items-center gap-4">
-                <span className="font-display text-[28px] text-pb-cyan">{p.ticket}</span>
-                <span className="font-mono text-[9px] uppercase tracking-mono-wide border border-pb-grid-strong text-pb-cyan px-2 py-1">{p.badge}</span>
+                <Accent className="text-[26px] font-extrabold">{p.ticket}</Accent>
+                <span className="rounded-full border border-white/[0.10] bg-white/[0.03] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan">{p.badge}</span>
               </div>
             </div>
           ))}
@@ -357,10 +355,10 @@ const PropostaRevenueBasesFinancing = () => {
       </div>
 
       {/* ══════════ PROVA DE TRAÇÃO ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 04 PROVA DE TRAÇÃO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Quem você vai financiar</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>04 · Prova de Tração</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Quem você vai financiar</h2>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           Você não está apostando em uma ideia. Está financiando a distribuição de um ecossistema que já vende, já tem base e já tem audiência.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -369,9 +367,9 @@ const PropostaRevenueBasesFinancing = () => {
             { value: "28.1K", label: "Seguidores Instagram" },
             { value: "32.3K", label: "Seguidores TikTok" },
           ].map((m) => (
-            <div key={m.label} className="border border-pb-grid-strong bg-pb-void-card p-6 text-center">
-              <div className="font-display text-[clamp(36px,5vw,56px)] text-pb-cyan leading-none">{m.value}</div>
-              <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-2">{m.label}</div>
+            <div key={m.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6 text-center">
+              <div className="text-[clamp(30px,4vw,44px)] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">{m.value}</div>
+              <div className="mt-2.5 text-[12.5px] text-saas-faint">{m.label}</div>
             </div>
           ))}
         </div>
@@ -382,52 +380,51 @@ const PropostaRevenueBasesFinancing = () => {
             { src: proofInstagram, alt: "Perfil Instagram 28.1K seguidores" },
             { src: proofTikTok, alt: "Perfil TikTok 32.3K seguidores" },
           ].map((img) => (
-            <div key={img.alt} className="border border-pb-grid-strong overflow-hidden aspect-[4/3]">
+            <div key={img.alt} className="rounded-2xl border border-white/[0.09] overflow-hidden aspect-[4/3]">
               <img
                 src={img.src}
                 loading="lazy"
                 alt={img.alt}
                 className="w-full h-full object-cover"
-                style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
               />
             </div>
           ))}
         </div>
 
-        <p className="font-body text-pb-ink-muted text-sm leading-relaxed">
+        <p className="text-saas-muted text-sm leading-relaxed">
           Esses números foram construídos organicamente, sem investimento em tráfego pago. O produto já se provou — agora imagine o que acontece quando colocamos distribuição paga por trás disso.
         </p>
       </div>
 
       {/* ══════════ SOBRE MIM ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 05 QUEM ESTÁ POR TRÁS</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Sobre mim</h2>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>05 · Quem Está Por Trás</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Sobre mim</h2>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="flex-1 space-y-4">
-            <p className="font-body text-pb-ink-soft leading-relaxed">
+            <p className="text-saas-body text-[17px] leading-relaxed">
               Meu nome é Rodrigo Albuquerque. Sou empresário, cristão, marido e pai do Edmundo (que acabou de completar 2 meses). Sou CEO de uma holding com três unidades de negócio focada em inteligência artificial, empreendedorismo e desenvolvimento pessoal.
             </p>
-            <p className="font-body text-pb-ink-soft leading-relaxed">
+            <p className="text-saas-body text-[17px] leading-relaxed">
               Nos últimos anos, atendi mais de 200 clientes em 7 países diferentes. Formei mais de 580 alunos em diferentes programas de IA e construí uma audiência de mais de 60 mil seguidores entre Instagram e TikTok — tudo orgânico, sem um real investido em anúncios pro meu próprio perfil.
             </p>
-            <p className="font-body text-pb-ink-soft leading-relaxed">
+            <p className="text-saas-body text-[17px] leading-relaxed">
               Minha especialidade é construir sistemas operacionais com IA para empresas — automatizar processos, eliminar gargalos operacionais e criar estruturas que escalam sem depender proporcionalmente de mais equipe. É o que eu ensino nos meus cursos e é o que eu aplico no meu próprio negócio.
             </p>
-            <p className="font-body text-pb-cyan leading-relaxed font-medium">
+            <p className="text-saas-ink text-[17px] leading-relaxed font-semibold">
               A oportunidade que estou oferecendo aqui é simples: eu já tenho o produto, a audiência e o funil. O seu capital será utilizado para potencializar algo que já existe. E é por isso que o retorno é tão eficiente.
             </p>
           </div>
-          <div className="border border-pb-grid-strong bg-pb-void-card p-6 min-w-[260px]">
-            <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-5">Trajetória</div>
+          <div className={SAAS_CARD + " p-6 min-w-[260px]"}>
+            <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-5">Trajetória</div>
             {[
               { name: "200+ clientes atendidos", desc: "Consultoria, Marketing e IA" },
               { name: "580+ alunos formados", desc: "Cursos de IA aplicada a negócios" },
               { name: "60K+ seguidores", desc: "Crescimento 100% orgânico" },
             ].map((t) => (
               <div key={t.name} className="mb-4">
-                <div className="font-display uppercase text-pb-ink text-base">{t.name}</div>
-                <div className="font-mono text-[10px] text-pb-ink-muted">{t.desc}</div>
+                <div className="font-bold text-saas-ink text-base">{t.name}</div>
+                <div className="text-xs text-saas-faint">{t.desc}</div>
               </div>
             ))}
           </div>
@@ -435,66 +432,65 @@ const PropostaRevenueBasesFinancing = () => {
       </div>
 
       {/* ══════════ MENTORES ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 06 REFERÊNCIAS</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Meus Mentores e Professores</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed">Aprendi diretamente com alguns dos maiores líderes do mercado brasileiro.</p>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>06 · Referências</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Meus Mentores e Professores</h2>
+        <p className="text-saas-body text-[17px] leading-relaxed">Aprendi diretamente com alguns dos maiores líderes do mercado brasileiro.</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {mentors.map((m) => (
-            <div key={m.name} className="border border-pb-grid-strong bg-pb-void-card p-4 text-center">
-              <div className="w-16 h-16 overflow-hidden mx-auto mb-3 border border-pb-grid-strong">
+            <div key={m.name} className={SAAS_CARD + " p-4 text-center"}>
+              <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border border-white/[0.09]">
                 <img
                   loading="lazy"
                   src={m.photo}
                   alt={m.name}
                   className="w-full h-full object-cover"
-                  style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
                 />
               </div>
-              <div className="font-display uppercase text-pb-ink text-sm mb-1">{m.name}</div>
-              <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-2">{m.role}</div>
-              <div className="font-body text-pb-ink-muted text-xs leading-relaxed">{m.bio}</div>
+              <div className="font-bold text-saas-ink text-sm mb-1">{m.name}</div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mb-2">{m.role}</div>
+              <div className="text-saas-faint text-xs leading-relaxed">{m.bio}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ CENÁRIOS DE RETORNO ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 07 PROJEÇÕES</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Cenários de retorno</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>07 · Projeções</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Cenários de retorno</h2>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           A tabela abaixo mostra o seu retorno{" "}
-          <span className="text-pb-cyan font-medium">somente com vendas do produto de entrada</span>{" "}
+          <span className="text-saas-cyan font-medium">somente com vendas do produto de entrada</span>{" "}
           — sem contar nenhum upsell. É o cenário mais conservador possível.
         </p>
 
         <div>
-          <div className="font-display uppercase text-pb-ink text-xl mb-1">Retorno mensal — somente front-end</div>
-          <div className="font-mono text-[10px] text-pb-ink-muted mb-4">Investimento: R$3.000/mês</div>
+          <div className="font-bold text-saas-ink text-xl mb-1">Retorno mensal — somente front-end</div>
+          <div className="text-[13px] text-saas-faint mb-4">Investimento: R$3.000/mês</div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-2xl border border-white/[0.09]">
             <table className="w-full border-collapse min-w-[400px]">
               <thead>
-                <tr className="border-b border-pb-grid-strong">
+                <tr className="border-b border-white/[0.08]">
                   {["ROAS", "Seu retorno", "Lucro", "ROI"].map((h) => (
-                    <th key={h} className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted py-3 px-4 text-center bg-pb-void-card">{h}</th>
+                    <th key={h} className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted py-3 px-4 text-center bg-saas-card">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {roasRows.map((row) => {
                   const isRed = row.positive === false;
-                  const valueClass = isRed ? "text-[#E44935]" : "text-pb-cyan";
+                  const valueClass = isRed ? "text-red-400" : "text-saas-cyan";
                   return (
-                    <tr key={row.roas} className="border-b border-pb-grid-strong hover:bg-pb-void-card transition-colors">
+                    <tr key={row.roas} className="border-b border-white/[0.06] last:border-none hover:bg-white/[0.02] transition-colors">
                       <td className="py-3 px-4 text-center">
-                        <div className="font-display text-pb-ink text-xl">{row.roas}</div>
-                        <div className="font-mono text-[9px] text-pb-ink-muted">{row.label}</div>
+                        <div className="font-extrabold text-saas-ink text-xl">{row.roas}</div>
+                        <div className="text-[11px] text-saas-faint">{row.label}</div>
                       </td>
-                      <td className={`py-3 px-4 text-center font-display text-lg ${valueClass}`}>{row.retorno}</td>
-                      <td className={`py-3 px-4 text-center font-display text-lg ${valueClass}`}>{row.lucro}</td>
-                      <td className={`py-3 px-4 text-center font-display text-lg ${isRed ? "text-[#E44935]" : "text-pb-cyan"}`}>{row.roi}</td>
+                      <td className={`py-3 px-4 text-center font-bold text-[15px] ${valueClass}`}>{row.retorno}</td>
+                      <td className={`py-3 px-4 text-center font-bold text-[15px] ${valueClass}`}>{row.lucro}</td>
+                      <td className={`py-3 px-4 text-center font-bold text-[15px] ${valueClass}`}>{row.roi}</td>
                     </tr>
                   );
                 })}
@@ -503,18 +499,18 @@ const PropostaRevenueBasesFinancing = () => {
           </div>
         </div>
 
-        <div className="border border-pb-grid-strong bg-pb-void-card p-5">
-          <p className="font-body text-pb-cyan leading-relaxed text-sm">
+        <div className={SAAS_CARD + " p-5"}>
+          <p className="text-saas-cyan leading-relaxed text-sm">
             A tabela acima mostra APENAS o retorno do front-end. Cada lead que entra pelo funil continua na base por 12 meses e pode comprar produtos de até R$36.000. O retorno real é significativamente maior.
           </p>
         </div>
 
         <div>
-          <div className="font-display uppercase text-pb-ink text-xl mb-2">O efeito real: LTV da esteira completa</div>
-          <p className="font-body text-pb-ink-soft leading-relaxed mb-2">
+          <div className="font-bold text-saas-ink text-xl mb-2">O efeito real: LTV da esteira completa</div>
+          <p className="text-saas-body text-[17px] leading-relaxed mb-2">
             Os leads que entram pelo front-end percorrem uma esteira com 4 produtos ao longo de 12 meses. Cada novo mês de investimento cria um novo cohort — e os cohorts anteriores continuam gerando receita. O gráfico abaixo mostra o efeito composto de 12 meses de investimento contínuo.
           </p>
-          <p className="font-mono text-[10px] text-pb-ink-muted mb-6">
+          <p className="font-mono text-[10px] text-saas-faint mb-6">
             Simulação com upsells progressivos ao longo de 12 meses por cohort (A Revolução R$1.997, Super Agentes R$8.000, Consultoria R$36.000).
           </p>
 
@@ -529,72 +525,74 @@ const PropostaRevenueBasesFinancing = () => {
               { color: "rgba(32,221,235,0.5)", label: "RETORNO MENSAL" },
             ].map((l) => (
               <div key={l.label} className="flex items-center gap-2">
-                <div className="w-3 h-3" style={{ background: l.color }} />
-                <span className="font-mono text-[10px] text-pb-ink-muted">{l.label}</span>
+                <div className="w-3 h-3 rounded-sm" style={{ background: l.color }} />
+                <span className="font-mono text-[10px] text-saas-faint">{l.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="border border-pb-grid-strong bg-pb-void-card p-7 space-y-3 font-mono text-sm">
+        <div className={SAAS_CARD + " p-7 space-y-3 font-mono text-sm"}>
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-pb-ink-muted">Total investido em 12 meses</span>
-            <span className="text-pb-cyan font-medium text-lg">R$36.000</span>
+            <span className="text-saas-muted">Total investido em 12 meses</span>
+            <span className="text-saas-cyan font-medium text-lg">R$36.000</span>
           </div>
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-pb-ink-muted">Cohorts ativos simultaneamente (mês 12)</span>
-            <span className="text-pb-ink">12</span>
+            <span className="text-saas-muted">Cohorts ativos simultaneamente (mês 12)</span>
+            <span className="text-saas-ink">12</span>
           </div>
-          <div className="h-px bg-pb-grid-strong my-2" />
+          <div className="h-px bg-white/[0.09] my-2" />
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-pb-ink-muted">Seu retorno total acumulado</span>
-            <span className="text-pb-cyan font-display text-[28px]">R$137.700</span>
-          </div>
-          <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-pb-ink-muted">Lucro líquido</span>
-            <span className="text-pb-cyan font-display text-[28px]">R$101.700</span>
+            <span className="text-saas-muted">Seu retorno total acumulado</span>
+            <Accent className="font-sans font-extrabold text-[26px]">R$137.700</Accent>
           </div>
           <div className="flex justify-between items-center flex-wrap gap-2">
-            <span className="text-pb-ink font-medium">ROI total</span>
-            <span className="text-pb-cyan font-display text-[28px]">+282.5%</span>
+            <span className="text-saas-muted">Lucro líquido</span>
+            <Accent className="font-sans font-extrabold text-[26px]">R$101.700</Accent>
+          </div>
+          <div className="flex justify-between items-center flex-wrap gap-2">
+            <span className="text-saas-ink font-medium">ROI total</span>
+            <Accent className="font-sans font-extrabold text-[26px]">+282.5%</Accent>
           </div>
         </div>
       </div>
 
       {/* ══════════ TERMOS ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 08 TERMOS DO ACORDO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Estrutura do investimento</h2>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>08 · Termos do Acordo</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Estrutura do investimento</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {terms.map((t) => (
-            <div key={t.title} className="border border-pb-grid-strong bg-pb-void-card p-6">
-              <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">{t.title}</div>
-              <div className="font-body text-pb-ink text-base mb-2">{t.value}</div>
-              <div className="font-body text-pb-ink-muted text-sm leading-relaxed">{t.detail}</div>
+            <div key={t.title} className={SAAS_CARD + " p-6"}>
+              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3">{t.title}</div>
+              <div className="font-semibold text-saas-ink text-base mb-2">{t.value}</div>
+              <div className="text-saas-muted text-sm leading-relaxed">{t.detail}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ FAQ ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 09 PERGUNTAS FREQUENTES</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Dúvidas comuns</h2>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>09 · Perguntas Frequentes</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.12] text-[clamp(26px,3.4vw,42px)]">Dúvidas comuns</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="border border-pb-grid-strong bg-pb-void-card p-6">
-              <h4 className="font-display uppercase text-pb-ink text-lg mb-3">{f.q}</h4>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{f.a}</p>
+            <div key={f.q} className={SAAS_CARD + " p-6"}>
+              <h4 className="font-bold text-saas-ink text-lg mb-3">{f.q}</h4>
+              <p className="text-saas-body text-sm leading-relaxed">{f.a}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ CTA ══════════ */}
-      <div className="border-t border-pb-grid-strong py-24 text-center space-y-6">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// 10 PRÓXIMO PASSO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(40px,6vw,72px)]">Quer entrar?</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-md mx-auto">
+      <div className="border-t border-white/[0.06] py-24 text-center space-y-6">
+        <Eyebrow>10 · Próximo Passo</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink tracking-tight leading-[1.1] text-[clamp(34px,5vw,60px)]">
+          Quer <Accent>entrar</Accent>?
+        </h2>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-md mx-auto">
           Vagas limitadas. Estou selecionando investidores para os primeiros cohorts. Se faz sentido, vamos conversar.
         </p>
         <div>
@@ -602,12 +600,12 @@ const PropostaRevenueBasesFinancing = () => {
             href="https://wa.me/5511999718595"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className={SAAS_BTN_PRIMARY}
           >
             Quero saber mais
           </a>
         </div>
-        <p className="font-mono text-[10px] text-pb-ink-muted pt-6 max-w-2xl mx-auto">
+        <p className="text-xs text-saas-faint leading-relaxed pt-6 max-w-2xl mx-auto">
           Este documento é uma apresentação de oportunidade de investimento e não constitui oferta pública de valores mobiliários. Resultados passados ou projetados não garantem retornos futuros. Todo investimento envolve risco.
         </p>
       </div>

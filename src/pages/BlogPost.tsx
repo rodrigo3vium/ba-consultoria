@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import PageLayout from "@/components/pb/PageLayout";
 import StratCard from "@/components/pb/StratCard";
 import Tag from "@/components/pb/Tag";
+import { Eyebrow, SAAS_BTN_GHOST } from "@/components/saas/ui";
 
 const preprocessMarkdown = (md: string) => {
   const lines = md.split("\n");
@@ -119,12 +120,12 @@ const BlogPost = () => {
     return (
       <PageLayout trackingName="BA Consultoria - Blog Post">
         <div className="max-w-4xl mx-auto px-4 py-24">
-          <div className="grid grid-cols-1 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          <div className="grid grid-cols-1 gap-4">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="bg-pb-void p-8 animate-pulse">
-                <div className="h-3 bg-pb-void-elev w-24 mb-4" />
-                <div className="h-6 bg-pb-void-elev w-3/4 mb-3" />
-                <div className="h-4 bg-pb-void-elev w-full" />
+              <div key={i} className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 animate-pulse">
+                <div className="h-3 rounded-full bg-white/[0.06] w-24 mb-4" />
+                <div className="h-6 rounded-full bg-white/[0.06] w-3/4 mb-3" />
+                <div className="h-4 rounded-full bg-white/[0.06] w-full" />
               </div>
             ))}
           </div>
@@ -157,26 +158,26 @@ const BlogPost = () => {
     <PageLayout trackingName="BA Consultoria - Blog Post">
 
       {/* Breadcrumb */}
-      <section className="border-b border-pb-grid-strong py-5">
+      <section className="border-b border-white/[0.06] py-5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+          <nav className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted">
             <Link
               to="/"
               onClick={() => window.scrollTo(0, 0)}
-              className="hover:text-pb-ink transition-colors"
+              className="hover:text-saas-ink transition-colors"
             >
               Home
             </Link>
-            <span className="text-pb-grid-strong">/</span>
+            <span className="text-saas-faint-2">/</span>
             <Link
               to="/blog"
               onClick={() => window.scrollTo(0, 0)}
-              className="hover:text-pb-ink transition-colors"
+              className="hover:text-saas-ink transition-colors"
             >
               Blog
             </Link>
-            <span className="text-pb-grid-strong">/</span>
-            <span className="text-pb-ink-soft line-clamp-1">{post.title}</span>
+            <span className="text-saas-faint-2">/</span>
+            <span className="text-saas-body line-clamp-1">{post.title}</span>
           </nav>
         </div>
       </section>
@@ -187,13 +188,12 @@ const BlogPost = () => {
 
           {/* Imagem de capa */}
           {post.image && (
-            <div className="aspect-video overflow-hidden mb-10 border border-pb-grid-strong">
+            <div className="aspect-video overflow-hidden mb-10 rounded-2xl border border-white/[0.09]">
               <img
                 loading="lazy"
                 src={post.image}
                 alt={post.title}
                 className="w-full h-full object-cover"
-                style={{ filter: "grayscale(20%)" }}
               />
             </div>
           )}
@@ -202,63 +202,63 @@ const BlogPost = () => {
           <div className="flex flex-wrap items-center gap-3 mb-6">
             <Tag variant="cyan">{post.category || 'INSIGHT'}</Tag>
             {isAdmin && <Tag variant="default">ADMIN</Tag>}
-            <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan">
               {post.date}
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
               {post.author}
             </span>
             <button
               onClick={handleShare}
-              className="ml-auto flex items-center gap-1.5 btn-ghost"
+              className={SAAS_BTN_GHOST + " ml-auto !px-4 !py-2 !text-xs"}
             >
               <Share2 className="w-3 h-3" />
-              COMPARTILHAR
+              Compartilhar
             </button>
           </div>
 
           {/* Titulo */}
-          <h1 className="font-display uppercase text-pb-ink text-[clamp(36px,4vw,64px)] leading-[0.92] mb-10">
+          <h1 className="font-extrabold text-saas-ink text-[clamp(28px,4vw,46px)] leading-[1.1] tracking-tight mb-10">
             {post.title}
           </h1>
 
           {/* Conteudo */}
           {post.content && (
-            <div className="font-body text-pb-ink-soft text-lg leading-relaxed
+            <div className="text-saas-body text-[17px] leading-relaxed
               prose prose-lg max-w-none
-              prose-headings:font-display prose-headings:uppercase prose-headings:text-pb-ink prose-headings:leading-[0.95] prose-headings:font-normal
-              prose-h1:text-[clamp(28px,3vw,48px)] prose-h1:mb-6 prose-h1:mt-12
-              prose-h2:text-[clamp(24px,2.5vw,40px)] prose-h2:mb-5 prose-h2:mt-10
-              prose-h3:text-[clamp(20px,2vw,32px)] prose-h3:mb-4 prose-h3:mt-8
+              prose-headings:font-extrabold prose-headings:text-saas-ink prose-headings:tracking-tight prose-headings:leading-[1.15]
+              prose-h1:text-[clamp(26px,3vw,40px)] prose-h1:mb-6 prose-h1:mt-12
+              prose-h2:text-[clamp(23px,2.5vw,34px)] prose-h2:mb-5 prose-h2:mt-10
+              prose-h3:text-[clamp(20px,2vw,28px)] prose-h3:mb-4 prose-h3:mt-8
               prose-h4:text-xl prose-h4:mb-3 prose-h4:mt-6
-              prose-p:text-pb-ink-soft prose-p:leading-relaxed prose-p:mb-6 prose-p:font-body
-              prose-strong:text-pb-ink prose-strong:font-semibold
+              prose-p:text-saas-body prose-p:leading-relaxed prose-p:mb-6
+              prose-strong:text-saas-ink prose-strong:font-semibold
               prose-ul:mb-6 prose-ul:mt-4
               prose-ol:mb-6 prose-ol:mt-4
-              prose-li:text-pb-ink-soft prose-li:mb-3 prose-li:leading-relaxed prose-li:font-body
-              prose-blockquote:text-pb-ink-soft prose-blockquote:border-l-pb-cyan prose-blockquote:border-l-2 prose-blockquote:bg-pb-void-card prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:not-italic
-              prose-a:text-pb-cyan prose-a:no-underline prose-a:font-mono prose-a:text-sm hover:prose-a:text-pb-cyan-soft
-              prose-code:text-pb-cyan prose-code:bg-pb-void-card prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono
-              prose-pre:bg-pb-void-deep prose-pre:border prose-pre:border-pb-grid-strong prose-pre:p-4 prose-pre:my-8
-              prose-img:my-8 prose-img:border prose-img:border-pb-grid-strong
-              prose-hr:border-pb-grid-strong prose-hr:my-12
+              prose-li:text-saas-body prose-li:mb-3 prose-li:leading-relaxed
+              prose-blockquote:text-saas-body prose-blockquote:border-l-saas-cyan prose-blockquote:border-l-2 prose-blockquote:bg-saas-card prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-8 prose-blockquote:not-italic
+              prose-a:text-saas-cyan prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+              prose-code:text-saas-cyan prose-code:bg-saas-card prose-code:rounded-md prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-mono
+              prose-pre:bg-saas-void-2 prose-pre:border prose-pre:border-white/[0.09] prose-pre:rounded-xl prose-pre:p-4 prose-pre:my-8
+              prose-img:my-8 prose-img:rounded-2xl prose-img:border prose-img:border-white/[0.09]
+              prose-hr:border-white/[0.06] prose-hr:my-12
               mb-12">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{processedContent}</ReactMarkdown>
             </div>
           )}
 
           {/* Navegacao anterior / proximo */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-pb-grid-strong">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-white/[0.06]">
             {previousPost ? (
               <Link
                 to={`/blog/${previousPost.id}`}
                 onClick={() => window.scrollTo(0, 0)}
-                className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-ink transition-colors"
+                className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted hover:text-saas-ink transition-colors"
               >
                 <span className="group-hover:-translate-x-1 transition-transform">←</span>
                 <div className="text-left">
-                  <div className="text-pb-cyan mb-0.5">ANTERIOR</div>
-                  <div className="line-clamp-1 max-w-48 normal-case text-pb-ink-soft font-body text-sm capitalize">{previousPost.title}</div>
+                  <div className="text-saas-cyan mb-0.5">ANTERIOR</div>
+                  <div className="line-clamp-1 max-w-48 normal-case font-sans text-saas-body text-sm capitalize">{previousPost.title}</div>
                 </div>
               </Link>
             ) : <div />}
@@ -267,11 +267,11 @@ const BlogPost = () => {
               <Link
                 to={`/blog/${nextPost.id}`}
                 onClick={() => window.scrollTo(0, 0)}
-                className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-ink transition-colors"
+                className="group flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted hover:text-saas-ink transition-colors"
               >
                 <div className="text-right">
-                  <div className="text-pb-cyan mb-0.5">PROXIMO</div>
-                  <div className="line-clamp-1 max-w-48 normal-case text-pb-ink-soft font-body text-sm capitalize">{nextPost.title}</div>
+                  <div className="text-saas-cyan mb-0.5">PROXIMO</div>
+                  <div className="line-clamp-1 max-w-48 normal-case font-sans text-saas-body text-sm capitalize">{nextPost.title}</div>
                 </div>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
@@ -282,38 +282,35 @@ const BlogPost = () => {
 
       {/* Posts relacionados */}
       {relatedPosts.length > 0 && (
-        <section className="border-t border-pb-grid-strong py-16 md:py-24">
+        <section className="border-t border-white/[0.06] py-16 md:py-24">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 mb-10 font-mono text-[11px] uppercase tracking-mono-wide">
-              <span className="text-pb-cyan">→</span>
-              <span className="h-px w-12 bg-pb-grid-strong" />
-              <span className="text-pb-ink-muted">ARTIGOS RELACIONADOS</span>
+            <div className="mb-10">
+              <Eyebrow>Artigos relacionados</Eyebrow>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {relatedPosts.map((relatedPost) => (
                 <StratCard key={relatedPost.id} as="article" className="p-6">
                   {relatedPost.image && (
-                    <div className="aspect-video overflow-hidden mb-4 border border-pb-grid-strong">
+                    <div className="aspect-video overflow-hidden mb-4 rounded-xl border border-white/[0.09]">
                       <img
                         loading="lazy"
                         src={relatedPost.image}
                         alt={relatedPost.title}
                         className="w-full h-full object-cover"
-                        style={{ filter: "grayscale(20%)" }}
                       />
                     </div>
                   )}
                   <Tag variant="cyan">{relatedPost.category || 'INSIGHT'}</Tag>
-                  <h3 className="font-display text-xl uppercase text-pb-ink mt-3 leading-[0.95] line-clamp-2">
+                  <h3 className="font-bold text-lg text-saas-ink tracking-tight mt-3 leading-snug line-clamp-2">
                     {relatedPost.title}
                   </h3>
-                  <p className="font-body text-pb-ink-soft text-sm leading-relaxed mt-2 line-clamp-2">
+                  <p className="text-saas-muted text-sm leading-relaxed mt-2 line-clamp-2">
                     {relatedPost.excerpt}
                   </p>
                   <Link
                     to={`/blog/${relatedPost.id}`}
                     onClick={() => window.scrollTo(0, 0)}
-                    className="mt-4 inline-block font-mono text-[11px] text-pb-cyan uppercase tracking-mono-wide hover:text-pb-cyan-soft transition-colors"
+                    className="mt-4 inline-block font-mono text-[11px] text-saas-cyan uppercase tracking-[0.14em] hover:text-saas-ink transition-colors"
                   >
                     LER →
                   </Link>
@@ -325,14 +322,14 @@ const BlogPost = () => {
       )}
 
       {/* Voltar */}
-      <section className="border-t border-pb-grid-strong py-12">
+      <section className="border-t border-white/[0.06] py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog"
             onClick={() => window.scrollTo(0, 0)}
-            className="btn-ghost inline-flex items-center gap-2"
+            className={SAAS_BTN_GHOST}
           >
-            ← VOLTAR PARA O BLOG
+            ← Voltar para o blog
           </Link>
         </div>
       </section>

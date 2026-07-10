@@ -1,4 +1,5 @@
 import PropostaLayout from "@/components/pb/PropostaLayout";
+import { Accent, Card, SectionHeader, StatCard, SAAS_BTN_PRIMARY, SAAS_GRADIENT_TEXT } from "@/components/saas/ui";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import diegoBarretoPhoto from "@/assets/mentors/diego-barreto.webp";
 import pedroSommaPhoto from "@/assets/mentors/pedro-somma.webp";
@@ -30,15 +31,14 @@ const PropostaPadrao = () => {
 
       {/* LOGO DO CLIENTE — descomentar e adaptar quando necessário */}
       {/*
-      <div className="border-t border-pb-grid-strong py-10">
+      <div className="border-t border-white/[0.06] py-10">
         <div className="flex items-center gap-6">
-          <div className="border border-pb-grid-strong overflow-hidden w-20 h-20 shrink-0">
+          <div className="rounded-2xl border border-white/[0.09] overflow-hidden w-20 h-20 shrink-0">
             <img
               loading="lazy"
               src={clientLogo}
               alt="[Nome do Cliente]"
               className="w-full h-full object-cover"
-              style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
             />
           </div>
         </div>
@@ -46,49 +46,37 @@ const PropostaPadrao = () => {
       */}
 
       {/* INTRO */}
-      <div className="border-t border-pb-grid-strong py-16">
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16">
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           {/* Subtítulo — descrever a proposta em 1-2 frases para o [Nome do Cliente] */}
           Descrição breve da proposta para o [Nome do Cliente] — objetivo principal do projeto.
         </p>
       </div>
 
       {/* 01 / SOBRE */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 01 SOBRE</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          Quem está por trás desta proposta.
-        </h2>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="01 · Sobre">
+          Quem está por trás <Accent>desta proposta</Accent>.
+        </SectionHeader>
         <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 items-start">
-          <div className="border border-pb-grid-strong overflow-hidden aspect-square">
+          <div className="rounded-2xl border border-white/[0.09] overflow-hidden aspect-square">
             <img
               loading="lazy"
               src={rodrigoPhoto}
               alt="Rodrigo Albuquerque"
               className="w-full h-full object-cover"
-              style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
             />
           </div>
           <div>
-            <p className="font-body text-pb-ink-soft leading-relaxed mb-4">
+            <p className="text-saas-body text-[17px] leading-relaxed mb-4">
               Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
             </p>
-            <p className="font-body text-pb-ink-soft leading-relaxed mb-8">
+            <p className="text-saas-body text-[17px] leading-relaxed mb-8">
               A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
             </p>
-            <div className="grid grid-cols-2 border border-pb-grid-strong">
-              {stats.map((s, i) => (
-                <div
-                  key={s.num}
-                  className={[
-                    "p-6",
-                    i % 2 === 0 ? "border-r border-pb-grid-strong" : "",
-                    i < 2 ? "border-b border-pb-grid-strong" : "",
-                  ].join(" ")}
-                >
-                  <p className="font-display text-[36px] leading-none text-pb-cyan">{s.num}</p>
-                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-2">{s.label}</p>
-                </div>
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              {stats.map((s) => (
+                <StatCard key={s.num} value={s.num} label={s.label} accent />
               ))}
             </div>
           </div>
@@ -96,67 +84,63 @@ const PropostaPadrao = () => {
       </div>
 
       {/* 02 / REFERÊNCIAS */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 02 REFERÊNCIAS</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          Nossos Mentores e Professores.
-        </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="02 · Referências">
+          Nossos <Accent>Mentores</Accent> e Professores.
+        </SectionHeader>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {mentors.map((m) => (
-            <div key={m.name} className="border border-pb-grid-strong bg-pb-void-card p-5">
-              <div className="border border-pb-grid-strong overflow-hidden aspect-square mb-4">
+            <Card key={m.name} className="p-5">
+              <div className="rounded-xl border border-white/[0.09] overflow-hidden aspect-square mb-4">
                 <img
                   loading="lazy"
                   src={m.photo}
                   alt={m.name}
                   className="w-full h-full object-cover"
-                  style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
                 />
               </div>
-              <h3 className="font-display uppercase text-pb-ink text-[16px] leading-[0.95]">{m.name}</h3>
-              <p className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mt-2 mb-3">{m.role}</p>
-              <p className="font-body text-pb-ink-muted text-[12px] leading-relaxed">{m.bio}</p>
-            </div>
+              <h3 className="font-bold text-saas-ink text-[15px] leading-snug tracking-tight">{m.name}</h3>
+              <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mt-2 mb-3">{m.role}</p>
+              <p className="text-saas-muted text-[12px] leading-relaxed">{m.bio}</p>
+            </Card>
           ))}
         </div>
       </div>
 
       {/* 03 / CONTEXTO — DINÂMICO */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 03 CONTEXTO</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          Onde o [Nome do Cliente] está hoje.
-        </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="03 · Contexto">
+          Onde o [Nome do Cliente] está <Accent>hoje</Accent>.
+        </SectionHeader>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           [Descrição do momento atual do cliente e do negócio.]
         </p>
-        <div className="border border-pb-grid-strong bg-pb-void-card p-8 space-y-4">
-          <p className="font-body text-pb-ink-soft leading-relaxed">
+        <Card className="p-8 space-y-4">
+          <p className="text-saas-body text-[17px] leading-relaxed">
             [Parágrafo detalhando o contexto do cliente — como funciona o negócio, o modelo, o momento atual.]
           </p>
-          <p className="font-body text-pb-ink-soft leading-relaxed">
+          <p className="text-saas-body text-[17px] leading-relaxed">
             O principal gargalo agora não é [problema superficial] — é{" "}
-            <span className="text-pb-cyan italic">[problema real que a proposta resolve].</span>
+            <span className="text-saas-cyan italic">[problema real que a proposta resolve].</span>
           </p>
-        </div>
+        </Card>
       </div>
 
       {/* 04 / DIAGNÓSTICO — DINÂMICO */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 04 DIAGNÓSTICO</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          O que mapeamos na nossa conversa.
-        </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="04 · Diagnóstico">
+          O que mapeamos na <Accent>nossa conversa</Accent>.
+        </SectionHeader>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           [Resumo do diagnóstico.]
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border border-pb-grid-strong bg-pb-void-card p-8">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-pb-grid-strong">
-              <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan border border-pb-cyan px-3 py-1">Pontos Fortes</span>
+          <Card className="p-8">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/[0.06]">
+              <span className="inline-flex items-center rounded-full border border-saas-cyan/40 bg-white/[0.03] px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan">Pontos Fortes</span>
             </div>
             <ul className="space-y-3">
               {[
@@ -164,16 +148,16 @@ const PropostaPadrao = () => {
                 "Ponto forte 2",
                 "Ponto forte 3",
               ].map((item) => (
-                <li key={item} className="font-body text-pb-ink-soft text-[14px] leading-relaxed flex gap-2">
-                  <span className="text-pb-cyan mt-0.5 shrink-0">→</span>
+                <li key={item} className="text-saas-body text-[14px] leading-relaxed flex gap-2">
+                  <span className="text-saas-cyan mt-0.5 shrink-0">→</span>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="border border-pb-grid-strong bg-pb-void-card p-8">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-pb-grid-strong">
-              <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-red border border-pb-red px-3 py-1">Gargalos Atuais</span>
+          </Card>
+          <Card className="p-8">
+            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/[0.06]">
+              <span className="inline-flex items-center rounded-full border border-saas-violet/40 bg-white/[0.03] px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-saas-violet">Gargalos Atuais</span>
             </div>
             <ul className="space-y-3">
               {[
@@ -181,23 +165,22 @@ const PropostaPadrao = () => {
                 "Gargalo 2",
                 "Gargalo 3",
               ].map((item) => (
-                <li key={item} className="font-body text-pb-ink-soft text-[14px] leading-relaxed flex gap-2">
-                  <span className="text-pb-red mt-0.5 shrink-0">→</span>
+                <li key={item} className="text-saas-body text-[14px] leading-relaxed flex gap-2">
+                  <span className="text-saas-violet mt-0.5 shrink-0">→</span>
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </Card>
         </div>
       </div>
 
       {/* 05 / OBJETIVO — DINÂMICO */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 05 OBJETIVO</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          O que este projeto vai resolver.
-        </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="05 · Objetivo">
+          O que este projeto vai <Accent>resolver</Accent>.
+        </SectionHeader>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           [Resumo do objetivo principal.]
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -206,106 +189,106 @@ const PropostaPadrao = () => {
             { num: "02", text: "Objetivo 2" },
             { num: "03", text: "Objetivo 3" },
           ].map((obj) => (
-            <div key={obj.num} className="border border-pb-grid-strong bg-pb-void-card p-6">
-              <p className="font-display text-[clamp(36px,4vw,56px)] text-pb-cyan leading-none mb-4">{obj.num}</p>
-              <p className="font-body text-pb-ink-soft leading-relaxed text-[14px]">{obj.text}</p>
-            </div>
+            <Card key={obj.num} className="p-6">
+              <p className={`text-[clamp(32px,3.5vw,44px)] font-extrabold leading-none mb-4 ${SAAS_GRADIENT_TEXT}`}>{obj.num}</p>
+              <p className="text-saas-body leading-relaxed text-[14px]">{obj.text}</p>
+            </Card>
           ))}
         </div>
       </div>
 
       {/* 06 / INVESTIMENTO — DINÂMICO */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 06 INVESTIMENTO</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">
-          Proposta comercial.
-        </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <SectionHeader eyebrow="06 · Investimento">
+          Proposta <Accent>comercial</Accent>.
+        </SectionHeader>
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-2xl">
           [Descrição das opções de investimento.]
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Opção 1 */}
-          <div className="border border-pb-grid-strong bg-pb-void-card p-8">
-            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">// Opção 1</p>
-            <h3 className="font-display uppercase text-pb-ink text-[22px] leading-[0.95] mb-3">[Nome da Opção 1]</h3>
-            <p className="font-body text-pb-ink-muted text-[14px] leading-relaxed mb-6">
+          <Card className="p-8">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3">Opção 1</p>
+            <h3 className="font-extrabold text-saas-ink text-[20px] leading-snug tracking-tight mb-3">[Nome da Opção 1]</h3>
+            <p className="text-saas-muted text-[14px] leading-relaxed mb-6">
               [Descrição breve da opção 1.]
             </p>
-            <div className="space-y-0 border border-pb-grid-strong">
+            <div className="space-y-0 rounded-xl border border-white/[0.09] overflow-hidden">
               {[
                 { label: "Investimento", value: "R$ X.XXX" },
                 { label: "Formato", value: "Pagamento único" },
                 { label: "Prazo padrão", value: "XX dias úteis" },
               ].map((row, i) => (
-                <div key={row.label} className={["flex justify-between items-baseline p-4", i < 2 ? "border-b border-pb-grid-strong" : ""].join(" ")}>
-                  <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">{row.label}</span>
-                  <span className={["font-display uppercase", i === 0 ? "text-pb-cyan text-[22px]" : "text-pb-ink text-[16px]"].join(" ")}>{row.value}</span>
+                <div key={row.label} className={["flex justify-between items-baseline p-4", i < 2 ? "border-b border-white/[0.06]" : ""].join(" ")}>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted">{row.label}</span>
+                  <span className={i === 0 ? `font-extrabold text-[22px] leading-none ${SAAS_GRADIENT_TEXT}` : "font-semibold text-saas-ink text-[15px]"}>{row.value}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-6 pt-6 border-t border-pb-grid-strong">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-4">Entregáveis</p>
+            <div className="mt-6 pt-6 border-t border-white/[0.06]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-4">Entregáveis</p>
               <ul className="space-y-2">
                 {[
                   "Entregável 1",
                   "Entregável 2",
                   "Entregável 3",
                 ].map((item) => (
-                  <li key={item} className="font-body text-pb-ink-soft text-[13px] leading-relaxed flex gap-2">
-                    <span className="text-pb-cyan mt-0.5 shrink-0">→</span>
+                  <li key={item} className="text-saas-body text-[13px] leading-relaxed flex gap-2">
+                    <span className="text-saas-cyan mt-0.5 shrink-0">→</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </Card>
 
           {/* Opção 2 — Featured */}
-          <div className="border border-pb-cyan bg-pb-void-card p-8 relative">
+          <Card className="p-8 relative border-saas-violet/50 shadow-saas-btn">
             <div className="absolute top-4 right-4">
-              <span className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan border border-pb-cyan px-2 py-1">Recomendado</span>
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet px-3 py-1 font-mono text-[9px] uppercase tracking-[0.14em] font-bold text-saas-void">Recomendado</span>
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">// Opção 2</p>
-            <h3 className="font-display uppercase text-pb-ink text-[22px] leading-[0.95] mb-3">[Nome da Opção 2]</h3>
-            <p className="font-body text-pb-ink-muted text-[14px] leading-relaxed mb-6">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3">Opção 2</p>
+            <h3 className="font-extrabold text-saas-ink text-[20px] leading-snug tracking-tight mb-3">[Nome da Opção 2]</h3>
+            <p className="text-saas-muted text-[14px] leading-relaxed mb-6">
               [Descrição breve da opção 2.]
             </p>
-            <div className="space-y-0 border border-pb-grid-strong">
+            <div className="space-y-0 rounded-xl border border-white/[0.09] overflow-hidden">
               {[
                 { label: "Investimento", value: "R$ XX.XXX" },
                 { label: "Manutenção mensal", value: "R$ X.XXX/mês" },
                 { label: "Prazo padrão", value: "XX dias úteis" },
               ].map((row, i) => (
-                <div key={row.label} className={["flex justify-between items-baseline p-4", i < 2 ? "border-b border-pb-grid-strong" : ""].join(" ")}>
-                  <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">{row.label}</span>
-                  <span className={["font-display uppercase", i === 0 ? "text-pb-cyan text-[22px]" : "text-pb-ink text-[16px]"].join(" ")}>{row.value}</span>
+                <div key={row.label} className={["flex justify-between items-baseline p-4", i < 2 ? "border-b border-white/[0.06]" : ""].join(" ")}>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted">{row.label}</span>
+                  <span className={i === 0 ? `font-extrabold text-[22px] leading-none ${SAAS_GRADIENT_TEXT}` : "font-semibold text-saas-ink text-[15px]"}>{row.value}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-6 pt-6 border-t border-pb-grid-strong">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-4">Entregáveis</p>
+            <div className="mt-6 pt-6 border-t border-white/[0.06]">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-4">Entregáveis</p>
               <ul className="space-y-2">
                 {[
                   "Tudo da Opção 1 incluso",
                   "Entregável adicional 1",
                   "Entregável adicional 2",
                 ].map((item) => (
-                  <li key={item} className="font-body text-pb-ink-soft text-[13px] leading-relaxed flex gap-2">
-                    <span className="text-pb-cyan mt-0.5 shrink-0">→</span>
+                  <li key={item} className="text-saas-body text-[13px] leading-relaxed flex gap-2">
+                    <span className="text-saas-cyan mt-0.5 shrink-0">→</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
 
       {/* CTA — DINÂMICO */}
-      <div className="border-t border-pb-grid-strong py-20 text-center space-y-6">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// Próximo passo</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,4vw,56px)] leading-[0.95]">Vamos começar?</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-xl mx-auto text-[18px] italic">
+      <div className="border-t border-white/[0.06] py-20 text-center space-y-6">
+        <SectionHeader center eyebrow="Próximo passo">
+          Vamos <Accent>começar</Accent>?
+        </SectionHeader>
+        <p className="text-saas-body leading-relaxed max-w-xl mx-auto text-[18px] italic">
           [Mensagem personalizada para o cliente — texto de fechamento motivacional.]
         </p>
         <div className="pt-4">
@@ -313,7 +296,7 @@ const PropostaPadrao = () => {
             href="https://wa.me/5511999718595"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className={SAAS_BTN_PRIMARY}
           >
             Falar no WhatsApp <span aria-hidden>→</span>
           </a>

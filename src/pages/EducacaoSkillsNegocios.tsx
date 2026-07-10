@@ -1,7 +1,16 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Check } from "lucide-react";
 import { tracker } from "@/lib/tracking";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  Accent,
+  Eyebrow,
+  SAAS_BTN_PRIMARY,
+  SAAS_CARD,
+  SAAS_INPUT,
+  SAAS_GRADIENT_TEXT,
+} from "@/components/saas/ui";
 
 const FATURAMENTO_OPTIONS = [
   "Abaixo de R$ 30 mil",
@@ -57,7 +66,7 @@ const EducacaoSkillsNegocios = () => {
   });
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#05090B";
+    document.body.style.backgroundColor = "#0A0A13";
     document.body.style.paddingTop = "0";
     tracker.page("20 Skills de IA Para Negócios");
 
@@ -174,7 +183,7 @@ const EducacaoSkillsNegocios = () => {
       q: "É realmente gratuito?",
       a: (
         <>
-          <span className="text-pb-cyan font-mono">SIM.</span>{" "}
+          <span className="text-saas-cyan font-semibold">Sim.</span>{" "}
           O ebook é 100% gratuito, sem cartão e com acesso imediato. Sem truque, sem upsell obrigatório.
         </>
       ),
@@ -183,7 +192,7 @@ const EducacaoSkillsNegocios = () => {
       q: "Serve para qualquer tipo de negócio?",
       a: (
         <>
-          <span className="text-pb-cyan font-mono">SIM.</span>{" "}
+          <span className="text-saas-cyan font-semibold">Sim.</span>{" "}
           O conteúdo foi desenvolvido para empreendedores e profissionais liberais de qualquer
           segmento — agências, clínicas, prestadores de serviço, infoprodutores.
           As skills se adaptam à realidade de cada operação.
@@ -227,58 +236,45 @@ const EducacaoSkillsNegocios = () => {
   ];
 
   return (
-    <div className="bg-pb-void text-pb-ink-soft font-body text-base leading-relaxed overflow-x-hidden">
+    <div className="min-h-screen bg-saas-void text-saas-body text-base leading-relaxed overflow-x-hidden antialiased">
 
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-10 py-[18px] border-b border-pb-grid-strong bg-pb-void/85 backdrop-blur-xl">
-        <div className="font-mono text-[11px] uppercase tracking-mono-x text-pb-ink">
-          RA <span className="text-pb-cyan">·</span> Skills de IA
+      <nav className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-5 sm:px-10 py-[12px] border-b border-white/[0.06] bg-saas-void/80 backdrop-blur-xl">
+        <div className="flex items-center gap-2.5 font-bold text-saas-ink text-[15px]">
+          <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
+          RA · Skills de IA
         </div>
         <a
           href="#cta"
-          className="btn-primary text-[10px] py-[10px] px-[22px]"
+          className={SAAS_BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px]"}
         >
-          Baixar Gratis
+          Baixar Grátis
         </a>
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen" style={{ background: "radial-gradient(ellipse at 15% 40%, rgba(32,221,235,0.07) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(228,73,53,0.04) 0%, transparent 45%), #05090B" }}>
-        {/* Grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "linear-gradient(rgba(32,221,235,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(32,221,235,0.022) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
-          }}
-        />
-        {/* Corner bracket top-left */}
-        <div className="absolute top-[92px] left-5 w-10 h-10 border-t border-l border-pb-cyan/25 pointer-events-none" />
+      <section className="relative overflow-hidden bg-saas-void">
+        {/* Glows radiais */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+        </div>
 
-        <div className="relative grid grid-cols-2 gap-[60px] items-center px-10 pt-[120px] pb-20 max-w-[1100px] mx-auto" style={{ minHeight: "100vh" }}>
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center px-5 sm:px-10 pt-[120px] pb-20 max-w-[1100px] mx-auto lg:min-h-screen">
           {/* LEFT */}
-          <div>
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-6">
-              <span className="w-1.5 h-1.5 bg-pb-cyan animate-[pb-pulse_2s_ease-in-out_infinite]" />
-              Ebook gratuito · Rodrigo Albuquerque
-            </div>
+          <div className="animate-fade-in">
+            <Eyebrow className="mb-6">Ebook gratuito · Rodrigo Albuquerque</Eyebrow>
 
-            <h1 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4.2vw,56px)] mb-4 tracking-wide">
-              As <span className="text-pb-cyan">20 Skills</span>
-              <br />
-              que separam
-              <br />
-              quem usa IA
-              <br />
-              <span className="text-pb-cyan">de quem fatura com ela.</span>
+            <h1 className="font-extrabold text-saas-ink leading-[1.1] tracking-tight text-[clamp(28px,3.6vw,46px)] mb-5">
+              As <Accent>20 Skills</Accent> que separam quem usa IA{" "}
+              <Accent>de quem fatura com ela.</Accent>
             </h1>
 
-            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-2 max-w-[460px]">
+            <p className="text-[15px] md:text-base text-saas-body leading-relaxed mb-2 max-w-[460px]">
               Há alguns anos, automatizar seu negócio com inteligência artificial
               era coisa de empresa de tecnologia com time de engenheiros.
             </p>
-            <p className="font-body text-[15px] text-pb-cyan leading-relaxed mb-9 max-w-[460px]">
+            <p className="text-[15px] md:text-base text-saas-ink font-semibold leading-relaxed mb-9 max-w-[460px]">
               Hoje, o empreendedor que não domina essas skills está entregando
               dinheiro para quem domina.
             </p>
@@ -286,115 +282,107 @@ const EducacaoSkillsNegocios = () => {
             <div className="flex flex-col gap-[14px] max-w-[380px]">
               <a
                 href="#cta"
-                className="btn-primary justify-center w-full text-[12px] py-[18px] px-9"
+                className={SAAS_BTN_PRIMARY + " w-full"}
                 onClick={() => handleCTA("hero")}
               >
                 Baixar Ebook Gratuitamente
               </a>
-              <span className="font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted text-center">
-                acesso imediato · sem cartao · pdf completo
+              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint text-center">
+                acesso imediato · sem cartão · pdf completo
               </span>
             </div>
 
-            <div className="flex flex-wrap gap-[7px] mt-7 max-w-[460px]">
+            <div className="flex flex-wrap gap-2 mt-7 max-w-[460px]">
               {["Criação de conteúdo", "Automação comercial", "Prospecção com IA", "Análise de dados", "Atendimento"].map((tag) => (
-                <span key={tag} className="pb-tag cyan text-[9px] px-[11px] py-[5px]">{tag}</span>
+                <span key={tag} className="rounded-full border border-white/[0.10] bg-white/[0.03] px-3 py-1 text-[11px] text-saas-muted">{tag}</span>
               ))}
-              <span className="pb-tag text-[9px] px-[11px] py-[5px] border-pb-grid-strong text-pb-ink-soft">+ 15 skills</span>
+              <span className="rounded-full border border-white/[0.10] px-3 py-1 text-[11px] text-saas-faint">+ 15 skills</span>
             </div>
           </div>
 
           {/* RIGHT — Book mockup */}
-          <div className="flex items-center justify-center relative">
-            <div className="relative w-[360px] h-[460px]">
+          <div className="flex items-center justify-center relative animate-fade-in">
+            <div className="relative w-[360px] h-[460px] max-w-full">
               {/* Glow */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none animate-[pb-pulse_3.5s_ease-in-out_infinite]"
-                style={{ background: "radial-gradient(circle, rgba(32,221,235,0.1) 0%, transparent 70%)" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full pointer-events-none animate-pulse"
+                style={{ background: "radial-gradient(circle, rgba(139,124,246,0.14) 0%, transparent 70%)" }}
               />
               {/* Pages top */}
               <div
                 className="absolute top-[18px] left-[46px] w-[256px] h-[7px] pointer-events-none"
                 style={{
-                  background: "repeating-linear-gradient(90deg, rgba(242,237,228,0.07) 0, rgba(242,237,228,0.07) 1px, transparent 1px, transparent 2.5px)",
+                  background: "repeating-linear-gradient(90deg, rgba(245,245,250,0.07) 0, rgba(245,245,250,0.07) 1px, transparent 1px, transparent 2.5px)",
                   transform: "rotate(-1.5deg)",
                   animation: "snFloat 4s ease-in-out infinite",
                 }}
               />
               {/* Spine */}
               <div
-                className="absolute top-[22px] left-[38px] w-[9px] h-[330px] border border-pb-grid-strong border-r-0 bg-pb-void-deep pointer-events-none"
+                className="absolute top-[22px] left-[38px] w-[9px] h-[330px] rounded-l-md border border-white/[0.09] border-r-0 pointer-events-none"
                 style={{
-                  background: "linear-gradient(to right, #040710, #0C1525)",
+                  background: "linear-gradient(to right, #0A0A13, #15151F)",
                   transform: "rotate(-1.5deg)",
                   animation: "snFloat 4s ease-in-out infinite",
                 }}
               />
               {/* Cover */}
               <div
-                className="absolute top-[22px] left-[47px] w-[252px] h-[330px] border border-pb-cyan/20 flex flex-col items-center justify-center text-center px-[22px] py-7 overflow-hidden"
+                className="absolute top-[22px] left-[47px] w-[252px] h-[330px] rounded-2xl border border-white/[0.09] flex flex-col items-center justify-center text-center px-[22px] py-7 overflow-hidden"
                 style={{
-                  background: "linear-gradient(150deg, #0F1E3A 0%, #0A1528 45%, #070D1C 100%)",
-                  boxShadow: "6px 10px 40px rgba(0,0,0,0.75), inset 0 0 0 0.5px rgba(32,221,235,0.08)",
+                  background: "linear-gradient(150deg, rgba(139,124,246,0.18) 0%, #15151F 45%, #0A0A13 100%)",
+                  boxShadow: "6px 10px 40px rgba(0,0,0,0.6)",
                   transform: "rotate(-1.5deg)",
                   animation: "snFloat 4s ease-in-out infinite",
                 }}
               >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)", opacity: 0.4 }} />
-                {/* Corner bracket */}
-                <div className="absolute top-2 right-2 w-[14px] h-[14px] border-t border-r border-pb-cyan/30" />
+                {/* Top accent bar */}
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-saas-cyan to-saas-violet opacity-70" />
 
-                {/* "Reactor" */}
-                <div
-                  className="w-[52px] h-[52px] border border-pb-cyan/35 flex items-center justify-center mb-[14px]"
-                  style={{ animation: "snReactorSpin 10s linear infinite" }}
-                >
-                  <div
-                    className="w-[30px] h-[30px] border border-pb-cyan/50 animate-[pb-pulse_2.5s_ease-in-out_infinite]"
-                    style={{ background: "radial-gradient(circle, rgba(32,221,235,0.5) 0%, rgba(32,221,235,0.12) 60%, transparent 100%)" }}
-                  />
+                {/* Emblema */}
+                <div className="w-[52px] h-[52px] rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mb-[14px]">
+                  <div className="w-[26px] h-[26px] rounded-full bg-saas-void/70 animate-pulse" />
                 </div>
 
-                <div className="font-mono text-[7px] uppercase tracking-[2.5px] text-pb-ink-muted mb-[10px]">
+                <div className="font-mono text-[8px] uppercase tracking-[0.2em] text-saas-faint mb-[10px]">
                   Rodrigo Albuquerque
                 </div>
-                <div className="font-display text-[52px] text-pb-cyan leading-none" style={{ textShadow: "0 0 24px rgba(32,221,235,0.35)" }}>
+                <div className={"text-[52px] font-extrabold leading-none " + SAAS_GRADIENT_TEXT}>
                   20
                 </div>
-                <div className="font-display text-[12px] uppercase text-pb-ink tracking-widest mb-1">
+                <div className="text-[13px] font-extrabold text-saas-ink tracking-tight mb-1">
                   Skills de IA
                 </div>
-                <div className="font-display text-[16px] uppercase text-pb-ink mb-[14px] leading-[1.15]">
-                  Para Negocios
+                <div className="text-[17px] font-extrabold text-saas-ink tracking-tight mb-[14px] leading-[1.15]">
+                  Para Negócios
                 </div>
-                <div className="w-9 h-px mx-auto mb-3" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
-                <div className="font-mono text-[7px] uppercase tracking-[0.8px] text-pb-ink-muted leading-relaxed">
-                  O guia pratico para <strong className="text-pb-cyan">faturar mais</strong>
+                <div className="w-9 h-[2px] rounded-full mx-auto mb-3 bg-gradient-to-r from-saas-cyan to-saas-violet opacity-70" />
+                <div className="text-[10px] text-saas-faint leading-relaxed">
+                  O guia prático para <strong className="text-saas-cyan font-semibold">faturar mais</strong>
                   <br />trabalhando menos com IA
                 </div>
               </div>
 
               {/* Float badge */}
               <div
-                className="absolute top-1 right-1 border border-pb-grid-strong bg-pb-void-card px-[14px] py-[10px] text-center"
+                className="absolute top-1 right-1 rounded-xl border border-white/[0.09] bg-saas-card px-[14px] py-[10px] text-center"
                 style={{ animation: "snFloatAlt 3.5s ease-in-out infinite 1s" }}
               >
-                <span className="font-display text-[18px] text-pb-cyan block leading-none">100%</span>
-                <span className="font-mono text-[7px] uppercase tracking-[1.5px] text-pb-ink-muted block mt-[3px]">Gratuito</span>
+                <span className={"text-[18px] font-extrabold block leading-none " + SAAS_GRADIENT_TEXT}>100%</span>
+                <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-saas-faint block mt-[3px]">Gratuito</span>
               </div>
 
               {/* Float stat */}
               <div
-                className="absolute bottom-[30px] -right-[10px] bg-pb-void-card border border-pb-grid-strong px-4 py-[10px] flex items-center gap-[10px]"
+                className="absolute bottom-[30px] -right-[10px] rounded-xl border border-white/[0.09] bg-saas-card px-4 py-[10px] flex items-center gap-[10px]"
                 style={{ animation: "snFloatAlt 3.5s ease-in-out infinite 2s" }}
               >
-                <div className="w-[30px] h-[30px] border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center text-[13px]">
+                <div className="w-[30px] h-[30px] rounded-lg bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center text-[12px] font-bold text-saas-void">
                   IA
                 </div>
                 <div>
-                  <span className="font-display text-[13px] text-pb-cyan block leading-none">20 Skills</span>
-                  <span className="font-mono text-[7.5px] uppercase tracking-[1px] text-pb-ink-muted block mt-[3px]">aplicaveis hoje</span>
+                  <span className={"text-[13px] font-extrabold block leading-none " + SAAS_GRADIENT_TEXT}>20 Skills</span>
+                  <span className="font-mono text-[8px] uppercase tracking-[0.14em] text-saas-faint block mt-[3px]">aplicáveis hoje</span>
                 </div>
               </div>
             </div>
@@ -403,40 +391,35 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* PROOF STRIP */}
-      <div className="bg-pb-void-card border-t border-b border-pb-grid-strong px-10 py-5">
-        <div className="max-w-[1100px] mx-auto flex items-center justify-center gap-12 flex-wrap">
+      <div className="bg-saas-void-2 border-t border-b border-white/[0.06] px-5 sm:px-10 py-5">
+        <div className="max-w-[1100px] mx-auto flex items-center justify-center gap-6 md:gap-12 flex-wrap">
           {[
             { val: "100%", lbl: "Gratuito" },
             { val: "20", lbl: "Skills práticas" },
             { val: "PDF", lbl: "Acesso imediato" },
             { val: "0", lbl: "Conhecimento técnico necessário" },
           ].map(({ val, lbl }, i, arr) => (
-            <>
-              <div key={lbl} className="flex items-center gap-[10px] font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
-                <span className="text-pb-cyan font-display text-base">{val}</span>
+            <Fragment key={lbl}>
+              <div className="flex items-center gap-[10px] font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
+                <span className={"text-base font-extrabold " + SAAS_GRADIENT_TEXT}>{val}</span>
                 {lbl}
               </div>
-              {i < arr.length - 1 && <div className="w-px h-7 bg-pb-grid-strong" />}
-            </>
+              {i < arr.length - 1 && <div className="w-px h-7 bg-white/[0.08]" />}
+            </Fragment>
           ))}
         </div>
       </div>
 
       {/* BULLETS */}
-      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 80% 50%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
-        <div className="max-w-[1100px] mx-auto grid grid-cols-2 gap-20 items-center">
+      <section className="relative overflow-hidden border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-24">
+        <div aria-hidden className="pointer-events-none absolute top-1/3 -right-40 w-[420px] h-[420px] rounded-full bg-saas-cyan/10 blur-[110px]" />
+        <div className="relative max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 lg:gap-20 items-center">
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              O problema
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(24px,3vw,36px)] mb-5">
-              IA nao e
-              <br />
-              vantagem de quem
-              <br />
-              <em className="not-italic text-pb-cyan">sabe que existe.</em>
+            <Eyebrow className="mb-5">O problema</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(24px,3vw,38px)] mb-5">
+              IA não é vantagem de quem <Accent>sabe que existe.</Accent>
             </h2>
-            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-8">
+            <p className="text-[15px] md:text-base text-saas-body leading-relaxed mb-8">
               O guia prático com as habilidades que aplico no meu negócio e
               ensinei a centenas de empreendedores que hoje usam inteligência
               artificial para trabalhar menos e faturar mais.
@@ -449,17 +432,15 @@ const EducacaoSkillsNegocios = () => {
                 "Crie sistemas que trabalham enquanto você dorme",
                 "Use IA como vantagem competitiva real, não como curiosidade",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-[14px] text-[14px] text-pb-ink-soft leading-snug font-body">
-                  <span className="min-w-[20px] w-5 h-5 mt-0.5 border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center font-mono text-[10px] text-pb-cyan flex-shrink-0">
-                    ✓
-                  </span>
+                <li key={item} className="flex items-start gap-3 text-[14.5px] text-saas-body leading-snug">
+                  <Check className="w-4 h-4 mt-0.5 text-saas-green flex-shrink-0" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
                 label: "RESULTADO",
@@ -467,7 +448,7 @@ const EducacaoSkillsNegocios = () => {
                 desc: "Aplique as primeiras skills em menos de 48 horas e sinta a diferença no operacional.",
               },
               {
-                label: "ACESSIVEL",
+                label: "ACESSÍVEL",
                 title: "Sem jargão técnico",
                 desc: "Cada skill explicada para quem tem negócio, não para quem programa.",
               },
@@ -477,16 +458,15 @@ const EducacaoSkillsNegocios = () => {
                 desc: "Cada skill tem métricas de impacto: tempo economizado, receita gerada.",
               },
               {
-                label: "ADAPTAVEL",
+                label: "ADAPTÁVEL",
                 title: "Qualquer negócio",
                 desc: "Agência, clínica, consultoria, infoproduto — o método se adapta ao seu modelo.",
               },
             ].map(({ label, title, desc }) => (
-              <div key={title} className="strat-card relative group">
-                <div className="absolute top-2 right-2 w-[10px] h-[10px] border-t border-r border-pb-cyan/20" />
-                <div className="font-mono text-[9px] uppercase tracking-mono-x text-pb-cyan mb-[10px]">{label}</div>
-                <div className="font-display text-[12px] uppercase text-pb-ink mb-[6px] tracking-wide">{title}</div>
-                <div className="font-body text-[12px] text-pb-ink-muted leading-snug">{desc}</div>
+              <div key={title} className={SAAS_CARD + " p-5 transition-colors duration-300 hover:border-white/[0.2]"}>
+                <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-[10px]">{label}</div>
+                <div className="font-bold text-saas-ink text-[14px] mb-[6px]">{title}</div>
+                <div className="text-[12.5px] text-saas-muted leading-snug">{desc}</div>
               </div>
             ))}
           </div>
@@ -494,53 +474,41 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* PILLARS */}
-      <section className="px-10 py-[100px] bg-pb-void-card border-t border-b border-pb-grid-strong">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="text-center mb-[60px]">
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              Os fundamentos
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)] mb-[14px]">
-              Os tres pilares
-              <br />
-              das 20 Skills
+      <section className="relative overflow-hidden border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-24">
+        <div aria-hidden className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[560px] h-[300px] rounded-full bg-saas-violet/10 blur-[120px]" />
+        <div className="relative max-w-[1100px] mx-auto">
+          <div className="text-center mb-14">
+            <Eyebrow className="mb-5">Os fundamentos</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(24px,3vw,38px)] mb-4">
+              Os três pilares das <Accent>20 Skills</Accent>
             </h2>
-            <p className="font-body text-[15px] text-pb-ink-muted max-w-[540px] mx-auto">
+            <p className="text-[15px] text-saas-muted max-w-[540px] mx-auto leading-relaxed">
               Cada skill foi selecionada com base em três critérios inegociáveis.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 num: "01",
-                title: "Resultado na prática,\nnão na teoria",
+                title: "Resultado na prática, não na teoria",
                 desc: "Nenhuma skill foi incluída sem ter sido testada em operações reais — no meu negócio e nos negócios que acompanho.",
               },
               {
                 num: "02",
-                title: "Aplicável sem\nconhecimento técnico",
+                title: "Aplicável sem conhecimento técnico",
                 desc: "Você não precisa saber programar, entender APIs ou contratar um desenvolvedor para aplicar qualquer uma das 20 skills.",
               },
               {
                 num: "03",
-                title: "Funciona em\nqualquer nicho",
+                title: "Funciona em qualquer nicho",
                 desc: "Agência de marketing, clínica, escritório de advocacia, e-commerce, consultoria — o método se adapta à sua realidade.",
               },
             ].map(({ num, title, desc }) => (
-              <div key={num} className="bg-pb-void border border-pb-grid-strong px-7 py-8 text-center relative transition-[border-color] duration-300 hover:border-pb-cyan/25">
-                {/* Top accent */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-px opacity-50" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
-                <div className="font-display text-[48px] text-pb-cyan opacity-15 leading-none mb-3">{num}</div>
-                <div className="font-display text-[14px] uppercase text-pb-ink mb-3 tracking-wide leading-[1.15]">
-                  {title.split("\n").map((line, i) => (
-                    <span key={i}>
-                      {line}
-                      {i === 0 && <br />}
-                    </span>
-                  ))}
-                </div>
-                <div className="font-body text-[13px] text-pb-ink-muted leading-relaxed">{desc}</div>
+              <div key={num} className={SAAS_CARD + " p-7 text-center transition-colors duration-300 hover:border-white/[0.2]"}>
+                <div className={"text-[42px] font-extrabold leading-none mb-3 opacity-25 " + SAAS_GRADIENT_TEXT}>{num}</div>
+                <div className="font-bold text-saas-ink text-[15px] mb-3 leading-snug">{title}</div>
+                <div className="text-[13px] text-saas-muted leading-relaxed">{desc}</div>
               </div>
             ))}
           </div>
@@ -548,52 +516,45 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* CONTENTS */}
-      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 20% 80%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
-        <div className="max-w-[1100px] mx-auto">
-          <div className="text-center mb-[60px]">
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              O que você vai receber
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)] mb-[14px]">
-              Skills prontas
-              <br />
-              para aplicar agora
+      <section className="relative overflow-hidden border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-24">
+        <div aria-hidden className="pointer-events-none absolute top-1/3 -left-40 w-[420px] h-[420px] rounded-full bg-saas-cyan/10 blur-[110px]" />
+        <div className="relative max-w-[1100px] mx-auto">
+          <div className="text-center mb-14">
+            <Eyebrow className="mb-5">O que você vai receber</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(24px,3vw,38px)] mb-4">
+              Skills prontas para <Accent>aplicar agora</Accent>
             </h2>
-            <p className="font-body text-[15px] text-pb-ink-muted max-w-[540px] mx-auto">
+            <p className="text-[15px] text-saas-muted max-w-[540px] mx-auto leading-relaxed">
               Com exemplos reais, passo a passo e os prompts que eu mesmo uso no dia a dia.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-[14px] mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {contents.map(([num, text]) => (
-              <div key={num} className="flex items-center gap-4 bg-pb-void-card border border-pb-grid-strong px-5 py-4 transition-[border-color] duration-300 hover:border-pb-cyan/25">
-                <span className="font-mono text-[10px] text-pb-cyan opacity-60 min-w-[28px]">{num}</span>
-                <span className="font-body text-[14px] text-pb-ink-soft">{text}</span>
+              <div key={num} className={SAAS_CARD + " flex items-center gap-4 px-5 py-4 transition-colors duration-300 hover:border-white/[0.18]"}>
+                <span className="font-mono text-[11px] text-saas-cyan min-w-[30px]">{num}</span>
+                <span className="text-[14px] text-saas-body">{text}</span>
               </div>
             ))}
-            <div className="flex items-center gap-4 bg-pb-void-card border border-pb-grid-strong px-5 py-4 transition-[border-color] duration-300 hover:border-pb-cyan/25">
-              <span className="font-mono text-[10px] text-pb-cyan opacity-60 min-w-[28px]">11–20</span>
-              <span className="font-body text-[14px] text-pb-cyan">+ 10 skills avançadas reveladas no ebook</span>
+            <div className={SAAS_CARD + " flex items-center gap-4 px-5 py-4 border-white/[0.14]"}>
+              <span className="font-mono text-[11px] text-saas-cyan min-w-[30px]">11–20</span>
+              <span className={"text-[14px] font-semibold " + SAAS_GRADIENT_TEXT}>+ 10 skills avançadas reveladas no ebook</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="px-10 py-[100px] bg-pb-void-card border-t border-b border-pb-grid-strong">
+      <section className="border-t border-white/[0.06] bg-saas-void-2 px-5 sm:px-10 py-20 md:py-24">
         <div className="max-w-[1100px] mx-auto">
-          <div className="text-center mb-[60px]">
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              Prova social
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)]">
-              Empreendedores que
-              <br />
-              ja aplicaram o metodo
+          <div className="text-center mb-14">
+            <Eyebrow className="mb-5">Prova social</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(24px,3vw,38px)]">
+              Empreendedores que já <Accent>aplicaram o método</Accent>
             </h2>
           </div>
 
-          <div className="grid grid-cols-3 gap-5 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 quote: "Em dois dias de aplicação eliminei 6 horas semanais de trabalho repetitivo. O que mais me surpreendeu foi a simplicidade — não precisei de nenhum conhecimento técnico.",
@@ -614,19 +575,18 @@ const EducacaoSkillsNegocios = () => {
                 role: "Médico e gestor de clínica",
               },
             ].map(({ quote, initials, name, role }) => (
-              <div key={name} className="bg-pb-void border border-pb-grid-strong p-7 relative transition-[border-color] duration-300 hover:border-pb-cyan/25">
-                <div className="absolute top-2 right-2 w-[10px] h-[10px] border-t border-r border-pb-cyan/15" />
-                <p className="font-body text-[13px] text-pb-ink-soft leading-relaxed mb-5 italic">
-                  <span className="text-pb-cyan font-body text-xl not-italic align-[-6px] mr-1">"</span>
+              <div key={name} className={SAAS_CARD + " p-7 transition-colors duration-300 hover:border-white/[0.18]"}>
+                <p className="text-[13.5px] text-saas-body leading-relaxed mb-6 italic">
+                  <span className="text-saas-cyan text-xl not-italic align-[-6px] mr-1">"</span>
                   {quote}
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 border border-pb-grid-strong bg-pb-void-elev flex items-center justify-center font-mono text-[11px] text-pb-cyan flex-shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center font-bold text-[11px] text-saas-void flex-shrink-0">
                     {initials}
                   </div>
                   <div>
-                    <div className="font-display text-[11px] uppercase text-pb-ink tracking-wide">{name}</div>
-                    <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mt-0.5">{role}</div>
+                    <div className="font-semibold text-saas-ink text-[13px]">{name}</div>
+                    <div className="text-[11.5px] text-saas-faint mt-0.5">{role}</div>
                   </div>
                 </div>
               </div>
@@ -636,39 +596,29 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* AUTHOR */}
-      <section className="px-10 py-[100px]" style={{ background: "radial-gradient(ellipse at 70% 40%, rgba(32,221,235,0.05) 0%, transparent 50%), #05090B" }}>
-        <div className="max-w-[1100px] mx-auto grid gap-16 items-center" style={{ gridTemplateColumns: "280px 1fr" }}>
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-[220px] h-[220px] bg-pb-void-card border-2 border-pb-cyan/20 flex items-center justify-center font-display text-[64px] text-pb-cyan relative overflow-visible">
-              RA
-              <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 30% 30%, rgba(32,221,235,0.12) 0%, transparent 60%)" }} />
-              {/* Spinning ring */}
+      <section className="relative overflow-hidden border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-24">
+        <div aria-hidden className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-saas-cyan/10 blur-[120px]" />
+        <div className="relative max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-[240px_1fr] gap-12 md:gap-16 items-center">
+          <div className="flex flex-col items-center gap-4 mx-auto md:mx-0">
+            <div className="relative w-[200px] h-[200px] rounded-full bg-saas-card border border-white/[0.09] flex items-center justify-center overflow-hidden">
+              <span className={"text-[56px] font-extrabold " + SAAS_GRADIENT_TEXT}>RA</span>
               <div
-                className="absolute pointer-events-none border border-pb-cyan/12"
-                style={{
-                  inset: "-8px",
-                  animation: "snReactorSpin 15s linear infinite",
-                }}
-              >
-                <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-pb-cyan opacity-60" />
-              </div>
+                className="absolute inset-0 pointer-events-none"
+                style={{ background: "radial-gradient(circle at 30% 30%, rgba(32,221,235,0.14) 0%, transparent 60%)" }}
+              />
             </div>
-            <div className="bg-pb-void-card border border-pb-grid-strong px-[18px] py-[10px] text-center">
-              <div className="font-display text-[13px] uppercase text-pb-ink tracking-wide">Rodrigo Albuquerque</div>
-              <div className="font-mono text-[8px] uppercase tracking-[2px] text-pb-cyan mt-[3px]">Empreendedor · IA · Negócios</div>
+            <div className={SAAS_CARD + " px-5 py-3 text-center"}>
+              <div className="font-bold text-saas-ink text-[13px]">Rodrigo Albuquerque</div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mt-1">Empreendedor · IA · Negócios</div>
             </div>
           </div>
 
           <div>
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              Quem desenvolveu o método
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(20px,2.5vw,30px)] mb-4">
-              Construido por quem
-              <br />
-              <span className="text-pb-cyan">usa no proprio negocio</span>
+            <Eyebrow className="mb-5">Quem desenvolveu o método</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(22px,2.5vw,32px)] mb-5">
+              Construído por quem <Accent>usa no próprio negócio</Accent>
             </h2>
-            <p className="font-body text-[15px] text-pb-ink-soft leading-relaxed mb-7">
+            <p className="text-[15px] text-saas-body leading-relaxed mb-8">
               Rodrigo Albuquerque é empreendedor, criador de conteúdo sobre IA e
               negócios, e fundador da BA — holding com operações em marketing,
               assessoria de receita e educação digital. Nos últimos anos,
@@ -683,8 +633,8 @@ const EducacaoSkillsNegocios = () => {
                 { num: "100%", lbl: "Baseado em casos reais" },
               ].map(({ num, lbl }) => (
                 <div key={lbl} className="flex flex-col gap-1">
-                  <span className="font-display text-[24px] text-pb-cyan">{num}</span>
-                  <span className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted">{lbl}</span>
+                  <span className={"text-[26px] font-extrabold leading-none " + SAAS_GRADIENT_TEXT}>{num}</span>
+                  <span className="text-[11px] text-saas-faint">{lbl}</span>
                 </div>
               ))}
             </div>
@@ -693,64 +643,57 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="px-10 py-[120px] bg-pb-void-card border-t border-pb-grid-strong text-center relative overflow-hidden" id="cta">
-        {/* Top accent line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-px opacity-40" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
-        {/* Glow */}
+      <section className="relative overflow-hidden border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-28 text-center" id="cta">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse, rgba(32,221,235,0.06) 0%, transparent 70%)" }}
+          aria-hidden
+          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[320px] rounded-full bg-saas-violet/15 blur-[130px]"
         />
-        <div className="max-w-[680px] mx-auto relative z-[1]">
-          <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-            Acesso gratuito
-          </div>
-          <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3.2vw,40px)] mb-[14px]">
-            Baixe agora as <span className="text-pb-cyan">20 Skills de IA</span>
-            <br />e comece hoje.
+        <div className="relative max-w-[680px] mx-auto">
+          <Eyebrow className="mb-6">Acesso gratuito</Eyebrow>
+          <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.6vw,44px)] mb-5">
+            Baixe agora as <Accent>20 Skills de IA</Accent> e comece hoje.
           </h2>
-          <p className="font-body text-[15px] text-pb-ink-muted mb-10 leading-relaxed">
+          <p className="text-[15px] text-saas-body leading-relaxed mb-10 max-w-[52ch] mx-auto">
             Use inteligência artificial como vantagem de negócio — não como
             ferramenta de curiosidade. Acesso imediato, sem cartão, sem enrolação.
           </p>
           <a
             href="#cta"
-            className="btn-primary inline-flex text-[13px] py-5 px-14 mb-4"
+            className={SAAS_BTN_PRIMARY + " !px-12 !py-4"}
             onClick={(e) => { e.preventDefault(); handleCTA("final_cta"); }}
           >
             Baixar Ebook Gratuitamente
           </a>
-          <span className="block font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted mt-3">
-            gratuito · acesso imediato · pdf completo · sem cartao
+          <span className="block font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint mt-5">
+            gratuito · acesso imediato · pdf completo · sem cartão
           </span>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="px-10 py-[100px] bg-pb-void border-t border-pb-grid-strong">
+      <section className="border-t border-white/[0.06] px-5 sm:px-10 py-20 md:py-24">
         <div className="max-w-[760px] mx-auto">
-          <div className="text-left mb-[60px]">
-            <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-4 inline-block">
-              Dúvidas frequentes
-            </div>
-            <h2 className="font-display uppercase text-pb-ink leading-[0.95] text-[clamp(22px,3vw,34px)]">
-              Perguntas
-              <br />
-              frequentes
+          <div className="text-left mb-14">
+            <Eyebrow className="mb-5">Dúvidas frequentes</Eyebrow>
+            <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(24px,3vw,38px)]">
+              Perguntas <Accent>frequentes</Accent>
             </h2>
           </div>
-          <div className="flex flex-col gap-3 mt-12">
+          <div className="flex flex-col gap-3">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`bg-pb-void-card border overflow-hidden transition-[border-color] duration-300 ${openFaq === index ? "border-pb-cyan/20" : "border-pb-grid-strong hover:border-pb-cyan/15"}`}
+                className={`rounded-2xl border overflow-hidden transition-colors duration-300 bg-saas-card ${openFaq === index ? "border-white/[0.22]" : "border-white/[0.09] hover:border-white/[0.16]"}`}
               >
                 <button
-                  className="w-full px-6 py-5 font-display text-[13px] uppercase text-pb-ink tracking-wide cursor-pointer flex justify-between items-center gap-4 select-none bg-transparent border-none text-left"
+                  className="w-full px-6 py-5 font-semibold text-saas-ink text-[15px] cursor-pointer flex justify-between items-center gap-4 select-none bg-transparent border-none text-left"
                   onClick={() => toggleFaq(index)}
                 >
                   {faq.q}
-                  <span className="text-pb-cyan font-mono text-xl font-light min-w-5 text-right flex-shrink-0 transition-transform duration-300" style={{ transform: openFaq === index ? "rotate(45deg)" : "none" }}>
+                  <span
+                    className={"font-mono text-xl font-light min-w-5 text-right flex-shrink-0 transition-transform duration-300 " + SAAS_GRADIENT_TEXT}
+                    style={{ transform: openFaq === index ? "rotate(45deg)" : "none" }}
+                  >
                     +
                   </span>
                 </button>
@@ -758,7 +701,7 @@ const EducacaoSkillsNegocios = () => {
                   className="overflow-hidden transition-all duration-[400ms] ease-in-out"
                   style={{ maxHeight: openFaq === index ? "300px" : "0" }}
                 >
-                  <div className="px-6 pb-5 font-body text-[14px] text-pb-ink-muted leading-relaxed">
+                  <div className="px-6 pb-5 text-[14px] text-saas-muted leading-relaxed">
                     {faq.a}
                   </div>
                 </div>
@@ -769,11 +712,11 @@ const EducacaoSkillsNegocios = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="px-10 py-10 bg-pb-void border-t border-pb-grid-strong text-center">
-        <div className="font-display text-[12px] uppercase text-pb-ink-muted tracking-[1.5px] mb-2">
-          Rodrigo <span className="text-pb-cyan">Albuquerque</span>
+      <footer className="border-t border-white/[0.06] px-5 sm:px-10 py-10 text-center">
+        <div className="font-bold text-saas-ink text-[13px] mb-2">
+          Rodrigo <Accent>Albuquerque</Accent>
         </div>
-        <div className="font-mono text-[9px] uppercase tracking-[1.5px] text-pb-ink-muted">
+        <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
           © 2026 · Todos os direitos reservados
         </div>
       </footer>
@@ -781,107 +724,99 @@ const EducacaoSkillsNegocios = () => {
       {/* LEAD MODAL */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-[200] bg-pb-void/82 backdrop-blur-md flex items-center justify-center p-5"
+          className="fixed inset-0 z-[200] bg-saas-void/80 backdrop-blur-md flex items-center justify-center p-5"
           onClick={() => setModalOpen(false)}
         >
           <div
-            className="relative bg-pb-void-card border border-pb-cyan/20 px-8 py-9 w-full max-w-[480px]"
-            style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.7), inset 0 0 0 0.5px rgba(32,221,235,0.06)" }}
+            className={SAAS_CARD + " relative px-8 py-9 w-full max-w-[480px]"}
+            style={{ boxShadow: "0 24px 64px rgba(0,0,0,0.6)" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top accent line */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-px opacity-50" style={{ background: "linear-gradient(90deg, transparent, #20DDEB, transparent)" }} />
-
             <button
-              className="absolute top-[14px] right-[18px] bg-transparent border-none text-pb-ink-muted text-[22px] cursor-pointer leading-none transition-colors duration-200 hover:text-pb-ink font-mono"
+              className="absolute top-[14px] right-[18px] bg-transparent border-none text-saas-faint text-[22px] cursor-pointer leading-none transition-colors duration-200 hover:text-saas-ink"
               onClick={() => setModalOpen(false)}
             >
               ×
             </button>
 
             <div className="mb-6">
-              <div className="font-mono text-[10px] uppercase tracking-mono-x text-pb-cyan mb-2">
-                Acesso gratuito
-              </div>
-              <h3 className="font-display text-[18px] uppercase text-pb-ink tracking-wide">
-                INFORME SEUS DADOS:
+              <Eyebrow className="mb-3">Acesso gratuito</Eyebrow>
+              <h3 className="font-extrabold text-saas-ink text-[19px] tracking-tight">
+                Informe seus dados
               </h3>
             </div>
 
             <form className="flex flex-col gap-3" onSubmit={handleSubmit} noValidate>
               <input
-                className="pb-input"
+                className={SAAS_INPUT}
                 type="text"
-                placeholder="* SEU NOME..."
+                placeholder="Seu nome"
                 value={form.nome}
                 onChange={(e) => handleField("nome", e.target.value)}
                 autoComplete="name"
               />
               <input
-                className="pb-input"
+                className={SAAS_INPUT}
                 type="email"
-                placeholder="* SEU MELHOR E-MAIL..."
+                placeholder="Seu melhor e-mail"
                 value={form.email}
                 onChange={(e) => handleField("email", e.target.value)}
                 autoComplete="email"
               />
               <input
-                className="pb-input"
+                className={SAAS_INPUT}
                 type="tel"
-                placeholder="* +55 · SEU WHATSAPP..."
+                placeholder="+55 · Seu WhatsApp"
                 value={form.whatsapp}
                 onChange={(e) => handleField("whatsapp", e.target.value)}
                 autoComplete="tel"
               />
               <select
-                className="pb-input appearance-none"
+                className={SAAS_INPUT + " appearance-none"}
                 value={form.faturamento}
                 onChange={(e) => handleField("faturamento", e.target.value)}
-                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* QUAL É A SUA RECEITA MENSAL APROXIMADA?</option>
+                <option value="">Qual é a sua receita mensal aproximada?</option>
                 {FATURAMENTO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
               <select
-                className="pb-input appearance-none"
+                className={SAAS_INPUT + " appearance-none"}
                 value={form.cargo}
                 onChange={(e) => handleField("cargo", e.target.value)}
-                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* CARGO</option>
+                <option value="">Cargo</option>
                 {CARGO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
               <select
-                className="pb-input appearance-none"
+                className={SAAS_INPUT + " appearance-none"}
                 value={form.segmento}
                 onChange={(e) => handleField("segmento", e.target.value)}
-                style={{ background: "hsl(var(--bg-deep))" }}
               >
-                <option value="">* SEGMENTO</option>
+                <option value="">Segmento</option>
                 {SEGMENTO_OPTIONS.map((o) => (
                   <option key={o} value={o}>{o}</option>
                 ))}
               </select>
 
               {formError && (
-                <div className="font-mono text-[10px] uppercase tracking-[1px] text-pb-red py-1">
+                <div className="text-[12px] text-red-400 py-1">
                   {formError}
                 </div>
               )}
 
               <button
                 type="submit"
-                className="btn-primary justify-center w-full text-[11px] py-4 mt-1 disabled:opacity-60 disabled:cursor-not-allowed"
+                className={SAAS_BTN_PRIMARY + " justify-center w-full mt-1 disabled:opacity-60 disabled:cursor-not-allowed"}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "ENVIANDO..." : "BAIXAR EBOOK GRATUITAMENTE"}
+                {isSubmitting ? "Enviando..." : "Baixar Ebook Gratuitamente"}
               </button>
 
-              <div className="font-mono text-[9px] uppercase tracking-mono-x text-pb-ink-muted text-center mt-2">
+              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint text-center mt-2">
                 gratuito · sem spam · acesso imediato
               </div>
             </form>
@@ -891,8 +826,6 @@ const EducacaoSkillsNegocios = () => {
 
       {/* Keyframe animations (no Tailwind equivalent for these specific transforms) */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500;600&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap');
-
         @keyframes snFloat {
           0%, 100% { transform: rotate(-1.5deg) translateY(0); }
           50%       { transform: rotate(-1.5deg) translateY(-10px); }
@@ -900,18 +833,6 @@ const EducacaoSkillsNegocios = () => {
         @keyframes snFloatAlt {
           0%, 100% { transform: translateY(0); }
           50%      { transform: translateY(-7px); }
-        }
-        @keyframes snReactorSpin {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 860px) {
-          .esn-hero-grid { grid-template-columns: 1fr !important; }
-          .esn-hero-visual { order: -1; }
-          .esn-two-col { grid-template-columns: 1fr !important; }
-          .esn-three-col { grid-template-columns: 1fr !important; }
-          .esn-author-grid { grid-template-columns: 1fr !important; text-align: center; }
         }
       `}</style>
     </div>

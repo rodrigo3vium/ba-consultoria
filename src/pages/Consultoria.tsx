@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CornerBrackets from '@/components/pb/CornerBrackets';
-import SectionHeader from '@/components/pb/SectionHeader';
-import Stamp from '@/components/pb/Stamp';
-import StratCard from '@/components/pb/StratCard';
+import {
+  Accent,
+  Eyebrow,
+  Card,
+  Section,
+  SectionHeader,
+  SAAS_BTN_PRIMARY,
+} from '@/components/saas/ui';
 import { tracker } from '@/lib/tracking';
 
 const WHATSAPP_URL = 'https://wa.me/5511999718595';
@@ -82,22 +86,21 @@ const Consultoria = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pb-void text-pb-ink">
+    <div className="min-h-screen bg-saas-void text-saas-body">
 
       {/* Meta bar pró-vida */}
       <div
-        className="fixed top-0 left-0 right-0 z-[60] flex items-center gap-3 px-5 py-2 font-mono text-[10px] uppercase tracking-mono-wide"
-        style={{ background: 'rgba(5,9,11,0.97)', borderBottom: '1px solid rgba(228,73,53,0.25)' }}
+        className="fixed top-0 left-0 right-0 z-[60] flex items-center gap-3 px-5 py-2 font-mono text-[10px] uppercase tracking-[0.14em] border-b border-white/[0.06]"
+        style={{ background: 'rgba(10,10,19,0.97)' }}
       >
         <span
-          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 animate-pulse-cyan"
-          style={{ background: 'hsl(var(--accent-red))', boxShadow: '0 0 8px hsl(var(--accent-red) / 0.6)' }}
+          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 bg-gradient-to-r from-saas-cyan to-saas-violet animate-pulse"
           aria-hidden
         />
-        <span className="text-pb-ink-muted">
+        <span className="text-saas-muted">
           Empresa pró-vida · somos contra todo tipo de aborto
         </span>
-        <span className="ml-auto hidden sm:block text-pb-ink-faint">
+        <span className="ml-auto hidden sm:block text-saas-faint">
           POSIÇÃO: PERMANENTE
         </span>
       </div>
@@ -110,45 +113,32 @@ const Consultoria = () => {
           01 — HERO
       ================================================================ */}
       <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <CornerBrackets size={32} offset={24} />
-
-        {/* Coordinates */}
-        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:block">
-          <div className="flex flex-col items-end gap-1">
-            <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">CONSULTORIA-01</span></span>
-            <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
-            <span><span className="text-pb-ink-faint mr-3">OWNER</span><span className="text-pb-ink-soft">BA</span></span>
-            <span><span className="text-pb-ink-faint mr-3">STATE</span><span className="text-pb-cyan">ACTIVE</span></span>
-          </div>
+        {/* Glows radiais */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
-        {/* Protocol badge */}
-        <div className="absolute top-8 left-8 hidden md:block">
-          <Stamp>Protocolo 01 / Consultoria</Stamp>
-        </div>
+        <div className="relative max-w-7xl mx-auto w-full pt-24 pb-32">
+          <div className="max-w-3xl animate-fade-in">
+            <Eyebrow>Consultoria</Eyebrow>
 
-        <div className="max-w-7xl mx-auto w-full pt-24 pb-32">
-          <div className="max-w-5xl">
-            <h1
-              className="font-display uppercase text-pb-ink leading-[0.88]"
-              style={{ fontSize: 'clamp(72px, 11vw, 160px)', letterSpacing: '0.005em' }}
-            >
+            <h1 className="mt-6 font-extrabold text-saas-ink text-[clamp(36px,5.5vw,64px)] leading-[1.08] tracking-tight">
               Transforme<br />
               sua empresa<br />
-              <span className="text-pb-ink-soft">com IA</span>
-              <span className="text-pb-red">.</span>
+              <Accent>com IA</Accent>.
             </h1>
 
-            <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="mt-7 text-saas-body text-lg md:text-xl leading-relaxed max-w-xl">
               Aumente seus lucros sem contratar mais gente ou trabalhar mais horas.
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className={SAAS_BTN_PRIMARY}
                 onClick={() => handleCta('hero')}
               >
                 Falar com um especialista
@@ -159,203 +149,180 @@ const Consultoria = () => {
         </div>
 
         {/* Bottom rule */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
-          <span className="text-pb-cyan animate-pulse-cyan">● Operacional</span>
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-white/[0.06] font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
+          <span className="text-saas-cyan animate-pulse">● Operacional</span>
           <span className="hidden sm:inline">Call gratuita de 30 minutos</span>
           <span className="hidden md:inline">Sem pressão. Sem obrigação.</span>
-          <span className="ml-auto text-pb-ink-faint">BA Consultoria — 2026</span>
+          <span className="ml-auto">BA Consultoria — 2026</span>
         </div>
       </section>
 
       {/* ================================================================
           02 — SOBRE / ESPECIALISTA
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="02 / COMANDO"
-            label="Especialista"
-            headline={<>Rodrigo<br />Albuquerque<span className="text-pb-red">.</span></>}
-            sub="Especialista em transformação de negócios com IA, com experiência internacional. Ajudei dezenas de pequenas e médias empresas a usarem tecnologia de forma inteligente para aumentar eficiência, lucro e controle — sem complicação nem promessas vazias."
-          />
-        </div>
-      </section>
+      <Section container="max-w-5xl">
+        <SectionHeader eyebrow="Especialista">
+          Rodrigo <Accent>Albuquerque</Accent>.
+        </SectionHeader>
+        <p className="mt-6 text-saas-body text-[17px] leading-relaxed max-w-[62ch]">
+          Especialista em transformação de negócios com IA, com experiência internacional. Ajudei dezenas de pequenas e médias empresas a usarem tecnologia de forma inteligente para aumentar eficiência, lucro e controle — sem complicação nem promessas vazias.
+        </p>
+      </Section>
 
       {/* ================================================================
           03 — PROBLEMA
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="03 / DIAGNÓSTICO"
-            label="O problema"
-            headline={<>O problema que sua<br />empresa enfrenta hoje<span className="text-pb-red">.</span></>}
-          />
+      <Section container="max-w-5xl">
+        <SectionHeader eyebrow="O problema" className="mb-10">
+          O problema que sua empresa enfrenta <Accent>hoje</Accent>.
+        </SectionHeader>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <StratCard>
-              <p className="font-body text-pb-ink-soft leading-relaxed">
-                A maioria das empresas brasileiras ainda está presa a processos manuais, planilhas desorganizadas e equipes sobrecarregadas.
-              </p>
-            </StratCard>
-            <StratCard>
-              <p className="font-body text-pb-ink-soft leading-relaxed">
-                E enquanto a concorrência avança usando automações e IA para crescer com menos custo, muitos empreendedores continuam apagando incêndios e perdendo margem.
-              </p>
-            </StratCard>
-          </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          <Card className="p-6 md:p-7">
+            <p className="text-saas-body text-[17px] leading-relaxed">
+              A maioria das empresas brasileiras ainda está presa a processos manuais, planilhas desorganizadas e equipes sobrecarregadas.
+            </p>
+          </Card>
+          <Card className="p-6 md:p-7">
+            <p className="text-saas-body text-[17px] leading-relaxed">
+              E enquanto a concorrência avança usando automações e IA para crescer com menos custo, muitos empreendedores continuam apagando incêndios e perdendo margem.
+            </p>
+          </Card>
         </div>
-      </section>
+      </Section>
 
       {/* ================================================================
           04 — CONSEQUÊNCIAS
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="04 / ANÁLISE"
-            label="Consequências de não resolver"
-            headline={<>Negócios que ignoram<br />essa virada ficam para trás<span className="text-pb-red">.</span></>}
-          />
+      <Section container="max-w-5xl">
+        <SectionHeader eyebrow="Consequências de não resolver" className="mb-10">
+          Negócios que ignoram essa virada ficam <Accent>para trás</Accent>.
+        </SectionHeader>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {consequences.map((item, index) => (
-              <StratCard key={index}>
-                <div className="flex items-start gap-4">
-                  <span
-                    className="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0"
-                    style={{ background: 'hsl(var(--accent-cyan))', boxShadow: '0 0 6px hsl(var(--accent-cyan) / 0.5)' }}
-                    aria-hidden
-                  />
-                  <p className="font-body text-pb-ink-soft leading-relaxed">{item}</p>
-                </div>
-              </StratCard>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          {consequences.map((item, index) => (
+            <Card key={index} className="p-6 md:p-7">
+              <div className="flex items-start gap-4">
+                <span
+                  className="inline-block w-1.5 h-1.5 mt-2 flex-shrink-0 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet"
+                  aria-hidden
+                />
+                <p className="text-saas-body text-[17px] leading-relaxed">{item}</p>
+              </div>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* ================================================================
           05 — SOLUÇÃO / VIRADA
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="05 / VIRADA"
-            label="O que é possível com IA"
-            headline={<>A virada<span className="text-pb-red">.</span></>}
-            align="center"
-          />
+      <Section container="max-w-3xl">
+        <SectionHeader eyebrow="O que é possível com IA" center className="mb-10">
+          A <Accent>virada</Accent>.
+        </SectionHeader>
 
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
-              Imagine sua empresa rodando com mais agilidade, menos retrabalho e mais clareza nos dados.
-            </p>
-            <p className="font-body text-pb-ink-soft text-lg leading-relaxed">
-              Imagine reduzir tarefas manuais, melhorar decisões e escalar resultados — sem aumentar o time.
-            </p>
-            <p className="font-display uppercase text-pb-ink text-[clamp(24px,3vw,40px)] leading-[0.95] mt-8">
-              É isso que a inteligência artificial pode fazer por você<br />
-              quando aplicada com estratégia<span className="text-pb-red">.</span>
-            </p>
-          </div>
+        <div className="text-center space-y-5">
+          <p className="text-saas-body text-[17px] md:text-lg leading-relaxed">
+            Imagine sua empresa rodando com mais agilidade, menos retrabalho e mais clareza nos dados.
+          </p>
+          <p className="text-saas-body text-[17px] md:text-lg leading-relaxed">
+            Imagine reduzir tarefas manuais, melhorar decisões e escalar resultados — sem aumentar o time.
+          </p>
+          <p className="font-extrabold text-saas-ink text-[clamp(22px,2.8vw,34px)] leading-snug tracking-tight pt-5">
+            É isso que a inteligência artificial pode fazer por você quando aplicada <Accent>com estratégia</Accent>.
+          </p>
         </div>
-      </section>
+      </Section>
 
       {/* ================================================================
           06 — SERVIÇO / METODOLOGIA
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="06 / MÉTODO"
-            label="Minha consultoria"
-            headline={<>Direta ao ponto<span className="text-pb-red">.</span></>}
-            sub="Minha consultoria é direta ao ponto, sem enrolação e pensada para quem quer resultado real. Começa com uma call de 30 minutos, onde eu vou entender sua realidade e mostrar se realmente faz sentido avançarmos juntos."
-          />
+      <Section container="max-w-5xl">
+        <SectionHeader eyebrow="Minha consultoria">
+          Direta ao <Accent>ponto</Accent>.
+        </SectionHeader>
+        <p className="mt-6 mb-10 text-saas-body text-[17px] leading-relaxed max-w-[62ch]">
+          Minha consultoria é direta ao ponto, sem enrolação e pensada para quem quer resultado real. Começa com uma call de 30 minutos, onde eu vou entender sua realidade e mostrar se realmente faz sentido avançarmos juntos.
+        </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {serviceSteps.map((step) => (
-              <StratCard key={step.idx} brackets>
-                <Stamp>{`Etapa ${step.idx}`}</Stamp>
-                <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mt-4">
-                  {step.title}
-                </h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed mt-3">
-                  {step.description}
-                </p>
-              </StratCard>
-            ))}
-          </div>
-
-          <StratCard>
-            <p className="font-body text-pb-ink-soft leading-relaxed text-center">
-              Tudo isso com uma metodologia própria, adaptada ao Brasil e testada em dezenas de negócios reais.
-            </p>
-          </StratCard>
+        <div className="grid md:grid-cols-3 gap-5 mb-6">
+          {serviceSteps.map((step) => (
+            <Card key={step.idx} className="p-6 md:p-7">
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan">
+                {`Etapa ${step.idx}`}
+              </span>
+              <h3 className="mt-4 font-bold text-saas-ink text-xl tracking-tight">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-saas-muted text-[14.5px] leading-relaxed">
+                {step.description}
+              </p>
+            </Card>
+          ))}
         </div>
-      </section>
+
+        <Card className="p-6 md:p-7">
+          <p className="text-saas-body text-[17px] leading-relaxed text-center">
+            Tudo isso com uma metodologia própria, adaptada ao Brasil e testada em dezenas de negócios reais.
+          </p>
+        </Card>
+      </Section>
 
       {/* ================================================================
           07 — DEPOIMENTOS
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="07 / CAMPO"
-            label="Depoimentos"
-            headline={<>O que dizem<br />quem passou por aqui<span className="text-pb-red">.</span></>}
-          />
+      <Section container="max-w-5xl">
+        <SectionHeader eyebrow="Depoimentos" className="mb-10">
+          O que dizem quem passou <Accent>por aqui</Accent>.
+        </SectionHeader>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((t, index) => (
-              <StratCard key={index} brackets>
-                <p className="font-body text-pb-ink-soft leading-relaxed mb-6">
-                  "{t.quote}"
+        <div className="grid md:grid-cols-2 gap-5">
+          {testimonials.map((t, index) => (
+            <Card key={index} className="p-6 md:p-7">
+              <p className="text-saas-body text-[17px] leading-relaxed mb-6">
+                "{t.quote}"
+              </p>
+              <div className="border-t border-white/[0.08] pt-4">
+                <p className="text-sm font-semibold text-saas-ink">
+                  {t.author}
                 </p>
-                <div className="border-t border-pb-grid-strong pt-4">
-                  <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan">
-                    {t.author}
-                  </p>
-                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-0.5">
-                    {t.role}
-                  </p>
-                </div>
-              </StratCard>
-            ))}
-          </div>
+                <p className="text-[12.5px] text-saas-faint mt-0.5">
+                  {t.role}
+                </p>
+              </div>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* ================================================================
           08 — CTA
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative border border-pb-grid-strong p-12 md:p-20 text-center">
-            <CornerBrackets size={20} offset={12} />
+      <Section container="max-w-5xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.09] bg-saas-card p-10 md:p-16 text-center">
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[560px] h-[340px] rounded-full bg-saas-violet/15 blur-[110px]" />
+            <div className="absolute -bottom-28 right-0 w-[420px] h-[300px] rounded-full bg-saas-cyan/10 blur-[110px]" />
+          </div>
 
-            <Stamp>Call gratuita</Stamp>
+          <div className="relative">
+            <Eyebrow>Call gratuita</Eyebrow>
 
-            <h2
-              className="font-display uppercase text-pb-ink leading-[0.92] mt-6"
-              style={{ fontSize: 'clamp(40px, 6vw, 88px)' }}
-            >
-              Pronto para<br />
-              transformar<br />
-              sua empresa<span className="text-pb-red">?</span>
+            <h2 className="mt-6 font-extrabold text-saas-ink text-[clamp(28px,4vw,48px)] leading-[1.1] tracking-tight">
+              Pronto para transformar <Accent>sua empresa</Accent>?
             </h2>
 
-            <p className="font-body text-pb-ink-soft text-lg leading-relaxed max-w-xl mx-auto mt-8">
+            <p className="mt-6 text-saas-body text-[17px] md:text-lg leading-relaxed max-w-xl mx-auto">
               Agende agora sua call gratuita de 30 minutos e veja se sua empresa está pronta para dar o próximo passo.
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4 justify-center">
+            <div className="mt-9 flex flex-wrap gap-4 justify-center">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className={SAAS_BTN_PRIMARY}
                 onClick={() => handleCta('cta-section')}
               >
                 Quero agendar minha call
@@ -363,38 +330,34 @@ const Consultoria = () => {
               </a>
             </div>
 
-            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mt-8">
+            <p className="mt-8 text-xs text-saas-faint leading-relaxed max-w-md mx-auto">
               Sem pressão. Sem obrigação. A primeira conversa é gratuita e só seguimos se realmente fizer sentido para o seu momento.
             </p>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* ================================================================
           09 — FAQ
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="09 / PROTOCOLO"
-            label="Perguntas frequentes"
-            headline={<>Dúvidas<br />comuns<span className="text-pb-red">.</span></>}
-          />
+      <Section container="max-w-3xl">
+        <SectionHeader eyebrow="Perguntas frequentes" className="mb-10">
+          Dúvidas <Accent>comuns</Accent>.
+        </SectionHeader>
 
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <StratCard key={index}>
-                <h3 className="font-display uppercase text-pb-ink text-xl leading-[0.95]">
-                  {faq.question}
-                </h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed mt-4">
-                  {faq.answer}
-                </p>
-              </StratCard>
-            ))}
-          </div>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <Card key={index} className="p-6 md:p-7">
+              <h3 className="font-bold text-saas-ink text-lg tracking-tight">
+                {faq.question}
+              </h3>
+              <p className="mt-3 text-saas-body text-[15px] leading-relaxed">
+                {faq.answer}
+              </p>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
       <Footer />
     </div>

@@ -1,6 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Code, GraduationCap, TrendingUp, Briefcase, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  Accent,
+  Card,
+  Section,
+  SectionHeader,
+  StatCard,
+  SAAS_BTN_PRIMARY,
+  SAAS_BTN_GHOST,
+  SAAS_CARD,
+  SAAS_GRADIENT_TEXT,
+} from '@/components/saas/ui';
 import chatgptLogo from "@/assets/chatgpt-logo.png";
 import grokLogo from "@/assets/grok-logo.png";
 import geminiLogo from "@/assets/gemini-logo.png";
@@ -29,32 +40,11 @@ import jonathanBarrosPhoto from "@/assets/founders/jonathan-barros.webp";
 import rodrigoAlbuquerquePhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import francielliBenitesPhoto from "@/assets/founders/francielli-benites.webp";
 
-/* ── Color Constants ── */
-const C = {
-  bg: '#0e1a0f',
-  bgAlt: '#162318',
-  card: '#1c2e1e',
-  hover: '#2d4a30',
-  gold: '#c9a227',
-  parchment: '#f0e6d0',
-  muted: '#6b7d5a',
-  oxblood: '#6b1a1a',
-  footer: '#0a1209',
-};
-
-const Ornament = () => (
-  <div className="flex items-center justify-center py-4" style={{ gap: 16 }}>
-    <div className="h-px flex-1 max-w-[120px]" style={{ background: `${C.gold}33` }} />
-    <span style={{ color: C.gold, opacity: 0.5, fontSize: 14, letterSpacing: 4 }}>✦</span>
-    <div className="h-px flex-1 max-w-[120px]" style={{ background: `${C.gold}33` }} />
-  </div>
-);
-
 const Home2 = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.body.style.backgroundColor = C.bg;
+    document.body.style.backgroundColor = '#0A0A13';
     document.body.style.paddingTop = '0';
     return () => {
       document.body.style.backgroundColor = '';
@@ -153,117 +143,69 @@ const Home2 = () => {
   ];
 
   return (
-    <div className="dark-academia-grain min-h-screen" style={{ background: C.bg, fontFamily: "'Cormorant Garamond', serif" }}>
+    <div className="min-h-screen bg-saas-void text-saas-body antialiased">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=IM+Fell+English:ital@1&family=Cormorant+Garamond:wght@400;600&display=swap');
-        
-        .dark-academia-grain::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          z-index: 9999;
-          pointer-events: none;
-          opacity: 0.04;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        .font-playfair { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .font-fell { font-family: 'IM Fell English', serif; font-style: italic; }
-        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
-
-        .da-eyebrow {
-          font-family: 'Cormorant Garamond', serif;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 5px;
-          color: ${C.gold}b3;
-          font-size: 13px;
-        }
-
-        .da-cta {
-          border: 1px solid ${C.gold};
-          color: ${C.gold};
-          background: transparent;
-          padding: 14px 32px;
-          text-transform: uppercase;
-          letter-spacing: 3px;
-          font-family: 'Cormorant Garamond', serif;
-          font-weight: 600;
-          font-size: 14px;
-          border-radius: 2px;
-          transition: all 400ms ease;
-          cursor: pointer;
-          display: inline-block;
-        }
-        .da-cta:hover {
-          background: ${C.gold};
-          color: ${C.bg};
-        }
-
-        .da-card {
-          background: ${C.card};
-          border: 1px solid ${C.gold}1a;
-          border-radius: 4px;
-          transition: all 400ms ease;
-        }
-        .da-card:hover {
-          border-color: ${C.gold}66;
-        }
-
-        @keyframes da-scroll {
+        @keyframes home2-scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-33.333%); }
         }
-        .da-animate-scroll {
-          animation: da-scroll 30s linear infinite;
+        .home2-animate-scroll {
+          animation: home2-scroll 30s linear infinite;
         }
-        .da-animate-scroll:hover {
+        .home2-animate-scroll:hover {
           animation-play-state: paused;
         }
 
-        @keyframes da-scroll-slow {
+        @keyframes home2-scroll-slow {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .da-animate-scroll-slow {
-          animation: da-scroll-slow 60s linear infinite;
+        .home2-animate-scroll-slow {
+          animation: home2-scroll-slow 60s linear infinite;
         }
-        .da-animate-scroll-slow:hover {
+        .home2-animate-scroll-slow:hover {
           animation-play-state: paused;
         }
       `}</style>
 
       {/* Pro-Life Banner */}
-      <div style={{ background: C.bgAlt, borderBottom: `1px solid ${C.gold}26`, color: C.parchment }} className="py-3 px-4 text-center text-sm font-cormorant relative z-50">
+      <div className="relative z-50 border-b border-white/[0.06] bg-saas-void-2 py-3 px-4 text-center text-sm text-saas-muted">
         Nós somos uma empresa pró-vida. Somos contra todo o tipo de aborto.
       </div>
 
       {/* Navbar */}
-      <nav style={{ background: C.bgAlt, borderBottom: `1px solid ${C.gold}33` }} className="sticky top-0 z-40 px-6 md:px-12">
+      <nav className="sticky top-0 z-40 border-b border-white/[0.06] bg-saas-void/80 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex items-center justify-between h-16">
-          <span className="font-playfair text-lg" style={{ color: C.gold, letterSpacing: 3 }}>
-            BA · CONSULTORIA
+          <span className="flex items-center gap-2.5 font-bold text-saas-ink text-[15px]">
+            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
+            BA · Consultoria
           </span>
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map(l => (
-              <a key={l.label} href={l.href} className="font-cormorant text-sm transition-colors duration-300" style={{ color: C.muted, letterSpacing: 4, textTransform: 'uppercase' as const }}
-                onMouseEnter={e => (e.currentTarget.style.color = C.parchment)}
-                onMouseLeave={e => (e.currentTarget.style.color = C.muted)}
+              <a
+                key={l.label}
+                href={l.href}
+                className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted hover:text-saas-ink transition-colors"
               >
                 {l.label}
               </a>
             ))}
           </div>
           {/* Mobile hamburger */}
-          <button className="md:hidden" style={{ color: C.parchment }} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button className="md:hidden text-saas-ink" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 flex flex-col gap-3">
             {navLinks.map(l => (
-              <a key={l.label} href={l.href} className="font-cormorant text-sm py-2" style={{ color: C.muted, letterSpacing: 4 }} onClick={() => setMobileMenuOpen(false)}>
+              <a
+                key={l.label}
+                href={l.href}
+                className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 {l.label}
               </a>
             ))}
@@ -272,273 +214,233 @@ const Home2 = () => {
       </nav>
 
       {/* Hero */}
-      <section style={{ background: C.bg, padding: 'clamp(80px, 12vw, 160px) 24px' }} className="relative">
-        <div className="max-w-5xl mx-auto relative">
-          {/* Vertical decorative line */}
-          <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-[100px]" style={{ background: `${C.gold}33` }} />
-
-          <div className="da-eyebrow mb-6">✦&nbsp;&nbsp;&nbsp;Empresário · Estrategista · Criador</div>
-          <h1 className="font-playfair leading-tight mb-8" style={{ color: C.parchment, fontSize: 'clamp(36px, 5vw, 64px)' }}>
-            Atraia mais <span className="font-playfair italic" style={{ color: C.gold }}>clientes</span> para o seu negócio
+      <header className="relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 animate-fade-in">
+          <span className="font-mono inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-saas-cyan mb-6">
+            Empresário · Estrategista · Criador
+          </span>
+          <h1 className="font-extrabold text-saas-ink text-[clamp(28px,4vw,50px)] leading-[1.1] tracking-tight mb-6 max-w-[20ch]">
+            Atraia mais <Accent>clientes</Accent> para o seu negócio
           </h1>
-          <p className="font-cormorant mb-10 max-w-3xl" style={{ color: C.muted, fontSize: 'clamp(17px, 2vw, 20px)', lineHeight: 1.85 }}>
+          <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[52ch] mb-9">
             Ecossistema completo de soluções em Marketing, Tecnologia e Comercial para aumentar o lucro do seu negócio.
           </p>
-          <a href="#contato" className="da-cta">Falar com um especialista</a>
+          <a href="#contato" className={SAAS_BTN_PRIMARY}>Falar com um especialista</a>
         </div>
-      </section>
-
-      <Ornament />
+      </header>
 
       {/* Founders */}
-      <section id="fundadores" style={{ background: C.bgAlt, padding: 'clamp(60px, 10vw, 140px) 24px' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">02 — Fundadores</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            Nossos Fundadores
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-12">
-            {founders.map((f, i) => (
-              <div key={i} className="space-y-6">
-                <div className="aspect-[4/5] overflow-hidden" style={{ borderRadius: 4, border: `1px solid ${C.gold}33` }}>
-                  <img loading="lazy" src={f.photo} alt={f.name} className="w-full h-full object-cover grayscale" style={{ mixBlendMode: 'luminosity' }} />
-                </div>
-                <h3 className="font-playfair text-2xl md:text-3xl" style={{ color: C.parchment }}>{f.name}</h3>
-                <p className="font-cormorant font-semibold text-sm" style={{ color: C.gold, letterSpacing: 3, textTransform: 'uppercase' }}>{f.role}</p>
-                <div className="space-y-4">
-                  {f.bios.map((b, j) => (
-                    <p key={j} className="font-cormorant" style={{ color: C.muted, fontSize: 17, lineHeight: 1.85 }}>{b}</p>
-                  ))}
-                </div>
+      <Section id="fundadores" className="bg-saas-void-2" container="max-w-6xl">
+        <SectionHeader eyebrow="02 — Fundadores" center className="mb-14 animate-fade-in">
+          Nossos Fundadores
+        </SectionHeader>
+        <div className="grid lg:grid-cols-3 gap-12">
+          {founders.map((f, i) => (
+            <div key={i} className="space-y-5 animate-fade-in">
+              <div className="aspect-[4/5] overflow-hidden rounded-2xl border border-white/[0.09]">
+                <img loading="lazy" src={f.photo} alt={f.name} className="w-full h-full object-cover" />
               </div>
-            ))}
-          </div>
+              <h3 className="font-bold text-saas-ink text-2xl tracking-tight">{f.name}</h3>
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-saas-cyan">{f.role}</p>
+              <div className="space-y-4">
+                {f.bios.map((b, j) => (
+                  <p key={j} className="text-saas-body text-[15.5px] leading-relaxed">{b}</p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
-
-      <Ornament />
+      </Section>
 
       {/* Pillars */}
-      <section id="pilares" style={{ background: C.bg, padding: 'clamp(60px, 10vw, 140px) 24px' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">03 — Pilares</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            Nossos Pilares
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pillars.map((p, i) => (
-              <div key={i} className="da-card p-8 group">
-                <div className="w-14 h-14 mb-6 flex items-center justify-center" style={{ border: `1px solid ${C.gold}33`, borderRadius: 4 }}>
-                  <p.icon className="w-7 h-7" style={{ color: C.gold }} />
-                </div>
-                <h3 className="font-playfair text-xl mb-4" style={{ color: C.parchment }}>{p.title}</h3>
-                <p className="font-cormorant mb-6" style={{ color: C.muted, fontSize: 16, lineHeight: 1.85 }}>{p.description}</p>
-                <Link to={p.link} onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
-                  <span className="da-cta" style={{ padding: '10px 20px', fontSize: 12 }}>Saiba Mais</span>
-                </Link>
-              </div>
-            ))}
-          </div>
+      <Section id="pilares" container="max-w-6xl">
+        <SectionHeader eyebrow="03 — Pilares" center className="mb-14 animate-fade-in">
+          Nossos Pilares
+        </SectionHeader>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((p, i) => (
+            <Card key={i} className="p-7 flex flex-col animate-fade-in">
+              <span className="inline-flex w-11 h-11 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet items-center justify-center mb-5">
+                <p.icon className="w-5 h-5 text-saas-void" />
+              </span>
+              <h3 className="font-bold text-saas-ink text-lg mb-2.5">{p.title}</h3>
+              <p className="text-saas-muted text-[14.5px] leading-relaxed mb-6 flex-1">{p.description}</p>
+              <Link
+                to={p.link}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+                className={SAAS_BTN_GHOST + " !px-5 !py-2.5 !text-[13px] self-start"}
+              >
+                Saiba Mais
+              </Link>
+            </Card>
+          ))}
         </div>
-      </section>
-
-      <Ornament />
+      </Section>
 
       {/* Technologies */}
-      <section style={{ background: C.bgAlt, padding: 'clamp(60px, 10vw, 140px) 24px', borderTop: `1px solid ${C.gold}1a`, borderBottom: `1px solid ${C.gold}1a` }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">04 — Tecnologias</div>
-          <h2 className="font-playfair text-center mb-4" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
+      <Section className="bg-saas-void-2" container="max-w-6xl">
+        <div className="text-center mb-14 animate-fade-in">
+          <SectionHeader eyebrow="04 — Tecnologias" center>
             Tecnologias
-          </h2>
-          <p className="font-cormorant text-center mb-16 max-w-3xl mx-auto" style={{ color: C.muted, fontSize: 17, lineHeight: 1.85 }}>
+          </SectionHeader>
+          <p className="mt-4 text-saas-muted text-base md:text-lg leading-relaxed max-w-[60ch] mx-auto">
             Utilizamos as mais avançadas ferramentas e plataformas para entregar soluções de ponta
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {technologies.map((t, i) => (
-              <div key={i} className="da-card p-6 flex flex-col items-center justify-center aspect-square text-center">
-                <img loading="lazy" src={t.logo} alt={t.name} className="w-16 h-16 mb-3 object-contain" />
-                <h3 className="font-playfair text-lg mb-2" style={{ color: C.parchment }}>{t.name}</h3>
-                <p className="font-cormorant text-xs" style={{ color: C.muted }}>{t.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-
-      <Ornament />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-5xl mx-auto">
+          {technologies.map((t, i) => (
+            <Card key={i} className="p-6 flex flex-col items-center justify-center aspect-square text-center animate-fade-in">
+              <img loading="lazy" src={t.logo} alt={t.name} className="w-16 h-16 mb-3 object-contain" />
+              <h3 className="font-bold text-saas-ink text-base mb-1.5">{t.name}</h3>
+              <p className="text-saas-faint text-xs leading-relaxed">{t.desc}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* Use Cases Carousel */}
-      <section id="cases" style={{ background: C.bg, padding: 'clamp(60px, 10vw, 140px) 24px' }} className="overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">05 — Cases de Uso</div>
-          <h2 className="font-playfair text-center mb-4" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
+      <Section id="cases" className="overflow-hidden" container="max-w-6xl">
+        <div className="text-center mb-14 animate-fade-in">
+          <SectionHeader eyebrow="05 — Cases de Uso" center>
             Cases de Uso
-          </h2>
-          <p className="font-cormorant text-center mb-16 max-w-3xl mx-auto" style={{ color: C.muted, fontSize: 17 }}>
+          </SectionHeader>
+          <p className="mt-4 text-saas-muted text-base md:text-lg leading-relaxed max-w-[60ch] mx-auto">
             Soluções comprovadas que transformam negócios
           </p>
-          <div className="relative">
-            <div className="flex da-animate-scroll-slow gap-6">
-              {[...useCases, ...useCases].map((uc, i) => (
-                <div key={i} className="da-card flex-shrink-0 w-[380px] p-8">
-                  <div className="mb-4">
-                    <span className="font-cormorant text-xs font-semibold px-3 py-1" style={{ border: `1px solid ${C.gold}33`, color: C.gold, borderRadius: 2, letterSpacing: 2, textTransform: 'uppercase' }}>
-                      {uc.category}
-                    </span>
-                  </div>
-                  <h3 className="font-playfair text-xl mb-4 min-h-[56px]" style={{ color: C.parchment }}>{uc.title}</h3>
-                  <p className="font-cormorant mb-6 min-h-[96px]" style={{ color: C.muted, fontSize: 16, lineHeight: 1.85 }}>{uc.description}</p>
-                  <div className="pt-4" style={{ borderTop: `1px solid ${C.gold}1a` }}>
-                    <p className="font-playfair text-lg" style={{ color: C.gold }}>{uc.metric}</p>
-                  </div>
+        </div>
+        <div className="relative">
+          <div className="flex home2-animate-scroll-slow gap-6">
+            {[...useCases, ...useCases].map((uc, i) => (
+              <div key={i} className={SAAS_CARD + " flex-shrink-0 w-[380px] p-8"}>
+                <div className="mb-4">
+                  <span className="inline-flex items-center rounded-full border border-white/[0.10] bg-white/[0.03] px-3 py-1 text-[11px] font-mono uppercase tracking-[0.14em] text-saas-cyan">
+                    {uc.category}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <h3 className="font-bold text-saas-ink text-xl tracking-tight mb-4 min-h-[56px]">{uc.title}</h3>
+                <p className="text-saas-muted text-[15px] leading-relaxed mb-6 min-h-[96px]">{uc.description}</p>
+                <div className="pt-4 border-t border-white/[0.08]">
+                  <p className={"font-extrabold text-lg " + SAAS_GRADIENT_TEXT}>{uc.metric}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-
-      <Ornament />
+      </Section>
 
       {/* Clients */}
-      <section style={{ background: C.bgAlt, padding: 'clamp(60px, 10vw, 120px) 24px', borderTop: `1px solid ${C.gold}1a`, borderBottom: `1px solid ${C.gold}1a` }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">06 — Clientes</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            Nossos Clientes
-          </h2>
-          <div className="relative overflow-hidden">
-            <div className="flex da-animate-scroll">
-              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={i} className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300">
-                  <img loading="lazy" src={logo} alt={`Cliente ${i + 1}`} className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-80" />
-                </div>
-              ))}
-            </div>
+      <Section className="bg-saas-void-2" container="max-w-6xl">
+        <SectionHeader eyebrow="06 — Clientes" center className="mb-14 animate-fade-in">
+          Nossos Clientes
+        </SectionHeader>
+        <div className="relative overflow-hidden">
+          <div className="flex home2-animate-scroll">
+            {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+              <div key={i} className="flex-shrink-0 mx-8 grayscale hover:grayscale-0 transition-all duration-300">
+                <img loading="lazy" src={logo} alt={`Cliente ${i + 1}`} className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-80" />
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-
-      <Ornament />
+      </Section>
 
       {/* FAQ */}
-      <section style={{ background: C.bg, padding: 'clamp(60px, 10vw, 140px) 24px' }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">07 — Dúvidas</div>
-          <h2 className="font-playfair text-center mb-4" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
+      <Section container="max-w-4xl">
+        <div className="text-center mb-14 animate-fade-in">
+          <SectionHeader eyebrow="07 — Dúvidas" center>
             Perguntas Frequentes
-          </h2>
-          <p className="font-cormorant text-center mb-16 max-w-2xl mx-auto" style={{ color: C.muted, fontSize: 17 }}>
+          </SectionHeader>
+          <p className="mt-4 text-saas-muted text-base md:text-lg leading-relaxed max-w-[52ch] mx-auto">
             Tire suas dúvidas sobre nossos serviços e soluções
           </p>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <div key={i} className="da-card overflow-hidden">
-                <details className="group">
-                  <summary className="flex justify-between items-center cursor-pointer p-6 transition-colors duration-300"
-                    style={{ color: C.parchment }}
-                    onMouseEnter={e => (e.currentTarget.style.background = `${C.hover}40`)}
-                    onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-                  >
-                    <h3 className="font-playfair text-lg">{faq.q}</h3>
-                    <svg className="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" style={{ color: C.gold }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </summary>
-                  <div className="px-6 pb-6 font-cormorant" style={{ color: C.muted, fontSize: 17, lineHeight: 1.85 }}>
-                    <p>{faq.a}</p>
-                  </div>
-                </details>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
-
-      <Ornament />
+        <div className="space-y-4">
+          {faqs.map((faq, i) => (
+            <Card key={i} className="overflow-hidden animate-fade-in">
+              <details className="group">
+                <summary className="flex justify-between items-center cursor-pointer p-6 text-saas-ink transition-colors hover:bg-white/[0.03]">
+                  <h3 className="font-bold text-base md:text-lg tracking-tight">{faq.q}</h3>
+                  <svg className="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4 text-saas-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-6 text-saas-body text-[15.5px] leading-relaxed">
+                  <p>{faq.a}</p>
+                </div>
+              </details>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* World Map */}
-      <section style={{ background: C.bgAlt, padding: 'clamp(60px, 10vw, 140px) 24px' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">08 — Presença Global</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            BA Consultoria no Mundo
-          </h2>
-          <div className="relative aspect-video max-w-4xl mx-auto overflow-hidden" style={{ borderRadius: 4, border: `1px solid ${C.gold}33` }}>
-            <img loading="lazy" src={worldMap} alt="Mapa Mundi - BA Consultoria no Mundo" className="w-full h-full object-cover scale-110" />
-          </div>
-          <p className="font-cormorant text-center mt-12 max-w-2xl mx-auto" style={{ color: C.muted, fontSize: 18, lineHeight: 1.85 }}>
-            Presença global, impacto local. Levando expertise empresarial brasileira para o mundo.
-          </p>
+      <Section className="bg-saas-void-2" container="max-w-6xl">
+        <SectionHeader eyebrow="08 — Presença Global" center className="mb-14 animate-fade-in">
+          BA Consultoria no Mundo
+        </SectionHeader>
+        <div className="relative aspect-video max-w-4xl mx-auto overflow-hidden rounded-2xl border border-white/[0.09] animate-fade-in">
+          <img loading="lazy" src={worldMap} alt="Mapa Mundi - BA Consultoria no Mundo" className="w-full h-full object-cover scale-110" />
         </div>
-      </section>
-
-      <Ornament />
+        <p className="text-center mt-10 max-w-[52ch] mx-auto text-saas-body text-base md:text-lg leading-relaxed">
+          Presença global, impacto local. Levando expertise empresarial brasileira para o mundo.
+        </p>
+      </Section>
 
       {/* Mentors */}
-      <section style={{ background: C.bg, padding: 'clamp(60px, 10vw, 140px) 24px', borderTop: `1px solid ${C.gold}1a` }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">09 — Mentores</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            Nossos Mentores e Professores
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {mentors.map((m, i) => (
-              <div key={i} className="da-card p-6">
-                <div className="aspect-square overflow-hidden mb-4" style={{ borderRadius: 4, border: `1px solid ${C.gold}26` }}>
-                  <img loading="lazy" src={m.photo} alt={m.name} className="w-full h-full object-cover grayscale" />
-                </div>
-                <h3 className="font-playfair text-lg mb-1" style={{ color: C.parchment }}>{m.name}</h3>
-                <p className="font-cormorant font-semibold text-sm mb-3" style={{ color: C.gold }}>{m.role}</p>
-                <p className="font-cormorant text-sm" style={{ color: C.muted, lineHeight: 1.75 }}>{m.bio}</p>
+      <Section container="max-w-7xl">
+        <SectionHeader eyebrow="09 — Mentores" center className="mb-14 animate-fade-in">
+          Nossos Mentores e Professores
+        </SectionHeader>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+          {mentors.map((m, i) => (
+            <Card key={i} className="p-5 animate-fade-in">
+              <div className="aspect-square overflow-hidden mb-4 rounded-xl border border-white/[0.09]">
+                <img loading="lazy" src={m.photo} alt={m.name} className="w-full h-full object-cover" />
               </div>
-            ))}
-          </div>
+              <h3 className="font-bold text-saas-ink text-base tracking-tight mb-1">{m.name}</h3>
+              <p className="text-saas-cyan text-[12.5px] font-semibold mb-3">{m.role}</p>
+              <p className="text-saas-muted text-[13.5px] leading-relaxed">{m.bio}</p>
+            </Card>
+          ))}
         </div>
-      </section>
-
-      <Ornament />
+      </Section>
 
       {/* Stats */}
-      <section style={{ background: C.bgAlt, padding: 'clamp(60px, 10vw, 140px) 24px', borderTop: `1px solid ${C.gold}1a` }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="da-eyebrow text-center mb-4">10 — Resultados</div>
-          <h2 className="font-playfair text-center mb-16" style={{ color: C.parchment, fontSize: 'clamp(28px, 4vw, 48px)' }}>
-            Números que Falam por Si
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {stats.map((s, i) => (
-              <div key={i} className="da-card p-8 text-center">
-                <div className="font-playfair mb-4" style={{ color: C.gold, fontSize: 'clamp(36px, 5vw, 56px)' }}>{s.value}</div>
-                <p className="font-cormorant font-semibold" style={{ color: C.parchment, fontSize: 16 }}>{s.label}</p>
-              </div>
-            ))}
-          </div>
+      <Section className="bg-saas-void-2" container="max-w-6xl">
+        <SectionHeader eyebrow="10 — Resultados" center className="mb-14 animate-fade-in">
+          Números que Falam por Si
+        </SectionHeader>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 animate-fade-in">
+          {stats.map((s, i) => (
+            <StatCard key={i} value={s.value} label={s.label} accent />
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Footer */}
-      <footer id="contato" style={{ background: C.footer, borderTop: `1px solid ${C.gold}33`, padding: '80px 24px 40px' }}>
+      <footer id="contato" className="border-t border-white/[0.06] py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
-          <span className="font-playfair text-2xl block mb-8" style={{ color: C.gold, letterSpacing: 3 }}>
-            BA · CONSULTORIA
-          </span>
+          <div className="mb-8">
+            <span className="inline-flex items-center gap-2.5 font-bold text-saas-ink text-xl">
+              <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
+              BA · Consultoria
+            </span>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-8 mb-10">
             {['TECNOLOGIA', 'EDUCAÇÃO', 'CONSULTORIA', 'SERVIÇOS'].map(l => (
-              <span key={l} className="font-cormorant text-sm transition-colors duration-300 cursor-pointer" style={{ color: C.muted, letterSpacing: 4 }}
-                onMouseEnter={e => (e.currentTarget.style.color = C.parchment)}
-                onMouseLeave={e => (e.currentTarget.style.color = C.muted)}
-              >
+              <span key={l} className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint hover:text-saas-ink transition-colors cursor-pointer">
                 {l}
               </span>
             ))}
           </div>
-          <Ornament />
-          <p className="font-fell mt-8 mb-6" style={{ color: C.muted, fontSize: 18 }}>
+          <p className="italic text-saas-body text-base mt-8 mb-6">
             "O estilo é a roupa da ideia. Vista bem."
           </p>
-          <p className="font-mono text-xs" style={{ color: `${C.muted}80` }}>
+          <p className="font-mono text-[11px] text-saas-faint-2">
             © {new Date().getFullYear()} BA Consultoria. Todos os direitos reservados.
           </p>
         </div>

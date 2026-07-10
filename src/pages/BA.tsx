@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { Code, GraduationCap, TrendingUp, Briefcase } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CornerBrackets from '@/components/pb/CornerBrackets';
-import SectionHeader from '@/components/pb/SectionHeader';
-import Stamp from '@/components/pb/Stamp';
-import Tag from '@/components/pb/Tag';
+import {
+  Accent,
+  Eyebrow,
+  SectionHeader,
+  Card,
+  StatCard,
+  SAAS_BTN_PRIMARY,
+  SAAS_BTN_GHOST,
+  SAAS_CARD,
+} from '@/components/saas/ui';
 import { tracker } from '@/lib/tracking';
 
 import chatgptLogo from '@/assets/chatgpt-logo.png';
@@ -124,22 +130,18 @@ const BA = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pb-void text-pb-ink">
+    <div className="min-h-screen bg-saas-void text-saas-body">
 
       {/* 00 — Meta bar pró-vida */}
-      <div
-        className="fixed top-0 left-0 right-0 z-[60] flex items-center gap-3 px-5 py-2 font-mono text-[10px] uppercase tracking-mono-wide"
-        style={{ background: 'rgba(5,9,11,0.97)', borderBottom: '1px solid rgba(228,73,53,0.25)' }}
-      >
+      <div className="fixed top-0 left-0 right-0 z-[60] flex items-center gap-3 px-5 py-2 font-mono text-[10px] uppercase tracking-[0.14em] border-b border-white/[0.06] bg-saas-void/95 backdrop-blur-xl">
         <span
-          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 animate-pulse-cyan"
-          style={{ background: 'hsl(var(--accent-red))', boxShadow: '0 0 8px hsl(var(--accent-red) / 0.6)' }}
+          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0 animate-pulse bg-gradient-to-r from-saas-cyan to-saas-violet"
           aria-hidden
         />
-        <span className="text-pb-ink-muted">
+        <span className="text-saas-muted">
           Empresa pró-vida · somos contra todo tipo de aborto
         </span>
-        <span className="ml-auto hidden sm:block text-pb-ink-faint">
+        <span className="ml-auto hidden sm:block text-saas-faint">
           POSIÇÃO: PERMANENTE
         </span>
       </div>
@@ -153,37 +155,21 @@ const BA = () => {
           01 — HERO
       ================================================================ */}
       <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <CornerBrackets size={32} offset={24} />
-
-        {/* Coordinates */}
-        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:block">
-          <div className="flex flex-col items-end gap-1">
-            <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">HOME-01</span></span>
-            <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
-            <span><span className="text-pb-ink-faint mr-3">OWNER</span><span className="text-pb-ink-soft">BA</span></span>
-            <span><span className="text-pb-ink-faint mr-3">STATE</span><span className="text-pb-cyan">ACTIVE</span></span>
-          </div>
+        {/* Glows radiais */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
-        {/* Protocol badge */}
-        <div className="absolute top-8 left-8 hidden md:block">
-          <Stamp>Protocolo 01 / Home</Stamp>
-        </div>
-
-        <div className="max-w-7xl mx-auto w-full pt-24 pb-32">
-          <div className="max-w-5xl">
-            <h1
-              className="font-display uppercase text-pb-ink leading-[0.88]"
-              style={{ fontSize: 'clamp(72px, 11vw, 160px)', letterSpacing: '0.005em' }}
-            >
-              Mais<br />
-              lucro<span className="text-pb-red">.</span>
+        <div className="relative max-w-7xl mx-auto w-full pt-24 pb-32">
+          <div className="max-w-5xl animate-fade-in">
+            <h1 className="font-extrabold text-saas-ink leading-[1.05] tracking-tight text-[clamp(40px,6.5vw,76px)]">
+              Mais lucro.
               <br />
-              <span className="text-pb-ink-soft">Menos<br />ruído</span>
-              <span className="text-pb-red">.</span>
+              <Accent>Menos ruído.</Accent>
             </h1>
 
-            <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="mt-8 text-saas-body text-lg md:text-xl leading-relaxed max-w-xl">
               Implementamos IA nos negócios com método, não com hype.
               Estratégia antes de automação. Direção antes de ferramenta.
             </p>
@@ -193,7 +179,7 @@ const BA = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className={SAAS_BTN_PRIMARY}
                 onClick={() => handleCta('hero')}
               >
                 Falar com um especialista
@@ -201,7 +187,7 @@ const BA = () => {
               </a>
               <Link
                 to="/cases"
-                className="btn-ghost"
+                className={SAAS_BTN_GHOST}
                 onClick={() => window.scrollTo(0, 0)}
               >
                 Ver cases
@@ -211,27 +197,25 @@ const BA = () => {
         </div>
 
         {/* Bottom rule */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
-          <span className="text-pb-cyan animate-pulse-cyan">● Operacional</span>
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-white/[0.06] font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">
+          <span className="text-saas-cyan animate-pulse">● Operacional</span>
           <span className="hidden sm:inline">+700 clientes atendidos</span>
           <span className="hidden md:inline">+R$130M em vendas geradas</span>
           <span className="hidden lg:inline">7 países</span>
-          <span className="ml-auto text-pb-ink-faint">BA Consultoria — 2026</span>
+          <span className="ml-auto">BA Consultoria — 2026</span>
         </div>
       </section>
 
       {/* ================================================================
           02 — FUNDADORES
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="02 / COMANDO"
-            label="Fundadores"
-            headline={<>Quem assina<br />as decisões<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="Fundadores" className="mb-14">
+            Quem assina as <Accent>decisões</Accent>.
+          </SectionHeader>
 
-          <div className="grid lg:grid-cols-3 gap-10">
+          <div className="grid lg:grid-cols-3 gap-6">
             {[
               {
                 photo: rodrigoAlbuquerquePhoto,
@@ -261,9 +245,7 @@ const BA = () => {
                 ],
               },
             ].map((f) => (
-              <div key={f.name} className="relative bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong p-0 overflow-hidden group">
-                <CornerBrackets size={14} offset={10} />
-
+              <Card key={f.name} className="overflow-hidden group">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
                     loading="lazy"
@@ -275,15 +257,15 @@ const BA = () => {
                 </div>
 
                 <div className="p-8">
-                  <Stamp>{f.role}</Stamp>
-                  <h3 className="font-display uppercase text-pb-ink text-3xl mt-3 mb-1 leading-[0.95]">{f.name}</h3>
+                  <Eyebrow>{f.role}</Eyebrow>
+                  <h3 className="font-extrabold text-saas-ink text-2xl tracking-tight mt-4 mb-1">{f.name}</h3>
                   <div className="mt-4 space-y-3">
                     {f.bio.map((b, i) => (
-                      <p key={i} className="font-body text-pb-ink-soft text-sm leading-relaxed">{b}</p>
+                      <p key={i} className="text-saas-body text-sm leading-relaxed">{b}</p>
                     ))}
                   </div>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -292,40 +274,38 @@ const BA = () => {
       {/* ================================================================
           03 — PILARES
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="03 / DOUTRINA"
-            label="Pilares"
-            headline={<>Quatro frentes<span className="text-pb-red">.</span><br />Uma tese<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="Pilares" className="mb-14">
+            Quatro frentes. <Accent>Uma tese.</Accent>
+          </SectionHeader>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-pb-grid-strong">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {pillars.map((p) => (
-              <div
+              <Card
                 key={p.idx}
-                className="bg-pb-void p-8 flex flex-col gap-6 group hover:bg-pb-void-card transition-colors duration-300"
+                className="p-8 flex flex-col gap-6 group hover:border-white/[0.18] transition-colors duration-300"
               >
                 <div className="flex items-start justify-between">
                   <p.icon
                     size={28}
                     strokeWidth={1.2}
-                    className="text-pb-cyan group-hover:drop-shadow-[0_0_8px_hsl(var(--accent-cyan))] transition-all"
+                    className="text-saas-cyan transition-all"
                   />
-                  <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">// {p.idx}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">{p.idx}</span>
                 </div>
                 <div>
-                  <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-3">{p.title}</h3>
-                  <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{p.desc}</p>
+                  <h3 className="font-extrabold text-saas-ink text-xl tracking-tight mb-3">{p.title}</h3>
+                  <p className="text-saas-body text-sm leading-relaxed">{p.desc}</p>
                 </div>
                 <Link
                   to={p.link}
-                  className="mt-auto font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan hover:text-pb-cyan-soft transition-colors"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-saas-cyan hover:text-saas-ink transition-colors"
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   Saiba mais →
                 </Link>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -334,20 +314,20 @@ const BA = () => {
       {/* ================================================================
           04 — STACK
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="04 / STACK"
-            label="Ferramentas"
-            headline={<>Ferramentas que<br />operam a tese<span className="text-pb-red">.</span></>}
-            sub="Não usamos o que está na moda. Usamos o que funciona. Cada ferramenta tem uma função específica no processo."
-          />
+          <SectionHeader eyebrow="Ferramentas">
+            Ferramentas que <Accent>operam a tese</Accent>.
+          </SectionHeader>
+          <p className="mt-5 mb-14 text-saas-muted text-base md:text-lg leading-relaxed max-w-2xl">
+            Não usamos o que está na moda. Usamos o que funciona. Cada ferramenta tem uma função específica no processo.
+          </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-pb-grid-strong">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {techs.map((t) => (
-              <div
+              <Card
                 key={t.name}
-                className="bg-pb-void p-8 flex flex-col items-center gap-4 group hover:bg-pb-void-card transition-colors duration-300"
+                className="p-8 flex flex-col items-center gap-4 group hover:border-white/[0.18] transition-colors duration-300"
               >
                 <img
                   loading="lazy"
@@ -357,10 +337,10 @@ const BA = () => {
                   style={{ filter: IMG_LOGO }}
                 />
                 <div className="text-center">
-                  <p className="font-mono text-[12px] uppercase tracking-mono-wide text-pb-ink-soft group-hover:text-pb-ink transition-colors">{t.name}</p>
-                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint mt-1">{t.desc}</p>
+                  <p className="text-sm font-semibold text-saas-ink">{t.name}</p>
+                  <p className="text-xs text-saas-faint mt-1">{t.desc}</p>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -369,13 +349,11 @@ const BA = () => {
       {/* ================================================================
           05 — OPERAÇÕES (use cases carousel)
       ================================================================ */}
-      <section className="py-24 border-t border-pb-grid-strong overflow-hidden">
-        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-16">
-          <SectionHeader
-            idx="05 / OPERAÇÕES"
-            label="Cases de uso"
-            headline={<>Problema<span className="text-pb-red">.</span> Execução<span className="text-pb-red">.</span><br />Resultado<span className="text-pb-red">.</span></>}
-          />
+      <section className="py-20 md:py-24 border-t border-white/[0.06] overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-14">
+          <SectionHeader eyebrow="Cases de uso">
+            Problema. Execução. <Accent>Resultado.</Accent>
+          </SectionHeader>
         </div>
 
         <div className="relative">
@@ -383,13 +361,15 @@ const BA = () => {
             {[...useCases, ...useCases].map((uc, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 w-[340px] bg-pb-void-card border border-pb-grid-strong p-8 flex flex-col gap-5"
+                className={SAAS_CARD + ' flex-shrink-0 w-[340px] p-8 flex flex-col gap-5'}
               >
-                <Tag variant="cyan">{uc.category}</Tag>
-                <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] min-h-[56px]">{uc.title}</h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed flex-1">{uc.desc}</p>
-                <div className="pt-5 border-t border-pb-grid-strong">
-                  <span className="font-display uppercase text-pb-cyan text-2xl">{uc.metric}</span>
+                <span className="self-start inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.03] px-3 py-1 text-[10px] font-mono uppercase tracking-[0.14em] text-saas-cyan">
+                  {uc.category}
+                </span>
+                <h3 className="font-extrabold text-saas-ink text-xl tracking-tight leading-snug min-h-[56px]">{uc.title}</h3>
+                <p className="text-saas-body text-sm leading-relaxed flex-1">{uc.desc}</p>
+                <div className="pt-5 border-t border-white/[0.06]">
+                  <span className="text-2xl font-extrabold"><Accent>{uc.metric}</Accent></span>
                 </div>
               </div>
             ))}
@@ -400,13 +380,11 @@ const BA = () => {
       {/* ================================================================
           06 — CLIENTES (logos carousel)
       ================================================================ */}
-      <section className="py-20 border-t border-pb-grid-strong overflow-hidden">
+      <section className="py-20 border-t border-white/[0.06] overflow-hidden">
         <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-12">
-          <SectionHeader
-            idx="06 / CAMPO"
-            label="Clientes"
-            headline={<>Quem já decidiu<br />operar com a BA<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="Clientes">
+            Quem já decidiu operar com a <Accent>BA</Accent>.
+          </SectionHeader>
         </div>
 
         <div className="relative">
@@ -429,45 +407,42 @@ const BA = () => {
       {/* ================================================================
           07 — FAQ
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-4xl mx-auto">
-          <SectionHeader
-            idx="07 / DÚVIDAS DE CAMPO"
-            label="FAQ"
-            headline={<>5 perguntas que<br />todo mundo faz<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="FAQ" className="mb-14">
+            5 perguntas que <Accent>todo mundo faz</Accent>.
+          </SectionHeader>
 
-          <div className="divide-y divide-pb-grid-strong border border-pb-grid-strong">
+          <Card className="divide-y divide-white/[0.06] overflow-hidden">
             {faqs.map((faq, i) => (
               <details key={i} className="group">
-                <summary className="flex items-center justify-between gap-6 px-8 py-6 cursor-pointer list-none hover:bg-pb-void-card transition-colors">
-                  <h3 className="font-display uppercase text-pb-ink text-xl leading-[0.95]">{faq.q}</h3>
-                  <span className="font-mono text-pb-cyan text-lg leading-none group-open:hidden flex-shrink-0">+</span>
-                  <span className="font-mono text-pb-cyan text-lg leading-none hidden group-open:block flex-shrink-0">−</span>
+                <summary className="flex items-center justify-between gap-6 px-8 py-6 cursor-pointer list-none hover:bg-white/[0.02] transition-colors">
+                  <h3 className="font-bold text-saas-ink text-lg leading-snug">{faq.q}</h3>
+                  <span className="text-saas-cyan text-lg leading-none group-open:hidden flex-shrink-0">+</span>
+                  <span className="text-saas-cyan text-lg leading-none hidden group-open:block flex-shrink-0">−</span>
                 </summary>
                 <div className="px-8 pb-8">
-                  <p className="font-body text-pb-ink-soft text-base leading-relaxed">{faq.a}</p>
+                  <p className="text-saas-body text-base leading-relaxed">{faq.a}</p>
                 </div>
               </details>
             ))}
-          </div>
+          </Card>
         </div>
       </section>
 
       {/* ================================================================
           08 — ALCANCE (world map)
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="08 / ALCANCE"
-            label="Presença"
-            headline={<>Operação em<br />7 países<span className="text-pb-red">.</span></>}
-            sub="Presença global, método brasileiro. Exportamos doutrina, não produto."
-          />
+          <SectionHeader eyebrow="Presença">
+            Operação em <Accent>7 países</Accent>.
+          </SectionHeader>
+          <p className="mt-5 mb-14 text-saas-muted text-base md:text-lg leading-relaxed max-w-2xl">
+            Presença global, método brasileiro. Exportamos doutrina, não produto.
+          </p>
 
-          <div className="relative border border-pb-grid-strong overflow-hidden">
-            <CornerBrackets size={20} offset={12} />
+          <Card className="overflow-hidden">
             <img
               loading="lazy"
               src={worldMap}
@@ -475,35 +450,22 @@ const BA = () => {
               className="w-full aspect-video object-cover"
               style={{ filter: 'grayscale(100%) brightness(0.35) contrast(1.6)' }}
             />
-            {/* Overlay grid on map */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                backgroundImage: 'linear-gradient(to right, rgba(32,221,235,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(32,221,235,0.04) 1px, transparent 1px)',
-                backgroundSize: '60px 60px',
-              }}
-            />
-          </div>
+          </Card>
         </div>
       </section>
 
       {/* ================================================================
           09 — INTELIGÊNCIA EXTERNA (mentores)
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="09 / INTELIGÊNCIA EXTERNA"
-            label="Mentores"
-            headline={<>Quem nos<br />treinou<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="Mentores" className="mb-14">
+            Quem nos <Accent>treinou</Accent>.
+          </SectionHeader>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-px bg-pb-grid-strong">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {mentors.map((m) => (
-              <div
-                key={m.name}
-                className="bg-pb-void p-0 overflow-hidden group hover:bg-pb-void-card transition-colors duration-300"
-              >
+              <Card key={m.name} className="overflow-hidden group">
                 <div className="aspect-square overflow-hidden">
                   <img
                     loading="lazy"
@@ -514,11 +476,11 @@ const BA = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-display uppercase text-pb-ink text-lg leading-[0.95] mb-2">{m.name}</h3>
-                  <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3 whitespace-pre-line">{m.role}</p>
-                  <p className="font-body text-pb-ink-soft text-xs leading-relaxed">{m.bio}</p>
+                  <h3 className="font-extrabold text-saas-ink text-base tracking-tight leading-snug mb-2">{m.name}</h3>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3 whitespace-pre-line">{m.role}</p>
+                  <p className="text-saas-body text-xs leading-relaxed">{m.bio}</p>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -527,25 +489,15 @@ const BA = () => {
       {/* ================================================================
           10 — NÚMEROS
       ================================================================ */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong">
+      <section className="py-20 md:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto">
-          <SectionHeader
-            idx="10 / NÚMEROS"
-            label="Resultados"
-            headline={<>O que a BA<br />já entregou<span className="text-pb-red">.</span></>}
-          />
+          <SectionHeader eyebrow="Resultados" className="mb-14">
+            O que a BA <Accent>já entregou</Accent>.
+          </SectionHeader>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {stats.map((s, i) => (
-              <div key={i} className="bg-pb-void p-8 flex flex-col gap-3 hover:bg-pb-void-card transition-colors duration-300">
-                <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">{s.label}</p>
-                <p
-                  className="font-display leading-none"
-                  style={{ fontSize: 'clamp(40px, 5vw, 64px)', color: s.cyan ? 'hsl(var(--accent-cyan))' : 'hsl(var(--text-primary))' }}
-                >
-                  {s.value}
-                </p>
-              </div>
+              <StatCard key={i} value={s.value} label={s.label} accent={s.cyan} />
             ))}
           </div>
         </div>
@@ -554,23 +506,18 @@ const BA = () => {
       {/* ================================================================
           11 — CTA FINAL
       ================================================================ */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong relative overflow-hidden">
-        <CornerBrackets size={40} offset={32} />
+      <section className="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8 border-t border-white/[0.06] overflow-hidden">
+        {/* Glow radial */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[640px] h-[420px] rounded-full bg-saas-violet/15 blur-[110px]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-8">
-            // Próxima operação
-          </p>
-          <h2
-            className="font-display uppercase text-pb-ink leading-[0.88] mx-auto"
-            style={{ fontSize: 'clamp(48px, 7vw, 96px)', maxWidth: '900px' }}
-          >
-            Sua empresa ainda<br />
-            opera no<br />
-            <span className="text-pb-ink-soft">escuro</span>
-            <span className="text-pb-red">?</span>
+        <div className="relative max-w-7xl mx-auto text-center">
+          <Eyebrow>Próxima operação</Eyebrow>
+          <h2 className="mt-6 font-extrabold text-saas-ink tracking-tight leading-[1.08] text-[clamp(32px,4.6vw,56px)] mx-auto max-w-[900px]">
+            Sua empresa ainda opera no <Accent>escuro</Accent>?
           </h2>
-          <p className="mt-8 font-body text-pb-ink-soft text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="mt-8 text-saas-body text-lg max-w-xl mx-auto leading-relaxed">
             A conversa inicial é gratuita. Em 30 minutos, você sabe exatamente onde a IA pode operar no seu negócio.
           </p>
           <div className="mt-12">
@@ -578,7 +525,7 @@ const BA = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY}
               onClick={() => handleCta('cta_final')}
             >
               Falar com um especialista
