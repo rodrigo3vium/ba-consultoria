@@ -35,36 +35,36 @@
     --grid-line:   255 100% 100%; /* usado com opacity */
     --grid-strong: 255 100% 100%;
 
-    /* === shadcn mappings === */
-    --background: var(--bg-main);
-    --foreground: var(--text-primary);
+    /* === shadcn mappings — repointados p/ SaaS IDV v.03 === */
+    --background: 240 31% 6%;    /* #0A0A13 */
+    --foreground: 240 33% 97%;   /* #F5F5FA */
 
-    --card: var(--bg-card);
-    --card-foreground: var(--text-primary);
+    --card: 240 19% 10%;         /* #15151F */
+    --card-foreground: 240 33% 97%;
 
-    --popover: var(--bg-elev);
-    --popover-foreground: var(--text-primary);
+    --popover: 240 19% 10%;
+    --popover-foreground: 240 33% 97%;
 
-    --primary: var(--accent-cyan);
-    --primary-foreground: var(--bg-deep);
+    --primary: 247 87% 73%;      /* #8B7CF6 violet */
+    --primary-foreground: 240 31% 6%;
 
-    --secondary: var(--bg-elev);
-    --secondary-foreground: var(--text-primary);
+    --secondary: 240 15% 14%;
+    --secondary-foreground: 240 33% 97%;
 
-    --muted: var(--bg-elev);
-    --muted-foreground: var(--text-muted);
+    --muted: 240 15% 14%;
+    --muted-foreground: 232 9% 64%;  /* #9A9CAA */
 
-    --accent: var(--accent-cyan);
-    --accent-foreground: var(--bg-deep);
+    --accent: 184 84% 52%;       /* #20DDEB cyan */
+    --accent-foreground: 240 31% 6%;
 
     --destructive: var(--accent-red);
     --destructive-foreground: var(--text-primary);
 
-    --border: 207 14% 14%;       /* derivado de bg-elev mais claro */
-    --input: 210 33% 1%;
-    --ring: var(--accent-cyan);
+    --border: 240 14% 17%;
+    --input: 240 15% 13%;
+    --ring: 247 87% 73%;         /* violet focus */
 
-    --radius: 0;                 /* HUD não tem cantos arredondados */
+    --radius: 0.875rem;          /* SaaS = cantos arredondados */
 
     /* === Tipografia === */
     --font-display: 'Bebas Neue', 'Oswald', 'Anton', sans-serif;
@@ -106,22 +106,23 @@
   }
 
   html {
-    scroll-padding-top: var(--header-safe-top);
-    background: hsl(var(--bg-main));
+    scroll-padding-top: 80px;
+    background: #0A0A13;
   }
 
   body {
-    background: hsl(var(--bg-main));
-    color: hsl(var(--text-primary));
-    font-family: var(--font-body);
-    padding-top: var(--header-safe-top);
+    background: #0A0A13;
+    color: #F5F5FA;
+    font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding-top: 0;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Noise + vinheta global */
+  /* SaaS IDV: sem textura HUD (noise/grid) — fundo limpo, glows são locais por página */
   body::before {
+    display: none;
     content: '';
     position: fixed;
     inset: 0;
@@ -134,8 +135,9 @@
     opacity: 0.6;
   }
 
-  /* Grid técnico de fundo */
+  /* Grid técnico de fundo — desativado no SaaS IDV */
   body::after {
+    display: none;
     content: '';
     position: fixed;
     inset: 0;
@@ -154,22 +156,23 @@
     z-index: 2;
   }
 
-  /* Heading defaults */
+  /* Heading defaults — SaaS IDV: Plus Jakarta, sem uppercase forçado */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    line-height: 0.95;
-    color: hsl(var(--text-primary));
+    font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    font-weight: 800;
+    color: #F5F5FA;
   }
 
   /* Body defaults */
-  p { font-family: var(--font-body); line-height: 1.6; color: hsl(var(--text-secondary)); }
+  p { font-family: inherit; line-height: 1.6; color: #B7B8C7; }
 
   /* Selection */
   ::selection {
-    background: hsl(var(--accent-cyan));
-    color: hsl(var(--bg-deep));
+    background: #8B7CF6;
+    color: #0A0A13;
   }
 }
 

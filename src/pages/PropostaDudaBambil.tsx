@@ -5,6 +5,7 @@ import vaboPhoto from "@/assets/mentors/vabo.webp";
 import joaoOliverioPhoto from "@/assets/mentors/joao-oliverio.webp";
 import joseDiogoPhoto from "@/assets/mentors/jose-diogo.webp";
 import PropostaLayout from "@/components/pb/PropostaLayout";
+import { Accent, Eyebrow, StatCard, SAAS_BTN_PRIMARY, SAAS_CARD } from "@/components/saas/ui";
 
 const mentors = [
   { name: "Diego Barreto", role: "CEO - iFood", photo: diegoBarretoPhoto, bio: 'Autor do best-seller "Nova Economia," lidera a expansão e inovação no iFood.' },
@@ -21,19 +22,21 @@ const PropostaDudaBambil = () => {
       projeto="Receita Digital Previsível"
     >
       {/* ══════════ INTRO ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-6">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 01 CONTEXTO</p>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
-          Proposta personalizada para <span className="text-pb-ink font-medium">Duda Bambil</span> — estratégia orgânica + tráfego de retargeting para escalar as vendas do seu curso e construir uma máquina digital previsível.
+      <div className="border-t border-white/[0.06] py-16 space-y-6">
+        <Eyebrow>01 · Contexto</Eyebrow>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
+          Proposta personalizada para <span className="text-saas-ink font-medium">Duda Bambil</span> — estratégia orgânica + tráfego de retargeting para escalar as vendas do seu curso e construir uma máquina digital previsível.
         </p>
       </div>
 
       {/* ══════════ SOBRE ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 02 SOBRE</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Quem está por trás desta proposta</h2>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>02 · Sobre</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          Quem está por trás <Accent>desta proposta</Accent>
+        </h2>
         <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="w-full md:w-48 flex-shrink-0 border border-pb-grid-strong overflow-hidden aspect-square">
+          <div className="w-full md:w-48 flex-shrink-0 rounded-2xl border border-white/[0.09] overflow-hidden aspect-square">
             <img
               loading="lazy"
               src={rodrigoAlbuquerque}
@@ -43,10 +46,10 @@ const PropostaDudaBambil = () => {
             />
           </div>
           <div className="flex-1 space-y-4">
-            <p className="font-body text-pb-ink-soft leading-relaxed">
+            <p className="text-saas-body leading-relaxed">
               Rodrigo Albuquerque investiu meio milhão de reais em mentoria com alguns dos maiores empreendedores do Brasil. Liderou R$80 milhões em vendas anuais e compilou na BA Consultoria o aprendizado extraído de mais de 100 empresas que receberam consultoria.
             </p>
-            <p className="font-body text-pb-ink-soft leading-relaxed">
+            <p className="text-saas-body leading-relaxed">
               A BA Consultoria une consultoria estratégica, execução de marketing, automação com IA e inteligência comercial — tudo focado em gerar retorno financeiro real e escalável.
             </p>
             <div className="grid grid-cols-2 gap-4 mt-4">
@@ -56,10 +59,7 @@ const PropostaDudaBambil = () => {
                 { num: "+7", label: "países atendidos" },
                 { num: "+54", label: "avaliações 5 estrelas" },
               ].map((s) => (
-                <div key={s.label} className="border border-pb-grid-strong bg-pb-void-card p-4">
-                  <div className="font-display text-[clamp(24px,3vw,36px)] text-pb-cyan leading-none">{s.num}</div>
-                  <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-ink-muted mt-1">{s.label}</div>
-                </div>
+                <StatCard key={s.label} value={s.num} label={s.label} accent />
               ))}
             </div>
           </div>
@@ -67,16 +67,18 @@ const PropostaDudaBambil = () => {
       </div>
 
       {/* ══════════ MENTORES ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 03 REFERÊNCIAS</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Nossos Mentores e Professores</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>03 · Referências</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          Nossos Mentores e <Accent>Professores</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
           Aprendemos diretamente com alguns dos maiores líderes do mercado brasileiro.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {mentors.map((m) => (
-            <div key={m.name} className="border border-pb-grid-strong bg-pb-void-card p-4 text-center">
-              <div className="w-16 h-16 overflow-hidden mx-auto mb-3 border border-pb-grid-strong">
+            <div key={m.name} className={SAAS_CARD + " p-4 text-center"}>
+              <div className="w-16 h-16 overflow-hidden mx-auto mb-3 rounded-full border border-white/[0.09]">
                 <img
                   loading="lazy"
                   src={m.photo}
@@ -85,19 +87,21 @@ const PropostaDudaBambil = () => {
                   style={{ filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
                 />
               </div>
-              <div className="font-display uppercase text-pb-ink text-sm mb-1">{m.name}</div>
-              <div className="font-mono text-[9px] uppercase tracking-mono-wide text-pb-cyan mb-2">{m.role}</div>
-              <div className="font-body text-pb-ink-muted text-xs leading-relaxed">{m.bio}</div>
+              <div className="font-bold text-saas-ink text-sm mb-1">{m.name}</div>
+              <div className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mb-2">{m.role}</div>
+              <div className="text-saas-muted text-xs leading-relaxed">{m.bio}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ DIAGNÓSTICO ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 04 DIAGNÓSTICO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">O que identificamos na nossa conversa</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>04 · Diagnóstico</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          O que identificamos <Accent>na nossa conversa</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
           A partir da nossa reunião, mapeamos os principais pontos do seu cenário atual e as oportunidades que existem para destravar o próximo nível do seu negócio digital.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -123,21 +127,23 @@ const PropostaDudaBambil = () => {
               text: "Você já tem um curso a R$297, consultoria a R$3.500 com taxa de conversão de ~10% em reuniões, e mais produtos em desenvolvimento. A estrutura para uma escada de valor já está nascendo.",
             },
           ].map((d) => (
-            <div key={d.title} className="border border-pb-grid-strong bg-pb-void-card p-6">
-              <h3 className="font-display uppercase text-pb-ink text-lg mb-3">
-                <span className="text-pb-cyan mr-2">{d.icon}</span>{d.title}
+            <div key={d.title} className={SAAS_CARD + " p-6"}>
+              <h3 className="font-bold text-saas-ink text-lg mb-3">
+                <span className="text-saas-cyan mr-2">{d.icon}</span>{d.title}
               </h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{d.text}</p>
+              <p className="text-saas-body text-sm leading-relaxed">{d.text}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ ESTRATÉGIA ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 05 ESTRATÉGIA</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Como vamos construir sua máquina digital</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>05 · Estratégia</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          Como vamos construir sua <Accent>máquina digital</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
           A estratégia combina a força do seu conteúdo orgânico com tráfego pago de retargeting para maximizar conversões — sem depender de funil frio arriscado.
         </p>
         <div className="space-y-4">
@@ -148,11 +154,11 @@ const PropostaDudaBambil = () => {
             { num: "04", title: "Construção da escada de valor", text: "Com a base crescendo, vamos estruturar a jornada: curso de entrada (R$297) → materiais complementares → consultoria/mentoria (R$3.500+). Cada produto alimenta o próximo, aumentando o valor médio por cliente." },
             { num: "05", title: "Reuniões de fechamento para high-ticket", text: "Para produtos acima de R$2.000, a reunião é essencial — você já provou isso em dezembro com 7-8 fechamentos de consultoria. Vamos estruturar esse processo para que aconteça de forma consistente, não apenas em picos." },
           ].map((step) => (
-            <div key={step.num} className="border border-pb-grid-strong bg-pb-void-card p-6 flex gap-6 items-start">
-              <div className="font-display text-[40px] text-pb-ink-faint leading-none flex-shrink-0 select-none w-12">{step.num}</div>
+            <div key={step.num} className={SAAS_CARD + " p-6 flex gap-6 items-start"}>
+              <div className="font-extrabold text-[40px] text-saas-faint leading-none flex-shrink-0 select-none w-12">{step.num}</div>
               <div>
-                <h3 className="font-display uppercase text-pb-ink text-xl mb-2">{step.title}</h3>
-                <p className="font-body text-pb-ink-soft text-sm leading-relaxed">{step.text}</p>
+                <h3 className="font-bold text-saas-ink text-xl mb-2">{step.title}</h3>
+                <p className="text-saas-body text-sm leading-relaxed">{step.text}</p>
               </div>
             </div>
           ))}
@@ -160,41 +166,47 @@ const PropostaDudaBambil = () => {
       </div>
 
       {/* ══════════ EXPECTATIVA ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 06 EXPECTATIVA</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Linha do tempo realista</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>06 · Expectativa</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          Linha do tempo <Accent>realista</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
           Transparência é fundamental. Resultados vêm com consistência — e a gente precisa ver as métricas evoluindo desde o primeiro mês.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 border border-pb-grid-strong">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-2xl border border-white/[0.09] overflow-hidden bg-saas-card">
           {[
             { fase: "Mês 1", title: "Movimento e clareza", text: "Diagnóstico completo, estratégia definida, melhoria inicial de indicadores. Primeiros ajustes no funil e no conteúdo." },
             { fase: "Mês 2–3", title: "Evolução consistente", text: "Crescimento de alcance, cliques e audiência qualificada. Conversão começa a ganhar tração com otimizações contínuas." },
             { fase: "Mês 3–8", title: "Maturação da estrutura", text: "Funil validado, vendas com previsibilidade, base sólida para escalar. Introdução de novos produtos na escada de valor." },
           ].map((f, i) => (
-            <div key={f.fase} className={`bg-pb-void-card p-6 ${i < 2 ? "border-r border-pb-grid-strong" : ""}`}>
-              <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-3">{f.fase}</div>
-              <div className="font-display uppercase text-pb-ink text-lg mb-2">{f.title}</div>
-              <p className="font-body text-pb-ink-muted text-sm leading-relaxed">{f.text}</p>
+            <div key={f.fase} className={`p-6 ${i < 2 ? "sm:border-r border-white/[0.09]" : ""}`}>
+              <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3">{f.fase}</div>
+              <div className="font-bold text-saas-ink text-lg mb-2">{f.title}</div>
+              <p className="text-saas-muted text-sm leading-relaxed">{f.text}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* ══════════ INVESTIMENTO ══════════ */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// 07 INVESTIMENTO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(32px,4vw,56px)]">Proposta comercial</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-2xl">
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>07 · Investimento</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.12] tracking-tight text-[clamp(26px,3.4vw,42px)]">
+          Proposta <Accent>comercial</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-2xl">
           Consultoria estratégica + direcionamento de crescimento digital com foco em resultado. Formato mensal, acompanhamento contínuo.
         </p>
 
-        <div className="border border-pb-grid-strong bg-pb-void-card p-8">
-          <div className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-2">Acompanhamento Estratégico Mensal</div>
-          <div className="font-display uppercase text-pb-ink text-2xl mb-4">Consultoria + Direcionamento Digital</div>
-          <div className="mb-6 pb-6 border-b border-pb-grid-strong">
-            <div className="font-display text-[clamp(48px,6vw,80px)] text-pb-cyan leading-none">R$ 1.500<span className="text-[32px] text-pb-ink-muted">/mês</span></div>
-            <p className="font-body text-pb-ink-muted text-sm mt-2">Acompanhamento contínuo com foco em crescimento orgânico, conversão e otimização do funil</p>
+        <div className={SAAS_CARD + " p-8"}>
+          <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-2">Acompanhamento Estratégico Mensal</div>
+          <div className="font-bold text-saas-ink text-2xl mb-4">Consultoria + Direcionamento Digital</div>
+          <div className="mb-6 pb-6 border-b border-white/[0.09]">
+            <div className="font-extrabold text-saas-ink text-[clamp(48px,6vw,80px)] leading-none">
+              <Accent>R$ 1.500</Accent><span className="text-[32px] text-saas-muted">/mês</span>
+            </div>
+            <p className="text-saas-muted text-sm mt-2">Acompanhamento contínuo com foco em crescimento orgânico, conversão e otimização do funil</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -237,11 +249,11 @@ const PropostaDudaBambil = () => {
               },
             ].map((group) => (
               <div key={group.title}>
-                <div className="font-display uppercase text-pb-ink text-base mb-3">{group.title}</div>
+                <div className="font-bold text-saas-ink text-base mb-3">{group.title}</div>
                 <ul className="space-y-2">
                   {group.items.map((item) => (
-                    <li key={item} className="font-body text-pb-ink-soft text-sm leading-relaxed flex gap-2">
-                      <span className="text-pb-cyan flex-shrink-0">→</span>
+                    <li key={item} className="text-saas-body text-sm leading-relaxed flex gap-2">
+                      <span className="text-saas-cyan flex-shrink-0">→</span>
                       {item}
                     </li>
                   ))}
@@ -251,16 +263,18 @@ const PropostaDudaBambil = () => {
           </div>
         </div>
 
-        <p className="font-body text-pb-ink-muted text-sm leading-relaxed italic">
+        <p className="text-saas-muted text-sm leading-relaxed italic">
           A estratégia reduz risco, mas o resultado depende da constância. Esse projeto funciona melhor quando existe consistência de execução.
         </p>
       </div>
 
       {/* ══════════ CTA ══════════ */}
-      <div className="border-t border-pb-grid-strong py-24 text-center space-y-6">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan">// 08 PRÓXIMO PASSO</p>
-        <h2 className="font-display uppercase text-pb-ink leading-[0.92] text-[clamp(40px,6vw,72px)]">Vamos construir isso juntos?</h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-lg mx-auto">
+      <div className="border-t border-white/[0.06] py-24 text-center space-y-6">
+        <Eyebrow>08 · Próximo passo</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink leading-[1.05] tracking-tight text-[clamp(32px,4.5vw,54px)]">
+          Vamos construir isso <Accent>juntos?</Accent>
+        </h2>
+        <p className="text-saas-body leading-relaxed max-w-lg mx-auto">
           Se fizer sentido seguir, o próximo passo é validar o formato, alinhar a rotina de acompanhamento, organizar os ativos atuais e iniciar o diagnóstico do funil e da operação de conteúdo.
         </p>
         <div>
@@ -268,12 +282,12 @@ const PropostaDudaBambil = () => {
             href="https://wa.me/5511999718595"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className={SAAS_BTN_PRIMARY}
           >
             Falar com Rodrigo
           </a>
         </div>
-        <p className="font-mono text-[10px] text-pb-ink-muted pt-4">
+        <p className="font-mono text-[10px] text-saas-faint pt-4">
           BA Consultoria © 2026 — Proposta válida por 7 dias
         </p>
       </div>

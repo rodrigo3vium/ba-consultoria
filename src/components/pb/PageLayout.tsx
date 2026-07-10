@@ -15,7 +15,7 @@ const PageLayout = ({ children, trackingName, className = "" }: PageLayoutProps)
   }, [trackingName]);
 
   return (
-    <div className={`min-h-screen bg-pb-void ${className}`}>
+    <div className={`min-h-screen bg-saas-void text-saas-body ${className}`}>
       <Header />
       <main className="pt-[108px]">
         {children}

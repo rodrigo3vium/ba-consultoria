@@ -8,14 +8,15 @@ interface TagProps {
 
 const Tag = ({ children, variant = "default", className = "" }: TagProps) => {
   const variants: Record<string, string> = {
-    default: "border-pb-grid-strong text-pb-ink-soft",
-    cyan:    "border-pb-cyan-dim text-pb-cyan",
-    red:     "border-pb-red-dim text-pb-red",
-    solid:   "border-pb-ink bg-pb-ink text-pb-void-deep",
+    default: "border-white/[0.10] bg-white/[0.03] text-saas-muted",
+    cyan:    "border-saas-cyan/30 bg-saas-cyan/[0.06] text-saas-cyan",
+    // acento vermelho não existe mais na IDV SaaS — variant "red" renderiza no violeta do gradiente
+    red:     "border-saas-violet/30 bg-saas-violet/[0.06] text-saas-violet",
+    solid:   "border-transparent bg-saas-ink text-saas-void",
   };
   return (
     <span
-      className={`inline-block font-mono text-[10px] uppercase tracking-mono-wide px-2.5 py-1 border ${variants[variant]} ${className}`}
+      className={`inline-flex items-center rounded-full border font-mono text-[10px] uppercase tracking-[0.14em] px-2.5 py-1 ${variants[variant]} ${className}`}
     >
       {children}
     </span>

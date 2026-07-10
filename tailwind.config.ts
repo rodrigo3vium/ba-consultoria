@@ -39,10 +39,13 @@ export default {
 				},
 			},
 			fontFamily: {
-				display: ['Bebas Neue', 'Oswald', 'Anton', 'sans-serif'],
+				/* === SaaS IDV (v.03 — Product Editorial) === */
+				sans:    ['Plus Jakarta Sans', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+				jakarta: ['Plus Jakarta Sans', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
 				mono:    ['IBM Plex Mono', 'Space Mono', 'monospace'],
+				/* legado editorial (mantido p/ residual) */
+				display: ['Bebas Neue', 'Oswald', 'Anton', 'sans-serif'],
 				body:    ['Fraunces', 'Georgia', 'serif'],
-				sans:    ['Fraunces', 'Georgia', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -96,6 +99,20 @@ export default {
 					'grid':       'rgba(255,255,255,0.045)',
 					'grid-strong':'rgba(255,255,255,0.10)',
 				},
+				saas: {
+					'void':    '#0A0A13',
+					'void-2':  '#0D0D18',
+					'card':    '#15151F',
+					'card-2':  '#101019',
+					'ink':     '#F5F5FA',
+					'body':    '#B7B8C7',
+					'muted':   '#9A9CAA',
+					'faint':   '#7B7C8C',
+					'faint-2': '#5D5F6B',
+					'cyan':    '#20DDEB',
+					'violet':  '#8B7CF6',
+					'green':   '#6EE7B7',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -111,6 +128,13 @@ export default {
 				'cyan-glow': '0 0 24px hsl(var(--accent-cyan) / 0.45)',
 				'cyan-soft': '0 0 12px hsl(var(--accent-cyan) / 0.25)',
 				'red-glow':  '0 0 16px hsl(var(--accent-red) / 0.5)',
+				/* === SaaS IDV === */
+				'saas-btn':   '0 8px 28px -8px rgba(139,124,246,0.55)',
+				'saas-btn-h': '0 10px 34px -6px rgba(139,124,246,0.70)',
+				'saas-card':  '0 24px 60px -24px rgba(0,0,0,0.6)',
+			},
+			backgroundImage: {
+				'saas-accent': 'linear-gradient(to right, #20DDEB, #8B7CF6)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

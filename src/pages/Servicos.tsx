@@ -4,6 +4,7 @@ import PageLayout from "@/components/pb/PageLayout";
 import Section from "@/components/pb/Section";
 import StratCard from "@/components/pb/StratCard";
 import Stamp from "@/components/pb/Stamp";
+import { Accent } from "@/components/saas/ui";
 import { tracker } from "@/lib/tracking";
 
 const services = [
@@ -46,7 +47,7 @@ const Servicos = () => {
         headline={
           <>
             Nossos<br />
-            Serviços<span className="text-pb-red">.</span>
+            <Accent>Serviços</Accent>.
           </>
         }
         sub="Soluções completas para transformar e acelerar o seu negócio."
@@ -62,27 +63,27 @@ const Servicos = () => {
                 tracker.track("cta_click", { product: "servicos", location: service.title });
               }}
             >
-              <StratCard brackets className="h-full flex flex-col gap-6">
+              <StratCard className="h-full flex flex-col gap-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 p-3 border border-pb-grid-strong bg-pb-void-elev">
+                  <span className="inline-flex flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-saas-cyan to-saas-violet items-center justify-center">
                     <service.icon
-                      className="w-6 h-6 text-pb-cyan"
-                      strokeWidth={1.4}
+                      className="w-6 h-6 text-saas-void"
+                      strokeWidth={1.8}
                     />
-                  </div>
+                  </span>
                   <Stamp>{service.category}</Stamp>
                 </div>
 
                 <div className="flex-1">
-                  <h2 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-3">
+                  <h2 className="font-bold text-saas-ink text-xl leading-snug tracking-tight mb-3">
                     {service.title}
                   </h2>
-                  <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+                  <p className="text-saas-body text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                <span className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mt-auto">
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mt-auto">
                   Saiba mais →
                 </span>
               </StratCard>

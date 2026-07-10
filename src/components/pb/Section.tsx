@@ -26,7 +26,7 @@ const Section = ({
 }: SectionProps) => {
   return (
     <section
-      className={`${noBorderTop ? "" : "border-t border-pb-grid-strong"} ${compact ? "py-12 md:py-16" : "py-16 md:py-24"} ${className}`}
+      className={`${noBorderTop ? "" : "border-t border-white/[0.06]"} ${compact ? "py-12 md:py-16" : "py-16 md:py-24"} ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader idx={idx} label={section} headline={headline} sub={sub} align={align} />

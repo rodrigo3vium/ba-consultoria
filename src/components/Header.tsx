@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X, LogOut, Shield, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { SAAS_BTN_PRIMARY } from '@/components/saas/ui';
 
 const NAV_LINKS = [
-  { to: '/ba',       label: 'BA',       idx: '01' },
-  { to: '/cases',    label: 'Cases',    idx: '02' },
-  { to: '/servicos', label: 'Serviços', idx: '03' },
-  { to: '/blog',     label: 'Blog',     idx: '04' },
-  { to: '/educacao', label: 'Educação', idx: '05' },
+  { to: '/ba',       label: 'BA' },
+  { to: '/cases',    label: 'Cases' },
+  { to: '/servicos', label: 'Serviços' },
+  { to: '/blog',     label: 'Blog' },
+  { to: '/educacao', label: 'Educação' },
 ];
 
 const WHATSAPP_URL = 'https://wa.me/5511999718595';
@@ -28,20 +29,17 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-pb-void/85 backdrop-blur-xl border-b border-pb-grid-strong">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between">
+      <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-saas-void/80 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[64px] flex items-center justify-between gap-6">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group" onClick={() => window.scrollTo(0, 0)}>
+          <Link to="/" className="flex items-center gap-2.5 group" onClick={() => window.scrollTo(0, 0)}>
+            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
             <img
               src="/lovable-uploads/cc361376-bdd4-4e0e-a3f3-0abb48b729f8.png"
               alt="BA Consultoria"
-              className="h-7 w-auto"
+              className="h-6 w-auto"
               style={{ filter: 'brightness(0) invert(1)' }}
             />
-            <span className="hidden sm:flex flex-col leading-none">
-              <span className="font-display text-pb-ink text-lg tracking-wider uppercase">BA</span>
-              <span className="font-mono text-[9px] text-pb-ink-muted tracking-mono-wide uppercase">Consultoria</span>
-            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -51,9 +49,8 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => window.scrollTo(0, 0)}
-                className="group relative px-4 py-2 font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-soft hover:text-pb-ink transition-colors"
+                className="px-4 py-2 text-[13.5px] font-medium text-saas-muted hover:text-saas-ink transition-colors"
               >
-                <span className="text-pb-ink-faint mr-2 group-hover:text-pb-cyan transition-colors">{link.idx}</span>
                 {link.label}
               </Link>
             ))}
@@ -62,31 +59,31 @@ const Header = () => {
           {/* Right cluster */}
           <div className="hidden md:flex items-center gap-3">
             {user ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 {isAdmin && (
                   <Link
                     to="/admin"
-                    className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-soft hover:text-pb-cyan transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-2 text-[12.5px] font-medium text-saas-muted hover:text-saas-cyan transition-colors"
                   >
-                    <Shield size={12} />
+                    <Shield size={13} />
                     Admin
                   </Link>
                 )}
                 <button
                   onClick={signOut}
-                  className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-red transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-2 text-[12.5px] font-medium text-saas-faint hover:text-saas-ink transition-colors"
                   aria-label="Sair"
                 >
-                  <LogOut size={12} />
+                  <LogOut size={13} />
                   Sair
                 </button>
               </div>
             ) : (
               <Link
                 to="/auth"
-                className="flex items-center gap-2 px-3 py-2 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted hover:text-pb-ink transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 text-[12.5px] font-medium text-saas-faint hover:text-saas-ink transition-colors"
               >
-                <User size={12} />
+                <User size={13} />
                 Entrar
               </Link>
             )}
@@ -94,17 +91,16 @@ const Header = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY + ' !px-5 !py-2.5 !text-[13px]'}
             >
-              Fale Conosco
-              <span aria-hidden>→</span>
+              Fale conosco
             </a>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-pb-ink-soft hover:text-pb-cyan p-2 transition-colors"
+            className="md:hidden text-saas-muted hover:text-saas-ink p-2 transition-colors"
             aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           >
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -114,22 +110,17 @@ const Header = () => {
 
       {/* Mobile drawer */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-pb-void/95 backdrop-blur-xl md:hidden pt-[72px]">
+        <div className="fixed inset-0 z-40 bg-saas-void/95 backdrop-blur-xl md:hidden pt-[64px]">
           <div className="max-w-7xl mx-auto px-6 py-10 h-full overflow-y-auto">
-            <div className="flex items-center gap-3 mb-10 font-mono text-[11px] uppercase tracking-mono-wide">
-              <span className="text-pb-cyan">// MENU</span>
-              <span className="h-px flex-1 bg-pb-grid-strong" />
-            </div>
             <nav className="space-y-1">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="flex items-baseline gap-4 py-4 border-b border-pb-grid-strong/40 group"
+                  className="flex items-center py-4 border-b border-white/[0.06] group"
                   onClick={() => { setIsMenuOpen(false); window.scrollTo(0, 0); }}
                 >
-                  <span className="font-mono text-[10px] text-pb-cyan tracking-mono-wide">{link.idx}</span>
-                  <span className="font-display text-3xl uppercase text-pb-ink-soft group-hover:text-pb-ink transition-colors">
+                  <span className="text-2xl font-bold text-saas-body group-hover:text-saas-ink transition-colors">
                     {link.label}
                   </span>
                 </Link>
@@ -137,11 +128,10 @@ const Header = () => {
               {user && isAdmin && (
                 <Link
                   to="/admin"
-                  className="flex items-baseline gap-4 py-4 border-b border-pb-grid-strong/40 group"
+                  className="flex items-center py-4 border-b border-white/[0.06] group"
                   onClick={() => { setIsMenuOpen(false); window.scrollTo(0, 0); }}
                 >
-                  <span className="font-mono text-[10px] text-pb-cyan tracking-mono-wide">06</span>
-                  <span className="font-display text-3xl uppercase text-pb-ink-soft group-hover:text-pb-ink transition-colors">
+                  <span className="text-2xl font-bold text-saas-body group-hover:text-saas-ink transition-colors">
                     Admin
                   </span>
                 </Link>
@@ -152,27 +142,26 @@ const Header = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full justify-center"
+                className={SAAS_BTN_PRIMARY + ' w-full'}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Fale Conosco
-                <span aria-hidden>→</span>
+                Fale conosco
               </a>
               {user ? (
                 <button
                   onClick={() => { setIsMenuOpen(false); signOut(); }}
-                  className="btn-ghost w-full justify-center"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-saas-body border border-white/[0.14] hover:border-white/[0.28] hover:text-saas-ink transition-colors"
                 >
-                  <LogOut size={12} />
+                  <LogOut size={14} />
                   Sair
                 </button>
               ) : (
                 <Link
                   to="/auth"
-                  className="btn-ghost w-full justify-center"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-saas-body border border-white/[0.14] hover:border-white/[0.28] hover:text-saas-ink transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <User size={12} />
+                  <User size={14} />
                   Entrar
                 </Link>
               )}

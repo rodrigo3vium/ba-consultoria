@@ -1,9 +1,10 @@
 import { tracker } from '@/lib/tracking';
+import { Check } from 'lucide-react';
 import PageLayout from '@/components/pb/PageLayout';
 import Section from '@/components/pb/Section';
 import StratCard from '@/components/pb/StratCard';
 import Tag from '@/components/pb/Tag';
-import CornerBrackets from '@/components/pb/CornerBrackets';
+import { Accent, Eyebrow, SAAS_BTN_PRIMARY, SAAS_BTN_GHOST } from '@/components/saas/ui';
 
 const WHATSAPP_URL = 'https://wa.me/5511999718595';
 
@@ -87,39 +88,26 @@ const Tecnologia = () => {
       {/* ================================================================
           HERO
       ================================================================ */}
-      <section className="relative min-h-[60vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 border-b border-pb-grid-strong overflow-hidden">
-        <CornerBrackets size={32} offset={24} />
-
-        {/* HUD metadata */}
-        <div className="absolute top-8 right-8 font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint hidden md:flex flex-col items-end gap-1">
-          <span><span className="text-pb-ink-faint mr-3">FILE</span><span className="text-pb-ink-soft">TECNOLOGIA-01</span></span>
-          <span><span className="text-pb-ink-faint mr-3">BUILD</span><span className="text-pb-ink-soft">2026.05</span></span>
-          <span><span className="text-pb-ink-faint mr-3">OWNER</span><span className="text-pb-ink-soft">BA</span></span>
-          <span><span className="text-pb-ink-faint mr-3">STATE</span><span className="text-pb-cyan">ACTIVE</span></span>
+      <header className="relative overflow-hidden px-4 sm:px-6 lg:px-8">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
-        <div className="max-w-7xl mx-auto w-full py-16 md:py-24">
-          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-6">
-            // Pilar 01 / Tecnologia
-          </p>
-          <h1
-            className="font-display uppercase text-pb-ink leading-[0.88]"
-            style={{ fontSize: 'clamp(56px, 9vw, 128px)', letterSpacing: '0.005em' }}
-          >
-            Transforme seu<br />
-            negócio com<br />
-            <span className="text-pb-ink-soft">tecnologia</span>
-            <span className="text-pb-red">.</span>
+        <div className="relative max-w-7xl mx-auto py-16 md:py-24 animate-fade-in">
+          <Eyebrow>Pilar 01 / Tecnologia</Eyebrow>
+          <h1 className="mt-5 font-extrabold text-saas-ink text-[clamp(25px,3.5vw,42px)] leading-[1.1] tracking-tight max-w-[18ch]">
+            Transforme seu negócio com <Accent>tecnologia</Accent>.
           </h1>
-          <p className="mt-8 font-body text-pb-ink-soft text-lg md:text-xl leading-relaxed max-w-xl">
+          <p className="mt-6 text-saas-body text-lg md:text-xl leading-relaxed max-w-xl">
             Soluções personalizadas de IA para impulsionar sua empresa.
           </p>
-          <div className="mt-12 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY}
               onClick={() => handleCta('hero')}
             >
               Falar com um especialista
@@ -127,16 +115,7 @@ const Tecnologia = () => {
             </a>
           </div>
         </div>
-
-        {/* Bottom rule */}
-        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-6 px-6 py-4 border-t border-pb-grid-strong font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">
-          <span className="text-pb-cyan animate-pulse-cyan">● Operacional</span>
-          <span className="hidden sm:inline">Automação Inteligente</span>
-          <span className="hidden md:inline">Análise Preditiva</span>
-          <span className="hidden lg:inline">Chatbots Personalizados</span>
-          <span className="ml-auto text-pb-ink-faint">BA Consultoria — 2026</span>
-        </div>
-      </section>
+      </header>
 
       {/* ================================================================
           01 — SOLUÇÕES
@@ -144,27 +123,27 @@ const Tecnologia = () => {
       <Section
         idx="01"
         section="SOLUÇÕES"
-        headline={<>Nossas<br />soluções<span className="text-pb-red">.</span></>}
+        headline={<>Nossas <Accent>soluções</Accent>.</>}
         sub="Tecnologias avançadas adaptadas às necessidades do seu negócio."
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {solutions.map((s) => (
             <StratCard key={s.idx} as="article">
               <div className="flex items-start justify-between mb-6">
                 <Tag variant="cyan">{s.idx}</Tag>
-                <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-faint">// SOLUÇÃO</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint">SOLUÇÃO</span>
               </div>
-              <h3 className="font-display uppercase text-pb-ink text-3xl leading-[0.95] mb-4">
+              <h3 className="font-extrabold text-saas-ink text-xl md:text-2xl leading-tight mb-4">
                 {s.title}
               </h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed mb-6">
+              <p className="text-saas-body text-sm leading-relaxed mb-6">
                 {s.description}
               </p>
               <ul className="space-y-3">
                 {s.features.map((feature, fi) => (
                   <li key={fi} className="flex items-start gap-3">
-                    <span className="font-mono text-pb-cyan text-[10px] mt-1 flex-shrink-0">—</span>
-                    <span className="font-body text-pb-ink-soft text-sm leading-relaxed">{feature}</span>
+                    <Check className="w-4 h-4 text-saas-green mt-0.5 flex-shrink-0" />
+                    <span className="text-saas-body text-sm leading-relaxed">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -179,18 +158,18 @@ const Tecnologia = () => {
       <Section
         idx="02"
         section="DIFERENCIAIS"
-        headline={<>Por que escolher<br />nossas soluções<span className="text-pb-red">?</span></>}
+        headline={<>Por que escolher nossas <Accent>soluções</Accent>?</>}
       >
-        <div className="grid md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+        <div className="grid md:grid-cols-3 gap-4">
           {benefits.map((b, i) => (
             <StratCard key={i} as="article">
-              <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-6">
+              <p className="mb-5 font-extrabold text-3xl leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
                 {String(i + 1).padStart(2, '0')}
               </p>
-              <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-4">
+              <h3 className="font-extrabold text-saas-ink text-xl leading-tight mb-4">
                 {b.title}
               </h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+              <p className="text-saas-body text-sm leading-relaxed">
                 {b.description}
               </p>
             </StratCard>
@@ -204,21 +183,18 @@ const Tecnologia = () => {
       <Section
         idx="03"
         section="MÉTODO"
-        headline={<>Como<br />trabalhamos<span className="text-pb-red">.</span></>}
+        headline={<>Como <Accent>trabalhamos</Accent>.</>}
       >
-        <div className="grid md:grid-cols-4 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+        <div className="grid md:grid-cols-4 gap-4">
           {steps.map((p) => (
             <StratCard key={p.step} as="article">
-              <p
-                className="font-display uppercase text-pb-cyan mb-6 leading-none"
-                style={{ fontSize: 'clamp(40px, 4vw, 56px)' }}
-              >
+              <p className="mb-5 font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent text-[clamp(36px,4vw,52px)]">
                 {p.step}
               </p>
-              <h3 className="font-display uppercase text-pb-ink text-2xl leading-[0.95] mb-4">
+              <h3 className="font-extrabold text-saas-ink text-xl leading-tight mb-4">
                 {p.title}
               </h3>
-              <p className="font-body text-pb-ink-soft text-sm leading-relaxed">
+              <p className="text-saas-body text-sm leading-relaxed">
                 {p.description}
               </p>
             </StratCard>
@@ -229,30 +205,27 @@ const Tecnologia = () => {
       {/* ================================================================
           04 — CTA FINAL
       ================================================================ */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 border-t border-pb-grid-strong relative overflow-hidden">
-        <CornerBrackets size={40} offset={32} />
+      <section className="relative overflow-hidden border-t border-white/[0.06] py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[640px] h-[420px] rounded-full bg-saas-violet/15 blur-[120px]" />
+        </div>
 
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-cyan mb-8">
-            // Próxima operação
-          </p>
-          <h2
-            className="font-display uppercase text-pb-ink leading-[0.88] mx-auto"
-            style={{ fontSize: 'clamp(48px, 7vw, 96px)', maxWidth: '900px' }}
-          >
-            Pronto para<br />
-            <span className="text-pb-ink-soft">inovar</span>
-            <span className="text-pb-red">?</span>
+        <div className="relative max-w-3xl mx-auto text-center animate-fade-in">
+          <div className="flex justify-center">
+            <Eyebrow>Próxima operação</Eyebrow>
+          </div>
+          <h2 className="mt-6 font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-tight tracking-tight mx-auto max-w-[16ch]">
+            Pronto para <Accent>inovar</Accent>?
           </h2>
-          <p className="mt-8 font-body text-pb-ink-soft text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-saas-body text-lg max-w-xl mx-auto leading-relaxed">
             Vamos conversar sobre como nossas soluções tecnológicas podem transformar seu negócio.
           </p>
-          <div className="mt-12 flex flex-wrap gap-4 justify-center">
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className={SAAS_BTN_PRIMARY}
               onClick={() => handleCta('cta_final')}
             >
               Falar com um especialista
@@ -262,7 +235,7 @@ const Tecnologia = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost"
+              className={SAAS_BTN_GHOST}
               onClick={() => handleCta('agendar_demo')}
             >
               Agendar demonstração

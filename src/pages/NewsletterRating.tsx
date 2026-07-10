@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { tracker } from '@/lib/tracking';
-import { Button } from '@/components/ui/button';
 import { Heart, Meh, Frown, Smile, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import { SAAS_CARD, SAAS_BTN_PRIMARY, SAAS_BTN_GHOST } from '@/components/saas/ui';
 
 const NewsletterRating = () => {
   const [searchParams] = useSearchParams();
   const subscriberId = searchParams.get('sid');
   const edition = searchParams.get('e');
-  
+
   const [subscriber, setSubscriber] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [rating, setRating] = useState<number | null>(null);
@@ -94,18 +94,18 @@ const NewsletterRating = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="animate-pulse text-muted-foreground">Carregando...</div>
+      <div className="min-h-screen flex items-center justify-center bg-saas-void text-saas-body">
+        <div className="animate-pulse text-saas-muted">Carregando...</div>
       </div>
     );
   }
 
   if (!subscriberId || !edition) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-saas-void text-saas-body p-4">
         <div className="max-w-md text-center">
-          <h1 className="text-2xl font-bold text-destructive mb-4">Link inválido</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl font-extrabold tracking-tight text-saas-ink mb-4">Link inválido</h1>
+          <p className="text-saas-muted">
             O link de avaliação está incompleto ou inválido.
           </p>
         </div>
@@ -114,21 +114,25 @@ const NewsletterRating = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 p-4">
-      <div className="max-w-2xl w-full bg-card border shadow-lg rounded-lg p-8 md:p-12 animate-fade-in">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-saas-void text-saas-body p-4">
+      {/* Glows radiais de fundo (assinatura SaaS) */}
+      <div className="pointer-events-none absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+      <div className="pointer-events-none absolute -bottom-24 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+
+      <div className={`relative max-w-2xl w-full ${SAAS_CARD} shadow-saas-card p-8 md:p-12 animate-fade-in`}>
         {!submitted ? (
           <>
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              <h1 className="font-extrabold text-saas-ink text-[clamp(25px,3.5vw,42px)] leading-[1.1] tracking-tight mb-3">
                 Como você avalia esta newsletter?
               </h1>
               {subscriber && (
-                <p className="text-muted-foreground">
+                <p className="text-saas-body">
                   Olá, {subscriber.nome}! Sua opinião é muito importante para nós.
                 </p>
               )}
-              <p className="text-sm text-muted-foreground mt-2">
-                Edição: <span className="font-semibold">{edition}</span>
+              <p className="text-sm text-saas-faint mt-2">
+                Edição: <span className="font-semibold text-saas-ink">{edition}</span>
               </p>
             </div>
 
@@ -136,30 +140,29 @@ const NewsletterRating = () => {
               {ratingOptions.map((option) => {
                 const Icon = option.icon;
                 const isSelected = rating === option.value;
-                
+
                 return (
                   <button
                     key={option.value}
                     onClick={() => handleRating(option.value)}
                     disabled={submitting}
                     className={`
-                      group relative flex flex-col items-center justify-center p-4 md:p-6 
-                      rounded-xl border-2 transition-all duration-300
-                      hover:scale-110 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed
-                      ${isSelected 
-                        ? 'border-primary bg-primary/10 scale-105' 
-                        : 'border-border hover:border-primary/50'
+                      group relative flex flex-col items-center justify-center p-4 md:p-6
+                      rounded-2xl border transition-all duration-300
+                      hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed
+                      ${isSelected
+                        ? 'border-saas-violet bg-saas-violet/10 scale-105'
+                        : 'border-white/[0.09] hover:border-white/[0.20]'
                       }
                     `}
                   >
-                    <Icon 
+                    <Icon
                       className={`
                         w-8 h-8 md:w-12 md:h-12 mb-2 transition-colors
-                        ${isSelected ? 'text-primary' : option.color}
-                        group-hover:${option.color}
+                        ${isSelected ? 'text-saas-ink' : option.color}
                       `}
                     />
-                    <span className="text-xs md:text-sm font-medium text-center">
+                    <span className="text-xs md:text-sm font-medium text-center text-saas-body">
                       {option.label}
                     </span>
                   </button>
@@ -168,38 +171,38 @@ const NewsletterRating = () => {
             </div>
 
             {submitting && (
-              <div className="text-center text-muted-foreground animate-pulse">
+              <div className="text-center text-saas-muted animate-pulse">
                 Enviando sua avaliação...
               </div>
             )}
           </>
         ) : (
           <div className="text-center animate-fade-in">
-            <div className="inline-block p-4 bg-green-500/10 rounded-full mb-6">
-              <Sparkles className="w-16 h-16 text-green-500" />
+            <div className="inline-block p-4 bg-saas-green/10 rounded-full mb-6">
+              <Sparkles className="w-16 h-16 text-saas-green" />
             </div>
-            
-            <h2 className="text-3xl font-bold mb-4">
+
+            <h2 className="font-extrabold text-saas-ink text-[clamp(24px,3vw,36px)] tracking-tight mb-4">
               Obrigado pela sua avaliação!
             </h2>
-            
-            <p className="text-muted-foreground mb-8">
+
+            <p className="text-saas-body mb-8">
               Sua opinião nos ajuda a melhorar cada vez mais o conteúdo das newsletters.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                variant="default" 
+              <button
+                className={SAAS_BTN_PRIMARY}
                 onClick={() => window.location.href = '/blog'}
               >
                 Ver últimos artigos
-              </Button>
-              <Button 
-                variant="outline" 
+              </button>
+              <button
+                className={SAAS_BTN_GHOST}
                 onClick={() => window.location.href = '/'}
               >
                 Voltar para home
-              </Button>
+              </button>
             </div>
           </div>
         )}

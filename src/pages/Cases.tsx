@@ -5,6 +5,7 @@ import PageLayout from '@/components/pb/PageLayout';
 import Section from '@/components/pb/Section';
 import StratCard from '@/components/pb/StratCard';
 import Tag from '@/components/pb/Tag';
+import { Accent, Eyebrow } from '@/components/saas/ui';
 
 interface Case {
   id: string;
@@ -60,37 +61,37 @@ const Cases = () => {
   return (
     <PageLayout trackingName="BA Consultoria - Cases">
       {/* Hero */}
-      <section className="border-b border-pb-grid-strong py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-6 font-mono text-[11px] uppercase tracking-mono-wide">
-            <span className="text-pb-cyan">01</span>
-            <span className="h-px w-12 bg-pb-grid-strong" />
-            <span className="text-pb-ink-muted">Portfólio</span>
-          </div>
-          <h1 className="font-display uppercase text-pb-ink text-[clamp(40px,6vw,88px)] leading-[0.92]">
-            Cases de Sucesso
+      <section className="relative overflow-hidden border-b border-white/[0.06] py-16 md:py-24">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+          <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Eyebrow>Portfólio</Eyebrow>
+          <h1 className="mt-5 font-extrabold text-saas-ink text-[clamp(32px,4.5vw,56px)] leading-[1.08] tracking-tight">
+            Cases de <Accent>Sucesso</Accent>
           </h1>
-          <p className="mt-5 font-body text-pb-ink-soft text-base md:text-lg leading-relaxed max-w-2xl">
+          <p className="mt-5 text-saas-body text-base md:text-lg leading-relaxed max-w-2xl">
             Descubra como transformamos negócios com tecnologia, estratégia e inteligência artificial
           </p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="border-b border-pb-grid-strong py-8">
+      <section className="border-b border-white/[0.06] py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {/* Category Filters */}
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-3">
               Categoria
             </p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedCategory(null)}
-                className={`font-mono text-[10px] uppercase tracking-mono-wide px-3 py-1.5 border transition-colors duration-200 ${
+                className={`rounded-full px-4 py-1.5 text-xs font-medium border transition-colors duration-200 ${
                   selectedCategory === null
-                    ? 'border-pb-cyan text-pb-cyan bg-pb-cyan/10'
-                    : 'border-pb-grid-strong text-pb-ink-soft hover:border-pb-cyan-dim hover:text-pb-ink'
+                    ? 'border-saas-cyan/40 bg-saas-cyan/[0.08] text-saas-cyan'
+                    : 'border-white/[0.10] bg-white/[0.03] text-saas-body hover:border-white/[0.20] hover:text-saas-ink'
                 }`}
               >
                 Todos
@@ -99,10 +100,10 @@ const Cases = () => {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`font-mono text-[10px] uppercase tracking-mono-wide px-3 py-1.5 border transition-colors duration-200 ${
+                  className={`rounded-full px-4 py-1.5 text-xs font-medium border transition-colors duration-200 ${
                     selectedCategory === cat
-                      ? 'border-pb-cyan text-pb-cyan bg-pb-cyan/10'
-                      : 'border-pb-grid-strong text-pb-ink-soft hover:border-pb-cyan-dim hover:text-pb-ink'
+                      ? 'border-saas-cyan/40 bg-saas-cyan/[0.08] text-saas-cyan'
+                      : 'border-white/[0.10] bg-white/[0.03] text-saas-body hover:border-white/[0.20] hover:text-saas-ink'
                   }`}
                 >
                   {cat}
@@ -113,16 +114,16 @@ const Cases = () => {
 
           {/* Setor Filters */}
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted mb-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-3">
               Setor
             </p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedSetor(null)}
-                className={`font-mono text-[10px] uppercase tracking-mono-wide px-3 py-1.5 border transition-colors duration-200 ${
+                className={`rounded-full px-4 py-1.5 text-xs font-medium border transition-colors duration-200 ${
                   selectedSetor === null
-                    ? 'border-pb-cyan text-pb-cyan bg-pb-cyan/10'
-                    : 'border-pb-grid-strong text-pb-ink-soft hover:border-pb-cyan-dim hover:text-pb-ink'
+                    ? 'border-saas-cyan/40 bg-saas-cyan/[0.08] text-saas-cyan'
+                    : 'border-white/[0.10] bg-white/[0.03] text-saas-body hover:border-white/[0.20] hover:text-saas-ink'
                 }`}
               >
                 Todos
@@ -131,10 +132,10 @@ const Cases = () => {
                 <button
                   key={setor}
                   onClick={() => setSelectedSetor(setor)}
-                  className={`font-mono text-[10px] uppercase tracking-mono-wide px-3 py-1.5 border transition-colors duration-200 ${
+                  className={`rounded-full px-4 py-1.5 text-xs font-medium border transition-colors duration-200 ${
                     selectedSetor === setor
-                      ? 'border-pb-cyan text-pb-cyan bg-pb-cyan/10'
-                      : 'border-pb-grid-strong text-pb-ink-soft hover:border-pb-cyan-dim hover:text-pb-ink'
+                      ? 'border-saas-cyan/40 bg-saas-cyan/[0.08] text-saas-cyan'
+                      : 'border-white/[0.10] bg-white/[0.03] text-saas-body hover:border-white/[0.20] hover:text-saas-ink'
                   }`}
                 >
                   {setor}
@@ -153,23 +154,23 @@ const Cases = () => {
         noBorderTop
       >
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-pb-void p-8 animate-pulse">
-                <div className="h-3 bg-pb-void-elev w-24 mb-4" />
-                <div className="h-6 bg-pb-void-elev w-3/4 mb-3" />
-                <div className="h-4 bg-pb-void-elev w-full" />
+              <div key={i} className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 animate-pulse">
+                <div className="h-3 bg-white/[0.05] rounded w-24 mb-4" />
+                <div className="h-6 bg-white/[0.05] rounded w-3/4 mb-3" />
+                <div className="h-4 bg-white/[0.05] rounded w-full" />
               </div>
             ))}
           </div>
         ) : cases.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="font-body text-pb-ink-soft text-lg">
+            <p className="text-saas-body text-lg">
               Nenhum case encontrado com os filtros selecionados.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-pb-grid-strong border border-pb-grid-strong">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {cases.map((caseItem) => (
               <Link
                 key={caseItem.id}
@@ -186,11 +187,11 @@ const Cases = () => {
                           loading="lazy"
                           src={caseItem.cliente_logo_url}
                           alt={caseItem.cliente_nome}
-                          className="h-28 w-full object-cover mb-4"
+                          className="h-28 w-full object-cover rounded-xl mb-4"
                           style={{ filter: 'grayscale(30%)' }}
                         />
                       ) : (
-                        <p className="font-mono text-[11px] uppercase tracking-mono-wide text-pb-ink-muted">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-muted">
                           {caseItem.cliente_nome}
                         </p>
                       )}
@@ -199,27 +200,27 @@ const Cases = () => {
                   </div>
 
                   {/* Título */}
-                  <h2 className="font-display text-2xl uppercase text-pb-ink mt-3 leading-tight group-hover:text-pb-cyan transition-colors duration-200">
+                  <h2 className="font-extrabold text-xl text-saas-ink mt-3 leading-snug tracking-tight group-hover:text-saas-cyan transition-colors duration-200">
                     {caseItem.titulo}
                   </h2>
 
                   {/* Descrição */}
-                  <p className="font-body text-pb-ink-soft text-sm leading-relaxed mt-2 line-clamp-3 flex-1">
+                  <p className="text-saas-body text-sm leading-relaxed mt-2 line-clamp-3 flex-1">
                     {caseItem.descricao_curta}
                   </p>
 
                   {/* Métrica Principal */}
                   {caseItem.metrica_principal && (
-                    <div className="pt-4 border-t border-pb-grid-strong mt-4">
-                      <p className="font-display text-3xl text-pb-cyan">
-                        {caseItem.metrica_principal}
+                    <div className="pt-4 border-t border-white/[0.08] mt-4">
+                      <p className="text-3xl font-extrabold leading-none">
+                        <Accent>{caseItem.metrica_principal}</Accent>
                       </p>
                     </div>
                   )}
 
                   {/* CTA */}
                   <div className="pt-3 mt-auto">
-                    <span className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted group-hover:text-pb-cyan transition-colors duration-200 inline-flex items-center gap-2">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted group-hover:text-saas-cyan transition-colors duration-200 inline-flex items-center gap-2">
                       Ver Case Completo
                       <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

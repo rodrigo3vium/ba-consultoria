@@ -4,6 +4,7 @@ import Tag from "@/components/pb/Tag";
 import { tracker } from "@/lib/tracking";
 import { acervoIdeas, ACERVO_AREAS } from "@/lib/acervoIA";
 import { Search } from "lucide-react";
+import { Accent, Eyebrow, SAAS_INPUT, SAAS_CARD } from "@/components/saas/ui";
 
 const AcervoIA = () => {
   const [area, setArea] = useState<string>("Todas");
@@ -38,54 +39,48 @@ const AcervoIA = () => {
 
   return (
     <PageLayout trackingName="BA Consultoria - Acervo IA">
-      <div className="pb-24 text-pb-ink">
+      <div className="pb-24 text-saas-ink">
         {/* HERO */}
-        <section className="relative overflow-hidden border-b border-pb-grid-strong">
-          {/* grid técnico sutil */}
-          <div
-            className="absolute inset-0 pointer-events-none opacity-60"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
+        <section className="relative overflow-hidden border-b border-white/[0.06]">
+          {/* glows radiais suaves */}
+          <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-saas-violet/20 blur-[110px]" />
+            <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
+          </div>
           <div className="container mx-auto px-4 py-16 md:py-20 relative z-10 max-w-6xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-pb-cyan mb-5">
-              Acervo BA · Casos de uso
-            </p>
-            <h1 className="font-display uppercase leading-[0.92] text-pb-ink text-5xl md:text-7xl lg:text-8xl max-w-4xl">
+            <Eyebrow>Acervo BA · Casos de uso</Eyebrow>
+            <h1 className="mt-5 font-extrabold text-saas-ink text-[clamp(32px,5vw,58px)] leading-[1.06] tracking-tight max-w-4xl">
               Acervo de ideias de
               <br />
-              aplicação de IA
+              aplicação de <Accent>IA</Accent>
             </h1>
-            <p className="font-body text-pb-ink-soft text-lg md:text-xl mt-6 max-w-2xl">
+            <p className="text-saas-body text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
               Uma biblioteca navegável de aplicações reais de inteligência
               artificial em negócios. Filtre por área e encontre o caso de uso
               certo pra você.
             </p>
-            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-pb-ink-muted mt-8 flex items-center gap-3">
-              <span className="text-pb-cyan">{acervoIdeas.length}</span>
+            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-saas-muted mt-8 flex items-center gap-3">
+              <span className="text-saas-cyan">{acervoIdeas.length}</span>
               <span>aplicações de IA</span>
-              <span className="text-pb-ink-faint">/</span>
-              <span className="text-pb-cyan">{ACERVO_AREAS.length}</span>
+              <span className="text-saas-faint">/</span>
+              <span className="text-saas-cyan">{ACERVO_AREAS.length}</span>
               <span>áreas</span>
             </div>
           </div>
         </section>
 
         {/* FILTROS */}
-        <section className="border-b border-pb-grid-strong bg-pb-void-deep/40 sticky top-0 z-20 backdrop-blur-sm">
+        <section className="border-b border-white/[0.06] bg-saas-void/80 sticky top-0 z-20 backdrop-blur-xl">
           <div className="container mx-auto px-4 py-6 max-w-6xl">
             {/* busca */}
             <div className="relative mb-5 max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-pb-ink-faint pointer-events-none" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-saas-faint pointer-events-none z-10" />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar ideia…"
-                className="pb-input pl-11"
+                className={SAAS_INPUT + " pl-11"}
               />
             </div>
 
@@ -98,14 +93,14 @@ const AcervoIA = () => {
                   <button
                     key={a}
                     onClick={() => handleFilter(a)}
-                    className={`font-mono text-[11px] uppercase tracking-[0.1em] px-3 py-1.5 border transition-colors ${
+                    className={`rounded-full text-[12px] font-medium px-3.5 py-1.5 border transition-colors ${
                       active
-                        ? "border-pb-cyan text-pb-cyan bg-pb-cyan/5"
-                        : "border-pb-grid-strong text-pb-ink-muted hover:border-pb-cyan-dim hover:text-pb-ink-soft"
+                        ? "border-saas-cyan/40 bg-saas-cyan/[0.08] text-saas-cyan"
+                        : "border-white/[0.10] bg-white/[0.03] text-saas-muted hover:border-white/[0.20] hover:text-saas-ink"
                     }`}
                   >
                     {a}
-                    <span className="ml-2 text-pb-ink-faint">{count}</span>
+                    <span className={`ml-2 ${active ? "text-saas-cyan/70" : "text-saas-faint"}`}>{count}</span>
                   </button>
                 );
               })}
@@ -117,7 +112,7 @@ const AcervoIA = () => {
         <section className="container mx-auto px-4 py-12 max-w-6xl">
           {filtered.length === 0 ? (
             <div className="text-center py-24">
-              <p className="font-mono text-sm uppercase tracking-[0.15em] text-pb-ink-muted">
+              <p className="text-saas-muted text-[15px]">
                 Nenhuma ideia encontrada.
               </p>
             </div>
@@ -126,15 +121,15 @@ const AcervoIA = () => {
               {filtered.map((idea) => (
                 <article
                   key={idea.id}
-                  className="strat-card flex flex-col gap-4 !p-6"
+                  className={SAAS_CARD + " flex flex-col gap-4 p-6 hover:border-white/[0.16] transition-colors"}
                 >
                   <Tag variant="cyan" className="self-start">
                     {idea.area}
                   </Tag>
-                  <h2 className="font-display uppercase text-2xl leading-tight text-pb-ink">
+                  <h2 className="font-bold text-xl leading-snug tracking-tight text-saas-ink">
                     {idea.title}
                   </h2>
-                  <p className="font-body text-[15px] leading-relaxed text-pb-ink-soft">
+                  <p className="text-[15px] leading-relaxed text-saas-body">
                     {idea.description}
                   </p>
                 </article>

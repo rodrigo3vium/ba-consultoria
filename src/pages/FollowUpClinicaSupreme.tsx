@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { tracker } from "@/lib/tracking";
 import PropostaLayout from "@/components/pb/PropostaLayout";
+import { Accent, Eyebrow, SAAS_BTN_PRIMARY } from "@/components/saas/ui";
 
 const acquireCards = [
   {
@@ -64,32 +65,32 @@ const expandCards = [
   },
 ];
 
-const StageCard = ({ card, accent }: { card: typeof acquireCards[0]; accent: "cyan" | "red" }) => (
-  <div className="border border-pb-grid-strong bg-pb-void-card p-7">
+const StageCard = ({ card }: { card: typeof acquireCards[0] }) => (
+  <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-7">
     <div className="flex items-baseline gap-3 mb-2">
-      <span className="font-mono text-[10px] text-pb-ink-muted">{card.num}</span>
-      <span className="font-display text-[20px] uppercase text-pb-ink leading-none">{card.title}</span>
+      <span className="font-mono text-[10px] text-saas-faint">{card.num}</span>
+      <span className="font-extrabold text-[20px] text-saas-ink leading-none tracking-tight">{card.title}</span>
     </div>
-    <p className="font-body text-pb-ink-soft text-[13px] leading-relaxed mb-5 pl-8">
+    <p className="text-saas-body text-[13px] leading-relaxed mb-5 pl-8">
       {card.desc}
     </p>
 
     {/* Vazamento */}
-    <div className="border border-pb-grid bg-pb-void-deep/50 p-4 pl-5 mb-3">
-      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-pb-red mb-2 flex items-center gap-2">
-        <span className="inline-block w-1 h-1 bg-pb-red" />
+    <div className="rounded-xl border border-white/[0.09] bg-white/[0.02] p-4 pl-5 mb-3">
+      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-saas-faint mb-2 flex items-center gap-2">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-saas-faint" />
         Vazamento
       </p>
-      <p className="font-body text-pb-ink-muted text-[12.5px] leading-relaxed">{card.pain}</p>
+      <p className="text-saas-muted text-[12.5px] leading-relaxed">{card.pain}</p>
     </div>
 
     {/* Ganho */}
-    <div className={`border p-4 pl-5 ${accent === 'cyan' ? 'border-pb-cyan-dim bg-pb-void-deep/50' : 'border-pb-cyan-dim bg-pb-void-deep/50'}`}>
-      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-pb-cyan mb-2 flex items-center gap-2">
-        <span className="inline-block w-1 h-1 bg-pb-cyan" />
+    <div className="rounded-xl border border-saas-cyan/20 bg-white/[0.02] p-4 pl-5">
+      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-saas-cyan mb-2 flex items-center gap-2">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
         Ganho
       </p>
-      <p className="font-body text-pb-ink-muted text-[12.5px] leading-relaxed">{card.gain}</p>
+      <p className="text-saas-muted text-[12.5px] leading-relaxed">{card.gain}</p>
     </div>
   </div>
 );
@@ -103,18 +104,18 @@ const FollowUpClinicaSupreme = () => {
     <PropostaLayout cliente="Clínica Supreme" projeto="Follow-up Comercial">
 
       {/* ── INTRO ── */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-6">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// REVENUE ARCHITECTURE · MODELO BOWTIE</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(32px,5vw,64px)] leading-[0.95]">
-          De ponta a ponta, onde a Supreme ganha receita
+      <div className="border-t border-white/[0.06] py-16 space-y-6">
+        <Eyebrow>Revenue Architecture · Modelo Bowtie</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink text-[clamp(26px,3.4vw,44px)] leading-[1.12] tracking-tight">
+          De ponta a ponta, onde a Supreme <Accent>ganha receita</Accent>
         </h2>
-        <p className="font-body text-pb-ink-soft leading-relaxed max-w-[640px]">
+        <p className="text-saas-body text-[17px] leading-relaxed max-w-[640px]">
           Mapeamento completo do ciclo de receita com pontos de automação e ganho em cada etapa — inspirado no Bowtie da Winning by Design.
         </p>
       </div>
 
       {/* ── BOWTIE SVG ── */}
-      <div className="border-t border-pb-grid-strong py-12">
+      <div className="border-t border-white/[0.06] py-12">
         <svg
           viewBox="0 0 1200 260"
           xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +128,8 @@ const FollowUpClinicaSupreme = () => {
               <stop offset="100%" stopColor="#20DDEB" stopOpacity={0.02} />
             </linearGradient>
             <linearGradient id="greenGradSup" x1="1" y1="0" x2="0" y2="0">
-              <stop offset="0%" stopColor="#20DDEB" stopOpacity={0.14} />
-              <stop offset="100%" stopColor="#20DDEB" stopOpacity={0.02} />
+              <stop offset="0%" stopColor="#8B7CF6" stopOpacity={0.18} />
+              <stop offset="100%" stopColor="#8B7CF6" stopOpacity={0.02} />
             </linearGradient>
             <radialGradient id="centerGlowSup" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stopColor="#20DDEB" stopOpacity={0.12} />
@@ -150,10 +151,10 @@ const FollowUpClinicaSupreme = () => {
           <line x1="420" y1="85" x2="420" y2="175" stroke="rgba(32,221,235,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
 
           {/* Right funnel */}
-          <path d="M 1170,25 L 645,115 L 645,145 L 1170,235 Z" fill="url(#greenGradSup)" stroke="rgba(32,221,235,0.14)" strokeWidth="0.5" />
-          <line x1="780" y1="85" x2="780" y2="175" stroke="rgba(32,221,235,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
-          <line x1="910" y1="65" x2="910" y2="195" stroke="rgba(32,221,235,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
-          <line x1="1040" y1="45" x2="1040" y2="215" stroke="rgba(32,221,235,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
+          <path d="M 1170,25 L 645,115 L 645,145 L 1170,235 Z" fill="url(#greenGradSup)" stroke="rgba(139,124,246,0.18)" strokeWidth="0.5" />
+          <line x1="780" y1="85" x2="780" y2="175" stroke="rgba(139,124,246,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
+          <line x1="910" y1="65" x2="910" y2="195" stroke="rgba(139,124,246,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
+          <line x1="1040" y1="45" x2="1040" y2="215" stroke="rgba(139,124,246,0.08)" strokeWidth="0.5" strokeDasharray="2,4" />
 
           {/* Center glow */}
           <circle cx="600" cy="130" r="90" fill="url(#centerGlowSup)" />
@@ -168,60 +169,60 @@ const FollowUpClinicaSupreme = () => {
           <text x="485" y="134" textAnchor="middle" fill="rgba(32,221,235,0.55)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">FECHAMENTO</text>
 
           {/* Stage labels — Right */}
-          <text x="715" y="134" textAnchor="middle" fill="rgba(32,221,235,0.55)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">ONBOARD</text>
-          <text x="845" y="134" textAnchor="middle" fill="rgba(32,221,235,0.55)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">RETENÇÃO</text>
-          <text x="975" y="134" textAnchor="middle" fill="rgba(32,221,235,0.55)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">EXPANSÃO</text>
-          <text x="1105" y="134" textAnchor="middle" fill="rgba(32,221,235,0.55)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">ADVOCACY</text>
+          <text x="715" y="134" textAnchor="middle" fill="rgba(139,124,246,0.6)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">ONBOARD</text>
+          <text x="845" y="134" textAnchor="middle" fill="rgba(139,124,246,0.6)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">RETENÇÃO</text>
+          <text x="975" y="134" textAnchor="middle" fill="rgba(139,124,246,0.6)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">EXPANSÃO</text>
+          <text x="1105" y="134" textAnchor="middle" fill="rgba(139,124,246,0.6)" fontFamily="'IBM Plex Mono', monospace" fontSize="8" letterSpacing="1.5">ADVOCACY</text>
 
           {/* Dots */}
           <circle cx="85" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
           <circle cx="220" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
           <circle cx="350" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
           <circle cx="485" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
-          <circle cx="715" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
-          <circle cx="845" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
-          <circle cx="975" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
-          <circle cx="1105" cy="148" r="2.5" fill="#20DDEB" opacity="0.5" />
+          <circle cx="715" cy="148" r="2.5" fill="#8B7CF6" opacity="0.5" />
+          <circle cx="845" cy="148" r="2.5" fill="#8B7CF6" opacity="0.5" />
+          <circle cx="975" cy="148" r="2.5" fill="#8B7CF6" opacity="0.5" />
+          <circle cx="1105" cy="148" r="2.5" fill="#8B7CF6" opacity="0.5" />
         </svg>
       </div>
 
       {/* ── LABELS DE LADO ── */}
-      <div className="border-t border-pb-grid-strong py-8">
+      <div className="border-t border-white/[0.06] py-8">
         <div className="grid grid-cols-2 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="inline-block w-2 h-2 bg-pb-cyan shadow-cyan-soft" />
-              <h3 className="font-display text-[22px] uppercase text-pb-ink leading-none">Aquisição</h3>
+              <span className="inline-block w-2 h-2 rounded-full bg-saas-cyan" />
+              <h3 className="font-extrabold text-[22px] text-saas-ink leading-none tracking-tight">Aquisição</h3>
             </div>
-            <p className="font-body text-pb-ink-muted text-[13px] leading-relaxed pl-5">Do desconhecido ao primeiro protocolo fechado</p>
+            <p className="text-saas-muted text-[13px] leading-relaxed pl-5">Do desconhecido ao primeiro protocolo fechado</p>
           </div>
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="inline-block w-2 h-2 bg-pb-cyan shadow-cyan-soft" />
-              <h3 className="font-display text-[22px] uppercase text-pb-ink leading-none">Expansão</h3>
+              <span className="inline-block w-2 h-2 rounded-full bg-saas-violet" />
+              <h3 className="font-extrabold text-[22px] text-saas-ink leading-none tracking-tight">Expansão</h3>
             </div>
-            <p className="font-body text-pb-ink-muted text-[13px] leading-relaxed pl-5">Do primeiro valor à receita recorrente e indicação</p>
+            <p className="text-saas-muted text-[13px] leading-relaxed pl-5">Do primeiro valor à receita recorrente e indicação</p>
           </div>
         </div>
       </div>
 
       {/* ── ETAPAS DE AQUISIÇÃO ── */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// ETAPAS · AQUISIÇÃO</p>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>Etapas · Aquisição</Eyebrow>
         <div className="grid grid-cols-2 gap-5">
           {acquireCards.map((card) => (
-            <StageCard key={card.num} card={card} accent="cyan" />
+            <StageCard key={card.num} card={card} />
           ))}
         </div>
       </div>
 
       {/* ── NEXUS CENTRAL ── */}
-      <div className="border-t border-pb-grid-strong py-16">
-        <div className="border border-pb-cyan-dim bg-pb-void-card p-10 text-center max-w-[700px] mx-auto">
-          <h3 className="font-display text-[28px] uppercase text-pb-ink leading-[0.95] mb-4">
-            O ponto de <span className="text-pb-cyan">inflexão</span>
+      <div className="border-t border-white/[0.06] py-16">
+        <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-10 text-center max-w-[700px] mx-auto">
+          <h3 className="font-extrabold text-[clamp(26px,3vw,34px)] text-saas-ink leading-[1.1] tracking-tight mb-4">
+            O ponto de <Accent>inflexão</Accent>
           </h3>
-          <p className="font-body text-pb-ink-soft text-[14px] leading-relaxed max-w-[480px] mx-auto mb-8">
+          <p className="text-saas-body text-[14px] leading-relaxed max-w-[480px] mx-auto mb-8">
             Paciente completa o primeiro procedimento e percebe valor. Tudo à direita do Bowtie depende desse momento — e da base de 30 mil pacientes que já passou por ele.
           </p>
           <div className="flex justify-center gap-12 flex-wrap">
@@ -231,8 +232,8 @@ const FollowUpClinicaSupreme = () => {
               { value: "3", label: "Especialidades cruzáveis" },
             ].map((kpi) => (
               <div key={kpi.label} className="text-center">
-                <p className="font-display text-[clamp(40px,4vw,56px)] text-pb-cyan leading-none">{kpi.value}</p>
-                <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-pb-ink-muted mt-2">{kpi.label}</p>
+                <p className="text-[clamp(40px,4vw,56px)] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">{kpi.value}</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.15em] text-saas-faint mt-2">{kpi.label}</p>
               </div>
             ))}
           </div>
@@ -240,25 +241,25 @@ const FollowUpClinicaSupreme = () => {
       </div>
 
       {/* ── ETAPAS DE EXPANSÃO ── */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// ETAPAS · EXPANSÃO</p>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>Etapas · Expansão</Eyebrow>
         <div className="grid grid-cols-2 gap-5">
           {expandCards.map((card) => (
-            <StageCard key={card.num} card={card} accent="cyan" />
+            <StageCard key={card.num} card={card} />
           ))}
         </div>
       </div>
 
       {/* ── CTA FINAL ── */}
-      <div className="border-t border-pb-grid-strong py-16 space-y-8">
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-cyan mb-4">// PRÓXIMO PASSO</p>
-        <h2 className="font-display uppercase text-pb-ink text-[clamp(44px,7vw,104px)] leading-[0.9]">
-          Vamos ativar<br />a base<span className="text-pb-red">.</span>
+      <div className="border-t border-white/[0.06] py-16 space-y-8">
+        <Eyebrow>Próximo passo</Eyebrow>
+        <h2 className="font-extrabold text-saas-ink text-[clamp(32px,5.5vw,64px)] leading-[1.05] tracking-tight">
+          Vamos ativar<br />a base<Accent>.</Accent>
         </h2>
-        <p className="font-body text-pb-ink-soft text-[18px] leading-relaxed max-w-[680px]">
+        <p className="text-saas-body text-[18px] leading-relaxed max-w-[680px]">
           30 mil pacientes e um ciclo de receita mapeado. O que falta é a camada de inteligência que lê, prioriza e age — em cada etapa, todos os dias.
         </p>
-        <p className="font-mono text-[10px] uppercase tracking-mono-wide text-pb-ink-muted">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-saas-faint">
           Preparado por Rodrigo Albuquerque · Modelo Bowtie adaptado da Winning by Design · Abril 2026
         </p>
         <div className="mt-8">
@@ -266,10 +267,10 @@ const FollowUpClinicaSupreme = () => {
             href="https://wa.me/5511999718595"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className={SAAS_BTN_PRIMARY}
             onClick={() => tracker.track("cta_click", { product: "clinica-supreme", location: "followup_cta" })}
           >
-            FALAR NO WHATSAPP <span aria-hidden>→</span>
+            Falar no WhatsApp <span aria-hidden>→</span>
           </a>
         </div>
       </div>

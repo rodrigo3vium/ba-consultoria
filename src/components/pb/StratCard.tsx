@@ -11,7 +11,7 @@ interface StratCardProps {
 const StratCard = ({ children, brackets = false, className = "", as: Tag = "div" }: StratCardProps) => {
   return (
     <Tag
-      className={`relative bg-gradient-to-b from-pb-void-card to-pb-void-elev border border-pb-grid-strong p-8 transition-colors duration-300 hover:border-pb-cyan-dim ${className}`}
+      className={`relative rounded-2xl border border-white/[0.09] bg-saas-card p-8 transition-colors duration-300 hover:border-white/[0.18] ${className}`}
     >
       {brackets && <CornerBrackets size={14} offset={8} />}
       {children}
