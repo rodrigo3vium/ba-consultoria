@@ -31,9 +31,9 @@ function Gauge({ score }: { score: number }) {
           stroke={color}
           strokeWidth="10"
           strokeLinecap="round"
-          strokeDasharray={c}
-          strokeDashoffset={c - (pct / 100) * c}
-          style={{ transition: "stroke-dashoffset 0.6s ease" }}
+          strokeDasharray={`${(pct / 100) * c} ${c}`}
+          strokeDashoffset={0}
+          style={{ transition: "stroke-dasharray 0.6s ease" }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
