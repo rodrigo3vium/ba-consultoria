@@ -53,6 +53,7 @@ export const SITE_ROUTES: SiteRoute[] = [
 
   // Portfólio — demos interativas de sistemas construídos
   { path: '/portfolio/imovel-vazio-nao-vende', label: 'Imóvel Vazio Não Vende — Virtual Staging', category: 'portfolio', status: 'ativa', isLandingPage: true },
+  { path: '/portfolio/a-call-que-fechou-mas-nao-fechou', label: 'A Call Que Fechou Mas Não Fechou — Análise de Calls por IA', category: 'portfolio', status: 'ativa', isLandingPage: true },
 
   // Propostas
   { path: '/proposta', label: 'Proposta (hub)', category: 'propostas', status: 'ativa' },
