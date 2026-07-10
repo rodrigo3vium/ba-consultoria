@@ -100,7 +100,6 @@ const App = () => (
           <Route path="/educacao/imersao-claude-v3" element={<ImersaoClaudeV3 />} />
           <Route path="/educacao/obrigado-imersao-claude" element={<ObrigadoImersaoClaude />} />
           <Route path="/servicos/google-meu-negocio" element={<GoogleMeuNegocio />} />
-          <Route path="/venda-mais-com-ia" element={<VendaMaisComIA />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/auth" element={<Auth />} />
@@ -138,6 +137,7 @@ const App = () => (
           <Route path="/projetos/royal-eagle-crm" element={<RoyalEagleCRM />} />
           <Route path="/portfolio/imovel-vazio-nao-vende" element={<ImovelVazioNaoVende />} />
           <Route path="/portfolio/a-call-que-fechou-mas-nao-fechou" element={<ACallQueFechouMasNaoFechou />} />
+          <Route path="/portfolio/venda-mais-com-ia" element={<VendaMaisComIA />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
