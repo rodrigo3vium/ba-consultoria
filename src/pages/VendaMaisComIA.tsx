@@ -805,7 +805,7 @@ const VendaMaisComIA = () => {
                 Em dias, não em <Accent>meses</Accent>.
               </>
             }
-            sub="Do diagnóstico à operação."
+            sub="Do diagnóstico à operação em 15 dias."
           />
           <div className="rev-item animate-fade-in relative">
             <div className="hidden md:block absolute left-0 right-0 top-[42px] h-px bg-white/[0.09]" aria-hidden />
