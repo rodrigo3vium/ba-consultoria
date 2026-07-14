@@ -597,10 +597,9 @@ const VendaMaisComIA = () => {
           </div>
 
           <div className="rev-item animate-fade-in mt-16 text-center">
-            <p className="font-extrabold text-[clamp(22px,2.8vw,32px)] leading-snug max-w-[26ch] mx-auto">
-              <Accent>
-                E se você tivesse um vendedor que nunca dorme, nunca esquece e custa uma fração de um CLT?
-              </Accent>
+            <p className="font-extrabold text-saas-ink text-[clamp(22px,2.8vw,32px)] leading-snug max-w-[30ch] mx-auto">
+              E se você tivesse um vendedor que{" "}
+              <Accent>nunca dorme, nunca esquece, nunca reclama</Accent> e custa uma fração de um CLT?
             </p>
           </div>
         </div>
