@@ -29,6 +29,10 @@ import {
   SAAS_INPUT,
   SAAS_LABEL,
 } from "@/components/saas/ui";
+import certHubspot from "@/assets/certificacoes/hubspot.jpeg";
+import certIbm from "@/assets/certificacoes/ibm.jpeg";
+import certScient from "@/assets/certificacoes/scient.jpeg";
+import certStanford from "@/assets/certificacoes/stanford.png";
 
 const formSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório").max(100),
@@ -242,6 +246,13 @@ const FAQS = [
     q: "Quanto tempo pra implementar?",
     a: "Dias, não meses. Diagnóstico, configuração no seu processo, integração com WhatsApp e agenda, e o agente já entra em operação. Você acompanha cada etapa.",
   },
+];
+
+const CERTS = [
+  { name: "Stanford University", src: certStanford },
+  { name: "HubSpot", src: certHubspot },
+  { name: "IBM", src: certIbm },
+  { name: "Scient", src: certScient },
 ];
 
 const SectionIntro = ({
@@ -831,6 +842,54 @@ const VendaMaisComIA = () => {
         </div>
       </section>
 
+      {/* QUEM SOMOS */}
+      <section id="quem-somos" className="border-t border-white/[0.06] py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionIntro
+            eyebrow="Quem somos nós"
+            title={
+              <>
+                De vendedor <Accent>para vendedor</Accent>.
+              </>
+            }
+          />
+          <div className="rev-item animate-fade-in max-w-[760px] space-y-5 text-saas-body text-base md:text-lg leading-relaxed">
+            <p>Não somos um time de desenvolvedores que nunca pisou em um salão de vendas.</p>
+            <p>
+              O que gera diferença real na nossa tecnologia é o treinamento de vendas que usamos para treinar a Bia.
+            </p>
+            <p>
+              Depois de gerenciar mais de{" "}
+              <b className="text-saas-ink font-semibold">R$80 milhões</b> em vendas anuais e times de vendas de mais
+              de <b className="text-saas-ink font-semibold">50 pessoas</b>, Rodrigo abriu a BA Consultoria, onde já
+              atendeu mais de <b className="text-saas-ink font-semibold">50 clientes</b> em{" "}
+              <b className="text-saas-ink font-semibold">7 países</b> diferentes e gerou mais de{" "}
+              <b className="text-saas-ink font-semibold">R$250 milhões</b> em vendas. Hoje, a Bia tem no seu
+              treinamento o melhor dos dois mundos:
+            </p>
+            <p>
+              conhecimento prático que só quem vive de vendas possui, aliado às metodologias que as empresas que mais
+              crescem no mundo utilizam.
+            </p>
+          </div>
+
+          {/* Certificações */}
+          <div className="rev-item animate-fade-in mt-14">
+            <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-6">Certificações</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl">
+              {CERTS.map((c) => (
+                <div
+                  key={c.name}
+                  className="rounded-2xl bg-white border border-white/[0.09] h-24 flex items-center justify-center px-6 py-5 shadow-saas-card"
+                >
+                  <img src={c.src} alt={c.name} className="max-h-full max-w-full object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 07 POR QUE NÓS */}
       <section id="diferenciais" className="border-t border-white/[0.06] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -889,14 +948,14 @@ const VendaMaisComIA = () => {
             <div className="rev-item animate-fade-in">
               <Eyebrow className="mb-5">O diagnóstico</Eyebrow>
               <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-tight mb-5 max-w-[18ch]">
-                Cada minuto sem responder é uma venda pro <Accent>concorrente</Accent>.
+                Cada minuto sem responder é uma venda perdida pro <Accent>concorrente</Accent>.
               </h2>
               <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[44ch] mb-8">
-                Agende uma conversa. A gente mostra o agente funcionando na prática e faz um diagnóstico do seu
-                processo de vendas.
+                Agende uma conversa. Fazemos um diagnóstico do seu processo comercial para entender se faz sentido ou
+                não colocar um agente de IA no seu negócio — sem compromisso.
               </p>
               <ul className="space-y-3">
-                {["Diagnóstico gratuito", "Demonstração ao vivo", "Sem compromisso"].map((t) => (
+                {["Diagnóstico gratuito", "Relatório de uso", "Sem compromisso"].map((t) => (
                   <li key={t} className="flex items-center gap-3 text-sm font-medium text-saas-body">
                     <Check className="w-4 h-4 text-saas-green flex-none" />
                     {t}
