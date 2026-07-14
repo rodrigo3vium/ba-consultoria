@@ -52,17 +52,15 @@ const NAV_LINKS = [
 ];
 
 const HERO_STATS = [
-  { value: "4X", label: "Capacidade de atendimento por SDR — de 25 p/ 100 leads/dia", accent: true },
   { value: "24/7", label: "Operação ininterrupta, sem folga", accent: false },
   { value: "<1min", label: "Tempo médio de resposta", accent: false },
-  { value: "80%", label: "Das vendas exigem 5+ follow-ups — a maioria para no 2º", accent: false },
+  { value: "78%", label: "Dos clientes fecham com quem responde primeiro", accent: true },
 ];
 
-const PROBLEMS = [
-  "Lead fora do horário = lead perdido",
-  "Follow-up esquecido = venda perdida",
-  "SDR caro, inconsistente e difícil de escalar",
-  "Conhecimento que sai junto com a pessoa",
+const MONEY_LOST = [
+  "Lead fora do horário = dinheiro perdido",
+  "Demora na resposta = dinheiro perdido",
+  "Follow-up que não é realizado = dinheiro perdido",
 ];
 
 const HOUR_DATA = [
@@ -396,13 +394,12 @@ const VendaMaisComIA = () => {
               </span>
               <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que perdem lead por demora.</p>
               <h1 className="font-extrabold text-saas-ink text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
-                Seu melhor vendedor <Accent>não dorme</Accent>.
+                Faça vendas <Accent>24h por dia. 7 dias por semana.</Accent>
               </h1>
               <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[46ch] mb-9">
-                Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp.{" "}
-                <b className="text-saas-ink font-semibold">24 horas por dia, 7 dias por semana.</b> Responde em
-                segundos, nunca esquece um lead e{" "}
-                <b className="text-saas-ink font-semibold">custa uma fração de um CLT.</b>
+                Um agente de IA que atende, qualifica, agenda e faz follow-up no seu WhatsApp. Responde em
+                segundos e nunca esquece um lead.{" "}
+                <b className="text-saas-ink font-semibold">Sem desculpas. Sem reclamação.</b>
               </p>
               <div className="flex flex-wrap gap-4">
                 <button onClick={() => scrollToSection("aplicar")} className={SAAS_BTN_PRIMARY}>
@@ -495,7 +492,7 @@ const VendaMaisComIA = () => {
           </div>
 
           {/* STAT STRIP */}
-          <div className="rev-item animate-fade-in mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="rev-item animate-fade-in mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4">
             {HERO_STATS.map((s) => (
               <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6">
                 <div
@@ -519,42 +516,26 @@ const VendaMaisComIA = () => {
             eyebrow="O problema"
             title={
               <>
-                Seu WhatsApp é um cemitério de <Accent>oportunidades</Accent>.
+                Quantos leads você perdeu essa semana por <Accent>demora no atendimento</Accent>?
               </>
             }
+            sub="E quantas vendas a mais poderiam ter sido feitas se 1 follow-up a mais tivesse sido feito?"
           />
-          <div className="rev-item animate-fade-in grid md:grid-cols-2 gap-12 items-start">
-            <div className="space-y-5 text-saas-body text-[17px] leading-relaxed">
-              <p>
-                O lead chegou às 22h. Seu time só viu às 9h. Quando ligaram, ele já tinha fechado com o
-                concorrente que respondeu primeiro.
-              </p>
-              <p>
-                O follow-up ficou pra depois. <b className="text-saas-ink font-semibold">Depois virou nunca.</b> A
-                venda esfriou sozinha, sem ninguém perceber.
-              </p>
-              <p>
-                E o SDR humano custa caro, trabalha 8h, tem dia ruim, pede demissão — e leva o know-how embora
-                quando sai.
-              </p>
-            </div>
-            <div className={SAAS_CARD + " p-8"}>
-              <p className="text-sm font-bold text-saas-ink mb-1.5">O custo invisível</p>
-              <p className="text-saas-faint text-sm mb-6 leading-relaxed">
-                A oportunidade que evapora enquanto ninguém está olhando.
-              </p>
-              <ul className="space-y-4">
-                {PROBLEMS.map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex-none w-5 h-5 rounded-full bg-[#F2667B]/15 flex items-center justify-center">
-                      <X className="w-3 h-3 text-[#F2667B]" />
-                    </span>
-                    <span className="text-[15px] text-saas-body leading-snug">{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={"rev-item animate-fade-in " + SAAS_CARD + " p-8 max-w-2xl"}>
+            <ul className="space-y-5">
+              {MONEY_LOST.map((t) => (
+                <li key={t} className="flex items-center gap-3.5 text-lg md:text-xl font-bold text-saas-ink">
+                  <span className="flex-none w-8 h-8 rounded-full bg-[#F2667B]/15 flex items-center justify-center">
+                    <X className="w-4 h-4 text-[#F2667B]" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
+          <p className="rev-item animate-fade-in mt-6 text-saas-body text-base md:text-lg max-w-2xl">
+            E o pior: <b className="text-saas-ink font-semibold">você está pagando caro para ter esse desperdício.</b>
+          </p>
 
           <div className={"rev-item animate-fade-in mt-14 " + SAAS_CARD + " p-7 md:p-10"}>
             <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
