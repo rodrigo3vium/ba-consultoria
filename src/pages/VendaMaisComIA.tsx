@@ -33,6 +33,7 @@ import certHubspot from "@/assets/certificacoes/hubspot.jpeg";
 import certIbm from "@/assets/certificacoes/ibm.jpeg";
 import certScient from "@/assets/certificacoes/scient.jpeg";
 import certStanford from "@/assets/certificacoes/stanford.png";
+import biaPhoto from "@/assets/bia.jpg";
 import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
 import mentorDiego from "@/assets/mentors/diego-barreto.webp";
 import mentorSomma from "@/assets/mentors/pedro-somma.webp";
@@ -530,7 +531,11 @@ const VendaMaisComIA = () => {
               {/* chat card */}
               <div className={SAAS_CARD + " shadow-saas-card p-5"}>
                 <div className="flex items-center gap-2.5 mb-4">
-                  <span className="w-8 h-8 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex-none" />
+                  <img
+                    src={biaPhoto}
+                    alt="Bia"
+                    className="w-8 h-8 rounded-full object-cover flex-none border border-white/10"
+                  />
                   <div>
                     <div className="text-sm font-bold text-saas-ink">Bia</div>
                     <div className="text-xs text-saas-green flex items-center gap-1.5">
@@ -664,22 +669,42 @@ const VendaMaisComIA = () => {
                 Bia, a sua <Accent>funcionária dos sonhos</Accent>.
               </>
             }
-            sub={
-              <>
+          />
+          <div className="rev-item animate-fade-in grid lg:grid-cols-[380px_1fr] gap-8 lg:gap-12 items-start">
+            <div className="mx-auto max-w-[380px] lg:mx-0 w-full">
+              <div className="relative overflow-hidden rounded-2xl border border-white/[0.09] shadow-saas-card">
+                <img
+                  src={biaPhoto}
+                  alt="Bia — agente de vendas de IA"
+                  loading="lazy"
+                  decoding="async"
+                  width={900}
+                  height={900}
+                  className="w-full h-full object-cover aspect-square"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-saas-void/80 to-transparent" aria-hidden />
+                <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-saas-void/70 backdrop-blur px-3 py-1.5 border border-white/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-saas-green animate-pulse" />
+                  <span className="text-xs font-semibold text-saas-ink">Bia · online 24/7</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[52ch]">
                 Uma agente de IA treinada nas melhores metodologias de vendas do mundo. Trabalhando 24h por dia no
                 seu negócio.{" "}
                 <b className="text-saas-ink font-semibold">Nunca mais perca uma venda por falta de atendimento.</b>
-              </>
-            }
-          />
-          <div className={"rev-item animate-fade-in max-w-[820px] flex items-start gap-4 " + SAAS_CARD + " p-6"}>
-            <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
-              <Check className="w-4 h-4 text-saas-void" />
-            </span>
-            <p className="text-saas-ink text-base leading-relaxed">
-              Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É um
-              agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
-            </p>
+              </p>
+              <div className={"mt-6 flex items-start gap-4 " + SAAS_CARD + " p-6"}>
+                <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
+                  <Check className="w-4 h-4 text-saas-void" />
+                </span>
+                <p className="text-saas-ink text-base leading-relaxed">
+                  Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É
+                  um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
