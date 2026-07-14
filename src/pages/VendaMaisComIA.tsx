@@ -112,7 +112,7 @@ const HourlyLeadsChart = () => (
         <span className="text-white font-extrabold text-base">50%</span>
       </div>
     </div>
-    <div className="flex items-end gap-1 h-56">
+    <div className="flex items-end gap-[2px] sm:gap-1 h-56">
       {HOUR_DATA.map((d) => {
         const biz = d.h >= 9 && d.h <= 17;
         return (
@@ -121,7 +121,9 @@ const HourlyLeadsChart = () => (
               className={`w-full rounded-t-[3px] ${biz ? "bg-gradient-to-t from-saas-cyan to-saas-violet" : "bg-[#F2667B]/60"}`}
               style={{ height: `${Math.max((d.v / HOUR_MAX) * 100, 3)}%` }}
             />
-            <span className="text-[9px] text-saas-faint-2">{d.h}</span>
+            <span className={"text-[9px] text-saas-faint-2 " + (d.h % 2 !== 0 ? "opacity-0 sm:opacity-100" : "")}>
+              {d.h}
+            </span>
           </div>
         );
       })}
@@ -144,17 +146,19 @@ const CONTACT_ATTEMPTS = [
 const CONTACT_MAX = Math.max(...CONTACT_ATTEMPTS.map((d) => d.pct));
 
 const ContactAttemptsChart = () => (
-  <div className="flex items-end gap-2 md:gap-3 h-56">
-    {CONTACT_ATTEMPTS.map((d) => (
-      <div key={d.label} className="flex-1 flex flex-col items-center justify-end h-full">
-        <span className="text-xs font-bold text-saas-body mb-1.5">{d.pct}%</span>
-        <div
-          className="w-full rounded-t-md bg-gradient-to-t from-saas-violet to-saas-cyan"
-          style={{ height: `${Math.max((d.pct / CONTACT_MAX) * 100, 3)}%` }}
-        />
-        <span className="mt-2 text-[10px] text-saas-faint text-center leading-tight">{d.label}</span>
-      </div>
-    ))}
+  <div className="overflow-x-auto -mx-1 px-1">
+    <div className="flex items-end gap-2 md:gap-3 h-56 min-w-[440px] sm:min-w-0">
+      {CONTACT_ATTEMPTS.map((d) => (
+        <div key={d.label} className="flex-1 flex flex-col items-center justify-end h-full">
+          <span className="text-xs font-bold text-saas-body mb-1.5">{d.pct}%</span>
+          <div
+            className="w-full rounded-t-md bg-gradient-to-t from-saas-violet to-saas-cyan"
+            style={{ height: `${Math.max((d.pct / CONTACT_MAX) * 100, 3)}%` }}
+          />
+          <span className="mt-2 text-[9px] sm:text-[10px] text-saas-faint text-center leading-tight">{d.label}</span>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
@@ -328,24 +332,22 @@ const VendaMaisComIA = () => {
 
   useEffect(() => {
     const items = document.querySelectorAll<HTMLElement>(".rev-item");
-    const observers: IntersectionObserver[] = [];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.animationPlayState = "running";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
     items.forEach((el) => {
       el.style.animationPlayState = "paused";
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              (entry.target as HTMLElement).style.animationPlayState = "running";
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
       observer.observe(el);
-      observers.push(observer);
     });
-    return () => observers.forEach((o) => o.disconnect());
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -414,6 +416,12 @@ const VendaMaisComIA = () => {
         .venda-mais-ia p {
           font-family: inherit;
         }
+        /* iOS não dá zoom automático em foco quando o input tem >= 16px */
+        @media (max-width: 640px) {
+          .venda-mais-ia input, .venda-mais-ia select, .venda-mais-ia textarea {
+            font-size: 16px;
+          }
+        }
       `}</style>
 
       {/* HEADER */}
@@ -430,7 +438,7 @@ const VendaMaisComIA = () => {
               </button>
             ))}
           </nav>
-          <button onClick={() => scrollToSection("aplicar")} className={SAAS_BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px]"}>
+          <button onClick={() => scrollToSection("aplicar")} className={SAAS_BTN_PRIMARY + " !px-5 !py-2.5 !text-[13px] !min-h-[44px]"}>
             Quero um diagnóstico
           </button>
         </div>
@@ -453,7 +461,7 @@ const VendaMaisComIA = () => {
                 Bia · Agente de Vendas
               </span>
               <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que querem vender mais.</p>
-              <h1 className="font-extrabold text-saas-ink text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
+              <h1 className="font-extrabold text-saas-ink text-[clamp(30px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
                 Faça vendas <Accent>24h por dia. 7 dias por semana.</Accent>
               </h1>
               <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[46ch] mb-9">
@@ -623,14 +631,14 @@ const VendaMaisComIA = () => {
                   Responder em 5 minutos em vez de 30 minutos{" "}
                   <Accent className="font-bold">aumenta em até 100 vezes a chance de conversão</Accent> do lead.
                 </p>
-                <p className="mt-5 text-xs text-saas-faint-2 leading-relaxed max-w-[42ch]">
+                <p className="mt-5 text-xs text-saas-faint leading-relaxed max-w-[42ch]">
                   Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
                   (2011), com dados da InsideSales.com.
                 </p>
               </div>
               <div>
                 <HourlyLeadsChart />
-                <p className="mt-4 text-xs text-saas-faint-2 leading-relaxed">
+                <p className="mt-4 text-xs text-saas-faint leading-relaxed">
                   Distribuição típica de leads por hora do dia (0h–23h) em operações de captação via
                   WhatsApp/formulário.
                 </p>
@@ -694,7 +702,7 @@ const VendaMaisComIA = () => {
               Em média, quantas tentativas de contato sua empresa faz com cada lead?
             </p>
             <ContactAttemptsChart />
-            <p className="mt-6 text-xs text-saas-faint-2">Fonte: Inside Sales Benchmark Brasil.</p>
+            <p className="mt-6 text-xs text-saas-faint">Fonte: Inside Sales Benchmark Brasil.</p>
           </div>
         </div>
       </section>
@@ -885,11 +893,15 @@ const VendaMaisComIA = () => {
             }
           />
           <div className="rev-item animate-fade-in grid lg:grid-cols-[300px_1fr] gap-8 lg:gap-12 items-start">
-            <div>
+            <div className="mx-auto max-w-[240px] lg:mx-0 lg:max-w-none">
               <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-saas-card">
                 <img
                   src={rodrigoPhoto}
                   alt="Rodrigo Albuquerque"
+                  loading="lazy"
+                  decoding="async"
+                  width={800}
+                  height={577}
                   className="w-full h-full object-cover aspect-[4/5]"
                 />
               </div>
@@ -937,7 +949,7 @@ const VendaMaisComIA = () => {
                         : "border border-white/[0.09] opacity-70 hover:opacity-100")
                     }
                   >
-                    <img src={c.src} alt={c.name} className="max-h-full max-w-full object-contain" />
+                    <img src={c.src} alt={c.name} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                   </button>
                 );
               })}
@@ -968,7 +980,7 @@ const VendaMaisComIA = () => {
               {MENTORS.map((m) => (
                 <div key={m.name} className={SAAS_CARD + " p-5"}>
                   <div className="rounded-xl border border-white/[0.09] overflow-hidden aspect-square mb-4">
-                    <img loading="lazy" src={m.photo} alt={m.name} className="w-full h-full object-cover" />
+                    <img loading="lazy" decoding="async" src={m.photo} alt={m.name} className="w-full h-full object-cover" />
                   </div>
                   <h4 className="font-bold text-saas-ink text-[15px] leading-snug tracking-tight">{m.name}</h4>
                   <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mt-2 mb-3">{m.role}</p>
@@ -1078,9 +1090,9 @@ const VendaMaisComIA = () => {
                         name="nome"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={SAAS_LABEL}>Nome completo</label>
+                            <label htmlFor={field.name} className={SAAS_LABEL}>Nome completo</label>
                             <FormControl>
-                              <input placeholder="Seu nome" className={SAAS_INPUT} {...field} />
+                              <input id={field.name} placeholder="Seu nome" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1091,9 +1103,9 @@ const VendaMaisComIA = () => {
                         name="whatsapp"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={SAAS_LABEL}>WhatsApp</label>
+                            <label htmlFor={field.name} className={SAAS_LABEL}>WhatsApp</label>
                             <FormControl>
-                              <input placeholder="(00) 00000-0000" className={SAAS_INPUT} {...field} />
+                              <input id={field.name} placeholder="(00) 00000-0000" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1104,9 +1116,9 @@ const VendaMaisComIA = () => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={SAAS_LABEL}>E-mail</label>
+                            <label htmlFor={field.name} className={SAAS_LABEL}>E-mail</label>
                             <FormControl>
-                              <input type="email" placeholder="voce@empresa.com" className={SAAS_INPUT} {...field} />
+                              <input id={field.name} type="email" placeholder="voce@empresa.com" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1117,9 +1129,9 @@ const VendaMaisComIA = () => {
                         name="empresa"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={SAAS_LABEL}>Empresa</label>
+                            <label htmlFor={field.name} className={SAAS_LABEL}>Empresa</label>
                             <FormControl>
-                              <input placeholder="Nome da empresa" className={SAAS_INPUT} {...field} />
+                              <input id={field.name} placeholder="Nome da empresa" className={SAAS_INPUT} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -1130,9 +1142,9 @@ const VendaMaisComIA = () => {
                         name="leadsMes"
                         render={({ field }) => (
                           <FormItem>
-                            <label className={SAAS_LABEL}>Quantos leads você recebe por mês?</label>
+                            <label htmlFor={field.name} className={SAAS_LABEL}>Quantos leads você recebe por mês?</label>
                             <FormControl>
-                              <select className={SAAS_INPUT} {...field}>
+                              <select id={field.name} className={SAAS_INPUT} {...field}>
                                 <option value="" disabled>
                                   Selecione
                                 </option>
@@ -1175,21 +1187,21 @@ const VendaMaisComIA = () => {
           <p className="rev-item animate-fade-in font-extrabold text-saas-ink text-[clamp(26px,3.6vw,42px)] leading-tight max-w-[20ch] mb-10">
             O lead não <Accent>espera</Accent>.
           </p>
-          <div className="flex flex-wrap justify-between gap-6 border-t border-white/[0.06] pt-6 text-sm text-saas-faint">
+          <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-wrap sm:justify-between border-t border-white/[0.06] pt-6 text-sm text-saas-faint">
             <div>
-              <div className="text-[#4E505A] text-xs mb-1">Produto</div>
+              <div className="text-saas-faint text-xs mb-1">Produto</div>
               Agente de IA para WhatsApp
             </div>
             <div>
-              <div className="text-[#4E505A] text-xs mb-1">Canal</div>
+              <div className="text-saas-faint text-xs mb-1">Canal</div>
               Atendimento · Follow-up · Sales Coach
             </div>
             <div>
-              <div className="text-[#4E505A] text-xs mb-1">Operação</div>
+              <div className="text-saas-faint text-xs mb-1">Operação</div>
               24 / 7
             </div>
             <div>
-              <div className="text-[#4E505A] text-xs mb-1">© 2026</div>
+              <div className="text-saas-faint text-xs mb-1">© 2026</div>
               Todos os direitos reservados
             </div>
           </div>
