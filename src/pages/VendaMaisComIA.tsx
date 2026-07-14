@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Helmet } from "react-helmet";
-import { Check, Flame, Clock, Timer, RefreshCw } from "lucide-react";
+import { Check, Flame, Clock, Timer, RefreshCw, Search, Settings2, Plug, Rocket } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -58,7 +58,6 @@ const NAV_LINKS = [
   { label: "Solução", id: "solucao" },
   { label: "Agentes", id: "agentes" },
   { label: "Processo", id: "processo" },
-  { label: "Garantia", id: "garantia" },
 ];
 
 const HERO_STATS = [
@@ -208,10 +207,10 @@ const CMP_ROWS = [
 ];
 
 const STEPS = [
-  { n: "01", title: "Diagnóstico", desc: "Entendemos seu processo de vendas, seu público e seus gargalos." },
-  { n: "02", title: "Configuração", desc: "Treinamos o agente com seu script, sua linguagem e suas regras." },
-  { n: "03", title: "Integração", desc: "Conectamos ao seu WhatsApp, CRM e agenda." },
-  { n: "04", title: "Operação", desc: "O agente começa a atender. Você acompanha tudo em tempo real." },
+  { n: "01", icon: Search, title: "Diagnóstico", desc: "Entendemos seu processo de vendas, seu público e seus gargalos." },
+  { n: "02", icon: Settings2, title: "Configuração", desc: "Treinamos a Bia com seu script, sua linguagem e suas regras." },
+  { n: "03", icon: Plug, title: "Integração", desc: "Conectamos ao seu WhatsApp, CRM e agenda." },
+  { n: "04", icon: Rocket, title: "Operação", desc: "A Bia começa a atender. Você acompanha tudo em tempo real." },
 ];
 
 const DIFFS = [
@@ -807,74 +806,80 @@ const VendaMaisComIA = () => {
             }
             sub="Do diagnóstico à operação em 15 dias."
           />
-          <div className="rev-item animate-fade-in relative">
-            <div className="hidden md:block absolute left-0 right-0 top-[42px] h-px bg-white/[0.09]" aria-hidden />
-            <div className="relative grid md:grid-cols-4 gap-4">
+          <div className="rev-item animate-fade-in">
+            {/* Mobile: timeline vertical */}
+            <div className="md:hidden">
               {STEPS.map((s, i) => {
+                const Icon = s.icon;
                 const isFinal = i === STEPS.length - 1;
                 return (
-                  <div
-                    key={s.n}
-                    className={
-                      SAAS_CARD +
-                      " p-6" +
-                      (isFinal
-                        ? " border-saas-violet/50 bg-gradient-to-b from-saas-violet/[0.08] to-transparent"
-                        : "")
-                    }
-                  >
-                    <div
-                      className={
-                        "w-9 h-9 rounded-full flex items-center justify-center text-xs font-extrabold mb-4 " +
-                        (isFinal
-                          ? "bg-gradient-to-br from-saas-cyan to-saas-violet text-saas-void"
-                          : "bg-saas-card border border-white/[0.14] text-saas-ink")
-                      }
-                    >
-                      {s.n}
+                  <div key={s.n} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <span
+                        className={
+                          "w-11 h-11 rounded-full flex items-center justify-center flex-none " +
+                          (isFinal
+                            ? "bg-gradient-to-br from-saas-cyan to-saas-violet text-saas-void"
+                            : "bg-saas-card border border-white/[0.14] text-saas-ink")
+                        }
+                      >
+                        <Icon className="w-5 h-5" />
+                      </span>
+                      {!isFinal && (
+                        <span
+                          className="w-px flex-1 my-1.5 bg-gradient-to-b from-saas-violet/70 to-saas-violet/20"
+                          aria-hidden
+                        />
+                      )}
                     </div>
-                    <h4 className={"font-bold text-[15px] mb-2.5 " + (isFinal ? "text-saas-violet" : "text-saas-ink")}>
-                      {s.title}
-                    </h4>
-                    <p className="text-sm text-saas-faint leading-relaxed">{s.desc}</p>
+                    <div className={isFinal ? "" : "pb-7"}>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[11px] text-saas-violet">{s.n}</span>
+                        <h4 className={"font-bold text-[15px] " + (isFinal ? "text-saas-violet" : "text-saas-ink")}>
+                          {s.title}
+                        </h4>
+                      </div>
+                      <p className="mt-1.5 text-sm text-saas-faint leading-relaxed">{s.desc}</p>
+                    </div>
                   </div>
                 );
               })}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 06 GARANTIA */}
-      <section id="garantia" className="border-t border-white/[0.06] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rev-item animate-fade-in rounded-3xl border border-white/[0.10] bg-gradient-to-br from-saas-violet/[0.08] via-transparent to-saas-cyan/[0.06] p-9 md:p-14 grid md:grid-cols-[1fr_auto] gap-10 items-center">
-            <div>
-              <h2 className="font-extrabold text-saas-ink text-[clamp(28px,3.6vw,44px)] leading-tight mb-4">
-                Você vê antes de <Accent>decidir</Accent>.
-              </h2>
-              <p className="text-saas-body text-base leading-relaxed max-w-[52ch]">
-                Coloca o agente pra rodar na sua operação e acompanha o resultado com os próprios olhos.{" "}
-                <b className="text-saas-ink font-semibold">Sem letra miúda, sem burocracia.</b> A gente confia no
-                que entrega — e faz questão de que você veja funcionando antes de qualquer decisão de continuar.
-              </p>
-              <p className="mt-4 text-sm font-medium text-saas-faint">
-                Demonstração ao vivo + período de operação assistida
-              </p>
-            </div>
-            <div
-              className="rounded-full w-[168px] h-[168px] flex-none flex flex-col items-center justify-center text-center bg-saas-void border border-white/[0.10] mx-auto"
-              style={{ boxShadow: "0 0 0 6px rgba(139,124,246,0.10)" }}
-            >
-              <div className="font-extrabold text-xl leading-tight">
-                <Accent>
-                  RISCO
-                  <br />
-                  ZERO
-                </Accent>
-              </div>
-              <div className="mt-1.5 text-[10.5px] text-saas-faint leading-snug px-3">
-                Você vê rodando antes de fechar
+            {/* Desktop: timeline horizontal */}
+            <div className="hidden md:block relative">
+              <div
+                className="absolute top-7 left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-saas-cyan to-saas-violet"
+                aria-hidden
+              />
+              <div className="relative grid grid-cols-4 gap-4">
+                {STEPS.map((s, i) => {
+                  const Icon = s.icon;
+                  const isFinal = i === STEPS.length - 1;
+                  return (
+                    <div key={s.n} className="flex flex-col items-center text-center">
+                      <span
+                        className={
+                          "relative z-10 w-14 h-14 rounded-full flex items-center justify-center " +
+                          (isFinal
+                            ? "bg-gradient-to-br from-saas-cyan to-saas-violet text-saas-void shadow-[0_0_0_6px_rgba(139,124,246,0.12)]"
+                            : "bg-saas-card border border-white/[0.14] text-saas-ink")
+                        }
+                      >
+                        <Icon className="w-6 h-6" />
+                      </span>
+                      <div className="mt-5">
+                        <div className="flex items-center justify-center gap-2">
+                          <span className="font-mono text-[11px] text-saas-violet">{s.n}</span>
+                          <h4 className={"font-bold text-[15px] " + (isFinal ? "text-saas-violet" : "text-saas-ink")}>
+                            {s.title}
+                          </h4>
+                        </div>
+                        <p className="mt-2 text-sm text-saas-faint leading-relaxed max-w-[24ch] mx-auto">{s.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
