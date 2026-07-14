@@ -55,6 +55,11 @@ const FONT_STACK = "'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Helv
 
 const LEADS_OPTIONS = ["Até 100", "100 – 500", "500 – 2.000", "Acima de 2.000"];
 
+const WHATSAPP_BIA = "5511936219959";
+const WHATSAPP_BIA_URL = `https://wa.me/${WHATSAPP_BIA}?text=${encodeURIComponent(
+  "Oi! Acabei de preencher o formulário no site e quero ver a Bia funcionando.",
+)}`;
+
 const NAV_LINKS = [
   { label: "Solução", id: "solucao" },
   { label: "Agentes", id: "agentes" },
@@ -375,15 +380,23 @@ const VendaMaisComIA = () => {
 
       if (error) throw error;
 
-      await tracker.identify(data.email, data.whatsapp, data.nome);
-      await tracker.track("lead_capture", {
-        product: "venda-mais-com-ia",
-        source: "landing-page",
-        empresa: data.empresa,
-        leads_mes: data.leadsMes,
-      });
-
+      // Lead salvo: confirma a conversão e abre o WhatsApp da Bia ANTES do
+      // tracking — assim uma falha de analytics nunca bloqueia o redirect.
       setIsSubmitted(true);
+      // best-effort; o botão no sucesso é o fallback confiável caso o
+      // navegador bloqueie o popup pós-async.
+      window.open(WHATSAPP_BIA_URL, "_blank", "noopener,noreferrer");
+
+      // Tracking best-effort — não bloqueia a conversão se falhar.
+      tracker.identify(data.email, data.whatsapp, data.nome).catch(() => {});
+      tracker
+        .track("lead_capture", {
+          product: "venda-mais-com-ia",
+          source: "landing-page",
+          empresa: data.empresa,
+          leads_mes: data.leadsMes,
+        })
+        .catch(() => {});
     } catch (err) {
       console.error("Erro ao salvar lead:", err);
       toast.error("Erro ao processar inscrição. Tente novamente.");
@@ -1103,9 +1116,23 @@ const VendaMaisComIA = () => {
                     <Check className="w-6 h-6 text-saas-void" />
                   </div>
                   <h4 className="font-extrabold text-saas-ink text-2xl mb-2.5">Recebido!</h4>
-                  <p className="text-saas-muted text-[15px] leading-relaxed">
-                    Vamos te chamar no WhatsApp pra agendar o diagnóstico e mostrar o agente rodando na prática.
+                  <p className="text-saas-muted text-[15px] leading-relaxed mb-6">
+                    Abrimos o WhatsApp da Bia pra você. Fale com ela agora e veja o agente funcionando na prática.
                   </p>
+                  <a
+                    href={WHATSAPP_BIA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      tracker.track("cta_click", {
+                        product: "venda-mais-com-ia",
+                        location: "form_success_whatsapp",
+                      })
+                    }
+                    className={SAAS_BTN_PRIMARY + " w-full"}
+                  >
+                    Falar com a Bia no WhatsApp →
+                  </a>
                 </div>
               ) : (
                 <>
