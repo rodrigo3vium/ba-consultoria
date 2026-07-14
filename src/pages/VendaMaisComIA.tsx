@@ -33,6 +33,12 @@ import certHubspot from "@/assets/certificacoes/hubspot.jpeg";
 import certIbm from "@/assets/certificacoes/ibm.jpeg";
 import certScient from "@/assets/certificacoes/scient.jpeg";
 import certStanford from "@/assets/certificacoes/stanford.png";
+import rodrigoPhoto from "@/assets/founders/rodrigo-albuquerque.webp";
+import mentorDiego from "@/assets/mentors/diego-barreto.webp";
+import mentorSomma from "@/assets/mentors/pedro-somma.webp";
+import mentorVabo from "@/assets/mentors/vabo.webp";
+import mentorJoao from "@/assets/mentors/joao-oliverio.webp";
+import mentorDiogo from "@/assets/mentors/jose-diogo.webp";
 
 const formSchema = z.object({
   nome: z.string().min(2, "Nome é obrigatório").max(100),
@@ -253,6 +259,14 @@ const CERTS = [
   { name: "HubSpot", src: certHubspot },
   { name: "IBM", src: certIbm },
   { name: "Scient", src: certScient },
+];
+
+const MENTORS = [
+  { name: "Diego Barreto", role: "CEO · iFood", photo: mentorDiego, bio: 'Autor do best-seller "Nova Economia", lidera a expansão e inovação no iFood.' },
+  { name: "Pedro Somma", role: "Ex-COO · 99", photo: mentorSomma, bio: "Papel fundamental na expansão e operação da 99, consolidando-a como líder em mobilidade." },
+  { name: "Luis Vabo Jr.", role: "Ex-diretor · Stone", photo: mentorVabo, bio: "Empreendedor serial, investidor e autor de 'Falar em público é para você!'." },
+  { name: "João Olivério", role: "CEO · Sales As A System", photo: mentorJoao, bio: "Especialista em vendas, Country Manager da Apollo.io e mentor no G4 Sales." },
+  { name: "José Diogo C. Rodrigues", role: "CMO Latam · Tinder", photo: mentorDiogo, bio: "Experiência em Brand Marketing na Nike, Red Bull e atualmente Tinder Latam & Canadá." },
 ];
 
 const SectionIntro = ({
@@ -712,7 +726,7 @@ const VendaMaisComIA = () => {
             eyebrow="O contraste"
             title={
               <>
-                Agente de IA <Accent>vs</Accent> SDR humano.
+                SDR humano <Accent>vs</Accent> Bia (Agente de IA).
               </>
             }
           />
@@ -733,7 +747,7 @@ const VendaMaisComIA = () => {
             <div className={SAAS_CARD + " p-7 shadow-[0_0_0_1px_rgba(139,124,246,0.25),0_24px_50px_-30px_rgba(139,124,246,0.5)]"}>
               <p className="text-xs font-bold text-saas-violet mb-1.5">A evolução</p>
               <p className="font-extrabold text-2xl mb-6">
-                <Accent>Agente de IA</Accent>
+                <Accent>Bia · Agente de IA</Accent>
               </p>
               {CMP_ROWS.map((r) => (
                 <div
@@ -853,24 +867,37 @@ const VendaMaisComIA = () => {
               </>
             }
           />
-          <div className="rev-item animate-fade-in max-w-[760px] space-y-5 text-saas-body text-base md:text-lg leading-relaxed">
-            <p>Não somos um time de desenvolvedores que nunca pisou em um salão de vendas.</p>
-            <p>
-              O que gera diferença real na nossa tecnologia é o treinamento de vendas que usamos para treinar a Bia.
-            </p>
-            <p>
-              Depois de gerenciar mais de{" "}
-              <b className="text-saas-ink font-semibold">R$80 milhões</b> em vendas anuais e times de vendas de mais
-              de <b className="text-saas-ink font-semibold">50 pessoas</b>, Rodrigo abriu a BA Consultoria, onde já
-              atendeu mais de <b className="text-saas-ink font-semibold">50 clientes</b> em{" "}
-              <b className="text-saas-ink font-semibold">7 países</b> diferentes e gerou mais de{" "}
-              <b className="text-saas-ink font-semibold">R$250 milhões</b> em vendas. Hoje, a Bia tem no seu
-              treinamento o melhor dos dois mundos:
-            </p>
-            <p>
-              conhecimento prático que só quem vive de vendas possui, aliado às metodologias que as empresas que mais
-              crescem no mundo utilizam.
-            </p>
+          <div className="rev-item animate-fade-in grid lg:grid-cols-[300px_1fr] gap-8 lg:gap-12 items-start">
+            <div>
+              <div className="rounded-2xl overflow-hidden border border-white/[0.09] shadow-saas-card">
+                <img
+                  src={rodrigoPhoto}
+                  alt="Rodrigo Albuquerque"
+                  className="w-full h-full object-cover aspect-[4/5]"
+                />
+              </div>
+              <p className="mt-3 text-sm font-bold text-saas-ink">Rodrigo Albuquerque</p>
+              <p className="text-xs text-saas-faint">Fundador · BA Consultoria</p>
+            </div>
+            <div className="space-y-5 text-saas-body text-base md:text-lg leading-relaxed max-w-[640px]">
+              <p>Não somos um time de desenvolvedores que nunca pisou em um salão de vendas.</p>
+              <p>
+                O que gera diferença real na nossa tecnologia é o treinamento de vendas que usamos para treinar a Bia.
+              </p>
+              <p>
+                Depois de gerenciar mais de{" "}
+                <b className="text-saas-ink font-semibold">R$80 milhões</b> em vendas anuais e times de vendas de
+                mais de <b className="text-saas-ink font-semibold">50 pessoas</b>, Rodrigo abriu a BA Consultoria,
+                onde já atendeu mais de <b className="text-saas-ink font-semibold">50 clientes</b> em{" "}
+                <b className="text-saas-ink font-semibold">7 países</b> diferentes e gerou mais de{" "}
+                <b className="text-saas-ink font-semibold">R$250 milhões</b> em vendas. Hoje, a Bia tem no seu
+                treinamento o melhor dos dois mundos:
+              </p>
+              <p>
+                conhecimento prático que só quem vive de vendas possui, aliado às metodologias que as empresas que
+                mais crescem no mundo utilizam.
+              </p>
+            </div>
           </div>
 
           {/* Certificações */}
@@ -883,6 +910,29 @@ const VendaMaisComIA = () => {
                   className="rounded-2xl bg-white border border-white/[0.09] h-24 flex items-center justify-center px-6 py-5 shadow-saas-card"
                 >
                   <img src={c.src} alt={c.name} className="max-h-full max-w-full object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mentores */}
+          <div className="rev-item animate-fade-in mt-16">
+            <h3 className="font-extrabold text-saas-ink text-[clamp(22px,2.6vw,30px)] leading-snug mb-3 max-w-[24ch]">
+              Mentorado pelos <Accent>melhores empreendedores do Brasil</Accent>.
+            </h3>
+            <p className="text-saas-muted text-base leading-relaxed max-w-2xl mb-8">
+              Rodrigo investiu mais de meio milhão de reais em mentoria com alguns dos maiores líderes do mercado
+              brasileiro.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {MENTORS.map((m) => (
+                <div key={m.name} className={SAAS_CARD + " p-5"}>
+                  <div className="rounded-xl border border-white/[0.09] overflow-hidden aspect-square mb-4">
+                    <img loading="lazy" src={m.photo} alt={m.name} className="w-full h-full object-cover" />
+                  </div>
+                  <h4 className="font-bold text-saas-ink text-[15px] leading-snug tracking-tight">{m.name}</h4>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-saas-cyan mt-2 mb-3">{m.role}</p>
+                  <p className="text-saas-muted text-[12px] leading-relaxed">{m.bio}</p>
                 </div>
               ))}
             </div>
