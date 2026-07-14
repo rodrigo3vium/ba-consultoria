@@ -91,13 +91,13 @@ const HOUR_DATA = [
 const HOUR_MAX = Math.max(...HOUR_DATA.map((d) => d.v));
 
 const HourlyLeadsChart = () => (
-  <div className="relative pt-14">
-    <div className="absolute left-[10%] top-0 -translate-x-1/2 z-10">
+  <div className="relative pt-28">
+    <div className="absolute left-[10%] top-10 -translate-x-1/2 z-10">
       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#F2667B] to-[#F2667B]/50 border border-white/20 shadow-[0_10px_30px_-10px_rgba(242,102,123,0.7)] flex items-center justify-center">
         <span className="text-white font-extrabold text-base">50%</span>
       </div>
     </div>
-    <div className="absolute left-[58%] -top-8 -translate-x-1/2 z-10">
+    <div className="absolute left-[58%] top-2 -translate-x-1/2 z-10">
       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet border border-white/20 shadow-[0_10px_30px_-10px_rgba(139,124,246,0.7)] flex items-center justify-center">
         <span className="text-white font-extrabold text-base">50%</span>
       </div>
@@ -578,8 +578,8 @@ const VendaMaisComIA = () => {
                   Metade dos seus leads chega <Accent>fora do horário comercial</Accent>.
                 </h3>
                 <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[42ch]">
-                  Responder em <b className="text-saas-ink font-semibold">5 minutos</b> em vez de 30 minutos{" "}
-                  <Accent>aumenta em até 100 vezes a chance de conversão</Accent> do lead.
+                  Responder em 5 minutos em vez de 30 minutos{" "}
+                  <Accent className="font-bold">aumenta em até 100 vezes a chance de conversão</Accent> do lead.
                 </p>
                 <p className="mt-5 text-xs text-saas-faint-2 leading-relaxed max-w-[42ch]">
                   Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
