@@ -379,7 +379,7 @@ const VendaMaisComIA = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[72px] flex items-center justify-between gap-6">
           <div className="flex items-center gap-2.5 font-bold text-saas-ink text-[15px]">
             <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet" />
-            Agente BA
+            Bia
           </div>
           <nav className="hidden min-[860px]:flex items-center gap-8 text-sm font-medium text-saas-muted">
             {NAV_LINKS.map((l) => (
@@ -408,7 +408,7 @@ const VendaMaisComIA = () => {
                 <span className="w-2 h-2 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
                 <b className="text-saas-ink">SOLUÇÃO MAIS PROCURADA</b>
                 <span className="text-saas-faint-2">·</span>
-                Agente de Vendas BA
+                Bia · Agente de Vendas
               </span>
               <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que perdem lead por demora.</p>
               <h1 className="font-extrabold text-saas-ink text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
@@ -483,7 +483,7 @@ const VendaMaisComIA = () => {
                 <div className="flex items-center gap-2.5 mb-4">
                   <span className="w-8 h-8 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex-none" />
                   <div>
-                    <div className="text-sm font-bold text-saas-ink">Agente BA</div>
+                    <div className="text-sm font-bold text-saas-ink">Bia</div>
                     <div className="text-xs text-saas-green flex items-center gap-1.5">
                       <i className="w-1.5 h-1.5 rounded-full bg-saas-green inline-block" />
                       online
@@ -492,17 +492,20 @@ const VendaMaisComIA = () => {
                 </div>
                 <div className="flex flex-col gap-2.5">
                   <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-saas-body leading-snug">
-                    Oi, ainda dá pra saber mais sobre o serviço?
+                    Olá, gostaria de saber mais sobre o produto.
                   </div>
                   <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
-                    Dá sim. Funciono 24/7 por aqui. Qual o seu maior gargalo hoje?
+                    Claro, a Bia é um agente de vendas inteligente que atende seus clientes e fecha vendas 24h por dia.
+                    Qual desafio você está enfrentando hoje?
                   </div>
                   <div className="max-w-[82%] self-start rounded-2xl rounded-bl-md bg-white/[0.04] px-4 py-2.5 text-[14px] text-saas-body leading-snug">
-                    Perco muito lead que chega de madrugada.
+                    Não consigo manter a consistência de atendimento na minha empresa.
                   </div>
                   <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
-                    Esse é exatamente o problema que eu resolvo. Já vou te qualificar e agendar com o time. Pode ser
-                    amanhã 9h?
+                    Entendo. E faz super sentido. Consistência de velocidade no atendimento e follow-ups é algo muito
+                    difícil de alcançar só com atendimento humano — e é exatamente para isso que eu fui criado. O que
+                    acha de marcarmos uma reunião essa semana para nosso time te explicar mais sobre a solução? Temos um
+                    horário amanhã às 9h ou depois de amanhã às 15h.
                   </div>
                 </div>
               </div>
