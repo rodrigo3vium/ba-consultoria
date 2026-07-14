@@ -542,7 +542,7 @@ const VendaMaisComIA = () => {
             eyebrow="O problema"
             title={
               <>
-                Quantos leads você perdeu essa semana por <Accent>demora no atendimento</Accent>?
+                Quantas vendas você perdeu essa semana por <Accent>demora no atendimento</Accent>?
               </>
             }
             sub="E quantas vendas a mais poderiam ter sido feitas se 1 follow-up a mais tivesse sido feito?"
