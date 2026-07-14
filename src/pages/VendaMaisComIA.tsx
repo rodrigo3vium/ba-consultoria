@@ -612,32 +612,25 @@ const VendaMaisComIA = () => {
             eyebrow="A solução"
             title={
               <>
-                O vendedor que não dorme, não esquece e não pede <Accent>demissão</Accent>.
+                Bia, a sua <Accent>funcionária dos sonhos</Accent>.
+              </>
+            }
+            sub={
+              <>
+                Uma agente de IA treinada nas melhores metodologias de vendas do mundo. Trabalhando 24h por dia no
+                seu negócio.{" "}
+                <b className="text-saas-ink font-semibold">Nunca mais perca uma venda por falta de atendimento.</b>
               </>
             }
           />
-          <div className="rev-item animate-fade-in max-w-[820px]">
-            <div className="space-y-5 text-saas-body text-lg leading-relaxed">
-              <p>
-                Um agente de IA que trabalha 24 horas, nunca reclama, responde em segundos e segue o seu processo
-                com precisão. A velocidade de resposta é maior que a de qualquer humano — e ele não perde o timing
-                que fecha a venda.
-              </p>
-              <p>
-                Ele atua direto na restrição do funil:{" "}
-                <b className="text-saas-ink font-semibold">o número de leads que dá pra atender por dia.</b> Com o
-                agente, dá pra comprar mais mídia sem desperdiçar lead por falta de atendimento.
-              </p>
-            </div>
-            <div className={"mt-8 flex items-start gap-4 " + SAAS_CARD + " p-6"}>
-              <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
-                <Check className="w-4 h-4 text-saas-void" />
-              </span>
-              <p className="text-saas-ink text-base leading-relaxed">
-                Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É
-                um agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
-              </p>
-            </div>
+          <div className={"rev-item animate-fade-in max-w-[820px] flex items-start gap-4 " + SAAS_CARD + " p-6"}>
+            <span className="flex-none w-9 h-9 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
+              <Check className="w-4 h-4 text-saas-void" />
+            </span>
+            <p className="text-saas-ink text-base leading-relaxed">
+              Não é chatbot burro de árvore de decisão que irrita cliente e entrega o jogo na segunda mensagem. É um
+              agente treinado no seu processo, com a sua linguagem, seguindo a sua estratégia.
+            </p>
           </div>
         </div>
       </section>
