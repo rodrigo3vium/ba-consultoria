@@ -569,31 +569,28 @@ const VendaMaisComIA = () => {
           </p>
 
           <div className={"rev-item animate-fade-in mt-14 " + SAAS_CARD + " p-7 md:p-10"}>
-            <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center">
+            <div className="grid lg:grid-cols-[0.95fr_1.15fr] gap-10 lg:gap-14 items-center">
               <div>
                 <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-3">
                   O padrão que ninguém mede
                 </p>
-                <h3 className="font-extrabold text-saas-ink text-2xl leading-snug mb-8 max-w-[30ch]">
+                <h3 className="font-extrabold text-saas-ink text-[clamp(24px,2.6vw,32px)] leading-snug mb-6 max-w-[22ch]">
                   Metade dos seus leads chega <Accent>fora do horário comercial</Accent>.
                 </h3>
+                <p className="text-saas-body text-base md:text-lg leading-relaxed max-w-[42ch]">
+                  Responder em <b className="text-saas-ink font-semibold">5 minutos</b> em vez de 30 minutos{" "}
+                  <Accent>aumenta em até 100 vezes a chance de conversão</Accent> do lead.
+                </p>
+                <p className="mt-5 text-xs text-saas-faint-2 leading-relaxed max-w-[42ch]">
+                  Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
+                  (2011), com dados da InsideSales.com.
+                </p>
+              </div>
+              <div>
                 <HourlyLeadsChart />
                 <p className="mt-4 text-xs text-saas-faint-2 leading-relaxed">
                   Distribuição típica de leads por hora do dia (0h–23h) em operações de captação via
                   WhatsApp/formulário.
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white/[0.03] border border-white/[0.08] p-7">
-                <div className="text-5xl font-extrabold mb-3">
-                  <Accent>100x</Accent>
-                </div>
-                <p className="text-saas-body text-[15px] leading-relaxed mb-5">
-                  Responder em <b className="text-saas-ink font-semibold">5 minutos</b> em vez de 30 minutos
-                  aumenta em até 100 vezes a chance de conversão do lead.
-                </p>
-                <p className="text-xs text-saas-faint-2 leading-relaxed">
-                  Fonte: Oldroyd, McElheran &amp; Elkington, <span className="italic">Harvard Business Review</span>{" "}
-                  (2011), com dados da InsideSales.com.
                 </p>
               </div>
             </div>
