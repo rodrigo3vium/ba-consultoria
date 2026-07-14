@@ -255,10 +255,26 @@ const FAQS = [
 ];
 
 const CERTS = [
-  { name: "Stanford University", src: certStanford },
-  { name: "HubSpot", src: certHubspot },
-  { name: "IBM", src: certIbm },
-  { name: "Scient", src: certScient },
+  {
+    name: "Stanford University",
+    src: certStanford,
+    desc: "Aprendemos como um processo de comunicação eficiente pode ser usado para gerar maior taxa de resposta e, consequentemente, mais vendas.",
+  },
+  {
+    name: "HubSpot",
+    src: certHubspot,
+    desc: "Aprendemos como um dos maiores CRMs do mundo usa seus fluxos para maximizar a eficiência do processo comercial.",
+  },
+  {
+    name: "IBM",
+    src: certIbm,
+    desc: "Aprendemos com uma das maiores empresas de tecnologia do mundo como manter seus dados seguros.",
+  },
+  {
+    name: "Scient",
+    src: certScient,
+    desc: "Aprendemos como as empresas do Vale do Silício estão usando IA hoje nos seus processos comerciais.",
+  },
 ];
 
 const MENTORS = [
@@ -300,6 +316,7 @@ const PulseDot = ({ color = "gradient" as "gradient" | "rose" }) => (
 const VendaMaisComIA = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<number | null>(0);
 
   useEffect(() => {
     tracker.page("Venda Mais com IA — Agente WhatsApp");
@@ -902,17 +919,40 @@ const VendaMaisComIA = () => {
 
           {/* Certificações */}
           <div className="rev-item animate-fade-in mt-14">
-            <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-6">Certificações</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-saas-violet mb-2">Certificações</p>
+            <p className="text-sm text-saas-faint mb-6">Clique em cada uma para ver o que ela agrega ao treinamento da Bia.</p>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl">
-              {CERTS.map((c) => (
-                <div
-                  key={c.name}
-                  className="rounded-2xl bg-white border border-white/[0.09] h-24 flex items-center justify-center px-6 py-5 shadow-saas-card"
-                >
-                  <img src={c.src} alt={c.name} className="max-h-full max-w-full object-contain" />
-                </div>
-              ))}
+              {CERTS.map((c, i) => {
+                const active = selectedCert === i;
+                return (
+                  <button
+                    type="button"
+                    key={c.name}
+                    onClick={() => setSelectedCert(active ? null : i)}
+                    aria-pressed={active}
+                    className={
+                      "rounded-2xl bg-white h-24 flex items-center justify-center px-6 py-5 shadow-saas-card transition-all duration-200 " +
+                      (active
+                        ? "ring-2 ring-saas-cyan ring-offset-2 ring-offset-saas-void"
+                        : "border border-white/[0.09] opacity-70 hover:opacity-100")
+                    }
+                  >
+                    <img src={c.src} alt={c.name} className="max-h-full max-w-full object-contain" />
+                  </button>
+                );
+              })}
             </div>
+            {selectedCert !== null && (
+              <div className={"mt-4 max-w-3xl flex items-start gap-3.5 " + SAAS_CARD + " p-5"}>
+                <span className="flex-none w-7 h-7 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex items-center justify-center mt-0.5">
+                  <Check className="w-3.5 h-3.5 text-saas-void" />
+                </span>
+                <p className="text-saas-body text-[15px] leading-relaxed">
+                  <b className="text-saas-ink font-semibold">{CERTS[selectedCert].name}:</b>{" "}
+                  {CERTS[selectedCert].desc}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Mentores */}
