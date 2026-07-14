@@ -410,7 +410,7 @@ const VendaMaisComIA = () => {
                 <span className="text-saas-faint-2">·</span>
                 Bia · Agente de Vendas
               </span>
-              <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que perdem lead por demora.</p>
+              <p className="text-sm font-medium text-saas-faint mb-4">Para empresários que querem vender mais.</p>
               <h1 className="font-extrabold text-saas-ink text-[clamp(38px,5.4vw,68px)] leading-[1.05] tracking-tight mb-6">
                 Faça vendas <Accent>24h por dia. 7 dias por semana.</Accent>
               </h1>
@@ -503,9 +503,14 @@ const VendaMaisComIA = () => {
                   </div>
                   <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
                     Entendo. E faz super sentido. Consistência de velocidade no atendimento e follow-ups é algo muito
-                    difícil de alcançar só com atendimento humano — e é exatamente para isso que eu fui criado. O que
-                    acha de marcarmos uma reunião essa semana para nosso time te explicar mais sobre a solução? Temos um
-                    horário amanhã às 9h ou depois de amanhã às 15h.
+                    difícil de alcançar só com atendimento humano.
+                  </div>
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
+                    Mas é exatamente para isso que eu fui criada.
+                  </div>
+                  <div className="max-w-[82%] self-end rounded-2xl rounded-br-md bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 px-4 py-2.5 text-[14px] text-saas-ink leading-snug">
+                    O que acha de marcarmos uma reunião essa semana para nosso time te explicar mais sobre a solução?
+                    Temos um horário amanhã às 9h ou depois de amanhã às 15h.
                   </div>
                 </div>
               </div>
