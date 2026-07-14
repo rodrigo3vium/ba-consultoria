@@ -183,13 +183,13 @@ const PILLARS = [
   },
   {
     tag: "SALES COACH",
-    title: "Seu time vendendo melhor todo dia",
-    desc: "Escuta as conversas do time, identifica onde a venda foi perdida e sugere o próximo passo. Treino contínuo, sem depender de gravação assistida à mão.",
+    title: "Seu vendedor melhor todo dia",
+    desc: "Analisamos as conversas da Bia, identificamos onde a venda foi perdida e aprendemos com os padrões que performam melhor. Treino contínuo, sem depender de análise manual.",
     checks: [
-      "Escuta 100% das conversas",
+      "Analisa 100% das conversas",
       "Pontua a performance",
       "Aponta onde perdeu a venda",
-      "Gera insight pro gestor",
+      "Gera insight pra melhoria do treinamento",
     ],
   },
 ];
