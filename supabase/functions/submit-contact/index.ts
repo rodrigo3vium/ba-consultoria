@@ -130,6 +130,8 @@ serve(async (req) => {
       "ia-do-zero",
       "o-caminho",
       "venda-mais-com-ia",
+      "imovel-vazio-nao-vende",
+      "a-call-que-fechou-mas-nao-fechou",
     ]);
     const FUNNEL_PB_ID = "2ed6923e-5ad3-4b3b-9349-3495133812cf";
     const ACTIVE_STAGES = new Set([
@@ -195,7 +197,12 @@ serve(async (req) => {
         const baHubUrl = Deno.env.get("BA_HUB_URL") ?? "https://hub.benitesalbuquerque.com.br";
         const baHubCronSecret = Deno.env.get("BA_HUB_CRON_SECRET");
         if (baHubCronSecret) {
-          fetch(`${baHubUrl}/api/crm/bridge-fact`, {
+          // waitUntil garante que o fetch complete mesmo depois da resposta ser
+          // enviada (Deno Deploy pode encerrar o isolate senão). Crítico: o
+          // bridge-fact agora dispara o opener do SDR "Agente BA" no ba-hub —
+          // perder essa chamada = perder a 1ª mensagem do bot, que anula a
+          // promessa de "resposta instantânea".
+          const bridgePromise = fetch(`${baHubUrl}/api/crm/bridge-fact`, {
             method: "POST",
             headers: {
               Authorization: `Bearer ${baHubCronSecret}`,
@@ -203,6 +210,12 @@ serve(async (req) => {
             },
             body: JSON.stringify({ contact_id: contactId }),
           }).catch((err: unknown) => console.error("bridge-fact fetch error (non-fatal):", err));
+
+          // deno-lint-ignore no-explicit-any
+          const edgeRuntime = (globalThis as any).EdgeRuntime;
+          if (edgeRuntime?.waitUntil) {
+            edgeRuntime.waitUntil(bridgePromise);
+          }
         }
       } catch (bridgeErr: any) {
         console.error("bridge error (non-fatal):", bridgeErr);
