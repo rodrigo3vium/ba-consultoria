@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Helmet } from "react-helmet";
-import { Check, X, Flame } from "lucide-react";
+import { Check, Flame, Clock, Timer, RefreshCw } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -58,9 +58,27 @@ const HERO_STATS = [
 ];
 
 const MONEY_LOST = [
-  "Lead fora do horário = dinheiro perdido",
-  "Demora na resposta = dinheiro perdido",
-  "Follow-up que não é realizado = dinheiro perdido",
+  {
+    icon: Clock,
+    color: "#F2667B",
+    tint: "bg-[#F2667B]/12",
+    title: "Lead fora do horário = dinheiro perdido",
+    desc: "Cada minuto sem resposta é um cliente migrando pro concorrente que respondeu primeiro.",
+  },
+  {
+    icon: Timer,
+    color: "#F5A051",
+    tint: "bg-[#F5A051]/12",
+    title: "Demora na resposta = dinheiro perdido",
+    desc: "A janela de interesse do lead dura minutos. Passou disso, esfriou — e a venda esfria junto.",
+  },
+  {
+    icon: RefreshCw,
+    color: "#8B7CF6",
+    tint: "bg-saas-violet/15",
+    title: "Follow-up que não é feito = dinheiro perdido",
+    desc: '"Depois eu falo com ele" é o caixão silencioso da sua receita — e é ali que a maioria das vendas fecha.',
+  },
 ];
 
 const HOUR_DATA = [
@@ -521,17 +539,22 @@ const VendaMaisComIA = () => {
             }
             sub="E quantas vendas a mais poderiam ter sido feitas se 1 follow-up a mais tivesse sido feito?"
           />
-          <div className={"rev-item animate-fade-in " + SAAS_CARD + " p-8 max-w-2xl"}>
-            <ul className="space-y-5">
-              {MONEY_LOST.map((t) => (
-                <li key={t} className="flex items-center gap-3.5 text-lg md:text-xl font-bold text-saas-ink">
-                  <span className="flex-none w-8 h-8 rounded-full bg-[#F2667B]/15 flex items-center justify-center">
-                    <X className="w-4 h-4 text-[#F2667B]" />
+          <div className="grid md:grid-cols-3 gap-5">
+            {MONEY_LOST.map((m) => {
+              const Icon = m.icon;
+              return (
+                <div
+                  key={m.title}
+                  className={"rev-item animate-fade-in " + SAAS_CARD + " p-7 hover:border-white/[0.18] transition-colors"}
+                >
+                  <span className={"inline-flex w-12 h-12 rounded-xl items-center justify-center mb-6 " + m.tint}>
+                    <Icon className="w-5 h-5" style={{ color: m.color }} />
                   </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
+                  <h3 className="font-extrabold text-saas-ink text-lg md:text-xl leading-snug mb-3">{m.title}</h3>
+                  <p className="text-saas-muted text-[15px] leading-relaxed">{m.desc}</p>
+                </div>
+              );
+            })}
           </div>
           <p className="rev-item animate-fade-in mt-6 text-saas-body text-base md:text-lg max-w-2xl">
             E o pior: <b className="text-saas-ink font-semibold">você está pagando caro para ter esse desperdício.</b>
