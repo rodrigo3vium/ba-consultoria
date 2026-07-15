@@ -23,7 +23,15 @@ function isAllowedOrigin(origin: string | null, allowedHosts: string[]): boolean
 function normalizePhone(raw: string | undefined | null): string | null {
   if (!raw) return null;
   const digits = raw.replace(/\D/g, "");
-  return digits.length >= 8 ? digits : null;
+  if (digits.length < 8) return null;
+  // Números BR sem DDI (10 díg = fixo, 11 = celular com 9) → prefixa 55.
+  // A Evolution rejeita número sem DDI ("exists:false"), o que fazia o opener
+  // do SDR (Bia) quebrar no sendText antes de criar a conversa. 12–13 dígitos
+  // já têm o 55.
+  if (digits.length === 10 || digits.length === 11) {
+    return "55" + digits;
+  }
+  return digits;
 }
 
 function isValidEmail(email: string): boolean {
