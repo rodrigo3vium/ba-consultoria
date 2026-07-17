@@ -39,6 +39,7 @@ export const SITE_ROUTES: SiteRoute[] = [
 
   // Serviços
   { path: '/servicos/google-meu-negocio', label: 'Google Meu Negócio', category: 'servicos', status: 'ativa', isLandingPage: true },
+  { path: '/ai-assessment', label: 'AI Assessment — Diagnóstico de IA', category: 'servicos', status: 'ativa', isLandingPage: true },
 
   // Conteúdo
   { path: '/blog', label: 'Blog', category: 'conteudo', status: 'ativa' },

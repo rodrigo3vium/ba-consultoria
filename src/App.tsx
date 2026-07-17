@@ -64,6 +64,7 @@ const RoyalEagleCRM = lazy(() => import("./pages/RoyalEagleCRM"));
 const AcervoIA = lazy(() => import("./pages/AcervoIA"));
 const ImovelVazioNaoVende = lazy(() => import("./pages/ImovelVazioNaoVende"));
 const ACallQueFechouMasNaoFechou = lazy(() => import("./pages/ACallQueFechouMasNaoFechou"));
+const AiAssessment = lazy(() => import("./pages/AiAssessment"));
 
 const queryClient = new QueryClient();
 
@@ -140,6 +141,7 @@ const App = () => (
           <Route path="/portfolio/imovel-vazio-nao-vende" element={<ImovelVazioNaoVende />} />
           <Route path="/portfolio/a-call-que-fechou-mas-nao-fechou" element={<ACallQueFechouMasNaoFechou />} />
           <Route path="/portfolio/venda-mais-com-ia" element={<VendaMaisComIA />} />
+          <Route path="/ai-assessment" element={<AiAssessment />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
