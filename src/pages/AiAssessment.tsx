@@ -11,6 +11,7 @@ import {
   PhoneCall,
   Clock,
   Calculator,
+  Image as ImageIcon,
 } from "lucide-react";
 import { tracker } from "@/lib/tracking";
 import { Accent, Eyebrow, Card, SAAS_BTN_PRIMARY } from "@/components/saas/ui";
@@ -23,6 +24,13 @@ const WA_HREF = `https://wa.me/5511999718595?text=${encodeURIComponent(
 
 const H2_CLS =
   "font-extrabold text-saas-ink text-[clamp(26px,3.4vw,42px)] leading-[1.12] tracking-tight";
+
+/* Cards do hero — PLACEHOLDER: ajustar métricas depois */
+const heroStats = [
+  { value: "5–10h", label: "recuperadas por semana" },
+  { value: "3–7", label: "ferramentas prescritas" },
+  { value: "45min", label: "de diagnóstico" },
+];
 
 function CtaButton({
   location,
@@ -170,40 +178,73 @@ const AiAssessment = () => {
           <div className="absolute -top-10 right-0 w-[520px] h-[420px] rounded-full bg-saas-cyan/15 blur-[110px]" />
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24 text-center">
-          <div className="animate-fade-in">
-            <Eyebrow>Diagnóstico de IA</Eyebrow>
-          </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-14 items-center">
+            {/* ── Conteúdo (esquerda) ── */}
+            <div className="text-left">
+              <div className="animate-fade-in">
+                <Eyebrow>Diagnóstico de IA</Eyebrow>
+              </div>
 
-          <h1
-            className="animate-fade-in mt-7 font-extrabold text-saas-ink text-[clamp(28px,4vw,46px)] leading-[1.1] tracking-tight max-w-[30ch] mx-auto"
-            style={{ animationDelay: "0.12s" }}
-          >
-            Recupere <Accent>5 a 10 horas por semana</Accent> com tarefas que poderiam estar sendo automatizadas
-          </h1>
+              <h1
+                className="animate-fade-in mt-7 font-extrabold text-saas-ink text-[clamp(28px,3.2vw,36px)] leading-[1.1] tracking-tight"
+                style={{ animationDelay: "0.12s" }}
+              >
+                Recupere <Accent>5 a 10 horas por semana</Accent> com tarefas que poderiam estar sendo automatizadas
+              </h1>
 
-          <p
-            className="animate-fade-in mt-7 text-saas-body text-base md:text-lg leading-relaxed max-w-[62ch] mx-auto"
-            style={{ animationDelay: "0.3s" }}
-          >
-            Um diagnóstico estruturado, onde você sai com um relatório personalizado te mostrando
-            3 a 7 ferramentas prontas para usar.{" "}
-            <strong className="font-semibold text-saas-ink">
-              Se você não encontrar pelo menos 5 horas semanais para economizar, você recebe 100%
-              do valor investido de volta.
-            </strong>
-          </p>
+              <p
+                className="animate-fade-in mt-6 text-saas-body text-base md:text-lg leading-relaxed max-w-[54ch]"
+                style={{ animationDelay: "0.3s" }}
+              >
+                Um diagnóstico estruturado, onde você sai com um relatório personalizado te mostrando
+                3 a 7 ferramentas prontas para usar.{" "}
+                <strong className="font-semibold text-saas-ink">
+                  Se você não encontrar pelo menos 5 horas semanais para economizar, você recebe 100%
+                  do valor investido de volta.
+                </strong>
+              </p>
 
-          <div
-            className="animate-fade-in mt-10 flex flex-col items-center gap-3"
-            style={{ animationDelay: "0.42s" }}
-          >
-            <CtaButton location="hero" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
-              Agendar meu Diagnóstico <ArrowRight size={16} />
-            </CtaButton>
-            <span className="text-[13px] text-saas-faint">
-              45 minutos do seu tempo. Esse é o único risco real.
-            </span>
+              <div
+                className="animate-fade-in mt-9 flex flex-col items-start gap-3"
+                style={{ animationDelay: "0.42s" }}
+              >
+                <CtaButton location="hero" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
+                  Agendar meu Diagnóstico <ArrowRight size={16} />
+                </CtaButton>
+                <span className="text-[13px] text-saas-faint">
+                  45 minutos do seu tempo. Esse é o único risco real.
+                </span>
+              </div>
+
+              {/* ── 3 cards (PLACEHOLDER — ajustar métricas) ── */}
+              <div
+                className="animate-fade-in mt-10 grid grid-cols-3 gap-3 sm:gap-4"
+                style={{ animationDelay: "0.54s" }}
+              >
+                {heroStats.map((s) => (
+                  <div
+                    key={s.label}
+                    className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-4 sm:p-5"
+                  >
+                    <div className="text-[clamp(20px,2.4vw,28px)] font-extrabold leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                      {s.value}
+                    </div>
+                    <div className="mt-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.1em] text-saas-faint leading-snug">
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Imagem (direita, só desktop) — PLACEHOLDER ── */}
+            <div className="hidden lg:flex animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <div className="w-full aspect-[4/5] rounded-3xl border border-dashed border-white/[0.14] bg-white/[0.02] flex flex-col items-center justify-center gap-3 text-saas-faint">
+                <ImageIcon size={40} strokeWidth={1.5} />
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Imagem aqui</span>
+              </div>
+            </div>
           </div>
         </div>
       </header>
