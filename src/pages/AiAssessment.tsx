@@ -53,6 +53,26 @@ const problemas = [
   },
 ];
 
+/* Seção 3 — visualizações ILUSTRATIVAS (tarefas/ferramentas variam por empresa) */
+/* Matriz: xi = impacto (0→100 esq→dir), ci = esforço/custo (0→100 baixo→alto) */
+const matriz = [
+  { label: "Chatbot no WhatsApp", xi: 82, ci: 22, flip: true },
+  { label: "Follow-up automático", xi: 70, ci: 38, flip: true },
+  { label: "Resumo de reuniões", xi: 60, ci: 14, flip: true },
+  { label: "CRM automatizado", xi: 76, ci: 70, flip: true },
+  { label: "Base de conhecimento", xi: 58, ci: 86, flip: true },
+  { label: "Agendamento", xi: 28, ci: 26, flip: false },
+  { label: "E-mail automático", xi: 20, ci: 12, flip: false },
+  { label: "Integração custom", xi: 24, ci: 76, flip: false },
+];
+
+const priorizacao = [
+  { tier: "Alto impacto · Baixo esforço", tag: "Fazer primeiro", items: ["Chatbot no WhatsApp", "Follow-up automático", "Resumo de reuniões"] },
+  { tier: "Alto impacto · Alto esforço", items: ["Automação de propostas", "Geração de conteúdo", "CRM automatizado"] },
+  { tier: "Baixo impacto · Baixo esforço", items: ["Agendamento inteligente", "E-mail automático", "Dashboards simples"] },
+  { tier: "Baixo impacto · Alto esforço", tag: "Deixar pro fim", items: ["Integração custom de ERP", "App próprio"] },
+];
+
 function CtaButton({
   location,
   children,
@@ -303,6 +323,155 @@ const AiAssessment = () => {
           <p className="mt-16 text-center text-[clamp(21px,2.8vw,30px)] font-semibold text-saas-muted leading-snug max-w-3xl mx-auto">
             E se você soubesse <Accent>exatamente qual ferramenta usar</Accent>, com um passo a passo
             prático pronto para te tirar da execução dessas tarefas?
+          </p>
+        </div>
+      </section>
+
+      {/* ========== MAPEAMENTO / METODOLOGIA ========== */}
+      <section className="border-t border-white/[0.06] py-20 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Eyebrow>A metodologia</Eyebrow>
+          <h2 className={"mt-6 max-w-[26ch] " + H2_CLS}>
+            Receba um <Accent>mapeamento completo</Accent> das tarefas que podem liberar tempo na sua agenda
+          </h2>
+          <p className="mt-6 text-saas-body text-base md:text-lg leading-relaxed max-w-[58ch]">
+            Cada tarefa da sua empresa cruzada por esforço e impacto — da melhor pra pior
+            oportunidade. Metodologia própria, validada em mais de 150 clientes.
+          </p>
+
+          <div className="mt-12 space-y-6">
+            {/* ── Gráfico 1: Matriz de oportunidades ── */}
+            <Card className="p-6 md:p-8">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan">
+                Matriz de oportunidades
+              </p>
+              <p className="text-saas-muted text-[13px] mt-1 mb-10">
+                Esforço de implementação × impacto no seu tempo
+              </p>
+              <div className="overflow-x-auto pb-2">
+                <div className="relative w-full min-w-[620px] h-[420px]">
+                  {/* eixos */}
+                  <div className="absolute inset-0 border-l border-b border-white/[0.16]" aria-hidden />
+                  {/* divisórias de quadrante */}
+                  <div className="absolute left-1/2 top-0 bottom-0 border-l border-dashed border-white/[0.08]" aria-hidden />
+                  <div className="absolute top-1/2 left-0 right-0 border-t border-dashed border-white/[0.08]" aria-hidden />
+                  {/* títulos de eixo */}
+                  <span className="absolute -top-1 left-2 font-mono text-[10px] uppercase tracking-[0.12em] text-saas-faint">
+                    ↑ Esforço
+                  </span>
+                  <span className="absolute -bottom-1 right-0 font-mono text-[10px] uppercase tracking-[0.12em] text-saas-faint">
+                    Impacto →
+                  </span>
+                  {/* rótulos de quadrante (cantos, fundo) */}
+                  <span className="absolute left-3 top-9 text-[11px] leading-tight text-saas-faint/40">
+                    Baixo impacto<br />Alto esforço
+                  </span>
+                  <span className="absolute right-3 top-9 text-right text-[11px] leading-tight text-saas-faint/40">
+                    Alto impacto<br />Alto esforço
+                  </span>
+                  <span className="absolute left-3 bottom-10 text-[11px] leading-tight text-saas-faint/40">
+                    Baixo impacto<br />Baixo esforço
+                  </span>
+                  <span className="absolute right-3 bottom-10 text-right text-[11px] leading-tight text-saas-faint/45">
+                    Alto impacto · Baixo esforço<br />
+                    <span className="text-saas-cyan/70">ganho rápido</span>
+                  </span>
+                  {/* pontos */}
+                  {matriz.map((d) => (
+                    <div
+                      key={d.label}
+                      style={{ left: `${d.xi}%`, top: `${100 - d.ci}%` }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                    >
+                      <div className="relative flex items-center">
+                        {d.flip && (
+                          <span className="absolute right-full mr-2.5 whitespace-nowrap text-[12.5px] text-saas-body">
+                            {d.label}
+                          </span>
+                        )}
+                        <span className="block w-3.5 h-3.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet ring-4 ring-saas-violet/10" />
+                        {!d.flip && (
+                          <span className="absolute left-full ml-2.5 whitespace-nowrap text-[12.5px] text-saas-body">
+                            {d.label}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+
+            {/* ── Gráfico 2: Priorização (calor) ── */}
+            <Card className="p-6 md:p-8">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan">
+                Priorização
+              </p>
+              <p className="text-saas-muted text-[13px] mt-1 mb-8">
+                Da melhor pra pior oportunidade
+              </p>
+              <div className="overflow-x-auto pb-2">
+                <div className="flex gap-4 md:gap-6 items-stretch min-w-[480px]">
+                  {/* direção */}
+                  <div className="flex-none flex flex-col justify-between py-1 text-right">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-saas-cyan leading-tight">
+                      Fazer<br />primeiro
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-saas-faint leading-tight">
+                      Deixar<br />pro fim
+                    </span>
+                  </div>
+                  {/* barra de calor */}
+                  <div
+                    className="flex-none w-14 md:w-20 rounded-2xl"
+                    style={{
+                      background:
+                        "linear-gradient(to bottom, #20DDEB 0%, #5AC7E6 22%, #8B7CF6 55%, #4B3E8C 80%, #241F40 100%)",
+                    }}
+                    aria-hidden
+                  />
+                  {/* grupos */}
+                  <div className="flex-1 min-w-0">
+                    {priorizacao.map((g, gi) => (
+                      <div
+                        key={g.tier}
+                        className={
+                          "flex items-start justify-between gap-4 " +
+                          (gi > 0 ? "border-t border-dashed border-white/[0.10] pt-3.5 mt-3.5" : "")
+                        }
+                      >
+                        <ul className="space-y-2">
+                          {g.items.map((it) => (
+                            <li key={it} className="flex items-center gap-2.5 text-[14px] text-saas-body">
+                              <span className="block w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex-none" />
+                              {it}
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="flex-none text-right max-w-[120px] md:max-w-[150px]">
+                          {g.tag && (
+                            <span className="block mb-1 font-mono text-[9px] uppercase tracking-[0.12em] text-saas-cyan">
+                              {g.tag}
+                            </span>
+                          )}
+                          <p className="text-saas-faint text-[12px] leading-snug">
+                            {g.tier.split(" · ").map((part) => (
+                              <span key={part} className="block">
+                                {part}
+                              </span>
+                            ))}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+
+          <p className="mt-4 text-saas-faint text-[12px]">
+            Exemplos ilustrativos do que o diagnóstico entrega — as tarefas e a ordem variam por empresa.
           </p>
         </div>
       </section>
