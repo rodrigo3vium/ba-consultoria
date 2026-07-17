@@ -18,7 +18,7 @@ import { Accent, Eyebrow, Card, SAAS_BTN_PRIMARY } from "@/components/saas/ui";
 const PRODUCT = "ai-assessment";
 const PRICE = "R$997";
 const WA_HREF = `https://wa.me/5511999718595?text=${encodeURIComponent(
-  "Olá! Quero agendar meu AI Assessment.",
+  "Olá! Quero agendar meu Diagnóstico de IA.",
 )}`;
 
 const H2_CLS =
@@ -117,7 +117,7 @@ const faqs = [
   },
   {
     q: "Vocês implementam?",
-    a: `O assessment é o diagnóstico. Implementação é um projeto separado — e se você quiser seguir por esse caminho, seus ${PRICE} viram crédito integral.`,
+    a: `Esse é o diagnóstico em si. A implementação é um projeto separado — e se você quiser seguir por esse caminho, seus ${PRICE} viram crédito integral.`,
   },
   {
     q: "Vou precisar trocar meus sistemas atuais?",
@@ -137,7 +137,7 @@ const stackFinal = [
 
 const AiAssessment = () => {
   useEffect(() => {
-    tracker.page("AI Assessment");
+    tracker.page("Diagnóstico de IA");
     const prev = {
       bg: document.body.style.backgroundColor,
       color: document.body.style.color,
@@ -156,10 +156,10 @@ const AiAssessment = () => {
   return (
     <div className="min-h-screen bg-saas-void text-saas-body antialiased">
       <Helmet>
-        <title>AI Assessment — o diagnóstico de IA do seu negócio | BA Consultoria</title>
+        <title>Diagnóstico de IA — recupere horas no seu negócio | BA Consultoria</title>
         <meta
           name="description"
-          content="Uma sessão de 45 minutos + um relatório com 3 a 7 ferramentas de IA prontas pra usar, com custo, setup e horas devolvidas por semana. Se eu não achar 5 horas recuperáveis, você não paga."
+          content="Um diagnóstico estruturado de IA: você sai com um relatório personalizado com 3 a 7 ferramentas certas pra recuperar 5 a 10 horas por semana no seu negócio. Se não achar 5 horas, você recebe 100% de volta."
         />
       </Helmet>
 
@@ -172,32 +172,25 @@ const AiAssessment = () => {
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 md:pt-28 md:pb-24 text-center">
           <div className="animate-fade-in">
-            <Eyebrow>Para donos de negócio</Eyebrow>
+            <Eyebrow>Diagnóstico de IA</Eyebrow>
           </div>
 
           <h1
-            className="animate-fade-in mt-7 font-extrabold text-saas-ink text-[clamp(29px,4.2vw,50px)] leading-[1.08] tracking-tight max-w-[26ch] mx-auto"
+            className="animate-fade-in mt-7 font-extrabold text-saas-ink text-[clamp(28px,4vw,46px)] leading-[1.1] tracking-tight max-w-[30ch] mx-auto"
             style={{ animationDelay: "0.12s" }}
           >
-            As <Accent>5 a 10 horas</Accent> que seu negócio desperdiça — e as ferramentas de IA que devolvem esse tempo.
+            Recupere <Accent>5 a 10 horas por semana</Accent> com tarefas que poderiam estar sendo automatizadas
           </h1>
-
-          <p
-            className="animate-fade-in mt-5 font-mono text-[12px] uppercase tracking-[0.2em] text-saas-cyan"
-            style={{ animationDelay: "0.2s" }}
-          >
-            Diagnóstico em 45 minutos
-          </p>
 
           <p
             className="animate-fade-in mt-7 text-saas-body text-base md:text-lg leading-relaxed max-w-[62ch] mx-auto"
             style={{ animationDelay: "0.3s" }}
           >
-            Uma sessão de diagnóstico estruturada + um relatório com 3 a 7 ferramentas prontas
-            pra usar — cada uma com custo, tempo de setup e horas devolvidas por semana.{" "}
+            Um diagnóstico estruturado, onde você sai com um relatório personalizado te mostrando
+            3 a 7 ferramentas prontas para usar.{" "}
             <strong className="font-semibold text-saas-ink">
-              Se eu não encontrar pelo menos 5 horas semanais recuperáveis no seu negócio, você
-              recebe 100% do valor de volta.
+              Se você não encontrar pelo menos 5 horas semanais para economizar, você recebe 100%
+              do valor investido de volta.
             </strong>
           </p>
 
@@ -206,7 +199,7 @@ const AiAssessment = () => {
             style={{ animationDelay: "0.42s" }}
           >
             <CtaButton location="hero" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
-              Agendar meu Assessment — {PRICE} <ArrowRight size={16} />
+              Agendar meu Diagnóstico <ArrowRight size={16} />
             </CtaButton>
             <span className="text-[13px] text-saas-faint">
               45 minutos do seu tempo. Esse é o único risco real.
@@ -282,7 +275,7 @@ const AiAssessment = () => {
             <p className="text-saas-body text-[17px] leading-relaxed">
               Quando você fica doente, você não faz faculdade de medicina. Você vai ao médico,
               descreve os sintomas, e sai com uma receita. É exatamente isso que o{" "}
-              <strong className="text-saas-ink">AI Assessment</strong> faz pelo seu negócio.
+              <strong className="text-saas-ink">Diagnóstico de IA</strong> faz pelo seu negócio.
             </p>
           </div>
 
@@ -368,7 +361,7 @@ const AiAssessment = () => {
               Se a sua hora vale R$100 — conservador pra quem é dono — são ~R$3.000/mês em tempo
               devolvido, em troca de R$60/mês em ferramentas. Todo mês. Enquanto o negócio existir.{" "}
               <strong className="text-saas-ink">
-                O assessment se paga na primeira semana de implementação. Tudo depois é margem.
+                O diagnóstico se paga na primeira semana de implementação. Tudo depois é margem.
               </strong>
             </p>
           </div>
@@ -419,7 +412,7 @@ const AiAssessment = () => {
                 implementação nos 30 dias seguintes.
               </p>
               <p className="mt-4 text-[15px] text-saas-muted leading-relaxed">
-                Na prática, o assessment sai de graça.
+                Na prática, o diagnóstico sai de graça.
               </p>
             </Card>
           </div>
@@ -518,13 +511,13 @@ const AiAssessment = () => {
           <Eyebrow className="mx-auto">Vagas limitadas</Eyebrow>
           <h2 className={"mt-5 " + H2_CLS}>Por um motivo simples</h2>
           <p className="mt-6 text-saas-body text-[17px] leading-relaxed max-w-[60ch] mx-auto">
-            Cada assessment consome horas do meu trabalho direto — a entrevista, a análise, o
+            Cada diagnóstico consome horas do meu trabalho direto — a entrevista, a análise, o
             relatório e a revisão são feitos por mim, não por um estagiário nem por um robô. Por
             isso eu abro <Accent className="font-semibold">poucas vagas por mês</Accent>.
           </p>
           <div className="mt-10 flex justify-center">
             <CtaButton location="escassez" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
-              Agendar meu Assessment — {PRICE} <ArrowRight size={16} />
+              Agendar meu Diagnóstico <ArrowRight size={16} />
             </CtaButton>
           </div>
         </div>
@@ -578,7 +571,7 @@ const AiAssessment = () => {
 
           <div className="mt-10 flex flex-col items-center gap-3">
             <CtaButton location="cta_final" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
-              Agendar meu Assessment — {PRICE} <ArrowRight size={16} />
+              Agendar meu Diagnóstico <ArrowRight size={16} />
             </CtaButton>
             <span className="inline-flex items-center gap-2 text-[13px] text-saas-faint">
               <Clock size={13} /> Se eu não achar suas 5 horas, você não paga. Simples assim.
@@ -589,7 +582,7 @@ const AiAssessment = () => {
 
       {/* FOOTER */}
       <footer className="border-t border-white/[0.06] py-10 text-center text-[13px] text-saas-faint">
-        BA Consultoria © 2026 · AI Assessment
+        BA Consultoria © 2026 · Diagnóstico de IA
       </footer>
     </div>
   );
