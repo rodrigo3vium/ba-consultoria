@@ -11,6 +11,8 @@ import {
   PhoneCall,
   Clock,
   Calculator,
+  Repeat,
+  Hourglass,
   Image as ImageIcon,
 } from "lucide-react";
 import { tracker } from "@/lib/tracking";
@@ -30,6 +32,25 @@ const heroStats = [
   { value: "5–10h", label: "recuperadas por semana" },
   { value: "3–7", label: "ferramentas prescritas" },
   { value: "45min", label: "de diagnóstico" },
+];
+
+/* Cards da seção "O custo invisível" — PLACEHOLDER: ajustar copy depois */
+const problemas = [
+  {
+    icon: Clock,
+    title: "Trabalho manual = tempo que não volta",
+    desc: "Cada hora no braçal é uma hora a menos pra vender, pensar e crescer o negócio.",
+  },
+  {
+    icon: Repeat,
+    title: "Retrabalho que nunca acaba",
+    desc: "Copiar, colar, formatar, reenviar — o mesmo processo, toda semana, pra sempre.",
+  },
+  {
+    icon: Hourglass,
+    title: "Dono preso na execução",
+    desc: "Enquanto você toca o operacional, ninguém está cuidando do que faz a empresa crescer.",
+  },
 ];
 
 function CtaButton({
@@ -251,53 +272,38 @@ const AiAssessment = () => {
 
       {/* ========== PROBLEMA ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>O problema</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>
-            Você sabe que precisa de IA. O problema é que você não tem tempo nem de almoçar.
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Eyebrow>O custo invisível</Eyebrow>
+          <h2 className={"mt-6 max-w-[24ch] " + H2_CLS}>
+            Quantas horas essa semana você perdeu fazendo{" "}
+            <Accent>tarefas repetitivas e burocráticas</Accent>?
           </h2>
+          <p className="mt-6 text-saas-body text-base md:text-lg leading-relaxed max-w-[60ch]">
+            O tempo da pessoa mais valiosa da empresa — o seu — sendo gasto em tarefas que poderiam
+            estar automatizadas.
+          </p>
 
-          <div className="mt-8 space-y-5 text-saas-body text-[17px] leading-relaxed">
-            <p>
-              Todo dia alguém te fala que IA vai mudar tudo. Seus concorrentes já estão usando
-              — ou pelo menos é o que parece. E você, trabalhando 50, 60 horas por semana, dentro
-              da operação, apagando incêndio.
-            </p>
-            <p>Aí sobram dois caminhos, e os dois são ruins:</p>
+          {/* 3 cards (PLACEHOLDER — ajustar copy) */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {problemas.map((p) => {
+              const Icon = p.icon;
+              return (
+                <Card key={p.title} className="p-7 hover:border-white/[0.18] transition-colors">
+                  <span className="inline-flex w-11 h-11 rounded-xl bg-gradient-to-r from-saas-cyan/15 to-saas-violet/15 items-center justify-center mb-5">
+                    <Icon className="text-saas-cyan" size={20} />
+                  </span>
+                  <h3 className="font-bold text-saas-ink text-[17px] leading-snug mb-2">{p.title}</h3>
+                  <p className="text-saas-muted text-[14px] leading-relaxed">{p.desc}</p>
+                </Card>
+              );
+            })}
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Card className="p-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-3">
-                Caminho 1 · Ignorar
-              </p>
-              <p className="text-saas-body text-[15px] leading-relaxed">
-                Enfiar a cabeça na areia e torcer pra não ficar pra trás. Todo mês que passa, essa
-                aposta fica mais cara.
-              </p>
-            </Card>
-            <Card className="p-7">
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-3">
-                Caminho 2 · Virar estudante
-              </p>
-              <p className="text-saas-body text-[15px] leading-relaxed">
-                Assistir tutorial às 23h, testar 40 ferramentas, assinar 5, abandonar todas em 3
-                semanas. Você não abriu um negócio pra fazer curso de tecnologia.
-              </p>
-            </Card>
-          </div>
-
-          <div className="mt-8 rounded-2xl border border-white/[0.09] bg-white/[0.02] p-7">
-            <span className="block w-10 h-[3px] rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet mb-5" aria-hidden />
-            <p className="text-saas-body text-[16px] leading-[1.7]">
-              E aqui está o custo que ninguém calcula: não é a mensalidade da ferramenta que você
-              deixou de assinar. São as{" "}
-              <Accent className="font-semibold">7 horas por semana</Accent> que você continua
-              pagando com o recurso mais caro da sua empresa — o seu próprio tempo. Faça a conta:
-              7 horas × o valor da sua hora × 52 semanas.{" "}
-              <strong className="text-saas-ink">Esse é o preço de continuar como está.</strong>
-            </p>
-          </div>
+          {/* Linha de transição → solução */}
+          <p className="mt-16 text-center text-[clamp(21px,2.8vw,30px)] font-semibold text-saas-muted leading-snug max-w-3xl mx-auto">
+            E se você soubesse <Accent>exatamente qual ferramenta usar</Accent>, com um passo a passo
+            prático pronto para te tirar da execução dessas tarefas?
+          </p>
         </div>
       </section>
 
