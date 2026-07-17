@@ -113,9 +113,17 @@ const passos = [
   {
     icon: FileText,
     num: "03",
-    title: "Relatório de Prescrição",
+    title: "Seu Relatório de Prescrição",
     meta: "3 a 7 ferramentas",
-    body: "Cada ferramenta com a dor que resolve, custo mensal, tempo de setup e horas devolvidas por semana. Mais: matriz de esforço × impacto, um plano de início de 4 dias (10 min por dia) e o cálculo do seu ROI líquido.",
+    body: (
+      <>
+        Você recebe um documento com 3 a 7 ferramentas, cada uma com: a dor que resolve, custo
+        mensal, tempo de setup e horas devolvidas por semana. Mais: uma matriz de esforço × impacto
+        (pra você ver o que é ganho rápido), um{" "}
+        <strong className="font-semibold text-saas-ink">plano de início de 4 dias</strong> — 10
+        minutos por dia — e o cálculo do seu ROI financeiro líquido.
+      </>
+    ),
   },
   {
     icon: PhoneCall,
@@ -513,35 +521,46 @@ const AiAssessment = () => {
         </div>
       </section>
 
-      {/* ========== COMO FUNCIONA ========== */}
+      {/* ========== COMO FUNCIONA (linha do tempo) ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Eyebrow>Como funciona</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>Do sintoma à receita, em quatro passos</h2>
+          <h2 className={"mt-5 max-w-[22ch] " + H2_CLS}>
+            Do sintoma à receita, em <Accent>quatro passos</Accent>
+          </h2>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-            {passos.map((p) => {
-              const Icon = p.icon;
-              return (
-                <Card key={p.num} className="p-7 hover:border-white/[0.18] transition-colors">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="inline-flex w-10 h-10 rounded-xl bg-white/[0.04] items-center justify-center">
-                      <Icon className="text-saas-cyan" size={18} />
-                    </span>
-                    <div className="text-3xl font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
-                      {p.num}
+          <div className="mt-14 relative">
+            {/* linha vertical conectando os passos */}
+            <div
+              className="absolute left-[27px] md:left-[31px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-saas-cyan/40 via-saas-violet/30 to-white/[0.05]"
+              aria-hidden
+            />
+            <div className="space-y-9 md:space-y-11">
+              {passos.map((p) => {
+                const Icon = p.icon;
+                return (
+                  <div key={p.num} className="relative flex gap-5 md:gap-7">
+                    {/* nó numerado */}
+                    <div className="flex-none relative z-10">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-saas-card border border-saas-cyan/25 flex items-center justify-center shadow-saas-card">
+                        <span className="font-extrabold text-[18px] md:text-[20px] bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                          {p.num}
+                        </span>
+                      </div>
+                    </div>
+                    {/* conteúdo do passo */}
+                    <div className="flex-1 min-w-0 pt-1.5 pb-2">
+                      <div className="flex items-center gap-2 text-saas-cyan">
+                        <Icon size={14} />
+                        <span className="font-mono text-[11px] uppercase tracking-[0.14em]">{p.meta}</span>
+                      </div>
+                      <h3 className="mt-2 font-bold text-saas-ink text-lg md:text-xl">{p.title}</h3>
+                      <p className="mt-2 text-saas-body text-[15px] leading-relaxed max-w-[64ch]">{p.body}</p>
                     </div>
                   </div>
-                  <h3 className="font-bold text-saas-ink text-lg">
-                    {p.title}
-                    <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint align-middle">
-                      {p.meta}
-                    </span>
-                  </h3>
-                  <p className="mt-2 text-[14.5px] text-saas-body leading-relaxed">{p.body}</p>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
