@@ -11,6 +11,7 @@ import {
   Calculator,
   Repeat,
   Hourglass,
+  DollarSign,
   Image as ImageIcon,
 } from "lucide-react";
 import { tracker } from "@/lib/tracking";
@@ -642,44 +643,79 @@ const AiAssessment = () => {
       </section>
 
       {/* ========== GARANTIA ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>Garantia</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>A Garantia das 5 Horas</h2>
+      <section className="border-t border-white/[0.06] py-20 md:py-28 relative overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[720px] h-[420px] rounded-full bg-saas-violet/12 blur-[130px]" />
+          <div className="absolute top-1/3 right-0 w-[440px] h-[440px] rounded-full bg-saas-cyan/10 blur-[120px]" />
+        </div>
 
-          <Card className="mt-10 p-8 md:p-10">
-            <div className="flex items-start gap-4">
-              <span className="inline-flex w-11 h-11 flex-none rounded-full bg-saas-green/10 items-center justify-center">
-                <ShieldCheck className="text-saas-green" size={22} />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Eyebrow className="mx-auto">Risco zero</Eyebrow>
+          <h2 className="mt-7 font-extrabold text-saas-ink text-[clamp(34px,6vw,60px)] leading-[1.04] tracking-tight">
+            Ou eu acho suas 5 horas.
+            <br />
+            <Accent>Ou você não paga.</Accent>
+          </h2>
+          <p className="mt-7 text-saas-muted text-base md:text-lg leading-relaxed max-w-[62ch] mx-auto">
+            É a minha <strong className="text-saas-ink">Garantia das 5 Horas</strong>: se durante a
+            sessão de diagnóstico eu não encontrar pelo menos 5 horas semanais recuperáveis — com
+            ferramentas que cabem no seu negócio e no seu bolso — você recebe 100% do valor de
+            volta. Sem formulário, sem constrangimento, sem letra miúda.
+          </p>
+
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Card 1 */}
+            <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 text-center">
+              <span className="inline-flex w-12 h-12 rounded-xl bg-white/[0.04] items-center justify-center mb-5">
+                <Clock className="text-saas-cyan" size={22} />
               </span>
-              <p className="text-saas-body text-[16px] md:text-[17px] leading-relaxed max-w-[64ch]">
-                Se durante a sessão de diagnóstico eu não encontrar pelo menos{" "}
-                <strong className="text-saas-ink">5 horas semanais recuperáveis</strong> com
-                ferramentas que cabem no seu negócio e no seu bolso, você recebe 100% do valor de
-                volta. Sem formulário, sem constrangimento, sem letra miúda.
+              <div className="text-[clamp(30px,4vw,40px)] font-extrabold text-saas-ink leading-none">45 min</div>
+              <p className="mt-2.5 text-[13.5px] text-saas-muted">é tudo que você arrisca</p>
+            </div>
+
+            {/* Card 2 — destaque (borda gradiente) */}
+            <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-saas-cyan to-saas-violet shadow-[0_0_50px_-12px_rgba(139,124,246,0.5)]">
+              <div className="rounded-2xl bg-saas-card p-8 text-center h-full">
+                <span className="inline-flex w-12 h-12 rounded-xl bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 items-center justify-center mb-5">
+                  <ShieldCheck className="text-saas-cyan" size={22} />
+                </span>
+                <div className="text-[clamp(30px,4vw,40px)] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                  5 horas
+                </div>
+                <p className="mt-2.5 text-[13.5px] text-saas-muted">o mínimo que eu garanto achar</p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 text-center">
+              <span className="inline-flex w-12 h-12 rounded-xl bg-white/[0.04] items-center justify-center mb-5">
+                <DollarSign className="text-saas-cyan" size={22} />
+              </span>
+              <div className="text-[clamp(30px,4vw,40px)] font-extrabold text-saas-ink leading-none">100%</div>
+              <p className="mt-2.5 text-[13.5px] text-saas-muted">do valor de volta</p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid md:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-2">
+                Pior caso
+              </p>
+              <p className="text-[14.5px] text-saas-body leading-relaxed">
+                Você gasta 45 minutos e ainda sai conhecendo duas ou três ferramentas que nunca
+                tinha ouvido falar.
               </p>
             </div>
-            <div className="mt-8 grid md:grid-cols-2 gap-6 border-t border-white/[0.06] pt-8">
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-2">
-                  Pior caso
-                </p>
-                <p className="text-[14.5px] text-saas-body leading-relaxed">
-                  Você gasta 45 minutos e ainda sai conhecendo duas ou três ferramentas que nunca
-                  tinha ouvido falar.
-                </p>
-              </div>
-              <div>
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-2">
-                  Melhor caso
-                </p>
-                <p className="text-[14.5px] text-saas-body leading-relaxed">
-                  Você recupera quase um dia inteiro de trabalho, toda semana, pelo resto da vida do
-                  seu negócio.
-                </p>
-              </div>
+            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-2">
+                Melhor caso
+              </p>
+              <p className="text-[14.5px] text-saas-body leading-relaxed">
+                Você recupera quase um dia inteiro de trabalho, toda semana, pelo resto da vida do
+                seu negócio.
+              </p>
             </div>
-          </Card>
+          </div>
         </div>
       </section>
 
