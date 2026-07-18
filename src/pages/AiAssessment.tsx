@@ -529,38 +529,65 @@ const AiAssessment = () => {
 
       {/* ========== A MATEMÁTICA ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-24 bg-saas-void-2">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Eyebrow>A matemática</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>
-            A conta que faz esse investimento parecer <Accent>pequeno</Accent>
+          <h2 className={"mt-5 max-w-[20ch] " + H2_CLS}>
+            Economize até <Accent>R$36 mil por ano</Accent>
           </h2>
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { value: "7h", label: "recuperadas por semana (cliente médio)" },
-              { value: "R$60", label: "custo total das ferramentas / mês" },
-              { value: "~R$3.000", label: "em tempo devolvido / mês (hora a R$100)" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-6 text-center">
-                <div className="text-[clamp(24px,3.2vw,34px)] font-extrabold leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
-                  {s.value}
-                </div>
-                <div className="mt-3 text-[13px] text-saas-faint leading-relaxed">{s.label}</div>
-              </div>
-            ))}
-          </div>
+          <div className="mt-12 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            {/* Esquerda: copy + dados */}
+            <div>
+              <p className="text-saas-body text-[17px] leading-relaxed">
+                Meu cliente médio recupera{" "}
+                <strong className="text-saas-ink">7 horas por semana</strong>. O custo médio total
+                das ferramentas que prescrevo: <strong className="text-saas-ink">R$60/mês</strong>.
+              </p>
+              <p className="mt-4 text-saas-body text-[17px] leading-relaxed">
+                Se a sua hora vale R$100 — conservador pra quem é dono — são ~R$3.000/mês em tempo
+                devolvido, em troca de R$60/mês em ferramentas. Todo mês. Enquanto o negócio existir.
+              </p>
 
-          <div className="mt-8 flex items-start gap-4 rounded-2xl border border-white/[0.09] bg-saas-card p-7">
-            <span className="inline-flex w-11 h-11 flex-none rounded-full bg-gradient-to-r from-saas-cyan/15 to-saas-violet/15 items-center justify-center">
-              <Calculator className="text-saas-cyan" size={20} />
-            </span>
-            <p className="text-saas-body text-[16px] leading-[1.7]">
-              Se a sua hora vale R$100 — conservador pra quem é dono — são ~R$3.000/mês em tempo
-              devolvido, em troca de R$60/mês em ferramentas. Todo mês. Enquanto o negócio existir.{" "}
-              <strong className="text-saas-ink">
-                O diagnóstico se paga na primeira semana de implementação. Tudo depois é margem.
-              </strong>
-            </p>
+              {/* dados / pesquisa */}
+              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan">
+                Média real entre +150 clientes
+              </p>
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {[
+                  { value: "7h", label: "recuperadas / semana" },
+                  { value: "R$60", label: "ferramentas / mês" },
+                  { value: "~R$3.000", label: "em tempo / mês" },
+                ].map((s) => (
+                  <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-3 sm:p-4 text-center">
+                    <div className="text-[clamp(17px,2.2vw,26px)] font-extrabold leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                      {s.value}
+                    </div>
+                    <div className="mt-2 text-[11px] text-saas-faint leading-snug">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* se paga */}
+              <div className="mt-8 flex items-start gap-4 rounded-2xl border border-white/[0.09] bg-saas-card p-6">
+                <span className="inline-flex w-11 h-11 flex-none rounded-full bg-gradient-to-r from-saas-cyan/15 to-saas-violet/15 items-center justify-center">
+                  <Calculator className="text-saas-cyan" size={20} />
+                </span>
+                <p className="text-saas-body text-[15.5px] leading-[1.7]">
+                  <strong className="text-saas-ink">
+                    O diagnóstico se paga na primeira semana de implementação.
+                  </strong>{" "}
+                  Tudo depois é margem.
+                </p>
+              </div>
+            </div>
+
+            {/* Direita: imagem (PLACEHOLDER, só desktop) */}
+            <div className="hidden lg:flex">
+              <div className="w-full aspect-[4/5] rounded-3xl border border-dashed border-white/[0.14] bg-white/[0.02] flex flex-col items-center justify-center gap-3 text-saas-faint">
+                <ImageIcon size={40} strokeWidth={1.5} />
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Imagem aqui</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -584,7 +611,7 @@ const AiAssessment = () => {
               </p>
               <div className="mt-6 space-y-3 border-t border-white/[0.06] pt-6">
                 <p className="text-[14.5px] text-saas-body leading-relaxed">
-                  <span className="font-semibold text-saas-ink">Pior caso:</span> você perde 45
+                  <span className="font-semibold text-saas-ink">Pior caso:</span> você gasta 45
                   minutos e ainda sai conhecendo duas ou três ferramentas que nunca tinha ouvido
                   falar.
                 </p>
