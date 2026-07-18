@@ -17,7 +17,6 @@ import { tracker } from "@/lib/tracking";
 import { Accent, Eyebrow, Card, SAAS_BTN_PRIMARY } from "@/components/saas/ui";
 
 const PRODUCT = "ai-assessment";
-const PRICE = "R$997";
 const WA_HREF = `https://wa.me/5511999718595?text=${encodeURIComponent(
   "Olá! Quero agendar meu Diagnóstico de IA.",
 )}`;
@@ -541,54 +540,45 @@ const AiAssessment = () => {
         </div>
       </section>
 
-      {/* ========== GARANTIA + CRÉDITO ========== */}
+      {/* ========== GARANTIA ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Eyebrow>Garantia</Eyebrow>
           <h2 className={"mt-5 " + H2_CLS}>A Garantia das 5 Horas</h2>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Card className="p-8">
-              <span className="inline-flex w-11 h-11 rounded-full bg-saas-green/10 items-center justify-center mb-5">
+          <Card className="mt-10 p-8 md:p-10">
+            <div className="flex items-start gap-4">
+              <span className="inline-flex w-11 h-11 flex-none rounded-full bg-saas-green/10 items-center justify-center">
                 <ShieldCheck className="text-saas-green" size={22} />
               </span>
-              <p className="text-saas-body text-[16px] leading-relaxed">
+              <p className="text-saas-body text-[16px] md:text-[17px] leading-relaxed max-w-[64ch]">
                 Se durante a sessão de diagnóstico eu não encontrar pelo menos{" "}
                 <strong className="text-saas-ink">5 horas semanais recuperáveis</strong> com
                 ferramentas que cabem no seu negócio e no seu bolso, você recebe 100% do valor de
                 volta. Sem formulário, sem constrangimento, sem letra miúda.
               </p>
-              <div className="mt-6 space-y-3 border-t border-white/[0.06] pt-6">
-                <p className="text-[14.5px] text-saas-body leading-relaxed">
-                  <span className="font-semibold text-saas-ink">Pior caso:</span> você gasta 45
-                  minutos e ainda sai conhecendo duas ou três ferramentas que nunca tinha ouvido
-                  falar.
+            </div>
+            <div className="mt-8 grid md:grid-cols-2 gap-6 border-t border-white/[0.06] pt-8">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-faint mb-2">
+                  Pior caso
                 </p>
                 <p className="text-[14.5px] text-saas-body leading-relaxed">
-                  <span className="font-semibold text-saas-ink">Melhor caso:</span> você recupera
-                  quase um dia inteiro de trabalho, toda semana, pelo resto da vida do seu negócio.
+                  Você gasta 45 minutos e ainda sai conhecendo duas ou três ferramentas que nunca
+                  tinha ouvido falar.
                 </p>
               </div>
-            </Card>
-
-            <Card className="border-saas-violet/40 p-8">
-              <span className="inline-flex w-11 h-11 rounded-full bg-gradient-to-r from-saas-cyan/15 to-saas-violet/15 items-center justify-center mb-5">
-                <Check className="text-saas-cyan" size={22} />
-              </span>
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-3">
-                E mais
-              </p>
-              <p className="text-saas-body text-[16px] leading-relaxed">
-                Se depois do relatório você quiser que eu implemente as soluções pra você, os{" "}
-                <strong className="text-saas-ink">{PRICE}</strong> viram{" "}
-                <Accent className="font-semibold">crédito integral</Accent> em qualquer projeto de
-                implementação nos 30 dias seguintes.
-              </p>
-              <p className="mt-4 text-[15px] text-saas-muted leading-relaxed">
-                Na prática, o diagnóstico sai de graça.
-              </p>
-            </Card>
-          </div>
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-2">
+                  Melhor caso
+                </p>
+                <p className="text-[14.5px] text-saas-body leading-relaxed">
+                  Você recupera quase um dia inteiro de trabalho, toda semana, pelo resto da vida do
+                  seu negócio.
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
