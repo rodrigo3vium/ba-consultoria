@@ -139,6 +139,43 @@ const stackFinal = [
   "Call de revisão de 30 minutos",
 ];
 
+/* ── Dashboard de ROI (seção "A matemática") — dados ilustrativos ── */
+type Pt = [number, number];
+function smoothPath(pts: Pt[]): string {
+  if (pts.length < 2) return "";
+  let d = `M ${pts[0][0]},${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] ?? pts[i];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[i + 2] ?? p2;
+    const c1x = p1[0] + (p2[0] - p0[0]) / 6;
+    const c1y = p1[1] + (p2[1] - p0[1]) / 6;
+    const c2x = p2[0] - (p3[0] - p1[0]) / 6;
+    const c2y = p2[1] - (p3[1] - p1[1]) / 6;
+    d += ` C ${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`;
+  }
+  return d;
+}
+
+const M_W = 560;
+const M_H = 300;
+const M_X0 = 44;
+const M_X1 = M_W - 16;
+const M_Y0 = 18;
+const M_Y1 = M_H - 30;
+const M_YMAX = 9000;
+const retornoData = [400, 900, 1500, 2300, 3200, 4200, 5200, 6100, 6900, 7600, 8200, 8700];
+const custoData = [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180];
+const mXAt = (i: number) => M_X0 + (i / (retornoData.length - 1)) * (M_X1 - M_X0);
+const mYAt = (v: number) => M_Y1 - (v / M_YMAX) * (M_Y1 - M_Y0);
+const retornoPts: Pt[] = retornoData.map((v, i) => [mXAt(i), mYAt(v)]);
+const custoPts: Pt[] = custoData.map((v, i) => [mXAt(i), mYAt(v)]);
+const retornoPath = smoothPath(retornoPts);
+const custoPath = smoothPath(custoPts);
+const retornoArea = `${retornoPath} L ${M_X1.toFixed(1)},${M_Y1} L ${M_X0},${M_Y1} Z`;
+const mGrid = [0, 3000, 6000, 9000];
+
 const AiAssessment = () => {
   useEffect(() => {
     tracker.page("Diagnóstico de IA");
@@ -529,11 +566,75 @@ const AiAssessment = () => {
               </div>
             </div>
 
-            {/* Direita: imagem (PLACEHOLDER, só desktop) */}
-            <div className="hidden lg:flex">
-              <div className="w-full aspect-[4/5] rounded-3xl border border-dashed border-white/[0.14] bg-white/[0.02] flex flex-col items-center justify-center gap-3 text-saas-faint">
-                <ImageIcon size={40} strokeWidth={1.5} />
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Imagem aqui</span>
+            {/* Direita: dashboard de ROI */}
+            <div className="w-full rounded-3xl border border-white/[0.09] bg-saas-card p-5 md:p-6 shadow-saas-card">
+              {/* tiles */}
+              <div className="grid grid-cols-3 gap-2.5">
+                <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-3">
+                  <p className="text-[10px] text-saas-faint leading-tight">Retorno em tempo</p>
+                  <p className="mt-1.5 text-saas-ink font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap">R$ 3.000</p>
+                  <p className="mt-1.5 text-[10px] text-saas-green leading-none">+7h / semana</p>
+                </div>
+                <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-3">
+                  <p className="text-[10px] text-saas-faint leading-tight">Custo</p>
+                  <p className="mt-1.5 text-saas-ink font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap">R$ 60</p>
+                  <p className="mt-1.5 text-[10px] text-saas-faint leading-none">fixo / mês</p>
+                </div>
+                <div className="rounded-xl border border-saas-violet/25 bg-white/[0.02] p-3">
+                  <p className="text-[10px] text-saas-faint leading-tight">Retorno líquido</p>
+                  <p className="mt-1.5 font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">R$ 2.940</p>
+                  <p className="mt-1.5 text-[10px] text-saas-green leading-none">≈ 49× o custo</p>
+                </div>
+              </div>
+
+              {/* gráfico */}
+              <svg viewBox={`0 0 ${M_W} ${M_H}`} className="mt-4 w-full h-auto" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Retorno acumulado versus custo ao longo de 12 semanas">
+                <defs>
+                  <linearGradient id="mathStroke" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#20DDEB" />
+                    <stop offset="100%" stopColor="#8B7CF6" />
+                  </linearGradient>
+                  <linearGradient id="mathArea" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#8B7CF6" stopOpacity="0.28" />
+                    <stop offset="100%" stopColor="#8B7CF6" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                {mGrid.map((v) => (
+                  <g key={v}>
+                    <line x1={M_X0} y1={mYAt(v)} x2={M_X1} y2={mYAt(v)} stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+                    <text x={M_X0 - 8} y={mYAt(v) + 3} textAnchor="end" fontSize="10" fill="#7B7C8C" fontFamily="monospace">
+                      {v === 0 ? "R$0" : `R$${v / 1000}k`}
+                    </text>
+                  </g>
+                ))}
+                {retornoData.map((_, i) => (
+                  <text key={i} x={mXAt(i)} y={M_Y1 + 18} textAnchor="middle" fontSize="9" fill="#5D5F6B" fontFamily="monospace">
+                    {i + 1}
+                  </text>
+                ))}
+                <path d={retornoArea} fill="url(#mathArea)" />
+                <path d={custoPath} fill="none" stroke="#7B7C8C" strokeWidth="2" strokeLinecap="round" opacity="0.7" />
+                <path d={retornoPath} fill="none" stroke="url(#mathStroke)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                {retornoPts.map((p, i) => (
+                  <circle key={i} cx={p[0]} cy={p[1]} r="3.5" fill="#15151F" stroke="#20DDEB" strokeWidth="2" />
+                ))}
+              </svg>
+
+              {/* legenda */}
+              <div className="mt-2 flex items-center justify-between gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-saas-faint">
+                  Retorno acumulado · 12 semanas
+                </span>
+                <div className="flex items-center gap-3 text-[10px] text-saas-faint">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
+                    Retorno
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-saas-faint" />
+                    Custo
+                  </span>
+                </div>
               </div>
             </div>
           </div>
