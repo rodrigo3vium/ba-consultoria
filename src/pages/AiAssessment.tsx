@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import {
   Check,
-  X,
   ArrowRight,
   ShieldCheck,
   Search,
@@ -133,62 +132,12 @@ const passos = [
   },
 ];
 
-const casos = [
-  {
-    tag: "Corretor de negócios",
-    problema: "Afogado em e-mails: a cada empresa listada pra venda, 400–500 e-mails de interessados fazendo as mesmas 5 perguntas.",
-    prescricao: "Uma base de conhecimento com IA treinada no material da listagem.",
-    resultado: "Zero e-mails repetitivos — e elogio espontâneo dos dois lados da negociação.",
-  },
-  {
-    tag: "Empresa de eventos",
-    problema: "Refém do retrabalho: toda venda nova exigia montar manualmente o mesmo projeto, as mesmas tarefas, as mesmas tags.",
-    prescricao: "Uma automação simples, configurada uma vez.",
-    resultado: "Um processo que cresce junto com a empresa em vez de crescer junto com a folha.",
-  },
-  {
-    tag: "E-commerce",
-    problema: "10 horas por semana monitorando anúncios num processo de 16 passos e queria automatizar o caos.",
-    prescricao: "Diagnóstico honesto: automatizar aquilo seria automatizar o problema. Primeiro o processo foi redesenhado.",
-    resultado: "Só depois de enxuto o processo foi automatizado — sem carregar o defeito adiante.",
-  },
-];
-
-const faqs = [
-  {
-    q: "Por que eu não pergunto isso pro ChatGPT de graça?",
-    a: "Pode perguntar. Ele vai te devolver uma lista genérica das 20 ferramentas mais famosas da internet. O que ele não faz: uma entrevista de 45 minutos que descobre o que você nem sabe que é automatizável, o filtro pro seu tamanho e orçamento, e uma garantia com dinheiro na mesa. Você não está pagando por uma lista — está pagando por um diagnóstico com pele em jogo.",
-  },
-  {
-    q: "Eu sou péssimo com tecnologia.",
-    a: "Perfeito — você é exatamente o perfil. A prescrição já vem com o tempo de setup de cada ferramenta, e a maioria se configura em menos de 30 minutos. O plano de 4 dias existe pra isso: 10 minutos por dia e você colhe a maior parte do benefício.",
-  },
-  {
-    q: "Eu já uso IA.",
-    a: "Ótimo. Meus maiores casos de ganho vieram de gente que “já usava ChatGPT” — e não fazia ideia das outras categorias de ferramenta que existiam pro problema específico dela.",
-  },
-  {
-    q: "Quanto vou gastar com as ferramentas depois?",
-    a: "Média entre meus clientes: R$60/mês no total. Eu só prescrevo o que cabe no bolso de um negócio do seu tamanho.",
-  },
-  {
-    q: "Vocês implementam?",
-    a: `Esse é o diagnóstico em si. A implementação é um projeto separado — e se você quiser seguir por esse caminho, seus ${PRICE} viram crédito integral.`,
-  },
-  {
-    q: "Vou precisar trocar meus sistemas atuais?",
-    a: "Não. Eu prescrevo em cima do que você já usa. A regra é somar, não demolir.",
-  },
-];
-
 const stackFinal = [
   "Sessão de diagnóstico de 45 minutos",
   "Análise completa dos seus gargalos",
   "Relatório de Prescrição com 3–7 ferramentas, custos e ROI calculado",
   "Plano de início de 4 dias",
   "Call de revisão de 30 minutos",
-  "Garantia das 5 Horas",
-  `${PRICE} em crédito se evoluir pra implementação`,
 ];
 
 const AiAssessment = () => {
@@ -643,155 +592,37 @@ const AiAssessment = () => {
         </div>
       </section>
 
-      {/* ========== PROVA ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24 bg-saas-void-2">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>Prova</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>O que acontece quando o diagnóstico é certo</h2>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
-            {casos.map((c) => (
-              <Card key={c.tag} className="p-7 flex flex-col">
-                <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-4">
-                  {c.tag}
-                </p>
-                <p className="text-saas-body text-[14.5px] leading-relaxed">{c.problema}</p>
-                <div className="mt-5 pt-5 border-t border-white/[0.06]">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint mb-2">
-                    Prescrição
-                  </p>
-                  <p className="text-saas-muted text-[14px] leading-relaxed">{c.prescricao}</p>
-                </div>
-                <div className="mt-5 pt-5 border-t border-white/[0.06]">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-2">
-                    Resultado
-                  </p>
-                  <p className="text-saas-ink text-[14.5px] leading-relaxed font-medium">
-                    {c.resultado}
-                  </p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== QUALIFICAÇÃO ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>Pra quem é</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>Isso é pra você?</h2>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <Card className="p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="inline-flex w-9 h-9 rounded-full bg-saas-green/10 items-center justify-center">
-                  <Check className="text-saas-green" size={18} />
-                </span>
-                <h3 className="font-bold text-saas-ink text-base">É pra você se</h3>
-              </div>
-              <ul className="space-y-3.5">
-                {[
-                  "Seu negócio tem de 2 a 20 funcionários",
-                  "Fatura entre R$500 mil e R$5 milhões por ano",
-                  "Você é o dono que ainda opera dentro dele",
-                  "Quer o resultado da IA sem virar o técnico da IA",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[14.5px] text-saas-body leading-relaxed">
-                    <Check className="w-4 h-4 text-saas-green flex-none mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            <Card className="p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="inline-flex w-9 h-9 rounded-full bg-white/[0.05] items-center justify-center">
-                  <X className="text-saas-faint" size={18} />
-                </span>
-                <h3 className="font-bold text-saas-ink text-base">Não é pra você se</h3>
-              </div>
-              <ul className="space-y-3.5">
-                {[
-                  "Você quer aprender IA como hobby",
-                  "Precisa de um software customizado construído do zero",
-                  "Seu negócio ainda não tem processo nenhum pra otimizar",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[14.5px] text-saas-muted leading-relaxed">
-                    <X className="w-4 h-4 text-saas-faint flex-none mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== ESCASSEZ ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24 bg-saas-void-2">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Eyebrow className="mx-auto">Vagas limitadas</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>Por um motivo simples</h2>
-          <p className="mt-6 text-saas-body text-[17px] leading-relaxed max-w-[60ch] mx-auto">
-            Cada diagnóstico consome horas do meu trabalho direto — a entrevista, a análise, o
-            relatório e a revisão são feitos por mim, não por um estagiário nem por um robô. Por
-            isso eu abro <Accent className="font-semibold">poucas vagas por mês</Accent>.
-          </p>
-          <div className="mt-10 flex justify-center">
-            <CtaButton location="escassez" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
-              Agendar meu Diagnóstico <ArrowRight size={16} />
-            </CtaButton>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== FAQ ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>FAQ</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>Perguntas que você provavelmente está se fazendo</h2>
-
-          <div className="mt-10 space-y-4">
-            {faqs.map((f) => (
-              <Card key={f.q} className="p-7">
-                <h3 className="font-bold text-saas-ink text-[16px] leading-snug">{f.q}</h3>
-                <p className="mt-3 text-saas-body text-[14.5px] leading-relaxed">{f.a}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ========== CTA FINAL ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-24 relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[360px] rounded-full bg-saas-violet/10 blur-[110px]" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Eyebrow className="mx-auto">O que você leva por {PRICE}</Eyebrow>
+          <Eyebrow className="mx-auto">Próximo passo</Eyebrow>
           <h2 className="mt-6 font-extrabold text-saas-ink text-[clamp(30px,5vw,52px)] leading-[1.08] tracking-tight">
-            Sua semana vai continuar tendo <Accent>168 horas</Accent>.
+            O que você leva
           </h2>
-          <p className="mt-6 text-saas-body text-[17px] leading-relaxed max-w-[60ch] mx-auto">
-            A única questão é quantas delas ainda vão estar sendo engolidas por trabalho que uma
-            ferramenta de R$20/mês faria.
-          </p>
 
           <div className="mt-10 mx-auto max-w-[600px] rounded-2xl border border-white/[0.09] bg-saas-card p-7 text-left">
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-faint mb-5">
-              Incluso
-            </p>
             <ul className="space-y-3">
               {stackFinal.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[14.5px] text-saas-body leading-relaxed">
+                <li key={item} className="flex items-start gap-3 text-[15px] text-saas-body leading-relaxed">
                   <Check className="w-4 h-4 text-saas-cyan flex-none mt-0.5" />
                   {item}
                 </li>
               ))}
+              <li className="flex items-start gap-3 text-[15px] font-semibold text-saas-ink leading-relaxed border-t border-white/[0.08] pt-3 mt-1">
+                <ShieldCheck className="w-4 h-4 text-saas-green flex-none mt-0.5" />
+                Garantia das 5 Horas
+              </li>
             </ul>
           </div>
+
+          <p className="mt-10 text-saas-body text-[17px] leading-relaxed max-w-[62ch] mx-auto">
+            Daqui a 30 dias, sua semana vai continuar tendo as mesmas <Accent>168 horas</Accent>. A
+            única questão é quantas delas ainda vão estar sendo engolidas por trabalho que uma{" "}
+            <strong className="text-saas-ink">ferramenta de R$20/mês</strong> faria.
+          </p>
 
           <div className="mt-10 flex flex-col items-center gap-3">
             <CtaButton location="cta_final" className="w-full sm:w-auto text-[15px] sm:px-9 py-4">
