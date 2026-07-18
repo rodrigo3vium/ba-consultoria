@@ -5,7 +5,6 @@ import {
   X,
   ArrowRight,
   ShieldCheck,
-  Stethoscope,
   Search,
   FileText,
   PhoneCall,
@@ -336,7 +335,7 @@ const AiAssessment = () => {
       </section>
 
       {/* ========== MAPEAMENTO / METODOLOGIA ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24">
+      <section className="border-t border-white/[0.06] py-20 md:py-24 bg-saas-void-2">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Eyebrow>A metodologia</Eyebrow>
           <h2 className={"mt-6 max-w-[26ch] " + H2_CLS}>
@@ -481,43 +480,6 @@ const AiAssessment = () => {
           <p className="mt-4 text-saas-faint text-[12px]">
             Exemplos ilustrativos do que o diagnóstico entrega — as tarefas e a ordem variam por empresa.
           </p>
-        </div>
-      </section>
-
-      {/* ========== MECANISMO ÚNICO ========== */}
-      <section className="border-t border-white/[0.06] py-20 md:py-24 bg-saas-void-2">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Eyebrow>O mecanismo</Eyebrow>
-          <h2 className={"mt-5 " + H2_CLS}>
-            Você não precisa aprender IA. Você precisa de uma <Accent>prescrição</Accent>.
-          </h2>
-
-          <div className="mt-8 flex items-start gap-4 rounded-2xl border border-white/[0.09] bg-saas-card p-7">
-            <span className="inline-flex w-11 h-11 flex-none rounded-full bg-gradient-to-r from-saas-cyan/15 to-saas-violet/15 items-center justify-center">
-              <Stethoscope className="text-saas-cyan" size={20} />
-            </span>
-            <p className="text-saas-body text-[17px] leading-relaxed">
-              Quando você fica doente, você não faz faculdade de medicina. Você vai ao médico,
-              descreve os sintomas, e sai com uma receita. É exatamente isso que o{" "}
-              <strong className="text-saas-ink">Diagnóstico de IA</strong> faz pelo seu negócio.
-            </p>
-          </div>
-
-          <div className="mt-6 space-y-5 text-saas-body text-[17px] leading-relaxed">
-            <p>
-              Seu problema nunca foi falta de conhecimento em IA. É falta de diagnóstico. As
-              ferramentas já existem — milhares delas, a maioria custando menos de R$30/mês. O que
-              não existe é alguém cruzando os seus gargalos específicos com a ferramenta certa, no
-              tamanho do seu negócio.
-            </p>
-            <p>
-              Eu faço esse cruzamento. E um detalhe que importa:{" "}
-              <Accent className="font-semibold">
-                eu não vendo software e não ganho comissão de nenhuma ferramenta que prescrevo.
-              </Accent>{" "}
-              A recomendação é isenta — como uma receita médica deve ser.
-            </p>
-          </div>
         </div>
       </section>
 
