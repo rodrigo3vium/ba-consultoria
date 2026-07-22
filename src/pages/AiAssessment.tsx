@@ -463,7 +463,66 @@ const AiAssessment = () => {
               <p className="text-saas-muted text-[13px] mt-1 mb-10">
                 Esforço de implementação × impacto no seu tempo
               </p>
-              <div className="overflow-x-auto pb-2">
+
+              {/* ── Versão mobile: matriz compacta numerada + legenda ── */}
+              <div className="md:hidden -mt-4">
+                <div className="flex items-baseline justify-between font-mono text-[9.5px] uppercase tracking-[0.12em] text-saas-faint mb-2">
+                  <span>↑ Esforço</span>
+                  <span>Impacto →</span>
+                </div>
+                <div className="relative w-full aspect-square border-l border-b border-white/[0.16]">
+                  {/* quadrante ganho rápido (alto impacto, baixo esforço) */}
+                  <div
+                    aria-hidden
+                    className="absolute right-0 bottom-0 w-1/2 h-1/2 bg-saas-cyan/[0.045] border-t border-l border-dashed border-saas-cyan/20"
+                  />
+                  <span className="absolute right-1.5 bottom-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-saas-cyan/70">
+                    ganho rápido
+                  </span>
+                  {/* divisórias restantes */}
+                  <div className="absolute left-1/2 bottom-1/2 top-0 border-l border-dashed border-white/[0.08]" aria-hidden />
+                  <div className="absolute top-1/2 right-1/2 left-0 border-t border-dashed border-white/[0.08]" aria-hidden />
+                  {/* pontos numerados */}
+                  {matriz.map((d, i) => (
+                    <span
+                      key={d.label}
+                      style={{ left: `${d.xi}%`, top: `${100 - d.ci}%` }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 inline-flex w-6 h-6 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet ring-4 ring-saas-violet/10 items-center justify-center text-[11px] font-bold text-saas-void"
+                    >
+                      {i + 1}
+                    </span>
+                  ))}
+                </div>
+                {/* legenda */}
+                <ul className="mt-5 space-y-1.5">
+                  {matriz.map((d, i) => {
+                    const ganhoRapido = d.xi >= 50 && d.ci < 50;
+                    return (
+                      <li key={d.label} className="flex items-center gap-2.5">
+                        <span
+                          className={
+                            "inline-flex w-5 h-5 flex-none rounded-full items-center justify-center text-[10px] font-bold " +
+                            (ganhoRapido
+                              ? "bg-gradient-to-br from-saas-cyan to-saas-violet text-saas-void"
+                              : "border border-white/[0.14] bg-white/[0.03] text-saas-muted")
+                          }
+                        >
+                          {i + 1}
+                        </span>
+                        <span className="text-[13px] text-saas-body min-w-0 truncate">{d.label}</span>
+                        {ganhoRapido && (
+                          <span className="ml-auto flex-none font-mono text-[9px] uppercase tracking-[0.1em] text-saas-cyan/70">
+                            ganho rápido
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              {/* ── Versão desktop: matriz com labels ao lado dos pontos ── */}
+              <div className="hidden md:block overflow-x-auto pb-2">
                 <div className="relative w-full min-w-[620px] h-[420px]">
                   {/* eixos */}
                   <div className="absolute inset-0 border-l border-b border-white/[0.16]" aria-hidden />
@@ -525,10 +584,10 @@ const AiAssessment = () => {
               <p className="text-saas-muted text-[13px] mt-1 mb-8">
                 Da melhor pra pior oportunidade
               </p>
-              <div className="overflow-x-auto pb-2">
-                <div className="flex gap-4 md:gap-6 items-stretch min-w-[480px]">
+              <div className="pb-2">
+                <div className="flex gap-3 md:gap-6 items-stretch">
                   {/* direção */}
-                  <div className="flex-none flex flex-col justify-between py-1 text-right">
+                  <div className="hidden sm:flex flex-none flex-col justify-between py-1 text-right">
                     <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-saas-cyan leading-tight">
                       Fazer<br />primeiro
                     </span>
@@ -538,7 +597,7 @@ const AiAssessment = () => {
                   </div>
                   {/* barra de calor */}
                   <div
-                    className="flex-none w-14 md:w-20 rounded-2xl"
+                    className="flex-none w-9 sm:w-14 md:w-20 rounded-2xl"
                     style={{
                       background:
                         "linear-gradient(to bottom, #20DDEB 0%, #5AC7E6 22%, #8B7CF6 55%, #4B3E8C 80%, #241F40 100%)",
@@ -551,19 +610,19 @@ const AiAssessment = () => {
                       <div
                         key={g.tier}
                         className={
-                          "flex items-start justify-between gap-4 " +
+                          "flex items-start justify-between gap-3 md:gap-4 " +
                           (gi > 0 ? "border-t border-dashed border-white/[0.10] pt-3.5 mt-3.5" : "")
                         }
                       >
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 min-w-0">
                           {g.items.map((it) => (
-                            <li key={it} className="flex items-center gap-2.5 text-[14px] text-saas-body">
+                            <li key={it} className="flex items-center gap-2.5 text-[13px] md:text-[14px] text-saas-body">
                               <span className="block w-2.5 h-2.5 rounded-full bg-gradient-to-br from-saas-cyan to-saas-violet flex-none" />
                               {it}
                             </li>
                           ))}
                         </ul>
-                        <div className="flex-none text-right max-w-[120px] md:max-w-[150px]">
+                        <div className="flex-none text-right max-w-[96px] md:max-w-[150px]">
                           {g.tag && (
                             <span className="block mb-1 font-mono text-[9px] uppercase tracking-[0.12em] text-saas-cyan">
                               {g.tag}
