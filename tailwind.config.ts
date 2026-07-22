@@ -112,6 +112,7 @@ export default {
 					'cyan':    '#20DDEB',
 					'violet':  '#8B7CF6',
 					'green':   '#6EE7B7',
+					'red':     '#FF5D5D',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

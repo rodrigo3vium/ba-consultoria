@@ -329,7 +329,7 @@ const AiAssessment = () => {
           </h2>
           <p className="mt-6 text-saas-body text-base md:text-lg leading-relaxed max-w-[58ch]">
             Cada tarefa da sua empresa cruzada por esforço e impacto — da melhor pra pior
-            oportunidade. Metodologia própria, validada em mais de 150 clientes.
+            oportunidade.
           </p>
 
           <div className="mt-12 space-y-6">
@@ -527,11 +527,11 @@ const AiAssessment = () => {
               <p className="text-saas-body text-[17px] leading-relaxed">
                 Meu cliente médio recupera{" "}
                 <strong className="text-saas-ink">7 horas por semana</strong>. O custo médio total
-                das ferramentas que prescrevo: <strong className="text-saas-ink">R$60/mês</strong>.
+                das ferramentas que prescrevo: <strong className="text-saas-ink">R$300/mês</strong>.
               </p>
               <p className="mt-4 text-saas-body text-[17px] leading-relaxed">
                 Se a sua hora vale R$100 — conservador pra quem é dono — são ~R$3.000/mês em tempo
-                devolvido, em troca de R$60/mês em ferramentas. Todo mês. Enquanto o negócio existir.
+                devolvido, em troca de R$300/mês em ferramentas. Todo mês. Enquanto o negócio existir.
               </p>
 
               {/* dados / pesquisa */}
@@ -541,7 +541,7 @@ const AiAssessment = () => {
               <div className="mt-4 grid grid-cols-3 gap-3">
                 {[
                   { value: "7h", label: "recuperadas / semana" },
-                  { value: "R$60", label: "ferramentas / mês" },
+                  { value: "R$300", label: "ferramentas / mês" },
                   { value: "~R$3.000", label: "em tempo / mês" },
                 ].map((s) => (
                   <div key={s.label} className="rounded-2xl border border-white/[0.09] bg-white/[0.02] p-3 sm:p-4 text-center">
@@ -578,13 +578,13 @@ const AiAssessment = () => {
                 </div>
                 <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-3">
                   <p className="text-[10px] text-saas-faint leading-tight">Custo</p>
-                  <p className="mt-1.5 text-saas-ink font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap">R$ 60</p>
+                  <p className="mt-1.5 text-saas-ink font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap">R$ 300</p>
                   <p className="mt-1.5 text-[10px] text-saas-faint leading-none">fixo / mês</p>
                 </div>
                 <div className="rounded-xl border border-saas-violet/25 bg-white/[0.02] p-3">
                   <p className="text-[10px] text-saas-faint leading-tight">Retorno líquido</p>
-                  <p className="mt-1.5 font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">R$ 2.940</p>
-                  <p className="mt-1.5 text-[10px] text-saas-green leading-none">≈ 49× o custo</p>
+                  <p className="mt-1.5 font-extrabold text-[clamp(15px,2vw,19px)] leading-none whitespace-nowrap bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">R$ 2.700</p>
+                  <p className="mt-1.5 text-[10px] text-saas-green leading-none">≈ 10× o custo</p>
                 </div>
               </div>
 
@@ -645,8 +645,8 @@ const AiAssessment = () => {
       {/* ========== GARANTIA ========== */}
       <section className="border-t border-white/[0.06] py-20 md:py-28 relative overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[720px] h-[420px] rounded-full bg-saas-violet/12 blur-[130px]" />
-          <div className="absolute top-1/3 right-0 w-[440px] h-[440px] rounded-full bg-saas-cyan/10 blur-[120px]" />
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[720px] h-[420px] rounded-full bg-saas-red/14 blur-[130px]" />
+          <div className="absolute top-1/3 right-0 w-[440px] h-[440px] rounded-full bg-saas-red/10 blur-[120px]" />
         </div>
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -654,7 +654,7 @@ const AiAssessment = () => {
           <h2 className="mt-7 font-extrabold text-saas-ink text-[clamp(34px,6vw,60px)] leading-[1.04] tracking-tight">
             Ou eu acho suas 5 horas.
             <br />
-            <Accent>Ou você não paga.</Accent>
+            <Accent className="from-[#FF7A7A] to-[#F0453E]">Ou seu dinheiro de volta.</Accent>
           </h2>
           <p className="mt-7 text-saas-muted text-base md:text-lg leading-relaxed max-w-[62ch] mx-auto">
             É a minha <strong className="text-saas-ink">Garantia das 5 Horas</strong>: se durante a
@@ -667,19 +667,19 @@ const AiAssessment = () => {
             {/* Card 1 */}
             <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 text-center">
               <span className="inline-flex w-12 h-12 rounded-xl bg-white/[0.04] items-center justify-center mb-5">
-                <Clock className="text-saas-cyan" size={22} />
+                <Clock className="text-saas-red" size={22} />
               </span>
               <div className="text-[clamp(30px,4vw,40px)] font-extrabold text-saas-ink leading-none">45 min</div>
               <p className="mt-2.5 text-[13.5px] text-saas-muted">é tudo que você arrisca</p>
             </div>
 
             {/* Card 2 — destaque (borda gradiente) */}
-            <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-saas-cyan to-saas-violet shadow-[0_0_50px_-12px_rgba(139,124,246,0.5)]">
+            <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FF7A7A] to-[#F0453E] shadow-[0_0_50px_-12px_rgba(240,69,62,0.55)]">
               <div className="rounded-2xl bg-saas-card p-8 text-center h-full">
-                <span className="inline-flex w-12 h-12 rounded-xl bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 items-center justify-center mb-5">
-                  <ShieldCheck className="text-saas-cyan" size={22} />
+                <span className="inline-flex w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF7A7A]/20 to-[#F0453E]/20 items-center justify-center mb-5">
+                  <ShieldCheck className="text-saas-red" size={22} />
                 </span>
-                <div className="text-[clamp(30px,4vw,40px)] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                <div className="text-[clamp(30px,4vw,40px)] font-extrabold leading-none bg-gradient-to-r from-[#FF7A7A] to-[#F0453E] bg-clip-text text-transparent">
                   5 horas
                 </div>
                 <p className="mt-2.5 text-[13.5px] text-saas-muted">o mínimo que eu garanto achar</p>
@@ -689,7 +689,7 @@ const AiAssessment = () => {
             {/* Card 3 */}
             <div className="rounded-2xl border border-white/[0.09] bg-saas-card p-8 text-center">
               <span className="inline-flex w-12 h-12 rounded-xl bg-white/[0.04] items-center justify-center mb-5">
-                <DollarSign className="text-saas-cyan" size={22} />
+                <DollarSign className="text-saas-red" size={22} />
               </span>
               <div className="text-[clamp(30px,4vw,40px)] font-extrabold text-saas-ink leading-none">100%</div>
               <p className="mt-2.5 text-[13.5px] text-saas-muted">do valor de volta</p>
@@ -707,7 +707,7 @@ const AiAssessment = () => {
               </p>
             </div>
             <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-cyan mb-2">
+              <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-saas-red mb-2">
                 Melhor caso
               </p>
               <p className="text-[14.5px] text-saas-body leading-relaxed">
@@ -756,7 +756,7 @@ const AiAssessment = () => {
               Agendar meu Diagnóstico <ArrowRight size={16} />
             </CtaButton>
             <span className="inline-flex items-center gap-2 text-[13px] text-saas-faint">
-              <Clock size={13} /> Se eu não achar suas 5 horas, você não paga. Simples assim.
+              <Clock size={13} /> Se eu não achar suas 5 horas, seu dinheiro de volta. Simples assim.
             </span>
           </div>
         </div>
