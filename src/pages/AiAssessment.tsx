@@ -12,7 +12,10 @@ import {
   Repeat,
   Hourglass,
   DollarSign,
-  Image as ImageIcon,
+  CalendarClock,
+  BarChart3,
+  Sparkles,
+  TrendingUp,
 } from "lucide-react";
 import { tracker } from "@/lib/tracking";
 import { Accent, Eyebrow, Card, SAAS_BTN_PRIMARY } from "@/components/saas/ui";
@@ -31,6 +34,128 @@ const heroStats = [
   { value: "3–7", label: "ferramentas prescritas" },
   { value: "45min", label: "de diagnóstico" },
 ];
+
+/* ── Hero: mock animado do diagnóstico rodando ─────────────────────────── */
+const DX_TASKS = [
+  { icon: PhoneCall, label: "Follow-up de leads", gain: "+1,5h" },
+  { icon: FileText, label: "Propostas e orçamentos", gain: "+1,5h" },
+  { icon: Sparkles, label: "Resumo de reuniões", gain: "+1h" },
+  { icon: CalendarClock, label: "Agendamento", gain: "+1h" },
+  { icon: BarChart3, label: "Relatórios semanais", gain: "+2h" },
+];
+
+/* Loop de 9s: scan desce (0→60%), badges pulam quando o scan cruza a linha,
+   barra enche junto, tudo apaga em ~95% e recomeça. Sincronizado por keyframes
+   com o mesmo period — sem JS. */
+const DX_CSS = [
+  `.dx-scan{animation:dx-scan 9s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes dx-scan{0%{top:0;opacity:0}3%{opacity:1}56%{opacity:1}60%{top:calc(100% - 2px);opacity:0}100%{top:calc(100% - 2px);opacity:0}}`,
+  ...DX_TASKS.map((_, i) => {
+    const p = 6 + i * 12;
+    return `.dx-b${i}{animation:dx-b${i} 9s ease-out infinite}
+@keyframes dx-b${i}{0%,${p}%{opacity:0;transform:translateY(6px) scale(.92)}${p + 3}%{opacity:1;transform:none}90%{opacity:1;transform:none}95%,100%{opacity:0}}`;
+  }),
+  `.dx-fill{animation:dx-fill 9s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes dx-fill{0%{width:0}60%{width:100%}94%{width:100%}100%{width:0}}`,
+  `.dx-total{animation:dx-total 9s ease-out infinite}
+@keyframes dx-total{0%,58%{filter:none;transform:none}62%{filter:drop-shadow(0 0 14px rgba(32,221,235,.65));transform:scale(1.06)}68%{filter:none;transform:none}100%{filter:none;transform:none}}`,
+  `@media (prefers-reduced-motion: reduce){.dx-scan{display:none}[class*="dx-"]{animation:none!important}}`,
+].join("\n");
+
+function HeroDiagnostico() {
+  return (
+    <div className="relative w-full">
+      <style>{DX_CSS}</style>
+
+      {/* Card principal */}
+      <div className="relative rounded-3xl border border-white/[0.09] bg-saas-card shadow-saas-card p-6 overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 rounded-full bg-saas-violet/15 blur-[90px]" />
+
+        {/* Header */}
+        <div className="relative flex items-center justify-between">
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-saas-muted">
+            <span className="w-1.5 h-1.5 rounded-full bg-saas-cyan animate-pulse-cyan" />
+            Diagnóstico · ao vivo
+          </span>
+          <span className="font-mono text-[10px] tracking-[0.12em] text-saas-faint-2">45:00</span>
+        </div>
+
+        {/* Lista de tarefas + scan */}
+        <div className="relative mt-5">
+          <div
+            aria-hidden
+            className="dx-scan absolute left-0 right-0 h-[2px] rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet"
+            style={{ boxShadow: "0 0 18px rgba(32,221,235,0.55)" }}
+          />
+          {DX_TASKS.map((t, i) => {
+            const Icon = t.icon;
+            return (
+              <div
+                key={t.label}
+                className={
+                  "flex items-center justify-between gap-3 py-3.5" +
+                  (i < DX_TASKS.length - 1 ? " border-b border-white/[0.05]" : "")
+                }
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <span className="inline-flex w-8 h-8 flex-none rounded-lg bg-white/[0.04] border border-white/[0.06] items-center justify-center">
+                    <Icon className="text-saas-cyan" size={14} />
+                  </span>
+                  <span className="text-[13.5px] text-saas-body truncate">{t.label}</span>
+                </div>
+                <span
+                  className={`dx-b${i} inline-flex flex-none items-center gap-1 rounded-full border border-saas-cyan/25 bg-saas-cyan/[0.08] px-2.5 py-1 text-[11.5px] font-bold text-saas-cyan whitespace-nowrap`}
+                >
+                  <Check size={11} strokeWidth={3} /> {t.gain}
+                  <span className="font-normal text-saas-cyan/60">/sem</span>
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Resumo */}
+        <div className="relative mt-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4">
+          <div className="flex items-end justify-between">
+            <span className="text-[11px] text-saas-faint leading-tight">
+              Recuperável
+              <br />
+              por semana
+            </span>
+            <span className="dx-total text-[30px] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+              ≈ 7h
+            </span>
+          </div>
+          <div className="mt-3 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+            <div className="dx-fill h-full rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet" />
+          </div>
+        </div>
+      </div>
+
+      {/* Chips flutuantes */}
+      <div className="absolute -top-4 -right-3 xl:-right-6 animate-float rounded-2xl border border-white/[0.10] bg-saas-card/95 backdrop-blur px-4 py-3 shadow-saas-card">
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-saas-faint">Relatório</p>
+        <p className="mt-1 text-[13px] font-bold text-saas-ink leading-tight">
+          3–7 ferramentas <span className="text-saas-cyan">prescritas</span>
+        </p>
+      </div>
+      <div
+        className="absolute -bottom-8 -left-3 xl:-left-6 animate-float rounded-2xl border border-white/[0.10] bg-saas-card/95 backdrop-blur px-4 py-3 shadow-saas-card flex items-center gap-3"
+        style={{ animationDelay: "1.4s" }}
+      >
+        <span className="inline-flex w-9 h-9 flex-none rounded-xl bg-gradient-to-br from-saas-cyan/20 to-saas-violet/20 items-center justify-center">
+          <TrendingUp className="text-saas-cyan" size={16} />
+        </span>
+        <div>
+          <p className="text-[15px] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+            ROI ≈ 10×
+          </p>
+          <p className="mt-1 text-[10.5px] text-saas-faint leading-tight">sobre o custo das ferramentas</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* Cards da seção "O custo invisível" — PLACEHOLDER: ajustar copy depois */
 const problemas = [
@@ -272,12 +397,9 @@ const AiAssessment = () => {
               </div>
             </div>
 
-            {/* ── Imagem (direita, só desktop) — PLACEHOLDER ── */}
-            <div className="hidden lg:flex animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <div className="w-full aspect-[4/5] rounded-3xl border border-dashed border-white/[0.14] bg-white/[0.02] flex flex-col items-center justify-center gap-3 text-saas-faint">
-                <ImageIcon size={40} strokeWidth={1.5} />
-                <span className="font-mono text-[11px] uppercase tracking-[0.14em]">Imagem aqui</span>
-              </div>
+            {/* ── Mock do diagnóstico rodando (direita, só desktop) ── */}
+            <div className="hidden lg:block animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <HeroDiagnostico />
             </div>
           </div>
         </div>
