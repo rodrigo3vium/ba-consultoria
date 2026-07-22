@@ -140,6 +140,7 @@ serve(async (req) => {
       "venda-mais-com-ia",
       "imovel-vazio-nao-vende",
       "a-call-que-fechou-mas-nao-fechou",
+      "acabe-com-a-demora",
     ]);
     const FUNNEL_PB_ID = "2ed6923e-5ad3-4b3b-9349-3495133812cf";
     const ACTIVE_STAGES = new Set([
