@@ -924,6 +924,18 @@ const AiAssessment = () => {
                 Garantia das 5 Horas
               </li>
             </ul>
+
+            {/* preço */}
+            <div className="mt-6 pt-5 border-t border-white/[0.08] flex items-end justify-between gap-4">
+              <span className="text-[13px] text-saas-faint leading-tight pb-1">
+                Investimento
+                <br />
+                único
+              </span>
+              <span className="text-[34px] font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
+                R$997
+              </span>
+            </div>
           </div>
 
           <p className="mt-10 text-saas-body text-[17px] leading-relaxed max-w-[62ch] mx-auto">
