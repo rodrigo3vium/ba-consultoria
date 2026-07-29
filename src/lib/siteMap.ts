@@ -74,6 +74,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/propostas/dani-barcelos', label: 'Proposta Dani Barcelos (Treevium)', category: 'propostas', status: 'ativa' },
   { path: '/propostas/rodrigo-wanderley', label: 'Proposta Rodrigo Wanderley', category: 'propostas', status: 'ativa' },
   { path: '/propostas/hugo-calsavara', label: 'Proposta Hugo Calsavara (Tráfego Pago)', category: 'propostas', status: 'ativa' },
+  { path: '/propostas/miles', label: 'Proposta Miles (Central de Leads)', category: 'propostas', status: 'ativa' },
   { path: '/follow-up/clinica-supreme', label: 'Follow-up Clínica Supreme', category: 'propostas', status: 'ativa' },
   { path: '/projetos/royal-eagle-crm', label: 'Relatório de Andamento — Royal Eagle CRM', category: 'outros', status: 'ativa' },
 ];
