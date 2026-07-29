@@ -418,13 +418,6 @@ const PropostaMiles = () => {
             Quem começa no Essencial pode subir pro Inteligente depois por <b className="font-semibold text-saas-ink">R$7.000</b>.
           </div>
         </div>
-
-        <Card className="mt-6 p-9">
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-4">Uma conta pra fazer</p>
-          <p className="text-saas-body text-[17px] leading-relaxed max-w-[760px]">
-            Um assistente comercial júnior custa em torno de <b className="text-saas-ink font-semibold">R$3.500 por mês</b> com encargos, e você ainda precisa explicar tudo pra ele. O Inteligente se paga em <b className="text-saas-ink font-semibold">menos de quatro meses</b> — e não pede férias, não pede aumento e não leva o histórico embora quando sai.
-          </p>
-        </Card>
       </div>
 
       {/* ── PRAZO ── */}
