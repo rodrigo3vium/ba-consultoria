@@ -324,38 +324,14 @@ const PropostaDanieleDiasGomes = () => {
         </Card>
       </div>
 
-      {/* ── PRÓXIMOS PASSOS ── */}
+      {/* ── BÔNUS ── */}
       <div className="border-t border-white/[0.06] py-16">
-        <Eyebrow>07 Próximos passos</Eyebrow>
-        <h2 className={"mt-5 " + H2_CLS}>Do sim ao começo</h2>
+        <Eyebrow>07 Bônus</Eyebrow>
+        <h2 className={"mt-5 " + H2_CLS}>Independente de fechamento</h2>
 
-        <div className="mt-10">
-          {[
-            { num: "01", title: "Você me envia os nomes", desc: "Nome da clínica e das concorrentes que quer que eu analise." },
-            { num: "02", title: "Conversa com o Felipe", desc: "Eu marco separadamente — o cenário dele é diferente e a proposta será própria." },
-            { num: "03", title: "Começamos em até 3 dias úteis", desc: "Confirmado o aceite, o Mês 1 entra no ar." },
-          ].map((step, i) => (
-            <div
-              key={step.num}
-              className={`grid grid-cols-[auto_1fr] gap-6 md:gap-8 py-7 ${i > 0 ? "border-t border-white/[0.06]" : ""}`}
-            >
-              <div className="text-4xl font-extrabold leading-none bg-gradient-to-r from-saas-cyan to-saas-violet bg-clip-text text-transparent">
-                {step.num}
-              </div>
-              <div>
-                <h3 className="font-bold text-saas-ink text-lg">{step.title}</h3>
-                <p className="mt-1.5 text-[14.5px] text-saas-body leading-relaxed">{step.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <Card className="mt-8 p-8">
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-3">Bônus, independente de fechamento</p>
-          <p className="text-saas-body text-[15px] leading-relaxed max-w-[760px]">
-            Vou te mandar o resumo estruturado que prometi na call — o que cobrar de um gestor de tráfego e de uma social media, com os critérios de avaliação. É seu para usar comigo ou sem mim.
-          </p>
-        </Card>
+        <p className="mt-8 text-saas-body text-[20px] leading-relaxed max-w-[760px]">
+          Vou te mandar o resumo estruturado que prometi na call — o que cobrar de um gestor de tráfego e de uma social media, com os critérios de avaliação. É seu para usar comigo ou sem mim.
+        </p>
       </div>
 
       {/* ── SOBRE ── */}
