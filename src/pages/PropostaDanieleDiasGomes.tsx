@@ -392,7 +392,7 @@ const PropostaDanieleDiasGomes = () => {
       <div className="border-t border-white/[0.06] py-16">
         <Eyebrow>Próximo passo</Eyebrow>
         <h2 className="mt-5 font-extrabold text-saas-ink text-[clamp(34px,6vw,64px)] leading-[1.05] tracking-tight">
-          A indicação continua.<br />O acaso, não<Accent>.</Accent>
+          O problema nunca foi verba.<br />Foi <Accent>endereço</Accent>.
         </h2>
         <p className="mt-6 text-saas-body text-[18px] leading-relaxed max-w-[680px]">
           Mil e seiscentas famílias moram a poucos quilômetros do seu consultório e nenhuma concorrente está falando com elas. O que falta é direção — e ela custa menos do que um paciente que fica cinco meses.
