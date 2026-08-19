@@ -59,6 +59,7 @@ const PropostaTreevium = lazy(() => import("./pages/PropostaTreevium"));
 const PropostaRodrigoWanderley = lazy(() => import("./pages/PropostaRodrigoWanderley"));
 const PropostaHugoCalsavara = lazy(() => import("./pages/PropostaHugoCalsavara"));
 const PropostaMiles = lazy(() => import("./pages/PropostaMiles"));
+const PropostaDanieleDiasGomes = lazy(() => import("./pages/PropostaDanieleDiasGomes"));
 const FollowUpClinicaSupreme = lazy(() => import("./pages/FollowUpClinicaSupreme"));
 const EducacaoSkillsNegocios = lazy(() => import("./pages/EducacaoSkillsNegocios"));
 const AgenticOS = lazy(() => import("./pages/AgenticOS"));
@@ -138,6 +139,7 @@ const App = () => (
           <Route path="/propostas/rodrigo-wanderley" element={<PropostaRodrigoWanderley />} />
           <Route path="/propostas/hugo-calsavara" element={<PropostaHugoCalsavara />} />
           <Route path="/propostas/miles" element={<PropostaMiles />} />
+          <Route path="/propostas/daniele-dias-gomes" element={<PropostaDanieleDiasGomes />} />
           <Route path="/follow-up/clinica-supreme" element={<FollowUpClinicaSupreme />} />
           <Route path="/educacao/20-skill-negocios" element={<EducacaoSkillsNegocios />} />
           <Route path="/educacao/aos" element={<AgenticOS />} />
