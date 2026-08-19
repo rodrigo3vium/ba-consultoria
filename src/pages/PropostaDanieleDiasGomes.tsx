@@ -226,7 +226,7 @@ const PropostaDanieleDiasGomes = () => {
         <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/[0.14] px-6 py-3 text-sm text-saas-body">
           <span className="w-2 h-2 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet animate-pulse" />
           <span>
-            Ao longo dos 3 meses: <b className="font-semibold text-saas-ink">1 call estratégica por mês</b>, revisão semanal dos números, direção criativa e canal direto comigo no WhatsApp.
+            Ao longo dos 3 meses: <b className="font-semibold text-saas-ink">1 call estratégica a cada 15 dias</b> — 6 no ciclo —, revisão semanal dos números, direção criativa e canal direto comigo no WhatsApp.
           </span>
         </div>
 
