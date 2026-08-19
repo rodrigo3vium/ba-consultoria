@@ -76,6 +76,7 @@ export const SITE_ROUTES: SiteRoute[] = [
   { path: '/propostas/hugo-calsavara', label: 'Proposta Hugo Calsavara (Tráfego Pago)', category: 'propostas', status: 'ativa' },
   { path: '/propostas/miles', label: 'Proposta Miles (Central de Leads)', category: 'propostas', status: 'ativa' },
   { path: '/propostas/daniele-dias-gomes', label: 'Proposta Daniele Dias Gomes (Consultoria 90 dias)', category: 'propostas', status: 'ativa' },
+  { path: '/resumo/daniele-dias-gomes', label: 'Resumo Daniele Dias Gomes (notas da conversa)', category: 'propostas', status: 'ativa' },
   { path: '/follow-up/clinica-supreme', label: 'Follow-up Clínica Supreme', category: 'propostas', status: 'ativa' },
   { path: '/projetos/royal-eagle-crm', label: 'Relatório de Andamento — Royal Eagle CRM', category: 'outros', status: 'ativa' },
 ];
