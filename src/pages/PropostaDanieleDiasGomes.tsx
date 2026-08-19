@@ -47,7 +47,7 @@ const naoIncluso = [
 const precisamos = [
   "Acesso ao gerenciador de anúncios, Google Meu Negócio, Instagram e site",
   "Duas horas por semana suas ou do Felipe para executar o que for definido",
-  "Verba de mídia à parte, paga direto por você à plataforma",
+  "Retorno rápido sobre a qualidade dos contatos que chegarem — quem estava dentro do raio e quem não estava",
 ];
 
 const indicadores = [
@@ -292,28 +292,22 @@ const PropostaDanieleDiasGomes = () => {
         <Eyebrow>06 Investimento</Eyebrow>
         <h2 className={"mt-5 " + H2_CLS}>Uma consultoria, um valor</h2>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="border-saas-violet/40 p-9">
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-4">Consultoria · 90 dias</p>
-            <h3 className="font-extrabold text-[40px] leading-none"><Accent>R$6.000</Accent></h3>
-            <p className="text-saas-ink text-[15px] font-semibold leading-relaxed mt-4">
-              3x de R$2.000, ou R$5.400 à vista.
-            </p>
-            <p className="text-saas-muted text-[14px] leading-relaxed mt-3">
-              Ciclo fechado de três meses. Tudo das seções acima está incluso — não há taxa de setup nem cobrança separada por entrega.
-            </p>
-          </Card>
+        <Card className="mt-8 border-saas-violet/40 p-9">
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-cyan mb-4">Consultoria · 90 dias</p>
+          <h3 className="font-extrabold text-[clamp(44px,6vw,64px)] leading-none"><Accent>R$6.000</Accent></h3>
+          <p className="text-saas-ink text-[17px] font-semibold leading-relaxed mt-5">
+            3x de R$2.000, ou R$5.400 à vista.
+          </p>
+          <p className="text-saas-body text-[15px] leading-relaxed mt-3 max-w-[680px]">
+            Ciclo fechado de três meses. Tudo das seções acima está incluso — não há taxa de setup nem cobrança separada por entrega.
+          </p>
+        </Card>
 
-          <Card className="p-9">
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-saas-muted mb-4">Verba de mídia · à parte</p>
-            <h3 className="font-extrabold text-[40px] text-saas-ink leading-none">R$500<span className="text-[20px] text-saas-muted font-bold">/mês</span></h3>
-            <p className="text-saas-ink text-[15px] font-semibold leading-relaxed mt-4">
-              Para cobrir a Vila Leopoldina. R$1.400/mês com a Lapa.
-            </p>
-            <p className="text-saas-muted text-[14px] leading-relaxed mt-3">
-              Paga direto por você à plataforma — não passa por mim. Recomendo começar com R$500 e expandir o raio só depois do primeiro paciente fechado.
-            </p>
-          </Card>
+        <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/[0.14] px-6 py-3 text-sm text-saas-body">
+          <span className="w-2 h-2 rounded-full bg-gradient-to-r from-saas-cyan to-saas-violet animate-pulse" />
+          <span>
+            A verba de mídia é <b className="font-semibold text-saas-ink">paga direto por você à plataforma</b> e não passa por mim — definimos o valor no Mês 1, com o raio já validado no gerenciador.
+          </span>
         </div>
 
         <Card className="mt-8 p-9 border-saas-violet/40">
